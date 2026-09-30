@@ -7,7 +7,9 @@ from .ausencia import empty_reason
 from .model import FloraError, canonical, digest, folded
 from .precedents import COMPONENTS, SPECIES, available
 from .query import (
+    BROADENED,
     CONTRATO,
+    broadening,
     block_offset,
     check_dates,
     compile_terms,
@@ -63,6 +65,7 @@ class PrecedentSearch:
         self.base, self.base_params = self.admitted(view)
         self.groups, self.filters, self.params = [], [], []
         self.offset = 0
+        self.original, self.broadened = self.query, None
 
     @staticmethod
     def admitted(view):
@@ -116,14 +119,33 @@ class PrecedentSearch:
         except sqlite3.OperationalError as exc:
             raise database_error(exc) from exc
 
-    def page(self, db, cursor, revision):
+    def total(self, db):
+        """Count with every term; when that is zero, retry with any term (simple mode only)."""
+        if not available(db):
+            return 0
+        total = self.count(db)
+        terms = broadening(self.termos) if total == 0 and self.modo_busca == "simples" else None
+        if terms is None:
+            return total
+        self.query = " OR ".join(quoted(t) for t in terms[0])
+        total = self.count(db)
+        if total == 0:
+            self.query = self.original  # The empty answer and its reason stay those of the query asked.
+            return 0
+        self.broadened = {
+            **BROADENED,
+            "termos": self.term_counts(db, terms[0]),
+            "termos_descartados": terms[1],
+        }
+        return total
+
+    def page(self, db, cursor, revision, total):
         source, where, params = self.plan()
         order = self.order()
         fingerprint = digest(canonical([where, params, order, self.limit, self.detalhe, self.campo]).encode())
         self.offset = page_offset(self.view, cursor, fingerprint, revision)
-        if not available(db):
-            return 0, [], fingerprint
-        total = self.count(db)
+        if not total:
+            return [], fingerprint
         # First highlighted position is an offset in the original Unicode string.
         highlights = (
             "".join(
@@ -140,7 +162,7 @@ class PrecedentSearch:
             ).fetchall()
         except sqlite3.OperationalError as exc:
             raise database_error(exc) from exc
-        return total, rows, fingerprint
+        return rows, fingerprint
 
     def item(self, row):
         body = json.loads(row["body"])
@@ -177,12 +199,12 @@ class PrecedentSearch:
             )
         ]
 
-    def term_counts(self, db):
+    def term_counts(self, db, terms=None):
         if self.modo_busca != "simples":
             return None
         return [
             {"termo": t, "documentos": self.count(db, filtered=False, expression=self.scoped(quoted(t)))}
-            for t in lexical_terms(self.termos)
+            for t in (lexical_terms(self.termos) if terms is None else terms)
         ]
 
     def reason(self, db, dates):
@@ -235,7 +257,8 @@ def search(
     with store.read() as db:
         db.execute("BEGIN")
         revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
-        total, rows, fingerprint = plan.page(db, cursor, revision)
+        total = plan.total(db)
+        rows, fingerprint = plan.page(db, cursor, revision, total)
         reason = plan.reason(db, (data_inicio, data_fim)) if total == 0 else {}
 
     def following(n):
@@ -249,6 +272,7 @@ def search(
         "campo_pesquisado": campo,
         "modo_busca": modo_busca,
         "consulta_efetiva": plan.scoped(plan.query),
+        **({"ampliacao": plan.broadened} if plan.broadened else {}),
         "ordenacao": plan.ordenar,
         "revisao_base": revision,
         "detalhe": detalhe,
