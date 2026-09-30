@@ -54,7 +54,11 @@ def build_parser() -> argparse.ArgumentParser:
     find.add_argument("--data-fim")
     find.add_argument("--tipo-data", choices=["publicacao", "julgamento"], default="publicacao")
     add_page_options(find)
-    qualified = sub.add_parser("precedentes", help="Pesquisa temas e súmulas, sem cliente MCP")
+    qualified = sub.add_parser(
+        "precedentes",
+        help="Pesquisa temas e súmulas, sem cliente MCP; 'precedentes preparar' e 'precedentes amostra' "
+        "montam pacotes (para pesquisar essas palavras, use 'precedentes -- preparar')",
+    )
     qualified.add_argument("termos", nargs="?", default="")
     qualified.add_argument("--tribunal", choices=["STJ", "STF", "TJSC"])
     qualified.add_argument("--especie", choices=sorted(set.union(*SPECIES.values())))
@@ -87,6 +91,47 @@ def build_parser() -> argparse.ArgumentParser:
     restore.add_argument("destino", type=Path)
     restore.add_argument("--raiz", type=Path)
     return parser
+
+
+# Package actions of "flora-mcp precedentes": files only, no collection, no lock, no network.
+PACKAGE_ACTIONS = {"preparar", "amostra"}
+
+
+def build_package_parser() -> argparse.ArgumentParser:
+    from .precedent_sources import ADAPTERS
+
+    parser = argparse.ArgumentParser(
+        prog="flora-mcp precedentes", description="Pacotes flora-precedentes-1 de fontes estruturadas"
+    )
+    action = parser.add_subparsers(dest="acao", required=True)
+    build = action.add_parser("preparar", help="Gera o pacote a partir de originais já coletados, sem rede")
+    build.add_argument("--fonte", choices=ADAPTERS, required=True)
+    build.add_argument("--originais", type=Path, required=True, help="Pasta com originais e recibos")
+    build.add_argument("--saida", type=Path, required=True, help="Arquivo do pacote; originais ao lado")
+    sample = action.add_parser("amostra", help="Sorteia a amostra e grava o esqueleto da conferência")
+    sample.add_argument("pacote", type=Path)
+    sample.add_argument("--semente", type=int, required=True)
+    return parser
+
+
+def package_action(argv: list[str]) -> list[str] | None:
+    """Arguments of a package action, when the command line is 'precedentes preparar|amostra'."""
+    index = 0
+    while index < len(argv) and argv[index] in {"--config", "--data-dir"}:
+        index += 2
+    rest = argv[index:]
+    if len(rest) > 1 and rest[0] == "precedentes" and rest[1] in PACKAGE_ACTIONS:
+        return rest[1:]
+    return None
+
+
+def run_package_action(argv: list[str]) -> dict:
+    from .precedent_sources.pacote import prepare_package, sample_skeleton
+
+    args = build_package_parser().parse_args(argv)
+    if args.acao == "preparar":
+        return prepare_package(args.fonte, args.originais.resolve(), args.saida.resolve())
+    return sample_skeleton(args.pacote.resolve(), args.semente)
 
 
 def run_coverage(args, store):
@@ -260,9 +305,14 @@ def run_locked(args, config, store):
     return result
 
 
-def main():
-    args = build_parser().parse_args()
+def main(argv: list[str] | None = None):
+    argv = sys.argv[1:] if argv is None else argv
+    action = package_action(argv)
+    args = None if action is not None else build_parser().parse_args(argv)
     try:
+        if action is not None:
+            print(json.dumps(run_package_action(action), ensure_ascii=True, indent=2))
+            return
         config = load_config(args.config, args.data_dir)
         store = Store(config.data_dir, atrasos=config.atrasos)
         if args.command == "serve":
