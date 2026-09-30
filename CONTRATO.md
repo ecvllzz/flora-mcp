@@ -244,14 +244,14 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 
 ## `pesquisar_precedentes`
 
-Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; súmulas do Grupo de Câmaras de Direito Civil do TJSC. Só precedentes admitidos são servidos; a coleção é parcial.
+Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil e do Órgão Especial do TJSC. Só precedentes admitidos são servidos; a coleção é parcial.
 
 | Parâmetro | Valores | Padrão |
 |---|---|---|
 | `termos` | como em `pesquisar_jurisprudencia` | `""` |
 | `tribunal` | `STJ`, `STF`, `TJSC` | nenhum |
-| `especie` | `tema_repetitivo`, `iac`, `sumula`, `tema_repercussao_geral`, `sumula_vinculante` | nenhuma |
-| `numero` | número exato do tema ou súmula | nenhum |
+| `especie` | `tema_repetitivo`, `irdr`, `iac`, `sumula`, `tema_repercussao_geral`, `sumula_vinculante` | nenhuma |
+| `numero` | número exato do tema, incidente ou súmula | nenhum |
 | `orgao` | nome exato, sem distinção de acentos e caixa | nenhum |
 | `materia` | `civil`, `processual_civil`, `bancario` | nenhuma |
 | `campo` | `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao`, `todos` | `todos` |
@@ -483,7 +483,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 
 Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-precedents`, que simula por padrão e só grava com `--apply`. O formato de base está em [`docs/recibos/precedentes-v2.md`](docs/recibos/precedentes-v2.md) (recibo de 29/09/2026, que não se altera). Desde a F5 (30/09/2026), o pacote muda nos pontos abaixo.
 
-**Classe de fonte.** Cada item de `fontes` pode declarar `classe`: `estruturada` ou `documento`; sem a chave, a fonte é `documento`. `estruturada` só é aceita para os endereços das fontes estruturadas registradas no produto (`flora_mcp.precedent_sources`): CSV de temas e processos dos dados abertos do STJ, listagem de súmulas do SCON do STJ e sumulário do STF (índice e página de cada súmula, comum ou vinculante). Declarar `estruturada` para outro endereço recusa o pacote com `fonte_invalida`. Temas de repercussão geral do STF e súmulas do TJSC continuam `documento`.
+**Classe de fonte.** Cada item de `fontes` pode declarar `classe`: `estruturada` ou `documento`; sem a chave, a fonte é `documento`. `estruturada` só é aceita para os endereços das fontes estruturadas registradas no produto (`flora_mcp.precedent_sources`): CSV de temas e processos dos dados abertos do STJ, listagem de súmulas do SCON do STJ e sumulário do STF (índice e página de cada súmula, comum ou vinculante). Declarar `estruturada` para outro endereço recusa o pacote com `fonte_invalida`. Temas de repercussão geral do STF e precedentes do TJSC (súmulas, IRDR e IAC) continuam `documento`.
 
 **Conferência do lote.** O pacote pode trazer, no nível do lote, `conferencia: {modo: "fonte_estruturada", amostra}`:
 
@@ -512,6 +512,8 @@ Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-pre
 **Admissão.** Com a amostra aprovada, o registro cuja fonte principal (a primeira de `fontes`) é `estruturada`, e cujas evidências obrigatórias apontam todas para fontes `estruturada`, dispensa a conferência individual (`conferencia.evidencias_conferidas`). As demais regras não mudam: fonte oficial do tribunal em HTTPS, SHA-256 dos bytes, evidência por chave, situação, publicação, matéria e componente principal. O registro admitido assim guarda em `conferencia` o modo `fonte_estruturada`, o responsável, a data, a semente, o tamanho e se foi sorteado. Registro de fonte `documento` sem conferência individual fica pendente, como antes.
 
 **Matéria fora do recorte.** `materia: "fora_do_recorte"` indica ramo da fonte conhecido e fora de civil, processual civil e bancário; o motivo de pendência é `materia_fora_do_recorte`, em vez de `materia_nao_confirmada` (ramo ausente ou não informado).
+
+**Precedentes do TJSC.** Espécies `sumula`, `irdr` e `iac`, de órgão Grupo de Câmaras de Direito Civil ou Órgão Especial (nome sem distinção de acentos e caixa); outro órgão recusa o pacote com `pacote_invalido`. A súmula é numerada por órgão e tem identidade `TJSC:sumula:GCDC:N` ou `TJSC:sumula:OE:N`; IRDR e IAC são numerados no tribunal e têm identidade `TJSC:irdr:N` e `TJSC:iac:N`. A referência usa os rótulos `Súmula`, `IRDR` e `IAC` (por exemplo, `TJSC, IRDR n. 25, Grupo de Câmaras de Direito Civil, publicação do acórdão de mérito dd/mm/aaaa. Fonte: ...`). Não há fonte estruturada do TJSC: todo registro exige conferência individual.
 
 **Primeira e Terceira Seções do STJ.** Tema, IAC ou súmula julgado pela Primeira Seção (`S1`) ou pela Terceira (`S3`) recebe a pendência `secao_fora_do_recorte_civil`, qualquer que seja o ramo da fonte: nessas seções o ramo "processual civil" é processo de direito público ou penal (execução fiscal, honorários contra a Fazenda), fora do recorte civil. O registro fica pendente até decisão do operador.
 
@@ -557,6 +559,7 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 - Matéria `bancario` admitida, ao lado de `civil` e `processual_civil`. `DIREITO BANCÁRIO` do SCON passa de fora do recorte a `bancario`; o catálogo de temas do STJ não tem ramo bancário (contratos bancários são assuntos de direito civil ou do consumidor), e nada muda nele. Com ramos mistos, vale civil, depois processual civil, depois bancário.
 - `pesquisar_precedentes` aceita `materia` como filtro, e o item de triagem e os metadados de precedente trazem `materia`. Cursores de `flora-mcp-3.1` são recusados com `cursor_invalido`; refaça a consulta.
 - Descrições das ferramentas sem enumerar câmaras do TJSC: a cobertura exata é a de `consultar_cobertura`.
+- Precedentes do TJSC: espécies `irdr` (nova no contrato) e `iac`, com identidade `TJSC:irdr:N` e `TJSC:iac:N`, e súmula do Órgão Especial, com identidade `TJSC:sumula:OE:N`, ao lado das súmulas do Grupo de Câmaras de Direito Civil (`TJSC:sumula:GCDC:N`). `pesquisar_precedentes` aceita `especie=irdr`. A política não muda: fonte oficial do TJSC e conferência individual.
 
 ### `flora-mcp-3.1` (30/09/2026)
 

@@ -29,7 +29,7 @@ A busca é lexical (SQLite FTS5). No modo simples, as palavras se combinam com E
 |---|---|
 | [Dados abertos do STJ](https://dadosabertos.web.stj.jus.br/) | Espelhos de acórdãos da Terceira e da Quarta Turmas e da Segunda Seção, por arquivo de extração a partir de `resource_from` (padrão `20250101`) |
 | [Jurisprudência do TJSC](https://www.tjsc.jus.br/web/jurisprudencia) | Acórdãos de câmaras cíveis, por dia de publicação, de 2024 em diante; os órgãos e os períodos carregados são os que `consultar_cobertura` informa |
-| Catálogos oficiais de precedentes | Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; súmulas do Grupo de Câmaras de Direito Civil do TJSC. Só os admitidos são servidos |
+| Catálogos oficiais de precedentes | Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil e do Órgão Especial do TJSC. Só os admitidos são servidos |
 
 - O acervo guarda ementa e espelho, não inteiro teor. O campo `decisao` do espelho do STJ não é voto integral, e o link do TJSC não significa documento baixado.
 - A cobertura é parcial e declarada: toda pesquisa traz `cobertura` com `integral: false` e as fontes em atraso, e `consultar_cobertura` mostra órgãos, datas extremas, lotes pendentes, falhas e registros rejeitados. Resultado vazio não prova que a jurisprudência não exista.
