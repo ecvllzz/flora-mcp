@@ -63,7 +63,7 @@ def export_documents(store, target: Path, *, include_judgments=False):  # noqa: 
     if target == store.directory.resolve() or target.is_relative_to(store.directory.resolve()):
         raise FloraError("destino_invalido", "Exportação deve ficar fora do diretório de dados.")
     view = Reader(store).resolve()
-    if not hasattr(view, "publication"):
+    if view.publication is None:
         raise FloraError("publicacao_pendente", "Publique um snapshot validado antes da exportação.")
     target.mkdir(parents=True, exist_ok=True)
     catalog_path = target / "catalogo.json"

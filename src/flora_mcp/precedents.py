@@ -70,6 +70,27 @@ UPDATE meta SET value=value+1 WHERE key='revision';
 """
 
 
+def parse_id(value: str) -> tuple[str, str, str | None, str] | None:
+    """Split a qualified precedent identity; None when the text is not one."""
+    parts = value.split(":") if isinstance(value, str) else []
+    if len(parts) == 3:
+        tribunal, species, number = parts
+        scope = None
+    elif len(parts) == 4:
+        tribunal, species, scope, number = parts
+    else:
+        return None
+    if tribunal not in SPECIES or species not in SPECIES[tribunal]:
+        return None
+    if scope is not None and (tribunal, scope) != ("TJSC", "GCDC"):
+        return None
+    if tribunal == "TJSC" and scope is None:
+        return None
+    if not re.fullmatch(r"[1-9][0-9]{0,6}", number):
+        return None
+    return tribunal, species, scope, number
+
+
 def available(db):
     return db.execute("SELECT 1 FROM sqlite_master WHERE name='precedents'").fetchone() is not None
 

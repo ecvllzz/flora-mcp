@@ -50,7 +50,7 @@ def main():
     args = parser.parse_args()
     store = Store(load_config(data_dir=args.data_dir).data_dir)
     view = Reader(store).resolve()
-    if not hasattr(view, "publication"):
+    if view.publication is None:
         parser.error("Nenhuma publicação ativada.")
     original, published = fingerprint(store), fingerprint(view)
     assert original == published, "Publicação diverge dos registros originais."

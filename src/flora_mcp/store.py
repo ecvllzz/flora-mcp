@@ -3,6 +3,7 @@
 import json
 import sqlite3
 from contextlib import closing, contextmanager
+from dataclasses import dataclass, field
 from pathlib import Path
 from uuid import uuid4
 
@@ -50,6 +51,7 @@ CREATE VIRTUAL TABLE IF NOT EXISTS search USING fts5(
 def connection(path: Path, *, write: bool = False, immutable: bool = False):
     if not write and not path.exists():
         raise FloraError("base_nao_inicializada", "Execute flora-mcp init e sync-stj antes de pesquisar.")
+    path = Path(path).resolve()
     uri = path.as_uri() + "?mode=ro" + ("&immutable=1" if immutable else "")
     db = sqlite3.connect(path if write else uri, uri=not write, timeout=15)
     db.row_factory = sqlite3.Row
@@ -60,13 +62,35 @@ def connection(path: Path, *, write: bool = False, immutable: bool = False):
         db.close()
 
 
+@dataclass(frozen=True)
+class ReadView:
+    """What a reader sees: the work database or one immutable published generation."""
+
+    path: Path
+    immutable: bool = False
+    publication: str | None = None
+    withdrawn: frozenset[str] = field(default_factory=frozenset)
+    retired_versions: frozenset[str] = field(default_factory=frozenset)
+    admission_counts: dict | None = None
+
+    def read(self):
+        return connection(self.path, immutable=self.immutable)
+
+    def coverage(self) -> dict:
+        return coverage_report(self)
+
+
 class Store:
     def __init__(self, directory: Path):
         self.directory = directory
         self.path = directory / "acervo.sqlite"
+        self.reader = None  # publication.Reader, created by api on first read
 
     def read(self):
-        return connection(self.path, immutable=getattr(self, "immutable", False))
+        return connection(self.path)
+
+    def view(self) -> "ReadView":
+        return ReadView(self.path)
 
     def initialize(self):
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -240,49 +264,7 @@ class Store:
         return counts
 
     def coverage(self) -> dict:
-        with self.read() as db:
-            groups = [
-                dict(r)
-                for r in db.execute("""SELECT tribunal,json_extract(body,'$.orgao') AS orgao,
-                count(*) AS documentos,min(judgment) AS julgamento_min,max(judgment) AS julgamento_max,
-                min(publication) AS publicacao_min,max(publication) AS publicacao_max,
-                sum(publication IS NULL) AS publicacao_nao_normalizada
-                FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ""")
-            ]
-            resources = [
-                dict(r)
-                for r in db.execute("""SELECT dataset,name,url,status,present,checked,
-                count,sha256,error,(applied_fingerprint IS NOT expected_fingerprint) AS pendente
-                FROM resources ORDER BY dataset,name DESC""")
-            ]
-            runs = [dict(r) for r in db.execute("SELECT * FROM runs ORDER BY started DESC LIMIT 10")]
-            for r in runs:
-                r["detail"] = json.loads(r["detail"])
-            catalogs = [
-                dict(r)
-                for r in db.execute("""SELECT dataset,fetched,
-                json_extract(body,'$.metadata_modified') AS atualizado_na_fonte,
-                json_extract(body,'$.license_id') AS licenca FROM catalogs""")
-            ]
-        return {
-            "status": "ok",
-            "cobertura_integral": False,
-            "grupos": groups,
-            "catalogos": catalogs,
-            "recursos": resources,
-            "execucoes_recentes": runs,
-            "inteiros_teores": 0,
-            "tjsc": (
-                "Coleta experimental por dia de publicação; somente janelas registradas estão carregadas."
-            ),
-            "limites": [
-                "Carga de recursos JSON selecionados; histórico ZIP não incorporado.",
-                "Datas extremas observadas não comprovam cobertura contínua do período.",
-                "Ementas e espelhos não equivalem ao inteiro teor.",
-                "Versão corrente prioriza o recurso com data de extração mais recente; "
-                "isso não é certificação de revisão jurídica pela fonte.",
-            ],
-        }
+        return coverage_report(self)
 
     def backup(self, target: Path):
         if target.exists():
@@ -309,3 +291,47 @@ class Store:
             if digest(p.read_bytes()) != p.stem:
                 raise FloraError("backup_invalido", "Original no backup não confere com seu hash.")
         return {"status": "ok", "destino": str(target), "originais_atuais_verificados": len(paths)}
+
+
+def coverage_report(reader) -> dict:
+    with reader.read() as db:
+        groups = [
+            dict(r)
+            for r in db.execute("""SELECT tribunal,json_extract(body,'$.orgao') AS orgao,
+            count(*) AS documentos,min(judgment) AS julgamento_min,max(judgment) AS julgamento_max,
+            min(publication) AS publicacao_min,max(publication) AS publicacao_max,
+            sum(publication IS NULL) AS publicacao_nao_normalizada
+            FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ""")
+        ]
+        resources = [
+            dict(r)
+            for r in db.execute("""SELECT dataset,name,url,status,present,checked,
+            count,sha256,error,(applied_fingerprint IS NOT expected_fingerprint) AS pendente
+            FROM resources ORDER BY dataset,name DESC""")
+        ]
+        runs = [dict(r) for r in db.execute("SELECT * FROM runs ORDER BY started DESC LIMIT 10")]
+        for r in runs:
+            r["detail"] = json.loads(r["detail"])
+        catalogs = [
+            dict(r)
+            for r in db.execute("""SELECT dataset,fetched,
+            json_extract(body,'$.metadata_modified') AS atualizado_na_fonte,
+            json_extract(body,'$.license_id') AS licenca FROM catalogs""")
+        ]
+    return {
+        "status": "ok",
+        "cobertura_integral": False,
+        "grupos": groups,
+        "catalogos": catalogs,
+        "recursos": resources,
+        "execucoes_recentes": runs,
+        "inteiros_teores": 0,
+        "tjsc": ("Coleta experimental por dia de publicação; somente janelas registradas estão carregadas."),
+        "limites": [
+            "Carga de recursos JSON selecionados; histórico ZIP não incorporado.",
+            "Datas extremas observadas não comprovam cobertura contínua do período.",
+            "Ementas e espelhos não equivalem ao inteiro teor.",
+            "Versão corrente prioriza o recurso com data de extração mais recente; "
+            "isso não é certificação de revisão jurídica pela fonte.",
+        ],
+    }

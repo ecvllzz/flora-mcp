@@ -4,7 +4,7 @@ from . import precedent_query, query
 from .coverage import filtered_resources, summary, validate_filters
 from .model import FloraError
 from .model import canonical
-from .precedents import available
+from .precedents import available, parse_id
 from .publication import Reader
 
 
@@ -19,13 +19,13 @@ def _view(store, cursor=None, publicacao_id=None):
             inner = decoded.get("continua")
             if not isinstance(inner, str):
                 raise FloraError("cursor_invalido", "Continuação inválida.")
-    if not hasattr(store, "_reader"):
-        store._reader = Reader(store)
-    return store._reader.resolve(publicacao_id), inner
+    if store.reader is None:
+        store.reader = Reader(store)
+    return store.reader.resolve(publicacao_id), inner
 
 
 def _finish(view, result):
-    if hasattr(view, "publication"):
+    if view.publication is not None:
         result["publicacao_id"] = view.publication
         result["contrato"] = "flora-mcp-2"
         if result.get("proximo_cursor"):
@@ -124,10 +124,7 @@ def document(
     with view.read() as db:
         is_precedent = available(db) and db.execute("SELECT 1 FROM precedents WHERE id=?", (id,)).fetchone()
     # Qualified identities remain qualified even after removal from a published snapshot.
-    if is_precedent or any(
-        f":{species}:" in id
-        for species in ("sumula", "sumula_vinculante", "tema_repetitivo", "tema_repercussao_geral", "iac")
-    ):
+    if is_precedent or parse_id(id) is not None:
         result = precedent_query.document(view, id, componente, inner, tamanho_bloco, hash_conteudo)
     else:
         result = query.document(view, id, componente, inner, tamanho_bloco)
@@ -162,15 +159,15 @@ def coverage(
                         "json_each(?)) AND (id || ':' || hash) NOT IN (SELECT value FROM json_each(?)) "
                         "GROUP BY tribunal,species,admission ORDER BY tribunal,species,admission",
                         (
-                            canonical(sorted(getattr(view, "withdrawn", set()))),
-                            canonical(sorted(getattr(view, "retired_versions", set()))),
+                            canonical(sorted(view.withdrawn)),
+                            canonical(sorted(view.retired_versions)),
                         ),
                     )
                 ]
                 if available(db)
                 else []
             )
-            admission_counts = getattr(view, "admission_counts", None)
+            admission_counts = view.admission_counts
             if admission_counts is None:
                 admission_counts = (
                     dict(db.execute("SELECT admission,count(*) FROM precedents GROUP BY admission"))

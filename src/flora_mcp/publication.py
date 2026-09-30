@@ -7,7 +7,7 @@ from contextlib import closing
 from .model import FloraError, canonical, digest, folded, now
 from .citation import citation_metadata
 from .precedents import available
-from .store import Store, connection
+from .store import ReadView, Store, connection
 
 DERIVER = "flora-read-2.2"
 MANIFEST = "publicacoes.json"
@@ -157,13 +157,23 @@ class Reader:
         self.store = store
         self.verified = {}
 
-    def resolve(self, publication=None):
+    def _local_withdrawals(self, withdrawn: set, retired: set) -> dict | None:
+        with connection(self.store.path) as db:
+            if not available(db):
+                return None
+            withdrawn.update(
+                r[0] for r in db.execute("SELECT id FROM precedents WHERE admission!='admitido'")
+            )
+            retired.update(r[0] + ":" + r[1] for r in db.execute("SELECT id,hash FROM precedent_retirements"))
+            return dict(db.execute("SELECT admission,count(*) FROM precedents GROUP BY admission"))
+
+    def resolve(self, publication=None) -> ReadView:
         path = self.store.directory / MANIFEST
         if not path.exists():
             if publication:
                 raise FloraError("publicacao_expirada", "Publicação solicitada indisponível.")
             # Before explicit activation, the legacy work database remains the reader.
-            return self.store
+            return self.store.view()
         try:
             manifest = json.loads(path.read_text(encoding="utf-8"))
             if manifest["schema"] != "flora-publicacoes-1":
@@ -188,27 +198,22 @@ class Reader:
                     if actual != entry["schema"] or actual not in {1, 2}:
                         raise ValueError()
                 self.verified[target] = signature
-            view = Store(self.store.directory)
-            view.path = target
-            view.immutable = True
-            view.publication = identity
-            view.withdrawn = set(manifest.get("retirados", []))
-            view.retired_versions = set(manifest.get("versoes_retiradas", []))
-            view.admission_counts = manifest.get("admissao_atual", {})
+            withdrawn = set(manifest.get("retirados", []))
+            retired = set(manifest.get("versoes_retiradas", []))
+            admission_counts = manifest.get("admissao_atual", {})
             # Local withdrawals apply immediately, even before the next publication.
             if self.store.path.exists():
-                with connection(self.store.path) as db:
-                    if available(db):
-                        view.admission_counts = dict(
-                            db.execute("SELECT admission,count(*) FROM precedents GROUP BY admission")
-                        )
-                        view.withdrawn.update(
-                            r[0] for r in db.execute("SELECT id FROM precedents WHERE admission!='admitido'")
-                        )
-                        view.retired_versions.update(
-                            r[0] + ":" + r[1] for r in db.execute("SELECT id,hash FROM precedent_retirements")
-                        )
-            return view
+                local = self._local_withdrawals(withdrawn, retired)
+                if local is not None:
+                    admission_counts = local
+            return ReadView(
+                path=target,
+                immutable=True,
+                publication=identity,
+                withdrawn=frozenset(withdrawn),
+                retired_versions=frozenset(retired),
+                admission_counts=admission_counts,
+            )
         except (OSError, KeyError, ValueError, TypeError, sqlite3.Error) as exc:
             raise FloraError(
                 "publicacao_invalida", "Manifesto ou snapshot inválido; leitura interrompida."

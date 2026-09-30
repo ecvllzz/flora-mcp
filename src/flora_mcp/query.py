@@ -6,7 +6,7 @@ from datetime import date
 
 from .citation import citation_metadata
 from .model import FloraError, canonical, digest, folded, number
-from .store import Store
+from .store import ReadView
 from .text import advanced_query, sections
 
 
@@ -26,6 +26,17 @@ def decode_cursor(value: str) -> dict:
         raise FloraError("cursor_invalido", "Cursor inválido; reinicie a consulta.") from exc
 
 
+QUERY_ERRORS = ("fts5:", "no such column", "unterminated string", "malformed match")
+
+
+def database_error(exc: sqlite3.OperationalError) -> FloraError:
+    """Syntax problems of the MATCH expression are the caller's; anything else is the database's."""
+    message = str(exc).lower()
+    if message.startswith(QUERY_ERRORS) or "syntax error" in message:
+        return FloraError("consulta_invalida", "Consulta lexical inválida.")
+    return FloraError("base_indisponivel", "Acervo indisponível no momento; tente novamente.")
+
+
 def lexical_query(terms: str) -> str:
     # Plain words are ANDed; quoted phrases are preserved. No raw FTS/SQL operators.
     if len(terms) > 500 or terms.count('"') % 2:
@@ -38,7 +49,7 @@ def lexical_query(terms: str) -> str:
 
 
 def search(  # noqa: C901
-    store: Store,
+    store: ReadView,
     termos: str = "",
     processo: str | None = None,
     tribunal: str | None = None,
@@ -106,7 +117,7 @@ def search(  # noqa: C901
     if relator:
         if len(relator) > 150:
             raise FloraError("filtro_invalido", "Relatoria deve ter até 150 caracteres.")
-        if getattr(store, "publication", None):
+        if store.publication is not None:
             filters.append("instr((SELECT relator_fold FROM document_details WHERE id=d.id),?)>0")
         else:
             filters.append("""instr(flora_fold(COALESCE((SELECT COALESCE(
@@ -151,7 +162,7 @@ def search(  # noqa: C901
                 (*params, limite, offset),
             ).fetchall()
         except sqlite3.OperationalError as exc:
-            raise FloraError("consulta_invalida", "Consulta lexical inválida.") from exc
+            raise database_error(exc) from exc
         groups = [
             dict(r)
             for r in db.execute("""SELECT tribunal,json_extract(body,'$.orgao') AS orgao,
@@ -223,7 +234,11 @@ def search(  # noqa: C901
 
 
 def document(
-    store: Store, id: str, componente: str = "ementa", cursor: str | None = None, tamanho_bloco: int = 16000
+    store: ReadView,
+    id: str,
+    componente: str = "ementa",
+    cursor: str | None = None,
+    tamanho_bloco: int = 16000,
 ) -> dict:
     if componente not in {"ementa", "espelho_original"} and not componente.startswith("secao:"):
         raise FloraError("componente_indisponivel", "Componentes disponíveis: ementa e espelho_original.")

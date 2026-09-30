@@ -1,11 +1,12 @@
 """Read admitted precedents without exposing their administrative history."""
 
 import json
+import sqlite3
 from datetime import date
 
 from .model import FloraError, canonical, digest, folded
 from .precedents import COMPONENTS, SPECIES, available
-from .query import decode_cursor, encode_cursor, lexical_query
+from .query import database_error, decode_cursor, encode_cursor, lexical_query
 from .text import advanced_query
 
 
@@ -76,11 +77,11 @@ def search(  # noqa: C901
     if query and campo != "todos":
         query = campo + " : (" + query + ")"
     filters, params = ["p.admission='admitido'"], []
-    withdrawn = sorted(getattr(store, "withdrawn", set()))
+    withdrawn = sorted(store.withdrawn)
     if withdrawn:
         filters.append("p.id NOT IN (SELECT value FROM json_each(?))")
         params.append(canonical(withdrawn))
-    retired = sorted(getattr(store, "retired_versions", set()))
+    retired = sorted(store.retired_versions)
     if retired:
         filters.append("(p.id || ':' || p.hash) NOT IN (SELECT value FROM json_each(?))")
         params.append(canonical(retired))
@@ -125,7 +126,10 @@ def search(  # noqa: C901
                 raise FloraError("base_alterada", "Base alterada; reinicie a pesquisa.")
             offset = value["offset"]
         if available(db):
-            total = db.execute(f"SELECT count(*) FROM {source} WHERE {where}", params).fetchone()[0]
+            try:
+                total = db.execute(f"SELECT count(*) FROM {source} WHERE {where}", params).fetchone()[0]
+            except sqlite3.OperationalError as exc:
+                raise database_error(exc) from exc
             # First highlighted position is an offset in the original Unicode string.
             highlights = (
                 "".join(
@@ -135,11 +139,14 @@ def search(  # noqa: C901
                 if query
                 else ""
             )
-            rows = db.execute(
-                f"SELECT p.body,p.hash{highlights} FROM {source} WHERE {where} ORDER BY {order} LIMIT ? "
-                f"OFFSET ?",
-                (*params, limite, offset),
-            ).fetchall()
+            try:
+                rows = db.execute(
+                    f"SELECT p.body,p.hash{highlights} FROM {source} WHERE {where} ORDER BY {order} LIMIT ? "
+                    f"OFFSET ?",
+                    (*params, limite, offset),
+                ).fetchall()
+            except sqlite3.OperationalError as exc:
+                raise database_error(exc) from exc
         else:
             rows, total = [], 0
     result = {
@@ -200,7 +207,7 @@ def search(  # noqa: C901
 
 
 def document(store, id, componente="enunciado", cursor=None, tamanho_bloco=16000, hash_conteudo=None):
-    if id in getattr(store, "withdrawn", set()):
+    if id in store.withdrawn:
         raise FloraError("documento_nao_encontrado", "Precedente retirado do uso ativo.")
     if not 100 <= tamanho_bloco <= 32000:
         raise FloraError("limite_invalido", "Blocos devem ter entre 100 e 32000 caracteres.")
@@ -212,7 +219,7 @@ def document(store, id, componente="enunciado", cursor=None, tamanho_bloco=16000
         )
     if not row:
         raise FloraError("documento_nao_encontrado", "Precedente ausente ou não admitido para uso.")
-    if id + ":" + row["hash"] in getattr(store, "retired_versions", set()):
+    if id + ":" + row["hash"] in store.retired_versions:
         raise FloraError("versao_retirada", "Versão retirada do uso ativo.")
     if hash_conteudo and hash_conteudo != row["hash"]:
         raise FloraError("versao_indisponivel", "Versão não disponível nesta publicação.")

@@ -29,6 +29,7 @@ class Config:
 
 def load_config(path: str | None = None, data_dir: str | None = None) -> Config:
     values = {}
+    path = path or os.environ.get("FLORA_MCP_CONFIG") or None
     config_path = Path(path) if path else LOCAL_CONFIG
     if path or config_path.is_file():
         with config_path.open("rb") as f:

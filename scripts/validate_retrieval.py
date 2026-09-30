@@ -3,12 +3,13 @@
 No ingestion or legal-validity claims. Saves complete answers for inspection.
 """
 
+import argparse
 import asyncio
 import hashlib
 import json
 import os
 import sqlite3
-import tomllib
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -26,11 +27,13 @@ QUERIES = [
 ]
 
 
-async def main():
-    config = tomllib.loads((Path.home() / ".codex/config.toml").read_text(encoding="utf-8-sig"))[
-        "mcp_servers"
-    ]["flora-mcp"]
-    database = Path(config["env"]["FLORA_MCP_DATA_DIR"]) / "acervo.sqlite"
+async def main(data_dir: Path):
+    config = {
+        "command": sys.executable,
+        "args": ["-m", "flora_mcp.cli", "--data-dir", str(data_dir), "serve"],
+        "env": {"PYTHONUTF8": "1"},
+    }
+    database = data_dir / "acervo.sqlite"
     db = sqlite3.connect(database.as_uri() + "?mode=ro", uri=True)
     rows = [json.loads(r[0]) for r in db.execute("SELECT body FROM documents ORDER BY id")]
     db.close()
@@ -160,4 +163,6 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser(description="Recuperacao real pelo protocolo MCP, somente leitura")
+    parser.add_argument("--data-dir", required=True, type=Path, help="Pasta do acervo a consultar")
+    asyncio.run(main(parser.parse_args().data_dir.resolve()))

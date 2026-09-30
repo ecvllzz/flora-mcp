@@ -77,7 +77,7 @@ def create_panel_app(store: Store, *, port: int = 8766):  # noqa: C901
                 "app": APP_ID,
                 "version": PANEL_VERSION,
                 "revisao": revision,
-                "publicacao_id": getattr(view, "publication", None),
+                "publicacao_id": view.publication,
                 "documentos": count,
                 "acervo_key": hashlib.sha256(str(store.path.resolve()).encode()).hexdigest(),
             }
@@ -108,7 +108,7 @@ def create_panel_app(store: Store, *, port: int = 8766):  # noqa: C901
                         "AS documentos FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT "
                         "value FROM json_each(?)) GROUP BY tribunal,organ,species ORDER BY tribunal,organ,"
                         "species",
-                        (json.dumps(sorted(getattr(view, "withdrawn", set()))),),
+                        (json.dumps(sorted(view.withdrawn)),),
                     )
                 ]
                 if available(db)
@@ -120,7 +120,7 @@ def create_panel_app(store: Store, *, port: int = 8766):  # noqa: C901
                 "classes": classes,
                 "revisao": revision,
                 "precedentes": qualified,
-                "publicacao_id": getattr(view, "publication", None),
+                "publicacao_id": view.publication,
                 "ultima_coleta": collected,
                 "cobertura_integral": False,
             }
