@@ -1,0 +1,11 @@
+**
+!Dockerfile.render
+!pyproject.toml
+!src/
+!src/**
+!deploy/
+!deploy/render/
+!deploy/render/**
+**/__pycache__
+**/*.pyc
+deploy/render/data/*.part*

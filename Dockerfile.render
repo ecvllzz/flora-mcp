@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+WORKDIR /app
+COPY pyproject.toml /app/
+COPY src /app/src
+RUN pip install --no-cache-dir .
+COPY deploy/render /app/deploy/render
+RUN python deploy/render/prepare_data.py && useradd --uid 10001 --no-create-home flora
+USER 10001
+EXPOSE 10000
+CMD ["python", "deploy/render/serve.py"]
