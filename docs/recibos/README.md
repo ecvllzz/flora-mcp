@@ -22,4 +22,4 @@ Documentos datados que registram uma execução, uma verificação ou o estado d
 | [estado-ate-20260929.md](estado-ate-20260929.md) | 22/09 a 29/09/2026 | Estado do desenvolvimento até a reforma de 30/09 (antes `docs/estado.md`) |
 | [reforma-2026-09-30.md](reforma-2026-09-30.md) | 30/09/2026 | Resumo da reforma de 30/09, fase por fase (F0 a F7) |
 
-Os links relativos para fora do repositório dentro de `estado-ate-20260929.md` apontam para o vault a partir da posição antiga (`docs/`) e não foram corrigidos, porque o recibo não se reescreve.
+Quatro links de `estado-ate-20260929.md` foram escritos para a posição antiga (`docs/`) e não foram corrigidos, porque o recibo não se reescreve: três apontam para o vault, fora do repositório, e o do guia HTTP está hoje em [../http-studio.md](../http-studio.md).
