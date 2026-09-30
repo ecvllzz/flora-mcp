@@ -1,0 +1,97 @@
+{
+  "verificado_em": "2026-09-22T17:05:13.530636+00:00",
+  "transporte": "stdio",
+  "cliente": "SDK Python MCP 2.2.0",
+  "resultados": [
+    {
+      "tribunal": "STJ",
+      "termos": "alimentos",
+      "orgao": "TERCEIRA TURMA",
+      "id": "STJ:1466726",
+      "processo": "EDcl no AgInt nos EDcl no AREsp 3022566",
+      "caracteres": 1609,
+      "blocos": 3,
+      "sha256_ementa": "a1c099cd3c3b668673c91d26706bbb267f185f746eabd42a3aa04f4eba146c57",
+      "reconstrucao_integral": true
+    },
+    {
+      "tribunal": "TJSC",
+      "termos": "agravo",
+      "orgao": "9ª Câmara de Direito Civil",
+      "id": "TJSC:321789730442981577298497169484",
+      "processo": "5050245-76.2026.8.24.0000",
+      "caracteres": 919,
+      "blocos": 2,
+      "sha256_ementa": "c782fe9eb95e1a738dab71ed7650e6d1ce5742a683c5c58594a59d2f6c95b154",
+      "reconstrucao_integral": true
+    },
+    {
+      "tribunal": "TJSC",
+      "termos": "alimentos",
+      "orgao": "10ª Câmara de Direito Civil",
+      "id": "TJSC:321790018162675778197620336690",
+      "processo": "5070614-91.2026.8.24.0000",
+      "caracteres": 5019,
+      "blocos": 8,
+      "sha256_ementa": "99027c7d5379bb3d5f6e4f3b2c49bb1e9c97f0a65d8556665f994cd7f93a9dab",
+      "reconstrucao_integral": true
+    }
+  ],
+  "ferramentas": [
+    "pesquisar_jurisprudencia",
+    "obter_documento",
+    "consultar_cobertura"
+  ],
+  "grupos": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 2367,
+      "julgamento_min": "2024-07-01",
+      "julgamento_max": "2026-08-24",
+      "publicacao_min": "2024-07-03",
+      "publicacao_max": "2026-08-28",
+      "publicacao_nao_normalizada": 0
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 196,
+      "julgamento_min": "2026-06-16",
+      "julgamento_max": "2026-08-26",
+      "publicacao_min": "2026-06-22",
+      "publicacao_max": "2026-08-31",
+      "publicacao_nao_normalizada": 0
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 2458,
+      "julgamento_min": "2025-10-27",
+      "julgamento_max": "2026-08-24",
+      "publicacao_min": "2025-10-30",
+      "publicacao_max": "2026-08-31",
+      "publicacao_nao_normalizada": 0
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 33,
+      "julgamento_min": "2026-09-17",
+      "julgamento_max": "2026-09-17",
+      "publicacao_min": "2026-09-18",
+      "publicacao_max": "2026-09-19",
+      "publicacao_nao_normalizada": 0
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 6,
+      "julgamento_min": "2026-09-10",
+      "julgamento_max": "2026-09-17",
+      "publicacao_min": "2026-09-18",
+      "publicacao_max": "2026-09-18",
+      "publicacao_nao_normalizada": 0
+    }
+  ]
+}

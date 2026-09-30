@@ -1,0 +1,26 @@
+{
+  "status": "concluido",
+  "testes": {
+    "pass": 11,
+    "fail": 0,
+    "suites": [
+      "tests/test_resume_tjsc.py",
+      "tests/test_tjsc.py"
+    ],
+    "ruff": "pass"
+  },
+  "arquivos": {
+    "scripts/resume_tjsc.py": "08ad6c6e52ee191e22173890398a09c1892c1060f95e1b77f6f6f712643daaf8",
+    "tests/test_resume_tjsc.py": "1abd7947f241e0fbab70b360f5a9b38e1c4b3b55df1c3b19536cc644d1b4cf75",
+    "docs/coleta-tjsc-2026-retomada-20260929.json": "0f6e83a6a5807d635f8006a2f5c85e5d43f1a961a300495346ebd4b90d68bfc0",
+    "docs/coleta-tjsc-2026-retomada-verificacao-20260929.json": "5b871437cc04065e2f4dd5a4d3c03388881472918ebcc6ac1fc00f26ffcfa5b9",
+    "docs/coleta-tjsc-2026-mcp-nativo-20260929.json": "2da42dccd30f49db3d92abb8bf4fc6ebc9593c57cb1908642ad55581672c95ce",
+    "docs/coleta-tjsc-2026-retomada-20260929.md": "bd94a2b65e61a25dce15ae02e4ad0318e87f0dcce24ba0bc23290c11fce06af5"
+  },
+  "backup_documental": "C:\\Users\\Home\\Documents\\Flora\\_Archive\\backups\\mcp-retomada-20260929-015421",
+  "recursos_tjsc_concluidos": 544,
+  "novos": 1022,
+  "documentos_tjsc": 2456,
+  "total_acervo": 7477,
+  "inteiros_teores": 0
+}

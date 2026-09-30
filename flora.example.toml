@@ -1,0 +1,15 @@
+[flora]
+# Copie para flora.local.toml e escolha um caminho absoluto fora de AppData e do cofre.
+# Sem --data-dir, variável FLORA_MCP_DATA_DIR ou este campo, o programa recusa iniciar.
+data_dir = "D:/Dados/Flora-MCP"
+# Data do nome do RECURSO de extração. Não é corte por julgamento/publicação.
+resource_from = "20250101"
+max_resources = 2
+recheck_days = 7
+max_download_bytes = 67108864
+request_delay = 1.0
+datasets = [
+  "espelhos-de-acordaos-terceira-turma",
+  "espelhos-de-acordaos-quarta-turma",
+  "espelhos-de-acordaos-segunda-secao",
+]

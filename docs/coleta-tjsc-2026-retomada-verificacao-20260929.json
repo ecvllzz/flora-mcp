@@ -1,0 +1,60 @@
+{
+  "status": "pass",
+  "verificado_em": "2026-09-29T05:03:06.089288+00:00",
+  "periodo_publicacao": [
+    "2026-01-01",
+    "2026-09-29"
+  ],
+  "janelas_concluidas": 544,
+  "janelas_nesta_retomada": 183,
+  "integridade_sqlite": "ok",
+  "originais_tjsc_verificados": 544,
+  "documentos_tjsc": 2456,
+  "por_orgao": {
+    "10ª Câmara de Direito Civil": 2002,
+    "9ª Câmara de Direito Civil": 454
+  },
+  "por_mes_orgao": {
+    "2026-01 | 10ª Câmara de Direito Civil": 40,
+    "2026-01 | 9ª Câmara de Direito Civil": 4,
+    "2026-02 | 10ª Câmara de Direito Civil": 158,
+    "2026-02 | 9ª Câmara de Direito Civil": 39,
+    "2026-03 | 10ª Câmara de Direito Civil": 223,
+    "2026-03 | 9ª Câmara de Direito Civil": 28,
+    "2026-04 | 10ª Câmara de Direito Civil": 285,
+    "2026-04 | 9ª Câmara de Direito Civil": 60,
+    "2026-05 | 10ª Câmara de Direito Civil": 232,
+    "2026-05 | 9ª Câmara de Direito Civil": 78,
+    "2026-06 | 10ª Câmara de Direito Civil": 257,
+    "2026-06 | 9ª Câmara de Direito Civil": 67,
+    "2026-07 | 10ª Câmara de Direito Civil": 353,
+    "2026-07 | 9ª Câmara de Direito Civil": 90,
+    "2026-08 | 10ª Câmara de Direito Civil": 310,
+    "2026-08 | 9ª Câmara de Direito Civil": 44,
+    "2026-09 | 10ª Câmara de Direito Civil": 144,
+    "2026-09 | 9ª Câmara de Direito Civil": 44
+  },
+  "novos": 1022,
+  "alterados": 0,
+  "inalterados": 0,
+  "removidos": 0,
+  "stj_preservado_documentos": 5021,
+  "busca_e_leitura": [
+    {
+      "camara": 9,
+      "total_pesquisavel": 454,
+      "id": "TJSC:321790631579322310731413794827",
+      "sha256_ementa": "b408a933ec39b1353dd155b2a9d9e7b933557143c93bb9235cc1c57692b3dde7"
+    },
+    {
+      "camara": 10,
+      "total_pesquisavel": 2002,
+      "id": "TJSC:321790426352499139870548569765",
+      "sha256_ementa": "2fc7721e1dfc25f5a3ff4dc2b0617662e3ee59a7514e501c42b0779ba37b32f4"
+    }
+  ],
+  "total_acervo": 7477,
+  "dia_atual_provisorio": true,
+  "inteiro_teor_baixado": false,
+  "sem_coletor_ativo_no_banco": true
+}

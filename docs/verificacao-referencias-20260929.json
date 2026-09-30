@@ -1,0 +1,70 @@
+{
+  "data": "2026-09-29T12:22:39.801948-03:00",
+  "revisao_base": 589,
+  "documentos": 7477,
+  "tribunais": {
+    "TJSC": 2456,
+    "STJ": 5021
+  },
+  "pendencias_identificacao": {},
+  "relatoria_conferida_com_versao_original": 7477,
+  "testes": {
+    "aprovados": 39,
+    "escopo": "citacao, armazenamento, consulta, relevancia, protocolo stdio e HTTP"
+  },
+  "backup": "C:\\Users\\Home\\Documents\\Flora\\_Archive\\backups\\mcp-referencia-20260929-121828",
+  "protocolo": [
+    {
+      "tribunal": "STJ",
+      "id": "STJ:1466726",
+      "referencia_presente": true,
+      "ementa_identica": true,
+      "hash_ementa": "a1c099cd3c3b668673c91d26706bbb267f185f746eabd42a3aa04f4eba146c57"
+    },
+    {
+      "tribunal": "TJSC",
+      "id": "TJSC:321790426352499139870548569765",
+      "referencia_presente": true,
+      "ementa_identica": true,
+      "hash_ementa": "2fc7721e1dfc25f5a3ff4dc2b0617662e3ee59a7514e501c42b0779ba37b32f4"
+    }
+  ],
+  "instrucoes_citacao_no_protocolo": true,
+  "banco_sha256_antes": "3b6055412f243c1070877a729b1e7dcecc11e4e77d9ed1b72a82ec6cf9df311f",
+  "banco_sha256_depois": "3b6055412f243c1070877a729b1e7dcecc11e4e77d9ed1b72a82ec6cf9df311f",
+  "visualizacao": {
+    "path": "C:\\Users\\Home\\.codex\\visualizations\\2026\\09\\29\\01a0eda2-5880-7661-ba9b-c19ce9ac4050\\acervo-jurisprudencia.html",
+    "documentos": 7477,
+    "referencias_completas": 7477,
+    "javascript_sintaxe_valida": true,
+    "preview_browser": "Não realizada: política do navegador de automação bloqueia file://."
+  },
+  "conexao_nativa_existente": {
+    "referencia_presente": false,
+    "relator_presente": false,
+    "reconexao_pendente": true
+  },
+  "arquivos_codigo": {
+    "src\\flora_mcp\\citation.py": "904d5bf05129c22c6ec56ed8da0cdd900505b49008f979cb6062211a1169491f",
+    "src\\flora_mcp\\query.py": "acea59ca2308f00642e4a571d4718e6f46c9227d6bcb368d3ae07b344cc786d2",
+    "src\\flora_mcp\\server.py": "d0065b1bc2eb94dd8452d8b5b6ec314c89a3d408ca488cef8844d422f0b5059b",
+    "tests\\test_citation.py": "2270eba602d334c43a369ad2897c04d585550c8f69351c3697beefaab99bda5a"
+  },
+  "nova_conversa_nativa": {
+    "threadId": "01a0edca-0317-7d70-8e65-4b49f2b16aa2",
+    "verificada": true,
+    "tribunais": [
+      "TJSC",
+      "STJ"
+    ],
+    "ferramentas": [
+      "pesquisar_jurisprudencia",
+      "obter_documento"
+    ],
+    "campos_presentes_e_consistentes": true,
+    "referencia_completa": true,
+    "pendencias": [],
+    "conexao_origem_ainda_antiga": true,
+    "data": "2026-09-29T12:32:06.676007-03:00"
+  }
+}

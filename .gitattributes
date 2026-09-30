@@ -1,0 +1,7 @@
+# LF no repositorio e na copia de trabalho: o codigo e editado tanto no Windows quanto no shell Linux do Cowork
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.whl binary
+*.gz binary
+# recibos e registros de evidencia ficam byte a byte, sem normalizar quebras de linha
+docs/** -text

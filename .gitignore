@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.sqlite*
+*.log
+data/
+dist/
+*.egg-info/
+# configuracao desta maquina (modelo versionado: flora.example.toml)
+flora.local.toml
+logs/

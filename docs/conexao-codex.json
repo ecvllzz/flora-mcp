@@ -1,0 +1,242 @@
+{
+  "checked_at": "2026-09-22T14:53:45.396491-03:00",
+  "client": {
+    "userAgent": "Codex Desktop/0.155.0-alpha.9.2 (Windows 10.0.26200; x86_64) dumb (flora_mcp_check; 0.1)",
+    "codexHome": "C:\\Users\\Home\\.codex",
+    "platformFamily": "windows",
+    "platformOs": "windows"
+  },
+  "flora": [
+    {
+      "name": "flora-mcp",
+      "runtimeStatus": null,
+      "pluginId": null,
+      "serverInfo": {
+        "name": "Flora-MCP",
+        "title": null,
+        "version": "0.1.0a1",
+        "description": null,
+        "icons": null,
+        "websiteUrl": null
+      },
+      "serverCapabilities": {
+        "experimental": {},
+        "prompts": {
+          "listChanged": false
+        },
+        "resources": {
+          "subscribe": false,
+          "listChanged": false
+        },
+        "tools": {
+          "listChanged": false
+        }
+      },
+      "tools": {
+        "consultar_cobertura": {
+          "name": "consultar_cobertura",
+          "description": "Informa órgãos, lotes, pendências, falhas e últimas execuções. Não afirma cobertura integral.",
+          "inputSchema": {
+            "properties": {},
+            "type": "object",
+            "title": "consultar_coberturaArguments"
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "consultar_coberturaDictOutput"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "openWorldHint": false
+          }
+        },
+        "obter_documento": {
+          "name": "obter_documento",
+          "description": "Lê ementa ou espelho_original pelo ID retornado na busca.\n\nConcatene texto de todos os blocos até proximo_cursor=null para recuperar o componente completo.\nespelho_original preserva todos os campos recebidos em JSON; não é o voto/inteiro teor.\n",
+          "inputSchema": {
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              },
+              "componente": {
+                "default": "ementa",
+                "title": "Componente",
+                "type": "string"
+              },
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Cursor"
+              },
+              "tamanho_bloco": {
+                "default": 16000,
+                "title": "Tamanho Bloco",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object",
+            "title": "obter_documentoArguments"
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "obter_documentoDictOutput"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "openWorldHint": false
+          }
+        },
+        "pesquisar_jurisprudencia": {
+          "name": "pesquisar_jurisprudencia",
+          "description": "Pesquisa palavras (AND) ou frases entre aspas. Órgão/classe são filtros exatos sem acentos.\n\nDatas AAAA-MM-DD; tipo_data: publicacao ou julgamento. Ordem: mais_recentes ou mais_antigos.\nRetorna até 5 ementas completas e um cursor. Processo: número exato, com ou sem pontuação.\ncampo disponível: ementa. Uma base parcial não permite concluir que inexiste jurisprudência.\n",
+          "inputSchema": {
+            "properties": {
+              "termos": {
+                "default": "",
+                "title": "Termos",
+                "type": "string"
+              },
+              "processo": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Processo"
+              },
+              "tribunal": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Tribunal"
+              },
+              "orgao": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Orgao"
+              },
+              "classe": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Classe"
+              },
+              "data_inicio": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Data Inicio"
+              },
+              "data_fim": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Data Fim"
+              },
+              "tipo_data": {
+                "default": "publicacao",
+                "title": "Tipo Data",
+                "type": "string"
+              },
+              "campo": {
+                "default": "ementa",
+                "title": "Campo",
+                "type": "string"
+              },
+              "ordenar": {
+                "default": "mais_recentes",
+                "title": "Ordenar",
+                "type": "string"
+              },
+              "limite": {
+                "default": 3,
+                "title": "Limite",
+                "type": "integer"
+              },
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Cursor"
+              }
+            },
+            "type": "object",
+            "title": "pesquisar_jurisprudenciaArguments"
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "pesquisar_jurisprudenciaDictOutput"
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "openWorldHint": false
+          }
+        }
+      },
+      "toolsError": null,
+      "resources": [],
+      "resourceTemplates": [],
+      "authStatus": "unsupported"
+    }
+  ],
+  "next_cursor": null,
+  "scope": "Separate installed Codex app-server process; no model turn and no desktop conversation reload"
+}

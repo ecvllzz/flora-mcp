@@ -1,0 +1,3010 @@
+{
+  "inicio": "2026-09-29T04:53:10.370205+00:00",
+  "banco": "C:\\Users\\Home\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Flora-MCP\\acervo.sqlite",
+  "plano": {
+    "periodo_publicacao": [
+      "2026-01-01",
+      "2026-09-29"
+    ],
+    "camaras": [
+      9,
+      10
+    ],
+    "concluidas_verificadas": 361,
+    "pendentes": [
+      {
+        "camara": 10,
+        "dia": "2026-06-26",
+        "recurso": "tjsc-10-civil:2026-06-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-06-27",
+        "recurso": "tjsc-10-civil:2026-06-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-06-28",
+        "recurso": "tjsc-10-civil:2026-06-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-06-29",
+        "recurso": "tjsc-10-civil:2026-06-29",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-06-30",
+        "recurso": "tjsc-10-civil:2026-06-30",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-01",
+        "recurso": "tjsc-9-civil:2026-07-01",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-01",
+        "recurso": "tjsc-10-civil:2026-07-01",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-02",
+        "recurso": "tjsc-9-civil:2026-07-02",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-02",
+        "recurso": "tjsc-10-civil:2026-07-02",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-03",
+        "recurso": "tjsc-9-civil:2026-07-03",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-03",
+        "recurso": "tjsc-10-civil:2026-07-03",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-04",
+        "recurso": "tjsc-9-civil:2026-07-04",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-04",
+        "recurso": "tjsc-10-civil:2026-07-04",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-05",
+        "recurso": "tjsc-9-civil:2026-07-05",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-05",
+        "recurso": "tjsc-10-civil:2026-07-05",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-06",
+        "recurso": "tjsc-9-civil:2026-07-06",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-06",
+        "recurso": "tjsc-10-civil:2026-07-06",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-07",
+        "recurso": "tjsc-9-civil:2026-07-07",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-07",
+        "recurso": "tjsc-10-civil:2026-07-07",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-08",
+        "recurso": "tjsc-9-civil:2026-07-08",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-08",
+        "recurso": "tjsc-10-civil:2026-07-08",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-09",
+        "recurso": "tjsc-9-civil:2026-07-09",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-09",
+        "recurso": "tjsc-10-civil:2026-07-09",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-10",
+        "recurso": "tjsc-9-civil:2026-07-10",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-10",
+        "recurso": "tjsc-10-civil:2026-07-10",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-11",
+        "recurso": "tjsc-9-civil:2026-07-11",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-11",
+        "recurso": "tjsc-10-civil:2026-07-11",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-12",
+        "recurso": "tjsc-9-civil:2026-07-12",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-12",
+        "recurso": "tjsc-10-civil:2026-07-12",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-13",
+        "recurso": "tjsc-9-civil:2026-07-13",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-13",
+        "recurso": "tjsc-10-civil:2026-07-13",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-14",
+        "recurso": "tjsc-9-civil:2026-07-14",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-14",
+        "recurso": "tjsc-10-civil:2026-07-14",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-15",
+        "recurso": "tjsc-9-civil:2026-07-15",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-15",
+        "recurso": "tjsc-10-civil:2026-07-15",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-16",
+        "recurso": "tjsc-9-civil:2026-07-16",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-16",
+        "recurso": "tjsc-10-civil:2026-07-16",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-17",
+        "recurso": "tjsc-9-civil:2026-07-17",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-17",
+        "recurso": "tjsc-10-civil:2026-07-17",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-18",
+        "recurso": "tjsc-9-civil:2026-07-18",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-18",
+        "recurso": "tjsc-10-civil:2026-07-18",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-19",
+        "recurso": "tjsc-9-civil:2026-07-19",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-19",
+        "recurso": "tjsc-10-civil:2026-07-19",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-20",
+        "recurso": "tjsc-9-civil:2026-07-20",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-20",
+        "recurso": "tjsc-10-civil:2026-07-20",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-21",
+        "recurso": "tjsc-9-civil:2026-07-21",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-21",
+        "recurso": "tjsc-10-civil:2026-07-21",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-22",
+        "recurso": "tjsc-9-civil:2026-07-22",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-22",
+        "recurso": "tjsc-10-civil:2026-07-22",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-23",
+        "recurso": "tjsc-9-civil:2026-07-23",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-23",
+        "recurso": "tjsc-10-civil:2026-07-23",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-24",
+        "recurso": "tjsc-9-civil:2026-07-24",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-24",
+        "recurso": "tjsc-10-civil:2026-07-24",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-25",
+        "recurso": "tjsc-9-civil:2026-07-25",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-25",
+        "recurso": "tjsc-10-civil:2026-07-25",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-26",
+        "recurso": "tjsc-9-civil:2026-07-26",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-26",
+        "recurso": "tjsc-10-civil:2026-07-26",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-27",
+        "recurso": "tjsc-9-civil:2026-07-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-27",
+        "recurso": "tjsc-10-civil:2026-07-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-28",
+        "recurso": "tjsc-9-civil:2026-07-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-28",
+        "recurso": "tjsc-10-civil:2026-07-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-29",
+        "recurso": "tjsc-9-civil:2026-07-29",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-29",
+        "recurso": "tjsc-10-civil:2026-07-29",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-30",
+        "recurso": "tjsc-9-civil:2026-07-30",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-30",
+        "recurso": "tjsc-10-civil:2026-07-30",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-07-31",
+        "recurso": "tjsc-9-civil:2026-07-31",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-07-31",
+        "recurso": "tjsc-10-civil:2026-07-31",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-01",
+        "recurso": "tjsc-9-civil:2026-08-01",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-01",
+        "recurso": "tjsc-10-civil:2026-08-01",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-02",
+        "recurso": "tjsc-9-civil:2026-08-02",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-02",
+        "recurso": "tjsc-10-civil:2026-08-02",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-03",
+        "recurso": "tjsc-9-civil:2026-08-03",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-03",
+        "recurso": "tjsc-10-civil:2026-08-03",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-04",
+        "recurso": "tjsc-9-civil:2026-08-04",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-04",
+        "recurso": "tjsc-10-civil:2026-08-04",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-05",
+        "recurso": "tjsc-9-civil:2026-08-05",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-05",
+        "recurso": "tjsc-10-civil:2026-08-05",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-06",
+        "recurso": "tjsc-9-civil:2026-08-06",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-06",
+        "recurso": "tjsc-10-civil:2026-08-06",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-07",
+        "recurso": "tjsc-9-civil:2026-08-07",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-07",
+        "recurso": "tjsc-10-civil:2026-08-07",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-08",
+        "recurso": "tjsc-9-civil:2026-08-08",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-08",
+        "recurso": "tjsc-10-civil:2026-08-08",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-09",
+        "recurso": "tjsc-9-civil:2026-08-09",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-09",
+        "recurso": "tjsc-10-civil:2026-08-09",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-10",
+        "recurso": "tjsc-9-civil:2026-08-10",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-10",
+        "recurso": "tjsc-10-civil:2026-08-10",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-11",
+        "recurso": "tjsc-9-civil:2026-08-11",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-11",
+        "recurso": "tjsc-10-civil:2026-08-11",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-12",
+        "recurso": "tjsc-9-civil:2026-08-12",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-12",
+        "recurso": "tjsc-10-civil:2026-08-12",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-13",
+        "recurso": "tjsc-9-civil:2026-08-13",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-13",
+        "recurso": "tjsc-10-civil:2026-08-13",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-14",
+        "recurso": "tjsc-9-civil:2026-08-14",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-14",
+        "recurso": "tjsc-10-civil:2026-08-14",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-15",
+        "recurso": "tjsc-9-civil:2026-08-15",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-15",
+        "recurso": "tjsc-10-civil:2026-08-15",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-16",
+        "recurso": "tjsc-9-civil:2026-08-16",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-16",
+        "recurso": "tjsc-10-civil:2026-08-16",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-17",
+        "recurso": "tjsc-9-civil:2026-08-17",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-17",
+        "recurso": "tjsc-10-civil:2026-08-17",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-18",
+        "recurso": "tjsc-9-civil:2026-08-18",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-18",
+        "recurso": "tjsc-10-civil:2026-08-18",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-19",
+        "recurso": "tjsc-9-civil:2026-08-19",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-19",
+        "recurso": "tjsc-10-civil:2026-08-19",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-20",
+        "recurso": "tjsc-9-civil:2026-08-20",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-20",
+        "recurso": "tjsc-10-civil:2026-08-20",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-21",
+        "recurso": "tjsc-9-civil:2026-08-21",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-21",
+        "recurso": "tjsc-10-civil:2026-08-21",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-22",
+        "recurso": "tjsc-9-civil:2026-08-22",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-22",
+        "recurso": "tjsc-10-civil:2026-08-22",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-23",
+        "recurso": "tjsc-9-civil:2026-08-23",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-23",
+        "recurso": "tjsc-10-civil:2026-08-23",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-24",
+        "recurso": "tjsc-9-civil:2026-08-24",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-24",
+        "recurso": "tjsc-10-civil:2026-08-24",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-25",
+        "recurso": "tjsc-9-civil:2026-08-25",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-25",
+        "recurso": "tjsc-10-civil:2026-08-25",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-26",
+        "recurso": "tjsc-9-civil:2026-08-26",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-26",
+        "recurso": "tjsc-10-civil:2026-08-26",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-27",
+        "recurso": "tjsc-9-civil:2026-08-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-27",
+        "recurso": "tjsc-10-civil:2026-08-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-28",
+        "recurso": "tjsc-9-civil:2026-08-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-28",
+        "recurso": "tjsc-10-civil:2026-08-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-29",
+        "recurso": "tjsc-9-civil:2026-08-29",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-29",
+        "recurso": "tjsc-10-civil:2026-08-29",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-30",
+        "recurso": "tjsc-9-civil:2026-08-30",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-30",
+        "recurso": "tjsc-10-civil:2026-08-30",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-08-31",
+        "recurso": "tjsc-9-civil:2026-08-31",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-08-31",
+        "recurso": "tjsc-10-civil:2026-08-31",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-01",
+        "recurso": "tjsc-9-civil:2026-09-01",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-01",
+        "recurso": "tjsc-10-civil:2026-09-01",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-02",
+        "recurso": "tjsc-9-civil:2026-09-02",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-02",
+        "recurso": "tjsc-10-civil:2026-09-02",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-03",
+        "recurso": "tjsc-9-civil:2026-09-03",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-03",
+        "recurso": "tjsc-10-civil:2026-09-03",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-04",
+        "recurso": "tjsc-9-civil:2026-09-04",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-04",
+        "recurso": "tjsc-10-civil:2026-09-04",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-05",
+        "recurso": "tjsc-9-civil:2026-09-05",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-05",
+        "recurso": "tjsc-10-civil:2026-09-05",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-06",
+        "recurso": "tjsc-9-civil:2026-09-06",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-06",
+        "recurso": "tjsc-10-civil:2026-09-06",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-07",
+        "recurso": "tjsc-9-civil:2026-09-07",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-07",
+        "recurso": "tjsc-10-civil:2026-09-07",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-08",
+        "recurso": "tjsc-9-civil:2026-09-08",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-08",
+        "recurso": "tjsc-10-civil:2026-09-08",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-09",
+        "recurso": "tjsc-9-civil:2026-09-09",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-09",
+        "recurso": "tjsc-10-civil:2026-09-09",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-10",
+        "recurso": "tjsc-9-civil:2026-09-10",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-10",
+        "recurso": "tjsc-10-civil:2026-09-10",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-11",
+        "recurso": "tjsc-9-civil:2026-09-11",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-11",
+        "recurso": "tjsc-10-civil:2026-09-11",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-12",
+        "recurso": "tjsc-9-civil:2026-09-12",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-12",
+        "recurso": "tjsc-10-civil:2026-09-12",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-13",
+        "recurso": "tjsc-9-civil:2026-09-13",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-13",
+        "recurso": "tjsc-10-civil:2026-09-13",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-14",
+        "recurso": "tjsc-9-civil:2026-09-14",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-14",
+        "recurso": "tjsc-10-civil:2026-09-14",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-15",
+        "recurso": "tjsc-9-civil:2026-09-15",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-15",
+        "recurso": "tjsc-10-civil:2026-09-15",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-16",
+        "recurso": "tjsc-9-civil:2026-09-16",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-16",
+        "recurso": "tjsc-10-civil:2026-09-16",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-17",
+        "recurso": "tjsc-9-civil:2026-09-17",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-17",
+        "recurso": "tjsc-10-civil:2026-09-17",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-20",
+        "recurso": "tjsc-9-civil:2026-09-20",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-20",
+        "recurso": "tjsc-10-civil:2026-09-20",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-21",
+        "recurso": "tjsc-9-civil:2026-09-21",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-21",
+        "recurso": "tjsc-10-civil:2026-09-21",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-22",
+        "recurso": "tjsc-9-civil:2026-09-22",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-22",
+        "recurso": "tjsc-10-civil:2026-09-22",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-23",
+        "recurso": "tjsc-9-civil:2026-09-23",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-23",
+        "recurso": "tjsc-10-civil:2026-09-23",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-24",
+        "recurso": "tjsc-9-civil:2026-09-24",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-24",
+        "recurso": "tjsc-10-civil:2026-09-24",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-25",
+        "recurso": "tjsc-9-civil:2026-09-25",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-25",
+        "recurso": "tjsc-10-civil:2026-09-25",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-26",
+        "recurso": "tjsc-9-civil:2026-09-26",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-26",
+        "recurso": "tjsc-10-civil:2026-09-26",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-27",
+        "recurso": "tjsc-9-civil:2026-09-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-27",
+        "recurso": "tjsc-10-civil:2026-09-27",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-28",
+        "recurso": "tjsc-9-civil:2026-09-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-28",
+        "recurso": "tjsc-10-civil:2026-09-28",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 9,
+        "dia": "2026-09-29",
+        "recurso": "tjsc-9-civil:2026-09-29",
+        "estado_anterior": "ausente"
+      },
+      {
+        "camara": 10,
+        "dia": "2026-09-29",
+        "recurso": "tjsc-10-civil:2026-09-29",
+        "estado_anterior": "ausente"
+      }
+    ],
+    "dia_atual_provisorio": true
+  },
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 2367
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 196
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 2458
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 1152
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 282
+    }
+  ],
+  "status": "ok",
+  "eventos": [
+    {
+      "camara": 10,
+      "dia": "2026-06-26",
+      "registros": 76,
+      "novos": 76,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:30.185163+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-06-27",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:32.604609+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-06-28",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:35.014822+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-06-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:37.433915+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-06-30",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:39.868685+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-01",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:42.379955+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-01",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:44.775913+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-02",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:47.184509+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-02",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:49.612282+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-03",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:53:52.042031+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-03",
+      "registros": 90,
+      "novos": 90,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:06.289024+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-04",
+      "registros": 14,
+      "novos": 14,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:10.584775+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-04",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:13.012196+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-05",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:15.389736+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-05",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:17.819193+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-06",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:20.268270+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-06",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:22.733981+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-07",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:25.161406+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-07",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:27.542219+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-08",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:29.969310+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-08",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:32.395784+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-09",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:34.771674+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-09",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:37.155565+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-10",
+      "registros": 22,
+      "novos": 22,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:42.727345+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-10",
+      "registros": 74,
+      "novos": 74,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:55.287487+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:54:57.735645+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-11",
+      "registros": 22,
+      "novos": 22,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:03.317800+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:05.788677+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:08.180415+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:10.629089+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:13.086797+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-14",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:15.533013+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-14",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:17.964965+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-15",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:20.393888+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-15",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:22.797175+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-16",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:25.212220+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-16",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:27.730115+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-17",
+      "registros": 16,
+      "novos": 16,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:31.958925+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-17",
+      "registros": 75,
+      "novos": 75,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:44.448116+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-18",
+      "registros": 8,
+      "novos": 8,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:47.322550+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-18",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:49.764889+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-19",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:52.241772+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-19",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:54.631311+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-20",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:57.015639+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-20",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:55:59.434606+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-21",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:01.920387+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-21",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:04.380217+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-22",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:06.762404+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-22",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:09.163066+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-23",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:11.545973+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-23",
+      "registros": 34,
+      "novos": 34,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:18.526503+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-24",
+      "registros": 21,
+      "novos": 21,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:23.968250+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-24",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:26.409325+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-25",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:28.932179+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-25",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:31.340586+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-26",
+      "registros": 3,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:33.948741+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-26",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:36.341922+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-27",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:38.733849+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-27",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:41.214255+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-28",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:43.624766+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-28",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:46.054370+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:48.482910+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:50.984455+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-30",
+      "registros": 3,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:56:53.570951+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-30",
+      "registros": 42,
+      "novos": 42,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:02.164511+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-07-31",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:04.579625+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-07-31",
+      "registros": 16,
+      "novos": 16,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:08.736094+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-01",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:11.100362+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-01",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:13.526568+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-02",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:15.936753+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-02",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:18.363591+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-03",
+      "registros": 11,
+      "novos": 11,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:22.404884+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-03",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:24.826443+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-04",
+      "registros": 3,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:27.416159+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-04",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:29.851522+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-05",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:32.273292+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-05",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:34.692792+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-06",
+      "registros": 2,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:37.216400+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-06",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:39.662393+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-07",
+      "registros": 4,
+      "novos": 4,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:42.363952+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-07",
+      "registros": 89,
+      "novos": 89,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:56.698675+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-08",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:57:59.113179+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-08",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:01.546041+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-09",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:03.988390+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-09",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:06.423676+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:08.816280+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:11.216488+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:13.632051+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:16.007741+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:18.423666+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:20.821637+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:23.257504+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-13",
+      "registros": 2,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:25.815546+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-14",
+      "registros": 4,
+      "novos": 4,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:28.498559+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-14",
+      "registros": 103,
+      "novos": 103,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:45.361026+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-15",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:47.778983+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-15",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:50.228125+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-16",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:52.659814+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-16",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:55.068987+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-17",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:57.461316+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-17",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:58:59.874892+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-18",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:02.320003+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-18",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:04.763287+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-19",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:07.201448+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-19",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:09.587336+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-20",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:11.990804+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-20",
+      "registros": 5,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:14.719375+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-21",
+      "registros": 13,
+      "novos": 13,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:18.914795+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-21",
+      "registros": 50,
+      "novos": 50,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:27.799297+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-22",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:30.241129+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-22",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:32.715003+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-23",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:35.143523+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-23",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:37.557638+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-24",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:40.146947+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-24",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:42.629371+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-25",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:45.020396+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-25",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:47.445058+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-26",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:49.831978+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-26",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:52.230313+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-27",
+      "registros": 6,
+      "novos": 6,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:54.943923+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-27",
+      "registros": 5,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T04:59:57.649410+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-28",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:00.109463+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-28",
+      "registros": 56,
+      "novos": 56,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:10.305856+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:12.680440+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:15.198332+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-30",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:17.642626+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-30",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:20.036295+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-08-31",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:22.430463+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-08-31",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:24.826435+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-01",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:27.235868+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-01",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:29.691090+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-02",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:32.361892+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-02",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:34.865059+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-03",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:37.261061+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-03",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:39.694054+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-04",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:42.137910+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-04",
+      "registros": 10,
+      "novos": 10,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:45.111346+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-05",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:47.520946+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-05",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:49.969801+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-06",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:52.448164+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-06",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:54.894894+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-07",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:00:57.369585+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-07",
+      "registros": 23,
+      "novos": 23,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:02.935890+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-08",
+      "registros": 3,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:05.498139+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-08",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:07.989299+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-09",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:10.356070+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-09",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:12.778354+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:15.165607+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-10",
+      "registros": 7,
+      "novos": 7,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:18.010984+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-11",
+      "registros": 12,
+      "novos": 12,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:22.231482+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-11",
+      "registros": 31,
+      "novos": 31,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:29.213951+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:31.611610+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:34.001747+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:36.455589+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:38.881731+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-14",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:41.295999+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-14",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:43.711636+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-15",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:46.125340+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-15",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:48.525660+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-16",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:51.005954+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-16",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:53.375446+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-17",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:55.842412+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-17",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:01:58.236171+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-20",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:00.643489+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-20",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:03.040128+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-21",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:05.410575+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-21",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:07.850703+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-22",
+      "registros": 3,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:10.696385+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-22",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:13.090034+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-23",
+      "registros": 4,
+      "novos": 4,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:15.741528+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-23",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:18.151736+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-24",
+      "registros": 5,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:20.809865+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-24",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:23.174381+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-25",
+      "registros": 5,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:25.844341+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-25",
+      "registros": 9,
+      "novos": 9,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:28.848085+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-26",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:31.282511+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-26",
+      "registros": 31,
+      "novos": 31,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:38.265758+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-27",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:40.786856+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-27",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:43.179809+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-28",
+      "registros": 2,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:45.792956+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-28",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:48.180314+00:00"
+    },
+    {
+      "camara": 9,
+      "dia": "2026-09-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:50.558785+00:00"
+    },
+    {
+      "camara": 10,
+      "dia": "2026-09-29",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-09-29T05:02:52.964734+00:00"
+    }
+  ],
+  "backup": {
+    "status": "ok",
+    "destino": "C:\\Users\\Home\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Flora-MCP-backups\\antes-retomada-tjsc-20260929",
+    "originais_atuais_verificados": 367
+  },
+  "execucao": "737d35f3-d7af-413c-9ac8-b1f0ca4203b6",
+  "fim": "2026-09-29T05:02:52.971998+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 2367
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 196
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 2458
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2002
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 454
+    }
+  ]
+}

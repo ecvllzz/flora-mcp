@@ -1,0 +1,21 @@
+{
+  "registered_at": "2026-09-22T14:48:53.782550-03:00",
+  "backup": "C:\\Users\\Home\\Documents\\Flora\\_Archive\\backups\\flora-mcp-codex-20260922-144812\\config.toml",
+  "before_sha256": "7700faddde9a637c8f33adb9a067f4dbc94196c74eec00f1ef666791c352c6bb",
+  "after_sha256": "94f3a9020c6f47720895899fb5892bd01d05c985a9665ffdb12fdd33589583a5",
+  "other_settings_unchanged": true,
+  "cli_normalization_corrected": "Restored preexisting node_repl args=[] removed by codex mcp add",
+  "server": {
+    "command": "C:\\Users\\Home\\Documents\\Flora-MCP\\.venv\\Scripts\\python.exe",
+    "args": [
+      "-m",
+      "flora_mcp.cli",
+      "serve"
+    ],
+    "env": {
+      "FLORA_MCP_DATA_DIR": "C:\\Users\\Home\\AppData\\Local\\Flora-MCP",
+      "PYTHONUTF8": "1"
+    }
+  },
+  "current_conversation_reloaded": false
+}

@@ -1,0 +1,42 @@
+{
+  "physical_path": "\\\\?\\C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP\\acervo.sqlite",
+  "clients": {
+    "codex-config": {
+      "tools": [
+        "pesquisar_jurisprudencia",
+        "obter_documento",
+        "consultar_cobertura"
+      ],
+      "coverage_status": "ok",
+      "search_found": 1130,
+      "reference_and_relator": true,
+      "document_reference_matches": true
+    },
+    "claude-config": {
+      "tools": [
+        "pesquisar_jurisprudencia",
+        "obter_documento",
+        "consultar_cobertura"
+      ],
+      "coverage_status": "ok",
+      "search_found": 1130,
+      "reference_and_relator": true,
+      "document_reference_matches": true
+    }
+  },
+  "claude_native": {
+    "status": "verified_after_exit_and_reopen",
+    "conversation_title": "Flora-mcp technical verification",
+    "tools_called": [
+      "consultar_cobertura",
+      "pesquisar_jurisprudencia",
+      "obter_documento"
+    ],
+    "reference_and_relator_observed": true,
+    "historical_path_warning": "Claude mencionou caminho antigo de recibos de coleta; esse caminho e historico, nao o banco ativo."
+  },
+  "codex_native": {
+    "status": "restart_required",
+    "observed_error": "Transport closed"
+  }
+}

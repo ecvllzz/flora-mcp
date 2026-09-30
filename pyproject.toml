@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flora-mcp"
+version = "0.2.0a1"
+description = "MCP independente para pesquisa de jurisprudência em fontes oficiais brasileiras"
+requires-python = ">=3.12"
+dependencies = ["mcp==2.2.0", "httpx>=0.28,<0.29", "beautifulsoup4>=4.14,<5", "filelock>=3.20,<4"]
+
+[project.scripts]
+flora-mcp = "flora_mcp.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B"]

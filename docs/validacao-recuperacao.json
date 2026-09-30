@@ -1,0 +1,2716 @@
+{
+  "checked_at": "2026-09-22T14:51:16.505274-03:00",
+  "corpus_count": 5060,
+  "queries": [
+    {
+      "name": "alimentos",
+      "args": {
+        "termos": "alimentos",
+        "tribunal": "STJ",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 83,
+        "resultados": [
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "EDcl no AgInt nos EDcl no AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-28",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO NO AGRAVO INTERNO NO AGRAVO\n EM RECURSO ESPECIAL. FAMÍLIA. ALIMENTOS. CUMPRIMENTO DE SENTENÇA.\n PRINCÍPIO DA DIALETICIDADE. AUSÊNCIA DOS VÍCIOS DO ART. 1.022 DO\n CPC. NEGATIVA DE PRESTAÇÃO JURISDICIONAL. NÃO OCORRÊNCIA. ÓBICE DA\n SÚMULA 7/STJ MANTIDO. TUTELA PROVISÓRIA. PEDIDO PREJUDICADO.\n EMBARGOS DE DECLARAÇÃO REJEITADOS.\n 1. Embargos de declaração opostos contra acórdão que negou\n provimento a agravo interno, em controvérsia de cumprimento de\n sentença de alimentos e alcance da base de cálculo (salário-base\n versus rendimentos líquidos com adicionais).\n 2. A questão recursal consiste em verificar se (i) houve omissão,\n contradição, obscuridade ou erro material no acórdão sobre a\n manutenção do óbice da Súmula 7/STJ; (ii) a discussão sobre a base\n de cálculo dos alimentos demanda apenas interpretação do título\n executivo, sem revolvimento fático; e (iii) o pedido de tutela\n provisória foi enfrentado.\n 3. Não se configuram os vícios do art. 1.022 do CPC quando o acórdão\n embargado enfrenta, de forma suficiente e coerente, as teses sobre\n ausência de impugnação específica, incidência da Súmula 7/STJ e\n negativa de prestação jurisdicional, assentando a deficiência\n dialética do agravo em recurso especial e a necessidade de\n revolvimento das premissas fáticas das instâncias ordinárias para\n infirmar a base de cálculo adotada.\n 4. Em decorrência da manutenção da inadmissibilidade do agravo em\n recurso especial e do desprovimento do agravo interno, o pedido de\n tutela de urgência/evidência fica prejudicado.\n 5. Embargos de declaração rejeitados.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "b005bfb70f6324d39fb733f9aed1e016ff556229505e878629c06201b3eeff23",
+            "id": "STJ:1466726",
+            "id_origem": "1466726",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3022566",
+            "numero_registro": "202503018357",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "EDcl no AgInt nos EDcl no AREsp 3022566",
+            "publicacao_original": "DJEN       DATA:28/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "EDcl no REsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-27",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL. SUCESSÕES. EMBARGOS DE DECLARAÇÃO EM RECURSO\n ESPECIAL. ALIMENTOS. ART. 1.022 DO CPC. OMISSÃO E CONTRADIÇÃO. NÃO\n OCORRÊNCIA. OBRIGAÇÃO ALIMENTAR DE NATUREZA PERSONALÍSSIMA. EXTINÇÃO\n COM O ÓBITO DO ALIMENTANTE. DISTINÇÃO ENTRE MEEIRO E HERDEIRO.\n PRECEDENTE INAPLICÁVEL. EFEITOS MODIFICATIVOS. AUSÊNCIA DOS\n PRESSUPOSTOS (ART. 1.023, § 2º, DO CPC). MULTA DO ART. 1.026, § 2º,\n DO CPC. AFASTAMENTO. PRIMEIROS EMBARGOS. EMBARGOS DE DECLARAÇÃO\n REJEITADOS.\n 1. Embargos de declaração opostos contra acórdão que deu provimento\n ao recurso especial para reconhecer a extinção da obrigação\n alimentar com o óbito do alimentante e afastar a multa aplicada nos\n primeiros embargos de declaração.\n 2. A questão recursal consiste em examinar se (i) há contradição por\n ter havido o reconhecimento da condição de meeira e, ainda assim,\n ter sido afastada a continuidade dos alimentos até a partilha; (ii)\n haveria omissão sobre a preservação do mínimo existencial e\n aplicação de precedente que admite alimentos quando o alimentado é\n herdeiro; e (iii) caberia atribuição de efeitos modificativos aos\n aclaratórios.\n 3. Não se configura contradição quando o acórdão distingue, com\n fundamentação suficiente, que a obrigação alimentar é personalíssima\n e se extingue com o óbito do de cujus, sendo a exceção\n jurisprudencial restrita aos casos em que o alimentado herdeiro; a\n condição de meeiro não impõe continuidade da pensão.\n 4. Não há omissão a suprir: o acórdão enfrentou a tese do mínimo\n existencial e distinguiu, de modo claro, a inaplicabilidade de\n precedente que admite alimentos exclusivamente quando o alimentado é\n também herdeiro durante o inventário.\n 5. Ausentes os vícios do art. 1.022 do CPC, não há falar em efeitos\n modificativos (art. 1.023, § 2º, do CPC).\n 6. A multa do art. 1.026, § 2º, do CPC é afastada, por se tratarem\n de primeiros embargos com intuito de prequestionamento.\n 7. Embargos de declaração rejeitados.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "bf230730f840f8f2917b472d3862500f888bc19cce3c7370833acb2560997289",
+            "id": "STJ:1465343",
+            "id_origem": "1465343",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "2141447",
+            "numero_registro": "202401580094",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "EDcl no REsp 2141447",
+            "publicacao_original": "DJEN       DATA:27/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "EDcl nos EDcl no RHC",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-27",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO EM RECURSO ORDINÁRIO EM\n HABEAS CORPUS. PRISÃO CIVIL POR DÍVIDA ALIMENTAR. ART. 1.022 DO CPC.\n OMISSÃO, CONTRADIÇÃO E ERRO MATERIAL. NÃO OCORRÊNCIA. PRETENSÃO DE\n MODIFICAR O ALCANCE DO JULGADO. INADEQUAÇÃO DA VIA ELEITA. SUSPENSÃO\n DA PRISÃO CONDICIONADA À AVALIAÇÃO DA LIQUIDEZ E CERTEZA DO TÍTULO\n EXECUTIVO. MANUTENÇÃO.\n 1. Embargos de declaração opostos contra acórdão que suspendeu a\n ordem de prisão civil por inadimplemento de alimentos, condicionando\n a medida a posterior avaliação, pelo Juízo da execução, da liquidez\n e certeza do título executivo.\n 2. Não se verifica nenhum dos vícios do art. 1.022 do CPC. O acórdão\n enfrentou integralmente a controvérsia e explicitou, de modo claro\n e coerente, que a suspensão do decreto prisional decorre da\n iliquidez superveniente do débito e cabe ao Juízo da execução\n analisar.\n 3. É inviável, em embargos de declaração, substituir o critério\n decidido por marco temporal absoluto de suspensão até o julgamento\n final da ação exoneratória ou impor o prosseguimento exclusivo pelo\n rito expropriatório.\n 4. Embargos de declaração rejeitados.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "fa5c8c965d7da497cd308d7483c85ba3f316e938b18cbcbbd5197ddeaca15eca",
+            "id": "STJ:1465388",
+            "id_origem": "1465388",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "225730",
+            "numero_registro": "202504068384",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "EDcl nos EDcl no RHC 225730",
+            "publicacao_original": "DJEN       DATA:27/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6IjJmZmY2OTI0YWQ2OTQ5MmU5MjY1NGNlOGJjN2JjMzg4ZjZhMDRiZTExZTk0ZDBlMTUzN2U3MjdjMjkzYThiMzYiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "alimentos",
+      "args": {
+        "termos": "alimentos",
+        "tribunal": "TJSC",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 9,
+        "resultados": [
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO DE FAMÍLIA E PROCESSUAL CIVIL. AGRAVO INTERNO EM AGRAVO DE INSTRUMENTO. ART. 1021 DO CPC. CUMPRIMENTO DE SENTENÇA DE OBRIGAÇÃO DE PRESTAR ALIMENTOS. DECISÃO MONOCRÁTICA QUE MANTEVE PENHORA DE VALORES VIA SISBAJUD. RECURSO DO EXECUTADO. TESES DE VIOLAÇÃO AO MÍNIMO EXISTENCIAL, NECESSIDADE DE OBSERVÂNCIA DO LIMITE PREVISTO NO ART. 529, § 3º, DO CPC, EXCESSO DE EXECUÇÃO E DESPROPORCIONALIDADE DA CONSTRIÇÃO INTEGRAL DOS VALORES BLOQUEADOS. NÃO ACOLHIMENTO. AUSÊNCIA DE DEMONSTRAÇÃO DA ORIGEM REMUNERATÓRIA DOS VALORES PENHORADOS OU DE QUE CORRESPONDAM A RECURSOS INDISPENSÁVEIS À SUBSISTÊNCIA DO DEVEDOR. ÔNUS PROBATÓRIO DO EXECUTADO. ART. 854, § 3º, I, DO CPC. INSUFICIÊNCIA DE PROVA QUANTO À RENDA, À REGULARIDADE DOS RECEBIMENTOS, À COMPOSIÇÃO DAS DESPESAS ESSENCIAIS E AO EFETIVO COMPROMETIMENTO DO MÍNIMO EXISTENCIAL. IMPOSSIBILIDADE DE APLICAÇÃO AUTOMÁTICA DO LIMITE PREVISTO NO ART. 529, § 3º, DO CPC. CRÉDITO ALIMENTAR DESTINADO À SUBSISTÊNCIA DE ADOLESCENTE DE 16 ANOS. INCIDÊNCIA DA EXCEÇÃO PREVISTA NO ART. 833, § 2º, DO CPC. EXISTÊNCIA DE AÇÃO REVISIONAL E DE PRISÃO CIVIL EM PROCEDIMENTO DISTINTO QUE NÃO AFASTA A LEGITIMIDADE DAS MEDIDAS EXPROPRIATÓRIAS. AUSÊNCIA DE PROVA IDÔNEA A JUSTIFICAR O DESBLOQUEIO PARCIAL PRETENDIDO. PARECER DA PROCURADORIA-GERAL DE JUSTIÇA NO MESMO SENTIDO. DECISÃO A QUO MANTIDA. MULTA DO ART. 1.021, § 4º, DO CPC. NÃO INCIDÊNCIA. AGRAVO INTERNO CONHECIDO E DESPROVIDO. \r\nI. CASO EM EXAME\r\n1. Agravo interno interposto contra decisão monocrática que manteve a penhora de valores bloqueados por meio do SISBAJUD em cumprimento de sentença de obrigação alimentar. \r\n2. O agravante sustenta que não pretende a impenhorabilidade absoluta dos valores, mas apenas a preservação de parcela destinada à garantia de seu mínimo existencial, postulando o desbloqueio de 70% da quantia constrita ou a limitação da penhora a percentual compatível com sua subsistência. \r\nII. QUESTÃO EM DISCUSSÃO\r\n3. A questão em discussão consiste em definir se a constrição integral dos valores bloqueados deve ser mitigada para preservação do mínimo existencial do executado em execução de crédito alimentar. \r\nIII. RAZÕES DE DECIDIR\r\n4. O agravante não produziu prova apta a demonstrar que os valores bloqueados possuíam natureza salarial ou que correspondiam exclusivamente a recursos oriundos de trabalho informal indispensáveis à manutenção do mínimo existencial.\r\n5. Também não foram apresentados elementos concretos relativos à renda mensal, à regularidade dos recebimentos, às despesas essenciais ou à inexistência de outras fontes de recursos, circunstâncias indispensáveis para aferição do alegado comprometimento do mínimo existencial.\r\n6. A relativização da penhora de verbas de natureza alimentar exige demonstração concreta da repercussão da medida sobre a subsistência digna do devedor, não sendo suficiente a formulação de alegações genéricas desacompanhadas de prova idônea. \r\n7. A aplicação do limite previsto no art. 529, § 3º, do CPC pressupõe a identificação dos rendimentos líquidos do executado e a caracterização dos valores constritos como receitas periódicas, circunstâncias não demonstradas nos autos. \r\n8. A existência de prisão civil em procedimento diverso e o ajuizamento de ação revisional de alimentos não impedem a utilização dos meios executivos patrimoniais legalmente previstos para satisfação do crédito alimentar vencido no período de setembro/2018 a novembro/2021. \r\n9. Considerando a natureza alimentar do crédito executado e a ausência de comprovação de lesão concreta ao mínimo existencial do agravante, não há fundamento para determinar o desbloqueio parcial pretendido. \r\nIV. DISPOSITIVO E TESES\r\n10. Recurso conhecido e desprovido. \r\nTeses de julgamento: 1. Incumbe ao executado comprovar a natureza remuneratória dos valores bloqueados e a efetiva repercussão da constrição sobre sua subsistência para fins de reconhecimento de limitação da penhora para resguardar o mínimo existencial em favor do devedor. 2. A proteção ao mínimo existencial exige demonstração concreta da renda, das despesas essenciais e da destinação dos recursos atingidos pela constrição judicial. 3. O limite previsto no art. 529, § 3º, do CPC não pode ser aplicado abstratamente sem prova da natureza e da origem dos valores bloqueados e periodicidade de seus recebimentos. 4. A existência de crédito alimentar em favor de adolescente atrai a incidência da exceção prevista no art. 833, § 2º, do CPC. 5. A prisão civil e a execução patrimonial constituem mecanismos autônomos e compatíveis de tutela do crédito alimentar.\r\nDispositivos relevantes citados: CPC, arts. 833, § 2º, 854, § 3º, I, 529, § 3º, e 1.021, § 4º. \r\nJurisprudência relevante citada: STJ, EREsp n. 1.874.222/DF, Corte Especial, Rel. Min. João Otávio de Noronha, j. em 19/04/2023; STJ, REsp n. 1.087.137, rel. Min. Aldir Passarinho Junior e REsp n. 1.218.118, rel. Min. João Otávio de Noronha; TJSC, AI n. 4033942-48.2019.8.24.0000, Sexta Câmara de Direito Civil, Rel. Des. André Carvalho, j. em 05/05/2020.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "7576a4e1dc3780c272244b21f1012b18147cac4c895ba7773ba691b8363d7a96",
+            "id": "TJSC:321790018162675778197620336690",
+            "id_origem": "321790018162675778197620336690",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5070614-91.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5070614-91.2026.8.24.0000",
+            "processo_original": "5070614-91.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197620336690",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "CCCiv",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO PROCESSUAL CIVIL E DIREITO DE FAMÍLIA. CONFLITO DE COMPETÊNCIA CÍVEL. AÇÃO DE RECONHECIMENTO E DISSOLUÇÃO DE UNIÃO ESTÁVEL C/C PARTILHA DE BENS, GUARDA, ALIMENTOS E REGULAMENTAÇÃO DE CONVIVÊNCIA. DEMANDA AJUIZADA APÓS EXTINÇÃO SEM RESOLUÇÃO DO MÉRITO DE AÇÃO ANTERIOR ENTRE AS MESMAS PARTES. CONFLITO NEGATIVO DE COMPETÊNCIA ENTRE A 1ª E A 2ª VARAS DA FAMÍLIA DA COMARCA DE ITAJAÍ. DISCUSSÃO ACERCA DA INCIDÊNCIA DO ART. 286, II, DO CPC. DISTRIBUIÇÃO POR DEPENDÊNCIA QUE DECORRE DE EXPRESSA PREVISÃO LEGAL. REITERAÇÃO DE PEDIDO APÓS EXTINÇÃO SEM RESOLUÇÃO DO MÉRITO. HIPÓTESE AUTÔNOMA DE VINCULAÇÃO PROCESSUAL. DESNECESSIDADE DE LITISPENDÊNCIA, CONEXÃO, CONTINÊNCIA OU RISCO DE DECISÕES CONFLITANTES. PRESERVAÇÃO DO PRINCÍPIO DO JUIZ NATURAL E DA RACIONALIDADE DA ATIVIDADE JURISDICIONAL. COMPETÊNCIA FUNCIONAL DE NATUREZA ABSOLUTA. DECLARAÇÃO DE COMPETÊNCIA DO JUÍZO DA 1ª VARA DA FAMÍLIA DA COMARCA DE ITAJAÍ. CONFLITO NEGATIVO DE COMPETÊNCIA ACOLHIDO.\r\nI. CASO EM EXAME\r\nTrata-se de conflito negativo de competência instaurado entre os Juízos da 1ª e da 2ª Varas da Família da Comarca de Itajaí, em razão da definição do juízo competente para processar e julgar ação de reconhecimento e dissolução de união estável cumulada com partilha de bens, guarda, alimentos e regulamentação de convivência, ajuizada após a extinção sem resolução do mérito de demanda anterior envolvendo as mesmas partes e controvérsia substancialmente idêntica. O Juízo da 2ª Vara da Família entendeu aplicável a regra do art. 286, II, do CPC e determinou a redistribuição por dependência. O Juízo da 1ª Vara da Família recusou a competência ao fundamento de inexistir risco de decisões conflitantes diante do trânsito em julgado da ação anterior.\r\nII. QUESTÃO EM DISCUSSÃO\r\nA questão em discussão consiste em definir se a ação posteriormente ajuizada, após a extinção sem resolução do mérito de demanda anterior entre as mesmas partes e com pedidos substancialmente coincidentes, deve ser distribuída por dependência ao juízo que processou o feito originário, nos termos do art. 286, II, do CPC.\r\nIII. RAZÕES DE DECIDIR\r\n1. O art. 286, II, do CPC estabelece regra objetiva de distribuição por dependência quando houver reiteração de pedido após a extinção do processo sem resolução do mérito.\r\n2. A incidência da norma independe da existência de litispendência, conexão, continência ou risco atual de decisões contraditórias, configurando hipótese autônoma de vinculação processual.\r\n3. A ação anteriormente processada perante a 1ª Vara da Família da Comarca de Itajaí envolvia as mesmas partes e discutia a dissolução da união estável, guarda, convivência e alimentos dos filhos comuns, matérias reiteradas na nova demanda.\r\n4. A distribuição por dependência visa resguardar o princípio do juiz natural, impedir a escolha do órgão jurisdicional pela simples repropositura da ação e assegurar racionalidade à atividade jurisdicional.\r\n5. O trânsito em julgado da sentença extintiva não afasta a aplicação do art. 286, II, do CPC, pois a vinculação decorre diretamente da reiteração da pretensão após a extinção sem resolução do mérito.\r\n6. Reconhecida a reiteração dos pedidos formulados na demanda anterior, impõe-se a distribuição por dependência ao Juízo da 1ª Vara da Família da Comarca de Itajaí.\r\nIV. DISPOSITIVO E TESE\r\nConflito negativo de competência acolhido para declarar a competência do juízo da 1ª Vara da Família da comarca de Itajaí.\r\nTese de julgamento: a reiteração de pedido após a extinção do processo sem resolução do mérito impõe a distribuição por dependência ao juízo que processou a demanda anterior, nos termos do art. 286, II, do CPC, independentemente da existência de litispendência, conexão, continência ou risco de decisões conflitantes.\r\nDispositivos relevantes citados\r\nArt. 286, II, do Código de Processo Civil.\r\nJurisprudências relevantes citadas\r\nTJSC, Conflito de Competência Cível n. 5000686-39.2026.8.24.0910, 3ª Turma Recursal, Relatora Juíza de Direito Cíntia Gonçalves Costi, j. em 27/05/2026.\r\nTJSC, Conflito de Competência Cível n. 5025817-40.2020.8.24.0000, 2ª Câmara de Direito Comercial, rel. Des. Altamiro de Oliveira, j. em 28/09/2021.\r\nTRF 3ª Região, AI n. 5019156-29.2021.4.03.0000, rel. Desembargador Federal Paulo Octavio Baptista Pereira, j. em 15/12/2021, DJe 17/12/2021.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "9568b820935d2b59d61bc96ee101d516a8795db4f0a61a306f67ed49cf0ee3a2",
+            "id": "TJSC:321790018162675778197634018988",
+            "id_origem": "321790018162675778197634018988",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5076829-83.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5076829-83.2026.8.24.0000",
+            "processo_original": "5076829-83.2026.8.24.0000/TJSC CCCiv - Conflito de Competência Cível",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197634018988",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "ApCiv",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO CIVIL, DIREITO DE FAMÍLIA E PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO EM APELAÇÃO CÍVEL. AÇÃO DE INTERDIÇÃO C/C MEDIDAS DE PROTEÇÃO E ALIMENTOS. ACÓRDÃO QUE MANTEVE ALIMENTOS ENTRE IRMÃOS NO PERCENTUAL DE 20% DO SALÁRIO MÍNIMO PARA CADA RÉU.. RECURSO DA ALIMENTANTE. ALEGAÇÃO DE OMISSÃO QUANTO À FIXAÇÃO DOS HONORÁRIOS AO DEFENSOR DATIVO. ACOLHIMENTO PARCIAL. AUSÊNCIA DE ARBITRAMENTO DA REMUNERAÇÃO DO DEFENSOR DATIVO PELO TRABALHO REALIZADO EM GRAU RECURSAL. OMISSÃO CONFIGURADA. APRESENTAÇÃO DE APELAÇÃO. HONORÁRIOS FIXADOS EM R$ 490,93, CONFORME A TABELA VIGENTE À ÉPOCA DAS RAZÕES RECURSAIS. REMUNERAÇÃO PELOS SERVIÇOS PRESTADOS EM PRIMEIRO GRAU QUE DEVE SER REQUERIDA E ARBITRADA PERANTE O JUÍZO DE ORIGEM. 2. TESE DE OMISSÃO QUANTO À APRECIAÇÃO DE PRECEDENTE DO TJSC INDICADO NA APELAÇÃO E À NECESSIDADE DE PRESERVAÇÃO DO MÍNIMO EXISTENCIAL DA RECORRENTE. ART. 1.695 DO CÓDIGO CIVIL. NÃO ACOLHIMENTO. PRECEDENTE QUE NÃO CONSTITUI PARÂMETRO OBRIGATÓRIO PARA A FIXAÇÃO DOS ALIMENTOS EM CASO DISTINTO. ACÓRDÃO QUE EXAMINOU A REAL CAPACIDADE CONTRIBUTIVA DA ALIMENTANTE E CONCLUIU PELA AUSÊNCIA DE PROVA DE COMPROMETIMENTO SUBSTANCIAL DE SUA SUBSISTÊNCIA. PRETENSÃO DE REDUÇÃO DO ENCARGO QUE DEMANDARIA NOVA VALORAÇÃO DA PROVA E REVISÃO DO JUÍZO DE PROPORCIONALIDADE. INVIABILIDADE NA VIA DOS ACLARATÓRIOS. PREQUESTIONAMENTO. ART. 1.025 DO CPC. EMBARGOS DE DECLARAÇÃO CONHECIDOS E PARCIALMENTE ACOLHIDOS, SEM EFEITOS MODIFICATIVOS. \r\nI. CASO EM EXAME\r\n1. Embargos de declaração opostos contra acórdão que negou provimento às apelações interpostas em ação de interdição cumulada com medidas de proteção e alimentos, mantendo a obrigação alimentar imposta aos irmãos em favor de alimentando idoso, incapaz, institucionalizado e dependente de terceiros, no percentual individual de 20% do salário mínimo. \r\n2. A embargante sustenta omissão quanto à remuneração do defensor dativo que passou a representá-la no curso do processo, requerendo a fixação de honorários pelos serviços prestados em primeiro e segundo graus. Alega também ausência de manifestação sobre precedente do TJSC que estabeleceu alimentos entre irmãos em 15% do salário mínimo e sobre a parte final do art. 1.695 do Código Civil, especialmente quanto à preservação de seu mínimo existencial. \r\nII. QUESTÕES EM DISCUSSÃO\r\n3. As questões em discussão consistem em: (i) definir se o acórdão foi omisso quanto à remuneração do defensor dativo pela atuação nas instâncias ordinárias; (ii) verificar se a ausência de referência expressa ao precedente indicado nas razões de apelação caracteriza omissão; (iii) analisar se houve falta de pronunciamento sobre a capacidade contributiva da alimentante e o eventual comprometimento de seu próprio sustento, à luz do art. 1.695 do Código Civil.\r\nIII. RAZÕES DE DECIDIR\r\n4. Os embargos de declaração são cabíveis para suprir omissão sobre ponto ou questão a respeito da qual o órgão julgador deveria ter se pronunciado, não se destinando à renovação do julgamento, à reavaliação das provas ou à modificação do entendimento adotado por simples inconformismo da parte. \r\n5. O acórdão deixou de arbitrar os honorários devidos ao defensor dativo pela atuação em grau recursal, embora o profissional, nomeado no curso do processo, tenha elaborado e apresentado a apelação em favor da embargante. A omissão deve ser suprida mediante fixação da remuneração em R$ 490,93, correspondente ao valor previsto no Anexo Único, alínea \"c\", item 8.9, da Resolução CM n. 5/2023, vigente à época da prática do ato processual.\r\n6. A competência do Tribunal limita-se à remuneração do trabalho realizado na fase recursal. Os serviços prestados pelo defensor dativo perante o primeiro grau, desde sua nomeação até a prolação da sentença, devem ser avaliados pelo juízo de origem, ao qual incumbe examinar o período de atuação, a natureza, a extensão e a complexidade dos atos praticados, além de realizar o correspondente registro no Sistema AJG/PJSC. \r\n7. A ausência de menção expressa à AC n. 2014.024070-0 do TJSC não configura omissão, pois o precedente indicado possui natureza persuasiva e foi proferido em processo distinto, cujas circunstâncias não constituem parâmetro obrigatório para a definição da prestação alimentar no caso concreto.\r\n8. A quantificação dos alimentos depende das particularidades da relação jurídica e da aferição concreta do trinômio necessidade, possibilidade e proporcionalidade. A adoção do percentual de 15% do salário mínimo em outro processo envolvendo obrigação alimentar entre irmãos não impõe a aplicação do mesmo índice à hipótese examinada. \r\n9. O acórdão examinou a capacidade contributiva da alimentante e considerou a alegada ausência de renda própria, a dependência econômica do cônjuge, as limitações físicas relacionadas à coluna vertebral, as despesas invocadas e a inexistência de prova de incapacidade laborativa permanente ou de condição econômica excepcional. Concluiu, a partir desses elementos, que o encargo de 20% do salário mínimo não compromete substancialmente sua subsistência, razão pela qual houve apreciação direta da ressalva contida na parte final do art. 1.695 do Código Civil.\r\n10. A referência à ausência de incapacidade laborativa permanente não constituiu fundamento isolado, mas integrou a análise global das possibilidades econômicas da embargante. A pretensão de redução dos alimentos para 15% do salário mínimo exige nova valoração do conjunto probatório e revisão do juízo de proporcionalidade já realizado, providências incompatíveis com os limites do art. 1.022 do CPC. \r\n11. A oposição dos embargos com finalidade de prequestionamento não dispensa a demonstração de algum dos vícios previstos no art. 1.022 do CPC. Os elementos suscitados pela embargante consideram-se incluídos no acórdão para os fins do art. 1.025 do mesmo diploma. \r\nIV. DISPOSITIVO E TESES\r\n12. Embargos de declaração conhecidos e parcialmente acolhidos, sem efeitos modificativos.\r\nTeses de julgamento: 1. A omissão quanto à remuneração do defensor dativo pela efetiva apresentação do recurso deve ser suprida pelo Tribunal, mediante aplicação da tabela vigente na data da atuação profissional. 2. Compete ao juízo de origem examinar e arbitrar os honorários relativos aos serviços prestados pelo defensor dativo em primeiro grau, considerando os atos praticados naquela instância e os procedimentos próprios do Sistema AJG/PJSC. 3. A ausência de referência nominal a precedente persuasivo não configura omissão quando o acórdão resolve integralmente a controvérsia com fundamento nas circunstâncias específicas da causa. 4. Não há omissão quanto ao art. 1.695 do Código Civil quando o acórdão examina concretamente a capacidade contributiva do alimentante e conclui que a obrigação não compromete o necessário à sua subsistência. 6. Os embargos de declaração não se prestam à revaloração da prova nem à revisão do juízo de proporcionalidade adotado na fixação dos alimentos. \r\nDispositivos relevantes citados: CF, art. 93, IX. CC, arts. 1.694, § 1º, e 1.695. CPC, arts. 11, 489, § 1º, VI, 1.022, II, e 1.025. TJSC, Resolução CM n. 5/2019, art. 8º, I, III e IV; TJSC, Resolução CM n. 11/2019, art. 14. \r\nJurisprudência relevante citada: STF, EDclAgRgRMS n. 26.259, Rel. Min. Celso de Mello; STJ, EDcl no AgRg no AREsp n. 620.058/DF, Quinta Turma, Rel. Min. Jorge Mussi, j. em 12/09/2017. STJ, EDcl no AgInt no REsp n. 1.805.591/DF, Segunda Turma, Rel. Min. Og Fernandes, j. em 05/11/2019; TJSC, AC n. 0017630-77.2013.8.24.0064, Primeira Câmara de Direito Civil, Rel. Des. Flavio André Paz de Brum, j. em 10/02/2022.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "7044773c5b22a333cf63945d9bbc702c145249f5bfda1aff70e9122a6b5705fb",
+            "id": "TJSC:321790018162675778197634725358",
+            "id_origem": "321790018162675778197634725358",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5000570-40.2021.8.24.0059",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5000570-40.2021.8.24.0059",
+            "processo_original": "5000570-40.2021.8.24.0059/TJSC ApCiv - Apelação",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197634725358",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6IjE3NGQ2MGE0Njc4OGJjNmYwM2YzYzU4ZTgxYTc2YWU3ZDUxZTg4YzhjYmZlMTg5NTE0OTFiZmUzZjA0NjM4YTUiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "guarda",
+      "args": {
+        "termos": "\"guarda compartilhada\"",
+        "tribunal": "STJ",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 3,
+        "resultados": [
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AgInt nos EDcl no REsp",
+            "data_julgamento": "2026-08-12",
+            "data_publicacao": "2026-08-17",
+            "dataset": "espelhos-de-acordaos-quarta-turma",
+            "ementa": "DIREITO CIVIL E PROCESSUAL CIVIL. AGRAVO INTERNO NOS EMBARGOS DE\n DECLARAÇÃO NO RECURSO ESPECIAL. DIREITO DE FAMÍLIA. NEGATIVA DE\n PRESTAÇÃO JURISDICIONAL NÃO CONFIGURADA. PREQUESTIONAMENTO.\n AUSÊNCIA. SÚMULA 211 DO STJ. GUARDA COMPARTILHADA. LAR DE REFERÊNCIA\n MATERNO. MELHOR INTERESSE DA CRIANÇA. REEXAME DE FATOS E PROVAS.\n SÚMULA 7 DO STJ. AGRAVO INTERNO DESPROVIDO.\n I. CASO EM EXAME\n 1. Agravo interno interposto por genitor contra decisão monocrática\n desta Corte Superior que negou provimento a recurso especial.\n 2. Na origem, cuida-se de ação de reconhecimento e dissolução de\n união estável, na qual se discutia, entre outros pontos, a guarda da\n filha menor.\n II. QUESTÃO EM DISCUSSÃO\n 3. Há quatro questões em discussão: (i) saber se houve negativa de\n prestação jurisdicional; (ii) saber se a matéria está devidamente\n prequestionada; (iii) saber se há cerceamento de defesa; (iv) saber\n se é possível conhecer do dissídio jurisprudencial.\n III. RAZÕES DE DECIDIR\n 4. Não ficou caracterizada a violação dos arts. 489 e 1.022 do\n CPC/2015, uma vez que o Tribunal de origem se manifestou de forma\n fundamentada sobre todas as questões necessárias para o deslinde da\n controvérsia. O mero inconformismo da parte com o julgamento\n contrário à sua pretensão não caracteriza falta de prestação\n jurisdicional.\n 5. A alegação de ofensa aos artigos 2º, 3º, 5º e 6º da Lei n.\n 12.318/2010 e a respectiva tese sobre a existência de alienação\n parental não foram objeto de exame pelo Tribunal a quo, mesmo após o\n julgamento dos aclaratórios. Na hipótese, portanto, incide o teor\n da Súmula 211 do STJ, ante a ausência de prequestionamento dos\n supracitados dispositivos.\n 6. Nos termos da jurisprudência do Superior Tribunal de Justiça, o\n magistrado é o destinatário da prova, competindo às instâncias\n ordinárias exercer juízo acerca da suficiência das que foram\n produzidas, cabendo-lhe a avaliação tanto da suficiência dos\n elementos probatórios que justificaram o julgamento antecipado da\n lide (art. 330, I, do CPC) (AgInt no AREsp n. 1.083.997/SP, relator\n Ministro Luis Felipe Salomão, Quarta Turma, julgado em 8/8/2017, DJe\n de 15/8/2017).\n 6.1. Hipótese em que a Corte local, examinando as peculiaridades\n fáticas do caso, consignou que a manutenção da guarda compartilhada\n com lar de referência materno atende ao melhor interesse da criança,\n além de preservar vínculos socioafetivos com a irmã mais velha, uma\n vez que a própria criança manifestou o desejo de morar com a\n genitora e a irmã. Rever a convicção judicial em apreço, firmada a\n partir do exame de estudos psicossociais e demais provas dos autos,\n somente seria possível mediante nova incursão no acervo\n fático-probatório, o que é vedado pela Súmula 7 do STJ.\n 7. A incidência da Súmula 7/STJ sobre a matéria controvertida\n prejudica o exame do recurso especial também pela alínea \"c\" do art.\n 105, III, da Constituição Federal, por impedir a verificação da\n similitude fática necessária à demonstração de dissídio\n jurisprudencial.\n IV. DISPOSITIVO\n 8. Resultado do julgamento: Agravo interno desprovido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "22d32bee4d27af8a9a2a7e4bfcfecaf18309a0bd7ee513e51c3200b85b1fdd3b",
+            "id": "STJ:1457706",
+            "id_origem": "1457706",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "2236048",
+            "numero_registro": "202503633210",
+            "orgao": "QUARTA TURMA",
+            "processo": "AgInt nos EDcl no REsp 2236048",
+            "publicacao_original": "DJEN       DATA:17/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/a88156c3-ff2d-4775-9d46-12585465f4e3/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AgInt no AREsp",
+            "data_julgamento": "2026-06-30",
+            "data_publicacao": "2026-07-03",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "AGRAVO INTERNO NO AGRAVO EM RECURSO ESPECIAL. DIREITO CIVIL.\n FAMÍLIA. GUARDA COMPARTILHADA. MODIFICAÇÃO. REEXAME\n FÁTICO-PROBATÓRIO. IMPOSSIBILIDADE. SÚMULA Nº 7/STJ.\n 1. É inviável rever o entendimento firmado pelas instâncias\n ordinárias sem a análise dos fatos e das provas da causa, o que\n atrai a incidência da Súmula nº 7/STJ.\n 2. Agravo interno não provido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "a265d7b5eac87086aa2de1b20cf758063798071c7f26effd117e3015efeec519",
+            "id": "STJ:1450891",
+            "id_origem": "1450891",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3106027",
+            "numero_registro": "202504489624",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AgInt no AREsp 3106027",
+            "publicacao_original": "DJEN       DATA:03/07/2026",
+            "recurso": "20260731.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/bd19b69d-f6db-4c34-90e1-148ad636968c/download/20260731.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AREsp",
+            "data_julgamento": "2026-06-22",
+            "data_publicacao": "2026-06-26",
+            "dataset": "espelhos-de-acordaos-quarta-turma",
+            "ementa": "DIREITO DE FAMÍLIA. AGRAVO EM RECURSO ESPECIAL. AÇÃO DE REVISÃO DE\n GUARDA E REGIME DE CONVIVÊNCIA. POSSIBILIDADE DE GUARDA UNILATERAL E\n RESTRIÇÃO DAS VISITAS EM CONTEXTO DE ALTO CONFLITO E EM PRESERVAÇÃO\n AO MELHOR INTERESSE DA CRIANÇA. AGRAVO EM RECURSO ESPECIAL\n DESPROVIDO.\n I. CASO EM EXAME\n 1. Agravo em recurso especial interposto contra decisão que\n inadmitiu o recurso especial por incompetência do STJ para examinar\n matéria constitucional e por incidência da Súmula n. 7 do STJ.\n 2. A controvérsia diz respeito a ação de revisão de guarda e poderes\n de família, com pedido de guarda unilateral à genitora, alimentos\n de 30% do salário mínimo e visitas restritas.\n 3. O Juízo de primeiro grau julgou procedente o pedido, fixando\n guarda unilateral à genitora, visitas em quatro horas quinzenais e\n alimentos em 30% do salário mínimo, com complementação de 50% das\n despesas extraordinárias.\n 4. A Corte de origem manteve integralmente a sentença, desprovendo a\n apelação.\n II. QUESTÃO EM DISCUSSÃO\n 5. A questão em discussão consiste em saber se houve violação dos\n arts. 1.584, § 2º, e 1.589 do Código Civil e 3º e 19 do Estatuto da\n Criança e do Adolescente, ao afastar a guarda compartilhada entre os\n pais e ao restringir o regime de visitas do genitor,\n desconsiderando o direito de convivência no seio familiar e a\n proteção integral da criança.\n III. RAZÕES DE DECIDIR\n 6. Aplica-se a Súmula n. 83 do STJ porque o acórdão está alinhado ao\n entendimento de que a guarda compartilhada pode ser afastada e o\n regime de visitas pode ser restringido para fins de se preservar o\n melhor interesse da criança; e a Súmula n. 7 do STJ veda o reexame\n do conjunto fático-probatório que baseou o entendimento da origem\n para fixar o regime de guarda e visitas.\n IV. DISPOSITIVO E TESE\n 7. Agravo em recurso especial desprovido.\n Tese de julgamento: \"1. Incide a Súmula n. 7 do STJ para vedar o\n reexame de fatos e provas. 2. Aplica-se a Súmula n. 83 do STJ quando\n o acórdão estadual está em consonância com o entendimento deste\n Tribunal Superior\".\n Dispositivos relevantes citados: CF, arts. 105, III, a e 227; CC,\n arts. 1.584, § 2º e 1.589; ECA, arts. 3º e 19; CPC, arts. 373 e\n 1.021, § 4º; RISTJ, arts. 21-E, V e 259, § 6º.\n Jurisprudência relevante citada: STJ, Súmulas n. 7 e 83; STJ; AgInt\n no AREsp n. 2.706.628/SP, relator Ministro Carlos Cini Marchionatti,\n Terceira Turma, julgados em 17/2/2025; STJ; REsp n. 1.888.868/DF,\n relator Ministro Marco Aurélio Bellizze, Terceira Turma, julgado em\n 21/11/2023; STJ; REsp n. 1.756.100/DF, relator Ministro Marco\n Aurélio Bellizze, Terceira Turma, julgado em 2/10/2018; STJ; AgInt\n no RMS n. 51.042/MG, relator Ministro Mauro Campbell Marques,\n Segunda Turma, julgado em 28/3/2017; STJ; AgInt no AREsp n.\n 3.107.212/SP, relator Ministro João Otávio de Noronha, Quarta Turma,\n julgado em 4/5/2026; STJ; REsp n. 2.223.543/SP, relator Ministro\n Raul Araújo, Quarta Turma, julgado em 17/11/2025; STJ; AgInt no\n AREsp n. 2.159.803/SP, relatora Ministra Maria Isabel Gallotti,\n Quarta Turma, julgado em 15/5/2023.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "05a452e14d8f849af64788795d66d2fb72ead6c418ecf7fb73ad58d9985b00b8",
+            "id": "STJ:1448976",
+            "id_origem": "1448976",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3200552",
+            "numero_registro": "202600939378",
+            "orgao": "QUARTA TURMA",
+            "processo": "AREsp 3200552",
+            "publicacao_original": "DJEN       DATA:26/06/2026",
+            "recurso": "20260731.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/bb0d8ec6-1ef7-4824-ac68-bd1af045b490/download/20260731.json"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": null,
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "guarda",
+      "args": {
+        "termos": "\"guarda compartilhada\"",
+        "tribunal": "TJSC",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 0,
+        "resultados": [],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": null,
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "partilha",
+      "args": {
+        "termos": "partilha",
+        "tribunal": "STJ",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 70,
+        "resultados": [
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-28",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL E DIREITO DE FAMÍLIA. AGRAVO EM RECURSO ESPECIAL.\n DIVÓRCIO. PARTILHA DE BENS INDIVISÍVEIS. CONDOMÍNIO ENTRE\n EX-CÔNJUGES. PENDÊNCIA DE AGRAVO DE INSTRUMENTO SEM EFEITO\n SUSPENSIVO. SENTENÇA NA AÇÃO PRINCIPAL. ART. 313, V, a, DO CPC.\n FUNDAMENTO AUTÔNOMO NÃO IMPUGNADO. SÚMULA 283/STF. PARTILHA E ART.\n 648 DO CPC. REEXAME FÁTICO-PROBATÓRIO. SÚMULA 7/STJ. HONORÁRIOS.\n AUSÊNCIA DE INDICAÇÃO DE DISPOSITIVO LEGAL E PRETENSÃO DE REEXAME DE\n PROVA. SÚMULA 284/STF E 7/STJ AGRAVO CONHECIDO. PARA NÃO CONHECER\n DO RECURSO ESPECIAL.\n 1. Agravo em recurso especial interposto contra decisão que\n inadmitiu apelo nobre em ação de divórcio, na qual se confirmou\n partilha igualitária de bens imóveis comuns, com formação de\n condomínio entre os ex-cônjuges, ante a ausência de pedido de\n alienação ou adjudicação.\n 2. A questão recursal consiste em verificar se (i) a pendência de\n julgamento de agravo de instrumento sem efeito suspensivo impediria\n a prolação de sentença na ação principal (art. 313, V, a, do CPC);\n (ii) a conversão da mancomunhão em condomínio violaria os parâmetros\n do art. 648 do CPC; e (iii) seria possível reduzir honorários com\n base em alegações de complexidade e trabalho desenvolvido sem\n indicação de dispositivo legal.\n 3. A pendência de agravo de instrumento sem efeito suspensivo não\n impede a marcha processual e a prolação de sentença. Mantida, no\n acórdão recorrido, a conclusão de inexistência de prejuízo em razão\n do efeito suspensivo legal da apelação (art. 1.012 do CPC), a falta\n de impugnação específica desse fundamento autônomo atrai a\n incidência da Súmula 283/STF, por analogia.\n 4. A legalidade da partilha igualitária com constituição de\n condomínio, em respeito aos limites do pedido e aos parâmetros do\n art. 648 do CPC, assenta-se em premissas fáticas definidas no\n acórdão, cujo reexame é inviável em recurso especial em virtude do\n óbice da Súmula n. 7/STJ.\n 5. Pretender a redução de honorários, desacompanhada da indicação do\n dispositivo legal violado e apoiada em razões fático-probatórias,\n evidencia deficiência de fundamentação (Súmula 284/STF), além de\n demandar reexame de fatos (Súmula 7/STJ).\n 6. Agravo conhecido. Recurso especial não conhecido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "9ffe025c88fbbc5d47f9e1c1b03b2db427e4e0158864239067a430d2f4cea6b9",
+            "id": "STJ:1466660",
+            "id_origem": "1466660",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3117886",
+            "numero_registro": "202504667752",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AREsp 3117886",
+            "publicacao_original": "DJEN       DATA:28/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-28",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL. AGRAVO EM RECURSO ESPECIAL. AUSÊNCIA DE IMPUGNAÇÃO\n ESPECÍFICA. PRINCÍPIO DA DIALETICIDADE. ARTS. 932, III, DO CPC, E\n 253, I, DO RISTJ. AGRAVO NÃO CONHECIDO.\n 1. Agravo em recurso especial interposto contra decisão do Tribunal\n de Justiça de São Paulo que inadmitiu recurso especial em ação de\n divórcio litigioso com partilha de bens.\n 2. A questão recursal consiste em examinar se o agravo impugnou, de\n modo específico, todos os fundamentos da decisão de\n inadmissibilidade, em especial a inviabilidade do recurso especial\n quando lastreado em alegada violação constitucional.\n 3. O princípio da dialeticidade impõe ao agravante o ônus de atacar,\n de forma específica, os fundamentos da decisão agravada; a\n impugnação genérica ou a mera reiteração das razões do apelo nobre\n não atende às exigências dos arts. 932, III, do CPC, e 253, I, do\n RISTJ.\n 4. Ausente impugnação específica quanto ao fundamento de inadequação\n da alegação de ofensa constitucional para a via especial, o agravo\n não comporta conhecimento.\n 5. Agravo em recurso especial não conhecido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "f2882075b21eee0134879ca09d074ead0f00ff4ad9f3394e8768431de8e38e11",
+            "id": "STJ:1466753",
+            "id_origem": "1466753",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3089925",
+            "numero_registro": "202504230746",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AREsp 3089925",
+            "publicacao_original": "DJEN       DATA:28/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-28",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL E FAMÍLIA. AGRAVO EM RECURSO ESPECIAL. UNIÃO\n ESTÁVEL. PARTILHA DE BENS. PREQUESTIONAMENTO. AUSÊNCIA. SÚMULAS\n 282/STF E 211/STJ. REVISÃO DE PREMISSAS FÁTICAS. PROMESSA DE COMPRA\n E VENDA DE 1992. IMPOSSIBILIDADE EM RECURSO ESPECIAL. SÚMULA 7/STJ.\n FUNDAMENTO AUTÔNOMO NÃO IMPUGNADO (ART. 272 DO CC/1916). SÚMULAS 283\n E 284/STF. HONORÁRIOS. DEFICIÊNCIA NA FUNDAMENTAÇÃO. SÚMULA\n 284/STF. AGRAVO CONHECIDO PARA NÃO CONHECER DO RECURSO ESPECIAL.\n 1. Agravo em recurso especial contra decisão que inadmitiu apelo\n nobre em ação de reconhecimento de união estável e partilha, na qual\n se discutiu a comunicabilidade de imóvel adquirido mediante\n promessa de compra e venda em 1992.\n 2. A questão recursal consiste em examinar se haveria (i)\n prequestionamento dos arts. 9º, 10, 341, 373, II, 374, III e 493 do\n CPC e 134, 530 e 531 do CC; (ii) possibilidade de aplicar o art. 5º\n da Lei n.º 9.278/1996 a bem cuja aquisição se vinculou a contrato\n anterior às núpcias; (iii) impugnação específica de fundamento\n autônomo baseado no art. 272 do CC/1916; e (iv) adequada\n fundamentação sobre honorários à luz do art. 85, §§ 2º e 8º, do CPC.\n 3. Os dispositivos insertos nos arts. 9º, 10, 341, 373, II, 374, III\n e 493 do CPC e 134, 530 e 531 do CC não foram objeto de deliberação\n explícita, faltando o indispensável prequestionamento, o que impede\n o conhecimento do especial (Súmulas 282/STF e 211/STJ).\n 4. A pretensão fundada na ofensa ao art. 5º da Lei n. 9.278/1996\n demanda reexame de fatos e provas, pois se apoia em premissas sobre\n a existência e validade da promessa de compra e venda de 1992, o\n momento da aquisição e a dinâmica da relação fática entre as partes,\n providência inviável em recurso especial (Súmula 7/STJ).\n 5. Mantém-se, por ausência de impugnação específica, fundamento\n autônomo segundo o qual a escritura posterior apenas cumpriu\n promessa anterior às núpcias, afastando a inclusão do bem na\n partilha (art. 272 do CC/1916), o que atrai as Súmulas 283 e\n 284/STF.\n 6. Quanto aos honorários, a insurgência é genérica e não demonstra,\n de modo claro e objetivo, ofensa aos dispositivos invocados,\n caracterizando deficiência na fundamentação (Súmula 284/STF).\n 7. Agravo em recurso especial conhecido. Recurso especial não\n conhecido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "cb5345f2e936f7e76155f1930430e05bccacd0835a765740f1fd85fb8b656da2",
+            "id": "STJ:1466807",
+            "id_origem": "1466807",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "2959878",
+            "numero_registro": "202502118965",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AREsp 2959878",
+            "publicacao_original": "DJEN       DATA:28/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6ImU0ZWI1ODkwYWNhMzQ3ZTIwMjQ3ZmZhNWFlNzEzOGNhYjIzYmIxYzVkZDllN2E5YTJmOTZjYWExZDBmN2Y0Y2YiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "partilha",
+      "args": {
+        "termos": "partilha",
+        "tribunal": "TJSC",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 5,
+        "resultados": [
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO CIVIL E PROCESSUAL CIVIL. AGRAVO INTERNO EM AGRAVO DE INSTRUMENTO. AÇÃO DE INVENTÁRIO. DECISÃO MONOCRÁTICA QUE NEGOU PROVIMENTO AO AGRAVO DE INSTRUMENTO E MANTEVE DECISÃO INTERLOCUTÓRIA QUE REMETEU ÀS VIAS ORDINÁRIAS A DISCUSSÃO SOBRE O RECONHECIMENTO DE UNIÃO ESTÁVEL POST MORTEM ENTRE OS GENITORES DE HERDEIRA MENOR ABSOLUTAMENTE INCAPAZ. INSURGÊNCIA DA AGRAVANTE. ALEGAÇÃO DE AMPLIAÇÃO INDEVIDA DO CONCEITO DE QUESTÃO DE ALTA INDAGAÇÃO E DE INEXISTÊNCIA DE CONTROVÉRSIA FÁTICA RELEVANTE. REJEIÇÃO. IMPUGNAÇÃO EXPRESSA DE HERDEIRO AO PLANO DE PARTILHA QUE INSTAURA LITÍGIO SOBRE A PRÓPRIA EXISTÊNCIA E EXTENSÃO DA CONVIVÊNCIA, A CARACTERIZAR QUESTÃO DE ALTA INDAGAÇÃO DEPENDENTE DE PROVA ORAL, NOS TERMOS DO ART. 612 DO CPC. INSUFICIÊNCIA DO ACERVO DOCUMENTAL CONFIRMADA PELO PRÓPRIO REQUERIMENTO DE PROVA TESTEMUNHAL FORMULADO PELA AGRAVANTE DESDE A ORIGEM. TENTATIVA DE DISTINÇÃO DOS PRECEDENTES INVOCADOS NA DECISÃO MONOCRÁTICA. REJEIÇÃO. ELEMENTO COMUM CONSISTENTE NA CONJUGAÇÃO DE PROVA DOCUMENTAL INSUFICIENTE COM EFETIVA CONTROVÉRSIA FÁTICA ENTRE OS INTERESSADOS, IGUALMENTE PRESENTE NA ESPÉCIE. CONDIÇÃO DE HERDEIRA ABSOLUTAMENTE INCAPAZ. PROTEÇÃO PRIORITÁRIA QUE NÃO AUTORIZA O RECONHECIMENTO INCIDENTAL PRETENDIDO. DEFINIÇÃO PRECÁRIA DE QUINHÕES HEREDITÁRIOS COM BASE EM COGNIÇÃO SUMÁRIA SOBRE FATOS CONTROVERTIDOS QUE EXPORIA A HERDEIRA A MAIOR RISCO DO QUE A INSTRUÇÃO AMPLA PROPICIADA PELAS VIAS ORDINÁRIAS. IRRESIGNAÇÃO APRESENTADA QUE NÃO TEM O CONDÃO DE DESCONSTITUIR O ENTENDIMENTO ADOTADO NO DECISUM. DECISÃO MONOCRÁTICA MANTIDA. PENALIDADE DO ART. 1.021, § 4º, DO CPC. INAPLICABILIDADE. AGRAVO INTERNO CONHECIDO E DESPROVIDO.\r\nI. CASO EM EXAME\r\n1. Trata-se de agravo interno interposto contra decisão monocrática que negou provimento a agravo de instrumento, mantendo decisão interlocutória proferida em ação de inventário que remeteu às vias ordinárias a discussão sobre o reconhecimento de união estável post mortem.\r\nII. QUESTÃO EM DISCUSSÃO\r\n2. Há cinco questões em discussão: (i) definir se a decisão monocrática ampliou indevidamente o conceito de questão de alta indagação, previsto no art. 612 do CPC; (ii) definir se existe controvérsia fática relevante quanto à existência da união estável apta a caracterizar questão de alta indagação; (iii) determinar se os precedentes invocados na decisão monocrática são aplicáveis ao caso concreto; (iv) definir se a condição de incapaz da agravante afasta a remessa da controvérsia às vias ordinárias; e (v) definir se é cabível a aplicação da multa prevista no art. 1.021, § 4º, do CPC.\r\nIII. RAZÕES DE DECIDIR\r\n3. O art. 612 do CPC circunscreve a cognição do juízo do inventário às questões de direito cujos fatos relevantes estejam provados por documento, remetendo às vias ordinárias as que dependam de outras provas. A qualificação da controvérsia como questão de alta indagação decorre da existência de disputa entre os herdeiros quanto à própria persistência da união estável, e não da mera solicitação de prova oral.\r\n4. O herdeiro impugnou expressamente o plano de partilha apresentado pela agravante, negando-lhe o direito à cota pretendida e reclamando partilha igualitária, o que instaura litígio sobre a própria existência e extensão da convivência. A necessidade de reconstrução da dinâmica do relacionamento, com produção de prova oral requerida pela própria agravante desde a origem, confirma a insuficiência do acervo documental para o deslinde da controvérsia.\r\n5. A convergência entre a fundamentação da decisão agravada e o parecer ministerial não configura ausência de motivação própria, mas confirmação da correção da tese acolhida. A decisão monocrática enfrentou a matéria de forma suficiente, identificando a razão de decidir e amparando-se em precedentes pertinentes.\r\n6. O elemento comum que, nos precedentes invocados na decisão monocrática, justificou a remessa às vias ordinárias -- a conjugação de prova documental insuficiente com efetiva controvérsia fática entre os interessados -- está igualmente presente na hipótese em exame, o que afasta a alegada distinção.\r\n7. A condição de incapaz da agravante, embora mereça proteção prioritária, nos termos do art. 227 da CF e dos arts. 4º e 6º do ECA, não autoriza o reconhecimento incidental pretendido. A definição precária de quinhões hereditários com base em cognição sumária sobre fatos controvertidos exporia a herdeira a maior risco do que a instrução ampla propiciada pelas vias ordinárias, sem prejuízo do direito incontroverso à quota decorrente da sucessão materna.\r\n8. A aplicação da multa prevista no art. 1.021, § 4º, do CPC não é automática, pressupondo que o recurso seja manifestamente inadmissível ou que sua improcedência seja de tal forma evidente a caracterizar abuso ou intuito protelatório. Não caracterizada tal hipótese na espécie, deixa-se de aplicar a penalidade.\r\nIV. DISPOSITIVO E TESE\r\n9. Agravo interno conhecido e desprovido.\r\nTese de julgamento: \"(i) A qualificação de controvérsia sobre reconhecimento de união estável post mortem como questão de alta indagação, apta a ensejar a remessa às vias ordinárias nos termos do art. 612 do CPC, decorre da existência de impugnação fática de herdeiro interessado ao plano de partilha, associada à necessidade de produção de prova oral; e (ii) A condição de incapaz do herdeiro não autoriza, por si só, o reconhecimento incidental de união estável faticamente controvertida no âmbito do inventário, quando a instrução ampla nas vias ordinárias melhor resguardar seus direitos sucessórios.\"\r\nDispositivos relevantes citados: art. 612 do CPC; art. 672, I, do CPC; art. 489, § 1º, do CPC; art. 1.021, caput, § 1º e § 4º, do CPC; art. 227 da CF; arts. 4º e 6º do ECA.\r\nJurisprudência relevante citada: STJ, AgInt no REsp n. 1.359.060/RJ, Rel. Min. Lázaro Guimarães, Rel. p/ acórdão Min. Maria Isabel Gallotti, Quarta Turma, j. em 19/6/2018; STJ, AgInt nos EREsp n. 1.120.356/RS, Rel. Min. Marco Aurélio Bellizze, Segunda Seção, j. em 24/08/2016; TJSC, AI n. 5055164-45.2025.8.24.0000, Rel. Des. Saul Steil, 3ª Câmara de Direito Civil, j. em 10/09/2025; e TJSC, AI n. 4022916-53.2019.8.24.0000, Rel. Des. Raulino Jacó Bruning, 1ª Câmara de Direito Civil, j. em 15/07/2022.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "98876e3f4829781927ff8f5f1b78cf250a178246836d5ef5c5c362a53456e35e",
+            "id": "TJSC:321789854352680641079979956183",
+            "id_origem": "321789854352680641079979956183",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5063217-78.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5063217-78.2026.8.24.0000",
+            "processo_original": "5063217-78.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321789854352680641079979956183",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "CCCiv",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO PROCESSUAL CIVIL E DIREITO DE FAMÍLIA. CONFLITO DE COMPETÊNCIA CÍVEL. AÇÃO DE RECONHECIMENTO E DISSOLUÇÃO DE UNIÃO ESTÁVEL C/C PARTILHA DE BENS, GUARDA, ALIMENTOS E REGULAMENTAÇÃO DE CONVIVÊNCIA. DEMANDA AJUIZADA APÓS EXTINÇÃO SEM RESOLUÇÃO DO MÉRITO DE AÇÃO ANTERIOR ENTRE AS MESMAS PARTES. CONFLITO NEGATIVO DE COMPETÊNCIA ENTRE A 1ª E A 2ª VARAS DA FAMÍLIA DA COMARCA DE ITAJAÍ. DISCUSSÃO ACERCA DA INCIDÊNCIA DO ART. 286, II, DO CPC. DISTRIBUIÇÃO POR DEPENDÊNCIA QUE DECORRE DE EXPRESSA PREVISÃO LEGAL. REITERAÇÃO DE PEDIDO APÓS EXTINÇÃO SEM RESOLUÇÃO DO MÉRITO. HIPÓTESE AUTÔNOMA DE VINCULAÇÃO PROCESSUAL. DESNECESSIDADE DE LITISPENDÊNCIA, CONEXÃO, CONTINÊNCIA OU RISCO DE DECISÕES CONFLITANTES. PRESERVAÇÃO DO PRINCÍPIO DO JUIZ NATURAL E DA RACIONALIDADE DA ATIVIDADE JURISDICIONAL. COMPETÊNCIA FUNCIONAL DE NATUREZA ABSOLUTA. DECLARAÇÃO DE COMPETÊNCIA DO JUÍZO DA 1ª VARA DA FAMÍLIA DA COMARCA DE ITAJAÍ. CONFLITO NEGATIVO DE COMPETÊNCIA ACOLHIDO.\r\nI. CASO EM EXAME\r\nTrata-se de conflito negativo de competência instaurado entre os Juízos da 1ª e da 2ª Varas da Família da Comarca de Itajaí, em razão da definição do juízo competente para processar e julgar ação de reconhecimento e dissolução de união estável cumulada com partilha de bens, guarda, alimentos e regulamentação de convivência, ajuizada após a extinção sem resolução do mérito de demanda anterior envolvendo as mesmas partes e controvérsia substancialmente idêntica. O Juízo da 2ª Vara da Família entendeu aplicável a regra do art. 286, II, do CPC e determinou a redistribuição por dependência. O Juízo da 1ª Vara da Família recusou a competência ao fundamento de inexistir risco de decisões conflitantes diante do trânsito em julgado da ação anterior.\r\nII. QUESTÃO EM DISCUSSÃO\r\nA questão em discussão consiste em definir se a ação posteriormente ajuizada, após a extinção sem resolução do mérito de demanda anterior entre as mesmas partes e com pedidos substancialmente coincidentes, deve ser distribuída por dependência ao juízo que processou o feito originário, nos termos do art. 286, II, do CPC.\r\nIII. RAZÕES DE DECIDIR\r\n1. O art. 286, II, do CPC estabelece regra objetiva de distribuição por dependência quando houver reiteração de pedido após a extinção do processo sem resolução do mérito.\r\n2. A incidência da norma independe da existência de litispendência, conexão, continência ou risco atual de decisões contraditórias, configurando hipótese autônoma de vinculação processual.\r\n3. A ação anteriormente processada perante a 1ª Vara da Família da Comarca de Itajaí envolvia as mesmas partes e discutia a dissolução da união estável, guarda, convivência e alimentos dos filhos comuns, matérias reiteradas na nova demanda.\r\n4. A distribuição por dependência visa resguardar o princípio do juiz natural, impedir a escolha do órgão jurisdicional pela simples repropositura da ação e assegurar racionalidade à atividade jurisdicional.\r\n5. O trânsito em julgado da sentença extintiva não afasta a aplicação do art. 286, II, do CPC, pois a vinculação decorre diretamente da reiteração da pretensão após a extinção sem resolução do mérito.\r\n6. Reconhecida a reiteração dos pedidos formulados na demanda anterior, impõe-se a distribuição por dependência ao Juízo da 1ª Vara da Família da Comarca de Itajaí.\r\nIV. DISPOSITIVO E TESE\r\nConflito negativo de competência acolhido para declarar a competência do juízo da 1ª Vara da Família da comarca de Itajaí.\r\nTese de julgamento: a reiteração de pedido após a extinção do processo sem resolução do mérito impõe a distribuição por dependência ao juízo que processou a demanda anterior, nos termos do art. 286, II, do CPC, independentemente da existência de litispendência, conexão, continência ou risco de decisões conflitantes.\r\nDispositivos relevantes citados\r\nArt. 286, II, do Código de Processo Civil.\r\nJurisprudências relevantes citadas\r\nTJSC, Conflito de Competência Cível n. 5000686-39.2026.8.24.0910, 3ª Turma Recursal, Relatora Juíza de Direito Cíntia Gonçalves Costi, j. em 27/05/2026.\r\nTJSC, Conflito de Competência Cível n. 5025817-40.2020.8.24.0000, 2ª Câmara de Direito Comercial, rel. Des. Altamiro de Oliveira, j. em 28/09/2021.\r\nTRF 3ª Região, AI n. 5019156-29.2021.4.03.0000, rel. Desembargador Federal Paulo Octavio Baptista Pereira, j. em 15/12/2021, DJe 17/12/2021.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "9568b820935d2b59d61bc96ee101d516a8795db4f0a61a306f67ed49cf0ee3a2",
+            "id": "TJSC:321790018162675778197634018988",
+            "id_origem": "321790018162675778197634018988",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5076829-83.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5076829-83.2026.8.24.0000",
+            "processo_original": "5076829-83.2026.8.24.0000/TJSC CCCiv - Conflito de Competência Cível",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197634018988",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO CIVIL E PROCESSUAL CIVIL. AGRAVO DE INSTRUMENTO. AÇÃO DE DIVÓRCIO LITIGIOSO CUMULADA COM GUARDA, ALIMENTOS E PARTILHA DE BENS E DÍVIDAS. TUTELA DE URGÊNCIA. ADMINISTRAÇÃO E FRUTOS DE IMÓVEL COMUM. DECISÃO QUE DETERMINOU O DEPÓSITO JUDICIAL DOS ALUGUÉIS E INDEFERIU A NOMEAÇÃO DE ADMINISTRADOR PROVISÓRIO, O RATEIO DOS RENDIMENTOS E OS DEMAIS PEDIDOS LIMINARES. RECURSO DO AUTOR. CONTRARRAZÕES INTEMPESTIVAS. NÃO CONHECIMENTO. MÉRITO. PEDIDO DE NOMEAÇÃO DO AGRAVANTE COMO ADMINISTRADOR PROVISÓRIO. REJEIÇÃO. AUSÊNCIA DE ELEMENTOS CONCRETOS QUE DEMONSTREM GESTÃO INADEQUADA, DILAPIDAÇÃO PATRIMONIAL OU RISCO À CONSERVAÇÃO DO BEM. FOTOGRAFIAS E NOTIFICAÇÕES ADMINISTRATIVAS QUE NÃO COMPROVAM A EXTENSÃO DAS AVARIAS, SUA ORIGEM OU EVENTUAL OMISSÃO DA AGRAVADA. INEXISTÊNCIA DE AVALIAÇÃO IMOBILIÁRIA OU PESQUISA MERCADOLÓGICA CAPAZ DE EVIDENCIAR A DEFASAGEM DOS ALUGUÉIS. ALTERAÇÃO DA ADMINISTRAÇÃO QUE PRODUZIRIA EFEITOS SOBRE OS CONTRATOS VIGENTES, A GESTÃO DAS RECEITAS E DESPESAS E A RELAÇÃO COM OS LOCATÁRIOS. NECESSIDADE DE DILAÇÃO PROBATÓRIA. PEDIDO SUBSIDIÁRIO DE LEVANTAMENTO DOS VALORES DEPOSITADOS PARA PAGAMENTO DE IPTU. IMPOSSIBILIDADE DE ACOLHIMENTO. AUSÊNCIA DE DEMONSTRATIVO ATUALIZADO DA DÍVIDA, INDICAÇÃO DO SALDO REMANESCENTE, IDENTIFICAÇÃO DAS PARCELAS VENCIDAS E ESPECIFICAÇÃO DO VALOR A SER LEVANTADO. QUESTÃO QUE DEVE SER SUBMETIDA INICIALMENTE AO JUÍZO DE ORIGEM, RESPONSÁVEL PELA ADMINISTRAÇÃO DA CONTA JUDICIAL. DEPÓSITO JUDICIAL DOS ALUGUÉIS QUE PRESERVA OS FRUTOS DO BEM COMUM, IMPEDE SUA MOVIMENTAÇÃO UNILATERAL E POSSIBILITA A UTILIZAÇÃO CONTROLADA DOS RECURSOS PARA DESPESAS DEVIDAMENTE COMPROVADAS. DÉBITOS DE IPTU OBJETO DE PARCELAMENTO. AUSÊNCIA DE EXECUÇÃO FISCAL, PENHORA, LEILÃO OU OUTRO ATO CONSTRITIVO CONCRETO. PERIGO DE DANO IMINENTE NÃO DEMONSTRADO. REQUISITOS DO ART. 300 DO CPC NÃO PREENCHIDOS. DECISÃO MANTIDA. RECURSO CONHECIDO E DESPROVIDO.\r\nI. CASO EM EXAME\r\nTrata-se de agravo de instrumento interposto contra decisão que, em ação de divórcio litigioso cumulada com guarda, alimentos e partilha de bens e dívidas, deferiu parcialmente a tutela de urgência para determinar o depósito judicial dos aluguéis produzidos por imóvel comum. A decisão indeferiu, por ora, a nomeação do agravante como administrador provisório, o rateio dos rendimentos e os demais pedidos liminares. O agravante alegou que a agravada administra exclusivamente o imóvel e retém a integralidade dos aluguéis. Sustentou a existência de débitos de IPTU e o risco de perda do patrimônio. Requereu sua nomeação como administrador provisório ou, subsidiariamente, autorização para utilizar os valores depositados judicialmente no pagamento da dívida tributária.\r\nII. QUESTÕES EM DISCUSSÃO\r\nHá três questões em discussão: (i) saber se as contrarrazões apresentadas pela agravada podem ser conhecidas, diante de sua intempestividade; (ii) definir se estão presentes os requisitos para nomear o agravante como administrador provisório do imóvel comum; e (iii) avaliar se deve ser autorizado o levantamento dos aluguéis depositados judicialmente para pagamento dos débitos de IPTU.\r\nIII. RAZÕES DE DECIDIR\r\n1. As contrarrazões não podem ser conhecidas porque foram apresentadas após o encerramento do prazo processual.\r\n2. A tutela de urgência exige a demonstração concomitante da probabilidade do direito e do perigo de dano ou risco ao resultado útil do processo. A providência também deve ser adequada, necessária, proporcional e reversível.\r\n3. A condição de coproprietário assegura ao agravante o direito de participar da administração do patrimônio e dos frutos produzidos pelo imóvel. Essa circunstância, isoladamente, não autoriza sua nomeação como administrador provisório.\r\n3. Os documentos juntados aos autos não demonstram que a agravada tenha praticado atos de dilapidação patrimonial ou conduzido a administração de forma incompatível com a conservação do imóvel.\r\n4. As fotografias não esclarecem a extensão, a origem ou o período de surgimento das avarias. As notificações administrativas referem-se a cuidados ordinários e não comprovam o descumprimento das providências exigidas. Também não há avaliação imobiliária ou pesquisa mercadológica que demonstre a inadequação dos valores previstos nos contratos de locação.\r\n5. A substituição da administração produziria efeitos sobre os contratos vigentes, a interlocução com os locatários, o controle das receitas e despesas e a destinação econômica do imóvel. A medida exige prévio aprofundamento probatório.\r\n6. O depósito judicial dos aluguéis retira de uma das partes o controle exclusivo sobre os frutos, impede sua dissipação e preserva os valores até que o Juízo de origem defina sua destinação. A vinculação dos recursos à conta judicial não impede sua utilização para despesas necessárias e comprovadas, mas apenas afasta sua movimentação unilateral.\r\n7. A existência de débitos de IPTU não comprova perigo de dano atual e iminente. O passivo tributário foi objeto de parcelamento e não há prova de execução fiscal, penhora, leilão, rompimento do acordo ou outro ato concreto direcionado à expropriação do imóvel.\r\n8. A autorização genérica para levantamento dos depósitos não assegura a efetiva destinação dos recursos ao pagamento do IPTU. O pedido não foi instruído com demonstrativo atualizado da dívida, saldo remanescente, indicação das parcelas vencidas, comprovantes dos pagamentos anteriores ou especificação do valor pretendido.\r\n9. O pedido de utilização dos depósitos deve ser formulado inicialmente ao Juízo de origem, responsável pela administração da conta judicial, mediante apresentação dos documentos necessários à verificação da exigibilidade da obrigação e da forma adequada de pagamento.\r\nIV. DISPOSITIVO E TESE\r\nRecurso conhecido e desprovido.\r\nTeses de julgamento: 1. A nomeação de um dos coproprietários como administrador provisório de imóvel comum exige elementos concretos que indiquem gestão inadequada, risco de dissipação ou incapacidade de conservação do bem. 2. O depósito judicial dos aluguéis constitui medida adequada para preservar os frutos do patrimônio comum e impedir sua movimentação unilateral. 3. A utilização dos valores depositados para pagamento de encargos do imóvel depende de pedido específico perante o Juízo de origem, instruído com documentos que demonstrem a existência, o montante e a exigibilidade da obrigação.\r\nDispositivos relevantes citados\r\nCódigo de Processo Civil, art. 300.\r\nCódigo Civil, art. 1.319.\r\nJurisprudências relevantes citadas\r\nTJSC, AI 5040825-81.2025.8.24.0000, 7ª Câmara de Direito Civil, rel. Des. Álvaro Luiz Pereira de Andrade, julgado em 04/12/2025.\r\nTJSC, Agravo de Instrumento n. 0146819-72.2014.8.24.0000, de Urussanga rel. Des. Eduardo Mattos Gallo Júnior, Sexta Câmara de Direito Civil. j. em 1/09/2015.\r\nTJSC, Agravo de Instrumento n. 4013265-65.2017.8.24.0000, de Correia Pinto, Rel. Des. Fernando Carioni, Terceira Câmara de Direito Civil, j. 24-4-2018.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "328f861d575a9d66524e2ba30fd91805f3a8363e48e1e49bfb74380c508b2873",
+            "id": "TJSC:321790018162675778197635758415",
+            "id_origem": "321790018162675778197635758415",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5035391-77.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5035391-77.2026.8.24.0000",
+            "processo_original": "5035391-77.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197635758415",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6Ijc1NTlmYTNhNWI3Mzg1Y2VmMTdmMzJiY2FmNDVkMThiZTQzNmJmY2Y5NDRkYzhhM2QyNGJhMjFiYWFmMDY1NzkiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "uniao",
+      "args": {
+        "termos": "\"união estável\"",
+        "tribunal": "STJ",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 45,
+        "resultados": [
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-28",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL E FAMÍLIA. AGRAVO EM RECURSO ESPECIAL. UNIÃO\n ESTÁVEL. PARTILHA DE BENS. PREQUESTIONAMENTO. AUSÊNCIA. SÚMULAS\n 282/STF E 211/STJ. REVISÃO DE PREMISSAS FÁTICAS. PROMESSA DE COMPRA\n E VENDA DE 1992. IMPOSSIBILIDADE EM RECURSO ESPECIAL. SÚMULA 7/STJ.\n FUNDAMENTO AUTÔNOMO NÃO IMPUGNADO (ART. 272 DO CC/1916). SÚMULAS 283\n E 284/STF. HONORÁRIOS. DEFICIÊNCIA NA FUNDAMENTAÇÃO. SÚMULA\n 284/STF. AGRAVO CONHECIDO PARA NÃO CONHECER DO RECURSO ESPECIAL.\n 1. Agravo em recurso especial contra decisão que inadmitiu apelo\n nobre em ação de reconhecimento de união estável e partilha, na qual\n se discutiu a comunicabilidade de imóvel adquirido mediante\n promessa de compra e venda em 1992.\n 2. A questão recursal consiste em examinar se haveria (i)\n prequestionamento dos arts. 9º, 10, 341, 373, II, 374, III e 493 do\n CPC e 134, 530 e 531 do CC; (ii) possibilidade de aplicar o art. 5º\n da Lei n.º 9.278/1996 a bem cuja aquisição se vinculou a contrato\n anterior às núpcias; (iii) impugnação específica de fundamento\n autônomo baseado no art. 272 do CC/1916; e (iv) adequada\n fundamentação sobre honorários à luz do art. 85, §§ 2º e 8º, do CPC.\n 3. Os dispositivos insertos nos arts. 9º, 10, 341, 373, II, 374, III\n e 493 do CPC e 134, 530 e 531 do CC não foram objeto de deliberação\n explícita, faltando o indispensável prequestionamento, o que impede\n o conhecimento do especial (Súmulas 282/STF e 211/STJ).\n 4. A pretensão fundada na ofensa ao art. 5º da Lei n. 9.278/1996\n demanda reexame de fatos e provas, pois se apoia em premissas sobre\n a existência e validade da promessa de compra e venda de 1992, o\n momento da aquisição e a dinâmica da relação fática entre as partes,\n providência inviável em recurso especial (Súmula 7/STJ).\n 5. Mantém-se, por ausência de impugnação específica, fundamento\n autônomo segundo o qual a escritura posterior apenas cumpriu\n promessa anterior às núpcias, afastando a inclusão do bem na\n partilha (art. 272 do CC/1916), o que atrai as Súmulas 283 e\n 284/STF.\n 6. Quanto aos honorários, a insurgência é genérica e não demonstra,\n de modo claro e objetivo, ofensa aos dispositivos invocados,\n caracterizando deficiência na fundamentação (Súmula 284/STF).\n 7. Agravo em recurso especial conhecido. Recurso especial não\n conhecido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "cb5345f2e936f7e76155f1930430e05bccacd0835a765740f1fd85fb8b656da2",
+            "id": "STJ:1466807",
+            "id_origem": "1466807",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "2959878",
+            "numero_registro": "202502118965",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AREsp 2959878",
+            "publicacao_original": "DJEN       DATA:28/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-27",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "AGRAVO EM RECURSO ESPECIAL. DIREITO DE FAMÍLIA. UNIÃO ESTÁVEL.\n RECONHECIMENTO. PARTILHA. REEXAME FÁTICO-PROBATÓRIO.\n IMPOSSIBILIDADE. SÚMULA Nº 7/STJ. DISSÍDIO. PREJUDICIALIDADE.\n 1. É inviável rever o entendimento firmado pelas instâncias\n ordinárias sem a análise dos fatos e das provas da causa, o que\n atrai a incidência da Súmula nº 7/STJ.\n 2. Conforme iterativa jurisprudência desta Corte, a necessidade do\n reexame da matéria fática impede a admissão do recurso especial\n tanto pela alínea \"a\" quanto pela alínea \"c\" do permissivo\n constitucional.\n 3. Agravo conhecido para não conhecer do recurso especial.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "b1c035f7b37c27e9d114dc490b3651b28d0731b6530ba86f24ab193ec63a848a",
+            "id": "STJ:1466171",
+            "id_origem": "1466171",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "2914940",
+            "numero_registro": "202501381424",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AREsp 2914940",
+            "publicacao_original": "DJEN       DATA:27/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AgInt no AREsp",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-27",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "DIREITO PROCESSUAL CIVIL. AGRAVO INTERNO. AGRAVO EM RECURSO\n ESPECIAL. APELAÇÃO CÍVEL. AÇÃO DE RECONHECIMENTO E DISSOLUÇÃO DE\n UNIÃO ESTÁVEL. PARTILHA DE BENS. DECISÃO MONOCRÁTICA QUE NÃO\n CONHECEU DO ARESP. AUSÊNCIA DE IMPUGNAÇÃO ESPECÍFICA NO AGRAVO\n INTERNO. INCIDÊNCIA DA SÚMULA 182/STJ. AGRAVO INTERNO NÃO CONHECIDO.\n I. Caso em exame\n 1. Agravo interno interposto contra decisão monocrática que não\n conheceu de agravo em recurso especial por ausência de impugnação\n específica aos fundamentos da decisão de inadmissibilidade do\n recurso especial, com incidência, por analogia, da Súmula 182/STJ.\n II. Questão em discussão\n 2. A questão em discussão consiste em saber se o agravo interno\n observa o requisito da impugnação específica aos fundamentos da\n decisão monocrática proferida no recurso especial, nos termos do\n art. 1.021, § 1º, do Código de Processo Civil e da Súmula 182 do\n Superior Tribunal de Justiça, de modo a viabilizar o seu\n conhecimento.\n III. Razões de decidir\n 3. Com base no art. 1.021, § 1º, do Código de Processo Civil,\n incumbe ao agravante impugnar especificadamente todos os fundamentos\n da decisão monocrática agravada, demonstrando, de forma concreta e\n robusta, a inadequação dos argumentos fático-jurídicos que sustentam\n o decisum monocrático, sob pena de incidência da Súmula 182 do\n Superior Tribunal de Justiça.\n 4. A decisão agravada não conheceu do agravo em recurso especial por\n incidência, por analogia, da Súmula n. 182/STJ, pois não houve a\n necessária impugnação específica de todos os fundamentos da decisão\n de inadmissibilidade do recurso especial proferida pelo Tribunal de\n origem.\n 5. O agravante não enfrentou de forma efetiva e concreta os\n fundamentos da decisão agravada, limitando-se a alegações genéricas\n e à reprodução das razões do recurso anteriormente interposto, o que\n inviabiliza o conhecimento do agravo interno.\n IV. Dispositivo\n 6.  Agravo interno não conhecido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "759a47bb945997d3f010b71dfe73f145ecb97c5ded555fde8a43bd5a40787cbf",
+            "id": "STJ:1466369",
+            "id_origem": "1466369",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3169664",
+            "numero_registro": "202600389909",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AgInt no AREsp 3169664",
+            "publicacao_original": "DJEN       DATA:27/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6ImU3NmM3Mzg4NzUzYWJkZGEyMWM2NWExMWU4MGU1YjQ0MWY4ZDY4OWY1NjUxMWIyZGYxYzBjYmUwOTRhYTgzMTgiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "uniao",
+      "args": {
+        "termos": "\"união estável\"",
+        "tribunal": "TJSC",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 6,
+        "resultados": [
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO CIVIL E PROCESSUAL CIVIL. AGRAVO INTERNO EM AGRAVO DE INSTRUMENTO. AÇÃO DE INVENTÁRIO. DECISÃO MONOCRÁTICA QUE NEGOU PROVIMENTO AO AGRAVO DE INSTRUMENTO E MANTEVE DECISÃO INTERLOCUTÓRIA QUE REMETEU ÀS VIAS ORDINÁRIAS A DISCUSSÃO SOBRE O RECONHECIMENTO DE UNIÃO ESTÁVEL POST MORTEM ENTRE OS GENITORES DE HERDEIRA MENOR ABSOLUTAMENTE INCAPAZ. INSURGÊNCIA DA AGRAVANTE. ALEGAÇÃO DE AMPLIAÇÃO INDEVIDA DO CONCEITO DE QUESTÃO DE ALTA INDAGAÇÃO E DE INEXISTÊNCIA DE CONTROVÉRSIA FÁTICA RELEVANTE. REJEIÇÃO. IMPUGNAÇÃO EXPRESSA DE HERDEIRO AO PLANO DE PARTILHA QUE INSTAURA LITÍGIO SOBRE A PRÓPRIA EXISTÊNCIA E EXTENSÃO DA CONVIVÊNCIA, A CARACTERIZAR QUESTÃO DE ALTA INDAGAÇÃO DEPENDENTE DE PROVA ORAL, NOS TERMOS DO ART. 612 DO CPC. INSUFICIÊNCIA DO ACERVO DOCUMENTAL CONFIRMADA PELO PRÓPRIO REQUERIMENTO DE PROVA TESTEMUNHAL FORMULADO PELA AGRAVANTE DESDE A ORIGEM. TENTATIVA DE DISTINÇÃO DOS PRECEDENTES INVOCADOS NA DECISÃO MONOCRÁTICA. REJEIÇÃO. ELEMENTO COMUM CONSISTENTE NA CONJUGAÇÃO DE PROVA DOCUMENTAL INSUFICIENTE COM EFETIVA CONTROVÉRSIA FÁTICA ENTRE OS INTERESSADOS, IGUALMENTE PRESENTE NA ESPÉCIE. CONDIÇÃO DE HERDEIRA ABSOLUTAMENTE INCAPAZ. PROTEÇÃO PRIORITÁRIA QUE NÃO AUTORIZA O RECONHECIMENTO INCIDENTAL PRETENDIDO. DEFINIÇÃO PRECÁRIA DE QUINHÕES HEREDITÁRIOS COM BASE EM COGNIÇÃO SUMÁRIA SOBRE FATOS CONTROVERTIDOS QUE EXPORIA A HERDEIRA A MAIOR RISCO DO QUE A INSTRUÇÃO AMPLA PROPICIADA PELAS VIAS ORDINÁRIAS. IRRESIGNAÇÃO APRESENTADA QUE NÃO TEM O CONDÃO DE DESCONSTITUIR O ENTENDIMENTO ADOTADO NO DECISUM. DECISÃO MONOCRÁTICA MANTIDA. PENALIDADE DO ART. 1.021, § 4º, DO CPC. INAPLICABILIDADE. AGRAVO INTERNO CONHECIDO E DESPROVIDO.\r\nI. CASO EM EXAME\r\n1. Trata-se de agravo interno interposto contra decisão monocrática que negou provimento a agravo de instrumento, mantendo decisão interlocutória proferida em ação de inventário que remeteu às vias ordinárias a discussão sobre o reconhecimento de união estável post mortem.\r\nII. QUESTÃO EM DISCUSSÃO\r\n2. Há cinco questões em discussão: (i) definir se a decisão monocrática ampliou indevidamente o conceito de questão de alta indagação, previsto no art. 612 do CPC; (ii) definir se existe controvérsia fática relevante quanto à existência da união estável apta a caracterizar questão de alta indagação; (iii) determinar se os precedentes invocados na decisão monocrática são aplicáveis ao caso concreto; (iv) definir se a condição de incapaz da agravante afasta a remessa da controvérsia às vias ordinárias; e (v) definir se é cabível a aplicação da multa prevista no art. 1.021, § 4º, do CPC.\r\nIII. RAZÕES DE DECIDIR\r\n3. O art. 612 do CPC circunscreve a cognição do juízo do inventário às questões de direito cujos fatos relevantes estejam provados por documento, remetendo às vias ordinárias as que dependam de outras provas. A qualificação da controvérsia como questão de alta indagação decorre da existência de disputa entre os herdeiros quanto à própria persistência da união estável, e não da mera solicitação de prova oral.\r\n4. O herdeiro impugnou expressamente o plano de partilha apresentado pela agravante, negando-lhe o direito à cota pretendida e reclamando partilha igualitária, o que instaura litígio sobre a própria existência e extensão da convivência. A necessidade de reconstrução da dinâmica do relacionamento, com produção de prova oral requerida pela própria agravante desde a origem, confirma a insuficiência do acervo documental para o deslinde da controvérsia.\r\n5. A convergência entre a fundamentação da decisão agravada e o parecer ministerial não configura ausência de motivação própria, mas confirmação da correção da tese acolhida. A decisão monocrática enfrentou a matéria de forma suficiente, identificando a razão de decidir e amparando-se em precedentes pertinentes.\r\n6. O elemento comum que, nos precedentes invocados na decisão monocrática, justificou a remessa às vias ordinárias -- a conjugação de prova documental insuficiente com efetiva controvérsia fática entre os interessados -- está igualmente presente na hipótese em exame, o que afasta a alegada distinção.\r\n7. A condição de incapaz da agravante, embora mereça proteção prioritária, nos termos do art. 227 da CF e dos arts. 4º e 6º do ECA, não autoriza o reconhecimento incidental pretendido. A definição precária de quinhões hereditários com base em cognição sumária sobre fatos controvertidos exporia a herdeira a maior risco do que a instrução ampla propiciada pelas vias ordinárias, sem prejuízo do direito incontroverso à quota decorrente da sucessão materna.\r\n8. A aplicação da multa prevista no art. 1.021, § 4º, do CPC não é automática, pressupondo que o recurso seja manifestamente inadmissível ou que sua improcedência seja de tal forma evidente a caracterizar abuso ou intuito protelatório. Não caracterizada tal hipótese na espécie, deixa-se de aplicar a penalidade.\r\nIV. DISPOSITIVO E TESE\r\n9. Agravo interno conhecido e desprovido.\r\nTese de julgamento: \"(i) A qualificação de controvérsia sobre reconhecimento de união estável post mortem como questão de alta indagação, apta a ensejar a remessa às vias ordinárias nos termos do art. 612 do CPC, decorre da existência de impugnação fática de herdeiro interessado ao plano de partilha, associada à necessidade de produção de prova oral; e (ii) A condição de incapaz do herdeiro não autoriza, por si só, o reconhecimento incidental de união estável faticamente controvertida no âmbito do inventário, quando a instrução ampla nas vias ordinárias melhor resguardar seus direitos sucessórios.\"\r\nDispositivos relevantes citados: art. 612 do CPC; art. 672, I, do CPC; art. 489, § 1º, do CPC; art. 1.021, caput, § 1º e § 4º, do CPC; art. 227 da CF; arts. 4º e 6º do ECA.\r\nJurisprudência relevante citada: STJ, AgInt no REsp n. 1.359.060/RJ, Rel. Min. Lázaro Guimarães, Rel. p/ acórdão Min. Maria Isabel Gallotti, Quarta Turma, j. em 19/6/2018; STJ, AgInt nos EREsp n. 1.120.356/RS, Rel. Min. Marco Aurélio Bellizze, Segunda Seção, j. em 24/08/2016; TJSC, AI n. 5055164-45.2025.8.24.0000, Rel. Des. Saul Steil, 3ª Câmara de Direito Civil, j. em 10/09/2025; e TJSC, AI n. 4022916-53.2019.8.24.0000, Rel. Des. Raulino Jacó Bruning, 1ª Câmara de Direito Civil, j. em 15/07/2022.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "98876e3f4829781927ff8f5f1b78cf250a178246836d5ef5c5c362a53456e35e",
+            "id": "TJSC:321789854352680641079979956183",
+            "id_origem": "321789854352680641079979956183",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5063217-78.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5063217-78.2026.8.24.0000",
+            "processo_original": "5063217-78.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321789854352680641079979956183",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO PROCESSUAL CIVIL E DIREITO DE FAMÍLIA. AGRAVO DE INSTRUMENTO. AÇÃO DE RECONHECIMENTO E EXTINÇÃO DE UNIÃO ESTÁVEL. AUDIÊNCIA DE MEDIAÇÃO. DECISÃO QUE IMPÔS ÀS PARTES O RATEIO DOS HONORÁRIOS DO MEDIADOR, RESSALVANDO A INAPLICABILIDADE DA GRATUIDADE DA JUSTIÇA EM RELAÇÃO A TAL ENCARGO. RECURSO DA PARTE AUTORA. PRETENDIDA EXTENSÃO DO BENEFÍCIO AOS HONORÁRIOS DO MEDIADOR. ACOLHIMENTO. GRATUIDADE DA MEDIAÇÃO EXPRESSAMENTE ASSEGURADA AOS NECESSITADOS PELO ART. 169, § 2º, DO CPC. BENEFÍCIO QUE ABRANGE AS DESPESAS RELACIONADAS AO PROCEDIMENTO DE MEDIAÇÃO. REPRESENTAÇÃO POR ADVOGADA PARTICULAR QUE NÃO IMPEDE A CONCESSÃO NEM RESTRINGE A EXTENSÃO DA GRATUIDADE DA JUSTIÇA. ART. 99, § 4º, DO CPC. MEDIADOR QUE INTEGRA O ROL DOS AUXILIARES DA JUSTIÇA E POSSUI DIREITO À REMUNERAÇÃO PELO SERVIÇO PRESTADO. AUSÊNCIA DE REGULAMENTAÇÃO ESPECÍFICA SOBRE O PAGAMENTO DOS HONORÁRIOS DO MEDIADOR QUE NÃO AUTORIZA A TRANSFERÊNCIA DO ENCARGO À PARTE BENEFICIÁRIA. INTEGRAÇÃO DA LACUNA NORMATIVA POR ANALOGIA AO PROCEDIMENTO PREVISTO PARA O CUSTEIO DOS HONORÁRIOS PERICIAIS E ASSISTENCIAIS. RESOLUÇÃO CM N. 5/2019. PAGAMENTO A SER SUPORTADO PELO PODER JUDICIÁRIO DO ESTADO DE SANTA CATARINA, POR INTERMÉDIO DO TRIBUNAL DE JUSTIÇA, COM RECURSOS DO FUNDO DE REAPARELHAMENTO DA JUSTIÇA. DECISÃO REFORMADA. RECURSO CONHECIDO E PROVIDO.\r\nI. CASO EM EXAME\r\nAgravo de instrumento interposto contra decisão proferida em ação de reconhecimento e extinção de união estável que determinou a realização de audiência de mediação por videoconferência e atribuiu às partes o pagamento dos honorários do mediador, na proporção de 50% para cada uma. A decisão excepcionou essa despesa da gratuidade da justiça concedida à parte autora porque ela está representada por advogada particular.\r\nII. QUESTÃO EM DISCUSSÃO\r\nA questão em discussão consiste em definir se a gratuidade da justiça abrange os honorários do mediador judicial quando a parte beneficiária está representada por advogado particular.\r\nIII. RAZÕES DE DECIDIR\r\n1. A Constituição Federal assegura assistência jurídica integral e gratuita à pessoa que comprovar insuficiência de recursos. O Código de Processo Civil também garante à parte hipossuficiente a gratuidade das custas, das despesas processuais e dos honorários advocatícios.\r\n2. O art. 169, § 2º, do Código de Processo Civil assegura expressamente aos necessitados a gratuidade da mediação e da conciliação. O deferimento da gratuidade da justiça impede, portanto, a exigência de pagamento ou adiantamento dos honorários do mediador pela parte beneficiária.\r\n3. A representação por advogado particular não impede a concessão da gratuidade da justiça nem autoriza a restrição de sua extensão, conforme estabelece o art. 99, § 4º, do Código de Processo Civil.\r\n4. O mediador integra o rol dos auxiliares da Justiça e possui direito à remuneração pelo serviço prestado. A preservação desse direito, contudo, não permite transferir o encargo à parte que está legalmente dispensada do pagamento.\r\n5. A ausência de disciplina específica na Resolução CM n. 5/2019 acerca do pagamento dos mediadores judiciais não restringe a gratuidade prevista no art. 169, § 2º, do Código de Processo Civil. A lacuna normativa deve ser suprida por analogia com o procedimento estabelecido para o pagamento dos honorários periciais e assistenciais.\r\n6. Os honorários do mediador devem ser suportados pelo Poder Judiciário do Estado de Santa Catarina, por intermédio do Tribunal de Justiça, com recursos orçamentários do Fundo de Reaparelhamento da Justiça. Após a realização da sessão e a certificação do serviço, compete à autoridade judiciária solicitar o pagamento pelo sistema próprio ou encaminhar a requisição ao setor administrativo competente.\r\nIV. DISPOSITIVO E TESE\r\nRecurso conhecido e provido para aplicar, por analogia, o procedimento estabelecido pela Resolução CM n. 5/2019 para o pagamento dos honorários periciais e assistenciais, no tocante à remuneração do mediador, cujo encargo deverá ser suportado pelo Poder Judiciário do Estado de Santa Catarina, por intermédio do Tribunal de Justiça, com recursos orçamentários consignados ao Fundo de Reaparelhamento da Justiça -- FRJ.\r\nTeses de julgamento: (i) A gratuidade da mediação prevista no art. 169, § 2º, do CPC impede a exigência de pagamento ou antecipação dos honorários do mediador pela parte beneficiária da gratuidade da justiça; (ii) Os honorários do mediador judicial devem ser custeados pelo Poder Judiciário do Estado de Santa Catarina, por intermédio do Tribunal de Justiça, com recursos do Fundo de Reaparelhamento da Justiça, mediante  integração da lacuna regulamentar por analogia ao procedimento previsto para honorários periciais e assistenciais.\r\nDispositivos relevantes citados\r\nConstituição Federal: art. 5º, LXXIV.\r\nCódigo de Processo Civil: arts. 98, caput; 99, § 4º; 140; 149; e 169, caput e § 2º.\r\nLei de Introdução às Normas do Direito Brasileiro (LINDB): art. 4º.\r\nLei Complementar Estadual n. 188/1999: art. 2º, II, \"b\".\r\nJurisprudência relevante citada\r\nTJSC, Agravo de Instrumento n. 5032433-21.2026.8.24.0000, rel. Des. Silvio Dagoberto Orsatto, j. em 23/07/2026.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "a03a3b0919825d66ae8b3b2fa071aca956e746600a79b538582762e4735ba84c",
+            "id": "TJSC:321790018162675778197622084774",
+            "id_origem": "321790018162675778197622084774",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5066264-60.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5066264-60.2026.8.24.0000",
+            "processo_original": "5066264-60.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197622084774",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO EM AGRAVO INTERNO EM AGRAVO DE INSTRUMENTO. AÇÃO DE RECONHECIMENTO DE UNIÃO ESTÁVEL POST MORTEM C/C DIREITO REAL DE HABITAÇÃO E EFEITOS SUCESSÓRIOS. ACÓRDÃO QUE DESPROVEU AGRAVO INTERNO E MANTEVE A REVOGAÇÃO DA GRATUIDADE DA JUSTIÇA. INSURGÊNCIA DA PARTE AUTORA. ALEGADAS OMISSÕES E CONTRADIÇÕES. VÍCIOS INEXISTENTES. CRITÉRIOS PARA CONCESSÃO E REVOGAÇÃO DA GRATUIDADE DA JUSTIÇA. QUESTÃO EXPRESSAMENTE EXAMINADA. BENEFÍCIO DE NATUREZA REVISÁVEL E SUBMETIDO À CLÁUSULA REBUS SIC STANTIBUS. NOVA AFERIÇÃO JUSTIFICADA PELA EXISTÊNCIA DE ELEMENTOS CONCRETOS QUE GERARAM DÚVIDA SOBRE A HIPOSSUFICIÊNCIA ECONÔMICA. ATIVIDADE EMPRESARIAL. MOVIMENTAÇÃO BANCÁRIA RELEVANTE. AUSÊNCIA DE APRESENTAÇÃO DOS DOCUMENTOS REQUISITADOS PELO JUÍZO. AFRONTA AOS ARTS. 98, 99, 505 E 507 DO CPC NÃO CONFIGURADA. EXTRATOS BANCÁRIOS JUNTADOS NO AGRAVO INTERNO. DOCUMENTAÇÃO EXPRESSAMENTE ANALISADA E CONSIDERADA INSUFICIENTE PARA COMPROVAR A IMPOSSIBILIDADE DE PAGAMENTO DAS DESPESAS PROCESSUAIS. PEDIDO SUPERVENIENTE DE CONCESSÃO DA GRATUIDADE DA JUSTIÇA. PRETENSÃO REJEITADA NO ACÓRDÃO EMBARGADO. PEDIDO SUBSIDIÁRIO DE GRATUIDADE PARCIAL, REDUÇÃO OU PARCELAMENTO DAS CUSTAS. PRETENSÃO NÃO FORMULADA NO AGRAVO DE INSTRUMENTO. DEDUÇÃO APENAS NO AGRAVO INTERNO. INOVAÇÃO RECURSAL. AUSÊNCIA DE DEVER DE PRONUNCIAMENTO SOBRE MATÉRIA NÃO DEVOLVIDA AO TRIBUNAL. PREVENÇÃO DA 4ª CÂMARA DE DIREITO CIVIL. QUESTÃO EXPRESSAMENTE ENFRENTADA. DISTRIBUIÇÃO REALIZADA CONFORME A EMENDA REGIMENTAL N. 52/2025. PRETENSÃO DE REDISCUSSÃO DO MÉRITO. INVIABILIDADE NA VIA ACLARATÓRIA. PREQUESTIONAMENTO. DESNECESSIDADE DE REFERÊNCIA NUMÉRICA A TODOS OS DISPOSITIVOS INVOCADOS. INCIDÊNCIA DO ART. 1.025 DO CPC. PETIÇÃO SUPERVENIENTE. JULGAMENTO DA ADC 80 PELO SUPREMO TRIBUNAL FEDERAL. PRECEDENTE COM EFEITOS PROSPECTIVOS E INAPLICÁVEL AO PROCESSO. AUSÊNCIA DE REPERCUSSÃO SOBRE AS CONCLUSÕES DO ACÓRDÃO. EMBARGOS DE DECLARAÇÃO CONHECIDOS E REJEITADOS.\r\nI. CASO EM EXAME\r\nEmbargos de declaração opostos contra acórdão que desproveu agravo interno e manteve decisão monocrática que conheceu em parte do agravo de instrumento e, na extensão conhecida, negou-lhe provimento. O julgamento preservou a decisão que revogou a gratuidade da justiça e determinou o recolhimento das custas processuais. A parte embargante aponta omissões e contradições relacionadas aos critérios de aferição da hipossuficiência econômica, à possibilidade de revisão do benefício, à valoração dos extratos bancários, ao pedido superveniente de gratuidade, ao pedido subsidiário de gratuidade parcial, redução ou parcelamento das custas e à prevenção da 4ª Câmara de Direito Civil.\r\nII. QUESTÕES EM DISCUSSÃO\r\nHá seis questões em discussão: (i) definir se houve omissão quanto aos elementos que justificaram a revisão do benefício anteriormente concedido; (ii) verificar se a documentação financeira e o pedido superveniente de gratuidade foram examinados; (iii) estabelecer se havia dever de apreciação do pedido subsidiário de gratuidade parcial, redução ou parcelamento das custas; (iv) examinar se a alegação de prevenção foi enfrentada; (v) avaliar os efeitos do julgamento superveniente da ADC 80; e (vi) definir se os embargos podem ser acolhidos para fins de prequestionamento.\r\nIII. RAZÕES DE DECIDIR\r\n1. O acórdão embargado enfrentou de forma expressa e suficiente todas as questões necessárias à solução da controvérsia. A gratuidade da justiça possui natureza revisável e pode ser reavaliada quando surgirem elementos concretos que gerem dúvida sobre a permanência da situação de insuficiência econômica.\r\n2. A nova análise da capacidade financeira decorreu da atividade empresarial formalmente registrada, da movimentação bancária relevante, das informações sobre renda constantes de processo conexo e do descumprimento da determinação de apresentação de documentação complementar.\r\n3. Os extratos bancários juntados no agravo interno foram examinados e considerados insuficientes para afastar as dúvidas sobre a capacidade econômica do recorrente. A documentação revelou entradas regulares de recursos, saldos positivos e atividade empresarial em funcionamento.\r\n4. O acórdão também apreciou o pedido superveniente de concessão da gratuidade da justiça. A pretensão foi rejeitada porque os documentos apresentados não demonstraram a impossibilidade de pagamento das despesas processuais.\r\n5. O pedido subsidiário de gratuidade parcial, redução ou parcelamento das custas não integrou o agravo de instrumento. Sua formulação apenas no agravo interno configurou inovação recursal. Não há omissão quando o órgão julgador deixa de apreciar questão que não compõe o objeto devolvido ao Tribunal.\r\n6. A alegação de prevenção foi expressamente afastada. A distribuição observou a disciplina instituída pela Emenda Regimental n. 52/2025 para os novos órgãos julgadores de Direito Civil.\r\n7. Os embargos de declaração não permitem a reabertura da discussão sobre o mérito nem o reexame da prova. A discordância da parte com o resultado do julgamento não caracteriza omissão, obscuridade, contradição ou erro material.\r\n8. O julgamento superveniente da ADC 80 não altera a conclusão do acórdão. O precedente possui efeitos prospectivos e não alcança o processo. A petição posterior apenas renova questões anteriormente examinadas.\r\n9. A finalidade de prequestionamento não dispensa a demonstração de algum dos vícios previstos no art. 1.022 do Código de Processo Civil. Os elementos suscitados pela parte consideram-se incluídos no acórdão na forma do art. 1.025 do mesmo diploma.\r\nIV. DISPOSITIVO E TESE\r\nEmbargos de declaração conhecidos e rejeitados.\r\nTese de julgamento: \"Os embargos de declaração não se destinam à rediscussão do mérito, ao reexame da prova ou à renovação da fundamentação do acórdão.\"\r\nDispositivos relevantes citados\r\nArts. 98, 99, 100, 505, 507, 930, parágrafo único, 1.015, 1.021, § 4º, 1.022 e 1.025 do Código de Processo Civil.\r\nJurisprudências relevantes citadas\r\nTJSC, Apelação n. 5049857-98.2022.8.24.0038, do Tribunal de Justiça de Santa Catarina, rel. Rosane Portella Wolff, Segunda Câmara de Direito Civil, j. 13-02-2025.\r\nTJSC, ApCiv 5086190-26.2024.8.24.0023, 1ª Câmara de Direito Civil, rel. Des. Vitoraldo Bridi, julgado em 30/07/2026.\r\nTJSC, Apelação n. 0017630-77.2013.8.24.0064, do Tribunal de Justiça de Santa Catarina, rel. Flavio André Paz de Brum, Primeira Câmara de Direito Civil, j. 10-02-2022.\r\nTJSC, Embargos de Declaração n. 0003810-69.2013.8.24.0135, Quinta Câmara de Direito Comercial. Rela. Desa. Soraya Nunes Lins. Data do julgamento: 17.08.2017.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "7c1ca2f065e5c9bcf1cd105b0b7cec67154287c802cc85ef78410ed0b433b7e5",
+            "id": "TJSC:321790018162675778197623347764",
+            "id_origem": "321790018162675778197623347764",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5059625-26.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5059625-26.2026.8.24.0000",
+            "processo_original": "5059625-26.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197623347764",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6IjBlZjNhODI3ODcyYjMwODFkMTBkZTNlNmEyYjYzZmU2MTUyOGQxNzA1OWZjMGFjZjVlOGJlY2E0Njc0MjdhYTIiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "prisao",
+      "args": {
+        "termos": "alimentos prisão",
+        "tribunal": "STJ",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 11,
+        "resultados": [
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "EDcl nos EDcl no RHC",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-27",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO EM RECURSO ORDINÁRIO EM\n HABEAS CORPUS. PRISÃO CIVIL POR DÍVIDA ALIMENTAR. ART. 1.022 DO CPC.\n OMISSÃO, CONTRADIÇÃO E ERRO MATERIAL. NÃO OCORRÊNCIA. PRETENSÃO DE\n MODIFICAR O ALCANCE DO JULGADO. INADEQUAÇÃO DA VIA ELEITA. SUSPENSÃO\n DA PRISÃO CONDICIONADA À AVALIAÇÃO DA LIQUIDEZ E CERTEZA DO TÍTULO\n EXECUTIVO. MANUTENÇÃO.\n 1. Embargos de declaração opostos contra acórdão que suspendeu a\n ordem de prisão civil por inadimplemento de alimentos, condicionando\n a medida a posterior avaliação, pelo Juízo da execução, da liquidez\n e certeza do título executivo.\n 2. Não se verifica nenhum dos vícios do art. 1.022 do CPC. O acórdão\n enfrentou integralmente a controvérsia e explicitou, de modo claro\n e coerente, que a suspensão do decreto prisional decorre da\n iliquidez superveniente do débito e cabe ao Juízo da execução\n analisar.\n 3. É inviável, em embargos de declaração, substituir o critério\n decidido por marco temporal absoluto de suspensão até o julgamento\n final da ação exoneratória ou impor o prosseguimento exclusivo pelo\n rito expropriatório.\n 4. Embargos de declaração rejeitados.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "fa5c8c965d7da497cd308d7483c85ba3f316e938b18cbcbbd5197ddeaca15eca",
+            "id": "STJ:1465388",
+            "id_origem": "1465388",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "225730",
+            "numero_registro": "202504068384",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "EDcl nos EDcl no RHC 225730",
+            "publicacao_original": "DJEN       DATA:27/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "RHC",
+            "data_julgamento": "2026-08-24",
+            "data_publicacao": "2026-08-27",
+            "dataset": "espelhos-de-acordaos-quarta-turma",
+            "ementa": "PROCESSUAL CIVIL. RECURSO ORDINÁRIO EM HABEAS CORPUS. EXECUÇÃO DE\n ALIMENTOS. PRISÃO CIVIL. RECURSO ORDINÁRIO EM HABEAS CORPUS NÃO\n CONHECIDO.\n I. CASO EM EXAME\n 1. Recurso ordinário em habeas corpus interposto contra decisão do\n Tribunal de Justiça do Estado do Rio Grande do Sul que denegou a\n ordem.\n 2. A controvérsia diz respeito a execução de alimentos em que se\n decretou a prisão civil do devedor pelo prazo de trinta dias em\n razão de inadimplemento.\n 3. A Corte de origem denegou a ordem de habeas corpus.\n II. QUESTÃO EM DISCUSSÃO\n 4. A questão em discussão consiste em saber se é cabível a\n interposição de recurso ordinário em habeas corpus contra decisão\n monocrática proferida pela origem.\n III. RAZÕES DE DECIDIR\n 5. Conforme a jurisprudência do STJ, é manifestamente incabível o\n recurso ordinário, especial ou extraordinário interposto contra\n decisão proferida por Relator no Tribunal de origem, sob pena de\n indevida supressão de instância. Aplicável, na hipótese, o óbice da\n Súmula 281/STF.\n IV. DISPOSITIVO E TESE\n 6. Recurso ordinário não conhecido.\n Tese de julgamento: \"É manifestamente incabível o recurso ordinário\n constitucional em habeas corpus interposto contra decisão\n monocrática proferida no Tribunal de origem.\"\n Dispositivos relevantes citados: Não há.\n Jurisprudência relevante citada: STF, Súmula n. 281; STJ, AgInt no\n RHC n. 226.925/SP, relatora Ministra Nancy Andrighi, Terceira Turma,\n julgado em 30/3/2026, DJEN de 8/4/2026.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "ffa41a0733d567c4829d5ed124a40705e5b6f31472084805fdd49a0f51dc0062",
+            "id": "STJ:1465966",
+            "id_origem": "1465966",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "229060",
+            "numero_registro": "202504880687",
+            "orgao": "QUARTA TURMA",
+            "processo": "RHC 229060",
+            "publicacao_original": "DJEN       DATA:27/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/a88156c3-ff2d-4775-9d46-12585465f4e3/download/20260831.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AgInt no RHC",
+            "data_julgamento": "2026-08-12",
+            "data_publicacao": "2026-08-17",
+            "dataset": "espelhos-de-acordaos-quarta-turma",
+            "ementa": "AGRAVO INTERNO NO RECURSO ORDINÁRIO EM HABEAS CORPUS. DIREITO DE\n FAMÍLIA. EXECUÇÃO DE ALIMENTOS. PRISÃO CIVIL. ALIMENTANDO MAIOR DE\n IDADE. AUSÊNCIA DE PROVA PRÉ-CONSTITUÍDA DE AUTOSSUSTENTO. HABEAS\n CORPUS. VIA INADEQUADA PARA REEXAME FÁTICO-PROBATÓRIO. DÉBITO\n ALIMENTAR ATUAL. SÚMULA 309/STJ. RITO COERCITIVO. CABIMENTO. DECISÃO\n MANTIDA.\n 1. A maioridade civil do alimentando não implica automática\n exoneração da obrigação alimentar, sendo necessário prova da\n capacidade de autossustento.\n 2. O habeas corpus não constitui via adequada para reexame\n aprofundado de fatos e provas relativos à necessidade do alimentando\n ou à capacidade financeira das partes.\n 3. Subsistindo débito alimentar atual, revela-se cabível a prisão\n civil prevista no art. 528, § 3º, do Código de Processo Civil, nos\n termos da Súmula 309/STJ.\n 4. A conversão do rito coercitivo para o expropriatório depende de\n opção do credor, não cabendo sua imposição judicial.\n 5. Agravo interno a que se nega provimento.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "3a8405da694f5ce5965542840c54fee9a090037a829e5c6130c80c9b5abee126",
+            "id": "STJ:1457303",
+            "id_origem": "1457303",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "228585",
+            "numero_registro": "202504756171",
+            "orgao": "QUARTA TURMA",
+            "processo": "AgInt no RHC 228585",
+            "publicacao_original": "DJEN       DATA:17/08/2026",
+            "recurso": "20260831.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/a88156c3-ff2d-4775-9d46-12585465f4e3/download/20260831.json"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": "eyJjb25zdWx0YSI6IjRhYzkwMjg3YWE5ODUyOTk3YmJmNDAzOGU0MjIyNmE5ZGFkZWQyOTIwMGQxMzc1NmZkMzFlMjBmNzc2YzUzZTUiLCJvZmZzZXQiOjMsInJldmlzYW8iOjIxfQ==",
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "prisao",
+      "args": {
+        "termos": "alimentos prisão",
+        "tribunal": "TJSC",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 2,
+        "resultados": [
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO DE FAMÍLIA E PROCESSUAL CIVIL. AGRAVO INTERNO EM AGRAVO DE INSTRUMENTO. ART. 1021 DO CPC. CUMPRIMENTO DE SENTENÇA DE OBRIGAÇÃO DE PRESTAR ALIMENTOS. DECISÃO MONOCRÁTICA QUE MANTEVE PENHORA DE VALORES VIA SISBAJUD. RECURSO DO EXECUTADO. TESES DE VIOLAÇÃO AO MÍNIMO EXISTENCIAL, NECESSIDADE DE OBSERVÂNCIA DO LIMITE PREVISTO NO ART. 529, § 3º, DO CPC, EXCESSO DE EXECUÇÃO E DESPROPORCIONALIDADE DA CONSTRIÇÃO INTEGRAL DOS VALORES BLOQUEADOS. NÃO ACOLHIMENTO. AUSÊNCIA DE DEMONSTRAÇÃO DA ORIGEM REMUNERATÓRIA DOS VALORES PENHORADOS OU DE QUE CORRESPONDAM A RECURSOS INDISPENSÁVEIS À SUBSISTÊNCIA DO DEVEDOR. ÔNUS PROBATÓRIO DO EXECUTADO. ART. 854, § 3º, I, DO CPC. INSUFICIÊNCIA DE PROVA QUANTO À RENDA, À REGULARIDADE DOS RECEBIMENTOS, À COMPOSIÇÃO DAS DESPESAS ESSENCIAIS E AO EFETIVO COMPROMETIMENTO DO MÍNIMO EXISTENCIAL. IMPOSSIBILIDADE DE APLICAÇÃO AUTOMÁTICA DO LIMITE PREVISTO NO ART. 529, § 3º, DO CPC. CRÉDITO ALIMENTAR DESTINADO À SUBSISTÊNCIA DE ADOLESCENTE DE 16 ANOS. INCIDÊNCIA DA EXCEÇÃO PREVISTA NO ART. 833, § 2º, DO CPC. EXISTÊNCIA DE AÇÃO REVISIONAL E DE PRISÃO CIVIL EM PROCEDIMENTO DISTINTO QUE NÃO AFASTA A LEGITIMIDADE DAS MEDIDAS EXPROPRIATÓRIAS. AUSÊNCIA DE PROVA IDÔNEA A JUSTIFICAR O DESBLOQUEIO PARCIAL PRETENDIDO. PARECER DA PROCURADORIA-GERAL DE JUSTIÇA NO MESMO SENTIDO. DECISÃO A QUO MANTIDA. MULTA DO ART. 1.021, § 4º, DO CPC. NÃO INCIDÊNCIA. AGRAVO INTERNO CONHECIDO E DESPROVIDO. \r\nI. CASO EM EXAME\r\n1. Agravo interno interposto contra decisão monocrática que manteve a penhora de valores bloqueados por meio do SISBAJUD em cumprimento de sentença de obrigação alimentar. \r\n2. O agravante sustenta que não pretende a impenhorabilidade absoluta dos valores, mas apenas a preservação de parcela destinada à garantia de seu mínimo existencial, postulando o desbloqueio de 70% da quantia constrita ou a limitação da penhora a percentual compatível com sua subsistência. \r\nII. QUESTÃO EM DISCUSSÃO\r\n3. A questão em discussão consiste em definir se a constrição integral dos valores bloqueados deve ser mitigada para preservação do mínimo existencial do executado em execução de crédito alimentar. \r\nIII. RAZÕES DE DECIDIR\r\n4. O agravante não produziu prova apta a demonstrar que os valores bloqueados possuíam natureza salarial ou que correspondiam exclusivamente a recursos oriundos de trabalho informal indispensáveis à manutenção do mínimo existencial.\r\n5. Também não foram apresentados elementos concretos relativos à renda mensal, à regularidade dos recebimentos, às despesas essenciais ou à inexistência de outras fontes de recursos, circunstâncias indispensáveis para aferição do alegado comprometimento do mínimo existencial.\r\n6. A relativização da penhora de verbas de natureza alimentar exige demonstração concreta da repercussão da medida sobre a subsistência digna do devedor, não sendo suficiente a formulação de alegações genéricas desacompanhadas de prova idônea. \r\n7. A aplicação do limite previsto no art. 529, § 3º, do CPC pressupõe a identificação dos rendimentos líquidos do executado e a caracterização dos valores constritos como receitas periódicas, circunstâncias não demonstradas nos autos. \r\n8. A existência de prisão civil em procedimento diverso e o ajuizamento de ação revisional de alimentos não impedem a utilização dos meios executivos patrimoniais legalmente previstos para satisfação do crédito alimentar vencido no período de setembro/2018 a novembro/2021. \r\n9. Considerando a natureza alimentar do crédito executado e a ausência de comprovação de lesão concreta ao mínimo existencial do agravante, não há fundamento para determinar o desbloqueio parcial pretendido. \r\nIV. DISPOSITIVO E TESES\r\n10. Recurso conhecido e desprovido. \r\nTeses de julgamento: 1. Incumbe ao executado comprovar a natureza remuneratória dos valores bloqueados e a efetiva repercussão da constrição sobre sua subsistência para fins de reconhecimento de limitação da penhora para resguardar o mínimo existencial em favor do devedor. 2. A proteção ao mínimo existencial exige demonstração concreta da renda, das despesas essenciais e da destinação dos recursos atingidos pela constrição judicial. 3. O limite previsto no art. 529, § 3º, do CPC não pode ser aplicado abstratamente sem prova da natureza e da origem dos valores bloqueados e periodicidade de seus recebimentos. 4. A existência de crédito alimentar em favor de adolescente atrai a incidência da exceção prevista no art. 833, § 2º, do CPC. 5. A prisão civil e a execução patrimonial constituem mecanismos autônomos e compatíveis de tutela do crédito alimentar.\r\nDispositivos relevantes citados: CPC, arts. 833, § 2º, 854, § 3º, I, 529, § 3º, e 1.021, § 4º. \r\nJurisprudência relevante citada: STJ, EREsp n. 1.874.222/DF, Corte Especial, Rel. Min. João Otávio de Noronha, j. em 19/04/2023; STJ, REsp n. 1.087.137, rel. Min. Aldir Passarinho Junior e REsp n. 1.218.118, rel. Min. João Otávio de Noronha; TJSC, AI n. 4033942-48.2019.8.24.0000, Sexta Câmara de Direito Civil, Rel. Des. André Carvalho, j. em 05/05/2020.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "7576a4e1dc3780c272244b21f1012b18147cac4c895ba7773ba691b8363d7a96",
+            "id": "TJSC:321790018162675778197620336690",
+            "id_origem": "321790018162675778197620336690",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5070614-91.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5070614-91.2026.8.24.0000",
+            "processo_original": "5070614-91.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197620336690",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          },
+          {
+            "atribuicao": "Tribunal de Justiça de Santa Catarina — portal público de jurisprudência.",
+            "classe": "AI",
+            "data_julgamento": "2026-09-17",
+            "data_publicacao": "2026-09-19",
+            "dataset": "tjsc-10-civil",
+            "ementa": "DIREITO DE FAMÍLIA E PROCESSUAL CIVIL. AGRAVO DE INSTRUMENTO. CUMPRIMENTO DE SENTENÇA DE OBRIGAÇÃO DE PRESTAR ALIMENTOS. DECISÃO QUE AUTORIZOU A SUSPENSÃO DA CNH, DO PASSAPORTE E O BLOQUEIO DE CARTÕES DE CRÉDITO, COM FUNDAMENTO NO ART. 139, IV, DO CPC. RECURSO DO EXECUTADO. TESES DE ADIMPLEMENTO PARCIAL DO DÉBITO EM CUMPRIMENTO DE SENTENÇA PELO RITO COERCITIVO, INADEQUAÇÃO E DESPROPORCIONALIDADE DAS MEDIDAS EXECUTIVAS ATÍPICAS E AUSÊNCIA DE CORRELAÇÃO ENTRE AS RESTRIÇÕES IMPOSTAS E A SATISFAÇÃO DO CRÉDITO ALIMENTAR. ACOLHIMENTO. EXECUÇÃO VOLTADA À COBRANÇA DE PRESTAÇÕES ALIMENTARES VENCIDAS DE NOVEMBRO/2019 A FEVEREIRO/2024. AUSÊNCIA DE ESGOTAMENTO DAS MEDIDAS EXECUTIVAS TÍPICAS, AINDA COM POSSIBILIDADE DE UTILIZAÇÃO DE MECANISMOS EXPROPRIATÓRIOS ORDINÁRIOS JÁ DEFERIDOS. AUSÊNCIA DE INDÍCIOS DE OCULTAÇÃO PATRIMONIAL, FRAUDE À EXECUÇÃO OU OSTENTAÇÃO DE PADRÃO DE VIDA INCOMPATÍVEL COM A INEXISTÊNCIA DE BENS PENHORÁVEIS. EXECUTADO QUE ESTÁ ADIMPLINDO AS PRESTAÇÕES VINCENDAS E COMPROVOU PAGAMENTO EXPRESSIVO EM EXECUÇÃO PELO RITO DA PRISÃO. ADOÇÃO DE MEDIDAS EXECUTIVAS ATÍPICAS QUE EXIGE OBSERVÂNCIA CUMULATIVA DOS CRITÉRIOS FIXADOS PELO STJ NO TEMA 1.137 DO STJ, ESPECIALMENTE SUBSIDIARIEDADE, ADEQUAÇÃO, PROPORCIONALIDADE E FUNDAMENTAÇÃO CONCRETA. RESTRIÇÕES PESSOAIS QUE, NO CASO CONCRETO, NÃO SE MOSTRAM APTAS A IMPULSIONAR O ADIMPLEMENTO E PODEM, INCLUSIVE, COMPROMETER A CAPACIDADE LABORATIVA E FINANCEIRA DO DEVEDOR. DESPROPORCIONALIDADE DAS MEDIDAS. DECISÃO REFORMADA. RECURSO CONHECIDO E PROVIDO. \r\nI. CASO EM EXAME\r\n1. Agravo de instrumento interposto contra decisão proferida em cumprimento de sentença de alimentos que determinou a suspensão da Carteira Nacional de Habilitação, do passaporte e o bloqueio dos cartões de crédito do executado como medidas executivas atípicas. \r\n2. O agravante sustenta que vem realizando pagamentos relativos à obrigação alimentar, que não há ocultação patrimonial e que as medidas impostas são desproporcionais e incapazes de contribuir para a satisfação da dívida exequenda. \r\nII. QUESTÃO EM DISCUSSÃO\r\n3. A questão em discussão consiste em definir se estão presentes os pressupostos necessários para a adoção de medidas executivas atípicas consistentes na suspensão da CNH, do passaporte e no bloqueio de cartões de crédito em execução de alimentos. \r\nIII. RAZÕES DE DECIDIR\r\n4. O art. 139, IV, do CPC autoriza a adoção de medidas executivas atípicas, desde que observados os critérios de subsidiariedade, adequação, proporcionalidade, razoabilidade e fundamentação concreta.\r\n5. O STJ, ao julgar o Tema Repetitivo 1.137, estabeleceu que a utilização dessas medidas exige análise individualizada do caso concreto, não decorrendo automaticamente do simples insucesso das diligências executivas tradicionais. \r\n6. Embora tenham sido realizadas pesquisas patrimoniais sem resultado positivo, a execução ainda comporta a utilização de meios executivos típicos, inclusive com diligências patrimoniais já deferidas e medidas de constrição ainda não exauridas. \r\n7. Não há elementos concretos que evidenciem ocultação patrimonial, fraude à execução ou comportamento dolosamente voltado à frustração da satisfação do crédito alimentar. \r\n8. O executado comprovou o pagamento das prestações alimentares vincendas e o adimplemento de valor expressivo em execução processada pelo rito da prisão, circunstância incompatível com a presunção de resistência absoluta ao cumprimento da obrigação. \r\n9. A suspensão da CNH, do passaporte e o bloqueio dos cartões de crédito não apresentam, no caso concreto, correlação efetiva com a satisfação do crédito executado, podendo inclusive dificultar o exercício de atividades voltadas à obtenção de renda e, consequentemente, comprometer o próprio cumprimento da obrigação alimentar. \r\n10. Ausente demonstração de utilidade concreta das medidas restritivas e não preenchidos os requisitos cumulativos fixados pela jurisprudência do STJ, impõe-se o afastamento das medidas executivas atípicas deferidas na origem. \r\nIV. DISPOSITIVO E TESES\r\n11. Recurso conhecido e provido.\r\nTeses de julgamento: 1. A adoção de medidas executivas atípicas previstas no art. 139, IV, do CPC exige observância cumulativa dos requisitos de subsidiariedade, adequação, proporcionalidade e fundamentação concreta, conforme a tese firmada pelo STJ no Tema 1.137. 2. O mero insucesso das diligências executivas típicas não autoriza, por si só, a restrição de direitos do executado. 3. A suspensão da CNH, do passaporte e o bloqueio de cartões de crédito dependem da demonstração de utilidade concreta para a satisfação do crédito exequendo e da existência de elementos indicativos de ocultação patrimonial ou resistência injustificada ao cumprimento da obrigação. 4. Revela-se desproporcional a adoção de medidas executivas atípicas quando elas não contribuem para o adimplemento da dívida e podem comprometer a capacidade econômica do devedor. \r\nDispositivos relevantes citados: CPC, art. 139, IV.\r\nJurisprudência relevante citada: STJ, Tema Repetitivo n. 1.137; STJ, REsp n. 2.215.910/MG, Terceira Turma, Rel. Min. Moura Ribeiro, j. em 08/06/2026; STJ, REsp n. 1.788.950/MT, Terceira Turma, Rel. Min. Nancy Andrighi, j. em 23/04/2019; TJSC, AI n. 5043855-61.2024.8.24.0000, Oitava Câmara de Direito Civil, Rel. Des. Emanuel Schenkel do Amaral e Silva, j. em 31/03/2026; TJSC, AI n. 5052812-85.2023.8.24.0000, Terceira Câmara de Direito Civil, Rel. Des. André Carvalho, j. em 31/03/2026.",
+            "extrator": "tjsc-html-v1",
+            "hash_conteudo": "ef71974c8c2d735a066ff59bf0510ec7e096f30babbec47fce9c3af54b7bc5cf",
+            "id": "TJSC:321790018162675778197642776181",
+            "id_origem": "321790018162675778197642776181",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "5057064-29.2026.8.24.0000",
+            "numero_registro": "",
+            "orgao": "10ª Câmara de Direito Civil",
+            "processo": "5057064-29.2026.8.24.0000",
+            "processo_original": "5057064-29.2026.8.24.0000/TJSC AI - Agravo de Instrumento",
+            "publicacao_original": "19/09/2026",
+            "recurso": "20260919.json",
+            "tipo_conteudo": "espelho_do_portal",
+            "tribunal": "TJSC",
+            "url_documento": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/download_inteiro_teor&id_jurisprudencia=321790018162675778197642776181",
+            "url_lote": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": null,
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "compensatorios",
+      "args": {
+        "termos": "compensatórios",
+        "tribunal": "STJ",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 2,
+        "resultados": [
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AgInt no AREsp",
+            "data_julgamento": "2026-06-30",
+            "data_publicacao": "2026-07-03",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "DIREITO PROCESSUAL CIVIL. AGRAVO INTERNO NO AGRAVO EM RECURSO\n ESPECIAL. DISSOLUÇÃO DE UNIÃO ESTÁVEL. PARTILHA DE BENS. ALIMENTOS\n ENTRE EX-CÔNJUGES. INADMISSIBILIDADE DO RECURSO ESPECIAL. SÚMULA\n 284/STF. SÚMULA 7/STJ. IMPOSSIBILIDADE DE ANÁLISE DE VIOLAÇÃO\n CONSTITUCIONAL EM RECURSO ESPECIAL. AUSÊNCIA DE IMPUGNAÇÃO\n ESPECÍFICA DOS FUNDAMENTOS DA DECISÃO AGRAVADA.  SÚMULA 182/STJ.\n AGRAVO INTERNO NÃO PROVIDO.\n I. Caso em exame\n 1. Agravo interno interposto contra decisão monocrática que não\n conheceu de agravo em recurso especial manejado em demanda de\n dissolução de união estável cumulada com partilha de bens e pedido\n de alimentos. A parte recorrente sustentou violação aos arts. 369 do\n CPC, 7º, IV, da Lei 11.340/2006 e 1.639, § 2º, 1.725, 1.699, 151,\n 171, II, e 884 do Código Civil, alegando desconsideração de prova\n documental relativa à copropriedade de imóvel, nulidade de pacto de\n separação de bens firmado por instrumento particular e indeferimento\n indevido de alimentos compensatórios.\n II. Questão em discussão\n 2. Há duas questões em discussão: (i) definir se o agravo em recurso\n especial impugnou especificamente todos os fundamentos da decisão\n de inadmissibilidade do recurso especial; (ii) e estabelecer se a\n fundamentação recursal apresentada é apta a afastar a incidência da\n Súmula 182/STJ..\n III. Razões de decidir\n 3. A decisão de inadmissibilidade do recurso especial possui\n dispositivo único e indivisível, razão pela qual a parte agravante\n deve enfrentar integralmente todos os fundamentos adotados pelo\n tribunal de origem para obstar o recurso.\n 4. A parte agravante limitou-se à reprodução das razões do recurso\n especial e à formulação de alegações genéricas de inconformismo, sem\n demonstrar, de modo específico, o desacerto dos fundamentos\n relativos à incidência das Súmulas 7/STJ e 284/STF.\n 5. A deficiência de fundamentação recursal caracteriza-se pela\n indicação de dispositivos legais sem conteúdo normativo apto a\n sustentar a tese deduzida, atraindo, por analogia, a incidência da\n Súmula 284/STF.\n 6. O Superior Tribunal de Justiça não possui competência para\n examinar alegada violação a dispositivos constitucionais em sede de\n recurso especial, nos termos do art. 105, III, da Constituição\n Federal.\n 7. A tentativa de suprir, apenas em sede de agravo interno, a\n ausência de impugnação específica dos fundamentos da decisão\n agravada configura inovação recursal e encontra óbice na preclusão\n consumativa.\n 8. A aplicação da multa prevista no art. 1.021, § 4º, do CPC não\n decorre automaticamente do desprovimento do agravo interno, exigindo\n demonstração de manifesta inadmissibilidade ou intuito protelatório\n do recurso, circunstâncias não verificadas no caso concreto.\n IV. Dispositivo\n 9. Agravo interno desprovido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "e38987bcf23f2b9873c640e2bd887e90a8e3f141140d26951ffbd5fa58462b9c",
+            "id": "STJ:1449808",
+            "id_origem": "1449808",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3149416",
+            "numero_registro": "202600039483",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AgInt no AREsp 3149416",
+            "publicacao_original": "DJEN       DATA:03/07/2026",
+            "recurso": "20260731.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/bd19b69d-f6db-4c34-90e1-148ad636968c/download/20260731.json"
+          },
+          {
+            "atribuicao": "Superior Tribunal de Justiça — dados abertos; licença informada pelo catálogo.",
+            "classe": "AgInt no AREsp",
+            "data_julgamento": "2026-06-30",
+            "data_publicacao": "2026-07-03",
+            "dataset": "espelhos-de-acordaos-terceira-turma",
+            "ementa": "PROCESSUAL CIVIL. AGRAVO INTERNO NO AGRAVO EM RECURSO ESPECIAL. AÇÃO\n CAUTELAR ANTECEDENTE DE SEPARAÇÃO DE CORPOS. NEGATIVA DE PRESTAÇÃO\n JURISDICIONAL. AUSÊNCIA.  ARROLAMENTO DE BENS. ALIMENTOS\n COMPENSATÓRIOS. ÓBICES SUMULARES.\n 1. Agravo interno interposto contra decisão monocrática que conheceu\n do agravo para não conhecer do recurso especial fundado no art.\n 105, III, \"a\", da CF/1988, em controvérsia sobre majoração de\n alimentos compensatórios e deferimento de arrolamento de bens, com\n rejeição de embargos de declaração no Tribunal de origem.\n 2. O Tribunal de origem enfrentou de forma fundamentada e completa\n os pontos relevantes da controvérsia, considerando o cenário\n econômico do alimentante, inexistindo omissão ou negativa de\n prestação jurisdicional (art. 1.022 do CPC). A rejeição dos embargos\n de declaração decorreu da ausência de vícios internos do acórdão,\n não se prestando a via aclaratória para rediscussão probatória.\n 3.  A insurgência sobre a limitação do arrolamento a 50% dos bens\n carece de impugnação específica e demonstração técnica de violação\n do dever de integração do julgado, o que caracteriza deficiência de\n fundamentação e atrai a Súmula 284/STF.\n 4. A pretensão de revisar a majoração dos alimentos compensatórios e\n o deferimento da medida cautelar de arrolamento, firmados com base\n na disparidade econômica, administração exclusiva do patrimônio\n comum e risco potencial decorrente da liquidez de ativos\n financeiros, demanda reexame de documentos e circunstâncias fáticas,\n incidindo o óbice da Súmula 7/STJ.\n 5. O recurso especial se destina ao exame de questões jurídicas, não\n comportando revolvimento do acervo probatório, razão pela qual não\n se viabiliza a alteração das premissas fáticas fixadas pelo Tribunal\n de origem.\n 6. Ausência de novos subsídios no agravo interno capazes de\n modificar os fundamentos da decisão agravada, mantendo-se o\n entendimento firmado.\n Agravo interno improvido.",
+            "extrator": "stj-json-v1",
+            "hash_conteudo": "ac523af80843d492cca22fc212bf3b4f392e94605094de58e42ac2160edf3305",
+            "id": "STJ:1450050",
+            "id_origem": "1450050",
+            "inteiro_teor_disponivel": false,
+            "numero_processo": "3171318",
+            "numero_registro": "202600436941",
+            "orgao": "TERCEIRA TURMA",
+            "processo": "AgInt no AREsp 3171318",
+            "publicacao_original": "DJEN       DATA:03/07/2026",
+            "recurso": "20260731.json",
+            "tipo_conteudo": "espelho_de_acordao",
+            "tribunal": "STJ",
+            "url_documento": null,
+            "url_lote": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/bd19b69d-f6db-4c34-90e1-148ad636968c/download/20260731.json"
+          }
+        ],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": null,
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    },
+    {
+      "name": "compensatorios",
+      "args": {
+        "termos": "compensatórios",
+        "tribunal": "TJSC",
+        "limite": 3
+      },
+      "answer": {
+        "status": "ok",
+        "total_encontrado": 0,
+        "resultados": [],
+        "ementas_completas": true,
+        "campo_pesquisado": "ementa",
+        "revisao_base": 21,
+        "proximo_cursor": null,
+        "cobertura": {
+          "integral": false,
+          "grupos_carregados": [
+            {
+              "tribunal": "STJ",
+              "orgao": "QUARTA TURMA",
+              "documentos": 2367
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "SEGUNDA SEÇÃO",
+              "documentos": 196
+            },
+            {
+              "tribunal": "STJ",
+              "orgao": "TERCEIRA TURMA",
+              "documentos": 2458
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "10ª Câmara de Direito Civil",
+              "documentos": 33
+            },
+            {
+              "tribunal": "TJSC",
+              "orgao": "9ª Câmara de Direito Civil",
+              "documentos": 6
+            }
+          ],
+          "aviso": "Resultado negativo vale apenas para a base carregada. Consulte consultar_cobertura para pendências e últimas coletas."
+        }
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "STJ:1447657",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "characters": 1967,
+      "blocks": 3,
+      "sha256": "e7083f3c67c8cb0122ef1c71906f0f9815dc6dc9bcc1d4d4b556b236bcaa73b7",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447658",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "characters": 1104,
+      "blocks": 2,
+      "sha256": "93c8db9118a6097eca2a2c0b3ace4e9c43f9283371eaf1bef6a045dcc32b3edf",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447659",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "characters": 1913,
+      "blocks": 3,
+      "sha256": "003c61bba7e731293ecb5c4fb7493ad9d05cd213de94209533e94397da8ff15f",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447660",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "characters": 1519,
+      "blocks": 2,
+      "sha256": "0361bc9c5e827c99f9cc3b73f00aeac45d4ebcdaac93cdaa06cb9423e21fc1f3",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447675",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "characters": 964,
+      "blocks": 2,
+      "sha256": "d8f1336b61ae0659e3e1a3a67b847720591e17db0a869117e05de6388ad77343",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447676",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "characters": 1209,
+      "blocks": 2,
+      "sha256": "ea76e470159b47bdee914de2df1c055c3ef51c6e10dd22c571cdd0f5d9fecf6f",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447698",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 918,
+      "blocks": 2,
+      "sha256": "a3f9d1db08aa56070d92e800f65c28e60d16afc8b92b074bc80a1e5120b78091",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447699",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 578,
+      "blocks": 1,
+      "sha256": "9347077e76357a52fc0210906116d906f0cde9814af71de68c7e6279e737bdfb",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447700",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 787,
+      "blocks": 1,
+      "sha256": "7656257d6059b63ad64dad0262c93584a9cfc7bc819a8eb49e4f63b7cf351113",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447701",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 320,
+      "blocks": 1,
+      "sha256": "f701e31db8f78cd0853ceefac7b1ff5ce8399c088cd596f927925b0f701f2587",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447707",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 2340,
+      "blocks": 3,
+      "sha256": "83bd629d3a2168470ccad9321953c09d3d61202ea8fb35e7b5c6326056e0eb01",
+      "complete": true
+    },
+    {
+      "id": "STJ:1447708",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 3744,
+      "blocks": 5,
+      "sha256": "96757f0746fdf2d162dd5d5cbd06e290e4a3af9998dbaa22a4f65bb5da2c7c7d",
+      "complete": true
+    },
+    {
+      "id": "STJ:1448621",
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "characters": 1610,
+      "blocks": 3,
+      "sha256": "607d7e5ea63ce1bd0dac429e7bb32f592408f982aa38597faf80d95ed6086a9c",
+      "complete": true
+    },
+    {
+      "id": "STJ:1448624",
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "characters": 976,
+      "blocks": 2,
+      "sha256": "206337a7e8828ed1461b9c15215cd1003602d6de74d0f130b8f02b1350fd3d6c",
+      "complete": true
+    },
+    {
+      "id": "STJ:1448625",
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "characters": 433,
+      "blocks": 1,
+      "sha256": "61a7c19ab2e50ebce7d2b2a710d3136921cbe903781d9077a37fdda6f0871e05",
+      "complete": true
+    },
+    {
+      "id": "STJ:1449196",
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "characters": 1292,
+      "blocks": 2,
+      "sha256": "bffaf3d4e0ab8fc484b056ed713c093bc114d0aba251d649168683e23ee2f1ee",
+      "complete": true
+    },
+    {
+      "id": "STJ:1449292",
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "characters": 2366,
+      "blocks": 3,
+      "sha256": "0c9a8c2824a815f7c93fadc15f1cf2a839071d09dae7c746fd1cf5c6961397a4",
+      "complete": true
+    },
+    {
+      "id": "STJ:1449298",
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "characters": 712,
+      "blocks": 1,
+      "sha256": "80cbc41e0103dad0f91ce63ea5cdb1cc24fac3b84a53bb077e52ed6987216b95",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789730442981577298497169484",
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "characters": 919,
+      "blocks": 2,
+      "sha256": "c782fe9eb95e1a738dab71ed7650e6d1ce5742a683c5c58594a59d2f6c95b154",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789730442981577298497365548",
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "characters": 1492,
+      "blocks": 2,
+      "sha256": "b027ba6fbb4ec354c9fc46e119d3fbf6d980f3fe95eba1a30d202da95d729106",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789730442981577298497865297",
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "characters": 1522,
+      "blocks": 2,
+      "sha256": "a75baa1cef9ab5e5a18759f828f221b047f54889581331eeb6d434f94ad1efbe",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789730442981577298498306892",
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "characters": 1946,
+      "blocks": 3,
+      "sha256": "cf03bdf4c78e7c0e59b4937f9df9a37e8e9549ae894ec8bc533a4c8298f104eb",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789759695005651131591728942",
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "characters": 1520,
+      "blocks": 2,
+      "sha256": "4d67a26807d39ad415ca3bd2debeba683a287494cbe76e3859e617155a3d9eb8",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789759695005651131671956026",
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "characters": 1353,
+      "blocks": 2,
+      "sha256": "a545e58bb9caaf47fea05eef584e429c4a486ebda0bbd190c958195cd207c9f3",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789735143506943927362993271",
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "characters": 3600,
+      "blocks": 5,
+      "sha256": "fca0a4f14ae5db2a70d5f70aa0778133833b8190ae35a1c724c5da6462c0543b",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789735143506943927363304927",
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "characters": 7421,
+      "blocks": 10,
+      "sha256": "80fe733d392965ac5bfbc86417c15007e3f5936d034b50244e9c9193a1f7f183",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789735143506943927364522131",
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "characters": 4925,
+      "blocks": 7,
+      "sha256": "ae42b7342b1b34f7706b9b289638eb286ca08f50afe175784832e153838da4eb",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789735143506943927364629091",
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "characters": 4222,
+      "blocks": 6,
+      "sha256": "1e39db033a075dcb6d7f32d85227626d1c8853c9ab469dd365a8d0b65b9cc15d",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789735143506943927364906281",
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "characters": 7194,
+      "blocks": 9,
+      "sha256": "444e6e2b1405fe781e672655dbabd617e720809220163882dcb7871de5104f22",
+      "complete": true
+    },
+    {
+      "id": "TJSC:321789736717165946069406550869",
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "characters": 1080,
+      "blocks": 2,
+      "sha256": "0ed8dc738ce97d2613bffe066cf6aeb8cb1afd43b5476e1d9a01d6dda6cae7d0",
+      "complete": true
+    },
+    {
+      "id": "STJ:1460313",
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "characters": 9230,
+      "blocks": 12,
+      "sha256": "43b07760f7e365919676cfd27f4efa85518be5490d90c48d9f18060b20500263",
+      "complete": true
+    }
+  ],
+  "limitations": [
+    "Partial corpus",
+    "Lexical search, not semantic ranking",
+    "No legal currency or full judgment verification"
+  ],
+  "tools": [
+    "pesquisar_jurisprudencia",
+    "obter_documento",
+    "consultar_cobertura"
+  ],
+  "coverage": {
+    "status": "ok",
+    "cobertura_integral": false,
+    "grupos": [
+      {
+        "tribunal": "STJ",
+        "orgao": "QUARTA TURMA",
+        "documentos": 2367,
+        "julgamento_min": "2024-07-01",
+        "julgamento_max": "2026-08-24",
+        "publicacao_min": "2024-07-03",
+        "publicacao_max": "2026-08-28",
+        "publicacao_nao_normalizada": 0
+      },
+      {
+        "tribunal": "STJ",
+        "orgao": "SEGUNDA SEÇÃO",
+        "documentos": 196,
+        "julgamento_min": "2026-06-16",
+        "julgamento_max": "2026-08-26",
+        "publicacao_min": "2026-06-22",
+        "publicacao_max": "2026-08-31",
+        "publicacao_nao_normalizada": 0
+      },
+      {
+        "tribunal": "STJ",
+        "orgao": "TERCEIRA TURMA",
+        "documentos": 2458,
+        "julgamento_min": "2025-10-27",
+        "julgamento_max": "2026-08-24",
+        "publicacao_min": "2025-10-30",
+        "publicacao_max": "2026-08-31",
+        "publicacao_nao_normalizada": 0
+      },
+      {
+        "tribunal": "TJSC",
+        "orgao": "10ª Câmara de Direito Civil",
+        "documentos": 33,
+        "julgamento_min": "2026-09-17",
+        "julgamento_max": "2026-09-17",
+        "publicacao_min": "2026-09-18",
+        "publicacao_max": "2026-09-19",
+        "publicacao_nao_normalizada": 0
+      },
+      {
+        "tribunal": "TJSC",
+        "orgao": "9ª Câmara de Direito Civil",
+        "documentos": 6,
+        "julgamento_min": "2026-09-10",
+        "julgamento_max": "2026-09-17",
+        "publicacao_min": "2026-09-18",
+        "publicacao_max": "2026-09-18",
+        "publicacao_nao_normalizada": 0
+      }
+    ],
+    "catalogos": [
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "fetched": "2026-09-22T16:51:28.630208+00:00",
+        "atualizado_na_fonte": "2026-09-08T18:15:53.437297",
+        "licenca": "cc-by"
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "fetched": "2026-09-22T16:51:42.774169+00:00",
+        "atualizado_na_fonte": "2026-09-08T14:20:03.135894",
+        "licenca": "cc-by"
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "fetched": "2026-09-22T16:52:20.346571+00:00",
+        "atualizado_na_fonte": "2026-09-08T18:22:25.957990",
+        "licenca": "cc-by"
+      },
+      {
+        "dataset": "tjsc-9-civil",
+        "fetched": "2026-09-22T17:02:11.542144+00:00",
+        "atualizado_na_fonte": null,
+        "licenca": null
+      },
+      {
+        "dataset": "tjsc-10-civil",
+        "fetched": "2026-09-22T17:02:18.641305+00:00",
+        "atualizado_na_fonte": null,
+        "licenca": null
+      }
+    ],
+    "recursos": [
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260831.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/a88156c3-ff2d-4775-9d46-12585465f4e3/download/20260831.json",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T16:51:56.097814+00:00",
+        "count": 1303,
+        "sha256": "459578365eceb0374dad7616b8f74f646d11ba49776ef6685f0dd5d7dad4ca9e",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260731.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/bb0d8ec6-1ef7-4824-ac68-bd1af045b490/download/20260731.json",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T16:52:18.957253+00:00",
+        "count": 1064,
+        "sha256": "ee4d631c0e970563ee5a3fcd242e85f6b70148b5b925675f359044a038114d05",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260630.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/b7501efc-a9b5-4c69-a84f-c2b7c6340789/download/20260630.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260531.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/7e06b3f3-b147-4cf0-83f0-2def49fdba80/download/20260531.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260430.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/42c79bb3-6d88-4b6d-89ff-47481fa950b7/download/20260430.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260331.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/b6b5a9e4-f371-46bf-b3ce-e5e92006b08d/download/20260331.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260228.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/d2d11b33-2a65-4c8a-ab2d-8b15397e1a7b/download/20260228.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20260131.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/5e4ec160-4550-4db2-a495-b0b70ea3b5b0/download/20260131.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20251231.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/3bc31c26-3055-40cb-bd08-1f6fbb359fac/download/20251231.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20251130.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/a6bf7ad2-fef6-4ac5-93a9-397524be6c44/download/20251130.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20251031.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/717f1c66-8ec3-41d3-a493-bdba4cc90724/download/20251031.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250930.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/ea60f920-7d32-4b42-92e1-e27f40cf48d7/download/20250930.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250831.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/2acd7b96-0b47-40bd-8d60-dae2224f70d3/download/20250831.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250731.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/c3ca61a5-0d14-4026-82e0-700c6a886fbd/download/20250731.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250630.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/585dbc5b-e42a-4a1c-8800-a38590e1efbb/download/20250630.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250531.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/09b90926-d244-41ef-ac52-710c58d87874/download/20250531.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250430.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/ea50154c-82e6-4f7c-a62d-456e486e2725/download/20250430.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250331.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/8dee921f-c969-4ded-8ec7-06042f4b6058/download/20250331.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250228.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/4586adcd-002f-4d93-81c3-c263a566caff/download/20250228.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "name": "20250131.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/bab65848-f287-4146-8273-e58faee39ad2/resource/8b4109db-99cd-4475-9a44-7aa13422f2d9/download/20250131.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260831.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/7a5a4d4e-aec0-4d08-9a74-b1e9eb47e54e/download/20260831.json",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T16:52:28.839111+00:00",
+        "count": 189,
+        "sha256": "e6e1ad397baf22825c4d2333b0888f1fc01e6b9be5fc6f892b18b2dc05df5e45",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260731.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/0e2acc39-1ff7-4b3f-b4ae-950e0c4d94a3/download/20260731.json",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T16:52:31.157343+00:00",
+        "count": 7,
+        "sha256": "154eeba9770fbfd16b77df2ce588e4ac6b2d9050b64826dd4c25dd531f25a82e",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260630.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/dd129efe-7933-4f94-aa9b-2f7c3a9f23df/download/20260630.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260531.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/be6a0f97-1bc1-40b1-ab82-cd10f4ab8e35/download/20260531.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260430.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/41a3773e-9e03-4eeb-8f7b-31b2ffb2cf25/download/20260430.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260331.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/605c6084-be75-48df-aed3-1b0e501b8cb2/download/20260331.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260228.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/0c102f4b-4a59-4be2-9ca1-47f0c9d4bb06/download/20260228.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20260131.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/ad2a44c8-434a-4b64-9840-d8c628c6793f/download/20260131.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20251231.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/f328c602-093a-42b3-be3c-47e73cc1991e/download/20251231.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20251130.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/e256b34d-f139-492b-ac5b-554980a35121/download/20251130.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20251031.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/f40e2a6e-a6ee-4602-a3d2-d7c94025ed22/download/20251031.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250930.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/c4ee5904-5c39-4380-9307-5b99720b618d/download/20250930.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250831.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/10d8c496-bd66-4790-a653-7a09c1860f74/download/20250831.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250731.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/a73f04ae-f8ef-48bd-9553-5c8ceb095b45/download/20250731.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250630.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/e73edfd1-cf90-4411-a899-50e2e45792ce/download/20250630.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250531.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/28329766-8ca6-4f4a-9edc-df4738b9a965/download/20250531.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250430.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/aec86968-eaaa-43e1-8f4a-bc60ffa48308/download/20250430.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250331.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/7c6c3214-b35b-4721-b2e6-8c4a64ab66be/download/20250331.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250228.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/ea56457c-d3e7-4278-897a-fddac977f95d/download/20250228.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "name": "20250131.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/7107650a-f26c-4900-bffd-4492af6361cf/resource/79e01e4f-5a87-471a-b16f-e2279aecad7b/download/20250131.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260831.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d/download/20260831.json",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T16:51:34.521250+00:00",
+        "count": 967,
+        "sha256": "d21c7890f4f33154640e5c281979945b5b0cae08fd2ccd9d9e23e2f31bd08f7e",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260731.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/bd19b69d-f6db-4c34-90e1-148ad636968c/download/20260731.json",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T16:51:41.517661+00:00",
+        "count": 1491,
+        "sha256": "15238a9b0aaa1f7d087c0959485fa58ff88b50db30dcb13ea33301ae09504c05",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260630.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/e307c28b-8e6b-4af6-832e-6c3415092b76/download/20260630.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260531.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/a8036870-52e8-4784-9180-7155443b02a5/download/20260531.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260430.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/c67c4532-0bcc-4b7c-973e-e842d4c48fab/download/20260430.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260331.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/10aa3294-283f-49ae-90f4-b0579f34d24f/download/20260331.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260228.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/ac2684b2-db35-4a9f-87e9-8d078e60fb77/download/20260228.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20260131.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/7c9b5ac0-70a5-4625-977a-89f39c8df9c3/download/20260131.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20251231.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/9340d145-c937-4fba-8b95-edeba199d25e/download/20251231.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20251130.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/68435b3b-ab21-4501-aaa0-a543996299ad/download/20251130.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20251031.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/6cc2456a-4b0d-491f-9818-8028fdd587cf/download/20251031.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250930.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/c9e81c2e-2f5d-47e7-bb54-bcc331bad78d/download/20250930.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250831.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/be89727e-d706-4f7a-8798-d3122d72ee93/download/20250831.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250731.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/b17ef444-c409-46ef-a763-dc81fa296489/download/20250731.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250630.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/c543a9df-a868-4b7b-9303-77fc3b31b976/download/20250630.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250531.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/c1f372d2-e35f-4dc0-b8f1-30a3cd98bf9b/download/20250531.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250430.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/bf970283-b6c4-4941-870a-2947f689e0b5/download/20250430.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250331.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/36abaa93-fdb4-4f36-b918-d80617e8aa9a/download/20250331.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250228.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/78187336-1b91-417f-815b-8c7fdc223291/download/20250228.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "name": "20250131.json",
+        "url": "https://dadosabertos.web.stj.jus.br/dataset/74a99dea-a197-4d73-a169-d8c8f8f0b175/resource/67e2dc10-7f8c-44ff-b38b-2716448214e5/download/20250131.json",
+        "status": "pending",
+        "present": 1,
+        "checked": null,
+        "count": null,
+        "sha256": null,
+        "error": null,
+        "pendente": 1
+      },
+      {
+        "dataset": "tjsc-10-civil",
+        "name": "20260919.json",
+        "url": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T17:02:25.875323+00:00",
+        "count": 23,
+        "sha256": "08c15e17c2267fbad224202843ad3b7c56de0d1eb2dd85a01f68c8c11b68c05e",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "tjsc-10-civil",
+        "name": "20260918.json",
+        "url": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T17:02:18.609491+00:00",
+        "count": 10,
+        "sha256": "4af7e66fe1293d6efa6b75a5f097b7045d7a52534e5b5f36596794e179a6f80b",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "tjsc-9-civil",
+        "name": "20260919.json",
+        "url": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T17:02:14.401012+00:00",
+        "count": 0,
+        "sha256": "3470eac3913c79b09f9b6f9e058c21dffdf43c51fedbce0272cc772106b86d1c",
+        "error": null,
+        "pendente": 0
+      },
+      {
+        "dataset": "tjsc-9-civil",
+        "name": "20260918.json",
+        "url": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados",
+        "status": "ok",
+        "present": 1,
+        "checked": "2026-09-22T17:02:11.518993+00:00",
+        "count": 6,
+        "sha256": "7aa1fde5b3cc38c3fee884d2f095cf9c6dfc21bdf6fccee3042c5174ba253650",
+        "error": null,
+        "pendente": 0
+      }
+    ],
+    "execucoes_recentes": [
+      {
+        "id": "7072a604-96f0-4822-b6d8-376b2fe73571",
+        "source": "LOCAL-reprocess",
+        "started": "2026-09-22T17:05:10.753988+00:00",
+        "finished": "2026-09-22T17:05:12.192857+00:00",
+        "status": "ok",
+        "detail": {
+          "eventos": [
+            {
+              "alterados": 0,
+              "inalterados": 1491,
+              "novos": 0,
+              "recurso": "espelhos-de-acordaos-terceira-turma:bd19b69d-f6db-4c34-90e1-148ad636968c",
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "inalterados": 967,
+              "novos": 0,
+              "recurso": "espelhos-de-acordaos-terceira-turma:fef2eb32-c4b6-4c6c-951d-cdc4ed84e01d",
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "inalterados": 1064,
+              "novos": 0,
+              "recurso": "espelhos-de-acordaos-quarta-turma:bb0d8ec6-1ef7-4824-ac68-bd1af045b490",
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "inalterados": 1303,
+              "novos": 0,
+              "recurso": "espelhos-de-acordaos-quarta-turma:a88156c3-ff2d-4775-9d46-12585465f4e3",
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "inalterados": 7,
+              "novos": 0,
+              "recurso": "espelhos-de-acordaos-segunda-secao:0e2acc39-1ff7-4b3f-b4ae-950e0c4d94a3",
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "inalterados": 189,
+              "novos": 0,
+              "recurso": "espelhos-de-acordaos-segunda-secao:7a5a4d4e-aec0-4d08-9a74-b1e9eb47e54e",
+              "removidos": 0
+            }
+          ],
+          "modo": "originais_locais; sem nova consulta a fonte"
+        }
+      },
+      {
+        "id": "1e883ddd-de4e-4f47-9e71-614a4070473a",
+        "source": "TJSC",
+        "started": "2026-09-22T17:02:08.397347+00:00",
+        "finished": "2026-09-22T17:02:25.912734+00:00",
+        "status": "ok",
+        "detail": {
+          "eventos": [
+            {
+              "alterados": 0,
+              "camara": 9,
+              "dia_publicacao": "2026-09-18",
+              "inalterados": 6,
+              "novos": 0,
+              "registros": 6,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "camara": 9,
+              "dia_publicacao": "2026-09-19",
+              "inalterados": 0,
+              "novos": 0,
+              "registros": 0,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "camara": 10,
+              "dia_publicacao": "2026-09-18",
+              "inalterados": 10,
+              "novos": 0,
+              "registros": 10,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "camara": 10,
+              "dia_publicacao": "2026-09-19",
+              "inalterados": 23,
+              "novos": 0,
+              "registros": 23,
+              "removidos": 0
+            }
+          ],
+          "execucao": "1e883ddd-de4e-4f47-9e71-614a4070473a",
+          "experimental": true,
+          "falhas": [],
+          "fonte": "TJSC",
+          "status": "ok"
+        }
+      },
+      {
+        "id": "d2dcb414-1ed5-42be-ac42-a011376855fe",
+        "source": "TJSC",
+        "started": "2026-09-22T16:58:40.521649+00:00",
+        "finished": "2026-09-22T16:58:58.048154+00:00",
+        "status": "ok",
+        "detail": {
+          "eventos": [
+            {
+              "alterados": 0,
+              "camara": 9,
+              "dia_publicacao": "2026-09-18",
+              "inalterados": 6,
+              "novos": 0,
+              "registros": 6,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "camara": 9,
+              "dia_publicacao": "2026-09-19",
+              "inalterados": 0,
+              "novos": 0,
+              "registros": 0,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "camara": 10,
+              "dia_publicacao": "2026-09-18",
+              "inalterados": 0,
+              "novos": 10,
+              "registros": 10,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "camara": 10,
+              "dia_publicacao": "2026-09-19",
+              "inalterados": 0,
+              "novos": 23,
+              "registros": 23,
+              "removidos": 0
+            }
+          ],
+          "execucao": "d2dcb414-1ed5-42be-ac42-a011376855fe",
+          "experimental": true,
+          "falhas": [],
+          "fonte": "TJSC",
+          "status": "ok"
+        }
+      },
+      {
+        "id": "09532696-3f85-4f65-8eb3-938e99a0a3c2",
+        "source": "TJSC",
+        "started": "2026-09-22T16:57:10.429521+00:00",
+        "finished": "2026-09-22T16:57:15.133814+00:00",
+        "status": "error",
+        "detail": {
+          "eventos": [
+            {
+              "alterados": 0,
+              "camara": 9,
+              "dia_publicacao": "2026-09-18",
+              "inalterados": 0,
+              "novos": 6,
+              "registros": 6,
+              "removidos": 0
+            }
+          ],
+          "execucao": "09532696-3f85-4f65-8eb3-938e99a0a3c2",
+          "experimental": true,
+          "falhas": [
+            {
+              "camara": 9,
+              "codigo": "formato_invalido",
+              "dia": "2026-09-19",
+              "erro": "Portal TJSC sem contagem de resultados reconhecível."
+            }
+          ],
+          "fonte": "TJSC",
+          "status": "error"
+        }
+      },
+      {
+        "id": "f6350027-1c70-43e5-91f0-d3ab0012f753",
+        "source": "STJ",
+        "started": "2026-09-22T16:51:16.756763+00:00",
+        "finished": "2026-09-22T16:52:31.190984+00:00",
+        "status": "partial",
+        "detail": {
+          "datasets": [
+            {
+              "dataset": "espelhos-de-acordaos-terceira-turma",
+              "recursos_catalogados": 20,
+              "recursos_pendentes": 18
+            },
+            {
+              "dataset": "espelhos-de-acordaos-quarta-turma",
+              "recursos_catalogados": 20,
+              "recursos_pendentes": 18
+            },
+            {
+              "dataset": "espelhos-de-acordaos-segunda-secao",
+              "recursos_catalogados": 20,
+              "recursos_pendentes": 18
+            }
+          ],
+          "eventos": [
+            {
+              "alterados": 0,
+              "dataset": "espelhos-de-acordaos-terceira-turma",
+              "inalterados": 0,
+              "novos": 967,
+              "recurso": "20260831.json",
+              "registros": 967,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "dataset": "espelhos-de-acordaos-terceira-turma",
+              "inalterados": 0,
+              "novos": 1491,
+              "recurso": "20260731.json",
+              "registros": 1491,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "dataset": "espelhos-de-acordaos-quarta-turma",
+              "inalterados": 0,
+              "novos": 1303,
+              "recurso": "20260831.json",
+              "registros": 1303,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "dataset": "espelhos-de-acordaos-quarta-turma",
+              "inalterados": 0,
+              "novos": 1064,
+              "recurso": "20260731.json",
+              "registros": 1064,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "dataset": "espelhos-de-acordaos-segunda-secao",
+              "inalterados": 0,
+              "novos": 189,
+              "recurso": "20260831.json",
+              "registros": 189,
+              "removidos": 0
+            },
+            {
+              "alterados": 0,
+              "dataset": "espelhos-de-acordaos-segunda-secao",
+              "inalterados": 0,
+              "novos": 7,
+              "recurso": "20260731.json",
+              "registros": 7,
+              "removidos": 0
+            }
+          ],
+          "execucao": "f6350027-1c70-43e5-91f0-d3ab0012f753",
+          "falhas": [],
+          "fonte": "STJ",
+          "selecao": {
+            "limite_por_dataset": 2,
+            "recursos_desde": "20250101"
+          },
+          "status": "partial"
+        }
+      }
+    ],
+    "inteiros_teores": 0,
+    "tjsc": "Coleta experimental por dia de publicação; somente janelas registradas estão carregadas.",
+    "limites": [
+      "Carga de recursos JSON selecionados; histórico ZIP não incorporado.",
+      "Datas extremas observadas não comprovam cobertura contínua do período.",
+      "Ementas e espelhos não equivalem ao inteiro teor.",
+      "Versão corrente prioriza o recurso com data de extração mais recente; isso não é certificação de revisão jurídica pela fonte."
+    ]
+  },
+  "checks": {
+    "organ_filters": [
+      {
+        "filter": "TERCEIRA TURMA",
+        "count": 2458
+      },
+      {
+        "filter": "QUARTA TURMA",
+        "count": 2367
+      },
+      {
+        "filter": "SEGUNDA SEÇÃO",
+        "count": 196
+      },
+      {
+        "filter": "9ª Câmara de Direito Civil",
+        "count": 6
+      },
+      {
+        "filter": "10ª Câmara de Direito Civil",
+        "count": 33
+      }
+    ],
+    "pagination_no_duplicates": true,
+    "exact_process": true,
+    "date_filter": true,
+    "empty_with_partial_coverage": true,
+    "missing_document": true
+  },
+  "status": "pass"
+}

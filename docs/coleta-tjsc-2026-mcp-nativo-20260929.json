@@ -1,0 +1,29 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "camara": 9,
+      "status": "ok",
+      "total": 454,
+      "revisao": 589,
+      "id": "TJSC:321790631579322310731413794827",
+      "publicacao": "2026-09-28",
+      "ementa_igual_busca": true,
+      "caracteres": 6469,
+      "blocos": 1,
+      "sha256_ementa": "b408a933ec39b1353dd155b2a9d9e7b933557143c93bb9235cc1c57692b3dde7"
+    },
+    {
+      "camara": 10,
+      "status": "ok",
+      "total": 2002,
+      "revisao": 589,
+      "id": "TJSC:321790426352499139870548569765",
+      "publicacao": "2026-09-26",
+      "ementa_igual_busca": true,
+      "caracteres": 5883,
+      "blocos": 1,
+      "sha256_ementa": "2fc7721e1dfc25f5a3ff4dc2b0617662e3ee59a7514e501c42b0779ba37b32f4"
+    }
+  ]
+}
