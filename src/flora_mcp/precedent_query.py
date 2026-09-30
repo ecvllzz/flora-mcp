@@ -23,8 +23,10 @@ from .query import (
     quoted,
     resolve_order,
 )
+from .text import window
 
 MARK = chr(1)  # highlight() opening mark
+WINDOW, LEAD = 240, 60
 
 
 def metadata(body, sha):
@@ -179,8 +181,8 @@ class PrecedentSearch:
         matches = [c for i, c in enumerate(COMPONENTS) if self.query and MARK in row[f"h{i}"]]
         component = matches[0] if matches else next(iter(body["componentes"]))
         full = body["componentes"][component]
-        start = max(0, row[f"h{COMPONENTS.index(component)}"].find(MARK) - 80) if matches else 0
-        snippet = full[start : start + 400]
+        position = row[f"h{COMPONENTS.index(component)}"].find(MARK) if matches else 0
+        start, snippet = window(full, position, WINDOW, LEAD)
         item.update(
             componente=component,
             campos_correspondentes=matches,

@@ -221,6 +221,17 @@ def test_search_components_and_cursor_filters(store, tmp_path):
     assert result["resultados"][0]["trecho"] == "Tese sintética"
 
 
+def test_precedent_triage_window_is_240_characters_at_word_boundaries(store, tmp_path):
+    migrate(store)
+    text = "Palavra comum da tese. " * 20 + "ALVO no meio. " + "Fim da tese. " * 40
+    import_package(store, packet(tmp_path, species="tema_repetitivo", text=text), apply=True)
+    item = api.search_precedents(store, "alvo")["resultados"][0]
+    start = item["offset"]
+    assert text.index("ALVO") - 60 <= start <= text.index("ALVO") and text[start - 1] == " "
+    assert text[start : start + len(item["trecho"])] == item["trecho"] and len(item["trecho"]) <= 240
+    assert text[start + len(item["trecho"])] == " " and item["trecho_parcial"] is True
+
+
 def test_incomplete_observation_preserves_last_state_and_readmission_does_not_revive_retired_version(
     store, tmp_path
 ):

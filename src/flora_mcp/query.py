@@ -362,7 +362,8 @@ class JudgmentSearch:
         cabecalho, parcial = header(full)
         result.update(sha256_componente=digest(full.encode()), cabecalho=cabecalho, cabecalho_parcial=parcial)
         if self.query:
-            result["trecho_correspondente"] = matched_window(full, marked)
+            start = len(full) - len(full.lstrip())  # The cabecalho is literal, after leading blanks.
+            result["trecho_correspondente"] = matched_window(full, marked, (start, start + len(cabecalho)))
         return result
 
     def reason(self, db, tribunal, orgao, dates):
