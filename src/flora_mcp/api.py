@@ -6,6 +6,7 @@ from .model import FloraError
 from .model import canonical
 from .precedents import available, parse_id
 from .publication import Reader
+from .store import collection_delay
 
 
 def _view(store, cursor=None, publicacao_id=None):
@@ -238,5 +239,6 @@ def coverage(
                 )
                 if following < total
                 else None,
+                "coleta": collection_delay(db, view.atrasos),
             }
     return _finish(view, result)

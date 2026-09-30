@@ -249,6 +249,7 @@ class Reader:
                 withdrawn=frozenset(withdrawn),
                 retired_versions=frozenset(retired),
                 admission_counts=admission_counts,
+                atrasos=self.store.atrasos,
             )
         except (OSError, KeyError, ValueError, TypeError, sqlite3.Error) as exc:
             raise FloraError(

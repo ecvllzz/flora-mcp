@@ -62,7 +62,7 @@ def main():
     args = parser.parse_args()
     try:
         config = load_config(args.config, args.data_dir)
-        store = Store(config.data_dir)
+        store = Store(config.data_dir, atrasos=config.atrasos)
         if not store.path.is_file():
             raise ValueError("Acervo inexistente: inicialize/importe pelo coletor administrativo.")
         app = create_http_app(

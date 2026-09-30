@@ -4,9 +4,11 @@ import json
 import sqlite3
 from contextlib import closing, contextmanager
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
 
+from .config import ATRASO_PADRAO
 from .model import FloraError, canonical, digest, folded, now, number
 
 SCHEMA = """
@@ -99,6 +101,7 @@ class ReadView:
     withdrawn: frozenset[str] = field(default_factory=frozenset)
     retired_versions: frozenset[str] = field(default_factory=frozenset)
     admission_counts: dict | None = None
+    atrasos: dict | None = None  # limiares de atraso da configuração do processo; None usa os padrões
 
     def read(self):
         return connection(self.path, immutable=self.immutable)
@@ -108,16 +111,17 @@ class ReadView:
 
 
 class Store:
-    def __init__(self, directory: Path):
+    def __init__(self, directory: Path, *, atrasos: dict | None = None):
         self.directory = directory
         self.path = directory / "acervo.sqlite"
+        self.atrasos = atrasos
         self.reader = None  # publication.Reader, created by api on first read
 
     def read(self):
         return connection(self.path)
 
     def view(self) -> "ReadView":
-        return ReadView(self.path)
+        return ReadView(self.path, atrasos=self.atrasos)
 
     def initialize(self):
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -126,6 +130,9 @@ class Store:
             db.executescript(SCHEMA)
             if db.execute("SELECT value FROM meta WHERE key='schema'").fetchone()[0] not in {1, 2}:
                 raise FloraError("schema_incompativel", "Versão de banco não suportada.")
+            # Additive column, same schema number: records left out of an ingested batch.
+            if "rejeitados" not in table_columns(db, "resources"):
+                db.execute("ALTER TABLE resources ADD COLUMN rejeitados TEXT")
             ensure_search_map(db)
             db.commit()
 
@@ -201,6 +208,7 @@ class Store:
         run_id: str,
         *,
         observed_at: str | None = None,
+        rejected: list[dict] | None = None,
     ) -> dict:
         observed_at = observed_at or now()
         sha, raw_path = self.save_raw(content)
@@ -285,8 +293,16 @@ class Store:
                 replace_search_row(db, doc_id, body["ementa"])
             db.execute(
                 """UPDATE resources SET status='ok',checked=?,sha256=?,raw_path=?,count=?,
-                applied_fingerprint=expected_fingerprint,error=NULL,run_id=? WHERE id=?""",
-                (observed_at, sha, raw_path, len(rows), run_id, resource["id"]),
+                applied_fingerprint=expected_fingerprint,error=NULL,run_id=?,rejeitados=? WHERE id=?""",
+                (
+                    observed_at,
+                    sha,
+                    raw_path,
+                    len(rows),
+                    run_id,
+                    canonical(rejected) if rejected else None,
+                    resource["id"],
+                ),
             )
             db.execute("UPDATE meta SET value=value+1 WHERE key='revision'")
         return counts
@@ -321,6 +337,33 @@ class Store:
         return {"status": "ok", "destino": str(target), "originais_atuais_verificados": len(paths)}
 
 
+def table_columns(db, table: str) -> set[str]:
+    return {r[1] for r in db.execute(f"PRAGMA table_info({table})")}
+
+
+def collection_delay(db, thresholds: dict | None = None, today=None) -> dict:
+    """Per source: end of the latest ok or partial run, whole days since then (UTC) and delay flag."""
+    thresholds = {**ATRASO_PADRAO, **(thresholds or {})}
+    today = today or datetime.now(timezone.utc).date()
+    result = {}
+    for source, limit in thresholds.items():
+        finished = db.execute(
+            "SELECT max(finished) FROM runs WHERE source=? AND status IN ('ok','partial')", (source,)
+        ).fetchone()[0]
+        days = (
+            (today - datetime.fromisoformat(finished).astimezone(timezone.utc).date()).days
+            if finished
+            else None
+        )
+        result[source] = {
+            "ultima_coleta_ok": finished,
+            "dias_desde_ultima_coleta": days,
+            "limiar_dias": limit,
+            "atraso": days is None or days > limit,
+        }
+    return result
+
+
 def coverage_report(reader) -> dict:
     with reader.read() as db:
         groups = [
@@ -331,12 +374,18 @@ def coverage_report(reader) -> dict:
             sum(publication IS NULL) AS publicacao_nao_normalizada
             FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ""")
         ]
+        # Snapshots published before the column existed have no rejected records to show.
+        rejected = ",rejeitados" if "rejeitados" in table_columns(db, "resources") else ""
         resources = [
             dict(r)
-            for r in db.execute("""SELECT dataset,name,url,status,present,checked,
-            count,sha256,error,(applied_fingerprint IS NOT expected_fingerprint) AS pendente
+            for r in db.execute(f"""SELECT dataset,name,url,status,present,checked,
+            count,sha256,error,(applied_fingerprint IS NOT expected_fingerprint) AS pendente{rejected}
             FROM resources ORDER BY dataset,name DESC""")
         ]
+        for resource in resources:
+            value = resource.pop("rejeitados", None)
+            if value:
+                resource["rejeitados"] = json.loads(value)
         runs = [dict(r) for r in db.execute("SELECT * FROM runs ORDER BY started DESC LIMIT 10")]
         for r in runs:
             r["detail"] = json.loads(r["detail"])
@@ -346,6 +395,7 @@ def coverage_report(reader) -> dict:
             json_extract(body,'$.metadata_modified') AS atualizado_na_fonte,
             json_extract(body,'$.license_id') AS licenca FROM catalogs""")
         ]
+        delay = collection_delay(db, reader.atrasos)
     return {
         "status": "ok",
         "cobertura_integral": False,
@@ -353,6 +403,7 @@ def coverage_report(reader) -> dict:
         "catalogos": catalogs,
         "recursos": resources,
         "execucoes_recentes": runs,
+        "coleta": delay,
         "inteiros_teores": 0,
         "tjsc": ("Coleta experimental por dia de publicação; somente janelas registradas estão carregadas."),
         "limites": [

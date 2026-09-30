@@ -58,6 +58,9 @@ def summary(legacy):
             group["ultimo_lote_pendente"] = max(group["ultimo_lote_pendente"] or name, name)
         if resource.get("error"):
             group["erros"][resource["error"]] += 1
+        if resource.get("rejeitados"):
+            # Records left out of ingested batches; the list is in detalhe=recursos.
+            group["rejeitados"] = group.get("rejeitados", 0) + len(resource["rejeitados"])
     result["recursos"] = [{k: v for k, v in group.items() if k != "erros" or v} for group in groups.values()]
     result["execucoes_recentes"] = []
     for run in legacy["execucoes_recentes"]:
@@ -66,7 +69,7 @@ def summary(legacy):
         # Keep explicit reasons/failures and recorded before/after totals verbatim.
         compact["detail"] = {
             k: detail[k]
-            for k in ("motivo", "falhas", "erro", "error", "antes", "depois", "modo")
+            for k in ("motivo", "falhas", "rejeitados", "erro", "error", "antes", "depois", "modo")
             if k in detail and (k != "falhas" or detail[k])
         }
         result["execucoes_recentes"].append(compact)

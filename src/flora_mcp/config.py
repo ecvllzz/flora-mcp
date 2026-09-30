@@ -4,6 +4,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 LOCAL_CONFIG = Path(__file__).resolve().parents[2] / "flora.local.toml"
+# Dias sem coleta bem-sucedida a partir dos quais a fonte aparece em atraso na cobertura.
+ATRASO_PADRAO = {"STJ": 45, "TJSC": 7}
 
 
 @dataclass
@@ -14,6 +16,8 @@ class Config:
     recheck_days: int = 7
     max_download_bytes: int = 64 * 1024 * 1024
     request_delay: float = 1.0
+    atraso_stj_dias: int = ATRASO_PADRAO["STJ"]  # o lote do STJ é mensal
+    atraso_tjsc_dias: int = ATRASO_PADRAO["TJSC"]
     datasets: list[str] = field(
         default_factory=lambda: [
             "espelhos-de-acordaos-terceira-turma",
@@ -21,6 +25,10 @@ class Config:
             "espelhos-de-acordaos-segunda-secao",
         ]
     )
+
+    @property
+    def atrasos(self) -> dict:
+        return {"STJ": self.atraso_stj_dias, "TJSC": self.atraso_tjsc_dias}
 
     @property
     def db_path(self) -> Path:
@@ -47,7 +55,13 @@ def load_config(path: str | None = None, data_dir: str | None = None) -> Config:
     from datetime import datetime
 
     datetime.strptime(config.resource_from, "%Y%m%d")
-    if config.max_resources < 1 or config.recheck_days < 1 or config.max_download_bytes < 1024:
+    if (
+        config.max_resources < 1
+        or config.recheck_days < 1
+        or config.max_download_bytes < 1024
+        or config.atraso_stj_dias < 1
+        or config.atraso_tjsc_dias < 1
+    ):
         raise ValueError("Limites de coleta devem ser positivos.")
     if config.request_delay < 0:
         raise ValueError("Intervalo entre requisições inválido.")

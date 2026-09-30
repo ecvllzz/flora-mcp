@@ -15,7 +15,7 @@ from .model import FloraError
 from .api import search
 from .publication import Reader
 from .precedents import available
-from .store import Store
+from .store import Store, collection_delay
 
 ASSETS = Path(__file__).with_name("panel_assets")
 APP_ID = "flora-jurisprudencia"
@@ -131,6 +131,7 @@ def catalog_payload(reader: Reader) -> dict:
         ]
         collected = db.execute("SELECT max(checked) FROM resources WHERE status='ok'").fetchone()[0]
         qualified = qualified_groups(db, view)
+        delay = collection_delay(db, view.atrasos)
     return {
         "grupos": groups,
         "classes": classes,
@@ -138,6 +139,7 @@ def catalog_payload(reader: Reader) -> dict:
         "precedentes": qualified,
         "publicacao_id": view.publication,
         "ultima_coleta": collected,
+        "coleta": delay,
         "cobertura_integral": False,
     }
 
@@ -213,7 +215,8 @@ def main():
     args = parser.parse_args()
     if not 1024 <= args.port <= 65535:
         parser.error("Porta deve estar entre 1024 e 65535.")
-    store = Store(load_config(data_dir=args.data_dir).data_dir)
+    config = load_config(data_dir=args.data_dir)
+    store = Store(config.data_dir, atrasos=config.atrasos)
     if not store.path.is_file():
         parser.error("Acervo inexistente. Confira o diretório configurado.")
     import uvicorn

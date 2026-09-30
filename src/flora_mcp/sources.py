@@ -69,6 +69,22 @@ def parse_json(content: bytes):
         ) from exc
 
 
+def normalize_batch(records) -> tuple[list[tuple[dict, dict]], list[dict]]:
+    """Valid mirrors of one STJ batch and the rejected ones, identified by position (from 0) and id."""
+    if not isinstance(records, list) or not records:
+        raise FloraError("formato_invalido", "Recurso STJ vazio ou sem lista de espelhos.")
+    rows, rejected = [], []
+    for position, raw in enumerate(records):
+        try:
+            rows.append((normalize_stj(raw), raw))
+        except FloraError as exc:
+            identity = raw.get("id") if isinstance(raw, dict) else None
+            rejected.append({"posicao": position, "id": identity or None, "motivo": str(exc)})
+    if not rows:
+        raise FloraError("formato_invalido", "Nenhum espelho válido no lote. " + rejected[0]["motivo"])
+    return rows, rejected
+
+
 def sync_stj(config: Config, store: Store, http: httpx.Client, *, force: bool = False) -> dict:
     run = store.start_run("STJ")
     report = {
@@ -116,21 +132,13 @@ def sync_stj(config: Config, store: Store, http: httpx.Client, *, force: bool = 
                     try:
                         time.sleep(config.request_delay)
                         content = download(http, resource["url"], config.max_download_bytes)
-                        records = parse_json(content)
-                        if not isinstance(records, list) or not records:
-                            raise FloraError(
-                                "formato_invalido", "Recurso STJ vazio ou sem lista de espelhos."
-                            )
-                        rows = [(normalize_stj(raw), raw) for raw in records]
-                        counts = store.ingest(resource, content, rows, run)
-                        report["eventos"].append(
-                            {
-                                "dataset": dataset,
-                                "recurso": resource["name"],
-                                "registros": len(rows),
-                                **counts,
-                            }
-                        )
+                        rows, rejected = normalize_batch(parse_json(content))
+                        counts = store.ingest(resource, content, rows, run, rejected=rejected)
+                        event = {"dataset": dataset, "recurso": resource["name"], "registros": len(rows)}
+                        report["eventos"].append({**event, **counts})
+                        if rejected:
+                            report["eventos"][-1]["rejeitados"] = rejected
+                            report.setdefault("rejeitados", []).append({**event, "registros": len(rejected)})
                     except (FloraError, httpx.HTTPError, KeyError, ValueError) as exc:
                         store.failure(resource["id"], run, str(exc))
                         report["falhas"].append(
