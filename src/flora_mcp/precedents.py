@@ -299,13 +299,101 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     return body, blobs
 
 
-def import_package(store: Store, package_path: Path, *, apply: bool = False) -> dict:  # noqa: C901
+def read_package(package_path: Path) -> list:
     package = json.loads(package_path.read_text(encoding="utf-8-sig"))
     if not isinstance(package, dict) or package.get("schema") != "flora-precedentes-1":
         raise FloraError("pacote_invalido", "Esperado pacote flora-precedentes-1.")
     records = package.get("registros")
     if not isinstance(records, list) or not records:
         raise FloraError("pacote_invalido", "Pacote deve conter registros.")
+    return records
+
+
+def keeps_previous_state(old, body: dict) -> bool:
+    """An incomplete observation of an admitted precedent is not evidence of withdrawal."""
+    return bool(
+        old
+        and old["admission"] == "admitido"
+        and body["admissao"] != "admitido"
+        and body["situacao"] in {"vigente", "desconhecido"}
+        and not body.get("pendencias")
+    )
+
+
+def retires_previous(old, body: dict) -> bool:
+    return bool(
+        old
+        and old["admission"] == "admitido"
+        and (body["admissao"] != "admitido" or json.loads(old["body"])["componentes"] != body["componentes"])
+    )
+
+
+def store_current(db, body: dict, sha: str, raw: str):
+    db.execute(
+        "INSERT INTO precedents VALUES (?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET "
+        "hash=excluded.hash,publication=excluded.publication,admission=excluded.admission,"
+        "reasons=excluded.reasons,body=excluded.body,organ=excluded.organ",
+        (
+            body["id"],
+            sha,
+            body["tribunal"],
+            body["especie"],
+            body["numero"],
+            folded(body["orgao"]),
+            body.get("data_publicacao"),
+            body["admissao"],
+            canonical(body["motivos_admissao"]),
+            raw,
+        ),
+    )
+    db.execute("DELETE FROM precedent_texts WHERE id=?", (body["id"],))
+    if body["admissao"] == "admitido":
+        db.execute(
+            "INSERT INTO precedent_texts(id,enunciado,questao_submetida,tese_firmada,modulacao,"
+            "suspensao) "
+            "VALUES (?,?,?,?,?,?)",
+            (body["id"], *(body["componentes"].get(x, "") for x in COMPONENTS)),
+        )
+
+
+def apply_record(store: Store, db, body: dict, blobs: dict[str, bytes], entry: dict) -> bool:
+    """Record one prepared precedent inside the open transaction; False when nothing changed."""
+    for source in body["fontes"]:
+        _, path = store.save_raw(blobs[source["sha256"]])
+        source["raw_path"] = path
+        source.pop("arquivo", None)
+    raw = canonical(body)
+    sha = digest(raw.encode())
+    old = db.execute("SELECT hash,admission,body FROM precedents WHERE id=?", (body["id"],)).fetchone()
+    if old and old[0] == sha:
+        return False
+    if (
+        body["admissao"] == "admitido"
+        and db.execute(
+            "SELECT 1 FROM precedent_retirements WHERE id=? AND hash=?", (body["id"], sha)
+        ).fetchone()
+    ):
+        raise FloraError("versao_retirada", "Readmissão exige nova evidência; este conteúdo foi retirado.")
+    db.execute("INSERT OR IGNORE INTO precedent_versions VALUES (?,?,?,?)", (body["id"], sha, raw, now()))
+    db.execute(
+        "INSERT INTO precedent_events(id,hash,observed,admission,reasons) VALUES (?,?,?,?,?)",
+        (body["id"], sha, now(), body["admissao"], canonical(body["motivos_admissao"])),
+    )
+    if keeps_previous_state(old, body):
+        # Retain the incomplete observation only in audit.
+        entry["estado_anterior_conservado"] = True
+        return True
+    if retires_previous(old, body):
+        db.execute(
+            "INSERT OR IGNORE INTO precedent_retirements VALUES (?,?,?)",
+            (body["id"], old["hash"], now()),
+        )
+    store_current(db, body, sha, raw)
+    return True
+
+
+def import_package(store: Store, package_path: Path, *, apply: bool = False) -> dict:
+    records = read_package(package_path)
     source_cache = {}
     prepared = [prepare(record, package_path.parent, source_cache) for record in records]
     if len({body["id"] for body, _ in prepared}) != len(prepared):
@@ -325,84 +413,8 @@ def import_package(store: Store, package_path: Path, *, apply: bool = False) -> 
             raise FloraError("migracao_pendente", "Execute a migração administrativa antes de importar.")
         db.execute("BEGIN IMMEDIATE")
         changed = False
-        for body, blobs in prepared:
-            for source in body["fontes"]:
-                _, path = store.save_raw(blobs[source["sha256"]])
-                source["raw_path"] = path
-                source.pop("arquivo", None)
-            raw = canonical(body)
-            sha = digest(raw.encode())
-            old = db.execute(
-                "SELECT hash,admission,body FROM precedents WHERE id=?", (body["id"],)
-            ).fetchone()
-            if old and old[0] == sha:
-                continue
-            if (
-                body["admissao"] == "admitido"
-                and db.execute(
-                    "SELECT 1 FROM precedent_retirements WHERE id=? AND hash=?", (body["id"], sha)
-                ).fetchone()
-            ):
-                raise FloraError(
-                    "versao_retirada", "Readmissão exige nova evidência; este conteúdo foi retirado."
-                )
-            changed = True
-            db.execute(
-                "INSERT OR IGNORE INTO precedent_versions VALUES (?,?,?,?)", (body["id"], sha, raw, now())
-            )
-            db.execute(
-                "INSERT INTO precedent_events(id,hash,observed,admission,reasons) VALUES (?,?,?,?,?)",
-                (body["id"], sha, now(), body["admissao"], canonical(body["motivos_admissao"])),
-            )
-            if (
-                old
-                and old["admission"] == "admitido"
-                and body["admissao"] != "admitido"
-                and body["situacao"] in {"vigente", "desconhecido"}
-                and not body.get("pendencias")
-            ):
-                # An incomplete observation is not evidence of withdrawal. Retain it only in audit.
-                next(x for x in receipt["registros"] if x["id"] == body["id"])[
-                    "estado_anterior_conservado"
-                ] = True
-                continue
-            if (
-                old
-                and old["admission"] == "admitido"
-                and (
-                    body["admissao"] != "admitido"
-                    or json.loads(old["body"])["componentes"] != body["componentes"]
-                )
-            ):
-                db.execute(
-                    "INSERT OR IGNORE INTO precedent_retirements VALUES (?,?,?)",
-                    (body["id"], old["hash"], now()),
-                )
-            db.execute(
-                "INSERT INTO precedents VALUES (?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET "
-                "hash=excluded.hash,publication=excluded.publication,admission=excluded.admission,"
-                "reasons=excluded.reasons,body=excluded.body,organ=excluded.organ",
-                (
-                    body["id"],
-                    sha,
-                    body["tribunal"],
-                    body["especie"],
-                    body["numero"],
-                    folded(body["orgao"]),
-                    body.get("data_publicacao"),
-                    body["admissao"],
-                    canonical(body["motivos_admissao"]),
-                    raw,
-                ),
-            )
-            db.execute("DELETE FROM precedent_texts WHERE id=?", (body["id"],))
-            if body["admissao"] == "admitido":
-                db.execute(
-                    "INSERT INTO precedent_texts(id,enunciado,questao_submetida,tese_firmada,modulacao,"
-                    "suspensao) "
-                    "VALUES (?,?,?,?,?,?)",
-                    (body["id"], *(body["componentes"].get(x, "") for x in COMPONENTS)),
-                )
+        for (body, blobs), entry in zip(prepared, receipt["registros"], strict=True):
+            changed = apply_record(store, db, body, blobs, entry) or changed
         if changed:
             db.execute("UPDATE meta SET value=value+1 WHERE key='revision'")
     receipt["alterado"] = changed
