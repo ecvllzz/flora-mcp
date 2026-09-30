@@ -340,7 +340,7 @@ def test_prepare_admitted_body_and_reference(root):
     assert body["id"] == "STJ:sumula:999999"
     assert (body["admissao"], body["motivos_admissao"]) == ("admitido", [])
     assert body["referencia"] == (
-        "STJ, Súmula n. 999999, Órgão de teste, publicação do enunciado 2026-09-01. "
+        "STJ, Súmula n. 999999, Órgão de teste, publicação do enunciado 01/09/2026. "
         "Fonte: https://www.stj.jus.br/fixture"
     )
     assert (body["referencia_completa"], body["referencia_pendencias"]) == (True, [])
@@ -386,7 +386,7 @@ def test_prepare_unknown_publication_type_and_exclusion(root):
         "situacao_revogado",
         "tipo_publicacao_nao_informado",
     ]
-    assert "publicação de natureza não identificada 2026-09-01" in body["referencia"]
+    assert "publicação de natureza não identificada 01/09/2026" in body["referencia"]
 
 
 def write_package(root, value):

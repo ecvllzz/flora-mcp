@@ -187,9 +187,13 @@ class Store:
                 (message, run_id, resource_id),
             )
 
+    def raw_relative(self, sha: str) -> str:
+        """Path of an original inside the collection, as recorded by save_raw."""
+        return str(Path("raw") / sha[:2] / (sha + ".json"))
+
     def save_raw(self, content: bytes) -> tuple[str, str]:
         sha = digest(content)
-        path = self.directory / "raw" / sha[:2] / (sha + ".json")
+        path = self.directory / self.raw_relative(sha)
         path.parent.mkdir(parents=True, exist_ok=True)
         if path.exists():
             if digest(path.read_bytes()) != sha:

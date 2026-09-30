@@ -5,3 +5,5 @@
 *.gz binary
 # recibos e registros de evidencia ficam byte a byte, sem normalizar quebras de linha
 docs/** -text
+# recortes literais de originais oficiais usados como fixtures: bytes preservados
+tests/fixtures/** -text
