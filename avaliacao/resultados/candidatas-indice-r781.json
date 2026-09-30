@@ -1,0 +1,5671 @@
+{
+ "resumo": {
+  "base|assessor|e": {
+   "hit@8": 0.143,
+   "mrr": 0.143,
+   "zeros": 7
+  },
+  "base|assessor|ou": {
+   "hit@8": 0.357,
+   "mrr": 0.27,
+   "zeros": 0
+  },
+  "base|assessor|e_senao_ou": {
+   "hit@8": 0.357,
+   "mrr": 0.253,
+   "zeros": 0
+  },
+  "base|natural|e": {
+   "hit@8": 0.071,
+   "mrr": 0.014,
+   "zeros": 12
+  },
+  "base|natural|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.326,
+   "zeros": 0
+  },
+  "base|natural|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.329,
+   "zeros": 0
+  },
+  "base|curta|e": {
+   "hit@8": 0.571,
+   "mrr": 0.348,
+   "zeros": 0
+  },
+  "base|curta|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.348,
+   "zeros": 0
+  },
+  "base|curta|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.348,
+   "zeros": 0
+  },
+  "sec_2|assessor|e": {
+   "hit@8": 0.143,
+   "mrr": 0.143,
+   "zeros": 7
+  },
+  "sec_2|assessor|ou": {
+   "hit@8": 0.357,
+   "mrr": 0.27,
+   "zeros": 0
+  },
+  "sec_2|assessor|e_senao_ou": {
+   "hit@8": 0.357,
+   "mrr": 0.254,
+   "zeros": 0
+  },
+  "sec_2|natural|e": {
+   "hit@8": 0.071,
+   "mrr": 0.014,
+   "zeros": 12
+  },
+  "sec_2|natural|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.321,
+   "zeros": 0
+  },
+  "sec_2|natural|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.325,
+   "zeros": 0
+  },
+  "sec_2|curta|e": {
+   "hit@8": 0.571,
+   "mrr": 0.358,
+   "zeros": 0
+  },
+  "sec_2|curta|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.358,
+   "zeros": 0
+  },
+  "sec_2|curta|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.358,
+   "zeros": 0
+  },
+  "sec_4|assessor|e": {
+   "hit@8": 0.143,
+   "mrr": 0.143,
+   "zeros": 7
+  },
+  "sec_4|assessor|ou": {
+   "hit@8": 0.357,
+   "mrr": 0.277,
+   "zeros": 0
+  },
+  "sec_4|assessor|e_senao_ou": {
+   "hit@8": 0.357,
+   "mrr": 0.261,
+   "zeros": 0
+  },
+  "sec_4|natural|e": {
+   "hit@8": 0.071,
+   "mrr": 0.014,
+   "zeros": 12
+  },
+  "sec_4|natural|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.272,
+   "zeros": 0
+  },
+  "sec_4|natural|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.278,
+   "zeros": 0
+  },
+  "sec_4|curta|e": {
+   "hit@8": 0.571,
+   "mrr": 0.364,
+   "zeros": 0
+  },
+  "sec_4|curta|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.364,
+   "zeros": 0
+  },
+  "sec_4|curta|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.364,
+   "zeros": 0
+  },
+  "stem|assessor|e": {
+   "hit@8": 0.214,
+   "mrr": 0.161,
+   "zeros": 6
+  },
+  "stem|assessor|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.399,
+   "zeros": 0
+  },
+  "stem|assessor|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.393,
+   "zeros": 0
+  },
+  "stem|natural|e": {
+   "hit@8": 0.143,
+   "mrr": 0.034,
+   "zeros": 10
+  },
+  "stem|natural|ou": {
+   "hit@8": 0.643,
+   "mrr": 0.281,
+   "zeros": 0
+  },
+  "stem|natural|e_senao_ou": {
+   "hit@8": 0.643,
+   "mrr": 0.29,
+   "zeros": 0
+  },
+  "stem|curta|e": {
+   "hit@8": 0.571,
+   "mrr": 0.374,
+   "zeros": 0
+  },
+  "stem|curta|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.368,
+   "zeros": 0
+  },
+  "stem|curta|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.374,
+   "zeros": 0
+  },
+  "stemsec_2|assessor|e": {
+   "hit@8": 0.214,
+   "mrr": 0.161,
+   "zeros": 6
+  },
+  "stemsec_2|assessor|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.381,
+   "zeros": 0
+  },
+  "stemsec_2|assessor|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.376,
+   "zeros": 0
+  },
+  "stemsec_2|natural|e": {
+   "hit@8": 0.071,
+   "mrr": 0.027,
+   "zeros": 10
+  },
+  "stemsec_2|natural|ou": {
+   "hit@8": 0.571,
+   "mrr": 0.265,
+   "zeros": 0
+  },
+  "stemsec_2|natural|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.276,
+   "zeros": 0
+  },
+  "stemsec_2|curta|e": {
+   "hit@8": 0.571,
+   "mrr": 0.341,
+   "zeros": 0
+  },
+  "stemsec_2|curta|ou": {
+   "hit@8": 0.5,
+   "mrr": 0.323,
+   "zeros": 0
+  },
+  "stemsec_2|curta|e_senao_ou": {
+   "hit@8": 0.571,
+   "mrr": 0.341,
+   "zeros": 0
+  }
+ },
+ "detalhe": [
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    2,
+    3,
+    5,
+    8,
+    1,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    2,
+    3,
+    5,
+    8,
+    1,
+    7,
+    10,
+    11
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    18
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    25
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    12,
+    23
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    92
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    10
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    2,
+    3,
+    5,
+    8,
+    1,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    25
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    92
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    9,
+    10,
+    5,
+    2,
+    11,
+    52,
+    8
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    68
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    7,
+    81
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    77
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    9,
+    10,
+    5,
+    2,
+    11,
+    52,
+    8
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    68
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    5,
+    4,
+    10,
+    1,
+    6,
+    9
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5,
+    14
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    70
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    5,
+    4,
+    10,
+    1,
+    6,
+    9
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    22
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5,
+    14
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    70
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    5,
+    4,
+    10,
+    1,
+    6,
+    9
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5,
+    14
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    70
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "base",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    1,
+    2,
+    7,
+    5,
+    9,
+    8
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    1,
+    2,
+    7,
+    5,
+    9,
+    8,
+    12
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    8
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    16
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    11,
+    25
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    18
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    3,
+    1,
+    2,
+    7,
+    5,
+    9,
+    8
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    8
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    16
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    5,
+    6,
+    8,
+    4,
+    3,
+    11,
+    48,
+    17
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    52
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    5,
+    6,
+    8,
+    4,
+    3,
+    11,
+    48,
+    17
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    52
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    8,
+    4,
+    3,
+    10,
+    1,
+    9,
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    20
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3,
+    20
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    8,
+    4,
+    3,
+    10,
+    1,
+    9,
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    20
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3,
+    20
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    8,
+    4,
+    3,
+    10,
+    1,
+    9,
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    20
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3,
+    20
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    4,
+    1,
+    2,
+    7,
+    6,
+    9,
+    8
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    4,
+    1,
+    2,
+    7,
+    6,
+    9,
+    8,
+    12
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    10
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    11,
+    26
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    22
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    4,
+    1,
+    2,
+    7,
+    6,
+    9,
+    8
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    10
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    6,
+    7,
+    8,
+    4,
+    3,
+    11,
+    48,
+    26
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    46
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    8
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    6,
+    7,
+    8,
+    4,
+    3,
+    11,
+    48,
+    26
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    46
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    9,
+    5,
+    4,
+    8,
+    1,
+    10,
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4,
+    20
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    9,
+    5,
+    4,
+    8,
+    1,
+    10,
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4,
+    20
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    9,
+    5,
+    4,
+    8,
+    1,
+    10,
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4,
+    20
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "sec_4",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    1,
+    3,
+    5,
+    8,
+    2,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    1,
+    3,
+    5,
+    8,
+    2,
+    7,
+    10,
+    11
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    20
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    72
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    6,
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    78
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    1,
+    3,
+    5,
+    8,
+    2,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    17
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    7,
+    14,
+    9,
+    10,
+    3,
+    13,
+    17
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    59
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    8
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    36
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    7,
+    14,
+    9,
+    10,
+    3,
+    13,
+    17
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    59
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    8
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    7
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    36
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    6,
+    4,
+    5,
+    9,
+    1,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    29
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    6,
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    6,
+    4,
+    5,
+    9,
+    1,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    97
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    29
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    6,
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    6,
+    4,
+    5,
+    9,
+    1,
+    7,
+    10
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    29
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    6,
+    14
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    11
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stem",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    5,
+    1,
+    2,
+    7,
+    6,
+    9,
+    8
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    5,
+    1,
+    2,
+    7,
+    6,
+    9,
+    8,
+    12
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    9
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    15
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    5,
+    18
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    16
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    5,
+    1,
+    2,
+    7,
+    6,
+    9,
+    8
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    9
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "assessor",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    8,
+    13,
+    7,
+    9,
+    6,
+    14,
+    23
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    42
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    6
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    62
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    8,
+    13,
+    7,
+    9,
+    6,
+    14,
+    23
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    42
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": [
+    62
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "natural",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "inventario-abandono",
+   "pos": [
+    10,
+    5,
+    6,
+    8,
+    1,
+    9,
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-partilha",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4,
+    20
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    34
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "inventario-abandono",
+   "pos": [
+    10,
+    5,
+    6,
+    8,
+    1,
+    9,
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4,
+    20
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    34
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    14
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "ou",
+   "id": "preparo-desercao",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "inventario-abandono",
+   "pos": [
+    10,
+    5,
+    6,
+    8,
+    1,
+    9,
+    4
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "alimentos-divorcio-conexao",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "decisao-surpresa",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "diluicao-solidaria",
+   "pos": [
+    5
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "monitoria-mensalidades",
+   "pos": [
+    21
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "passaporte-suprimento",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "abandono-alimentos-curador",
+   "pos": [
+    2
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "guarda-levantamento-alimentos",
+   "pos": [
+    1
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-partilha",
+   "pos": [
+    12
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "liquidacao-recurso-cabivel",
+   "pos": [
+    4,
+    20
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "multa-embargos-protelatorios",
+   "pos": [
+    34
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "credito-educativo-indice",
+   "pos": [
+    3
+   ]
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "corretor-atraso-obra",
+   "pos": []
+  },
+  {
+   "variante": "stemsec_2",
+   "form": "curta",
+   "modo": "e_senao_ou",
+   "id": "preparo-desercao",
+   "pos": []
+  }
+ ]
+}
