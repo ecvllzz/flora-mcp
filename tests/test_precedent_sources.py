@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 from flora_mcp import cli
 from flora_mcp.model import FloraError, canonical, digest
 from flora_mcp.precedent_sources import OUT_OF_SCOPE, stf_sumulas, stj_sumulas, stj_temas, structured_url
-from flora_mcp.precedent_sources.common import Original, branch_matter
+from flora_mcp.precedent_sources.common import Original, branch_matter, section_flag
 from flora_mcp.precedent_sources.pacote import prepare_package, sample_skeleton
 from flora_mcp.precedents import draw, import_package, migrate, minimum_sample
 
@@ -283,9 +283,18 @@ def test_approved_sample_admits_structured_records_that_pass_every_other_rule(st
     result = admissions(receipt)
     assert result["STJ:iac:2"] == ("admitido", [])
     assert result["STJ:tema_repetitivo:1085"] == ("admitido", [])
-    assert result["STJ:tema_repetitivo:1071"] == ("pendente", ["tese_firmada_ausente"])
-    assert result["STJ:iac:17"] == ("pendente", ["evidencia_ausente:materia", "materia_nao_confirmada"])
-    assert result["STJ:tema_repetitivo:126"] == ("excluido", ["materia_fora_do_recorte", "situacao_superado"])
+    assert result["STJ:tema_repetitivo:1071"] == (
+        "pendente",
+        ["secao_fora_do_recorte_civil", "tese_firmada_ausente"],
+    )
+    assert result["STJ:iac:17"] == (
+        "pendente",
+        ["evidencia_ausente:materia", "materia_nao_confirmada", "secao_fora_do_recorte_civil"],
+    )
+    assert result["STJ:tema_repetitivo:126"] == (
+        "excluido",
+        ["materia_fora_do_recorte", "secao_fora_do_recorte_civil", "situacao_superado"],
+    )
     assert result["STJ:tema_repetitivo:369"][1] == ["recurso_extraordinario_pendente"]
     assert receipt["conferencia_lote"]["semente"] == 20260930
     found = cli_search(store, "segurado")
@@ -485,3 +494,31 @@ def test_package_actions_do_not_capture_searches():
     ]
     assert cli.package_action(["precedentes", "--", "preparar"]) is None
     assert cli.package_action(["precedentes", "alimentos"]) is None
+
+
+@pytest.mark.parametrize(
+    "organ, expected",
+    [
+        ("S1", "secao_fora_do_recorte_civil"),
+        ("S3", "secao_fora_do_recorte_civil"),
+        ("PRIMEIRA SEÇÃO", "secao_fora_do_recorte_civil"),
+        ("Terceira  Seção", "secao_fora_do_recorte_civil"),
+        ("S2", None),
+        ("CE", None),
+        ("SEGUNDA SEÇÃO", None),
+        ("CORTE ESPECIAL", None),
+    ],
+)
+def test_public_and_criminal_law_sections_stay_pending(organ, expected):
+    assert section_flag(organ) == expected
+
+
+def test_adapters_flag_every_record_of_the_first_and_third_sections():
+    flagged = 0
+    for source in ("stj_temas", "stj_sumulas"):
+        _, records = adapted(source)
+        for record in records.values():
+            outside = section_flag(record["orgao"]) is not None
+            assert ("secao_fora_do_recorte_civil" in record["pendencias"]) == outside
+            flagged += outside
+    assert flagged

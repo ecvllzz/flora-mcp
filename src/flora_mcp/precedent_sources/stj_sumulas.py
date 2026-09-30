@@ -10,7 +10,7 @@ from urllib.parse import parse_qs, urlparse
 
 from bs4 import BeautifulSoup
 
-from .common import Original, Result, branch_matter, iso_date
+from .common import Original, Result, branch_matter, iso_date, section_flag
 
 CLASSE = "estruturada"
 # Marker span.clsINDE next to the number. No marker: the listing presents the summary as current.
@@ -89,17 +89,19 @@ def record(original: Original, block, number: str) -> dict | None:
         evidence["componente:enunciado"] = original.evidence(
             text, f"{where}, div.blocoVerbete, do ramo à referência entre parênteses"
         )
+    # The name may wrap across source lines; only its whitespace is normalized.
+    organ = " ".join(reference["orgao"].split())
+    flags = ["publicacao_ambigua"] if len(first) > 1 else []
     return {
         "tribunal": "STJ",
         "especie": "sumula",
         "numero": number,
-        # The name may wrap across source lines; only its whitespace is normalized.
-        "orgao": " ".join(reference["orgao"].split()),
+        "orgao": organ,
         "materia": branch_matter([branch_text.split(" - ")[0].strip()] if branch_text else [], RAMOS),
         "data_publicacao": published,
         "tipo_publicacao": "enunciado",
         "situacao": status,
-        "pendencias": ["publicacao_ambigua"] if len(first) > 1 else [],
+        "pendencias": flags + [f for f in (section_flag(organ),) if f],
         "componentes": {"enunciado": text} if text else {},
         "fontes": [original.source()],
         "evidencias": evidence,

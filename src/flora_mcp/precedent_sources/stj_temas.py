@@ -8,7 +8,7 @@ import csv
 import io
 import re
 
-from .common import Original, Result, branch_matter
+from .common import Original, Result, branch_matter, section_flag
 
 CLASSE = "estruturada"
 TIPOS = {"Tema": "tema_repetitivo", "IAC": "iac"}
@@ -143,7 +143,7 @@ def record(item: Row, species: str, organ: str) -> dict:
         "data_publicacao": publication or None,
         "tipo_publicacao": "acordao_merito",
         "situacao": status,
-        "pendencias": [flag] if flag else [],
+        "pendencias": [f for f in (flag, section_flag(organ)) if f],
         "componentes": components,
         "fontes": [item.original.source()],
         "evidencias": evidence,

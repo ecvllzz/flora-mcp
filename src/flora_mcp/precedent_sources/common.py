@@ -1,6 +1,7 @@
 """Pieces shared by the adapters: the collected original, evidence and the adapter result."""
 
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from datetime import date
 
@@ -56,6 +57,19 @@ def iso_date(day: str, month: str, year: str) -> str | None:
         return date(int(year), int(month), int(day)).isoformat()
     except ValueError:
         return None
+
+
+# STJ sections of public law (Primeira) and criminal law (Terceira). There the source's
+# "processual civil" branch is procedure of public or criminal law (tax enforcement, fees
+# against the State), outside the civil scope decided on 30/09/2026; kept pending for the operator.
+SECOES_FORA_DO_RECORTE = {"S1", "S3", "PRIMEIRA SECAO", "TERCEIRA SECAO"}
+SECAO_PENDENCIA = "secao_fora_do_recorte_civil"
+
+
+def section_flag(organ: str) -> str | None:
+    """Pending reason for a record judged by the STJ public or criminal law section; None otherwise."""
+    name = "".join(c for c in unicodedata.normalize("NFKD", organ.upper()) if not unicodedata.combining(c))
+    return SECAO_PENDENCIA if " ".join(name.split()) in SECOES_FORA_DO_RECORTE else None
 
 
 def branch_matter(branches: list[str], table: dict[str, str]) -> str | None:

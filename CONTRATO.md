@@ -451,6 +451,8 @@ Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-pre
 
 **Matéria fora do recorte.** `materia: "fora_do_recorte"` indica ramo da fonte conhecido e fora de civil e processual civil; o motivo de pendência é `materia_fora_do_recorte`, em vez de `materia_nao_confirmada` (ramo ausente ou não informado).
 
+**Primeira e Terceira Seções do STJ.** Tema, IAC ou súmula julgado pela Primeira Seção (`S1`) ou pela Terceira (`S3`) recebe a pendência `secao_fora_do_recorte_civil`, qualquer que seja o ramo da fonte: nessas seções o ramo "processual civil" é processo de direito público ou penal (execução fiscal, honorários contra a Fazenda), fora do recorte civil. O registro fica pendente até decisão do operador.
+
 **Simulação.** Sem `--apply`, o recibo traz, por registro, `efeito` sobre o acervo atual quando ele existe: `novo`, `atualiza`, `substitui_e_retira_anterior`, `estado_anterior_conservado` (observação incompleta de um admitido, que fica só na auditoria) ou `sem_alteracao`; e `conferencia_lote` quando a amostra foi aprovada. A simulação passa a recusar, como a gravação, a readmissão de versão retirada (`versao_retirada`).
 
 **Geração.** `flora-mcp precedentes preparar --fonte stj_temas|stj_sumulas|stf_sumulas --originais PASTA --saida PACOTE.json` monta o pacote a partir de originais já coletados, sem rede: cada original tem ao lado o recibo `<nome>.recibo.json` com `url_solicitada` (ou `url_final`), `obtido_em` com fuso, `sha256`, `status: "obtido"` e, para HTML, `content_type` com o charset. Os originais usados são copiados para `originais/` ao lado do pacote; o bloco `origem` lista fonte, originais e as entradas da fonte deixadas de fora, cada uma com motivo.
