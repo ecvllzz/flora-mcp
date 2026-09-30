@@ -163,6 +163,7 @@ def test_closed_vocabularies_are_enums_and_defaults_are_the_contract():
     assert enum(precedents["tribunal"]) == ["STJ", "STF", "TJSC"]
     assert set(enum(precedents["especie"])) == {
         "tema_repetitivo",
+        "irdr",
         "iac",
         "sumula",
         "tema_repercussao_geral",

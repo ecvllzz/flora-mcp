@@ -20,6 +20,8 @@ def packet(
     pending=None,
     species="sumula",
     materia="civil",
+    tribunal="STJ",
+    orgao="Órgão de teste",
 ):
     raw = "FONTE SINTÉTICA DE TESTE, NÃO É PRECEDENTE REAL. " + status + text
     source = tmp_path / "fonte.txt"
@@ -31,10 +33,10 @@ def packet(
         for k in ("situacao", "publicacao", "materia", "componente:" + component)
     }
     record = {
-        "tribunal": "STJ",
+        "tribunal": tribunal,
         "especie": species,
         "numero": number,
-        "orgao": "Órgão de teste",
+        "orgao": orgao,
         "data_publicacao": "2026-09-01",
         "materia": materia,
         "situacao": status,
@@ -43,7 +45,7 @@ def packet(
         "componentes": {component: text},
         "fontes": [
             {
-                "url": "https://www.stj.jus.br/fixture",
+                "url": f"https://www.{tribunal.lower()}.jus.br/fixture",
                 "sha256": sha,
                 "arquivo": "fonte.txt",
                 "coletado_em": "2026-09-29T12:00:00-03:00",
@@ -343,3 +345,124 @@ def test_matter_outside_the_table_stays_pending(store, tmp_path):
     receipt = import_package(store, packet(tmp_path, materia="tributario"))
     assert receipt["registros"][0]["admissao"] == "pendente"
     assert "materia_nao_confirmada" in receipt["registros"][0]["motivos"]
+
+
+TJSC_PACKETS = [
+    ("TJSC", "irdr", "25", "Grupo de Câmaras de Direito Civil"),
+    ("TJSC", "iac", "10", "Grupo de Câmaras de Direito Civil"),
+    ("TJSC", "iac", "4", "Órgão Especial"),
+    ("TJSC", "sumula", "51", "Órgão Especial"),
+    ("TJSC", "sumula", "40", "Grupo de Câmaras de Direito Civil"),
+    ("STJ", "iac", "1", "Órgão de teste"),
+]
+
+
+def import_tjsc(store, tmp_path):
+    migrate(store)
+    for index, (tribunal, species, number, organ) in enumerate(TJSC_PACKETS):
+        folder = tmp_path / str(index)
+        folder.mkdir()
+        path = packet(
+            folder,
+            number=number,
+            species=species,
+            tribunal=tribunal,
+            orgao=organ,
+            text=f"Texto sintético {species} {number}. ",
+        )
+        receipt = import_package(store, path, apply=True)
+        assert receipt["registros"][0]["admissao"] == "admitido", receipt
+
+
+def found_ids(result):
+    return sorted(item["id"] for item in result["resultados"])
+
+
+def test_tjsc_incidents_and_special_organ_search_by_species_and_tribunal(store, tmp_path):
+    import_tjsc(store, tmp_path)
+    assert found_ids(api.search_precedents(store, especie="irdr")) == ["TJSC:irdr:25"]
+    assert found_ids(api.search_precedents(store, especie="iac")) == [
+        "STJ:iac:1",
+        "TJSC:iac:10",
+        "TJSC:iac:4",
+    ]
+    assert found_ids(api.search_precedents(store, especie="iac", tribunal="TJSC")) == [
+        "TJSC:iac:10",
+        "TJSC:iac:4",
+    ]
+    assert found_ids(api.search_precedents(store, especie="sumula", tribunal="TJSC")) == [
+        "TJSC:sumula:GCDC:40",
+        "TJSC:sumula:OE:51",
+    ]
+    assert found_ids(api.search_precedents(store, orgao="orgao especial")) == [
+        "TJSC:iac:4",
+        "TJSC:sumula:OE:51",
+    ]
+    assert found_ids(api.search_precedents(store, "sintético", especie="irdr", numero="25")) == [
+        "TJSC:irdr:25"
+    ]
+    empty = api.search_precedents(store, especie="irdr", tribunal="STJ")
+    assert (empty["motivo"], empty["resultados"]) == ("filtro_restritivo", [])
+    first = api.document(store, "TJSC:irdr:25", componente="tese_firmada")
+    assert first["texto"] == "Texto sintético irdr 25. "
+    assert first["referencia"].startswith("TJSC, IRDR n. 25, Grupo de Câmaras de Direito Civil, ")
+    summary = api.document(store, "TJSC:sumula:OE:51", componente="enunciado")
+    assert summary["referencia"].startswith("TJSC, Súmula n. 51, Órgão Especial, ")
+    with pytest.raises(FloraError) as info:
+        api.search_precedents(store, especie="incidente")
+    assert info.value.code == "filtro_invalido"
+
+
+def test_tjsc_incidents_over_real_stdio(store, tmp_path):
+    import asyncio
+    import os
+    import sys
+    from mcp import ClientSession, StdioServerParameters
+    from mcp.client.stdio import stdio_client
+
+    import_tjsc(store, tmp_path)
+    publish(store)
+
+    async def exercise():
+        params = StdioServerParameters(
+            command=sys.executable,
+            args=["-m", "flora_mcp.cli", "--data-dir", str(store.directory), "serve"],
+            env={**os.environ, "PYTHONUTF8": "1"},
+        )
+        async with stdio_client(params) as (read, write):
+            async with ClientSession(read, write) as session:
+                await session.initialize()
+                found = await session.call_tool(
+                    "pesquisar_precedentes", {"especie": "irdr", "tribunal": "TJSC"}
+                )
+                assert not found.is_error, found.content
+                result = found.structured_content
+                assert [item["id"] for item in result["resultados"]] == ["TJSC:irdr:25"]
+                item = result["resultados"][0]
+                assert (item["especie"], item["orgao"]) == ("irdr", "Grupo de Câmaras de Direito Civil")
+                doc = await session.call_tool(
+                    "obter_documento",
+                    {
+                        "id": "TJSC:sumula:OE:51",
+                        "componente": "enunciado",
+                        "publicacao_id": result["publicacao_id"],
+                    },
+                )
+                assert not doc.is_error, doc.content
+                assert doc.structured_content["texto"] == "Texto sintético sumula 51. "
+                wrong = await session.call_tool("pesquisar_precedentes", {"especie": "incidente"})
+                assert wrong.is_error
+                assert wrong.structured_content["codigo"] == "parametro_invalido"
+                coverage = await session.call_tool("consultar_cobertura", {"detalhe": "resumo"})
+                counts = {
+                    (x["tribunal"], x["especie"]): x["documentos"]
+                    for x in coverage.structured_content["precedentes"]
+                }
+                assert counts == {
+                    ("STJ", "iac"): 1,
+                    ("TJSC", "iac"): 2,
+                    ("TJSC", "irdr"): 1,
+                    ("TJSC", "sumula"): 2,
+                }
+
+    asyncio.run(exercise())

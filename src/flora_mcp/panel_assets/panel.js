@@ -44,7 +44,7 @@ function resultCard(d){
 }
 function precedentCard(d){
  const article=node('article','result'),top=node('div','result-top');
- const species={sumula:'Súmula',sumula_vinculante:'Súmula vinculante',iac:'IAC',tema_repetitivo:'Tema repetitivo',tema_repercussao_geral:'Tema de repercussão geral'};
+ const species={sumula:'Súmula',sumula_vinculante:'Súmula vinculante',irdr:'IRDR',iac:'IAC',tema_repetitivo:'Tema repetitivo',tema_repercussao_geral:'Tema de repercussão geral'};
  top.append(node('div','result-kicker',d.tribunal+' · '+d.orgao+' · '+date(d.data_publicacao)),node('h3','',(species[d.especie]||d.especie)+' n. '+d.numero),node('p','reference',d.referencia),node('p','provenance','Situação conhecida: '+d.situacao));article.append(top);
  const labels={enunciado:'Enunciado',questao_submetida:'Questão submetida',tese_firmada:'Tese firmada',modulacao:'Modulação',suspensao:'Suspensão'};
  for(const [key,text] of Object.entries(d.componentes)){

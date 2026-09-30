@@ -17,7 +17,7 @@ Ordenar = Literal["relevancia", "mais_recentes", "mais_antigos"]
 Detalhe = Literal["triagem", "completo"]
 ModoBusca = Literal["simples", "avancado"]
 Materia = Literal["civil", "processual_civil", "bancario"]
-Especie = Literal["tema_repetitivo", "iac", "sumula", "tema_repercussao_geral", "sumula_vinculante"]
+Especie = Literal["tema_repetitivo", "irdr", "iac", "sumula", "tema_repercussao_geral", "sumula_vinculante"]
 Campo = Literal["enunciado", "questao_submetida", "tese_firmada", "modulacao", "suspensao", "todos"]
 DetalheCobertura = Literal["resumo", "completo", "recursos", "execucoes"]
 
@@ -45,10 +45,10 @@ DESCRIPTIONS = {
     ),
     "pesquisar_precedentes": (
         "Pesquisa temas repetitivos, IAC e súmulas do STJ, temas de repercussão geral e súmulas, "
-        "inclusive vinculantes, do STF, e súmulas do Grupo de Câmaras de Direito Civil do TJSC "
-        "admitidos na base. campo escolhe o componente ou todos; materia filtra civil, "
-        "processual_civil ou bancario, e cada item traz a sua. Súmula bancária é apoio: "
-        "apresente antes as de civil e processual civil. Termos como em "
+        "inclusive vinculantes, do STF, e IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil "
+        "e do Órgão Especial do TJSC admitidos na base. campo escolhe o componente ou todos; "
+        "materia filtra civil, processual_civil ou bancario, e cada item traz a sua. Súmula "
+        "bancária é apoio: apresente antes as de civil e processual civil. Termos como em "
         "pesquisar_jurisprudencia, com a mesma ampliação. A coleção é parcial: ausência não "
         "prova inexistência."
     ),

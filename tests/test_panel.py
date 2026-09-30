@@ -1,10 +1,13 @@
 import hashlib
+import re
+from pathlib import Path
 
 import pytest
 from starlette.testclient import TestClient
 
 from conftest import ingest, raw_doc
 from flora_mcp.panel import create_panel_app
+from flora_mcp.precedents import SPECIES
 from flora_mcp.query import search
 
 
@@ -91,3 +94,14 @@ def test_other_sites_cannot_query_local_acervo(store, headers):
 def test_invalid_queries(store, value):
     with client(store) as browser:
         assert browser.post("/api/search", json=value).status_code in {400, 413}
+
+
+def test_panel_offers_every_precedent_species_with_label():
+    assets = Path(__file__).resolve().parents[1] / "src" / "flora_mcp" / "panel_assets"
+    html = (assets / "index.html").read_text(encoding="utf-8")
+    select = re.search(r'<select name="especie">(.*?)</select>', html).group(1)
+    options = set(re.findall(r'<option value="(\w+)">', select))
+    script = (assets / "panel.js").read_text(encoding="utf-8")
+    labels = re.search(r"const species=\{(.*?)\};", script).group(1)
+    assert options == set.union(*SPECIES.values())
+    assert set(re.findall(r"(\w+):'", labels)) == options

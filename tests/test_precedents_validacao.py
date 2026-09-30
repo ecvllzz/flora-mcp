@@ -456,3 +456,44 @@ def test_import_package_refuses_retired_version_and_retires_changed_components(s
         "versao_retirada",
         "Readmissão exige nova evidência; este conteúdo foi retirado.",
     )
+
+
+@pytest.mark.parametrize(
+    "species,organ,identity,label",
+    [
+        ("irdr", "Grupo de Câmaras de Direito Civil", "TJSC:irdr:999999", "IRDR"),
+        ("iac", "Órgão Especial", "TJSC:iac:999999", "IAC"),
+        ("irdr", "ORGAO ESPECIAL", "TJSC:irdr:999999", "IRDR"),
+        ("sumula", "Órgão Especial", "TJSC:sumula:OE:999999", "Súmula"),
+    ],
+)
+def test_prepare_tjsc_incidents_and_special_organ(root, species, organ, identity, label):
+    data = record(species, "TJSC")
+    data["orgao"] = organ
+    body, _ = prepare(data, root)
+    assert body["id"] == identity
+    assert body["referencia"].startswith(f"TJSC, {label} n. 999999, {organ}, ")
+    assert body["admissao"] == "admitido"
+
+
+@pytest.mark.parametrize(
+    "tribunal,species,organ,message",
+    [
+        (
+            "TJSC",
+            "tema_repetitivo",
+            "Grupo de Câmaras de Direito Civil",
+            "Tribunal ou espécie fora do contrato.",
+        ),
+        ("TJSC", "sumula_vinculante", "Órgão Especial", "Tribunal ou espécie fora do contrato."),
+        ("STJ", "irdr", "Corte Especial", "Tribunal ou espécie fora do contrato."),
+        ("TJSC", "irdr", "Grupo de Câmaras de Direito Público", "Órgão TJSC fora do recorte aprovado."),
+        ("TJSC", "iac", "Grupo de Câmaras de Direito Comercial", "Órgão TJSC fora do recorte aprovado."),
+    ],
+)
+def test_prepare_refuses_tjsc_species_or_organ_outside_the_list(root, tribunal, species, organ, message):
+    data = record(species, tribunal)
+    data["orgao"] = organ
+    with pytest.raises(FloraError) as error:
+        prepare(data, root)
+    assert (error.value.code, str(error.value)) == (INVALID, message)
