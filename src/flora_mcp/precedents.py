@@ -32,6 +32,7 @@ PUBLICATIONS = {
     "acordao_merito": "publicação do acórdão de mérito",
     "acordao_embargos": "publicação do acórdão de embargos",
 }
+SUMMARIES = {"sumula", "sumula_vinculante"}
 EXCLUDED = {"cancelado", "revogado", "superado", "suspenso"}
 STATUSES = EXCLUDED | {"vigente", "pendente", "desconhecido"}
 SCHEMA = """
@@ -124,11 +125,8 @@ def required_text(value, field):
     return value
 
 
-def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str, bytes]]:  # noqa: C901
-    """Validate source bytes and structure. Return a policy decision, never a URL-only admission."""
-    if not isinstance(record, dict):
-        raise FloraError("pacote_invalido", "Registro deve ser um objeto.")
-    body = json.loads(canonical(record))
+def check_identity(body: dict):
+    """Identity and organ; sets the canonical id."""
     tribunal, species = body.get("tribunal"), body.get("especie")
     if tribunal not in SPECIES or species not in SPECIES[tribunal]:
         raise FloraError("pacote_invalido", "Tribunal ou espécie fora do contrato.")
@@ -142,6 +140,9 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
             raise FloraError("pacote_invalido", "Órgão TJSC fora do recorte aprovado.")
         scope = ":GCDC"
     body["id"] = f"{tribunal}:{species}{scope}:{number}"
+
+
+def check_components(body: dict) -> dict:
     components = body.get("componentes")
     if not isinstance(components, dict) or set(components) - set(COMPONENTS):
         raise FloraError(
@@ -149,16 +150,22 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
         )
     for name, value in components.items():
         required_text(value, name)
-    if species in {"sumula", "sumula_vinculante"} and "tese_firmada" in components:
+    if body["especie"] in SUMMARIES and "tese_firmada" in components:
         raise FloraError("pacote_invalido", "Texto de súmula deve usar enunciado.")
-    if species not in {"sumula", "sumula_vinculante"} and "enunciado" in components:
+    if body["especie"] not in SUMMARIES and "enunciado" in components:
         raise FloraError("pacote_invalido", "Tema usa questão submetida e tese firmada.")
+    return components
+
+
+def check_sources(body: dict, root: Path, source_cache=None) -> dict[str, bytes]:
+    """Official origin, declared hash and preserved bytes of every source."""
     sources = body.get("fontes")
     if not isinstance(sources, list) or not sources:
         raise FloraError("pacote_invalido", "Fontes oficiais preservadas são obrigatórias.")
+    cache = source_cache if source_cache is not None else {}
     blobs = {}
     for source in sources:
-        if not isinstance(source, dict) or not official(source.get("url", ""), tribunal):
+        if not isinstance(source, dict) or not official(source.get("url", ""), body["tribunal"]):
             raise FloraError("fonte_invalida", "Fonte deve pertencer ao tribunal do registro e usar HTTPS.")
         sha = source.get("sha256", "")
         if not re.fullmatch(r"[0-9a-f]{64}", sha):
@@ -166,20 +173,27 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
         path = (root / required_text(source.get("arquivo"), "arquivo")).resolve()
         if not path.is_relative_to(root.resolve()):
             raise FloraError("pacote_invalido", "Original fora do pacote.")
-        cache = source_cache if source_cache is not None else {}
         key = (path, sha)
         if key not in cache:
             cache[key] = path.read_bytes()
         content = cache[key]
         if digest(content) != sha:
             raise FloraError("arquivo_corrompido", "Original diverge do hash declarado.")
-        try:
-            collected = datetime.fromisoformat(source["coletado_em"])
-            if collected.tzinfo is None:
-                raise ValueError()
-        except (KeyError, ValueError, TypeError) as exc:
-            raise FloraError("pacote_invalido", "Coleta exige data/hora com fuso.") from exc
+        check_collected(source)
         blobs[sha] = content
+    return blobs
+
+
+def check_collected(source: dict):
+    try:
+        collected = datetime.fromisoformat(source["coletado_em"])
+        if collected.tzinfo is None:
+            raise ValueError()
+    except (KeyError, ValueError, TypeError) as exc:
+        raise FloraError("pacote_invalido", "Coleta exige data/hora com fuso.") from exc
+
+
+def check_evidence(body: dict, blobs: dict[str, bytes]) -> dict:
     evidence = body.get("evidencias", {})
     if not isinstance(evidence, dict):
         raise FloraError("pacote_invalido", "Evidências devem ser um objeto.")
@@ -188,8 +202,12 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
             raise FloraError("pacote_invalido", f"Evidência {key} sem fonte preservada.")
         required_text(item.get("trecho"), f"evidencias.{key}.trecho")
         required_text(item.get("localizador"), f"evidencias.{key}.localizador")
-    status = body.get("situacao")
-    if status not in STATUSES:
+    return evidence
+
+
+def check_status(body: dict):
+    """Situation, publication date and declared pending flags."""
+    if body.get("situacao") not in STATUSES:
         raise FloraError("pacote_invalido", "Situação desconhecida no contrato.")
     publication = body.get("data_publicacao")
     if publication:
@@ -201,16 +219,21 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     flags = body.get("pendencias", [])
     if not isinstance(flags, list) or any(not isinstance(x, str) for x in flags):
         raise FloraError("pacote_invalido", "Pendências devem ser uma lista textual.")
-    reasons = list(flags)
+
+
+def admission_reasons(body: dict, components: dict, evidence: dict) -> list[str]:
+    """Pending reasons; sets the publication type. Raises only for an incomplete review."""
+    status = body["situacao"]
+    reasons = list(body.get("pendencias", []))
     if status != "vigente":
         reasons.append("situacao_" + status)
     if body.get("materia") not in {"civil", "processual_civil"}:
         reasons.append("materia_nao_confirmada")
     needed = {"situacao", "publicacao", "materia"} | {"componente:" + x for x in components}
     reasons += ["evidencia_ausente:" + x for x in sorted(needed - set(evidence))]
-    if not publication:
+    if not body.get("data_publicacao"):
         reasons.append("publicacao_ausente")
-    main = "enunciado" if species in {"sumula", "sumula_vinculante"} else "tese_firmada"
+    main = "enunciado" if body["especie"] in SUMMARIES else "tese_firmada"
     publication_type = body.get("tipo_publicacao", "enunciado" if main == "enunciado" else None)
     if publication_type not in PUBLICATIONS:
         reasons.append("tipo_publicacao_nao_informado")
@@ -224,6 +247,10 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     else:
         required_text(review.get("responsavel"), "conferencia.responsavel")
         required_text(review.get("data"), "conferencia.data")
+    return reasons
+
+
+def check_links(body: dict, evidence: dict):
     links = body.get("julgados_relacionados", [])
     if not isinstance(links, list):
         raise FloraError("pacote_invalido", "Julgados relacionados devem ser lista.")
@@ -236,20 +263,39 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
             required_text(link["ementa"], "julgado.ementa")
             if link.get("evidencia_ementa") not in evidence:
                 raise FloraError("pacote_invalido", "Ementa vinculada exige evidência própria.")
-    body["admissao"] = "excluido" if status in EXCLUDED else "pendente" if reasons else "admitido"
+
+
+def set_admission_and_reference(body: dict, reasons: list[str]):
+    publication = body.get("data_publicacao")
+    kind = PUBLICATIONS.get(body["tipo_publicacao"], "publicação de natureza não identificada")
+    body["admissao"] = "excluido" if body["situacao"] in EXCLUDED else "pendente" if reasons else "admitido"
     body["motivos_admissao"] = sorted(set(reasons))
     body["referencia"] = (
-        f"{tribunal}, {LABELS[species]} n. {number}, {organ}"
-        + (
-            f", {PUBLICATIONS.get(publication_type, 'publicação de natureza não identificada')} {publication}"
-            if publication
-            else ""
-        )
+        f"{body['tribunal']}, {LABELS[body['especie']]} n. {body['numero']}, {body['orgao']}"
+        + (f", {kind} {publication}" if publication else "")
         + ". Fonte: "
-        + sources[0]["url"]
+        + body["fontes"][0]["url"]
     )
     body["referencia_completa"] = bool(publication)
     body["referencia_pendencias"] = [] if publication else ["data_publicacao"]
+
+
+def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str, bytes]]:
+    """Validate source bytes and structure. Return a policy decision, never a URL-only admission.
+
+    Blocks run in a fixed order and the first failure is the one reported.
+    """
+    if not isinstance(record, dict):
+        raise FloraError("pacote_invalido", "Registro deve ser um objeto.")
+    body = json.loads(canonical(record))
+    check_identity(body)
+    components = check_components(body)
+    blobs = check_sources(body, root, source_cache)
+    evidence = check_evidence(body, blobs)
+    check_status(body)
+    reasons = admission_reasons(body, components, evidence)
+    check_links(body, evidence)
+    set_admission_and_reference(body, reasons)
     return body, blobs
 
 
