@@ -1,7 +1,9 @@
 # Piloto Render Free
 
-Codigo de origem fixado em f4e5584. Implantar pelo Dockerfile.render em repositorio
-privado separado. Nao incluir chave, acervo.sqlite, raw, configuracao local ou logs.
+Codigo de origem baseado em f4e5584. Implantar pelo Dockerfile.render da branch
+reforma/f13-render-leitor do repositorio publico ecvllzz/flora-mcp. O operador
+autorizou expressamente publicar o snapshot de leitura no GitHub em 30/09/2026.
+Nao incluir chave, acervo.sqlite, raw, configuracao local ou logs.
 
 O pacote inclui somente publicacoes.json e a geracao de leitura atual, comprimida
 em partes abaixo de 50 MiB em deploy/render/data. O build recompõe o arquivo e
