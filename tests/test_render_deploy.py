@@ -1,5 +1,6 @@
 import gzip
 import hashlib
+import io
 import json
 import runpy
 from pathlib import Path
@@ -12,7 +13,7 @@ prepare = runpy.run_path(str(ROOT / "prepare_data.py"))["prepare"]
 build_app = runpy.run_path(str(ROOT / "serve.py"))["build_app"]
 
 
-def test_snapshot_rebuilt_and_hash_required(tmp_path):
+def test_snapshot_downloaded_and_hash_required(tmp_path, monkeypatch):
     source = tmp_path / "source"
     source.mkdir()
     payload = b"snapshot fixture" * 100
@@ -28,8 +29,13 @@ def test_snapshot_rebuilt_and_hash_required(tmp_path):
         ],
     }
     (source / "publicacoes.json").write_text(json.dumps(manifest))
-    (source / "publicacao.sqlite.gz.part000").write_bytes(archive[:10])
-    (source / "publicacao.sqlite.gz.part001").write_bytes(archive[10:])
+    release = {
+        "url": "https://github.com/ecvllzz/flora-mcp/releases/download/test/snapshot.gz",
+        "sha256": hashlib.sha256(archive).hexdigest(),
+    }
+    (source / "release.json").write_text(json.dumps(release))
+    downloader = prepare.__globals__["download_snapshot"]
+    monkeypatch.setitem(downloader.__globals__, "urlopen", lambda *a, **kw: io.BytesIO(archive))
     prepare(source, tmp_path / "restored")
     assert (tmp_path / "restored/publicacoes/r1.sqlite").read_bytes() == payload
     manifest["publicacoes"][0]["sha256"] = "0" * 64
@@ -37,6 +43,11 @@ def test_snapshot_rebuilt_and_hash_required(tmp_path):
     with pytest.raises(ValueError, match="SHA-256"):
         prepare(source, tmp_path / "invalid")
     assert not (tmp_path / "invalid/publicacoes.json").exists()
+    release["sha256"] = "0" * 64
+    (source / "release.json").write_text(json.dumps(release))
+    with pytest.raises(ValueError, match="arquivo comprimido"):
+        prepare(source, tmp_path / "invalid_archive")
+    assert not (tmp_path / "invalid_archive/publicacoes.json").exists()
 
 
 def test_render_health_does_not_bypass_mcp_auth(store, monkeypatch):

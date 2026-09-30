@@ -8,3 +8,4 @@
 !deploy/render/**
 **/__pycache__
 **/*.pyc
+deploy/render/data/*.part*

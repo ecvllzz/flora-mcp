@@ -5,9 +5,9 @@ reforma/f13-render-leitor do repositorio publico ecvllzz/flora-mcp. O operador
 autorizou expressamente publicar o snapshot de leitura no GitHub em 30/09/2026.
 Nao incluir chave, acervo.sqlite, raw, configuracao local ou logs.
 
-O pacote inclui somente publicacoes.json e a geracao de leitura atual, comprimida
-em partes abaixo de 50 MiB em deploy/render/data. O build recompõe o arquivo e
-confere SHA-256 antes de iniciar. A imagem resultante conserva a publicacao nas
+O pacote inclui publicacoes.json e release.json em deploy/render/data. O build
+baixa o arquivo unico completo da GitHub Release acervo-r1508 e confere SHA-256
+do comprimido e do banco antes de iniciar. A imagem resultante conserva a publicacao nas
 reinicializacoes, sem depender de disco persistente. Nunca baixar 600 MB a cada
 consulta. Publicacao posterior exige novo pacote e implantacao; cursores da geracao
 anterior nao sao preservados neste primeiro piloto.
@@ -19,6 +19,5 @@ Endpoint do Copilot: https://<hostname>/mcp. Credenciais fornecidas pelo criador
 O Free dorme apos 15 minutos ocioso. Testar inicializacao fria e uso das quatro
 ferramentas antes de publicar CERFS. Nao simular trafego para evitar a suspensao.
 
-O pacote Git com snapshot particionado e uma solucao de piloto. Antes de rotinas
-frequentes de atualizacao, migrar a distribuicao de snapshots para armazenamento
-de artefatos, evitando crescimento permanente do historico Git.
+A distribuicao usa asset de GitHub Release, com URL e hashes fixados no codigo.
+Nova geracao exige novo asset, atualizacao dos metadados e nova implantacao.
