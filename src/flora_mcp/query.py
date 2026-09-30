@@ -61,7 +61,9 @@ def search(
             "campo_indisponivel", "Esta versão indexa ementas; inteiro teor ainda não foi incorporado."
         )
     if tipo_data not in {"publicacao", "julgamento"} or ordenar not in {
-        "mais_recentes", "mais_antigos", "relevancia"
+        "mais_recentes",
+        "mais_antigos",
+        "relevancia",
     }:
         raise FloraError("filtro_invalido", "Tipo de data ou ordenação inválido.")
     if detalhe not in {"completo", "triagem"}:
@@ -162,11 +164,27 @@ def search(
         item = {**body, **citation_metadata(body, original)}
         if detalhe == "triagem":
             full = item["ementa"]
-            item = {k: item.get(k) for k in ("id", "tribunal", "processo", "relator", "referencia",
-                    "referencia_completa", "referencia_pendencias", "hash_conteudo")}
-            item.update(componente="ementa", trecho=full[:400], offset=0,
-                        trecho_parcial=len(full) > 400, sha256_componente=digest(full.encode()),
-                        campos_correspondentes=["ementa"] if query else [])
+            item = {
+                k: item.get(k)
+                for k in (
+                    "id",
+                    "tribunal",
+                    "processo",
+                    "relator",
+                    "referencia",
+                    "referencia_completa",
+                    "referencia_pendencias",
+                    "hash_conteudo",
+                )
+            }
+            item.update(
+                componente="ementa",
+                trecho=full[:400],
+                offset=0,
+                trecho_parcial=len(full) > 400,
+                sha256_componente=digest(full.encode()),
+                campos_correspondentes=["ementa"] if query else [],
+            )
         results.append(item)
     following = offset + len(results)
     result = {
@@ -194,9 +212,13 @@ def search(
         while len(canonical(result).encode()) > 7500 and len(results) > 1:
             results.pop()
             following = offset + len(results)
-            result["proximo_cursor"] = encode_cursor({"consulta": fingerprint, "revisao": revision, "offset": following})
+            result["proximo_cursor"] = encode_cursor(
+                {"consulta": fingerprint, "revisao": revision, "offset": following}
+            )
         if len(canonical(result).encode()) > 7500:
-            raise FloraError("referencia_excede_orcamento", "Metadados excedem 8 KiB; solicite detalhe=completo.")
+            raise FloraError(
+                "referencia_excede_orcamento", "Metadados excedem 8 KiB; solicite detalhe=completo."
+            )
     return result
 
 
@@ -222,8 +244,11 @@ def document(
         if componente.startswith("secao:"):
             section = next((s for s in spans if s["nome"] == componente[6:]), None)
             if section is None:
-                raise FloraError("componente_indisponivel", "Seção não delimitada com segurança. Use ementa ou espelho_original.")
-            text = body["ementa"][section["inicio"]:section["fim"]]
+                raise FloraError(
+                    "componente_indisponivel",
+                    "Seção não delimitada com segurança. Use ementa ou espelho_original.",
+                )
+            text = body["ementa"][section["inicio"] : section["fim"]]
         body["secoes_ementa"] = spans
         source = dict(
             db.execute(

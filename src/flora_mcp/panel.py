@@ -35,53 +35,93 @@ class LocalOnly:
         host = headers.get(b"host", b"").decode("latin1")
         origin = headers.get(b"origin", b"").decode("latin1")
         if host != self.host or (origin and origin != self.origin):
-            return await JSONResponse({"mensagem": "Origem não permitida."}, status_code=403)(scope, receive, send)
+            return await JSONResponse({"mensagem": "Origem não permitida."}, status_code=403)(
+                scope, receive, send
+            )
         if scope["path"].startswith("/api/") and headers.get(b"sec-fetch-site") == b"cross-site":
-            return await JSONResponse({"mensagem": "Origem não permitida."}, status_code=403)(scope, receive, send)
+            return await JSONResponse({"mensagem": "Origem não permitida."}, status_code=403)(
+                scope, receive, send
+            )
 
         async def secure_send(message):
             if message["type"] == "http.response.start":
-                message.setdefault("headers", []).extend([
-                    (b"cache-control", b"no-store"),
-                    (b"x-content-type-options", b"nosniff"),
-                    (b"referrer-policy", b"no-referrer"),
-                    (b"content-security-policy", b"default-src 'self'; script-src 'self'; style-src 'self'; "
-                     b"connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; "
-                     b"frame-ancestors 'none'"),
-                ])
+                message.setdefault("headers", []).extend(
+                    [
+                        (b"cache-control", b"no-store"),
+                        (b"x-content-type-options", b"nosniff"),
+                        (b"referrer-policy", b"no-referrer"),
+                        (
+                            b"content-security-policy",
+                            b"default-src 'self'; script-src 'self'; style-src 'self'; "
+                            b"connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; "
+                            b"frame-ancestors 'none'",
+                        ),
+                    ]
+                )
             await send(message)
+
         await self.app(scope, receive, secure_send)
 
 
 def create_panel_app(store: Store, *, port: int = 8766):
     reader = Reader(store)
+
     def status(request):
         view = reader.resolve()
         with view.read() as db:
             db.execute("BEGIN")
             revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
             count = db.execute("SELECT count(*) FROM documents").fetchone()[0]
-        return JSONResponse({"app": APP_ID, "version": PANEL_VERSION, "revisao": revision,
-                             "publicacao_id": getattr(view, "publication", None),
-                             "documentos": count,
-                             "acervo_key": hashlib.sha256(str(store.path.resolve()).encode()).hexdigest()})
+        return JSONResponse(
+            {
+                "app": APP_ID,
+                "version": PANEL_VERSION,
+                "revisao": revision,
+                "publicacao_id": getattr(view, "publication", None),
+                "documentos": count,
+                "acervo_key": hashlib.sha256(str(store.path.resolve()).encode()).hexdigest(),
+            }
+        )
 
     def catalog(request):
         view = reader.resolve()
         with view.read() as db:
             db.execute("BEGIN")
             revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
-            groups = [dict(r) for r in db.execute("""SELECT tribunal,json_extract(body,'$.orgao') AS orgao,
+            groups = [
+                dict(r)
+                for r in db.execute("""SELECT tribunal,json_extract(body,'$.orgao') AS orgao,
                 count(*) AS documentos,max(publication) AS ultima_publicacao
-                FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ""")]
-            classes = [dict(r) for r in db.execute("""SELECT tribunal,json_extract(body,'$.classe') AS classe
-                FROM documents GROUP BY tribunal,class ORDER BY tribunal,class""")]
+                FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ""")
+            ]
+            classes = [
+                dict(r)
+                for r in db.execute("""SELECT tribunal,json_extract(body,'$.classe') AS classe
+                FROM documents GROUP BY tribunal,class ORDER BY tribunal,class""")
+            ]
             collected = db.execute("SELECT max(checked) FROM resources WHERE status='ok'").fetchone()[0]
-            qualified = [dict(r) for r in db.execute("SELECT tribunal,json_extract(body,'$.orgao') AS orgao,species AS especie,count(*) AS documentos FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT value FROM json_each(?)) GROUP BY tribunal,organ,species ORDER BY tribunal,organ,species",
-                         (json.dumps(sorted(getattr(view, "withdrawn", set()))),))] if available(db) else []
-        return JSONResponse({"grupos": groups, "classes": classes, "revisao": revision,
-                             "precedentes": qualified, "publicacao_id": getattr(view, "publication", None),
-                             "ultima_coleta": collected, "cobertura_integral": False})
+            qualified = (
+                [
+                    dict(r)
+                    for r in db.execute(
+                        "SELECT tribunal,json_extract(body,'$.orgao') AS orgao,species AS especie,count(*) AS documentos FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT value FROM json_each(?)) GROUP BY tribunal,organ,species ORDER BY tribunal,organ,species",
+                        (json.dumps(sorted(getattr(view, "withdrawn", set()))),),
+                    )
+                ]
+                if available(db)
+                else []
+            )
+        return JSONResponse(
+            {
+                "grupos": groups,
+                "classes": classes,
+                "revisao": revision,
+                "precedentes": qualified,
+                "publicacao_id": getattr(view, "publication", None),
+                "ultima_coleta": collected,
+                "cobertura_integral": False,
+            }
+        )
 
     async def find(request):
         try:
@@ -93,16 +133,34 @@ def create_panel_app(store: Store, *, port: int = 8766):
                 if len(raw) > 8192:
                     return JSONResponse({"mensagem": "Consulta muito longa."}, status_code=413)
             values = json.loads(raw)
-            allowed = {"termos", "tribunal", "orgao", "classe", "processo", "relator", "data_inicio",
-                       "data_fim", "tipo_data", "ordenar", "cursor", "colecao", "campo", "especie", "numero"}
-            if not isinstance(values, dict) or set(values) - allowed or any(
-                not isinstance(v, (str, type(None))) for v in values.values()
+            allowed = {
+                "termos",
+                "tribunal",
+                "orgao",
+                "classe",
+                "processo",
+                "relator",
+                "data_inicio",
+                "data_fim",
+                "tipo_data",
+                "ordenar",
+                "cursor",
+                "colecao",
+                "campo",
+                "especie",
+                "numero",
+            }
+            if (
+                not isinstance(values, dict)
+                or set(values) - allowed
+                or any(not isinstance(v, (str, type(None))) for v in values.values())
             ):
                 raise ValueError("Parâmetros inválidos.")
             if any(len(v) > 2048 for v in values.values() if isinstance(v, str)):
                 raise ValueError("Consulta muito longa.")
             # Blocking SQLite work belongs on Starlette's worker pool.
             from starlette.concurrency import run_in_threadpool
+
             result = await run_in_threadpool(search, store, **values, limite=5)
             return JSONResponse(result)
         except FloraError as exc:
@@ -113,16 +171,20 @@ def create_panel_app(store: Store, *, port: int = 8766):
     def asset(filename, media_type):
         def serve(request):
             return FileResponse(ASSETS / filename, media_type=media_type)
+
         return serve
 
-    return Starlette(routes=[
-        Route("/", asset("index.html", "text/html")),
-        Route("/panel.css", asset("panel.css", "text/css")),
-        Route("/panel.js", asset("panel.js", "text/javascript")),
-        Route("/api/status", status),
-        Route("/api/catalog", catalog),
-        Route("/api/search", find, methods=["POST"]),
-    ], middleware=[Middleware(LocalOnly, port=port)])
+    return Starlette(
+        routes=[
+            Route("/", asset("index.html", "text/html")),
+            Route("/panel.css", asset("panel.css", "text/css")),
+            Route("/panel.js", asset("panel.js", "text/javascript")),
+            Route("/api/status", status),
+            Route("/api/catalog", catalog),
+            Route("/api/search", find, methods=["POST"]),
+        ],
+        middleware=[Middleware(LocalOnly, port=port)],
+    )
 
 
 def main():
@@ -136,8 +198,14 @@ def main():
     if not store.path.is_file():
         parser.error("Acervo inexistente. Confira o diretório configurado.")
     import uvicorn
-    uvicorn.run(create_panel_app(store, port=args.port), host="127.0.0.1", port=args.port,
-                access_log=False, log_level="warning")
+
+    uvicorn.run(
+        create_panel_app(store, port=args.port),
+        host="127.0.0.1",
+        port=args.port,
+        access_log=False,
+        log_level="warning",
+    )
 
 
 if __name__ == "__main__":

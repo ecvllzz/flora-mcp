@@ -9,15 +9,19 @@ from flora_mcp.store import connection
 
 def test_default_summary_preserves_diagnostics_and_legacy_detail(store):
     for dataset in ("espelhos-de-acordaos-terceira-turma", "tjsc-9-civil"):
-        resources = [{"id": str(i), "name": f"{i:04}.json", "url": "https://example.org/" + str(i)}
-                     for i in range(350)]
+        resources = [
+            {"id": str(i), "name": f"{i:04}.json", "url": "https://example.org/" + str(i)} for i in range(350)
+        ]
         store.catalog(dataset, {}, resources)
     run = store.start_run("TJSC")
-    detail = {"motivo": "Interrompida pelo operador", "falhas": [{"erro": "Documento sem ementa"}],
-              "antes": [{"orgao": "9", "documentos": 10}],
-              "depois": [{"orgao": "9", "documentos": 20}],
-              "eventos": [{"texto": "x" * 1000}] * 500,
-              "janelas": [{"dia": "2026-01-01"}] * 500}
+    detail = {
+        "motivo": "Interrompida pelo operador",
+        "falhas": [{"erro": "Documento sem ementa"}],
+        "antes": [{"orgao": "9", "documentos": 10}],
+        "depois": [{"orgao": "9", "documentos": 20}],
+        "eventos": [{"texto": "x" * 1000}] * 500,
+        "janelas": [{"dia": "2026-01-01"}] * 500,
+    }
     store.finish_run(run, "interrupted", detail)
     with connection(store.path, write=True) as db, db:
         db.execute("UPDATE resources SET status='error',error='Falha HTTP' WHERE id LIKE '%:0'")
@@ -45,17 +49,25 @@ def test_default_summary_preserves_diagnostics_and_legacy_detail(store):
 
 def test_resource_filters_and_cursor_reject_changed_scope(store):
     for dataset in ("tjsc-9-civil", "tjsc-10-civil", "espelhos-de-acordaos-terceira-turma"):
-        store.catalog(dataset, {}, [{"id": str(i), "name": f"{i}.json", "url": "https://example.org"}
-                                    for i in range(3)])
+        store.catalog(
+            dataset, {}, [{"id": str(i), "name": f"{i}.json", "url": "https://example.org"} for i in range(3)]
+        )
     first = api.coverage(store, "recursos", limite=2, tribunal="TJSC", dataset="tjsc-9-civil")
     assert first["total"] == 3
-    second = api.coverage(store, "recursos", limite=2, tribunal="TJSC", dataset="tjsc-9-civil",
-                          cursor=first["proximo_cursor"])
+    second = api.coverage(
+        store, "recursos", limite=2, tribunal="TJSC", dataset="tjsc-9-civil", cursor=first["proximo_cursor"]
+    )
     assert len(second["itens"]) == 1 and second["proximo_cursor"] is None
     assert len({r["name"] for r in first["itens"] + second["itens"]}) == 3
     with pytest.raises(FloraError, match="Cursor de outra"):
-        api.coverage(store, "recursos", limite=2, tribunal="STJ", dataset="tjsc-9-civil",
-                     cursor=first["proximo_cursor"])
+        api.coverage(
+            store,
+            "recursos",
+            limite=2,
+            tribunal="STJ",
+            dataset="tjsc-9-civil",
+            cursor=first["proximo_cursor"],
+        )
     assert api.coverage(store, "recursos", tribunal="STF")["total"] == 0
     with pytest.raises(FloraError):
         api.coverage(store, tribunal="TJSC")

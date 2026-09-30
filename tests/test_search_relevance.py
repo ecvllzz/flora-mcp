@@ -16,14 +16,20 @@ from flora_mcp.query import search
 @pytest.fixture
 def ranked_store(store):
     focused = "Guarda compartilhada e alimentos."
-    ingest(store, [
-        raw_doc("1", text=focused, dataPublicacao="DJEN DATA:01/08/2026"),
-        raw_doc("2", text=focused, dataPublicacao="DJEN DATA:01/08/2026"),
-        raw_doc("3", text=focused + " Assuntos gerais e diversos." * 150,
-                dataPublicacao="DJEN DATA:01/09/2026"),
-        raw_doc("4", text=focused, nomeOrgaoJulgador="QUARTA TURMA"),
-        raw_doc("5", text="Matéria sem correspondência textual."),
-    ])
+    ingest(
+        store,
+        [
+            raw_doc("1", text=focused, dataPublicacao="DJEN DATA:01/08/2026"),
+            raw_doc("2", text=focused, dataPublicacao="DJEN DATA:01/08/2026"),
+            raw_doc(
+                "3",
+                text=focused + " Assuntos gerais e diversos." * 150,
+                dataPublicacao="DJEN DATA:01/09/2026",
+            ),
+            raw_doc("4", text=focused, nomeOrgaoJulgador="QUARTA TURMA"),
+            raw_doc("5", text="Matéria sem correspondência textual."),
+        ],
+    )
     return store
 
 
@@ -71,9 +77,22 @@ def test_relevance_keeps_date_tribunal_and_process_filters_and_explicit_empty_re
 
 def test_relevance_is_available_through_cli(ranked_store):
     call = subprocess.run(
-        [sys.executable, "-m", "flora_mcp.cli", "--data-dir", str(ranked_store.directory),
-         "search", "guarda alimentos", "--orgao", "terceira turma", "--ordenar", "relevancia"],
-        capture_output=True, text=True, check=True,
+        [
+            sys.executable,
+            "-m",
+            "flora_mcp.cli",
+            "--data-dir",
+            str(ranked_store.directory),
+            "search",
+            "guarda alimentos",
+            "--orgao",
+            "terceira turma",
+            "--ordenar",
+            "relevancia",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
     )
     result = json.loads(call.stdout)
     assert result["ordenacao"] == "relevancia"
@@ -90,13 +109,19 @@ def test_relevance_is_available_through_real_mcp_protocol(ranked_store):
         async with stdio_client(params) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
-                result = await session.call_tool("pesquisar_jurisprudencia", {
-                    "termos": '"guarda compartilhada" alimentos', "ordenar": "relevancia",
-                    "orgao": "terceira turma", "limite": 1,
-                })
+                result = await session.call_tool(
+                    "pesquisar_jurisprudencia",
+                    {
+                        "termos": '"guarda compartilhada" alimentos',
+                        "ordenar": "relevancia",
+                        "orgao": "terceira turma",
+                        "limite": 1,
+                    },
+                )
                 assert not result.is_error
                 data = result.structured_content
                 assert data["ordenacao"] == "relevancia"
                 assert data["resultados"][0]["id"] == "STJ:1"
                 assert data["proximo_cursor"] is not None
+
     asyncio.run(exercise())

@@ -36,21 +36,29 @@ async def main():
             for key in ("grupos", "catalogos", "limites", "tjsc", "inteiros_teores", "cobertura_integral"):
                 assert result[key] == complete[key]
             assert sum(g["total"] for g in result["recursos"]) == len(complete["recursos"])
-            for before, after in zip(complete["execucoes_recentes"], result["execucoes_recentes"], strict=True):
+            for before, after in zip(
+                complete["execucoes_recentes"], result["execucoes_recentes"], strict=True
+            ):
                 assert before["id"] == after["id"] and before["status"] == after["status"]
                 for key in ("motivo", "falhas", "antes", "depois", "erro", "error"):
                     if before["detail"].get(key):
                         assert before["detail"][key] == after["detail"][key]
-            page = await session.call_tool("consultar_cobertura", {"detalhe": "recursos", "tribunal": "TJSC", "limite": 2})
-            assert page.structured_content["total"] == sum(r["dataset"].startswith("tjsc-") for r in complete["recursos"])
+            page = await session.call_tool(
+                "consultar_cobertura", {"detalhe": "recursos", "tribunal": "TJSC", "limite": 2}
+            )
+            assert page.structured_content["total"] == sum(
+                r["dataset"].startswith("tjsc-") for r in complete["recursos"]
+            )
             receipt = {
-                "status": "ok", "banco_ativo": str(store.path),
+                "status": "ok",
+                "banco_ativo": str(store.path),
                 "publicacao_id": result.get("publicacao_id"),
                 "resumo_mcp_caracteres": len(text),
                 "completo_json_compacto_caracteres": len(canonical(complete)),
                 "recursos": len(complete["recursos"]),
                 "pendentes": sum(g["pendentes"] for g in result["recursos"]),
-                "grupos": len(result["grupos"]), "execucoes": len(result["execucoes_recentes"]),
+                "grupos": len(result["grupos"]),
+                "execucoes": len(result["execucoes_recentes"]),
                 "diagnosticos_preservados": True,
             }
     output = json.dumps(receipt, ensure_ascii=False, indent=2)

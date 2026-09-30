@@ -72,7 +72,7 @@ def test_zero_is_distinguished_from_unknown_page():
 def test_copy_control_inside_ementa_label_preserves_document():
     original = page([1], total=1)
     with_control = original.replace(
-        b'EMENTA</span>',
+        b"EMENTA</span>",
         b'EMENTA <a class="copiarCampoResultado" data-label="EMENTA">'
         b'<i class="material-icons">content_copy</i></a></span>',
     )

@@ -33,10 +33,13 @@ def save(path, value):
 
 def groups(store):
     with connection(store.path) as db:
-        return [dict(r) for r in db.execute(
-            "SELECT tribunal,json_extract(body,'$.orgao') AS orgao,count(*) AS documentos "
-            "FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ"
-        )]
+        return [
+            dict(r)
+            for r in db.execute(
+                "SELECT tribunal,json_extract(body,'$.orgao') AS orgao,count(*) AS documentos "
+                "FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ"
+            )
+        ]
 
 
 def plan(store, start, end, chambers=(9, 10)):
@@ -46,9 +49,10 @@ def plan(store, start, end, chambers=(9, 10)):
     with connection(store.path) as db:
         for chamber in chambers:
             dataset = f"tjsc-{chamber}-civil"
-            records = {r["id"]: dict(r) for r in db.execute(
-                "SELECT * FROM resources WHERE dataset=? AND present=1", (dataset,)
-            )}
+            records = {
+                r["id"]: dict(r)
+                for r in db.execute("SELECT * FROM resources WHERE dataset=? AND present=1", (dataset,))
+            }
             day = start
             while day <= end:
                 resource_id = dataset + ":" + day.isoformat()
@@ -68,18 +72,25 @@ def plan(store, start, end, chambers=(9, 10)):
                     count = db.execute(
                         "SELECT count(*) FROM observations WHERE resource_id=?", (resource_id,)
                     ).fetchone()[0]
-                    if (count != record["count"] or envelope.get("camara") != chamber
-                            or envelope.get("data_publicacao") != str(day)
-                            or envelope.get("total") != count):
+                    if (
+                        count != record["count"]
+                        or envelope.get("camara") != chamber
+                        or envelope.get("data_publicacao") != str(day)
+                        or envelope.get("total") != count
+                    ):
                         raise FloraError("janela_inconsistente", resource_id)
                     done.append(entry)
                 else:
                     missing.append({**entry, "estado_anterior": record["status"] if record else "ausente"})
                 day += timedelta(days=1)
     missing.sort(key=lambda item: (item["dia"], item["camara"]))
-    return {"periodo_publicacao": [str(start), str(end)], "camaras": list(chambers),
-            "concluidas_verificadas": len(done), "pendentes": missing,
-            "dia_atual_provisorio": end == date.today()}
+    return {
+        "periodo_publicacao": [str(start), str(end)],
+        "camaras": list(chambers),
+        "concluidas_verificadas": len(done),
+        "pendentes": missing,
+        "dia_atual_provisorio": end == date.today(),
+    }
 
 
 def execute(config, store, start, end, report_path, backup, *, fetch=collect_window):
@@ -90,8 +101,14 @@ def execute(config, store, start, end, report_path, backup, *, fetch=collect_win
         raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
     with FileLock(str(store.directory / "collector.lock"), timeout=0):
         work = plan(store, start, end)
-        report = {"inicio": now(), "banco": str(store.path), "plano": work,
-                  "antes": groups(store), "status": "preparado", "eventos": []}
+        report = {
+            "inicio": now(),
+            "banco": str(store.path),
+            "plano": work,
+            "antes": groups(store),
+            "status": "preparado",
+            "eventos": [],
+        }
         save(report_path, report)
         if not work["pendentes"]:
             report.update(status="ok", fim=now(), depois=report["antes"])
@@ -107,34 +124,65 @@ def execute(config, store, start, end, report_path, backup, *, fetch=collect_win
                     chamber, day = entry["camara"], date.fromisoformat(entry["dia"])
                     report["em_andamento"] = entry
                     save(report_path, report)
-                    resource = {"id": str(day), "name": day.strftime("%Y%m%d") + ".json",
-                                "url": TJSC_SEARCH, "last_modified": now(), "publication_day": str(day),
-                                "chamber": chamber, "tipo": "janela_publicacao"}
-                    store.catalog(f"tjsc-{chamber}-civil", {"fonte": TJSC_SEARCH, "tipo": "janela_publicacao"},
-                                  [resource], complete_listing=False)
+                    resource = {
+                        "id": str(day),
+                        "name": day.strftime("%Y%m%d") + ".json",
+                        "url": TJSC_SEARCH,
+                        "last_modified": now(),
+                        "publication_day": str(day),
+                        "chamber": chamber,
+                        "tipo": "janela_publicacao",
+                    }
+                    store.catalog(
+                        f"tjsc-{chamber}-civil",
+                        {"fonte": TJSC_SEARCH, "tipo": "janela_publicacao"},
+                        [resource],
+                        complete_listing=False,
+                    )
                     with connection(store.path) as db:
-                        saved = dict(db.execute("SELECT * FROM resources WHERE id=?", (entry["recurso"],)).fetchone())
+                        saved = dict(
+                            db.execute("SELECT * FROM resources WHERE id=?", (entry["recurso"],)).fetchone()
+                        )
                     try:
                         content, rows = fetch(http, config, chamber, day)
                         counts = store.ingest(saved, content, rows, run)
                     except Exception as exc:
                         store.failure(entry["recurso"], run, str(exc))
                         raise
-                    event = {"camara": chamber, "dia": str(day), "registros": len(rows), **counts, "fim": now()}
+                    event = {
+                        "camara": chamber,
+                        "dia": str(day),
+                        "registros": len(rows),
+                        **counts,
+                        "fim": now(),
+                    }
                     report["eventos"].append(event)
                     report.pop("em_andamento", None)
                     save(report_path, report)
-                    print(json.dumps({"concluidas_nesta_execucao": len(report["eventos"]),
-                                      "total_planejado": len(work["pendentes"]), **event}, ensure_ascii=True), flush=True)
+                    print(
+                        json.dumps(
+                            {
+                                "concluidas_nesta_execucao": len(report["eventos"]),
+                                "total_planejado": len(work["pendentes"]),
+                                **event,
+                            },
+                            ensure_ascii=True,
+                        ),
+                        flush=True,
+                    )
             report["status"] = "ok"
         except BaseException as exc:
-            report.update(status="interrupted" if isinstance(exc, (KeyboardInterrupt, SystemExit)) else "error",
-                          erro=f"{type(exc).__name__}: {exc}", codigo=getattr(exc, "code", "erro_fonte"))
+            report.update(
+                status="interrupted" if isinstance(exc, (KeyboardInterrupt, SystemExit)) else "error",
+                erro=f"{type(exc).__name__}: {exc}",
+                codigo=getattr(exc, "code", "erro_fonte"),
+            )
             raise
         finally:
             report.update(fim=now(), depois=groups(store))
             store.finish_run(run, report["status"], report)
             from flora_mcp.publication import MANIFEST, publish
+
             if (store.directory / MANIFEST).exists():
                 report["publicacao"] = publish(store)
             save(report_path, report)
@@ -157,8 +205,18 @@ def main():
     start, end = date.fromisoformat(args.inicio), date.fromisoformat(args.fim)
     if args.apply:
         result = execute(config, store, start, end, args.report, args.backup)
-        print(json.dumps({"status": result["status"], "janelas": len(result["eventos"]),
-                          "depois": result["depois"], "report": str(args.report)}, ensure_ascii=True), flush=True)
+        print(
+            json.dumps(
+                {
+                    "status": result["status"],
+                    "janelas": len(result["eventos"]),
+                    "depois": result["depois"],
+                    "report": str(args.report),
+                },
+                ensure_ascii=True,
+            ),
+            flush=True,
+        )
     else:
         print(json.dumps(plan(store, start, end), ensure_ascii=True, indent=2))
 

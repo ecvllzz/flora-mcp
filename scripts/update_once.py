@@ -18,16 +18,21 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config")
     parser.add_argument("--data-dir")
-    parser.add_argument("--precedents-package", type=Path,
-                        help="Pacote oficial revisado de precedentes, após coleta e conferência")
+    parser.add_argument(
+        "--precedents-package",
+        type=Path,
+        help="Pacote oficial revisado de precedentes, após coleta e conferência",
+    )
     parser.add_argument("--tjsc-days", type=int, default=7, help="Janela móvel de 1 a 31 dias; padrão 7")
     args = parser.parse_args()
     if not 1 <= args.tjsc_days <= 31:
         parser.error("--tjsc-days deve ficar entre 1 e 31")
     config = load_config(args.config, args.data_dir)
     if not config.db_path.is_file():
-        parser.error("Banco não encontrado na pasta configurada. Confira o caminho; "
-                     "nenhum acervo será criado automaticamente.")
+        parser.error(
+            "Banco não encontrado na pasta configurada. Confira o caminho; "
+            "nenhum acervo será criado automaticamente."
+        )
     report = {"inicio": now(), "rotina": "update_once", "execucoes": []}
     with FileLock(str(config.data_dir / "collector.lock"), timeout=0):
         store = Store(config.data_dir)
@@ -36,7 +41,11 @@ def main():
             from flora_mcp.precedents import import_package
 
             import_package(store, args.precedents_package.resolve())
-            backup_path = config.data_dir.parent / (config.data_dir.name + "-backups") / datetime.now().strftime("antes-atualizacao-%Y%m%d-%H%M%S-%f")
+            backup_path = (
+                config.data_dir.parent
+                / (config.data_dir.name + "-backups")
+                / datetime.now().strftime("antes-atualizacao-%Y%m%d-%H%M%S-%f")
+            )
             report["backup"] = store.backup(backup_path)
             report["execucoes"].append(import_package(store, args.precedents_package.resolve(), apply=True))
         with client() as http:
@@ -47,6 +56,7 @@ def main():
                 sync_tjsc(config, store, http, end - timedelta(days=args.tjsc_days - 1), end)
             )
         from flora_mcp.publication import MANIFEST, publish
+
         if (config.data_dir / MANIFEST).exists():
             report["publicacao"] = publish(store)
     report["fim"] = now()

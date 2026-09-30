@@ -45,8 +45,9 @@ def test_collectors_and_backup_do_not_create_missing_base(tmp_path, command):
             args += ["--inicio", "2026-09-01", "--fim", "2026-09-01"]
         elif command == "backup":
             args += [str(tmp_path / "backup")]
-    result = subprocess.run([sys.executable, *args], capture_output=True,
-                            env={**os.environ, "PYTHONUTF8": "1"}, text=True)
+    result = subprocess.run(
+        [sys.executable, *args], capture_output=True, env={**os.environ, "PYTHONUTF8": "1"}, text=True
+    )
     assert result.returncode == 2
     assert "Banco n" in result.stderr
     assert not missing.exists()

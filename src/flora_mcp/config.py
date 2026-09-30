@@ -5,6 +5,7 @@ from pathlib import Path
 
 LOCAL_CONFIG = Path(__file__).resolve().parents[2] / "flora.local.toml"
 
+
 @dataclass
 class Config:
     data_dir: Path
@@ -35,8 +36,10 @@ def load_config(path: str | None = None, data_dir: str | None = None) -> Config:
     directory = data_dir or os.environ.get("FLORA_MCP_DATA_DIR") or values.pop("data_dir", None)
     values.pop("data_dir", None)
     if not directory or not str(directory).strip():
-        raise ValueError("Pasta do acervo não configurada. Defina --data-dir, FLORA_MCP_DATA_DIR "
-                         "ou data_dir em flora.local.toml. AppData não é usado como padrão.")
+        raise ValueError(
+            "Pasta do acervo não configurada. Defina --data-dir, FLORA_MCP_DATA_DIR "
+            "ou data_dir em flora.local.toml. AppData não é usado como padrão."
+        )
     if not Path(directory).expanduser().is_absolute():
         raise ValueError("A pasta do acervo deve ser um caminho absoluto.")
     config = Config(data_dir=Path(directory).expanduser().resolve(), **values)

@@ -68,10 +68,15 @@ HEADINGS = re.compile(
     r"(?P<title>CASO EM EXAME|QUEST[ÃA]O EM DISCUSS[ÃA]O|RAZ[ÕO]ES DE DECIDIR|DISPOSITIVO E TESE|TESE DE JULGAMENTO)"
     r"[ \t]*(?:[:.\-–][ \t]*|$)"
 )
-NAMES = {"CASO EM EXAME": "caso_em_exame", "QUESTÃO EM DISCUSSÃO": "questao_em_discussao",
-         "QUESTAO EM DISCUSSAO": "questao_em_discussao", "RAZÕES DE DECIDIR": "razoes_de_decidir",
-         "RAZOES DE DECIDIR": "razoes_de_decidir", "DISPOSITIVO E TESE": "dispositivo_e_tese",
-         "TESE DE JULGAMENTO": "tese_na_ementa"}
+NAMES = {
+    "CASO EM EXAME": "caso_em_exame",
+    "QUESTÃO EM DISCUSSÃO": "questao_em_discussao",
+    "QUESTAO EM DISCUSSAO": "questao_em_discussao",
+    "RAZÕES DE DECIDIR": "razoes_de_decidir",
+    "RAZOES DE DECIDIR": "razoes_de_decidir",
+    "DISPOSITIVO E TESE": "dispositivo_e_tese",
+    "TESE DE JULGAMENTO": "tese_na_ementa",
+}
 
 
 def sections(text):
@@ -79,6 +84,13 @@ def sections(text):
     names = [{folded(k): v for k, v in NAMES.items()}[folded(m.group("title"))] for m in matches]
     if len(set(names)) != len(names):
         return []  # Ambiguous repeated headings: retain only the full ementa.
-    return [{"nome": names[i], "inicio": m.start(), "fim": matches[i+1].start() if i+1 < len(matches) else len(text),
-             "sha256_componente": digest(text.encode()), "derivador": "ementa-secoes-1"}
-            for i, m in enumerate(matches)]
+    return [
+        {
+            "nome": names[i],
+            "inicio": m.start(),
+            "fim": matches[i + 1].start() if i + 1 < len(matches) else len(text),
+            "sha256_componente": digest(text.encode()),
+            "derivador": "ementa-secoes-1",
+        }
+        for i, m in enumerate(matches)
+    ]

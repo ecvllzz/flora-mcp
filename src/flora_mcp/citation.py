@@ -51,18 +51,25 @@ def citation_metadata(body: dict, raw: dict | None) -> dict:
     }
     missing = [key for key, value in required.items() if not value]
     unavailable = "[não informado na fonte]"
-    publication_label = "publ. " + publication if publication else (
-        "publicação na fonte: " + _text(body.get("publicacao_original"))
-        if _text(body.get("publicacao_original")) else "publ. " + unavailable
+    publication_label = (
+        "publ. " + publication
+        if publication
+        else (
+            "publicação na fonte: " + _text(body.get("publicacao_original"))
+            if _text(body.get("publicacao_original"))
+            else "publ. " + unavailable
+        )
     )
-    reference = ", ".join([
-        tribunal or "[tribunal não informado na fonte]",
-        f"{class_name or '[classe não informada na fonte]'} n. {process_number or unavailable}",
-        "rel. " + (relator or unavailable),
-        organ or "[órgão não informado na fonte]",
-        "j. " + (judgment or unavailable),
-        publication_label,
-    ])
+    reference = ", ".join(
+        [
+            tribunal or "[tribunal não informado na fonte]",
+            f"{class_name or '[classe não informada na fonte]'} n. {process_number or unavailable}",
+            "rel. " + (relator or unavailable),
+            organ or "[órgão não informado na fonte]",
+            "j. " + (judgment or unavailable),
+            publication_label,
+        ]
+    )
     return {
         "relator": relator or None,
         "classe_descricao": description or None,

@@ -10,17 +10,46 @@ from .text import advanced_query
 
 
 def metadata(body, sha):
-    return {k: body.get(k) for k in (
-        "id", "tribunal", "especie", "numero", "orgao", "data_publicacao", "referencia",
-        "referencia_completa", "referencia_pendencias", "situacao", "admissao",
-        "tipo_publicacao",
-    )} | {"hash_conteudo": sha, "componentes_disponiveis": list(body["componentes"]),
-         "fontes": [{k: s.get(k) for k in ("url", "sha256", "coletado_em")} for s in body["fontes"]]}
+    return {
+        k: body.get(k)
+        for k in (
+            "id",
+            "tribunal",
+            "especie",
+            "numero",
+            "orgao",
+            "data_publicacao",
+            "referencia",
+            "referencia_completa",
+            "referencia_pendencias",
+            "situacao",
+            "admissao",
+            "tipo_publicacao",
+        )
+    } | {
+        "hash_conteudo": sha,
+        "componentes_disponiveis": list(body["componentes"]),
+        "fontes": [{k: s.get(k) for k in ("url", "sha256", "coletado_em")} for s in body["fontes"]],
+    }
 
 
-def search(store, *, termos="", tribunal=None, orgao=None, especie=None, numero=None,
-           campo="todos", ordenar="mais_recentes", limite=8, cursor=None,
-           detalhe="triagem", data_inicio=None, data_fim=None, modo_busca="simples"):
+def search(
+    store,
+    *,
+    termos="",
+    tribunal=None,
+    orgao=None,
+    especie=None,
+    numero=None,
+    campo="todos",
+    ordenar="mais_recentes",
+    limite=8,
+    cursor=None,
+    detalhe="triagem",
+    data_inicio=None,
+    data_fim=None,
+    modo_busca="simples",
+):
     if campo not in {*COMPONENTS, "todos"}:
         raise FloraError("campo_indisponivel", "Precedentes: " + ", ".join(COMPONENTS) + ", todos.")
     if tribunal and tribunal.upper() not in SPECIES:
@@ -55,8 +84,12 @@ def search(store, *, termos="", tribunal=None, orgao=None, especie=None, numero=
     if retired:
         filters.append("(p.id || ':' || p.hash) NOT IN (SELECT value FROM json_each(?))")
         params.append(canonical(retired))
-    for column, value in (("tribunal", tribunal.upper() if tribunal else None),
-                          ("organ", folded(orgao) if orgao else None), ("species", especie), ("number", numero)):
+    for column, value in (
+        ("tribunal", tribunal.upper() if tribunal else None),
+        ("organ", folded(orgao) if orgao else None),
+        ("species", especie),
+        ("number", numero),
+    ):
         if value is not None:
             filters.append("p." + column + "=?")
             params.append(value)
@@ -82,7 +115,11 @@ def search(store, *, termos="", tribunal=None, orgao=None, especie=None, numero=
         offset = 0
         if cursor:
             value = decode_cursor(cursor)
-            if value.get("consulta") != fingerprint or type(value.get("offset")) is not int or value["offset"] < 0:
+            if (
+                value.get("consulta") != fingerprint
+                or type(value.get("offset")) is not int
+                or value["offset"] < 0
+            ):
                 raise FloraError("cursor_invalido", "Cursor de outra consulta ou posição inválida.")
             if value.get("revisao") != revision:
                 raise FloraError("base_alterada", "Base alterada; reinicie a pesquisa.")
@@ -90,17 +127,34 @@ def search(store, *, termos="", tribunal=None, orgao=None, especie=None, numero=
         if available(db):
             total = db.execute(f"SELECT count(*) FROM {source} WHERE {where}", params).fetchone()[0]
             # First highlighted position is an offset in the original Unicode string.
-            highlights = "".join(f",highlight(precedent_search,{i},char(1),char(2)) AS h{i}"
-                                 for i in range(len(COMPONENTS))) if query else ""
-            rows = db.execute(f"SELECT p.body,p.hash{highlights} FROM {source} WHERE {where} ORDER BY {order} LIMIT ? OFFSET ?",
-                              (*params, limite, offset)).fetchall()
+            highlights = (
+                "".join(
+                    f",highlight(precedent_search,{i},char(1),char(2)) AS h{i}"
+                    for i in range(len(COMPONENTS))
+                )
+                if query
+                else ""
+            )
+            rows = db.execute(
+                f"SELECT p.body,p.hash{highlights} FROM {source} WHERE {where} ORDER BY {order} LIMIT ? OFFSET ?",
+                (*params, limite, offset),
+            ).fetchall()
         else:
             rows, total = [], 0
-    result = {"status": "ok", "contrato": "flora-mcp-2", "colecao": "precedentes",
-              "total_encontrado": total, "resultados": [], "campo_pesquisado": campo,
-              "consulta_efetiva": query, "ordenacao": ordenar, "revisao_base": revision,
-              "detalhe": detalhe, "proximo_cursor": None,
-              "cobertura": {"integral": False, "aviso": "Busca limitada aos precedentes admitidos no acervo."}}
+    result = {
+        "status": "ok",
+        "contrato": "flora-mcp-2",
+        "colecao": "precedentes",
+        "total_encontrado": total,
+        "resultados": [],
+        "campo_pesquisado": campo,
+        "consulta_efetiva": query,
+        "ordenacao": ordenar,
+        "revisao_base": revision,
+        "detalhe": detalhe,
+        "proximo_cursor": None,
+        "cobertura": {"integral": False, "aviso": "Busca limitada aos precedentes admitidos no acervo."},
+    }
     for row in rows:
         body = json.loads(row["body"])
         item = metadata(body, row["hash"])
@@ -112,19 +166,32 @@ def search(store, *, termos="", tribunal=None, orgao=None, especie=None, numero=
             component = matches[0] if matches else next(iter(body["componentes"]))
             full = body["componentes"][component]
             start = max(0, row[f"h{COMPONENTS.index(component)}"].find("\x01") - 80) if matches else 0
-            snippet = full[start:start + 400]
-            item.update(componente=component, campos_correspondentes=matches, trecho=snippet,
-                        offset=start, trecho_parcial=start > 0 or len(snippet) < len(full),
-                        sha256_componente=digest(full.encode()))
+            snippet = full[start : start + 400]
+            item.update(
+                componente=component,
+                campos_correspondentes=matches,
+                trecho=snippet,
+                offset=start,
+                trecho_parcial=start > 0 or len(snippet) < len(full),
+                sha256_componente=digest(full.encode()),
+            )
         result["resultados"].append(item)
         following = offset + len(result["resultados"])
-        result["proximo_cursor"] = encode_cursor({"consulta": fingerprint, "revisao": revision, "offset": following}) if following < total else None
+        result["proximo_cursor"] = (
+            encode_cursor({"consulta": fingerprint, "revisao": revision, "offset": following})
+            if following < total
+            else None
+        )
         if detalhe == "triagem" and len(canonical(result).encode()) > 7500:
             result["resultados"].pop()
             if not result["resultados"]:
-                raise FloraError("referencia_excede_orcamento", "Metadados excedem 8 KiB; solicite detalhe=completo.")
+                raise FloraError(
+                    "referencia_excede_orcamento", "Metadados excedem 8 KiB; solicite detalhe=completo."
+                )
             following -= 1
-            result["proximo_cursor"] = encode_cursor({"consulta": fingerprint, "revisao": revision, "offset": following})
+            result["proximo_cursor"] = encode_cursor(
+                {"consulta": fingerprint, "revisao": revision, "offset": following}
+            )
             break
     if total == 0:
         result["ausencia"] = "Nenhum precedente admitido corresponde à consulta e aos filtros nesta base."
@@ -137,7 +204,11 @@ def document(store, id, componente="enunciado", cursor=None, tamanho_bloco=16000
     if not 100 <= tamanho_bloco <= 32000:
         raise FloraError("limite_invalido", "Blocos devem ter entre 100 e 32000 caracteres.")
     with store.read() as db:
-        row = db.execute("SELECT * FROM precedents WHERE id=? AND admission='admitido'", (id,)).fetchone() if available(db) else None
+        row = (
+            db.execute("SELECT * FROM precedents WHERE id=? AND admission='admitido'", (id,)).fetchone()
+            if available(db)
+            else None
+        )
     if not row:
         raise FloraError("documento_nao_encontrado", "Precedente ausente ou não admitido para uso.")
     if id + ":" + row["hash"] in getattr(store, "retired_versions", set()):
@@ -157,13 +228,28 @@ def document(store, id, componente="enunciado", cursor=None, tamanho_bloco=16000
         offset = value.get("offset")
         if type(offset) is not int or not 0 <= offset <= len(text):
             raise FloraError("cursor_invalido", "Posição inválida.")
-    block = text[offset:offset + tamanho_bloco]
+    block = text[offset : offset + tamanho_bloco]
     following = offset + len(block)
-    return {"status": "ok", "contrato": "flora-mcp-2", "id": id, "colecao": "precedentes",
-            "componente": componente, "texto": block, "offset": offset, "total_caracteres": len(text),
-            "parcial": offset > 0 or following < len(text), "fim": following == len(text),
-            "hash_conteudo": row["hash"], "sha256_texto_completo": digest(text.encode()),
-            "evidencia_componente": body["evidencias"].get("componente:" + componente),
-            "evidencia_situacao": body["evidencias"].get("situacao"),
-            "metadados": metadata(body, row["hash"]), "julgados_relacionados": body.get("julgados_relacionados", []),
-            "proximo_cursor": encode_cursor({"id": id, "componente": componente, "hash": row["hash"], "offset": following}) if following < len(text) else None}
+    return {
+        "status": "ok",
+        "contrato": "flora-mcp-2",
+        "id": id,
+        "colecao": "precedentes",
+        "componente": componente,
+        "texto": block,
+        "offset": offset,
+        "total_caracteres": len(text),
+        "parcial": offset > 0 or following < len(text),
+        "fim": following == len(text),
+        "hash_conteudo": row["hash"],
+        "sha256_texto_completo": digest(text.encode()),
+        "evidencia_componente": body["evidencias"].get("componente:" + componente),
+        "evidencia_situacao": body["evidencias"].get("situacao"),
+        "metadados": metadata(body, row["hash"]),
+        "julgados_relacionados": body.get("julgados_relacionados", []),
+        "proximo_cursor": encode_cursor(
+            {"id": id, "componente": componente, "hash": row["hash"], "offset": following}
+        )
+        if following < len(text)
+        else None,
+    }

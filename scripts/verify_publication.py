@@ -18,16 +18,28 @@ def fingerprint(store):
     count, complete = 0, 0
     with store.read() as db:
         db.execute("BEGIN")
-        for row in db.execute("SELECT d.id,d.hash,d.body,v.raw FROM documents d JOIN versions v ON v.document_id=d.id AND v.hash=d.hash ORDER BY d.id"):
+        for row in db.execute(
+            "SELECT d.id,d.hash,d.body,v.raw FROM documents d JOIN versions v ON v.document_id=d.id AND v.hash=d.hash ORDER BY d.id"
+        ):
             body = json.loads(row["body"])
             citation = citation_metadata(body, json.loads(row["raw"]))
             hasher.update(canonical([row["id"], row["hash"], body, citation]).encode())
             count += 1
             complete += citation["referencia_completa"]
-        groups = [dict(r) for r in db.execute("SELECT tribunal,count(*) AS documentos FROM documents GROUP BY tribunal ORDER BY tribunal")]
+        groups = [
+            dict(r)
+            for r in db.execute(
+                "SELECT tribunal,count(*) AS documentos FROM documents GROUP BY tribunal ORDER BY tribunal"
+            )
+        ]
         integrity = db.execute("PRAGMA integrity_check").fetchone()[0]
-    return {"documentos": count, "referencias_estruturalmente_completas": complete,
-            "sha256_registros_e_referencias": hasher.hexdigest(), "grupos": groups, "integridade": integrity}
+    return {
+        "documentos": count,
+        "referencias_estruturalmente_completas": complete,
+        "sha256_registros_e_referencias": hasher.hexdigest(),
+        "grupos": groups,
+        "integridade": integrity,
+    }
 
 
 def main():
@@ -44,11 +56,16 @@ def main():
     assert original["integridade"] == "ok"
     triage = search(store, "alimentos", detalhe="triagem")
     summary = coverage(store)
-    receipt = {"status": "ok", "conferido_em": now(), "publicacao_id": view.publication,
-               "conteudo_preservado": original, "triagem_bytes": len(canonical(triage).encode()),
-               "cobertura_resumo_caracteres": len(canonical(summary)),
-               "cobertura_resumo_bytes": len(canonical(summary).encode()),
-               "limite": "Igualdade estrutural e literal; não certifica autoridade jurídica dos acórdãos."}
+    receipt = {
+        "status": "ok",
+        "conferido_em": now(),
+        "publicacao_id": view.publication,
+        "conteudo_preservado": original,
+        "triagem_bytes": len(canonical(triage).encode()),
+        "cobertura_resumo_caracteres": len(canonical(summary)),
+        "cobertura_resumo_bytes": len(canonical(summary).encode()),
+        "limite": "Igualdade estrutural e literal; não certifica autoridade jurídica dos acórdãos.",
+    }
     assert receipt["triagem_bytes"] <= 8192
     assert receipt["cobertura_resumo_caracteres"] < 10000
     output = json.dumps(receipt, ensure_ascii=False, indent=2)

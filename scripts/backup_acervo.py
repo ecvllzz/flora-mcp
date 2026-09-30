@@ -20,8 +20,12 @@ def main():
     config = load_config(data_dir=args.data_dir)
     if not config.db_path.is_file():
         parser.error("Banco não encontrado; confira a pasta configurada.")
-    target = (args.destino or config.data_dir.parent / (config.data_dir.name + "-backups") /
-              datetime.now().strftime("%Y%m%d-%H%M%S-%f")).resolve()
+    target = (
+        args.destino
+        or config.data_dir.parent
+        / (config.data_dir.name + "-backups")
+        / datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    ).resolve()
     if target == config.data_dir or config.data_dir in target.parents:
         parser.error("O destino deve ficar fora do acervo ativo.")
     with FileLock(str(config.data_dir / "collector.lock"), timeout=0):

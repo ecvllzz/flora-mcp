@@ -20,10 +20,18 @@ SPECIES = {
     "STF": {"tema_repercussao_geral", "sumula_vinculante", "sumula"},
     "TJSC": {"sumula"},
 }
-LABELS = {"tema_repetitivo": "Tema repetitivo", "iac": "IAC", "sumula": "Súmula",
-          "tema_repercussao_geral": "Tema de repercussão geral", "sumula_vinculante": "Súmula vinculante"}
-PUBLICATIONS = {"enunciado": "publicação do enunciado", "acordao_merito": "publicação do acórdão de mérito",
-                "acordao_embargos": "publicação do acórdão de embargos"}
+LABELS = {
+    "tema_repetitivo": "Tema repetitivo",
+    "iac": "IAC",
+    "sumula": "Súmula",
+    "tema_repercussao_geral": "Tema de repercussão geral",
+    "sumula_vinculante": "Súmula vinculante",
+}
+PUBLICATIONS = {
+    "enunciado": "publicação do enunciado",
+    "acordao_merito": "publicação do acórdão de mérito",
+    "acordao_embargos": "publicação do acórdão de embargos",
+}
 EXCLUDED = {"cancelado", "revogado", "superado", "suspenso"}
 STATUSES = EXCLUDED | {"vigente", "pendente", "desconhecido"}
 SCHEMA = """
@@ -114,7 +122,9 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     body["id"] = f"{tribunal}:{species}{scope}:{number}"
     components = body.get("componentes")
     if not isinstance(components, dict) or set(components) - set(COMPONENTS):
-        raise FloraError("pacote_invalido", "Componentes inválidos; ementas pertencem aos julgados associados.")
+        raise FloraError(
+            "pacote_invalido", "Componentes inválidos; ementas pertencem aos julgados associados."
+        )
     for name, value in components.items():
         required_text(value, name)
     if species in {"sumula", "sumula_vinculante"} and "tese_firmada" in components:
@@ -208,8 +218,13 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     body["motivos_admissao"] = sorted(set(reasons))
     body["referencia"] = (
         f"{tribunal}, {LABELS[species]} n. {number}, {organ}"
-        + (f", {PUBLICATIONS.get(publication_type, 'publicação de natureza não identificada')} {publication}" if publication else "")
-        + ". Fonte: " + sources[0]["url"]
+        + (
+            f", {PUBLICATIONS.get(publication_type, 'publicação de natureza não identificada')} {publication}"
+            if publication
+            else ""
+        )
+        + ". Fonte: "
+        + sources[0]["url"]
     )
     body["referencia_completa"] = bool(publication)
     body["referencia_pendencias"] = [] if publication else ["data_publicacao"]
@@ -227,9 +242,14 @@ def import_package(store: Store, package_path: Path, *, apply: bool = False) -> 
     prepared = [prepare(record, package_path.parent, source_cache) for record in records]
     if len({body["id"] for body, _ in prepared}) != len(prepared):
         raise FloraError("id_duplicado", "Pacote contém identidade duplicada.")
-    receipt = {"status": "ok", "aplicado": apply, "registros": [
-        {"id": body["id"], "admissao": body["admissao"], "motivos": body["motivos_admissao"]}
-        for body, _ in prepared]}
+    receipt = {
+        "status": "ok",
+        "aplicado": apply,
+        "registros": [
+            {"id": body["id"], "admissao": body["admissao"], "motivos": body["motivos_admissao"]}
+            for body, _ in prepared
+        ],
+    }
     if not apply:
         return receipt
     with connection(store.path, write=True) as db, db:
@@ -244,33 +264,76 @@ def import_package(store: Store, package_path: Path, *, apply: bool = False) -> 
                 source.pop("arquivo", None)
             raw = canonical(body)
             sha = digest(raw.encode())
-            old = db.execute("SELECT hash,admission,body FROM precedents WHERE id=?", (body["id"],)).fetchone()
+            old = db.execute(
+                "SELECT hash,admission,body FROM precedents WHERE id=?", (body["id"],)
+            ).fetchone()
             if old and old[0] == sha:
                 continue
-            if body["admissao"] == "admitido" and db.execute("SELECT 1 FROM precedent_retirements WHERE id=? AND hash=?", (body["id"], sha)).fetchone():
-                raise FloraError("versao_retirada", "Readmissão exige nova evidência; este conteúdo foi retirado.")
+            if (
+                body["admissao"] == "admitido"
+                and db.execute(
+                    "SELECT 1 FROM precedent_retirements WHERE id=? AND hash=?", (body["id"], sha)
+                ).fetchone()
+            ):
+                raise FloraError(
+                    "versao_retirada", "Readmissão exige nova evidência; este conteúdo foi retirado."
+                )
             changed = True
-            db.execute("INSERT OR IGNORE INTO precedent_versions VALUES (?,?,?,?)", (body["id"], sha, raw, now()))
-            db.execute("INSERT INTO precedent_events(id,hash,observed,admission,reasons) VALUES (?,?,?,?,?)",
-                       (body["id"], sha, now(), body["admissao"], canonical(body["motivos_admissao"])))
-            if (old and old["admission"] == "admitido" and body["admissao"] != "admitido"
-                    and body["situacao"] in {"vigente", "desconhecido"} and not body.get("pendencias")):
+            db.execute(
+                "INSERT OR IGNORE INTO precedent_versions VALUES (?,?,?,?)", (body["id"], sha, raw, now())
+            )
+            db.execute(
+                "INSERT INTO precedent_events(id,hash,observed,admission,reasons) VALUES (?,?,?,?,?)",
+                (body["id"], sha, now(), body["admissao"], canonical(body["motivos_admissao"])),
+            )
+            if (
+                old
+                and old["admission"] == "admitido"
+                and body["admissao"] != "admitido"
+                and body["situacao"] in {"vigente", "desconhecido"}
+                and not body.get("pendencias")
+            ):
                 # An incomplete observation is not evidence of withdrawal. Retain it only in audit.
-                next(x for x in receipt["registros"] if x["id"] == body["id"])["estado_anterior_conservado"] = True
+                next(x for x in receipt["registros"] if x["id"] == body["id"])[
+                    "estado_anterior_conservado"
+                ] = True
                 continue
-            if old and old["admission"] == "admitido" and (
-                    body["admissao"] != "admitido" or json.loads(old["body"])["componentes"] != body["componentes"]):
-                db.execute("INSERT OR IGNORE INTO precedent_retirements VALUES (?,?,?)", (body["id"], old["hash"], now()))
-            db.execute("INSERT INTO precedents VALUES (?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET "
-                       "hash=excluded.hash,publication=excluded.publication,admission=excluded.admission,"
-                       "reasons=excluded.reasons,body=excluded.body,organ=excluded.organ",
-                       (body["id"], sha, body["tribunal"], body["especie"], body["numero"],
-                        folded(body["orgao"]), body.get("data_publicacao"), body["admissao"],
-                        canonical(body["motivos_admissao"]), raw))
+            if (
+                old
+                and old["admission"] == "admitido"
+                and (
+                    body["admissao"] != "admitido"
+                    or json.loads(old["body"])["componentes"] != body["componentes"]
+                )
+            ):
+                db.execute(
+                    "INSERT OR IGNORE INTO precedent_retirements VALUES (?,?,?)",
+                    (body["id"], old["hash"], now()),
+                )
+            db.execute(
+                "INSERT INTO precedents VALUES (?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET "
+                "hash=excluded.hash,publication=excluded.publication,admission=excluded.admission,"
+                "reasons=excluded.reasons,body=excluded.body,organ=excluded.organ",
+                (
+                    body["id"],
+                    sha,
+                    body["tribunal"],
+                    body["especie"],
+                    body["numero"],
+                    folded(body["orgao"]),
+                    body.get("data_publicacao"),
+                    body["admissao"],
+                    canonical(body["motivos_admissao"]),
+                    raw,
+                ),
+            )
             db.execute("DELETE FROM precedent_texts WHERE id=?", (body["id"],))
             if body["admissao"] == "admitido":
-                db.execute("INSERT INTO precedent_texts(id,enunciado,questao_submetida,tese_firmada,modulacao,suspensao) "
-                           "VALUES (?,?,?,?,?,?)", (body["id"], *(body["componentes"].get(x, "") for x in COMPONENTS)))
+                db.execute(
+                    "INSERT INTO precedent_texts(id,enunciado,questao_submetida,tese_firmada,modulacao,suspensao) "
+                    "VALUES (?,?,?,?,?,?)",
+                    (body["id"], *(body["componentes"].get(x, "") for x in COMPONENTS)),
+                )
         if changed:
             db.execute("UPDATE meta SET value=value+1 WHERE key='revision'")
     receipt["alterado"] = changed

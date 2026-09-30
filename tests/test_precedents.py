@@ -11,24 +11,50 @@ from flora_mcp.publication import Reader, publish
 from flora_mcp.store import connection
 
 
-def packet(tmp_path, *, status="vigente", number="999999", text="Enunciado sintético para teste. " * 30,
-           pending=None, species="sumula"):
+def packet(
+    tmp_path,
+    *,
+    status="vigente",
+    number="999999",
+    text="Enunciado sintético para teste. " * 30,
+    pending=None,
+    species="sumula",
+):
     raw = "FONTE SINTÉTICA DE TESTE, NÃO É PRECEDENTE REAL. " + status + text
     source = tmp_path / "fonte.txt"
     source.write_text(raw, encoding="utf-8")
     sha = digest(raw.encode())
     component = "enunciado" if species == "sumula" else "tese_firmada"
-    evidence = {k: {"fonte_sha256": sha, "trecho": raw, "localizador": "fixture integral"}
-                for k in ("situacao", "publicacao", "materia", "componente:" + component)}
-    record = {"tribunal": "STJ", "especie": species, "numero": number, "orgao": "Órgão de teste",
-              "data_publicacao": "2026-09-01", "materia": "civil", "situacao": status,
-              "tipo_publicacao": "enunciado" if species == "sumula" else "acordao_merito",
-              "pendencias": pending or [], "componentes": {component: text},
-              "fontes": [{"url": "https://www.stj.jus.br/fixture", "sha256": sha,
-                          "arquivo": "fonte.txt", "coletado_em": "2026-09-29T12:00:00-03:00"}],
-              "evidencias": evidence,
-              "conferencia": {"evidencias_conferidas": True, "responsavel": "teste automatizado",
-                              "data": "2026-09-29"}}
+    evidence = {
+        k: {"fonte_sha256": sha, "trecho": raw, "localizador": "fixture integral"}
+        for k in ("situacao", "publicacao", "materia", "componente:" + component)
+    }
+    record = {
+        "tribunal": "STJ",
+        "especie": species,
+        "numero": number,
+        "orgao": "Órgão de teste",
+        "data_publicacao": "2026-09-01",
+        "materia": "civil",
+        "situacao": status,
+        "tipo_publicacao": "enunciado" if species == "sumula" else "acordao_merito",
+        "pendencias": pending or [],
+        "componentes": {component: text},
+        "fontes": [
+            {
+                "url": "https://www.stj.jus.br/fixture",
+                "sha256": sha,
+                "arquivo": "fonte.txt",
+                "coletado_em": "2026-09-29T12:00:00-03:00",
+            }
+        ],
+        "evidencias": evidence,
+        "conferencia": {
+            "evidencias_conferidas": True,
+            "responsavel": "teste automatizado",
+            "data": "2026-09-29",
+        },
+    }
     package = tmp_path / "pacote.json"
     package.write_text(canonical({"schema": "flora-precedentes-1", "registros": [record]}), encoding="utf-8")
     return package
@@ -84,8 +110,14 @@ def test_components_reference_literal_pagination_and_idempotence(store, tmp_path
     assert "".join(blocks) == "Enunciado sintético para teste. " * 30
 
 
-@pytest.mark.parametrize("status,pending,admission", [("cancelado", [], "excluido"),
-    ("suspenso", [], "excluido"), ("vigente", ["recurso_pendente"], "pendente")])
+@pytest.mark.parametrize(
+    "status,pending,admission",
+    [
+        ("cancelado", [], "excluido"),
+        ("suspenso", [], "excluido"),
+        ("vigente", ["recurso_pendente"], "pendente"),
+    ],
+)
 def test_withdrawal_overrides_snapshot_and_old_hash(store, tmp_path, status, pending, admission):
     migrate(store)
     import_package(store, packet(tmp_path), apply=True)
@@ -93,9 +125,15 @@ def test_withdrawal_overrides_snapshot_and_old_hash(store, tmp_path, status, pen
     before = api.document(store, "STJ:sumula:999999", "enunciado", tamanho_bloco=100)
     receipt = import_package(store, packet(tmp_path, status=status, pending=pending), apply=True)
     assert receipt["registros"][0]["admissao"] == admission
-    assert api.search(store, colecao="precedentes", campo="todos", publicacao_id=publication)["total_encontrado"] == 0
-    for params in ({"publicacao_id": publication}, {"cursor": before["proximo_cursor"]},
-                   {"hash_conteudo": before["hash_conteudo"]}):
+    assert (
+        api.search(store, colecao="precedentes", campo="todos", publicacao_id=publication)["total_encontrado"]
+        == 0
+    )
+    for params in (
+        {"publicacao_id": publication},
+        {"cursor": before["proximo_cursor"]},
+        {"hash_conteudo": before["hash_conteudo"]},
+    ):
         with pytest.raises(FloraError, match="retirado"):
             api.document(store, "STJ:sumula:999999", "enunciado", **params)
     with connection(store.path) as db:
@@ -176,12 +214,21 @@ def test_search_components_and_cursor_filters(store, tmp_path):
     migrate(store)
     import_package(store, packet(tmp_path, species="tema_repetitivo", text="Tese sintética"), apply=True)
     assert api.search(store, "sintética", colecao="precedentes", campo="enunciado")["total_encontrado"] == 0
-    result = api.search(store, "sintética", colecao="precedentes", campo="tese_firmada", ordenar="relevancia", detalhe="triagem")
+    result = api.search(
+        store,
+        "sintética",
+        colecao="precedentes",
+        campo="tese_firmada",
+        ordenar="relevancia",
+        detalhe="triagem",
+    )
     assert result["resultados"][0]["campos_correspondentes"] == ["tese_firmada"]
     assert result["resultados"][0]["trecho"] == "Tese sintética"
 
 
-def test_incomplete_observation_preserves_last_state_and_readmission_does_not_revive_retired_version(store, tmp_path):
+def test_incomplete_observation_preserves_last_state_and_readmission_does_not_revive_retired_version(
+    store, tmp_path
+):
     migrate(store)
     import_package(store, packet(tmp_path), apply=True)
     old = publish(store)["publicacao_id"]
@@ -198,9 +245,14 @@ def test_incomplete_observation_preserves_last_state_and_readmission_does_not_re
 
 
 def test_opt_in_grammar_preserves_filters_and_phrases(store):
-    ingest(store, [raw_doc("1", text="Dano moral e alimentos", ministroRelator="LÚCIA"),
-                   raw_doc("2", text="Danos materiais e alimentos", ministroRelator="OUTRA"),
-                   raw_doc("3", text="Danos morais e guarda", ministroRelator="LÚCIA")])
+    ingest(
+        store,
+        [
+            raw_doc("1", text="Dano moral e alimentos", ministroRelator="LÚCIA"),
+            raw_doc("2", text="Danos materiais e alimentos", ministroRelator="OUTRA"),
+            raw_doc("3", text="Danos morais e guarda", ministroRelator="LÚCIA"),
+        ],
+    )
     expression = 'alimentos AND ("dano moral" OR materiais)'
     assert api.search(store, expression)["total_encontrado"] == 0
     assert api.search(store, expression, modo_busca="avancado")["total_encontrado"] == 2
@@ -219,7 +271,7 @@ def test_literal_sections_have_original_unicode_offsets_and_no_qualified_thesis(
     assert full["texto"] == text
     for section in full["metadados"]["secoes_ementa"]:
         part = api.document(store, "STJ:1", "secao:" + section["nome"])
-        assert part["texto"] == text[section["inicio"]:section["fim"]]
+        assert part["texto"] == text[section["inicio"] : section["fim"]]
     assert api.search(store, colecao="precedentes", campo="todos")["total_encontrado"] == 0
 
 
@@ -235,21 +287,32 @@ def test_qualified_contract_over_real_stdio(store, tmp_path):
     publish(store)
 
     async def exercise():
-        params = StdioServerParameters(command=sys.executable,
+        params = StdioServerParameters(
+            command=sys.executable,
             args=["-m", "flora_mcp.cli", "--data-dir", str(store.directory), "serve"],
-            env={**os.environ, "PYTHONUTF8": "1"})
+            env={**os.environ, "PYTHONUTF8": "1"},
+        )
         async with stdio_client(params) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
-                found = await session.call_tool("pesquisar_jurisprudencia", {
-                    "colecao": "precedentes", "campo": "todos", "detalhe": "triagem"})
+                found = await session.call_tool(
+                    "pesquisar_jurisprudencia",
+                    {"colecao": "precedentes", "campo": "todos", "detalhe": "triagem"},
+                )
                 result = found.structured_content
                 assert len(canonical(result).encode()) <= 8192
                 item = result["resultados"][0]
-                doc = await session.call_tool("obter_documento", {"id": item["id"],
-                    "componente": "enunciado", "hash_conteudo": item["hash_conteudo"],
-                    "publicacao_id": result["publicacao_id"]})
+                doc = await session.call_tool(
+                    "obter_documento",
+                    {
+                        "id": item["id"],
+                        "componente": "enunciado",
+                        "hash_conteudo": item["hash_conteudo"],
+                        "publicacao_id": result["publicacao_id"],
+                    },
+                )
                 assert doc.structured_content["texto"] == "Enunciado sintético para teste. " * 30
                 summary = await session.call_tool("consultar_cobertura", {"detalhe": "resumo"})
                 assert summary.structured_content["precedentes"][0]["documentos"] == 1
+
     asyncio.run(exercise())

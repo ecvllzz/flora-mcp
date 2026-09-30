@@ -44,7 +44,9 @@ def main():
     find.add_argument("--especie")
     find.add_argument("--numero")
     find.add_argument("--detalhe", choices=["completo", "triagem"], default="completo")
-    find.add_argument("--ordenar", choices=["mais_recentes", "mais_antigos", "relevancia"], default="mais_recentes")
+    find.add_argument(
+        "--ordenar", choices=["mais_recentes", "mais_antigos", "relevancia"], default="mais_recentes"
+    )
     sub.add_parser("serve", help="Servidor MCP stdio, exclusivamente de leitura")
     backup = sub.add_parser("backup", help="Backup consistente de banco e originais")
     backup.add_argument("destino", type=Path)
@@ -62,15 +64,26 @@ def main():
                 coverage(store)
                 if args.command == "coverage"
                 else search(
-                    store, args.termos, processo=args.processo, tribunal=args.tribunal,
-                    orgao=args.orgao, ordenar=args.ordenar, colecao=args.colecao,
-                    campo=args.campo, especie=args.especie, numero=args.numero, detalhe=args.detalhe,
+                    store,
+                    args.termos,
+                    processo=args.processo,
+                    tribunal=args.tribunal,
+                    orgao=args.orgao,
+                    ordenar=args.ordenar,
+                    colecao=args.colecao,
+                    campo=args.campo,
+                    especie=args.especie,
+                    numero=args.numero,
+                    detalhe=args.detalhe,
                 )
             )
         else:
             if args.command != "init" and not config.db_path.is_file():
-                raise FloraError("base_nao_inicializada", "Banco não encontrado na pasta configurada. "
-                                 "Confira o caminho; a coleta não cria outro acervo automaticamente.")
+                raise FloraError(
+                    "base_nao_inicializada",
+                    "Banco não encontrado na pasta configurada. "
+                    "Confira o caminho; a coleta não cria outro acervo automaticamente.",
+                )
             config.data_dir.mkdir(parents=True, exist_ok=True)
             with FileLock(str(config.data_dir / "collector.lock"), timeout=0):
                 store.initialize()
@@ -78,7 +91,11 @@ def main():
                     from datetime import datetime
                     from .precedents import migrate
 
-                    destination = config.data_dir.parent / (config.data_dir.name + "-backups") / datetime.now().strftime("antes-migracao-%Y%m%d-%H%M%S-%f")
+                    destination = (
+                        config.data_dir.parent
+                        / (config.data_dir.name + "-backups")
+                        / datetime.now().strftime("antes-migracao-%Y%m%d-%H%M%S-%f")
+                    )
                     saved = store.backup(destination)
                     result = {**migrate(store), "backup": saved}
                 elif args.command == "import-precedents":
@@ -87,7 +104,11 @@ def main():
 
                     result = import_package(store, args.pacote.resolve())
                     if args.apply:
-                        destination = config.data_dir.parent / (config.data_dir.name + "-backups") / datetime.now().strftime("antes-precedentes-%Y%m%d-%H%M%S-%f")
+                        destination = (
+                            config.data_dir.parent
+                            / (config.data_dir.name + "-backups")
+                            / datetime.now().strftime("antes-precedentes-%Y%m%d-%H%M%S-%f")
+                        )
                         saved = store.backup(destination)
                         result = {**import_package(store, args.pacote.resolve(), apply=True), "backup": saved}
                 elif args.command == "publish":
@@ -126,7 +147,9 @@ def main():
                             )
                         else:
                             result = probe_tjsc(config, store, http)
-                if args.command in {"sync-stj", "sync-tjsc"} or (args.command == "import-precedents" and args.apply):
+                if args.command in {"sync-stj", "sync-tjsc"} or (
+                    args.command == "import-precedents" and args.apply
+                ):
                     from .publication import MANIFEST, publish
 
                     if (store.directory / MANIFEST).exists():

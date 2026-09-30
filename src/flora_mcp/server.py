@@ -90,14 +90,22 @@ def create_server(store: Store) -> MCPServer:
             limite,
             cursor,
             relator=relator,
-            colecao=colecao, especie=especie, numero=numero, detalhe=detalhe, publicacao_id=publicacao_id,
+            colecao=colecao,
+            especie=especie,
+            numero=numero,
+            detalhe=detalhe,
+            publicacao_id=publicacao_id,
             modo_busca=modo_busca,
         )
 
     @server.tool(annotations=annotation)
     def obter_documento(
-        id: str, componente: str = "ementa", cursor: str | None = None, tamanho_bloco: int = 16000,
-        hash_conteudo: str | None = None, publicacao_id: str | None = None,
+        id: str,
+        componente: str = "ementa",
+        cursor: str | None = None,
+        tamanho_bloco: int = 16000,
+        hash_conteudo: str | None = None,
+        publicacao_id: str | None = None,
     ) -> dict[str, Any]:
         """Lê ementa ou espelho_original pelo ID retornado na busca.
 
@@ -108,13 +116,26 @@ def create_server(store: Store) -> MCPServer:
         Precedentes exigem componente explícito: enunciado, questao_submetida ou tese_firmada.
         Versões retiradas não estão disponíveis para uso. Componentes ausentes não são substituídos.
         """
-        return result(document, store, id, componente, cursor, tamanho_bloco,
-                      hash_conteudo=hash_conteudo, publicacao_id=publicacao_id)
+        return result(
+            document,
+            store,
+            id,
+            componente,
+            cursor,
+            tamanho_bloco,
+            hash_conteudo=hash_conteudo,
+            publicacao_id=publicacao_id,
+        )
 
     @server.tool(annotations=annotation)
-    def consultar_cobertura(detalhe: str = "resumo", cursor: str | None = None,
-                           limite: int = 20, publicacao_id: str | None = None,
-                           tribunal: str | None = None, dataset: str | None = None) -> dict[str, Any]:
+    def consultar_cobertura(
+        detalhe: str = "resumo",
+        cursor: str | None = None,
+        limite: int = 20,
+        publicacao_id: str | None = None,
+        tribunal: str | None = None,
+        dataset: str | None = None,
+    ) -> dict[str, Any]:
         """Por padrão retorna resumo da cobertura parcial, pendências e diagnósticos da coleta.
 
         Preserva grupos, catálogos, falhas, motivos de interrupção e totais antes/depois registrados.

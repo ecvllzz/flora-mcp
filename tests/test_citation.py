@@ -51,7 +51,7 @@ def test_existing_original_is_used_without_changing_bank_or_text(store):
 @pytest.mark.parametrize("label", ["RELATOR", "RELATORA"])
 def test_tjsc_original_labels_and_class_description_are_available(store, label):
     content = page([1], total=1).replace(
-        b'</div>',
+        b"</div>",
         f'<span class="resLabel">{label}</span><span class="resValue">PESSOA EXEMPLO</span></div>'.encode(),
     )
     _, rows = parse_page(content, 9, date(2026, 9, 18))
@@ -68,10 +68,15 @@ def test_tjsc_original_labels_and_class_description_are_available(store, label):
 
 
 def test_missing_relator_and_ambiguous_date_are_explicit_never_inferred(store):
-    ingest(store, [raw_doc(
-        text="Alimentos. Relator citado na ementa: NÃO USAR ESTE NOME.",
-        dataPublicacao="DJE 01/09/2026; republicado 02/09/2026",
-    )])
+    ingest(
+        store,
+        [
+            raw_doc(
+                text="Alimentos. Relator citado na ementa: NÃO USAR ESTE NOME.",
+                dataPublicacao="DJE 01/09/2026; republicado 02/09/2026",
+            )
+        ],
+    )
     found = search(store)["resultados"][0]
     assert found["relator"] is None
     assert found["referencia_completa"] is False
@@ -142,11 +147,21 @@ def test_http_exposes_same_reference_without_changing_transport(store):
     ingest(store, [stj_doc()])
     app = create_http_app(store, api_key=KEY, allowed_hosts=["testserver"])
     with TestClient(app) as client:
-        found = rpc(client, "tools/call", {
-            "name": "pesquisar_jurisprudencia", "arguments": {"termos": "alimentos"},
-        }).json()["result"]["structuredContent"]["resultados"][0]
+        found = rpc(
+            client,
+            "tools/call",
+            {
+                "name": "pesquisar_jurisprudencia",
+                "arguments": {"termos": "alimentos"},
+            },
+        ).json()["result"]["structuredContent"]["resultados"][0]
         assert found["referencia_completa"] is True
-        retrieved = rpc(client, "tools/call", {
-            "name": "obter_documento", "arguments": {"id": found["id"]},
-        }).json()["result"]["structuredContent"]
+        retrieved = rpc(
+            client,
+            "tools/call",
+            {
+                "name": "obter_documento",
+                "arguments": {"id": found["id"]},
+            },
+        ).json()["result"]["structuredContent"]
         assert retrieved["metadados"]["referencia"] == found["referencia"]

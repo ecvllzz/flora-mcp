@@ -14,8 +14,12 @@ def tribunal_for(dataset):
 
 
 def filtered_resources(resources, tribunal=None, dataset=None):
-    return [r for r in resources if (not dataset or r["dataset"] == dataset)
-            and (not tribunal or tribunal_for(r["dataset"]) == tribunal)]
+    return [
+        r
+        for r in resources
+        if (not dataset or r["dataset"] == dataset)
+        and (not tribunal or tribunal_for(r["dataset"]) == tribunal)
+    ]
 
 
 def validate_filters(tribunal, dataset, detalhe):
@@ -32,12 +36,19 @@ def summary(legacy):
     groups = {}
     for resource in legacy["recursos"]:
         dataset = resource["dataset"]
-        group = groups.setdefault(dataset, {
-            "tribunal": tribunal_for(dataset), "dataset": dataset, "total": 0,
-            "por_status": Counter(), "pendentes": 0,
-            "primeiro_lote_pendente": None, "ultimo_lote_pendente": None,
-            "erros": Counter(),
-        })
+        group = groups.setdefault(
+            dataset,
+            {
+                "tribunal": tribunal_for(dataset),
+                "dataset": dataset,
+                "total": 0,
+                "por_status": Counter(),
+                "pendentes": 0,
+                "primeiro_lote_pendente": None,
+                "ultimo_lote_pendente": None,
+                "erros": Counter(),
+            },
+        )
         group["total"] += 1
         group["por_status"][resource["status"]] += 1
         if resource["pendente"] or resource["status"] == "pending":
@@ -47,16 +58,17 @@ def summary(legacy):
             group["ultimo_lote_pendente"] = max(group["ultimo_lote_pendente"] or name, name)
         if resource.get("error"):
             group["erros"][resource["error"]] += 1
-    result["recursos"] = [{k: v for k, v in group.items() if k != "erros" or v}
-                          for group in groups.values()]
+    result["recursos"] = [{k: v for k, v in group.items() if k != "erros" or v} for group in groups.values()]
     result["execucoes_recentes"] = []
     for run in legacy["execucoes_recentes"]:
         compact = {k: v for k, v in run.items() if k != "detail"}
         detail = run["detail"]
         # Keep explicit reasons/failures and recorded before/after totals verbatim.
-        compact["detail"] = {k: detail[k] for k in (
-            "motivo", "falhas", "erro", "error", "antes", "depois", "modo"
-        ) if k in detail and (k != "falhas" or detail[k])}
+        compact["detail"] = {
+            k: detail[k]
+            for k in ("motivo", "falhas", "erro", "error", "antes", "depois", "modo")
+            if k in detail and (k != "falhas" or detail[k])
+        }
         result["execucoes_recentes"].append(compact)
     result["detalhe"] = "resumo"
     result["detalhes_disponiveis"] = {
