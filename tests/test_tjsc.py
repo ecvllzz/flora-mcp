@@ -1,4 +1,6 @@
+import json
 from datetime import date
+from pathlib import Path
 from urllib.parse import parse_qs
 
 import httpx
@@ -8,13 +10,17 @@ from flora_mcp.config import Config
 from flora_mcp.model import FloraError
 from flora_mcp.sources import validate_tjsc_page
 from flora_mcp.tjsc import collect_window, parse_page
+from flora_mcp.tjsc_orgaos import ESPECIAIS, ORGAOS, PADRAO, chamber, dataset, name, portal_names
+
+# Portal search form read once on 30/09/2026 (receipt beside it); source of the organ names.
+FORM = Path(__file__).parent / "fixtures" / "tjsc" / "formulario-pesquisa.html"
 
 
-def page(ids, total=12, publication="18/09/2026"):
+def page(ids, total=12, publication="18/09/2026", organ="9ª Câmara de Direito Civil"):
     html = '<meta charset="iso-8859-1"><input id="hdnTotalResultado" value="' + str(total) + '">'
     for id in ids:
         fields = {
-            "ÓRGÃO JULGADOR": "9ª Câmara de Direito Civil",
+            "ÓRGÃO JULGADOR": organ,
             "EMENTA": "Texto público completo.",
             "DATA DA PUBLICAÇÃO": publication,
             "DATA DO JULGAMENTO": "10/09/2026",
@@ -78,3 +84,64 @@ def test_copy_control_inside_ementa_label_preserves_document():
     )
     expected = parse_page(original, 9, date(2026, 9, 18))
     assert parse_page(with_control, 9, date(2026, 9, 18)) == expected
+
+
+def test_collector_organs_are_exact_names_of_the_portal_filter():
+    names = portal_names(FORM.read_bytes())
+    assert set(ORGAOS) <= set(names)
+    assert ESPECIAIS == (
+        "1ª Câmara Especial de Enfrentamento de Acervos",
+        "2ª Câmara Especial de Enfrentamento de Acervos",
+        "3ª Câmara Especial de Enfrentamento de Acervos",
+    )
+    # Homonyms the portal also lists stay out: the collector never guesses among them.
+    assert {"1ª Câmara de Enfrentamento de Acervos", "3ª Câmara de Direito Civil (Janeiro)"} <= set(names)
+    assert not {"1ª Câmara de Enfrentamento de Acervos", "3ª Câmara de Direito Civil (Janeiro)"} & set(ORGAOS)
+    with pytest.raises(FloraError):
+        portal_names(b"<html><select name='outro'></select></html>")
+
+
+def test_numbered_chamber_keeps_its_dataset_and_other_organs_get_a_named_one():
+    assert PADRAO == (name(9), name(10))
+    assert (name(9), chamber(9), dataset(9)) == ("9ª Câmara de Direito Civil", 9, "tjsc-9-civil")
+    assert dataset("10ª Câmara de Direito Civil") == "tjsc-10-civil"
+    assert [dataset(o) for o in ESPECIAIS] == [
+        f"tjsc-{n}a-camara-especial-de-enfrentamento-de-acervos" for n in (1, 2, 3)
+    ]
+    assert chamber(ESPECIAIS[0]) is None
+    for invalid in (11, "Câmara Especial", "9a Câmara de Direito Civil"):
+        with pytest.raises(FloraError) as info:
+            name(invalid)
+        assert info.value.code == "orgao_invalido"
+
+
+def test_named_organ_window_filters_and_checks_by_the_portal_name(store):
+    special = ESPECIAIS[1]
+    sent = []
+
+    def route(req):
+        sent.append(parse_qs(req.content.decode())["selOrgao[]"][0])
+        return httpx.Response(200, content=page([1, 2], total=2, organ=special))
+
+    with httpx.Client(transport=httpx.MockTransport(route)) as http:
+        content, rows = collect_window(
+            http, Config(store.directory, request_delay=0), special, date(2026, 9, 18)
+        )
+    envelope = json.loads(content)
+    assert set(sent) == {special}
+    assert (envelope["orgao"], "camara" in envelope, envelope["total"]) == (special, False, 2)
+    assert {body["orgao"] for body, _ in rows} == {special}
+    civil = json.loads(collect_window_envelope(store, 9))
+    assert (civil["orgao"], civil["camara"]) == ("9ª Câmara de Direito Civil", 9)
+    with pytest.raises(FloraError, match="outro órgão"):
+        validate_tjsc_page(page([1], total=1), special)
+    with pytest.raises(FloraError, match="outro órgão"):
+        validate_tjsc_page(page([1], total=1, organ=special), 9)
+
+
+def collect_window_envelope(store, organ):
+    def route(req):
+        return httpx.Response(200, content=page([1], total=1))
+
+    with httpx.Client(transport=httpx.MockTransport(route)) as http:
+        return collect_window(http, Config(store.directory, request_delay=0), organ, date(2026, 9, 18))[0]

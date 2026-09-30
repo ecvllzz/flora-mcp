@@ -21,6 +21,8 @@ RAMOS = {
     "DIREITO DO CONSUMIDOR": "civil",
     "DIREITO EMPRESARIAL": "civil",
     "DIREITO PROCESSUAL CIVIL": "processual_civil",
+    # Support for civil cases, admitted by the operator's decision of 30/09/2026.
+    "DIREITO BANCÁRIO": "bancario",
 }
 DATA = r"\d{1,2}/\d{1,2}/\d{4}"
 # Labels of the official gazette; REP marks a republication and never gives the publication date.

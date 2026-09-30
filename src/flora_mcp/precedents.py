@@ -20,10 +20,13 @@ COMPONENTS = ("enunciado", "questao_submetida", "tese_firmada", "modulacao", "su
 SPECIES = {
     "STJ": {"tema_repetitivo", "iac", "sumula"},
     "STF": {"tema_repercussao_geral", "sumula_vinculante", "sumula"},
-    "TJSC": {"sumula"},
+    "TJSC": {"sumula", "irdr", "iac"},
 }
+# TJSC summaries are numbered per organ; IRDR and IAC themes are numbered across the court.
+TJSC_SCOPES = {"GRUPO DE CAMARAS DE DIREITO CIVIL": "GCDC", "ORGAO ESPECIAL": "OE"}
 LABELS = {
     "tema_repetitivo": "Tema repetitivo",
+    "irdr": "IRDR",
     "iac": "IAC",
     "sumula": "Súmula",
     "tema_repercussao_geral": "Tema de repercussão geral",
@@ -35,7 +38,8 @@ PUBLICATIONS = {
     "acordao_embargos": "publicação do acórdão de embargos",
 }
 SUMMARIES = {"sumula", "sumula_vinculante"}
-MATTERS = {"civil", "processual_civil"}
+# Banking summaries support civil cases; clients rank civil and procedural civil first.
+MATTERS = {"civil", "processual_civil", "bancario"}
 BATCH_MODE = "fonte_estruturada"
 EXCLUDED = {"cancelado", "revogado", "superado", "suspenso"}
 STATUSES = EXCLUDED | {"vigente", "pendente", "desconhecido"}
@@ -87,9 +91,8 @@ def parse_id(value: str) -> tuple[str, str, str | None, str] | None:
         return None
     if tribunal not in SPECIES or species not in SPECIES[tribunal]:
         return None
-    if scope is not None and (tribunal, scope) != ("TJSC", "GCDC"):
-        return None
-    if tribunal == "TJSC" and scope is None:
+    scoped = (tribunal, species) == ("TJSC", "sumula")
+    if scoped != (scope is not None) or (scoped and scope not in TJSC_SCOPES.values()):
         return None
     if not re.fullmatch(r"[1-9][0-9]{0,6}", number):
         return None
@@ -140,9 +143,10 @@ def check_identity(body: dict):
     organ = required_text(body.get("orgao"), "orgao")
     scope = ""
     if tribunal == "TJSC":
-        if folded(organ) != "GRUPO DE CAMARAS DE DIREITO CIVIL":
+        if folded(organ) not in TJSC_SCOPES:
             raise FloraError("pacote_invalido", "Órgão TJSC fora do recorte aprovado.")
-        scope = ":GCDC"
+        if species == "sumula":
+            scope = ":" + TJSC_SCOPES[folded(organ)]
     body["id"] = f"{tribunal}:{species}{scope}:{number}"
 
 

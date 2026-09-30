@@ -8,7 +8,7 @@ from filelock import FileLock, Timeout
 from .config import load_config
 from .model import FloraError
 from .api import coverage, search, search_precedents
-from .precedents import COMPONENTS, SPECIES
+from .precedents import COMPONENTS, MATTERS, SPECIES
 from .sources import client, probe_tjsc, sync_stj
 from .store import Store
 
@@ -64,6 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
     qualified.add_argument("--especie", choices=sorted(set.union(*SPECIES.values())))
     qualified.add_argument("--numero")
     qualified.add_argument("--orgao")
+    qualified.add_argument("--materia", choices=sorted(MATTERS))
     qualified.add_argument("--campo", choices=[*COMPONENTS, "todos"], default="todos")
     qualified.add_argument("--data-inicio")
     qualified.add_argument("--data-fim")
@@ -166,6 +167,7 @@ def run_precedents(args, store):
         especie=args.especie,
         numero=args.numero,
         orgao=args.orgao,
+        materia=args.materia,
         campo=args.campo,
         data_inicio=args.data_inicio,
         data_fim=args.data_fim,

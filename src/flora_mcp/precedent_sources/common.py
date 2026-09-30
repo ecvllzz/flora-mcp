@@ -72,15 +72,19 @@ def section_flag(organ: str) -> str | None:
     return SECAO_PENDENCIA if " ".join(name.split()) in SECOES_FORA_DO_RECORTE else None
 
 
+# One matter per record; with mixed branches, the first of this order present (civil prevails).
+PRIORIDADE = ("civil", "processual_civil", "bancario")
+
+
 def branch_matter(branches: list[str], table: dict[str, str]) -> str | None:
     """Matter of a record from the literal source branches, by an explicit table.
 
     No branch: None (matter not confirmed). Any branch outside the table: out of scope.
-    Otherwise civil when a civil branch is present, else procedural civil.
+    Otherwise the first matter of PRIORIDADE among the branches: banking with civil is civil.
     """
     if not branches:
         return None
     matters = {table.get(branch) for branch in branches}
     if None in matters:
         return OUT_OF_SCOPE
-    return "civil" if "civil" in matters else "processual_civil"
+    return next(matter for matter in PRIORIDADE if matter in matters)

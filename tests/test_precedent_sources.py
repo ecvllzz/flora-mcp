@@ -139,6 +139,7 @@ def test_stj_sumulas_statement_reference_and_markers():
     assert summary["evidencias"]["publicacao"]["trecho"].endswith("DJe 08/06/2009)")
     assert summary["evidencias"]["situacao"]["trecho"] == "Súmula 385"
     assert records["sumula", "603"]["situacao"] == "cancelado"
+    assert records["sumula", "603"]["materia"] == "bancario"  # DIREITO BANCÁRIO - CONTRATO BANCÁRIO
     assert records["sumula", "476"]["materia"] == "civil"  # direito empresarial
     assert records["sumula", "676"]["materia"] == OUT_OF_SCOPE  # processual penal, sem span.clsVerbete
     old = records["sumula", "106"]  # "DJ 03/06/1994, p. 13885" e órgão quebrado em duas linhas
@@ -219,6 +220,28 @@ def test_unmapped_situation_is_unknown_and_pending():
 )
 def test_branch_to_matter(branches, expected):
     assert branch_matter(branches, stj_temas.RAMOS) == expected
+
+
+@pytest.mark.parametrize(
+    "branches,expected",
+    [
+        (["DIREITO BANCÁRIO"], "bancario"),
+        (["DIREITO BANCÁRIO", "DIREITO CIVIL"], "civil"),  # civil prevalece
+        (["DIREITO CIVIL", "DIREITO BANCÁRIO"], "civil"),
+        (["DIREITO BANCÁRIO", "DIREITO DO CONSUMIDOR"], "civil"),
+        (["DIREITO BANCÁRIO", "DIREITO PROCESSUAL CIVIL"], "processual_civil"),
+        (["DIREITO BANCÁRIO", "DIREITO TRIBUTÁRIO"], OUT_OF_SCOPE),  # ramo fora da tabela
+    ],
+)
+def test_banking_branch_and_mixed_branches(branches, expected):
+    assert branch_matter(branches, stj_sumulas.RAMOS) == expected
+
+
+def test_theme_catalog_has_no_banking_branch():
+    """Bank contracts are CNJ subjects under civil or consumer law, not a top branch."""
+    assert "bancario" not in stj_temas.RAMOS.values()
+    subjects = "9607- Contratos Bancários, 899- DIREITO CIVIL"
+    assert stj_temas.branches(subjects) == ["899- DIREITO CIVIL"]
 
 
 def test_subject_branches_are_read_from_the_cnj_codes():

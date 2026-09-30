@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from .config import Config
 from .model import FloraError, digest, normalize_stj, now
 from .store import Store
+from .tjsc_orgaos import PADRAO, dataset, identity, name
 
 STJ_API = "https://dadosabertos.web.stj.jus.br/api/3/action/package_show"
 TJSC_SEARCH = (
@@ -185,7 +186,9 @@ def tjsc_field_label(label) -> str:
     return label.get_text(" ", strip=True)
 
 
-def validate_tjsc_page(content: bytes, chamber: int) -> dict:
+def validate_tjsc_page(content: bytes, organ: int | str) -> dict:
+    """organ: portal name of the filtered organ, or the number of a Civil Law Chamber."""
+    expected = name(organ)
     soup = BeautifulSoup(content, "html.parser")
     html = soup.get_text(" ", strip=True)
     challenge = ("enable javascript", "support id", "verificação de segurança", "captcha")
@@ -216,7 +219,7 @@ def validate_tjsc_page(content: bytes, chamber: int) -> dict:
             value = label.find_next_sibling(class_="resValue")
             if value:
                 fields[tjsc_field_label(label)] = value.get_text("\n", strip=True)
-        if fields.get("ÓRGÃO JULGADOR") != f"{chamber}ª Câmara de Direito Civil":
+        if fields.get("ÓRGÃO JULGADOR") != expected:
             raise FloraError("filtro_nao_respeitado", "TJSC devolveu documento de outro órgão.")
         if not card.get("id", "").startswith("resultado") or not fields.get("EMENTA"):
             raise FloraError("formato_invalido", "Documento TJSC sem identificador ou ementa.")
@@ -231,8 +234,8 @@ def validate_tjsc_page(content: bytes, chamber: int) -> dict:
 def probe_tjsc(config: Config, store: Store, http: httpx.Client) -> dict:
     run = store.start_run("TJSC-probe")
     result = {"execucao": run, "eventos": [], "ingestao": False}
-    for chamber in (9, 10):
-        event = {"camara": chamber, "verificado_em": now()}
+    for organ in PADRAO:
+        event = {**identity(organ), "verificado_em": now()}
         try:
             content = download(
                 http,
@@ -241,7 +244,7 @@ def probe_tjsc(config: Config, store: Store, http: httpx.Client) -> dict:
                 method="POST",
                 data={
                     "txtPesquisa": "",
-                    "selOrgao[]": f"{chamber}ª Câmara de Direito Civil",
+                    "selOrgao[]": organ,
                     "selOrigem[]": "1",
                     "selTipoDocumento[]": "1",
                     "rdoCampo": "E",
@@ -251,9 +254,9 @@ def probe_tjsc(config: Config, store: Store, http: httpx.Client) -> dict:
             )
             evidence = config.data_dir / "probes" / run
             evidence.mkdir(parents=True, exist_ok=True)
-            (evidence / f"tjsc-{chamber}.html").write_bytes(content)
+            (evidence / f"{dataset(organ)}.html").write_bytes(content)
             event["sha256"] = digest(content)
-            event.update(validate_tjsc_page(content, chamber))
+            event.update(validate_tjsc_page(content, organ))
             event["status"] = "pagina_validada"
         except (FloraError, httpx.HTTPError) as exc:
             event.update(status="error", codigo=getattr(exc, "code", "erro_http"), erro=str(exc))

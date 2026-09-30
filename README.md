@@ -2,7 +2,7 @@
 
 Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.1`.
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.2`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
 - Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
 - Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).
@@ -28,8 +28,8 @@ A busca é lexical (SQLite FTS5). No modo simples, as palavras se combinam com E
 | Fonte | O que entra |
 |---|---|
 | [Dados abertos do STJ](https://dadosabertos.web.stj.jus.br/) | Espelhos de acórdãos da Terceira e da Quarta Turmas e da Segunda Seção, por arquivo de extração a partir de `resource_from` (padrão `20250101`) |
-| [Jurisprudência do TJSC](https://www.tjsc.jus.br/web/jurisprudencia) | Acórdãos da 9ª e da 10ª Câmaras de Direito Civil, por dia de publicação |
-| Catálogos oficiais de precedentes | Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; súmulas do Grupo de Câmaras de Direito Civil do TJSC. Só os admitidos são servidos |
+| [Jurisprudência do TJSC](https://www.tjsc.jus.br/web/jurisprudencia) | Acórdãos de câmaras cíveis, por dia de publicação, de 2024 em diante; os órgãos e os períodos carregados são os que `consultar_cobertura` informa |
+| Catálogos oficiais de precedentes | Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil e do Órgão Especial do TJSC. Só os admitidos são servidos |
 
 - O acervo guarda ementa e espelho, não inteiro teor. O campo `decisao` do espelho do STJ não é voto integral, e o link do TJSC não significa documento baixado.
 - A cobertura é parcial e declarada: toda pesquisa traz `cobertura` com `integral: false` e as fontes em atraso, e `consultar_cobertura` mostra órgãos, datas extremas, lotes pendentes, falhas e registros rejeitados. Resultado vazio não prova que a jurisprudência não exista.
@@ -126,13 +126,13 @@ uv run flora-mcp atualizar --so-stj
 Sob a trava do coletor, `atualizar` faz, em ordem: backup no formato de depósito (rótulo `antes-atualizacao`); coleta do STJ com até `--stj-lotes` lotes por dataset (padrão 2); coleta do TJSC na janela de `--tjsc-dias` dias de publicação (padrão 7, de 1 a 31) que termina hoje no fuso de São Paulo; e publicação, se o acervo já tiver manifesto de publicações. `--so-stj` e `--so-tjsc` limitam a rodada a uma fonte. A falha de uma fonte fica no relatório e não impede a outra. O relatório sai na saída padrão e é gravado em `logs/` na pasta do acervo. Com a trava ocupada, o comando recusa sem fazer nada.
 
 - **STJ.** Cada rodada baixa os lotes pendentes mais recentes primeiro e avança no histórico nas seguintes; descobre arquivos novos, revê metadados alterados e reconfere bytes com mais de `recheck_days` dias. Execução `partial` significa que ainda há lotes pendentes. Um espelho inválido (sem `id`, sem ementa, sem órgão ou com data de julgamento ilegível) não derruba o lote: os válidos entram, e os rejeitados ficam registrados com posição, `id` e motivo. Lote que não é lista, vazio ou sem nenhum espelho válido fica em `error`. Havendo versões divergentes entre lotes, prevalece o arquivo de extração mais recente.
-- **TJSC.** Percorre todas as páginas de cada dia de publicação nas duas câmaras, sem filtro temático; confere órgão, data, quantidade e IDs e reconfere a primeira página. Falha numa janela impede sua conclusão. Janelas antigas continuam no banco quando saem da janela móvel. Não há contorno de CAPTCHA ou autenticação.
+- **TJSC.** Percorre todas as páginas de cada dia de publicação da 9ª e da 10ª Câmaras de Direito Civil (a janela móvel; lacunas e outros órgãos, com `scripts/resume_tjsc.py`), sem filtro temático; confere órgão, data, quantidade e IDs e reconfere a primeira página. Falha numa janela impede sua conclusão. Janelas antigas continuam no banco quando saem da janela móvel. Não há contorno de CAPTCHA ou autenticação.
 
 Os comandos de base continuam disponíveis: `sync-stj [--max-resources N] [--recheck]`, `sync-tjsc --inicio AAAA-MM-DD --fim AAAA-MM-DD` (até 31 dias) e `probe-tjsc` (diagnóstico de acesso, sem ingestão). Os dois primeiros publicam ao fim, se houver manifesto.
 
 `scripts/update_once.py` é um invólucro de `atualizar` para o registrador de tarefa do Windows (`scripts/register-update-task.ps1`, com `-WhatIf` para ver sem registrar): aceita `--tjsc-days` e `--precedents-package` e usa `max_resources` da configuração como número de lotes do STJ. A decisão vigente é não agendar.
 
-**Lacunas do TJSC.** `scripts/resume_tjsc.py --data-dir <acervo> --inicio AAAA-MM-DD --fim AAAA-MM-DD` mostra, sem escrever, as janelas por câmara e dia que faltam; uma janela `ok` só é dispensada depois de conferidos original, hash, câmara, data e quantidade. Com `--apply --report <recibo-novo.json>`, adquire a trava, faz backup (rótulo `antes-retomada-tjsc`, `--backup` escolhe a raiz), coleta as pendentes com o mesmo coletor do `sync-tjsc`, conserva cada janela concluída e para na primeira falha; nova execução retoma do banco. Preenche lacunas, mas não revisita dias concluídos atrás de indexação tardia: para isso, use `sync-tjsc` no intervalo.
+**Lacunas do TJSC.** `scripts/resume_tjsc.py --data-dir <acervo> --inicio AAAA-MM-DD --fim AAAA-MM-DD` mostra, sem escrever, as janelas por órgão e dia que faltam; uma janela `ok` só é dispensada depois de conferidos original, hash, órgão, data e quantidade. `--camaras 1,2,...` escolhe Câmaras de Direito Civil por número (de 1 a 10) e `--orgaos "<nome>"`, repetível, escolhe órgãos pelo nome exato do filtro do portal; os aceitos são as Câmaras de Direito Civil de 1 a 10 e a 1ª, a 2ª e a 3ª Câmaras Especiais de Enfrentamento de Acervos (lista em `flora_mcp.tjsc_orgaos`, lida do formulário do portal). Sem nenhum dos dois, 9 e 10. As Câmaras de Direito Civil conservam o dataset `tjsc-N-civil`; os demais órgãos ganham `tjsc-` e o nome sem acentos (por exemplo, `tjsc-1a-camara-especial-de-enfrentamento-de-acervos`). Com `--apply --report <recibo-novo.json>`, adquire a trava, faz backup (rótulo `antes-retomada-tjsc`, `--backup` escolhe a raiz), coleta as pendentes com o mesmo coletor do `sync-tjsc`, conserva cada janela concluída e para na primeira falha; nova execução retoma do banco. Preenche lacunas, mas não revisita dias concluídos atrás de indexação tardia: para isso, use `sync-tjsc` no intervalo.
 
 ### Backups
 

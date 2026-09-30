@@ -1,4 +1,4 @@
-"""Contract flora-mcp-3.1: the examples of CONTRATO.md and each rule, over the real MCP client."""
+"""Contract flora-mcp-3.2: the examples of CONTRATO.md and each rule, over the real MCP client."""
 
 import asyncio
 import base64
@@ -119,7 +119,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         assert_same_shape(example, answers[name], name)
     for name, answer in answers.items():
         if name != "erro":
-            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.1", name
+            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.2", name
             assert answer["publicacao_id"], name
     assert answers["erro"]["codigo"] == "documento_nao_encontrado"
     assert answers["pesquisar_jurisprudencia.sem_correspondencia"]["termos_sem_ocorrencia"] == [
@@ -163,11 +163,14 @@ def test_closed_vocabularies_are_enums_and_defaults_are_the_contract():
     assert enum(precedents["tribunal"]) == ["STJ", "STF", "TJSC"]
     assert set(enum(precedents["especie"])) == {
         "tema_repetitivo",
+        "irdr",
         "iac",
         "sumula",
         "tema_repercussao_geral",
         "sumula_vinculante",
     }
+    assert enum(precedents["materia"]) == ["civil", "processual_civil", "bancario"]
+    assert precedents["materia"]["default"] is None
     assert precedents["campo"]["default"] == "todos" and "todos" in enum(precedents["campo"])
     assert enum(tools["consultar_cobertura"]["detalhe"]) == ["resumo", "completo", "recursos", "execucoes"]
 
@@ -283,7 +286,7 @@ def test_automatic_order_and_coverage_block(store):
 def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(published):
     page = api.search(published, limite=1)
     decoded = json.loads(base64.urlsafe_b64decode(page["proximo_cursor"]))
-    assert decoded["contrato"] == "flora-mcp-3.1"
+    assert decoded["contrato"] == "flora-mcp-3.2"
     assert decoded["publicacao"] == page["publicacao_id"]
     assert "continua" not in decoded  # no cursor inside a cursor
     legacy = base64.urlsafe_b64encode(
@@ -293,6 +296,7 @@ def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(pub
         legacy,
         base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-2"}).encode()),
         base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-3"}).encode()),
+        base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-3.1"}).encode()),
     ):
         with pytest.raises(FloraError) as info:
             api.search(published, limite=1, cursor=cursor if isinstance(cursor, str) else cursor.decode())

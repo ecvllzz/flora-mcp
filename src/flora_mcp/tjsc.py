@@ -14,10 +14,11 @@ from .config import Config
 from .model import FloraError, now
 from .sources import TJSC_SEARCH, download, tjsc_field_label, validate_tjsc_page
 from .store import Store
+from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name
 
 
-def parse_page(content: bytes, chamber: int, day: date) -> tuple[int, list[tuple[dict, dict]]]:
-    validation = validate_tjsc_page(content, chamber)
+def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[tuple[dict, dict]]]:
+    validation = validate_tjsc_page(content, organ)
     soup = BeautifulSoup(content, "html.parser")
     rows = []
     for card in soup.select(".resultadoItem"):
@@ -66,11 +67,12 @@ def parse_page(content: bytes, chamber: int, day: date) -> tuple[int, list[tuple
     return validation["total_informado"], rows
 
 
-def collect_window(http, config: Config, chamber: int, day: date):
+def collect_window(http, config: Config, organ: int | str, day: date):
+    """Every page of one publication day of one organ, by portal name or chamber number."""
     date_string = day.strftime("%d/%m/%Y")
     data = {
         "txtPesquisa": "",
-        "selOrgao[]": f"{chamber}ª Câmara de Direito Civil",
+        "selOrgao[]": name(organ),
         "selOrigem[]": "1",
         "selTipoDocumento[]": "1",
         "rdoCampo": "E",
@@ -87,7 +89,7 @@ def collect_window(http, config: Config, chamber: int, day: date):
         data["hdnPaginaAtual"] = str(page)
         url = TJSC_SEARCH if page == 1 else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
         content = download(http, url, config.max_download_bytes, method="POST", data=data)
-        total, values = parse_page(content, chamber, day)
+        total, values = parse_page(content, organ, day)
         pages.append(
             {
                 "pagina": page,
@@ -122,7 +124,7 @@ def collect_window(http, config: Config, chamber: int, day: date):
         raise FloraError("janela_alterada", "Primeira página mudou durante a coleta; repetir janela.")
     payload = {
         "fonte": "TJSC",
-        "camara": chamber,
+        **identity(organ),
         "data_publicacao": day.isoformat(),
         "total": total,
         "paginas": pages,
@@ -130,38 +132,48 @@ def collect_window(http, config: Config, chamber: int, day: date):
     return json.dumps(payload, ensure_ascii=False).encode(), rows
 
 
-def sync_tjsc(config: Config, store: Store, http, start: date, end: date) -> dict:
+def catalog_window(store: Store, organ: int | str, day: date) -> str:
+    """Catalog the publication-day window of an organ; returns the resource id.
+
+    A Civil Law Chamber window keeps the metadata it always had (chamber number); another
+    organ's window records the portal name instead.
+    """
+    number = chamber(organ)
+    resource = {
+        "id": day.isoformat(),
+        "name": day.strftime("%Y%m%d") + ".json",
+        "url": TJSC_SEARCH,
+        "last_modified": now(),
+        "publication_day": day.isoformat(),
+        **({"chamber": number} if number is not None else {"orgao": name(organ)}),
+        "tipo": "janela_publicacao",
+    }
+    store.catalog(
+        dataset(organ),
+        {"fonte": TJSC_SEARCH, "tipo": "janela_publicacao"},
+        [resource],
+        complete_listing=False,
+    )
+    return dataset(organ) + ":" + resource["id"]
+
+
+def sync_tjsc(config: Config, store: Store, http, start: date, end: date, organs=PADRAO) -> dict:
     if start > end or (end - start).days > 30:
         raise FloraError("intervalo_invalido", "Escolha de 1 a 31 dias por execução TJSC.")
     run = store.start_run("TJSC")
     result = {"execucao": run, "fonte": "TJSC", "experimental": True, "eventos": [], "falhas": []}
     try:
-        for chamber in (9, 10):
+        for organ in organs:
             day = start
             while day <= end:
-                dataset = f"tjsc-{chamber}-civil"
-                resource = {
-                    "id": day.isoformat(),
-                    "name": day.strftime("%Y%m%d") + ".json",
-                    "url": TJSC_SEARCH,
-                    "last_modified": now(),
-                    "publication_day": day.isoformat(),
-                    "chamber": chamber,
-                    "tipo": "janela_publicacao",
-                }
-                store.catalog(
-                    dataset,
-                    {"fonte": TJSC_SEARCH, "tipo": "janela_publicacao"},
-                    [resource],
-                    complete_listing=False,
-                )
-                saved = next(r for r in store.resources(dataset) if r["id"] == dataset + ":" + resource["id"])
+                resource_id = catalog_window(store, organ, day)
+                saved = next(r for r in store.resources(dataset(organ)) if r["id"] == resource_id)
                 try:
-                    content, rows = collect_window(http, config, chamber, day)
+                    content, rows = collect_window(http, config, organ, day)
                     counts = store.ingest(saved, content, rows, run)
                     result["eventos"].append(
                         {
-                            "camara": chamber,
+                            **identity(organ),
                             "dia_publicacao": day.isoformat(),
                             "registros": len(rows),
                             **counts,
@@ -171,7 +183,7 @@ def sync_tjsc(config: Config, store: Store, http, start: date, end: date) -> dic
                     store.failure(saved["id"], run, str(exc))
                     result["falhas"].append(
                         {
-                            "camara": chamber,
+                            **identity(organ),
                             "dia": day.isoformat(),
                             "codigo": getattr(exc, "code", "erro_fonte"),
                             "erro": str(exc),
