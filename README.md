@@ -2,7 +2,7 @@
 
 Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.1`.
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.2`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
 - Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
 - Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).

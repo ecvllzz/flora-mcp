@@ -28,7 +28,8 @@ SITUACOES = {
     "Revisado": ("superado", None),
 }
 # Branches of the CNJ unified subject table (column Assuntos), code and name as printed.
-# Family, successions and business law are subjects under 899 in that table.
+# Family, successions and business law are subjects under 899 in that table. The table has no
+# banking branch: bank contracts (9607, 4960) are subjects under civil or consumer law.
 RAMOS = {
     "899- DIREITO CIVIL": "civil",
     "1156- DIREITO DO CONSUMIDOR": "civil",

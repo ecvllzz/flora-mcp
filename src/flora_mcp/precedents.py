@@ -35,7 +35,8 @@ PUBLICATIONS = {
     "acordao_embargos": "publicação do acórdão de embargos",
 }
 SUMMARIES = {"sumula", "sumula_vinculante"}
-MATTERS = {"civil", "processual_civil"}
+# Banking summaries support civil cases; clients rank civil and procedural civil first.
+MATTERS = {"civil", "processual_civil", "bancario"}
 BATCH_MODE = "fonte_estruturada"
 EXCLUDED = {"cancelado", "revogado", "superado", "suspenso"}
 STATUSES = EXCLUDED | {"vigente", "pendente", "desconhecido"}

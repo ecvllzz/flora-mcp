@@ -1,4 +1,4 @@
-# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.1`)
+# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.2`)
 
 Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatro ferramentas, todas somente leitura (`readOnlyHint: true`), sobre um acervo local parcial coletado de fontes oficiais. Os testes de protocolo (`tests/test_contrato.py`) leem os exemplos marcados abaixo e conferem, pelo cliente MCP real, que as respostas têm exatamente a mesma forma.
 
@@ -11,7 +11,7 @@ Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatr
 
 ## Regras comuns
 
-- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.1"` e, quando o acervo lido é uma publicação, `publicacao_id`.
+- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.2"` e, quando o acervo lido é uma publicação, `publicacao_id`.
 - Parâmetros de vocabulário fechado aparecem no esquema JSON como `enum`; o valor fora da lista é recusado com o erro `parametro_invalido`.
 - Datas no formato `AAAA-MM-DD`. `data_inicio` e `data_fim` são inclusivas.
 - `publicacao_id` fixa a geração lida. Sem ele, lê-se a publicação atual; com cursor, lê-se a publicação do cursor.
@@ -54,7 +54,7 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -109,7 +109,7 @@ A ampliação troca precisão por cobertura: os primeiros resultados podem conte
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -165,7 +165,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -192,7 +192,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -220,7 +220,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -253,6 +253,7 @@ Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas
 | `especie` | `tema_repetitivo`, `iac`, `sumula`, `tema_repercussao_geral`, `sumula_vinculante` | nenhuma |
 | `numero` | número exato do tema ou súmula | nenhum |
 | `orgao` | nome exato, sem distinção de acentos e caixa | nenhum |
+| `materia` | `civil`, `processual_civil`, `bancario` | nenhuma |
 | `campo` | `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao`, `todos` | `todos` |
 | `data_inicio`, `data_fim` | `AAAA-MM-DD`, data de publicação | nenhum |
 | `ordenar` | `relevancia`, `mais_recentes`, `mais_antigos` ou nulo | nulo (automático) |
@@ -261,7 +262,9 @@ Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas
 | `limite` | 1 a 8 em triagem, 1 a 5 em completo | 8 em triagem, 3 em completo |
 | `cursor`, `publicacao_id` | como em `pesquisar_jurisprudencia` | |
 
-O item de triagem traz os metadados do precedente, `componente` (o primeiro componente em que o termo aparece, ou o primeiro disponível), `campos_correspondentes`, `trecho` (até 400 caracteres a partir de 80 antes da ocorrência), `offset`, `trecho_parcial` e `sha256_componente`. Em `completo`, vêm `componentes` e `julgados_relacionados`. A cobertura é `{integral: false, aviso}`.
+`materia` é a matéria atribuída na admissão, pelo ramo da fonte: `civil` (inclui família, sucessões, consumidor e empresarial), `processual_civil` ou `bancario`. Com ramos mistos, vale a primeira presente nessa ordem, de modo que bancário com civil é `civil`; ramo fora da tabela deixa o registro fora do recorte. Súmula bancária é apoio: o agente apresenta antes as de civil e processual civil.
+
+O item de triagem traz os metadados do precedente (inclusive `materia`), `componente` (o primeiro componente em que o termo aparece, ou o primeiro disponível), `campos_correspondentes`, `trecho` (até 400 caracteres a partir de 80 antes da ocorrência), `offset`, `trecho_parcial` e `sha256_componente`. Em `completo`, vêm `componentes` e `julgados_relacionados`. A cobertura é `{integral: false, aviso}`.
 
 Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como nas referências de acórdão; `data_publicacao` continua em `AAAA-MM-DD`. Precedentes gravados antes dessa regra conservam a referência com data ISO até serem reimportados.
 
@@ -269,7 +272,7 @@ Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -278,6 +281,7 @@ Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como
       "especie": "sumula",
       "numero": "999999",
       "orgao": "Órgão de teste",
+      "materia": "civil",
       "data_publicacao": "2026-09-01",
       "referencia": "STJ, Súmula n. 999999, Órgão de teste, publicação do enunciado 01/09/2026. Fonte: https://www.stj.jus.br/fixture",
       "referencia_completa": true,
@@ -310,13 +314,13 @@ Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como
 
 A ampliação para qualquer termo segue as regras da pesquisa de acórdãos, com `ampliacao` na mesma forma; com `campo` diferente de `todos`, a consulta ampliada e a contagem de cada termo ficam restritas ao componente, como em `enunciado : ("a" OR "b")`.
 
-A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de acórdãos: os filtros considerados são tribunal, órgão, espécie, número e datas; os grupos são os precedentes admitidos por tribunal e órgão, com a data de publicação; a contagem de termos respeita `campo`.
+A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de acórdãos: os filtros considerados são tribunal, órgão, espécie, número, matéria e datas; os grupos são os precedentes admitidos por tribunal e órgão, com a data de publicação; a contagem de termos respeita `campo`.
 
 <!-- exemplo: pesquisar_precedentes.vazio -->
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "total_encontrado": 0,
   "resultados": [],
   "campo_pesquisado": "todos",
@@ -355,7 +359,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL.\nI. CASO EM EXAME\n1. Habeas corpus contra prisão civ",
@@ -407,7 +411,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "il por dívida de alimentos com pagamento parcial.\nII. QUESTÃO EM DISCUSSÃO\n2. Saber se o pagamento p",
@@ -470,7 +474,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
   "precedentes": [{"tribunal": "STJ", "especie": "sumula", "admissao": "admitido", "documentos": 1}],
   "admissao_atual": {"admitido": 1},
   "proximo_cursor": null,
-  "contrato": "flora-mcp-3.1",
+  "contrato": "flora-mcp-3.2",
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
 }
 ```
@@ -507,7 +511,7 @@ Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-pre
 
 **Admissão.** Com a amostra aprovada, o registro cuja fonte principal (a primeira de `fontes`) é `estruturada`, e cujas evidências obrigatórias apontam todas para fontes `estruturada`, dispensa a conferência individual (`conferencia.evidencias_conferidas`). As demais regras não mudam: fonte oficial do tribunal em HTTPS, SHA-256 dos bytes, evidência por chave, situação, publicação, matéria e componente principal. O registro admitido assim guarda em `conferencia` o modo `fonte_estruturada`, o responsável, a data, a semente, o tamanho e se foi sorteado. Registro de fonte `documento` sem conferência individual fica pendente, como antes.
 
-**Matéria fora do recorte.** `materia: "fora_do_recorte"` indica ramo da fonte conhecido e fora de civil e processual civil; o motivo de pendência é `materia_fora_do_recorte`, em vez de `materia_nao_confirmada` (ramo ausente ou não informado).
+**Matéria fora do recorte.** `materia: "fora_do_recorte"` indica ramo da fonte conhecido e fora de civil, processual civil e bancário; o motivo de pendência é `materia_fora_do_recorte`, em vez de `materia_nao_confirmada` (ramo ausente ou não informado).
 
 **Primeira e Terceira Seções do STJ.** Tema, IAC ou súmula julgado pela Primeira Seção (`S1`) ou pela Terceira (`S3`) recebe a pendência `secao_fora_do_recorte_civil`, qualquer que seja o ramo da fonte: nessas seções o ramo "processual civil" é processo de direito público ou penal (execução fiscal, honorários contra a Fazenda), fora do recorte civil. O registro fica pendente até decisão do operador.
 
@@ -547,6 +551,12 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 - Cite com `referencia` e exponha `referencia_pendencias` quando `referencia_completa` for falso; não complete dados por conta própria.
 
 ## Mudanças do contrato
+
+### `flora-mcp-3.2` (30/09/2026)
+
+- Matéria `bancario` admitida, ao lado de `civil` e `processual_civil`. `DIREITO BANCÁRIO` do SCON passa de fora do recorte a `bancario`; o catálogo de temas do STJ não tem ramo bancário (contratos bancários são assuntos de direito civil ou do consumidor), e nada muda nele. Com ramos mistos, vale civil, depois processual civil, depois bancário.
+- `pesquisar_precedentes` aceita `materia` como filtro, e o item de triagem e os metadados de precedente trazem `materia`. Cursores de `flora-mcp-3.1` são recusados com `cursor_invalido`; refaça a consulta.
+- Descrições das ferramentas sem enumerar câmaras do TJSC: a cobertura exata é a de `consultar_cobertura`.
 
 ### `flora-mcp-3.1` (30/09/2026)
 

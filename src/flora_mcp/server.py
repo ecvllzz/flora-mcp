@@ -16,6 +16,7 @@ TipoData = Literal["publicacao", "julgamento"]
 Ordenar = Literal["relevancia", "mais_recentes", "mais_antigos"]
 Detalhe = Literal["triagem", "completo"]
 ModoBusca = Literal["simples", "avancado"]
+Materia = Literal["civil", "processual_civil", "bancario"]
 Especie = Literal["tema_repetitivo", "iac", "sumula", "tema_repercussao_geral", "sumula_vinculante"]
 Campo = Literal["enunciado", "questao_submetida", "tese_firmada", "modulacao", "suspensao", "todos"]
 DetalheCobertura = Literal["resumo", "completo", "recursos", "execucoes"]
@@ -32,9 +33,10 @@ INSTRUCTIONS = (
 
 DESCRIPTIONS = {
     "pesquisar_jurisprudencia": (
-        "Pesquisa acórdãos do STJ (Terceira e Quarta Turmas e Segunda Seção) e das 9ª e 10ª Câmaras "
-        "de Direito Civil do TJSC na base local. Palavras ligadas por AND e frases entre aspas; "
-        "se nada contém todos os termos, amplia para qualquer termo e informa em ampliacao. "
+        "Pesquisa acórdãos do STJ (Terceira e Quarta Turmas e Segunda Seção) e de câmaras cíveis do "
+        "TJSC na base local; órgãos e períodos carregados estão em consultar_cobertura. Palavras "
+        "ligadas por AND e frases entre aspas; se nada contém todos os termos, amplia para "
+        "qualquer termo e informa em ampliacao. "
         "modo_busca=avancado aceita OR, parênteses e prefixo* e não amplia. Com termos, ordena "
         "por relevância textual, que não mede pertinência jurídica. Devolve triagem com referência, "
         "cabeçalho e o trecho onde o termo aparece; leia a ementa com obter_documento antes de "
@@ -44,7 +46,9 @@ DESCRIPTIONS = {
     "pesquisar_precedentes": (
         "Pesquisa temas repetitivos, IAC e súmulas do STJ, temas de repercussão geral e súmulas, "
         "inclusive vinculantes, do STF, e súmulas do Grupo de Câmaras de Direito Civil do TJSC "
-        "admitidos na base. campo escolhe o componente ou todos. Termos como em "
+        "admitidos na base. campo escolhe o componente ou todos; materia filtra civil, "
+        "processual_civil ou bancario, e cada item traz a sua. Súmula bancária é apoio: "
+        "apresente antes as de civil e processual civil. Termos como em "
         "pesquisar_jurisprudencia, com a mesma ampliação. A coleção é parcial: ausência não "
         "prova inexistência."
     ),
@@ -141,6 +145,7 @@ def create_server(store: Store) -> MCPServer:
         especie: Especie | None = None,
         numero: str | None = None,
         orgao: str | None = None,
+        materia: Materia | None = None,
         campo: Campo = "todos",
         data_inicio: str | None = None,
         data_fim: str | None = None,
@@ -158,6 +163,7 @@ def create_server(store: Store) -> MCPServer:
             especie=especie,
             numero=numero,
             orgao=orgao,
+            materia=materia,
             campo=campo,
             data_inicio=data_inicio,
             data_fim=data_fim,

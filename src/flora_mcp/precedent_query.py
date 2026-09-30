@@ -5,7 +5,7 @@ import sqlite3
 
 from .ausencia import empty_reason
 from .model import FloraError, canonical, digest, folded
-from .precedents import COMPONENTS, SPECIES, available
+from .precedents import COMPONENTS, MATTERS, SPECIES, available
 from .query import (
     BROADENED,
     CONTRATO,
@@ -36,6 +36,7 @@ def metadata(body, sha):
             "especie",
             "numero",
             "orgao",
+            "materia",
             "data_publicacao",
             "referencia",
             "referencia_completa",
@@ -78,7 +79,7 @@ class PrecedentSearch:
             params.append(canonical(sorted(view.retired_versions)))
         return filters, params
 
-    def restrict(self, *, tribunal, orgao, especie, numero, data_inicio, data_fim):
+    def restrict(self, *, tribunal, orgao, especie, numero, materia, data_inicio, data_fim):
         # Tribunal and organ also delimit the loaded groups used by the empty-page reason.
         self.groups = [
             (c, v)
@@ -89,6 +90,10 @@ class PrecedentSearch:
         dated, dated_params = date_filters("p.publication", data_inicio, data_fim)
         self.filters = ["p." + column + "=?" for column, _ in exact] + dated
         self.params = [value for _, value in exact] + dated_params
+        if materia is not None:
+            # The matter is not a column: it is read from the recorded body.
+            self.filters.append("json_extract(p.body,'$.materia')=?")
+            self.params.append(materia)
 
     def scoped(self, expression):
         if not expression or self.campo == "todos":
@@ -229,6 +234,7 @@ def search(
     orgao=None,
     especie=None,
     numero=None,
+    materia=None,
     campo="todos",
     ordenar=None,
     limite=None,
@@ -245,12 +251,15 @@ def search(
         raise FloraError("tribunal_invalido", "Tribunal suportado: STJ, STF ou TJSC.")
     if especie and especie not in set.union(*SPECIES.values()):
         raise FloraError("filtro_invalido", "Espécie fora do contrato.")
+    if materia is not None and materia not in MATTERS:
+        raise FloraError("filtro_invalido", "Matéria: " + ", ".join(sorted(MATTERS)) + ".")
     check_dates(data_inicio, data_fim)
     plan.restrict(
         tribunal=tribunal,
         orgao=orgao,
         especie=especie,
         numero=numero,
+        materia=materia,
         data_inicio=data_inicio,
         data_fim=data_fim,
     )

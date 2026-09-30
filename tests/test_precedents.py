@@ -19,6 +19,7 @@ def packet(
     text="Enunciado sintético para teste. " * 30,
     pending=None,
     species="sumula",
+    materia="civil",
 ):
     raw = "FONTE SINTÉTICA DE TESTE, NÃO É PRECEDENTE REAL. " + status + text
     source = tmp_path / "fonte.txt"
@@ -35,7 +36,7 @@ def packet(
         "numero": number,
         "orgao": "Órgão de teste",
         "data_publicacao": "2026-09-01",
-        "materia": "civil",
+        "materia": materia,
         "situacao": status,
         "tipo_publicacao": "enunciado" if species == "sumula" else "acordao_merito",
         "pendencias": pending or [],
@@ -309,3 +310,36 @@ def test_qualified_contract_over_real_stdio(store, tmp_path):
                 assert summary.structured_content["precedentes"][0]["documentos"] == 1
 
     asyncio.run(exercise())
+
+
+def test_banking_matter_is_admitted_filtered_and_shown_in_triage(store, tmp_path):
+    migrate(store)
+    for number, matter in (("1", "civil"), ("2", "bancario"), ("3", "processual_civil")):
+        folder = tmp_path / number
+        folder.mkdir()
+        receipt = import_package(store, packet(folder, number=number, materia=matter), apply=True)
+        assert receipt["registros"][0]["admissao"] == "admitido", receipt
+    triage = api.search_precedents(store, "sintético")
+    assert {item["numero"]: item["materia"] for item in triage["resultados"]} == {
+        "1": "civil",
+        "2": "bancario",
+        "3": "processual_civil",
+    }
+    banking = api.search_precedents(store, "sintético", materia="bancario")
+    assert [item["id"] for item in banking["resultados"]] == ["STJ:sumula:2"]
+    full = api.search_precedents(store, materia="civil", detalhe="completo")
+    assert [item["materia"] for item in full["resultados"]] == ["civil"]
+    first = api.document(store, "STJ:sumula:2", componente="enunciado")
+    assert first["metadados"]["materia"] == "bancario"
+    empty = api.search_precedents(store, "sintético", materia="bancario", tribunal="STF")
+    assert (empty["motivo"], empty["total_sem_filtros"]) == ("filtro_restritivo", 3)
+    with pytest.raises(FloraError) as info:
+        api.search_precedents(store, materia="penal")
+    assert info.value.code == "filtro_invalido"
+
+
+def test_matter_outside_the_table_stays_pending(store, tmp_path):
+    migrate(store)
+    receipt = import_package(store, packet(tmp_path, materia="tributario"))
+    assert receipt["registros"][0]["admissao"] == "pendente"
+    assert "materia_nao_confirmada" in receipt["registros"][0]["motivos"]

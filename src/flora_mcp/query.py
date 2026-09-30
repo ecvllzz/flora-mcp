@@ -10,7 +10,7 @@ from .model import FloraError, canonical, digest, folded, number
 from .store import ReadView, collection_delay
 from .text import advanced_query, header, matched_window, sections
 
-CONTRATO = "flora-mcp-3.1"
+CONTRATO = "flora-mcp-3.2"
 ORDERS = ("mais_recentes", "mais_antigos", "relevancia")
 # Triage pages stay under 8 KiB of compact JSON, with room for the publication identity.
 TRIAGE_BUDGET = 7500
