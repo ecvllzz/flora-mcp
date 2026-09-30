@@ -207,6 +207,8 @@ Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas
 
 O item de triagem traz os metadados do precedente, `componente` (o primeiro componente em que o termo aparece, ou o primeiro disponível), `campos_correspondentes`, `trecho` (até 400 caracteres a partir de 80 antes da ocorrência), `offset`, `trecho_parcial` e `sha256_componente`. Em `completo`, vêm `componentes` e `julgados_relacionados`. A cobertura é `{integral: false, aviso}`.
 
+Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como nas referências de acórdão; `data_publicacao` continua em `AAAA-MM-DD`. Precedentes gravados antes dessa regra conservam a referência com data ISO até serem reimportados.
+
 <!-- exemplo: pesquisar_precedentes.triagem -->
 ```json
 {
@@ -221,7 +223,7 @@ O item de triagem traz os metadados do precedente, `componente` (o primeiro comp
       "numero": "999999",
       "orgao": "Órgão de teste",
       "data_publicacao": "2026-09-01",
-      "referencia": "STJ, Súmula n. 999999, Órgão de teste, publicação do enunciado 2026-09-01. Fonte: https://www.stj.jus.br/fixture",
+      "referencia": "STJ, Súmula n. 999999, Órgão de teste, publicação do enunciado 01/09/2026. Fonte: https://www.stj.jus.br/fixture",
       "referencia_completa": true,
       "referencia_pendencias": [],
       "situacao": "vigente",
@@ -414,6 +416,44 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
 }
 ```
+
+## Pacote administrativo `flora-precedentes-1`
+
+Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-precedents`, que simula por padrão e só grava com `--apply`. O formato de base está em `docs/precedentes-v2.md` (recibo de 29/09/2026, que não se altera). Desde a F5 (30/09/2026), o pacote muda nos pontos abaixo.
+
+**Classe de fonte.** Cada item de `fontes` pode declarar `classe`: `estruturada` ou `documento`; sem a chave, a fonte é `documento`. `estruturada` só é aceita para os endereços das fontes estruturadas registradas no produto (`flora_mcp.precedent_sources`): CSV de temas e processos dos dados abertos do STJ, listagem de súmulas do SCON do STJ e sumulário do STF (índice e página de cada súmula, comum ou vinculante). Declarar `estruturada` para outro endereço recusa o pacote com `fonte_invalida`. Temas de repercussão geral do STF e súmulas do TJSC continuam `documento`.
+
+**Conferência do lote.** O pacote pode trazer, no nível do lote, `conferencia: {modo: "fonte_estruturada", amostra}`:
+
+```json
+{
+  "modo": "fonte_estruturada",
+  "amostra": {
+    "tamanho": 75,
+    "semente": 20260930,
+    "ids": ["STJ:tema_repetitivo:1085", "..."],
+    "verificacoes": [
+      {"id": "STJ:tema_repetitivo:1085", "campos_a_conferir": ["componente:tese_firmada", "materia", "publicacao", "situacao"], "campos_conferidos": ["componente:tese_firmada", "materia", "publicacao", "situacao"], "resultado": "conforme"}
+    ],
+    "responsavel": "nome de quem conferiu",
+    "data": "2026-10-01",
+    "resultado": "aprovada"
+  }
+}
+```
+
+- `tamanho` mínimo: `max(10, 5% do lote arredondado para cima)`, limitado ao tamanho do lote.
+- `ids` são reproduzíveis pela `semente`: os ids do lote ordenados pelo SHA-256 de `"<semente>:<id>"`, os primeiros `tamanho`. `flora-mcp precedentes amostra` faz o sorteio e grava este bloco com `resultado`, `responsavel`, `data` e os resultados das verificações nulos, para preenchimento humano; ele não sobrescreve amostra já preenchida.
+- Cada id sorteado tem uma verificação com `campos_conferidos` cobrindo todas as chaves obrigatórias do registro (`situacao`, `publicacao`, `materia` e `componente:<nome>` de cada componente) e `resultado: "conforme"`.
+- O lote inteiro é recusado com `amostra_reprovada` se qualquer verificação não estiver conforme ou não cobrir os campos, se a amostra for menor que o mínimo, se um id não estiver no lote, se os ids não corresponderem ao sorteio da semente, se faltar responsável ou data, ou se `resultado` não for `aprovada` (inclusive o esqueleto não preenchido).
+
+**Admissão.** Com a amostra aprovada, o registro cuja fonte principal (a primeira de `fontes`) é `estruturada`, e cujas evidências obrigatórias apontam todas para fontes `estruturada`, dispensa a conferência individual (`conferencia.evidencias_conferidas`). As demais regras não mudam: fonte oficial do tribunal em HTTPS, SHA-256 dos bytes, evidência por chave, situação, publicação, matéria e componente principal. O registro admitido assim guarda em `conferencia` o modo `fonte_estruturada`, o responsável, a data, a semente, o tamanho e se foi sorteado. Registro de fonte `documento` sem conferência individual fica pendente, como antes.
+
+**Matéria fora do recorte.** `materia: "fora_do_recorte"` indica ramo da fonte conhecido e fora de civil e processual civil; o motivo de pendência é `materia_fora_do_recorte`, em vez de `materia_nao_confirmada` (ramo ausente ou não informado).
+
+**Simulação.** Sem `--apply`, o recibo traz, por registro, `efeito` sobre o acervo atual quando ele existe: `novo`, `atualiza`, `substitui_e_retira_anterior`, `estado_anterior_conservado` (observação incompleta de um admitido, que fica só na auditoria) ou `sem_alteracao`; e `conferencia_lote` quando a amostra foi aprovada. A simulação passa a recusar, como a gravação, a readmissão de versão retirada (`versao_retirada`).
+
+**Geração.** `flora-mcp precedentes preparar --fonte stj_temas|stj_sumulas|stf_sumulas --originais PASTA --saida PACOTE.json` monta o pacote a partir de originais já coletados, sem rede: cada original tem ao lado o recibo `<nome>.recibo.json` com `url_solicitada` (ou `url_final`), `obtido_em` com fuso, `sha256`, `status: "obtido"` e, para HTML, `content_type` com o charset. Os originais usados são copiados para `originais/` ao lado do pacote; o bloco `origem` lista fonte, originais e as entradas da fonte deixadas de fora, cada uma com motivo.
 
 ## Erros
 
