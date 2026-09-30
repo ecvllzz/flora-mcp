@@ -1,8 +1,10 @@
 """Immutable SQLite generations; a small atomic manifest selects the active one."""
 
+import hashlib
 import json
 import sqlite3
 from contextlib import closing
+from pathlib import Path, PureWindowsPath
 
 from .model import FloraError, canonical, digest, folded, now
 from .citation import citation_metadata
@@ -14,6 +16,17 @@ from .store import ReadView, Store, connection
 # changes publicacao_id at the next publication.
 DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER}"
 MANIFEST = "publicacoes.json"
+
+
+def entry_path(entry) -> Path:
+    """Relative path of a generation, whatever the separator of the system that wrote the manifest."""
+    return Path(*PureWindowsPath(entry["arquivo"]).parts)
+
+
+def file_digest(path) -> str:
+    """SHA-256 read in chunks: a generation has hundreds of MB and the reader may run on a small host."""
+    with open(path, "rb") as source:
+        return hashlib.file_digest(source, "sha256").hexdigest()
 
 
 def precedent_state(dest) -> tuple[list, dict, list]:
@@ -221,7 +234,7 @@ class Reader:
             entry = next((x for x in manifest["publicacoes"] if x["id"] == identity), None)
             if entry is None:
                 raise FloraError("publicacao_expirada", "Publicação retirada; reinicie a consulta.")
-            target = (self.store.directory / entry["arquivo"]).resolve()
+            target = (self.store.directory / entry_path(entry)).resolve()
             if (
                 not target.is_relative_to((self.store.directory / "publicacoes").resolve())
                 or not target.is_file()
@@ -230,7 +243,7 @@ class Reader:
             stat = target.stat()
             signature = (stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns, entry["sha256"])
             if self.verified.get(target) != signature:
-                if digest(target.read_bytes()) != entry["sha256"]:
+                if file_digest(target) != entry["sha256"]:
                     raise ValueError()
                 with connection(target) as db:
                     actual = db.execute("SELECT value FROM meta WHERE key='schema'").fetchone()[0]

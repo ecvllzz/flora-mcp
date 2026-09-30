@@ -8,8 +8,14 @@ from mcp.server.transport_security import TransportSecuritySettings
 from starlette.responses import JSONResponse
 
 from .config import load_config
+from .publication import MANIFEST
 from .server import create_server
 from .store import Store
+
+
+def readable(store: Store) -> bool:
+    """A work database, or only published generations: a reader copy has no collector."""
+    return store.path.is_file() or (store.directory / MANIFEST).is_file()
 
 
 class ApiKeyMiddleware:
@@ -63,8 +69,8 @@ def main():
     try:
         config = load_config(args.config, args.data_dir)
         store = Store(config.data_dir, atrasos=config.atrasos)
-        if not store.path.is_file():
-            raise ValueError("Acervo inexistente: inicialize/importe pelo coletor administrativo.")
+        if not readable(store):
+            raise ValueError("Acervo inexistente: sem banco de trabalho nem manifesto de publicações.")
         app = create_http_app(
             store,
             api_key=os.environ.get("FLORA_MCP_API_KEY", ""),
