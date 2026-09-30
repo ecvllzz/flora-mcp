@@ -60,6 +60,33 @@ def connection(path: Path, *, write: bool = False, immutable: bool = False):
         db.close()
 
 
+def ensure_search_map(db):
+    """Map each document to its FTS rowid, so index updates never scan the FTS table.
+
+    FTS5 cannot index the UNINDEXED id column: deleting by id reads every row. The map is
+    created and backfilled once (one scan), inside the caller's transaction.
+    """
+    if db.execute("SELECT 1 FROM meta WHERE key='search_map'").fetchone():
+        return
+    db.execute(
+        "CREATE TABLE IF NOT EXISTS search_map (document_id TEXT PRIMARY KEY, fts_rowid INTEGER NOT NULL)"
+    )
+    db.execute("DELETE FROM search_map")
+    db.execute("INSERT INTO search_map(document_id,fts_rowid) SELECT id,rowid FROM search")
+    db.execute("INSERT INTO meta VALUES ('search_map',1)")
+
+
+def replace_search_row(db, doc_id: str, ementa: str | None):
+    """Remove the document's FTS row by rowid and, when text is given, index it again."""
+    row = db.execute("SELECT fts_rowid FROM search_map WHERE document_id=?", (doc_id,)).fetchone()
+    if row:
+        db.execute("DELETE FROM search WHERE rowid=?", (row[0],))
+        db.execute("DELETE FROM search_map WHERE document_id=?", (doc_id,))
+    if ementa is not None:
+        cursor = db.execute("INSERT INTO search VALUES (?,?)", (doc_id, ementa))
+        db.execute("INSERT INTO search_map VALUES (?,?)", (doc_id, cursor.lastrowid))
+
+
 class Store:
     def __init__(self, directory: Path):
         self.directory = directory
@@ -75,6 +102,7 @@ class Store:
             db.executescript(SCHEMA)
             if db.execute("SELECT value FROM meta WHERE key='schema'").fetchone()[0] not in {1, 2}:
                 raise FloraError("schema_incompativel", "Versão de banco não suportada.")
+            ensure_search_map(db)
             db.commit()
 
     def start_run(self, source: str) -> str:
@@ -159,6 +187,7 @@ class Store:
             seen.add(body["id"])
         counts = dict(novos=0, alterados=0, inalterados=0, removidos=0)
         with connection(self.path, write=True) as db, db:
+            ensure_search_map(db)
             db.execute(
                 "INSERT OR IGNORE INTO resource_history VALUES (?,?,?,?,?,?)",
                 (resource["id"], sha, raw_path, resource["metadata"], observed_at, run_id),
@@ -200,7 +229,7 @@ class Store:
                 ).fetchone()
                 if not winner:
                     db.execute("DELETE FROM documents WHERE id=?", (doc_id,))
-                    db.execute("DELETE FROM search WHERE id=?", (doc_id,))
+                    replace_search_row(db, doc_id, None)
                     counts["removidos"] += 1
                     continue
                 body = json.loads(winner["body"])
@@ -229,8 +258,7 @@ class Store:
                         body["data_publicacao"],
                     ),
                 )
-                db.execute("DELETE FROM search WHERE id=?", (doc_id,))
-                db.execute("INSERT INTO search VALUES (?,?)", (doc_id, body["ementa"]))
+                replace_search_row(db, doc_id, body["ementa"])
             db.execute(
                 """UPDATE resources SET status='ok',checked=?,sha256=?,raw_path=?,count=?,
                 applied_fingerprint=expected_fingerprint,error=NULL,run_id=? WHERE id=?""",
