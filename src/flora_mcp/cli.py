@@ -48,8 +48,27 @@ def build_parser() -> argparse.ArgumentParser:
         "--ordenar", choices=["mais_recentes", "mais_antigos", "relevancia"], default="mais_recentes"
     )
     sub.add_parser("serve", help="Servidor MCP stdio, exclusivamente de leitura")
-    backup = sub.add_parser("backup", help="Backup consistente de banco e originais")
+    backup = sub.add_parser("backup", help="Cópia integral de banco e originais (formato antigo)")
     backup.add_argument("destino", type=Path)
+    update = sub.add_parser("atualizar", help="Backup, coleta STJ e TJSC, publicação e log, sob a trava")
+    update.add_argument("--stj-lotes", type=int, default=2, help="Lotes por dataset do STJ; padrão 2")
+    update.add_argument("--tjsc-dias", type=int, default=7, help="Janela até hoje, de 1 a 31 dias; padrão 7")
+    only = update.add_mutually_exclusive_group()
+    only.add_argument("--so-stj", action="store_true", help="Coleta apenas o STJ")
+    only.add_argument("--so-tjsc", action="store_true", help="Coleta apenas o TJSC")
+    kept = sub.add_parser("backups", help="Backups com depósito de originais compartilhado")
+    action = kept.add_subparsers(dest="acao", required=True)
+    create = action.add_parser("criar", help="Novo backup de banco e manifesto; copia só originais novos")
+    create.add_argument("--rotulo")
+    create.add_argument("--raiz", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
+    prune = action.add_parser("podar", help="Mantém os N mais recentes e o último de cada mês")
+    prune.add_argument("--manter", type=int, default=5)
+    prune.add_argument("--raiz", type=Path)
+    prune.add_argument("--aplicar", action="store_true", help="Apaga; sem esta opção mostra só o plano")
+    restore = action.add_parser("restaurar", help="Monta acervo utilizável num diretório novo")
+    restore.add_argument("nome")
+    restore.add_argument("destino", type=Path)
+    restore.add_argument("--raiz", type=Path)
     return parser
 
 
@@ -74,15 +93,10 @@ def run_search(args, store):
 
 
 def backup_before(config, store, label: str) -> dict:
-    """Consistent backup beside the data directory, before an administrative write."""
-    from datetime import datetime
+    """Backup in the shared-depot format, before an administrative write; caller holds the lock."""
+    from . import backups
 
-    destination = (
-        config.data_dir.parent
-        / (config.data_dir.name + "-backups")
-        / datetime.now().strftime(label + "-%Y%m%d-%H%M%S-%f")
-    )
-    return store.backup(destination)
+    return backups.create(store, backups.default_root(config.data_dir), label)
 
 
 def run_migrate(args, config, store):
@@ -143,7 +157,36 @@ def run_collection(args, config, store):
         return probe_tjsc(config, store, http)
 
 
+def run_update(args, config, store):
+    from .atualizacao import update
+
+    return update(
+        config,
+        store,
+        stj_lotes=args.stj_lotes,
+        tjsc_dias=args.tjsc_dias,
+        stj=not args.so_tjsc,
+        tjsc=not args.so_stj,
+    )
+
+
+def run_backups(args, config, store):
+    from . import backups
+
+    root = (args.raiz or backups.default_root(config.data_dir)).resolve()
+    if args.acao == "podar":
+        return backups.prune(root, args.manter, apply=args.aplicar)
+    if args.acao == "restaurar":
+        return backups.restore(root, args.nome, args.destino)
+    if not config.db_path.is_file():
+        raise FloraError("base_nao_inicializada", "Banco não encontrado na pasta configurada.")
+    with FileLock(str(config.data_dir / "collector.lock"), timeout=0):
+        return backups.create(store, root, args.rotulo)
+
+
 READERS = {"coverage": run_coverage, "search": run_search}
+# Commands that take the locks they need themselves.
+SELF_LOCKED = {"atualizar": run_update, "backups": run_backups}
 WRITERS = {
     "migrate": run_migrate,
     "import-precedents": run_import,
@@ -181,7 +224,7 @@ def main():
     args = build_parser().parse_args()
     try:
         config = load_config(args.config, args.data_dir)
-        store = Store(config.data_dir)
+        store = Store(config.data_dir, atrasos=config.atrasos)
         if args.command == "serve":
             from .server import create_server
 
@@ -189,6 +232,8 @@ def main():
             return
         if args.command in READERS:
             result = READERS[args.command](args, store)
+        elif args.command in SELF_LOCKED:
+            result = SELF_LOCKED[args.command](args, config, store)
         else:
             result = run_locked(args, config, store)
         print(json.dumps(result, ensure_ascii=True, indent=2))

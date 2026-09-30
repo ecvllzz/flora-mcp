@@ -34,7 +34,7 @@ def test_shared_file_is_independent_of_cwd_and_appdata(monkeypatch, tmp_path):
         config.load_config(data_dir="relative")
 
 
-@pytest.mark.parametrize("command", ["sync-stj", "sync-tjsc", "backup", "update"])
+@pytest.mark.parametrize("command", ["sync-stj", "sync-tjsc", "backup", "update", "atualizar", "backups"])
 def test_collectors_and_backup_do_not_create_missing_base(tmp_path, command):
     missing = tmp_path / "must-not-exist"
     if command == "update":
@@ -45,6 +45,8 @@ def test_collectors_and_backup_do_not_create_missing_base(tmp_path, command):
             args += ["--inicio", "2026-09-01", "--fim", "2026-09-01"]
         elif command == "backup":
             args += [str(tmp_path / "backup")]
+        elif command == "backups":
+            args += ["criar", "--raiz", str(tmp_path / "raiz")]
     result = subprocess.run(
         [sys.executable, *args], capture_output=True, env={**os.environ, "PYTHONUTF8": "1"}, text=True
     )
