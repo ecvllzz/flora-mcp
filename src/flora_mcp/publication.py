@@ -7,9 +7,12 @@ from contextlib import closing
 from .model import FloraError, canonical, digest, folded, now
 from .citation import citation_metadata
 from .precedents import available
+from .text import SECTIONS_DERIVER
 from .store import ReadView, Store, connection
 
-DERIVER = "flora-read-2.2"
+# Derivations computed when a generation is read also name the generation, so changing one of them
+# changes publicacao_id at the next publication.
+DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER}"
 MANIFEST = "publicacoes.json"
 
 
