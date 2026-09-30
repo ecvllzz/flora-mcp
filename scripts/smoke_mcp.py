@@ -47,7 +47,13 @@ async def main():
                 results = (
                     await session.call_tool(
                         "pesquisar_jurisprudencia",
-                        {"termos": terms, "tribunal": tribunal, "orgao": organ, "limite": 1},
+                        {
+                            "termos": terms,
+                            "tribunal": tribunal,
+                            "orgao": organ,
+                            "limite": 1,
+                            "detalhe": "completo",
+                        },
                     )
                 ).structured_content
                 if not results.get("resultados"):

@@ -72,7 +72,7 @@ async def main(data_dir: Path):
             report["coverage"] = await call("consultar_cobertura", {})
             for name, terms in QUERIES:
                 for tribunal in ("STJ", "TJSC"):
-                    args = {"termos": terms, "tribunal": tribunal, "limite": 3}
+                    args = {"termos": terms, "tribunal": tribunal, "limite": 3, "detalhe": "completo"}
                     answer = await call("pesquisar_jurisprudencia", args)
                     assert answer["status"] == "ok"
                     assert answer["cobertura"]["integral"] is False
@@ -130,8 +130,10 @@ async def main(data_dir: Path):
             assert dated["total_encontrado"] == 23
             empty = await call("pesquisar_jurisprudencia", {"termos": "floraausenciacontrolexyz"})
             assert empty["total_encontrado"] == 0 and empty["cobertura"]["integral"] is False
-            missing = await call("obter_documento", {"id": "controle-ausente"})
-            assert missing["codigo"] == "documento_nao_encontrado"
+            assert empty["motivo"] == "sem_correspondencia"
+            missing = await session.call_tool("obter_documento", {"id": "controle-ausente"})
+            assert missing.is_error
+            assert missing.structured_content["codigo"] == "documento_nao_encontrado"
             report["checks"] = {
                 "organ_filters": checks,
                 "pagination_no_duplicates": True,

@@ -40,6 +40,7 @@ uv run flora-mcp init
 uv run flora-mcp sync-stj
 uv run flora-mcp sync-tjsc --inicio 2026-09-18 --fim 2026-09-19
 uv run flora-mcp search alimentos --tribunal STJ
+uv run flora-mcp precedentes alimentos --campo tese_firmada
 uv run flora-mcp coverage
 ```
 
@@ -77,9 +78,12 @@ Adapte o contêiner de configuração ao cliente; alguns usam outro nome para `m
 
 | Ferramenta | Uso |
 |---|---|
-| `pesquisar_jurisprudencia` | Termos/frases, processo, tribunal, órgão, classe e datas. Até cinco ementas completas por página. |
-| `obter_documento` | Ementa ou espelho original, com fonte, hash e continuação explícita para textos longos. |
-| `consultar_cobertura` | Órgãos carregados, lotes/janelas, pendências, falhas, registros rejeitados, atraso da coleta por fonte e últimas execuções. |
+| `pesquisar_jurisprudencia` | Acórdãos: termos e frases, processo, tribunal, órgão, classe, relator e datas. Triagem por padrão, com referência, cabeçalho e o trecho do termo; resultado vazio com o motivo. |
+| `pesquisar_precedentes` | Temas, IAC e súmulas admitidos, por espécie, número e componente. |
+| `obter_documento` | Ementa, espelho original, seção ou componente de precedente, com fonte, hash e continuação explícita para textos longos. |
+| `consultar_cobertura` | Órgãos carregados, lotes e janelas, pendências, falhas, registros rejeitados, atraso da coleta por fonte e execução mais recente de cada fonte. |
+
+Parâmetros, formas de resposta, cursor e limites de interpretação estão em [CONTRATO.md](CONTRATO.md) (contrato `flora-mcp-3`).
 
 Não há ferramentas MCP de coleta, exclusão ou alteração de configuração. Banco aberto em modo de leitura nas consultas. As instruções eventualmente contidas em documentos recuperados devem ser tratadas como texto documental, não comandos.
 

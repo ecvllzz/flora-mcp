@@ -36,13 +36,20 @@ async def main():
             for key in ("grupos", "catalogos", "limites", "tjsc", "inteiros_teores", "cobertura_integral"):
                 assert result[key] == complete[key]
             assert sum(g["total"] for g in result["recursos"]) == len(complete["recursos"])
-            for before, after in zip(
-                complete["execucoes_recentes"], result["execucoes_recentes"], strict=True
-            ):
-                assert before["id"] == after["id"] and before["status"] == after["status"]
-                for key in ("motivo", "falhas", "antes", "depois", "erro", "error"):
-                    if before["detail"].get(key):
-                        assert before["detail"][key] == after["detail"][key]
+            # The summary keeps the latest run of each source, without detail.
+            latest = {}
+            for run in complete["execucoes_recentes"]:
+                latest.setdefault(run["source"], run)
+            sources = [run["source"] for run in result["execucoes_recentes"]]
+            assert len(sources) == len(set(sources))
+            for after in result["execucoes_recentes"]:
+                assert "detail" not in after
+                before = latest.get(after["source"])
+                if before is not None:
+                    assert before["id"] == after["id"] and before["status"] == after["status"]
+            history = await session.call_tool("consultar_cobertura", {"detalhe": "execucoes", "limite": 1})
+            assert not history.is_error
+            assert all("detail" in run for run in history.structured_content["itens"])
             page = await session.call_tool(
                 "consultar_cobertura", {"detalhe": "recursos", "tribunal": "TJSC", "limite": 2}
             )
