@@ -143,7 +143,7 @@ async def main(data_dir: Path):
                 "missing_document": True,
             }
     report["status"] = "pass"
-    target = ROOT / "docs" / "validacao-recuperacao.json"
+    target = ROOT / "docs" / "recibos" / "validacao-recuperacao.json"
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
         json.dumps(
