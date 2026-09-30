@@ -45,8 +45,8 @@ Só acórdãos. Temas e súmulas estão em `pesquisar_precedentes`.
 
 Cada item de triagem traz `id`, `tribunal`, `orgao`, `classe_descricao`, `processo`, `relator`, `referencia`, `referencia_completa`, `referencia_pendencias`, `hash_conteudo` e `sha256_componente` (SHA-256 da ementa inteira), mais:
 
-- `cabecalho`: a verbetação, do início da ementa até o primeiro título de seção reconhecido (`CASO EM EXAME`, `QUESTÃO EM DISCUSSÃO`, `RAZÕES DE DECIDIR`, `DISPOSITIVO E TESE`, `TESE DE JULGAMENTO`) ou, sem título, até a primeira quebra de linha; limitado a 400 caracteres. `cabecalho_parcial` é verdadeiro quando o limite cortou a verbetação.
-- `trecho_correspondente`, só quando há termos: `{texto, offset, parcial}`, janela de até 320 caracteres que começa 80 caracteres antes da primeira ocorrência marcada pelo índice. `offset` conta caracteres Unicode da ementa original, de modo que `ementa[offset:offset+len(texto)] == texto`. `parcial` é verdadeiro quando a janela não cobre a ementa inteira.
+- `cabecalho`: a verbetação, do início da ementa até o primeiro título de seção reconhecido (ver seções, em `obter_documento`) ou o primeiro parágrafo numerado, o que vier antes (`1.`, `I -`, `2)`) ou a primeira linha em branco, porque a verbetação do STJ ocupa várias linhas; quando a ementa abre com um título, a primeira linha. O texto é literal, com as quebras de linha da fonte, e limitado a 300 caracteres. `cabecalho_parcial` é verdadeiro quando o limite cortou a verbetação.
+- `trecho_correspondente`, só quando há termos: `{texto, offset, parcial}`, janela de até 240 caracteres que começa 60 caracteres antes da primeira ocorrência marcada pelo índice. `offset` conta caracteres Unicode da ementa original, de modo que `ementa[offset:offset+len(texto)] == texto`. `parcial` é verdadeiro quando a janela não cobre a ementa inteira.
 
 A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes antes da identificação da publicação). Se os itens pedidos não cabem, a página perde itens do fim e `proximo_cursor` continua exatamente depois do último item entregue. Com poucos itens por página, siga o cursor; nada é pulado.
 
@@ -286,7 +286,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 | `hash_conteudo` | versão esperada; outra versão é recusada | nenhum |
 | `publicacao_id` | como nas pesquisas | atual |
 
-- `espelho_original` são os campos recebidos da fonte, em JSON; não é inteiro teor. As seções disponíveis de um acórdão estão em `metadados.secoes_ementa` (`caso_em_exame`, `questao_em_discussao`, `razoes_de_decidir`, `dispositivo_e_tese`, `tese_na_ementa`); seção não delimitada com segurança é recusada, nunca aproximada.
+- `espelho_original` são os campos recebidos da fonte, em JSON; não é inteiro teor. As seções disponíveis de um acórdão estão em `metadados.secoes_ementa` (`cabecalho`, `caso_em_exame`, `questao_em_discussao`, `razoes_de_decidir`, `dispositivo_e_tese`, `tese_na_ementa`, `dispositivos_citados`, `jurisprudencia_citada`), no modelo da Recomendação CNJ 154/2024: as duas linhas finais, de dispositivos e de jurisprudência citados, são seções próprias e não entram na tese. Reconhece `HIPÓTESE EM EXAME` como `caso_em_exame` e quebras de linha CRLF ou LF. Cada seção traz `inicio`, `fim` (caracteres Unicode da ementa), `sha256_secao`, `sha256_componente` (da ementa inteira) e `derivador` (`ementa-secoes-2`). Seção não delimitada com segurança, inclusive por título repetido, é recusada, nunca aproximada.
 - Precedente exige componente explícito; componente ausente é recusado com a lista dos disponíveis.
 - Concatene `texto` de todos os blocos até `proximo_cursor` nulo; `sha256_texto_completo` confere o resultado.
 - O primeiro bloco (`offset == 0`) traz os metadados completos: acórdão, `fonte` e `metadados`; precedente, `metadados`, `evidencia_componente`, `evidencia_situacao` e `julgados_relacionados`. Todos os blocos trazem `referencia` e `referencia_pendencias`.
@@ -336,7 +336,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
     "referencia_completa": true,
     "referencia_pendencias": [],
     "secoes_ementa": [
-      {"nome": "caso_em_exame", "inicio": 49, "fim": 150, "sha256_componente": "1aa0739f...", "derivador": "ementa-secoes-1"}
+      {"nome": "caso_em_exame", "inicio": 49, "fim": 150, "sha256_componente": "1aa0739f...", "sha256_secao": "5c1e02d8...", "derivador": "ementa-secoes-2"}
     ]
   },
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"

@@ -181,13 +181,13 @@ def test_value_outside_the_schema_is_a_structured_tool_error(store):
 
 def test_triage_item_has_header_and_matched_window_with_unicode_offsets(store):
     prefix = "Ação é órfã. " * 20
-    ingest(store, [raw_doc("1", text=prefix + "\nCOMPENSATÓRIOS devidos. " + "Fim. " * 100)])
+    ingest(store, [raw_doc("1", text=prefix + "\n1. COMPENSATÓRIOS devidos. " + "Fim. " * 100)])
     item = api.search(store, "compensatorios")["resultados"][0]
     full = api.search(store, "compensatorios", detalhe="completo")["resultados"][0]["ementa"]
     window = item["trecho_correspondente"]
-    assert window["offset"] == full.index("COMPENSATÓRIOS") - 80
+    assert window["offset"] == full.index("COMPENSATÓRIOS") - 60
     assert full[window["offset"] : window["offset"] + len(window["texto"])] == window["texto"]
-    assert len(window["texto"]) == 320 and window["parcial"] is True
+    assert len(window["texto"]) == 240 and window["parcial"] is True
     assert item["cabecalho"] == prefix.strip() and item["cabecalho_parcial"] is False
     assert not {"trecho", "offset", "trecho_parcial", "campos_correspondentes", "ementa"} & set(item)
     assert "trecho_correspondente" not in api.search(store)["resultados"][0]
@@ -197,12 +197,18 @@ def test_triage_item_has_header_and_matched_window_with_unicode_offsets(store):
     "text,expected,partial",
     [
         ("VERBETE. TEMA.\nI. CASO EM EXAME\nFatos.", "VERBETE. TEMA.", False),
-        ("VERBETE sem título.\nCorpo da ementa.", "VERBETE sem título.", False),
+        ("VERBETE sem título.\n\nCorpo da ementa.", "VERBETE sem título.", False),
+        (
+            "VERBETE LONGO DO STJ, QUE\n CONTINUA NA LINHA.\n 1. Corpo.",
+            "VERBETE LONGO DO STJ, QUE\n CONTINUA NA LINHA.",
+            False,
+        ),
+        ("VERBETE.\nI - Corpo em inciso.", "VERBETE.", False),
         ("I. CASO EM EXAME\nFatos.\nMais.", "I. CASO EM EXAME", False),
-        ("X" * 500, "X" * 400, True),
+        ("X" * 500, "X" * 300, True),
     ],
 )
-def test_header_stops_at_first_heading_or_line_break_and_at_400_characters(store, text, expected, partial):
+def test_header_stops_at_first_heading_or_line_break_and_at_300_characters(store, text, expected, partial):
     ingest(store, [raw_doc(text=text)])
     item = api.search(store)["resultados"][0]
     assert (item["cabecalho"], item["cabecalho_parcial"]) == (expected, partial)
