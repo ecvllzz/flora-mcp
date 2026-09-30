@@ -1,95 +1,121 @@
 # Flora-MCP
 
-MCP independente para pesquisar uma base local de jurisprudência pública, alimentada diretamente por fontes oficiais. Não depende do Flora, de um modelo de IA, do Copilot, do JusRatio ou de uma API jurídica paga.
+Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-**Estado: alpha local `0.2.0a1`.** Modelo de temas/súmulas, importação de pacotes oficiais conferidos, componentes separados, publicação de leitura, triagem e exportação documental implementados. Acórdãos STJ e coleta experimental TJSC preservados. O acervo é parcial; carga efetiva e recarga dos clientes exigem recibos próprios. Veja o [contrato da reforma](docs/precedentes-v2.md), [estado e próximos marcos](docs/estado.md) e [exemplo com ementas completas](docs/exemplo-real.md).
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.1`.
+- Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
+- Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
+- Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).
 
 ## Como funciona
 
 ```mermaid
 flowchart LR
-  A[Fontes oficiais STJ e TJSC] --> B[Coletor administrativo]
-  B --> C[Originais, versões e índice local]
-  C --> D[Servidor MCP de leitura]
-  D --> E[Qualquer cliente MCP com stdio]
-  F[Agendador do sistema] --> B
+  A[Fontes oficiais STJ e TJSC] --> B[Coleta administrativa: flora-mcp atualizar]
+  B --> C[Banco de trabalho: originais, versões e índice]
+  C --> D[Publicação imutável por geração]
+  D --> E[Servidor MCP de leitura]
+  E --> F[Claude, Codex e outros clientes MCP]
+  D --> G[Painel local]
 ```
 
-O coletor incorpora novos documentos e alterações. O MCP consulta a base mesmo sem internet. A atualização é trabalho do sistema, sem LLM. Pesquisa lexical: palavras combinadas com AND ou frases entre aspas; quando nenhum documento contém todos os termos, a busca simples é ampliada para qualquer termo, sem palavras vazias, e a resposta o informa em `ampliacao`; sem interpretação semântica automática.
+A coleta grava no banco de trabalho, sob uma trava de escritor (`collector.lock`), e termina publicando uma geração nova: um arquivo SQLite fechado e conferido, apontado por um manifesto trocado de forma atômica. O servidor lê a publicação corrente, de modo que uma coleta em andamento não muda a resposta de quem está pesquisando.
 
-## Referências para conferência e uso em votos
+A busca é lexical (SQLite FTS5). No modo simples, as palavras se combinam com E e as frases vão entre aspas; quando nenhum documento contém todos os termos, a busca é refeita com OU, sem palavras vazias, e a resposta diz que ampliou (`ampliacao`). O modo avançado aceita E, OU, parênteses, frases e `prefixo*`, sem ampliação. A ordenação padrão com termos é por relevância textual (BM25), que não mede pertinência jurídica.
 
-Cada resultado de pesquisa inclui `relator`, `classe_descricao`, `referencia`,
-`referencia_completa` e `referencia_pendencias`. A obtenção do documento entrega
-esses mesmos campos em `metadados`, inclusive nos blocos de continuação.
-Apresente a referência junto da ementa ou citação usada em voto e confira as
-pendências. Julgamento e publicação são identificados separadamente; dados
-ausentes não são inventados. A identificação vem da versão original preservada,
-também para documentos já existentes, sem migração do banco.
+## Recorte e cobertura
 
-Processos MCP já iniciados precisam ser reconectados para carregar esta mudança.
-Veja [contrato, testes e estado de carregamento](docs/referencias-citacao.md).
+| Fonte | O que entra |
+|---|---|
+| [Dados abertos do STJ](https://dadosabertos.web.stj.jus.br/) | Espelhos de acórdãos da Terceira e da Quarta Turmas e da Segunda Seção, por arquivo de extração a partir de `resource_from` (padrão `20250101`) |
+| [Jurisprudência do TJSC](https://www.tjsc.jus.br/web/jurisprudencia) | Acórdãos da 9ª e da 10ª Câmaras de Direito Civil, por dia de publicação |
+| Catálogos oficiais de precedentes | Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; súmulas do Grupo de Câmaras de Direito Civil do TJSC. Só os admitidos são servidos |
 
-## Instalar e usar
+- O acervo guarda ementa e espelho, não inteiro teor. O campo `decisao` do espelho do STJ não é voto integral, e o link do TJSC não significa documento baixado.
+- A cobertura é parcial e declarada: toda pesquisa traz `cobertura` com `integral: false` e as fontes em atraso, e `consultar_cobertura` mostra órgãos, datas extremas, lotes pendentes, falhas e registros rejeitados. Resultado vazio não prova que a jurisprudência não exista.
+- A resposta de `consultar_cobertura` traz o atraso da coleta por fonte (bloco `coleta`: `ultima_coleta_ok`, `dias_desde_ultima_coleta`, `limiar_dias` e `atraso`). Os limiares padrão são 45 dias para o STJ, cujo lote é mensal, e 7 para o TJSC; mudam com `atraso_stj_dias` e `atraso_tjsc_dias` na configuração do processo que atende a leitura.
+- O recorte do STJ é pelo nome do arquivo de extração, não pela data de julgamento ou publicação; um arquivo recente pode conter decisões antigas.
+- Precedente com matéria fora de direito civil e processual civil, ou julgado pela Primeira ou pela Terceira Seção do STJ, fica pendente e não é servido.
 
-Requisitos: Python 3.12+ e `uv`. Nesta máquina foi verificado com Python 3.14, no Windows. Antes dos comandos, configure `data_dir` em `flora.local.toml` a partir do modelo. Em uma instalação nova, `init` cria o banco vazio; não é necessário executá-lo após uma migração:
+## Instalação
+
+Requisitos: Python 3.12 ou superior e [`uv`](https://docs.astral.sh/uv/). Dependências exatas em `uv.lock`, com o SDK MCP para Python fixado em 2.2.0.
 
 ```powershell
 uv sync --frozen
-uv run flora-mcp init
-uv run flora-mcp sync-stj
-uv run flora-mcp sync-tjsc --inicio 2026-09-18 --fim 2026-09-19
-uv run flora-mcp search alimentos --tribunal STJ
-uv run flora-mcp precedentes alimentos --campo tese_firmada
-uv run flora-mcp coverage
+Copy-Item flora.example.toml flora.local.toml   # e ajuste data_dir
+uv run flora-mcp init                           # só numa instalação nova: cria o banco vazio
 ```
 
-`sync-stj` consulta o catálogo e, por padrão, baixa até dois recursos pendentes por dataset em cada execução. Começa pelos mais recentes e avança no histórico nas execuções seguintes. Descobre arquivos novos, revê metadados alterados e reconfere bytes antigos após sete dias. Uma execução `partial` significa que ainda há recursos pendentes.
+A pasta do acervo precisa ser um caminho absoluto. Ela é resolvida nesta ordem: `--data-dir` (antes do subcomando), a variável `FLORA_MCP_DATA_DIR` e `data_dir` no arquivo de configuração. O arquivo é `flora.local.toml`, na raiz do projeto e fora do controle de versão, carregado qualquer que seja o diretório de execução; `--config` ou `FLORA_MCP_CONFIG` escolhem outro. Sem caminho configurado, o programa recusa iniciar. Só `init` cria banco; os demais comandos recusam uma pasta sem `acervo.sqlite`.
 
-Um espelho inválido (sem `id`, sem ementa textual, sem órgão julgador ou com data de julgamento ilegível) não impede o lote: os registros válidos são ingeridos e os inválidos ficam de fora, identificados pela posição na lista do lote (a partir de 0), pelo `id` quando houver e pelo motivo. A identificação aparece no evento da execução e no campo `rejeitados` do recurso, e a contagem por dataset aparece no resumo de `consultar_cobertura`. Um lote que não é lista, vazio ou sem nenhum espelho válido fica em `error`. O original do lote é preservado inteiro.
+Outras chaves da seção `[flora]`, todas com padrão: `resource_from`, `max_resources` (lotes por dataset do STJ por execução, padrão 2), `recheck_days` (7), `max_download_bytes`, `request_delay` (1,0 s), `datasets`, `atraso_stj_dias` e `atraso_tjsc_dias`. O modelo está em [flora.example.toml](flora.example.toml).
 
-O recorte padrão seleciona arquivos de extração STJ com nomes a partir de `20250101`; **não promete todas as decisões publicadas desde essa data**. Datas de extração, julgamento e publicação são diferentes. Os ZIPs históricos ficam fora desta alpha.
-
-`sync-tjsc` percorre todas as páginas de cada dia de publicação, nas duas câmaras, sem filtro temático. Valida órgão, data, quantidade e IDs, e confere novamente a primeira página. Uma falha impede a conclusão daquela janela. O portal pode mudar ou apresentar verificações de acesso; não há contorno de CAPTCHA ou autenticação.
-
-Configure uma pasta absoluta em [flora.local.toml](flora.local.toml), na raiz desta instalação; o arquivo é carregado independentemente do diretório de execução. Há um [modelo TOML](flora.example.toml). Precedência: `--data-dir` **antes** do subcomando, `FLORA_MCP_DATA_DIR` e arquivo TOML. `--config` escolhe outro arquivo em lugar do local. Sem caminho configurado, o programa recusa iniciar; não há retorno automático ao AppData.
-
-Nesta máquina, o acervo compartilhado fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP`, fora do cofre Obsidian e dos pacotes MSIX. Coletas e backups exigem banco existente. Apenas `init` cria um banco novo, por comando explícito.
-
-Backups e atualização estão descritos em [Backups](#backups) e [Atualização](#atualização). Nenhum desses comandos agenda rotina alguma.
+Nesta máquina, o acervo em uso fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP`, fora do cofre Obsidian, e os clientes rodam o código do worktree principal (`Documents\Flora-MCP`, branch `main`). Para experimentar sem risco, aponte `FLORA_MCP_DATA_DIR` para uma cópia.
 
 ## Conectar a um cliente MCP
 
-O servidor usa `stdio`. O cliente inicia e encerra o processo. Neste computador, um exemplo de configuração é:
+O transporte é `stdio`: o cliente inicia e encerra o processo `flora-mcp serve`.
+
+Claude Desktop (`claude_desktop_config.json`, detalhes em [docs/instalacao-claude.md](docs/instalacao-claude.md)):
 
 ```json
 {
   "mcpServers": {
     "flora-mcp": {
-      "command": "C:/Users/Home/Documents/Flora-MCP/.venv/Scripts/python.exe",
-      "args": ["-m", "flora_mcp.cli", "serve"],
+      "command": "C:\\Users\\Home\\Documents\\Flora-MCP\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "flora_mcp.cli", "--data-dir", "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP", "serve"],
       "env": {"PYTHONUTF8": "1"}
     }
   }
 }
 ```
 
-Adapte o contêiner de configuração ao cliente; alguns usam outro nome para `mcpServers`. Em outra máquina, substitua o caminho do executável. Este exemplo não instala conectores por si. Nesta máquina, o servidor foi registrado no Codex em 22/09/2026, e um processo separado do app-server reconheceu as três ferramentas. A recuperação foi exercitada por cliente SDK com os mesmos parâmetros. Isso não recarrega uma conversa já aberta nem comprova comportamento jurídico do agente. Recibos em `docs/instalacao-codex.json`, `docs/conexao-codex.json` e `docs/validacao-recuperacao.json`.
+Codex (`~\.codex\config.toml`):
+
+```toml
+[mcp_servers.flora-mcp]
+command = 'C:\Users\Home\Documents\Flora-MCP\.venv\Scripts\python.exe'
+args = ["-m", "flora_mcp.cli", "serve"]
+
+[mcp_servers.flora-mcp.env]
+FLORA_MCP_DATA_DIR = 'C:\Users\Home\Documents\Flora\Dados\Flora-MCP'
+PYTHONUTF8 = "1"
+```
+
+Em outra máquina, troque os caminhos. Um cliente já aberto continua com as ferramentas que descobriu ao iniciar; depois de atualizar o código, reinicie o aplicativo e abra uma conversa nova.
 
 | Ferramenta | Uso |
 |---|---|
-| `pesquisar_jurisprudencia` | Acórdãos: termos e frases, processo, tribunal, órgão, classe, relator e datas. Triagem por padrão, com referência, cabeçalho e o trecho do termo; resultado vazio com o motivo. |
-| `pesquisar_precedentes` | Temas, IAC e súmulas admitidos, por espécie, número e componente. |
-| `obter_documento` | Ementa, espelho original, seção ou componente de precedente, com fonte, hash e continuação explícita para textos longos. |
-| `consultar_cobertura` | Órgãos carregados, lotes e janelas, pendências, falhas, registros rejeitados, atraso da coleta por fonte e execução mais recente de cada fonte. |
+| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator e datas. Triagem por padrão (referência, cabeçalho e trecho do termo); resposta vazia com `motivo`. |
+| `pesquisar_precedentes` | Temas, IAC e súmulas admitidos, por espécie, número, órgão e componente. |
+| `obter_documento` | Ementa, seção da ementa, espelho original ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
+| `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |
 
-Parâmetros, formas de resposta, cursor e limites de interpretação estão em [CONTRATO.md](CONTRATO.md) (contrato `flora-mcp-3.1`).
+Cada resultado traz `referencia`, `referencia_completa` e `referencia_pendencias`, montadas do espelho original da mesma versão; dado ausente fica declarado, não inventado. Não há ferramenta de coleta, exclusão ou configuração, e textos recuperados são documentos, não instruções.
 
-Não há ferramentas MCP de coleta, exclusão ou alteração de configuração. Banco aberto em modo de leitura nas consultas. As instruções eventualmente contidas em documentos recuperados devem ser tratadas como texto documental, não comandos.
+**HTTP (extensão).** `python -m flora_mcp.http_server` serve as mesmas quatro ferramentas por Streamable HTTP, com chave no cabeçalho `x-flora-api-key` e lista explícita de hosts, para ficar atrás de um proxy HTTPS. Não há hospedagem em uso. Ver [docs/http-studio.md](docs/http-studio.md).
 
-## Atualização
+**Painel.** Interface local de consulta em `http://127.0.0.1:8766/`, iniciada por `scripts/start_panel.ps1`. Ver [docs/painel-jurisprudencia.md](docs/painel-jurisprudencia.md).
 
-Uma rodada de atualização é um comando só:
+## Uso pela linha de comando
+
+Todos os comandos imprimem JSON. O código de saída é 2 em erro, inclusive quando uma etapa de `atualizar` termina em erro.
+
+### Pesquisa
+
+```powershell
+uv run flora-mcp search "guarda compartilhada" --tribunal TJSC
+uv run flora-mcp search --processo 5070614-91.2026.8.24.0000 --detalhe completo
+uv run flora-mcp precedentes "dano moral" --tribunal STJ --especie sumula --campo enunciado
+uv run flora-mcp coverage
+```
+
+`search` aceita `--tribunal`, `--orgao`, `--classe`, `--relator`, `--processo`, `--data-inicio`, `--data-fim` e `--tipo-data`; `precedentes` aceita `--tribunal`, `--especie`, `--numero`, `--orgao`, `--campo`, `--data-inicio` e `--data-fim`. Os dois aceitam `--ordenar`, `--detalhe`, `--modo-busca`, `--limite` e `--cursor`, com os valores do contrato. Para pesquisar as palavras "preparar" ou "amostra" em precedentes, use `flora-mcp precedentes -- preparar`.
+
+### Atualização
+
+A coleta é manual, sob demanda; nada é agendado. Uma rodada é um comando:
 
 ```powershell
 uv run flora-mcp atualizar
@@ -97,90 +123,82 @@ uv run flora-mcp atualizar --stj-lotes 60 --tjsc-dias 30
 uv run flora-mcp atualizar --so-stj
 ```
 
-Sob a trava do coletor (`collector.lock`), o comando faz, em ordem: backup no formato de depósito compartilhado, com rótulo `antes-atualizacao`; `sync-stj` com até `--stj-lotes` lotes por dataset (padrão 2, mínimo 1); `sync-tjsc` na janela móvel de `--tjsc-dias` dias de publicação (padrão 7, de 1 a 31) que termina hoje no fuso de São Paulo (`America/Sao_Paulo`), qualquer que seja o fuso do computador; e publicação, se o acervo tiver manifesto de publicações. `--so-stj` e `--so-tjsc` limitam a rodada a uma fonte. A falha de uma fonte fica registrada no relatório e não impede a outra. O relatório JSON sai na saída padrão e é gravado em `logs/` na pasta de dados; o código de saída é 2 quando alguma etapa termina em erro. Com a trava ocupada, o comando recusa sem fazer nada.
+Sob a trava do coletor, `atualizar` faz, em ordem: backup no formato de depósito (rótulo `antes-atualizacao`); coleta do STJ com até `--stj-lotes` lotes por dataset (padrão 2); coleta do TJSC na janela de `--tjsc-dias` dias de publicação (padrão 7, de 1 a 31) que termina hoje no fuso de São Paulo; e publicação, se o acervo já tiver manifesto de publicações. `--so-stj` e `--so-tjsc` limitam a rodada a uma fonte. A falha de uma fonte fica no relatório e não impede a outra. O relatório sai na saída padrão e é gravado em `logs/` na pasta do acervo. Com a trava ocupada, o comando recusa sem fazer nada.
 
-Janelas TJSC anteriores continuam no banco; não são apagadas por saírem da janela móvel. Incorporações tardias anteriores à janela exigem reconciliação histórica (veja [Retomar histórico TJSC](#retomar-histórico-tjsc-sem-repetir-janelas-concluídas)).
+- **STJ.** Cada rodada baixa os lotes pendentes mais recentes primeiro e avança no histórico nas seguintes; descobre arquivos novos, revê metadados alterados e reconfere bytes com mais de `recheck_days` dias. Execução `partial` significa que ainda há lotes pendentes. Um espelho inválido (sem `id`, sem ementa, sem órgão ou com data de julgamento ilegível) não derruba o lote: os válidos entram, e os rejeitados ficam registrados com posição, `id` e motivo. Lote que não é lista, vazio ou sem nenhum espelho válido fica em `error`. Havendo versões divergentes entre lotes, prevalece o arquivo de extração mais recente.
+- **TJSC.** Percorre todas as páginas de cada dia de publicação nas duas câmaras, sem filtro temático; confere órgão, data, quantidade e IDs e reconfere a primeira página. Falha numa janela impede sua conclusão. Janelas antigas continuam no banco quando saem da janela móvel. Não há contorno de CAPTCHA ou autenticação.
 
-`scripts/update_once.py` é um invólucro do mesmo comando, mantido para o [registrador Windows](scripts/register-update-task.ps1): aceita `--tjsc-days` e `--precedents-package` (pacote de precedentes validado antes do backup e importado depois dele) e usa `max_resources` da configuração como número de lotes do STJ. O registrador prepara uma execução diária às 07h15, sem elevação e com o usuário conectado; `-WhatIf` mostra o registro sem criá-lo.
+Os comandos de base continuam disponíveis: `sync-stj [--max-resources N] [--recheck]`, `sync-tjsc --inicio AAAA-MM-DD --fim AAAA-MM-DD` (até 31 dias) e `probe-tjsc` (diagnóstico de acesso, sem ingestão). Os dois primeiros publicam ao fim, se houver manifesto.
 
-### Atraso da coleta
+`scripts/update_once.py` é um invólucro de `atualizar` para o registrador de tarefa do Windows (`scripts/register-update-task.ps1`, com `-WhatIf` para ver sem registrar): aceita `--tjsc-days` e `--precedents-package` e usa `max_resources` da configuração como número de lotes do STJ. A decisão vigente é não agendar.
 
-A coleta é acionada manualmente, e a cobertura mostra quanto tempo passou desde a última coleta concluída. `consultar_cobertura` (em todos os níveis de detalhe) e `flora-mcp coverage` trazem o bloco `coleta` com, por fonte (`STJ`, `TJSC`): `ultima_coleta_ok` (fim da execução mais recente com status `ok` ou `partial`), `dias_desde_ultima_coleta` (dias de calendário em UTC até hoje), `limiar_dias` e `atraso`, verdadeiro acima do limiar ou quando a fonte não tem execução concluída. Os limiares vêm de `atraso_stj_dias` (padrão 45, porque o lote do STJ é mensal) e `atraso_tjsc_dias` (padrão 7) na configuração do processo que atende a leitura; sem configuração, valem os padrões. O painel mostra as fontes em atraso junto à data da última coleta.
+**Lacunas do TJSC.** `scripts/resume_tjsc.py --data-dir <acervo> --inicio AAAA-MM-DD --fim AAAA-MM-DD` mostra, sem escrever, as janelas por câmara e dia que faltam; uma janela `ok` só é dispensada depois de conferidos original, hash, câmara, data e quantidade. Com `--apply --report <recibo-novo.json>`, adquire a trava, faz backup (rótulo `antes-retomada-tjsc`, `--backup` escolhe a raiz), coleta as pendentes com o mesmo coletor do `sync-tjsc`, conserva cada janela concluída e para na primeira falha; nova execução retoma do banco. Preenche lacunas, mas não revisita dias concluídos atrás de indexação tardia: para isso, use `sync-tjsc` no intervalo.
 
-## Integridade e limites
+### Backups
 
-- Arquivos originais por SHA-256, versões do conteúdo recebido e proveniência de ingestão. Para TJSC, os bytes HTML ficam preservados em base64 no envelope da coleta; a ementa de leitura é extraída do HTML.
-- Identidade pelo documento de origem, nunca somente pelo processo. Alterações fora da ementa também geram versão.
-- Banco e índice são atualizados na mesma transação. O recurso só é concluído após a gravação. Um bloqueio de escritor impede coletas concorrentes.
-- Ementas não são encurtadas pelo programa. Documentos longos usam blocos numerados por posição; sua concatenação reproduz exatamente o texto armazenado. Isso não certifica a completude editorial do texto publicado pelo tribunal.
-- No STJ, se recursos contêm versões divergentes, prevalece o arquivo de extração mais recente. A precedência é operacional e conservadora, não informação oficial de retificação. As observações antigas são preservadas.
-- No TJSC, uma janela concluída significa todos os resultados que o portal informou no momento da coleta. O portal não oferece aqui um snapshot transacional; rechecagem de contagem e primeira página reduz, mas não elimina, corrida durante indexação.
-- Uma consulta sem resultados não demonstra inexistência de jurisprudência. A cobertura parcial acompanha cada pesquisa.
-- Inteiro teor não incorporado: `decisao` do espelho STJ não é tratado como voto integral; link TJSC não significa documento baixado ou disponível.
-- Sem alegação de que um precedente permanece juridicamente vigente, análise de superação ou certificação de atualidade editorial.
-
-## Backups
-
-Os backups ficam numa raiz própria, por padrão a pasta irmã do acervo com sufixo `-backups` (para `...\Dados\Flora-MCP`, `...\Dados\Flora-MCP-backups`). A raiz tem um depósito `raw/` com os originais endereçados por SHA-256 (`raw/ab/abcdef...`), comum a todos os backups, e uma subpasta por backup com:
-
-- `acervo.sqlite`: cópia consistente pela API de backup do SQLite, conferida por `integrity_check`;
-- `manifesto.json`: schema `flora-backup-2`, com data, rótulo, revisão do banco, SHA-256 do banco e a lista dos originais citados pelo banco (lotes atuais e substituídos, e fontes de precedentes), cada um com caminho relativo no acervo e hash.
-
-Cada backup copia para o depósito só os originais que ainda faltam; os que já estão lá têm o hash conferido, e um original corrompido no depósito interrompe o backup com `deposito_corrompido`.
+Os backups ficam numa raiz própria, por padrão a pasta irmã do acervo com sufixo `-backups`. A raiz tem um depósito `raw/` com os originais endereçados por SHA-256, comum a todos os backups, e uma subpasta por backup com `acervo.sqlite` (cópia consistente pela API de backup do SQLite, conferida por `integrity_check`) e `manifesto.json` (schema `flora-backup-2`: data, rótulo, revisão, SHA-256 do banco e os originais citados, cada um com caminho e hash). Cada backup copia só os originais que faltam no depósito e confere o hash dos que já estão lá; original corrompido no depósito interrompe o backup com `deposito_corrompido`.
 
 ```powershell
 uv run flora-mcp backups criar --rotulo antes-teste
 uv run flora-mcp backups podar
 uv run flora-mcp backups podar --manter 5 --aplicar
-uv run flora-mcp backups restaurar 20261001-071500-000000-antes-atualizacao C:/Restauracao/flora
+uv run flora-mcp backups restaurar <nome-do-backup> C:\Restauracao\flora
 ```
 
-- `criar [--rotulo X] [--raiz PASTA]` exige banco existente e adquire a trava do coletor.
-- `podar [--manter N] [--raiz PASTA] [--aplicar]` mantém os N backups mais recentes (padrão 5) e o mais recente de cada mês civil. Sem `--aplicar`, só mostra o plano. Com `--aplicar`, apaga as subpastas fora da retenção e, depois, os arquivos do depósito que nenhum backup mantido cita. Só subpastas com `manifesto.json` `flora-backup-2` entram na poda; as demais (backups no formato antigo, com `raw/` próprio) aparecem no plano como "formato antigo, fora da poda" e nunca são apagadas.
-- `restaurar NOME DESTINO [--raiz PASTA]` monta, num diretório que ainda não existe, um acervo utilizável: banco e `raw/` com os originais do manifesto, com hashes conferidos. Aponte `--data-dir` para esse diretório para consultá-lo; a pasta atual fica intacta.
+- `criar [--rotulo X] [--raiz PASTA]` exige banco existente e adquire a trava.
+- `podar [--manter N] [--raiz PASTA] [--aplicar]` mantém os N mais recentes (padrão 5) e o mais recente de cada mês civil. Sem `--aplicar`, só mostra o plano; com ele, apaga as subpastas fora da retenção e os originais do depósito que nenhum backup mantido cita. Pastas no formato antigo aparecem como "formato antigo, fora da poda" e nunca são apagadas.
+- `restaurar NOME DESTINO [--raiz PASTA]` monta, num diretório que ainda não existe, um acervo utilizável, com hashes conferidos. Aponte `--data-dir` para ele para consultá-lo.
 
-`migrate`, `import-precedents --apply`, `atualizar` e `scripts/resume_tjsc.py` fazem backup neste formato antes de escrever. `flora-mcp backup DESTINO` e `scripts/backup_acervo.py` continuam fazendo a cópia integral antiga (banco e pasta `raw/` inteira), para quem precisar de uma cópia autônoma.
+`atualizar`, `migrate`, `import-precedents --apply` e `scripts/resume_tjsc.py` fazem backup nesse formato antes de escrever. `flora-mcp backup DESTINO` e `scripts/backup_acervo.py` fazem a cópia integral no formato antigo (banco e `raw/` inteira), para quem precisar de uma cópia autônoma.
+
+### Precedentes por confiança na fonte
+
+Temas e súmulas entram por pacote `flora-precedentes-1`, nunca por ferramenta MCP. Registro de fonte oficial estruturada (dados abertos do STJ, SCON do STJ, sumulário do STF) é admitido por validação de campo, com auditoria de uma amostra sorteada do lote; registro vindo de documento continua exigindo conferência individual. Formato, regras de admissão e motivos de pendência estão no [CONTRATO.md](CONTRATO.md#pacote-administrativo-flora-precedentes-1).
+
+```powershell
+uv run flora-mcp precedentes preparar --fonte stj_temas --originais <pasta> --saida <pacote.json>
+uv run flora-mcp precedentes amostra <pacote.json> --semente 20260930
+uv run flora-mcp import-precedents <pacote.json>
+uv run flora-mcp import-precedents <pacote.json> --apply
+```
+
+- `preparar --fonte stj_temas|stj_sumulas|stf_sumulas` monta o pacote a partir de originais já coletados, sem rede.
+- `amostra` sorteia a amostra pela semente e grava o esqueleto da conferência, a ser preenchido por quem confere.
+- `import-precedents` simula por padrão e mostra o efeito de cada registro sobre o acervo; `--apply` faz backup, grava e publica.
+
+### Publicação e exportação
+
+- `flora-mcp publish` publica uma geração nova a partir do banco de trabalho, conferindo os originais referenciados. Coleta e importação já publicam ao fim quando o acervo tem manifesto.
+- `flora-mcp export DESTINO [--include-judgments]` exporta Markdown e o catálogo `flora-catalogo-1` da publicação corrente, com hashes; sem a opção, só precedentes admitidos. Exige publicação e destino fora da pasta do acervo. Arquivo gerado editado à mão é detectado, e arquivo não gerenciado não é sobrescrito.
+- `flora-mcp migrate` aplica a migração do modelo, com backup antes.
+
+## Avaliação da busca
+
+Mudança de recuperação só entra com ganho medido. `avaliacao/conjunto.json` tem 14 perguntas tiradas de citações reais de minutas do gabinete, cada uma com os documentos citados e três formulações (assessor, linguagem natural, curta).
+
+```powershell
+uv run python scripts/avaliar.py --data-dir <acervo> [--publicacao ID] [--saida arquivo]
+```
+
+O script só lê a publicação e mede a ferramenta como o agente a chama (hit@8, recall@8, MRR e respostas vazias) e, em paralelo, compiladores candidatos de consulta sobre o mesmo índice. O resultado vai para `avaliacao/resultados/<publicacao>.json`. `avaliacao/candidatas_indice.py` mede candidatas que exigiriam reindexar, sobre índices temporários, sem tocar no acervo.
 
 ## Verificação
 
 ```powershell
-scripts\check.ps1
-uv run python scripts/smoke_mcp.py
+scripts\check.ps1            # ou scripts/check.sh
+scripts\install-hooks.ps1    # uma vez por clone: hook pre-commit com o mesmo portão
 ```
 
-`scripts\check.ps1` roda `ruff format --check`, `ruff check` e `pytest`. `smoke_mcp.py` requer a amostra local com os três órgãos de demonstração e grava evidência de protocolo e ementas em `docs/`.
+O portão roda `ruff format --check`, `ruff check` (linha de 110 e complexidade 12) e `pytest`. Os testes de protocolo (`tests/test_contrato.py`) conferem pelo cliente MCP real que as respostas têm a forma dos exemplos do contrato.
 
-## Fontes e dependências
+Scripts de verificação sobre um acervo, somente leitura: `scripts/verify_publication.py [--output arquivo]` compara a publicação com o banco de trabalho; `scripts/verify_coverage.py [arquivo]` confere a cobertura por um processo MCP novo; `scripts/validate_retrieval.py --data-dir <acervo>`, `scripts/smoke_mcp.py` e `scripts/verify_codex_connection.py` exercitam o protocolo e gravam o recibo em `docs/recibos/`, com nome fixo: renomeie com a data antes de versionar, porque recibo não se reescreve.
 
-- [Catálogo oficial de dados abertos do STJ](https://dadosabertos.web.stj.jus.br/): conjuntos de espelhos da Terceira e Quarta Turmas e Segunda Seção. Atribuição ao STJ; o catálogo consultado informa `cc-by`.
-- [Portal oficial de jurisprudência TJSC](https://www.tjsc.jus.br/web/jurisprudencia): consulta pública do eproc, 9ª e 10ª Câmaras de Direito Civil.
-- [SDK oficial MCP para Python](https://github.com/modelcontextprotocol/python-sdk): versão 2.2.0 fixada. Dependências exatas em `uv.lock`.
+## Integridade e limites
 
-O projeto não escolheu licença de distribuição do código próprio nem foi publicado remotamente. Disponibilidade pública da fonte não dispensa respeitar seus limites de acesso. A licença do código é distinta das condições dos dados.
-
-## Extensão HTTP — 28/09/2026
-
-Foi acrescentado o [adaptador HTTP autenticado](docs/http-studio.md) para Streamable HTTP, mantendo as três ferramentas de leitura. Testes locais de autenticação, Host/Origin e protocolo usam acervo sintético. Ainda não há hospedagem nem conexão com o Studio. As observações anteriores sobre ausência de transporte remoto referem-se ao estado anterior a esta extensão; inteiro teor continua pendente.
-
-## Retomar histórico TJSC sem repetir janelas concluídas
-
-`scripts/resume_tjsc.py` planeja as lacunas por câmara e dia de publicação.
-Uma janela marcada `ok` só é dispensada após conferir seu original, hash,
-câmara, data e quantidade de observações. Datas futuras são rejeitadas.
-
-```powershell
-uv run python scripts/resume_tjsc.py --data-dir <acervo> --inicio 2026-01-01 --fim 2026-09-29
-```
-
-Sem `--apply`, o comando apenas lê a base e mostra o plano. Para aplicar,
-acrescente `--apply --report <novo-recibo.json>`; `--backup <raiz>` escolhe outra
-raiz de backups. O executor adquire o lock, refaz o plano, faz backup no formato
-de depósito compartilhado (rótulo `antes-retomada-tjsc`) e usa o mesmo coletor e
-a mesma transação de ingestão do `sync-tjsc`. Conserva cada janela concluída e
-para na primeira falha. Uma nova execução com recibo novo retoma as pendências a
-partir do banco, inclusive após interrupção.
-
-Esse modo preenche lacunas; não reconcilia publicações tardias em dias já
-concluídos. O dia corrente é provisório. Para reconsultar um intervalo concluído,
-use o `sync-tjsc` normal, em recorte declarado de até 31 dias. Nenhum dos dois
-comandos baixa o inteiro teor dos votos.
+- Originais preservados por SHA-256, com versão do conteúdo recebido e proveniência. Do TJSC, o HTML fica em base64 no envelope da coleta, e a ementa é extraída dele.
+- Identidade pelo documento de origem, nunca só pelo número do processo. Alteração fora da ementa também gera versão.
+- Banco e índice mudam na mesma transação; a trava impede coletas concorrentes.
+- Ementas não são encurtadas. Documento longo sai em blocos, e a concatenação reproduz exatamente o texto armazenado, conferível por `sha256_texto_completo`. Isso não certifica a completude editorial do texto publicado pelo tribunal.
+- No TJSC, janela concluída significa todos os resultados que o portal informou no momento da consulta; o portal não oferece snapshot transacional.
+- Nenhuma afirmação de vigência material de precedente, de superação ou de atualidade editorial: fidelidade à fonte não é vigência, e súmula esvaziada sem cancelamento formal aparece como vigente.
+- A disponibilidade pública da fonte não dispensa respeitar seus limites de acesso. O catálogo do STJ informa licença `cc-by`, com atribuição ao STJ. O código próprio não tem licença de distribuição escolhida.
