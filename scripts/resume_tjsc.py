@@ -12,9 +12,10 @@ from filelock import FileLock
 from flora_mcp import backups
 from flora_mcp.config import load_config
 from flora_mcp.model import FloraError, digest, now
-from flora_mcp.sources import TJSC_SEARCH, client
+from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
-from flora_mcp.tjsc import collect_window
+from flora_mcp.tjsc import catalog_window, collect_window
+from flora_mcp.tjsc_orgaos import ORGAOS, PADRAO, dataset, envelope_organ, identity, name
 
 
 def save(path, value):
@@ -43,22 +44,25 @@ def groups(store):
         ]
 
 
-def plan(store, start, end, chambers=(9, 10)):
+def plan(store, start, end, organs=PADRAO):
+    """organs: portal names or Civil Law Chamber numbers, in collection order."""
     if start > end or end > date.today():
         raise ValueError("Intervalo invertido ou futuro.")
+    names = list(dict.fromkeys(name(organ) for organ in organs))
     missing, done = [], []
     with connection(store.path) as db:
-        for chamber in chambers:
-            dataset = f"tjsc-{chamber}-civil"
+        for organ in names:
             records = {
                 r["id"]: dict(r)
-                for r in db.execute("SELECT * FROM resources WHERE dataset=? AND present=1", (dataset,))
+                for r in db.execute(
+                    "SELECT * FROM resources WHERE dataset=? AND present=1", (dataset(organ),)
+                )
             }
             day = start
             while day <= end:
-                resource_id = dataset + ":" + day.isoformat()
+                resource_id = dataset(organ) + ":" + day.isoformat()
                 record = records.get(resource_id)
-                entry = {"camara": chamber, "dia": day.isoformat(), "recurso": resource_id}
+                entry = {**identity(organ), "dia": day.isoformat(), "recurso": resource_id}
                 if record and record["status"] == "ok":
                     raw_path = record["raw_path"]
                     if not raw_path:
@@ -75,7 +79,7 @@ def plan(store, start, end, chambers=(9, 10)):
                     ).fetchone()[0]
                     if (
                         count != record["count"]
-                        or envelope.get("camara") != chamber
+                        or envelope_organ(envelope) != organ
                         or envelope.get("data_publicacao") != str(day)
                         or envelope.get("total") != count
                     ):
@@ -84,19 +88,17 @@ def plan(store, start, end, chambers=(9, 10)):
                 else:
                     missing.append({**entry, "estado_anterior": record["status"] if record else "ausente"})
                 day += timedelta(days=1)
-    missing.sort(key=lambda item: (item["dia"], item["camara"]))
+    missing.sort(key=lambda item: (item["dia"], names.index(item["orgao"])))
     return {
         "periodo_publicacao": [str(start), str(end)],
-        "camaras": list(chambers),
+        "orgaos": names,
         "concluidas_verificadas": len(done),
         "pendentes": missing,
         "dia_atual_provisorio": end == date.today(),
     }
 
 
-def execute(
-    config, store, start, end, report_path, backup_root=None, *, fetch=collect_window, chambers=(9, 10)
-):
+def execute(config, store, start, end, report_path, backup_root=None, *, fetch=collect_window, organs=PADRAO):
     """backup_root: raiz dos backups no formato novo; padrão, a pasta irmã <acervo>-backups."""
     report_path = Path(report_path).resolve()
     backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
@@ -106,7 +108,7 @@ def execute(
         raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
     with FileLock(str(store.directory / "collector.lock"), timeout=0):
         store.initialize()
-        work = plan(store, start, end, chambers)
+        work = plan(store, start, end, organs)
         report = {
             "inicio": now(),
             "banco": str(store.path),
@@ -127,36 +129,22 @@ def execute(
         try:
             with client() as http:
                 for entry in work["pendentes"]:
-                    chamber, day = entry["camara"], date.fromisoformat(entry["dia"])
+                    organ, day = entry["orgao"], date.fromisoformat(entry["dia"])
                     report["em_andamento"] = entry
                     save(report_path, report)
-                    resource = {
-                        "id": str(day),
-                        "name": day.strftime("%Y%m%d") + ".json",
-                        "url": TJSC_SEARCH,
-                        "last_modified": now(),
-                        "publication_day": str(day),
-                        "chamber": chamber,
-                        "tipo": "janela_publicacao",
-                    }
-                    store.catalog(
-                        f"tjsc-{chamber}-civil",
-                        {"fonte": TJSC_SEARCH, "tipo": "janela_publicacao"},
-                        [resource],
-                        complete_listing=False,
-                    )
+                    catalog_window(store, organ, day)
                     with connection(store.path) as db:
                         saved = dict(
                             db.execute("SELECT * FROM resources WHERE id=?", (entry["recurso"],)).fetchone()
                         )
                     try:
-                        content, rows = fetch(http, config, chamber, day)
+                        content, rows = fetch(http, config, organ, day)
                         counts = store.ingest(saved, content, rows, run)
                     except Exception as exc:
                         store.failure(entry["recurso"], run, str(exc))
                         raise
                     event = {
-                        "camara": chamber,
+                        **identity(organ),
                         "dia": str(day),
                         "registros": len(rows),
                         **counts,
@@ -195,6 +183,16 @@ def execute(
         return report
 
 
+def selected_organs(camaras: str | None, orgaos: list[str]) -> tuple[str, ...]:
+    """Chambers by number, then organs by name, without repeats; neither given: 9 and 10."""
+    if camaras is None and not orgaos:
+        return PADRAO
+    numbers = [int(c) for c in camaras.split(",")] if camaras else []
+    if any(not 1 <= c <= 10 for c in numbers):
+        raise ValueError("Câmaras de Direito Civil: números de 1 a 10.")
+    return tuple(dict.fromkeys([name(c) for c in numbers] + [name(o.strip()) for o in orgaos]))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", required=True)
@@ -205,20 +203,28 @@ def main():
     parser.add_argument("--backup", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
     parser.add_argument(
         "--camaras",
-        default="9,10",
-        help="Câmaras de Direito Civil por número, separadas por vírgula (padrão 9,10)",
+        help="Câmaras de Direito Civil por número, separadas por vírgula; sem --camaras nem --orgaos, 9,10",
+    )
+    parser.add_argument(
+        "--orgaos",
+        action="append",
+        default=[],
+        metavar="NOME",
+        help="Órgão pelo nome exato do filtro do portal; repita para mais de um. Aceitos: "
+        + "; ".join(ORGAOS),
     )
     args = parser.parse_args()
     if args.apply and not args.report:
         parser.error("Aplicação exige --report novo.")
-    chambers = tuple(int(c) for c in args.camaras.split(","))
-    if not chambers or any(not 1 <= c <= 10 for c in chambers):
-        parser.error("Câmaras de Direito Civil: números de 1 a 10.")
+    try:
+        organs = selected_organs(args.camaras, args.orgaos)
+    except (ValueError, FloraError) as exc:
+        parser.error(str(exc))
     config = load_config(data_dir=args.data_dir)
     store = Store(config.data_dir)
     start, end = date.fromisoformat(args.inicio), date.fromisoformat(args.fim)
     if args.apply:
-        result = execute(config, store, start, end, args.report, args.backup, chambers=chambers)
+        result = execute(config, store, start, end, args.report, args.backup, organs=organs)
         print(
             json.dumps(
                 {
@@ -232,7 +238,7 @@ def main():
             flush=True,
         )
     else:
-        work = plan(store, start, end, chambers)
+        work = plan(store, start, end, organs)
         print(json.dumps({**work, "pendentes": len(work["pendentes"])}, ensure_ascii=True, indent=2))
 
 
