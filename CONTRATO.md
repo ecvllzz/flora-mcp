@@ -45,10 +45,10 @@ Só acórdãos. Temas e súmulas estão em `pesquisar_precedentes`.
 
 Cada item de triagem traz `id`, `tribunal`, `orgao`, `classe_descricao`, `processo`, `relator`, `referencia`, `referencia_completa`, `referencia_pendencias`, `hash_conteudo` e `sha256_componente` (SHA-256 da ementa inteira), mais:
 
-- `cabecalho`: a verbetação, do início da ementa até o primeiro título de seção reconhecido (ver seções, em `obter_documento`) ou o primeiro parágrafo numerado, o que vier antes (`1.`, `I -`, `2)`) ou a primeira linha em branco, porque a verbetação do STJ ocupa várias linhas; quando a ementa abre com um título, a primeira linha. O texto é literal, com as quebras de linha da fonte, e limitado a 300 caracteres. `cabecalho_parcial` é verdadeiro quando o limite cortou a verbetação.
-- `trecho_correspondente`, só quando há termos: `{texto, offset, parcial}`, janela de até 240 caracteres que começa 60 caracteres antes da primeira ocorrência marcada pelo índice. `offset` conta caracteres Unicode da ementa original, de modo que `ementa[offset:offset+len(texto)] == texto`. `parcial` é verdadeiro quando a janela não cobre a ementa inteira.
+- `cabecalho`: a verbetação, do início da ementa até o primeiro título de seção reconhecido (ver seções, em `obter_documento`) ou o primeiro parágrafo numerado, o que vier antes (`1.`, `I -`, `2)`) ou a primeira linha em branco, porque a verbetação do STJ ocupa várias linhas; quando a ementa abre com um título, a primeira linha. O texto é literal, com as quebras de linha da fonte, e limitado a 120 caracteres, cortado em fronteira de palavra (sai a palavra que o limite partiria; uma palavra só, maior que o limite, é cortada nele). `cabecalho_parcial` é verdadeiro quando o limite cortou a verbetação.
+- `trecho_correspondente`, só quando há termos: `{texto, offset, parcial}`, janela de até 100 caracteres em torno da primeira ocorrência marcada pelo índice. A janela começa na primeira palavra inteira a partir de 25 caracteres antes da ocorrência (nunca depois dela) e termina em fronteira de palavra. Quando a ocorrência está dentro do `cabecalho` entregue, o contexto já está na página e `texto` é só a ocorrência, como o índice a marcou (por exemplo `{"texto": "ALIMENTOS", "offset": 24, "parcial": true}` para a ementa do exemplo abaixo e o termo `alimentos`). `offset` conta caracteres Unicode da ementa original, de modo que `ementa[offset:offset+len(texto)] == texto`. `parcial` é verdadeiro quando a janela não cobre a ementa inteira.
 
-A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes antes da identificação da publicação). Se os itens pedidos não cabem, a página perde itens do fim e `proximo_cursor` continua exatamente depois do último item entregue. Com poucos itens por página, siga o cursor; nada é pulado.
+A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes antes da identificação da publicação). Se os itens pedidos não cabem, a página perde itens do fim e `proximo_cursor` continua exatamente depois do último item entregue. Com poucos itens por página, siga o cursor; nada é pulado. Cabeçalho e janela são curtos para que caibam mais itens por página; a identificação de cada item (`referencia`, hashes e metadados) não se encurta.
 
 <!-- exemplo: pesquisar_jurisprudencia.triagem -->
 ```json
@@ -72,8 +72,8 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
       "cabecalho": "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL.",
       "cabecalho_parcial": false,
       "trecho_correspondente": {
-        "texto": " CASO EM EXAME\n1. Habeas corpus contra prisão civil por dívida de alimentos com pagamento parcial...",
-        "offset": 51,
+        "texto": "dívida de alimentos com pagamento parcial.\nII. QUESTÃO EM DISCUSSÃO\n2. Saber se o pagamento parcial",
+        "offset": 107,
         "parcial": true
       }
     }
@@ -264,7 +264,7 @@ Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas
 
 `materia` é a matéria atribuída na admissão, pelo ramo da fonte: `civil` (inclui família, sucessões, consumidor e empresarial), `processual_civil` ou `bancario`. Com ramos mistos, vale a primeira presente nessa ordem, de modo que bancário com civil é `civil`; ramo fora da tabela deixa o registro fora do recorte. Súmula bancária é apoio: o agente apresenta antes as de civil e processual civil.
 
-O item de triagem traz os metadados do precedente (inclusive `materia`), `componente` (o primeiro componente em que o termo aparece, ou o primeiro disponível), `campos_correspondentes`, `trecho` (até 400 caracteres a partir de 80 antes da ocorrência), `offset`, `trecho_parcial` e `sha256_componente`. Em `completo`, vêm `componentes` e `julgados_relacionados`. A cobertura é `{integral: false, aviso}`.
+O item de triagem traz os metadados do precedente (inclusive `materia`), `componente` (o primeiro componente em que o termo aparece, ou o primeiro disponível), `campos_correspondentes`, `trecho` (até 240 caracteres, da primeira palavra inteira a partir de 60 caracteres antes da ocorrência até uma fronteira de palavra), `offset`, `trecho_parcial` e `sha256_componente`. Em `completo`, vêm `componentes` e `julgados_relacionados`. A cobertura é `{integral: false, aviso}`.
 
 Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como nas referências de acórdão; `data_publicacao` continua em `AAAA-MM-DD`. Precedentes gravados antes dessa regra conservam a referência com data ISO até serem reimportados.
 
@@ -556,6 +556,7 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 
 ### `flora-mcp-3.2` (30/09/2026)
 
+- Revisão de 30/09/2026, limites da triagem: `cabecalho` de 300 para 120 caracteres; `trecho_correspondente` de 240 caracteres (60 antes da ocorrência) para 100 (25 antes), e só a ocorrência quando ela já está no cabeçalho entregue; `trecho` de precedente de 400 caracteres (80 antes) para 240 (60 antes). Os cortes caem em fronteira de palavra. A forma não muda, e os cursores continuam válidos.
 - Matéria `bancario` admitida, ao lado de `civil` e `processual_civil`. `DIREITO BANCÁRIO` do SCON passa de fora do recorte a `bancario`; o catálogo de temas do STJ não tem ramo bancário (contratos bancários são assuntos de direito civil ou do consumidor), e nada muda nele. Com ramos mistos, vale civil, depois processual civil, depois bancário.
 - `pesquisar_precedentes` aceita `materia` como filtro, e o item de triagem e os metadados de precedente trazem `materia`. Cursores de `flora-mcp-3.1` são recusados com `cursor_invalido`; refaça a consulta.
 - Descrições das ferramentas sem enumerar câmaras do TJSC: a cobertura exata é a de `consultar_cobertura`.

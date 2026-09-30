@@ -133,6 +133,11 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
     )
     assert broadened["ampliacao"] == documented["pesquisar_jurisprudencia.ampliada"]["ampliacao"]
     assert [r["id"] for r in broadened["resultados"]] == ["STJ:2"]
+    # The triage limits are those of the example: same cabecalho and matched window.
+    triage = documented["pesquisar_jurisprudencia.triagem"]["resultados"][0]
+    real = answers["pesquisar_jurisprudencia.triagem"]["resultados"][0]
+    for key in ("cabecalho", "cabecalho_parcial", "trecho_correspondente"):
+        assert real[key] == triage[key], key
     for name in answers:
         assert ("ampliacao" in answers[name]) == (name == "pesquisar_jurisprudencia.ampliada"), name
 
@@ -199,12 +204,33 @@ def test_triage_item_has_header_and_matched_window_with_unicode_offsets(store):
     item = api.search(store, "compensatorios")["resultados"][0]
     full = api.search(store, "compensatorios", detalhe="completo")["resultados"][0]["ementa"]
     window = item["trecho_correspondente"]
-    assert window["offset"] == full.index("COMPENSATÓRIOS") - 60
+    # 25 characters before the occurrence fall on a word start here; otherwise the next word opens.
+    assert window["offset"] == full.index("COMPENSATÓRIOS") - 25
     assert full[window["offset"] : window["offset"] + len(window["texto"])] == window["texto"]
-    assert len(window["texto"]) == 240 and window["parcial"] is True
-    assert item["cabecalho"] == prefix.strip() and item["cabecalho_parcial"] is False
+    end = window["offset"] + len(window["texto"])
+    assert len(window["texto"]) <= 100 and full[end] == " " and window["parcial"] is True
+    assert window["texto"].startswith("é órfã. Ação") and "COMPENSATÓRIOS" in window["texto"]
+    # The cabecalho stops at 120 characters, on a word boundary.
+    assert item["cabecalho"] == ("Ação é órfã. " * 9).strip() and item["cabecalho_parcial"] is True
     assert not {"trecho", "offset", "trecho_parcial", "campos_correspondentes", "ementa"} & set(item)
     assert "trecho_correspondente" not in api.search(store)["resultados"][0]
+
+
+def test_matched_window_opens_on_a_whole_word(store):
+    text = "VERBETE.\n1. " + "Palavrasextensas " * 4 + "ALVO no meio do texto. " + "Fim. " * 50
+    ingest(store, [raw_doc("1", text=text)])
+    window = api.search(store, "alvo")["resultados"][0]["trecho_correspondente"]
+    assert window["offset"] == 63 and window["texto"].startswith("Palavrasextensas ALVO")
+
+
+def test_matched_window_is_the_occurrence_alone_when_the_cabecalho_shows_it(store):
+    ingest(store, [raw_doc("1", text=TEXT)])
+    inside = api.search(store, "alimentos")["resultados"][0]
+    assert inside["cabecalho"] == "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL."
+    assert inside["trecho_correspondente"] == {"texto": "ALIMENTOS", "offset": 24, "parcial": True}
+    outside = api.search(store, "pagamento")["resultados"][0]["trecho_correspondente"]
+    assert outside["offset"] == TEXT.index("dívida de alimentos com pagamento")
+    assert TEXT[outside["offset"] :].startswith(outside["texto"]) and "pagamento" in outside["texto"]
 
 
 @pytest.mark.parametrize(
@@ -219,10 +245,11 @@ def test_triage_item_has_header_and_matched_window_with_unicode_offsets(store):
         ),
         ("VERBETE.\nI - Corpo em inciso.", "VERBETE.", False),
         ("I. CASO EM EXAME\nFatos.\nMais.", "I. CASO EM EXAME", False),
-        ("X" * 500, "X" * 300, True),
+        ("PALAVRAS " * 20, ("PALAVRAS " * 13).strip(), True),
+        ("X" * 500, "X" * 120, True),
     ],
 )
-def test_header_stops_at_first_heading_or_line_break_and_at_300_characters(store, text, expected, partial):
+def test_header_stops_at_first_heading_or_line_break_and_at_120_characters(store, text, expected, partial):
     ingest(store, [raw_doc(text=text)])
     item = api.search(store)["resultados"][0]
     assert (item["cabecalho"], item["cabecalho_parcial"]) == (expected, partial)
