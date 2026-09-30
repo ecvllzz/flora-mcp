@@ -1,0 +1,30 @@
+{
+  "schema": "flora-avaliacao-1",
+  "descricao": "Conjunto de referencia da F6: perguntas derivadas de citacoes reais das minutas do lote S21092026, cada uma com os documentos que a minuta efetivamente citou e que existem no acervo.",
+  "limites": {
+    "citacoes_nas_minutas": 186,
+    "citacoes_presentes_no_acervo": 25,
+    "nota": "Os esperados sao os documentos que o gabinete usou, nao todos os relevantes; hit@8 mede recuperacao do citado, nao relevancia absoluta. Formulacoes redigidas antes de ler as ementas esperadas, para nao viciar a busca."
+  },
+  "formulacoes": {
+    "assessor": "termos que um assessor digitaria de uma vez, sem enxugar",
+    "natural": "pergunta em linguagem corrente",
+    "curta": "dois ou tres termos nucleares, como a spec de pesquisa orienta"
+  },
+  "perguntas": [
+    {"id": "inventario-abandono", "assessor": "inventário extinção abandono inércia inventariante", "natural": "o juiz pode extinguir o inventário sem julgar o mérito porque o inventariante ficou inerte?", "curta": "inventário abandono", "esperados": ["TJSC:321770895064085028463695885522", "TJSC:321774563336471613626845170161", "TJSC:321790081633433507943985358387", "TJSC:321786723753170814272789675600", "TJSC:321786740261703723243301311225", "TJSC:321776962772297786108985353508", "STJ:1382718", "STJ:000917173"]},
+    {"id": "alimentos-divorcio-conexao", "assessor": "conexão ação de alimentos divórcio competência reunião processos", "natural": "a ação de alimentos deve ser reunida à ação de divórcio por conexão?", "curta": "conexão alimentos divórcio", "esperados": ["TJSC:321786898491572648334750632491"]},
+    {"id": "decisao-surpresa", "assessor": "decisão surpresa artigo 10 CPC contraditório prévio fundamento não debatido", "natural": "o juiz pode decidir com base em fundamento sobre o qual as partes não se manifestaram?", "curta": "decisão surpresa", "esperados": ["STJ:930326"]},
+    {"id": "diluicao-solidaria", "assessor": "diluição solidária dívida condomínio rateio inadimplência", "natural": "é válida a diluição solidária do débito entre os demais condôminos?", "curta": "diluição solidária", "esperados": ["TJSC:321778863157375809837326397875"]},
+    {"id": "monitoria-mensalidades", "assessor": "ação monitória mensalidades escolares prova escrita contrato de prestação de serviços educacionais", "natural": "cabe ação monitória para cobrar mensalidades escolares em atraso?", "curta": "monitória mensalidades", "esperados": ["TJSC:321778849890120218986321050155"]},
+    {"id": "passaporte-suprimento", "assessor": "suprimento de consentimento passaporte menor viagem exterior genitor", "natural": "o juiz pode suprir a autorização de um dos pais para emissão de passaporte do filho?", "curta": "passaporte suprimento", "esperados": ["STJ:927807"]},
+    {"id": "abandono-alimentos-curador", "assessor": "abandono de causa alimentos curador especial intimação pessoal extinção", "natural": "pode extinguir por abandono a ação de alimentos sem intimar pessoalmente a parte representada por curador?", "curta": "abandono alimentos curador", "esperados": ["STJ:929963"]},
+    {"id": "guarda-levantamento-alimentos", "assessor": "levantamento de valores de alimentos depositados alteração de guarda genitor guardião", "natural": "quem pode levantar os alimentos depositados quando a guarda do filho mudou?", "curta": "levantamento alimentos guarda", "esperados": ["TJSC:321786619979792694803711585644"]},
+    {"id": "liquidacao-partilha", "assessor": "liquidação de sentença partilha de bens apuração de valores divórcio", "natural": "como se liquida a sentença que determinou a partilha de bens do casal?", "curta": "liquidação partilha", "esperados": ["TJSC:321786619979792694803573014559"]},
+    {"id": "liquidacao-recurso-cabivel", "assessor": "recurso cabível decisão que julga liquidação de sentença agravo de instrumento apelação", "natural": "qual o recurso contra a decisão que encerra a liquidação de sentença?", "curta": "liquidação recurso cabível", "esperados": ["STJ:1447604", "TJSC:321786619979792694803573014559"]},
+    {"id": "multa-embargos-protelatorios", "assessor": "multa embargos de declaração protelatórios artigo 1026 CPC", "natural": "quando se aplica multa por embargos de declaração protelatórios?", "curta": "embargos protelatórios multa", "esperados": ["STJ:958099"]},
+    {"id": "credito-educativo-indice", "assessor": "crédito educativo correção monetária índice contrato FIES", "natural": "qual índice corrige os contratos de crédito educativo?", "curta": "crédito educativo", "esperados": ["STJ:957790"]},
+    {"id": "corretor-atraso-obra", "assessor": "corretagem atraso na entrega da obra responsabilidade corretora imobiliária", "natural": "a corretora responde pelo atraso na entrega do imóvel na planta?", "curta": "corretagem atraso obra", "esperados": ["STJ:929388"]},
+    {"id": "preparo-desercao", "assessor": "preparo deserção recolhimento custas recursais complementação", "natural": "o recurso é deserto se o preparo foi recolhido de forma insuficiente sem oportunidade de complementar?", "curta": "preparo deserção", "esperados": ["TJSC:321788540458139682713794504964"]}
+  ]
+}
