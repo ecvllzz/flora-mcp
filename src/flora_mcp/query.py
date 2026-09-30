@@ -10,7 +10,7 @@ from .model import FloraError, canonical, digest, folded, number
 from .store import ReadView, collection_delay
 from .text import advanced_query, header, matched_window, sections
 
-CONTRATO = "flora-mcp-3"
+CONTRATO = "flora-mcp-3.1"
 ORDERS = ("mais_recentes", "mais_antigos", "relevancia")
 # Triage pages stay under 8 KiB of compact JSON, with room for the publication identity.
 TRIAGE_BUDGET = 7500
@@ -103,19 +103,59 @@ def quoted(value: str) -> str:
     return '"' + value.replace('"', '""') + '"'
 
 
-def lexical_terms(terms: str) -> list[str]:
-    # Plain words are ANDed; quoted phrases are preserved. No raw FTS/SQL operators.
+def lexical_tokens(terms: str) -> list[tuple[str, bool]]:
+    """(value, is_phrase) for each plain word or quoted phrase. No raw FTS/SQL operators."""
     if len(terms) > 500 or terms.count('"') % 2:
         raise FloraError("consulta_invalida", "Consulta muito longa ou aspas sem fechamento.")
-    tokens = re.findall(r'"([^"]+)"|(\S+)', terms)
-    values = [phrase or token for phrase, token in tokens]
-    if len(values) > 30:
+    tokens = [
+        (phrase, True) if phrase else (token, False)
+        for phrase, token in re.findall(r'"([^"]+)"|(\S+)', terms)
+    ]
+    if len(tokens) > 30:
         raise FloraError("consulta_invalida", "Use até 30 termos ou expressões.")
-    return values
+    return tokens
+
+
+def lexical_terms(terms: str) -> list[str]:
+    # Plain words are ANDed; quoted phrases are preserved.
+    return [value for value, _ in lexical_tokens(terms)]
 
 
 def lexical_query(terms: str) -> str:
     return " AND ".join(quoted(v) for v in lexical_terms(terms))
+
+
+# Portuguese stopwords dropped from a broadened query, compared after folding case and accents:
+# articles, prepositions and their contractions, conjunctions, relative and interrogative
+# pronouns and common linking verbs.
+STOPWORDS = frozenset(
+    """
+    o a os as um uma uns umas
+    ante apos ate com contra de desde em entre para perante por sem sob sobre
+    ao aos do da dos das no na nos nas num numa pelo pela pelos pelas
+    deste desta destes destas desse dessa desses dessas neste nesta nesse nessa
+    e ou mas nem que se porque pois porem como quando
+    qual quais quem onde cujo cuja cujos cujas quanto quanta quantos quantas
+    pode podem deve devem cabe cabem foi foram ser sao esta estao ha
+    """.upper().split()
+)
+BROADENED = {
+    "de": "todos_os_termos",
+    "para": "qualquer_termo",
+    "motivo": "nenhum documento contém todos os termos",
+}
+
+
+def broadening(termos: str) -> tuple[list[str], list[str]] | None:
+    """Terms kept and stopwords dropped when a simple query of two or more terms is ORed; None if not."""
+    tokens = lexical_tokens(termos)
+    if len(tokens) < 2:
+        return None
+    kept, dropped = [], []
+    for value, phrase in tokens:
+        stopword = not phrase and re.sub(r"\W", "", folded(value)) in STOPWORDS
+        (dropped if stopword else kept).append(value)
+    return (kept, dropped) if kept else None
 
 
 def compile_terms(termos: str, modo_busca: str) -> str:
@@ -222,6 +262,7 @@ class JudgmentSearch:
         self.column = "publication" if tipo_data == "publicacao" else "judgment"
         self.filters, self.params, self.filtered = [], [], False
         self.offset = 0
+        self.original, self.broadened = self.query, None
 
     def restrict(self, filters, params):
         self.filters += filters
@@ -250,12 +291,41 @@ class JudgmentSearch:
     def continuation(self, fingerprint, revision, offset):
         return encode_cursor(self.view, {"consulta": fingerprint, "revisao": revision, "offset": offset})
 
+    def count(self, db):
+        source, where, params, _ = self.plan()
+        try:
+            return db.execute(f"SELECT count(*) FROM {source} WHERE {where}", params).fetchone()[0]
+        except sqlite3.OperationalError as exc:
+            raise database_error(exc) from exc
+
+    def term_count(self, db, term):
+        try:
+            return db.execute("SELECT count(*) FROM search WHERE search MATCH ?", (quoted(term),)).fetchone()[
+                0
+            ]
+        except sqlite3.OperationalError as exc:
+            raise database_error(exc) from exc
+
+    def total(self, db):
+        """Count with every term; when that is zero, retry with any term (simple mode only)."""
+        total = self.count(db)
+        terms = broadening(self.termos) if total == 0 and self.modo_busca == "simples" else None
+        if terms is None:
+            return total
+        self.query = " OR ".join(quoted(t) for t in terms[0])
+        total = self.count(db)
+        if total == 0:
+            self.query = self.original  # The empty answer and its reason stay those of the query asked.
+            return 0
+        counts = [{"termo": t, "documentos": self.term_count(db, t)} for t in terms[0]]
+        self.broadened = {**BROADENED, "termos": counts, "termos_descartados": terms[1]}
+        return total
+
     def page(self, db, cursor, revision):
         source, where, params, order = self.plan()
         fingerprint = self.fingerprint(where, params)
         offset = self.offset = page_offset(self.view, cursor, fingerprint, revision)
         try:
-            total = db.execute(f"SELECT count(*) FROM {source} WHERE {where}", params).fetchone()[0]
             rows = db.execute(
                 f"""SELECT d.body,
                 (SELECT v.raw FROM versions v WHERE v.document_id=d.id AND v.hash=d.hash) AS original
@@ -266,7 +336,7 @@ class JudgmentSearch:
             ).fetchall()
         except sqlite3.OperationalError as exc:
             raise database_error(exc) from exc
-        return total, rows, lambda n: self.continuation(fingerprint, revision, offset + n)
+        return rows, lambda n: self.continuation(fingerprint, revision, offset + n)
 
     def highlights(self, db, ids):
         if not self.query or not ids or self.detalhe != "triagem":
@@ -320,11 +390,7 @@ class JudgmentSearch:
         def term_counts():
             if self.modo_busca != "simples":
                 return None
-            count = "SELECT count(*) FROM search WHERE search MATCH ?"
-            return [
-                {"termo": t, "documentos": db.execute(count, (quoted(t),)).fetchone()[0]}
-                for t in lexical_terms(self.termos)
-            ]
+            return [{"termo": t, "documentos": self.term_count(db, t)} for t in lexical_terms(self.termos)]
 
         try:
             return empty_reason(
@@ -379,7 +445,8 @@ def search(
         db.create_function("flora_fold", 1, lambda value: folded(value or ""), deterministic=True)
         db.execute("BEGIN")  # Revision and rows belong to the same read snapshot.
         revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
-        total, rows, following = plan.page(db, cursor, revision)
+        total = plan.total(db)
+        rows, following = plan.page(db, cursor, revision)
         bodies = [(json.loads(r["body"]), json.loads(r["original"]) if r["original"] else None) for r in rows]
         marks = plan.highlights(db, [body["id"] for body, _ in bodies])
         reason = plan.reason(db, tribunal, orgao, (data_inicio, data_fim)) if total == 0 else {}
@@ -394,6 +461,7 @@ def search(
         "campo_pesquisado": "ementa",
         "modo_busca": modo_busca,
         "consulta_efetiva": plan.query,
+        **({"ampliacao": plan.broadened} if plan.broadened else {}),
         "ordenacao": plan.ordenar,
         "revisao_base": revision,
         "proximo_cursor": following(len(rows)) if plan.offset + len(rows) < total else None,

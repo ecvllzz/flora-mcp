@@ -44,7 +44,7 @@ def test_default_summary_preserves_diagnostics_and_complete_detail(store):
     # Only the most recent run of each source, without detail; the history is in detalhe=execucoes.
     assert [(r["source"], r["status"]) for r in latest] == [("STJ", "ok"), ("TJSC", "interrupted")]
     assert all("detail" not in r for r in latest)
-    assert api.coverage(store, "completo") == {**store.coverage(), "contrato": "flora-mcp-3"}
+    assert api.coverage(store, "completo") == {**store.coverage(), "contrato": "flora-mcp-3.1"}
     with pytest.raises(FloraError):
         api.coverage(store, "legado")
     assert api.coverage(store, "execucoes", limite=2)["itens"][1]["detail"] == detail

@@ -1,0 +1,4658 @@
+{
+  "schema": "flora-avaliacao-resultado-1",
+  "medido_em": "2026-09-30T02:23:51-03:00",
+  "publicacao_id": "r781-s2-6d65b6135b-06fedd10dcb7",
+  "conjunto": "flora-avaliacao-1",
+  "perguntas": 14,
+  "resumo": {
+    "assessor": {
+      "ferramenta": {
+        "hit@8": 0.357,
+        "recall@8": 0.339,
+        "mrr@100": 0.239,
+        "zeros": 0,
+        "bytes_medio": 5642
+      },
+      "ferramenta_pagina1": {
+        "hit@8": 0.286,
+        "recall@8": 0.25,
+        "mrr@100": 0.229,
+        "zeros": 0,
+        "bytes_medio": 5642
+      },
+      "e": {
+        "hit@8": 0.143,
+        "recall@8": 0.125,
+        "mrr@100": 0.143,
+        "zeros": 7
+      },
+      "e_p6": {
+        "hit@8": 0.143,
+        "recall@8": 0.125,
+        "mrr@100": 0.143,
+        "zeros": 6
+      },
+      "ou": {
+        "hit@8": 0.357,
+        "recall@8": 0.339,
+        "mrr@100": 0.27,
+        "zeros": 0
+      },
+      "ou_p6": {
+        "hit@8": 0.429,
+        "recall@8": 0.411,
+        "mrr@100": 0.393,
+        "zeros": 0
+      },
+      "ou_p5": {
+        "hit@8": 0.5,
+        "recall@8": 0.482,
+        "mrr@100": 0.362,
+        "zeros": 0
+      },
+      "e_senao_ou": {
+        "hit@8": 0.357,
+        "recall@8": 0.339,
+        "mrr@100": 0.253,
+        "zeros": 0
+      }
+    },
+    "natural": {
+      "ferramenta": {
+        "hit@8": 0.571,
+        "recall@8": 0.5,
+        "mrr@100": 0.324,
+        "zeros": 0,
+        "bytes_medio": 7155
+      },
+      "ferramenta_pagina1": {
+        "hit@8": 0.429,
+        "recall@8": 0.375,
+        "mrr@100": 0.304,
+        "zeros": 0,
+        "bytes_medio": 7155
+      },
+      "e": {
+        "hit@8": 0.071,
+        "recall@8": 0.036,
+        "mrr@100": 0.014,
+        "zeros": 12
+      },
+      "e_p6": {
+        "hit@8": 0.071,
+        "recall@8": 0.036,
+        "mrr@100": 0.024,
+        "zeros": 9
+      },
+      "ou": {
+        "hit@8": 0.571,
+        "recall@8": 0.5,
+        "mrr@100": 0.326,
+        "zeros": 0
+      },
+      "ou_p6": {
+        "hit@8": 0.5,
+        "recall@8": 0.429,
+        "mrr@100": 0.312,
+        "zeros": 0
+      },
+      "ou_p5": {
+        "hit@8": 0.571,
+        "recall@8": 0.5,
+        "mrr@100": 0.292,
+        "zeros": 0
+      },
+      "e_senao_ou": {
+        "hit@8": 0.571,
+        "recall@8": 0.5,
+        "mrr@100": 0.329,
+        "zeros": 0
+      }
+    },
+    "curta": {
+      "ferramenta": {
+        "hit@8": 0.571,
+        "recall@8": 0.509,
+        "mrr@100": 0.338,
+        "zeros": 0,
+        "bytes_medio": 5905
+      },
+      "ferramenta_pagina1": {
+        "hit@8": 0.571,
+        "recall@8": 0.5,
+        "mrr@100": 0.338,
+        "zeros": 0,
+        "bytes_medio": 5905
+      },
+      "e": {
+        "hit@8": 0.571,
+        "recall@8": 0.509,
+        "mrr@100": 0.348,
+        "zeros": 0
+      },
+      "e_p6": {
+        "hit@8": 0.571,
+        "recall@8": 0.509,
+        "mrr@100": 0.385,
+        "zeros": 0
+      },
+      "ou": {
+        "hit@8": 0.571,
+        "recall@8": 0.509,
+        "mrr@100": 0.348,
+        "zeros": 0
+      },
+      "ou_p6": {
+        "hit@8": 0.571,
+        "recall@8": 0.509,
+        "mrr@100": 0.373,
+        "zeros": 0
+      },
+      "ou_p5": {
+        "hit@8": 0.5,
+        "recall@8": 0.438,
+        "mrr@100": 0.347,
+        "zeros": 0
+      },
+      "e_senao_ou": {
+        "hit@8": 0.571,
+        "recall@8": 0.509,
+        "mrr@100": 0.348,
+        "zeros": 0
+      }
+    }
+  },
+  "por_pergunta": [
+    {
+      "id": "inventario-abandono",
+      "esperados": [
+        "TJSC:321770895064085028463695885522",
+        "TJSC:321774563336471613626845170161",
+        "TJSC:321790081633433507943985358387",
+        "TJSC:321786723753170814272789675600",
+        "TJSC:321786740261703723243301311225",
+        "TJSC:321776962772297786108985353508",
+        "STJ:1382718",
+        "STJ:000917173"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 11,
+          "bytes": 7047,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321786740261703723243301311225",
+            "TJSC:321770895064085028463695885522",
+            "TJSC:321774563336471613626845170161",
+            "TJSC:321790081633433507943911543384",
+            "TJSC:321790081633433507943985358387",
+            "TJSC:321786968680295199257540844226",
+            "TJSC:321776962772297786108985353508",
+            "TJSC:321786723753170814272789675600"
+          ],
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 2,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 11,
+          "bytes": 7047,
+          "ids": [
+            "TJSC:321786740261703723243301311225",
+            "TJSC:321770895064085028463695885522",
+            "TJSC:321774563336471613626845170161",
+            "TJSC:321790081633433507943911543384",
+            "TJSC:321790081633433507943985358387"
+          ],
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 2,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": null,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"inventario\" AND \"extincao\" AND \"abandono\" AND \"inercia\" AND \"inventariante\"",
+          "retornados": 11,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 2,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0
+        },
+        "e_p6": {
+          "consulta": "\"invent\"* AND \"extinc\"* AND \"abando\"* AND \"inerci\"* AND \"invent\"*",
+          "retornados": 11,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 1,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0
+        },
+        "ou": {
+          "consulta": "\"inventario\" OR \"extincao\" OR \"abandono\" OR \"inercia\" OR \"inventariante\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 2,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": 11
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"invent\"* OR \"extinc\"* OR \"abando\"* OR \"inerci\"* OR \"invent\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 1,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": 11
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"inven\"* OR \"extin\"* OR \"aband\"* OR \"inerc\"* OR \"inven\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 1,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": 11
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"inventario\" AND \"extincao\" AND \"abandono\" AND \"inercia\" AND \"inventariante\"",
+          "retornados": 11,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 2,
+            "TJSC:321774563336471613626845170161": 3,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 8,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.75,
+          "rr": 1.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 7420,
+          "bytes": 7394,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321790081633433507943911543384",
+            "TJSC:321786740261703723243301311225",
+            "TJSC:321770895064085028463695885522",
+            "STJ:000917960",
+            "TJSC:321780082603497040645198304178",
+            "TJSC:321786968680295199257540844226",
+            "STJ:000917173",
+            "TJSC:321774563336471613626845170161"
+          ],
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 8,
+            "TJSC:321790081633433507943985358387": null,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": null,
+            "STJ:1382718": null,
+            "STJ:000917173": 7
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.5
+        },
+        "ferramenta_pagina1": {
+          "total": 7420,
+          "bytes": 7394,
+          "ids": [
+            "TJSC:321790081633433507943911543384",
+            "TJSC:321786740261703723243301311225",
+            "TJSC:321770895064085028463695885522",
+            "STJ:000917960",
+            "TJSC:321780082603497040645198304178"
+          ],
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": null,
+            "TJSC:321790081633433507943985358387": null,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": null,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.25,
+          "rr": 0.5
+        },
+        "e": {
+          "consulta": "\"juiz\" AND \"extinguir\" AND \"inventario\" AND \"julgar\" AND \"merito\" AND \"porque\" AND \"inventariante\" AND \"ficou\" AND \"inerte\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": null,
+            "TJSC:321774563336471613626845170161": null,
+            "TJSC:321790081633433507943985358387": null,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": null,
+            "TJSC:321776962772297786108985353508": null,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"juiz\" AND \"exting\"* AND \"invent\"* AND \"julgar\" AND \"merito\" AND \"porque\" AND \"invent\"* AND \"ficou\" AND \"inerte\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": null,
+            "TJSC:321774563336471613626845170161": null,
+            "TJSC:321790081633433507943985358387": null,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": null,
+            "TJSC:321776962772297786108985353508": null,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"juiz\" OR \"extinguir\" OR \"inventario\" OR \"julgar\" OR \"merito\" OR \"porque\" OR \"inventariante\" OR \"ficou\" OR \"inerte\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 9,
+            "TJSC:321790081633433507943985358387": 10,
+            "TJSC:321786723753170814272789675600": 5,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": 11,
+            "STJ:1382718": 52,
+            "STJ:000917173": 8
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.5
+        },
+        "ou_p6": {
+          "consulta": "\"juiz\" OR \"exting\"* OR \"invent\"* OR \"julgar\" OR \"merito\" OR \"porque\" OR \"invent\"* OR \"ficou\" OR \"inerte\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 4,
+            "TJSC:321774563336471613626845170161": 11,
+            "TJSC:321790081633433507943985358387": 13,
+            "TJSC:321786723753170814272789675600": 6,
+            "TJSC:321786740261703723243301311225": 3,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": null,
+            "STJ:000917173": 31
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.3333333333333333
+        },
+        "ou_p5": {
+          "consulta": "\"juiz\" OR \"extin\"* OR \"inven\"* OR \"julga\"* OR \"merit\"* OR \"porqu\"* OR \"inven\"* OR \"ficou\" OR \"inert\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 5,
+            "TJSC:321774563336471613626845170161": 11,
+            "TJSC:321790081633433507943985358387": 12,
+            "TJSC:321786723753170814272789675600": 7,
+            "TJSC:321786740261703723243301311225": 4,
+            "TJSC:321776962772297786108985353508": 6,
+            "STJ:1382718": 28,
+            "STJ:000917173": 9
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.25
+        },
+        "e_senao_ou": {
+          "consulta": "\"juiz\" OR \"extinguir\" OR \"inventario\" OR \"julgar\" OR \"merito\" OR \"porque\" OR \"inventariante\" OR \"ficou\" OR \"inerte\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 9,
+            "TJSC:321790081633433507943985358387": 10,
+            "TJSC:321786723753170814272789675600": 5,
+            "TJSC:321786740261703723243301311225": 2,
+            "TJSC:321776962772297786108985353508": 11,
+            "STJ:1382718": 52,
+            "STJ:000917173": 8
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.5,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 15,
+          "bytes": 6989,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321786740261703723243301311225",
+            "TJSC:321790081633433507943911543384",
+            "TJSC:321770895064085028463695885522",
+            "TJSC:321790081633433507943985358387",
+            "TJSC:321774563336471613626845170161",
+            "TJSC:321776962772297786108985353508",
+            "TJSC:321790431383987273290452428579",
+            "TJSC:321786968680295199257540844226"
+          ],
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 5,
+            "TJSC:321790081633433507943985358387": 4,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 6,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 15,
+          "bytes": 6989,
+          "ids": [
+            "TJSC:321786740261703723243301311225",
+            "TJSC:321790081633433507943911543384",
+            "TJSC:321770895064085028463695885522",
+            "TJSC:321790081633433507943985358387",
+            "TJSC:321774563336471613626845170161"
+          ],
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 5,
+            "TJSC:321790081633433507943985358387": 4,
+            "TJSC:321786723753170814272789675600": null,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": null,
+            "STJ:1382718": null,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"inventario\" AND \"abandono\"",
+          "retornados": 15,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 5,
+            "TJSC:321790081633433507943985358387": 4,
+            "TJSC:321786723753170814272789675600": 10,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 6,
+            "STJ:1382718": 9,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0
+        },
+        "e_p6": {
+          "consulta": "\"invent\"* AND \"abando\"*",
+          "retornados": 15,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 6,
+            "TJSC:321774563336471613626845170161": 4,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 9,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0
+        },
+        "ou": {
+          "consulta": "\"inventario\" OR \"abandono\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 5,
+            "TJSC:321790081633433507943985358387": 4,
+            "TJSC:321786723753170814272789675600": 10,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 6,
+            "STJ:1382718": 9,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"invent\"* OR \"abando\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 6,
+            "TJSC:321774563336471613626845170161": 4,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 9,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"inven\"* OR \"aband\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 6,
+            "TJSC:321774563336471613626845170161": 4,
+            "TJSC:321790081633433507943985358387": 5,
+            "TJSC:321786723753170814272789675600": 9,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 7,
+            "STJ:1382718": 10,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"inventario\" AND \"abandono\"",
+          "retornados": 15,
+          "posicoes": {
+            "TJSC:321770895064085028463695885522": 3,
+            "TJSC:321774563336471613626845170161": 5,
+            "TJSC:321790081633433507943985358387": 4,
+            "TJSC:321786723753170814272789675600": 10,
+            "TJSC:321786740261703723243301311225": 1,
+            "TJSC:321776962772297786108985353508": 6,
+            "STJ:1382718": 9,
+            "STJ:000917173": null
+          },
+          "hit": true,
+          "recall": 0.625,
+          "rr": 1.0,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "alimentos-divorcio-conexao",
+      "esperados": [
+        "TJSC:321786898491572648334750632491"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 20294,
+          "bytes": 6931,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:929791",
+            "STJ:928735",
+            "STJ:940216",
+            "STJ:941268",
+            "STJ:941782",
+            "STJ:941783",
+            "TJSC:321786898491572648334750632491",
+            "STJ:000911730"
+          ],
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 7
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.14285714285714285
+        },
+        "ferramenta_pagina1": {
+          "total": 20294,
+          "bytes": 6931,
+          "ids": [
+            "STJ:929791",
+            "STJ:928735",
+            "STJ:940216",
+            "STJ:941268",
+            "STJ:941782"
+          ],
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"conexao\" AND \"acao\" AND \"alimentos\" AND \"divorcio\" AND \"competencia\" AND \"reuniao\" AND \"processos\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"conexa\"* AND \"acao\" AND \"alimen\"* AND \"divorc\"* AND \"compet\"* AND \"reunia\"* AND \"proces\"*",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"conexao\" OR \"acao\" OR \"alimentos\" OR \"divorcio\" OR \"competencia\" OR \"reuniao\" OR \"processos\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 7
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.14285714285714285
+        },
+        "ou_p6": {
+          "consulta": "\"conexa\"* OR \"acao\" OR \"alimen\"* OR \"divorc\"* OR \"compet\"* OR \"reunia\"* OR \"proces\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"conex\"* OR \"acao\" OR \"alime\"* OR \"divor\"* OR \"compe\"* OR \"reuni\"* OR \"proce\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"conexao\" OR \"acao\" OR \"alimentos\" OR \"divorcio\" OR \"competencia\" OR \"reuniao\" OR \"processos\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 7
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.14285714285714285,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 18706,
+          "bytes": 7249,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321786898491572648334750632491",
+            "TJSC:321790081633433507944008236470",
+            "STJ:000911553",
+            "TJSC:321786467542236744135838630312",
+            "STJ:000904254",
+            "STJ:000913970",
+            "TJSC:321775833224075037029734040431",
+            "TJSC:321787584892160895412787399626"
+          ],
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 18706,
+          "bytes": 7249,
+          "ids": [
+            "TJSC:321786898491572648334750632491",
+            "TJSC:321790081633433507944008236470",
+            "STJ:000911553",
+            "TJSC:321786467542236744135838630312",
+            "STJ:000904254"
+          ],
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"acao\" AND \"alimentos\" AND \"reunida\" AND \"acao\" AND \"divorcio\" AND \"conexao\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"acao\" AND \"alimen\"* AND \"reunid\"* AND \"acao\" AND \"divorc\"* AND \"conexa\"*",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"acao\" OR \"alimentos\" OR \"reunida\" OR \"acao\" OR \"divorcio\" OR \"conexao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"acao\" OR \"alimen\"* OR \"reunid\"* OR \"acao\" OR \"divorc\"* OR \"conexa\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"acao\" OR \"alime\"* OR \"reuni\"* OR \"acao\" OR \"divor\"* OR \"conex\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"acao\" OR \"alimentos\" OR \"reunida\" OR \"acao\" OR \"divorcio\" OR \"conexao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 2,
+          "bytes": 3051,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "TJSC:321786898491572648334750632491",
+            "TJSC:321790081633433507944008236470"
+          ],
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 2,
+          "bytes": 3051,
+          "ids": [
+            "TJSC:321786898491572648334750632491",
+            "TJSC:321790081633433507944008236470"
+          ],
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"conexao\" AND \"alimentos\" AND \"divorcio\"",
+          "retornados": 2,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_p6": {
+          "consulta": "\"conexa\"* AND \"alimen\"* AND \"divorc\"*",
+          "retornados": 5,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou": {
+          "consulta": "\"conexao\" OR \"alimentos\" OR \"divorcio\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"conexa\"* OR \"alimen\"* OR \"divorc\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"conex\"* OR \"alime\"* OR \"divor\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"conexao\" AND \"alimentos\" AND \"divorcio\"",
+          "retornados": 2,
+          "posicoes": {
+            "TJSC:321786898491572648334750632491": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "decisao-surpresa",
+      "esperados": [
+        "STJ:930326"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 38885,
+          "bytes": 7365,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:957099",
+            "STJ:1444019",
+            "STJ:943432",
+            "STJ:931664",
+            "STJ:941361",
+            "STJ:939740",
+            "TJSC:321786982354457870770515017176",
+            "STJ:1450063"
+          ],
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 38885,
+          "bytes": 7365,
+          "ids": [
+            "STJ:957099",
+            "STJ:1444019",
+            "STJ:943432",
+            "STJ:931664",
+            "STJ:941361"
+          ],
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"decisao\" AND \"surpresa\" AND \"artigo\" AND \"10\" AND \"cpc\" AND \"contraditorio\" AND \"previo\" AND \"fundamento\" AND \"debatido\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"decisa\"* AND \"surpre\"* AND \"artigo\" AND \"10\" AND \"cpc\" AND \"contra\"* AND \"previo\" AND \"fundam\"* AND \"debati\"*",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"decisao\" OR \"surpresa\" OR \"artigo\" OR \"10\" OR \"cpc\" OR \"contraditorio\" OR \"previo\" OR \"fundamento\" OR \"debatido\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": 17
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.058823529411764705
+        },
+        "ou_p6": {
+          "consulta": "\"decisa\"* OR \"surpre\"* OR \"artigo\" OR \"10\" OR \"cpc\" OR \"contra\"* OR \"previo\" OR \"fundam\"* OR \"debati\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": 15
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.06666666666666667
+        },
+        "ou_p5": {
+          "consulta": "\"decis\"* OR \"surpr\"* OR \"artig\"* OR \"10\" OR \"cpc\" OR \"contr\"* OR \"previ\"* OR \"funda\"* OR \"debat\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "e_senao_ou": {
+          "consulta": "\"decisao\" OR \"surpresa\" OR \"artigo\" OR \"10\" OR \"cpc\" OR \"contraditorio\" OR \"previo\" OR \"fundamento\" OR \"debatido\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": 17
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.058823529411764705,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 38092,
+          "bytes": 6713,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:941361",
+            "STJ:942244",
+            "STJ:1437623",
+            "STJ:000907712",
+            "STJ:000906878",
+            "STJ:000904479",
+            "STJ:923638",
+            "STJ:000907928"
+          ],
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 38092,
+          "bytes": 6713,
+          "ids": [
+            "STJ:941361",
+            "STJ:942244",
+            "STJ:1437623",
+            "STJ:000907712",
+            "STJ:000906878"
+          ],
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"juiz\" AND \"decidir\" AND \"base\" AND \"fundamento\" AND \"partes\" AND \"manifestaram\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"juiz\" AND \"decidi\"* AND \"base\" AND \"fundam\"* AND \"partes\" AND \"manife\"*",
+          "retornados": 10,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"juiz\" OR \"decidir\" OR \"base\" OR \"fundamento\" OR \"partes\" OR \"manifestaram\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"juiz\" OR \"decidi\"* OR \"base\" OR \"fundam\"* OR \"partes\" OR \"manife\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": 62
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.016129032258064516
+        },
+        "ou_p5": {
+          "consulta": "\"juiz\" OR \"decid\"* OR \"base\" OR \"funda\"* OR \"parte\"* OR \"manif\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"juiz\" OR \"decidir\" OR \"base\" OR \"fundamento\" OR \"partes\" OR \"manifestaram\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 476,
+          "bytes": 6528,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "STJ:930462",
+            "STJ:1458678",
+            "STJ:953445",
+            "STJ:937845",
+            "STJ:957677",
+            "STJ:943432",
+            "STJ:942820",
+            "STJ:938671"
+          ],
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 476,
+          "bytes": 6528,
+          "ids": [
+            "STJ:930462",
+            "STJ:1458678",
+            "STJ:953445",
+            "STJ:937845",
+            "STJ:957677"
+          ],
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"decisao\" AND \"surpresa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"decisa\"* AND \"surpre\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"decisao\" OR \"surpresa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"decisa\"* OR \"surpre\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"decis\"* OR \"surpr\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"decisao\" AND \"surpresa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:930326": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "diluicao-solidaria",
+      "esperados": [
+        "TJSC:321778863157375809837326397875"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 3058,
+          "bytes": 7310,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321783100975479837791742232133",
+            "STJ:000912947",
+            "STJ:953916",
+            "TJSC:321782525897957541231403465914",
+            "TJSC:321783100975479837791742027097",
+            "TJSC:321787307760075170612873700101",
+            "STJ:937513",
+            "STJ:940758"
+          ],
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 3058,
+          "bytes": 7310,
+          "ids": [
+            "TJSC:321783100975479837791742232133",
+            "STJ:000912947",
+            "STJ:953916",
+            "TJSC:321782525897957541231403465914",
+            "TJSC:321783100975479837791742027097"
+          ],
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"diluicao\" AND \"solidaria\" AND \"divida\" AND \"condominio\" AND \"rateio\" AND \"inadimplencia\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"diluic\"* AND \"solida\"* AND \"divida\" AND \"condom\"* AND \"rateio\" AND \"inadim\"*",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"diluicao\" OR \"solidaria\" OR \"divida\" OR \"condominio\" OR \"rateio\" OR \"inadimplencia\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 11
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.09090909090909091
+        },
+        "ou_p6": {
+          "consulta": "\"diluic\"* OR \"solida\"* OR \"divida\" OR \"condom\"* OR \"rateio\" OR \"inadim\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 21
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.047619047619047616
+        },
+        "ou_p5": {
+          "consulta": "\"dilui\"* OR \"solid\"* OR \"divid\"* OR \"condo\"* OR \"ratei\"* OR \"inadi\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 25
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.04
+        },
+        "e_senao_ou": {
+          "consulta": "\"diluicao\" OR \"solidaria\" OR \"divida\" OR \"condominio\" OR \"rateio\" OR \"inadimplencia\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 11
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.09090909090909091,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 4771,
+          "bytes": 7329,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321783100975479837791742027097",
+            "TJSC:321783100975479837791742232133",
+            "TJSC:321782525897957541231403465914",
+            "TJSC:321778863157375809837326397875",
+            "STJ:942714",
+            "TJSC:321787307760075170612873700101",
+            "TJSC:321772728718881681616435826269",
+            "STJ:000912005"
+          ],
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25
+        },
+        "ferramenta_pagina1": {
+          "total": 4771,
+          "bytes": 7329,
+          "ids": [
+            "TJSC:321783100975479837791742027097",
+            "TJSC:321783100975479837791742232133",
+            "TJSC:321782525897957541231403465914",
+            "TJSC:321778863157375809837326397875",
+            "STJ:942714"
+          ],
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25
+        },
+        "e": {
+          "consulta": "\"valida\" AND \"diluicao\" AND \"solidaria\" AND \"debito\" AND \"demais\" AND \"condominos\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"valida\" AND \"diluic\"* AND \"solida\"* AND \"debito\" AND \"demais\" AND \"condom\"*",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"valida\" OR \"diluicao\" OR \"solidaria\" OR \"debito\" OR \"demais\" OR \"condominos\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25
+        },
+        "ou_p6": {
+          "consulta": "\"valida\" OR \"diluic\"* OR \"solida\"* OR \"debito\" OR \"demais\" OR \"condom\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25
+        },
+        "ou_p5": {
+          "consulta": "\"valid\"* OR \"dilui\"* OR \"solid\"* OR \"debit\"* OR \"demai\"* OR \"condo\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25
+        },
+        "e_senao_ou": {
+          "consulta": "\"valida\" OR \"diluicao\" OR \"solidaria\" OR \"debito\" OR \"demais\" OR \"condominos\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 9,
+          "bytes": 7048,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321783100975479837791742232133",
+            "TJSC:321782525897957541231403465914",
+            "TJSC:321783100975479837791742027097",
+            "TJSC:321787307760075170612873700101",
+            "TJSC:321778863157375809837326397875",
+            "TJSC:321772728718881681616435826269",
+            "TJSC:321784315470677142859040017424",
+            "TJSC:321775778974687903533927315695"
+          ],
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ferramenta_pagina1": {
+          "total": 9,
+          "bytes": 7048,
+          "ids": [
+            "TJSC:321783100975479837791742232133",
+            "TJSC:321782525897957541231403465914",
+            "TJSC:321783100975479837791742027097",
+            "TJSC:321787307760075170612873700101",
+            "TJSC:321778863157375809837326397875"
+          ],
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "e": {
+          "consulta": "\"diluicao\" AND \"solidaria\"",
+          "retornados": 9,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "e_p6": {
+          "consulta": "\"diluic\"* AND \"solida\"*",
+          "retornados": 9,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ou": {
+          "consulta": "\"diluicao\" OR \"solidaria\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ou_p6": {
+          "consulta": "\"diluic\"* OR \"solida\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ou_p5": {
+          "consulta": "\"dilui\"* OR \"solid\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "e_senao_ou": {
+          "consulta": "\"diluicao\" AND \"solidaria\"",
+          "retornados": 9,
+          "posicoes": {
+            "TJSC:321778863157375809837326397875": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "monitoria-mensalidades",
+      "esperados": [
+        "TJSC:321778849890120218986321050155"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 2,
+          "bytes": 3181,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "TJSC:321773929886830693813083884636",
+            "TJSC:321786715771095922820994457952"
+          ],
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 2,
+          "bytes": 3181,
+          "ids": [
+            "TJSC:321773929886830693813083884636",
+            "TJSC:321786715771095922820994457952"
+          ],
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"acao\" AND \"monitoria\" AND \"mensalidades\" AND \"escolares\" AND \"prova\" AND \"escrita\" AND \"contrato\" AND \"prestacao\" AND \"servicos\" AND \"educacionais\"",
+          "retornados": 2,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"acao\" AND \"monito\"* AND \"mensal\"* AND \"escola\"* AND \"prova\" AND \"escrit\"* AND \"contra\"* AND \"presta\"* AND \"servic\"* AND \"educac\"*",
+          "retornados": 3,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"acao\" OR \"monitoria\" OR \"mensalidades\" OR \"escolares\" OR \"prova\" OR \"escrita\" OR \"contrato\" OR \"prestacao\" OR \"servicos\" OR \"educacionais\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 18
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.05555555555555555
+        },
+        "ou_p6": {
+          "consulta": "\"acao\" OR \"monito\"* OR \"mensal\"* OR \"escola\"* OR \"prova\" OR \"escrit\"* OR \"contra\"* OR \"presta\"* OR \"servic\"* OR \"educac\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 17
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.058823529411764705
+        },
+        "ou_p5": {
+          "consulta": "\"acao\" OR \"monit\"* OR \"mensa\"* OR \"escol\"* OR \"prova\" OR \"escri\"* OR \"contr\"* OR \"prest\"* OR \"servi\"* OR \"educa\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 17
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.058823529411764705
+        },
+        "e_senao_ou": {
+          "consulta": "\"acao\" AND \"monitoria\" AND \"mensalidades\" AND \"escolares\" AND \"prova\" AND \"escrita\" AND \"contrato\" AND \"prestacao\" AND \"servicos\" AND \"educacionais\"",
+          "retornados": 2,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 18636,
+          "bytes": 7182,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:929976",
+            "STJ:000906457",
+            "TJSC:321785241743612880408345988395",
+            "STJ:1450865",
+            "TJSC:321772728718881681616435950981",
+            "STJ:1452519",
+            "TJSC:321787307760075170612874070853",
+            "STJ:931374"
+          ],
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 18636,
+          "bytes": 7182,
+          "ids": [
+            "STJ:929976",
+            "STJ:000906457",
+            "TJSC:321785241743612880408345988395",
+            "STJ:1450865",
+            "TJSC:321772728718881681616435950981"
+          ],
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"acao\" AND \"monitoria\" AND \"cobrar\" AND \"mensalidades\" AND \"escolares\" AND \"atraso\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"acao\" AND \"monito\"* AND \"cobrar\" AND \"mensal\"* AND \"escola\"* AND \"atraso\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"acao\" OR \"monitoria\" OR \"cobrar\" OR \"mensalidades\" OR \"escolares\" OR \"atraso\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 68
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.014705882352941176
+        },
+        "ou_p6": {
+          "consulta": "\"acao\" OR \"monito\"* OR \"cobrar\" OR \"mensal\"* OR \"escola\"* OR \"atraso\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"acao\" OR \"monit\"* OR \"cobra\"* OR \"mensa\"* OR \"escol\"* OR \"atras\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 45
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.022222222222222223
+        },
+        "e_senao_ou": {
+          "consulta": "\"acao\" OR \"monitoria\" OR \"cobrar\" OR \"mensalidades\" OR \"escolares\" OR \"atraso\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 68
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.014705882352941176,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 30,
+          "bytes": 6714,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321770049169588596555234683053",
+            "TJSC:321777592597935854494434717912",
+            "TJSC:321781282382813554471678296239",
+            "STJ:929976",
+            "STJ:952466",
+            "STJ:000906457",
+            "STJ:1450865",
+            "TJSC:321785241743612880408345988395"
+          ],
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 30,
+          "bytes": 6714,
+          "ids": [
+            "TJSC:321770049169588596555234683053",
+            "TJSC:321777592597935854494434717912",
+            "TJSC:321781282382813554471678296239",
+            "STJ:929976",
+            "STJ:952466"
+          ],
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"monitoria\" AND \"mensalidades\"",
+          "retornados": 30,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 21
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.047619047619047616
+        },
+        "e_p6": {
+          "consulta": "\"monito\"* AND \"mensal\"*",
+          "retornados": 46,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 25
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.04
+        },
+        "ou": {
+          "consulta": "\"monitoria\" OR \"mensalidades\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 22
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.045454545454545456
+        },
+        "ou_p6": {
+          "consulta": "\"monito\"* OR \"mensal\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 25
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.04
+        },
+        "ou_p5": {
+          "consulta": "\"monit\"* OR \"mensa\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 28
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.03571428571428571
+        },
+        "e_senao_ou": {
+          "consulta": "\"monitoria\" AND \"mensalidades\"",
+          "retornados": 30,
+          "posicoes": {
+            "TJSC:321778849890120218986321050155": 21
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.047619047619047616,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "passaporte-suprimento",
+      "esperados": [
+        "STJ:927807"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 2307,
+          "bytes": 7398,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321786898491572648333467871454",
+            "TJSC:321773155468497375340941132572",
+            "TJSC:321790081633433507943959883770",
+            "TJSC:321785864890251663282016698804",
+            "STJ:927807",
+            "TJSC:321790081633433507943910959316",
+            "TJSC:321783436066392853207100538722",
+            "TJSC:321773944805287522311702266640"
+          ],
+          "posicoes": {
+            "STJ:927807": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ferramenta_pagina1": {
+          "total": 2307,
+          "bytes": 7398,
+          "ids": [
+            "TJSC:321786898491572648333467871454",
+            "TJSC:321773155468497375340941132572",
+            "TJSC:321790081633433507943959883770",
+            "TJSC:321785864890251663282016698804",
+            "STJ:927807"
+          ],
+          "posicoes": {
+            "STJ:927807": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "e": {
+          "consulta": "\"suprimento\" AND \"consentimento\" AND \"passaporte\" AND \"menor\" AND \"viagem\" AND \"exterior\" AND \"genitor\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:927807": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"suprim\"* AND \"consen\"* AND \"passap\"* AND \"menor\" AND \"viagem\" AND \"exteri\"* AND \"genito\"*",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:927807": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"suprimento\" OR \"consentimento\" OR \"passaporte\" OR \"menor\" OR \"viagem\" OR \"exterior\" OR \"genitor\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ou_p6": {
+          "consulta": "\"suprim\"* OR \"consen\"* OR \"passap\"* OR \"menor\" OR \"viagem\" OR \"exteri\"* OR \"genito\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "ou_p5": {
+          "consulta": "\"supri\"* OR \"conse\"* OR \"passa\"* OR \"menor\" OR \"viage\"* OR \"exter\"* OR \"genit\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 6
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.16666666666666666
+        },
+        "e_senao_ou": {
+          "consulta": "\"suprimento\" OR \"consentimento\" OR \"passaporte\" OR \"menor\" OR \"viagem\" OR \"exterior\" OR \"genitor\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 4305,
+          "bytes": 7509,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321786898491572648333467871454",
+            "TJSC:321785864890251663282016698804",
+            "TJSC:321790081633433507943910959316",
+            "TJSC:321790081633433507943959883770",
+            "TJSC:321773155468497375340941132572",
+            "STJ:958568",
+            "STJ:927807",
+            "STJ:000917605"
+          ],
+          "posicoes": {
+            "STJ:927807": 7
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.14285714285714285
+        },
+        "ferramenta_pagina1": {
+          "total": 4305,
+          "bytes": 7509,
+          "ids": [
+            "TJSC:321786898491572648333467871454",
+            "TJSC:321785864890251663282016698804",
+            "TJSC:321790081633433507943910959316",
+            "TJSC:321790081633433507943959883770",
+            "TJSC:321773155468497375340941132572"
+          ],
+          "posicoes": {
+            "STJ:927807": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"juiz\" AND \"suprir\" AND \"autorizacao\" AND \"pais\" AND \"emissao\" AND \"passaporte\" AND \"filho\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:927807": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"juiz\" AND \"suprir\" AND \"autori\"* AND \"pais\" AND \"emissa\"* AND \"passap\"* AND \"filho\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:927807": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"juiz\" OR \"suprir\" OR \"autorizacao\" OR \"pais\" OR \"emissao\" OR \"passaporte\" OR \"filho\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 7
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.14285714285714285
+        },
+        "ou_p6": {
+          "consulta": "\"juiz\" OR \"suprir\" OR \"autori\"* OR \"pais\" OR \"emissa\"* OR \"passap\"* OR \"filho\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 20
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.05
+        },
+        "ou_p5": {
+          "consulta": "\"juiz\" OR \"supri\"* OR \"autor\"* OR \"pais\" OR \"emiss\"* OR \"passa\"* OR \"filho\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 26
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.038461538461538464
+        },
+        "e_senao_ou": {
+          "consulta": "\"juiz\" OR \"suprir\" OR \"autorizacao\" OR \"pais\" OR \"emissao\" OR \"passaporte\" OR \"filho\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 7
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.14285714285714285,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 6,
+          "bytes": 6870,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321785864890251663282016698804",
+            "TJSC:321786898491572648333467871454",
+            "STJ:927807",
+            "TJSC:321773155468497375340941132572",
+            "TJSC:321790081633433507943910959316",
+            "TJSC:321790081633433507943959883770"
+          ],
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "ferramenta_pagina1": {
+          "total": 6,
+          "bytes": 6870,
+          "ids": [
+            "TJSC:321785864890251663282016698804",
+            "TJSC:321786898491572648333467871454",
+            "STJ:927807",
+            "TJSC:321773155468497375340941132572",
+            "TJSC:321790081633433507943910959316"
+          ],
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "e": {
+          "consulta": "\"passaporte\" AND \"suprimento\"",
+          "retornados": 6,
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "e_p6": {
+          "consulta": "\"passap\"* AND \"suprim\"*",
+          "retornados": 6,
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "ou": {
+          "consulta": "\"passaporte\" OR \"suprimento\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "ou_p6": {
+          "consulta": "\"passap\"* OR \"suprim\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "ou_p5": {
+          "consulta": "\"passa\"* OR \"supri\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:927807": 4
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.25
+        },
+        "e_senao_ou": {
+          "consulta": "\"passaporte\" AND \"suprimento\"",
+          "retornados": 6,
+          "posicoes": {
+            "STJ:927807": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "abandono-alimentos-curador",
+      "esperados": [
+        "STJ:929963"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 38443,
+          "bytes": 7262,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:953201",
+            "STJ:000913964",
+            "STJ:000915428",
+            "TJSC:321786740261703723243301311225",
+            "STJ:940162",
+            "STJ:1460601",
+            "STJ:939044",
+            "STJ:953456"
+          ],
+          "posicoes": {
+            "STJ:929963": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 38443,
+          "bytes": 7262,
+          "ids": [
+            "STJ:953201",
+            "STJ:000913964",
+            "STJ:000915428",
+            "TJSC:321786740261703723243301311225",
+            "STJ:940162"
+          ],
+          "posicoes": {
+            "STJ:929963": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"abandono\" AND \"causa\" AND \"alimentos\" AND \"curador\" AND \"especial\" AND \"intimacao\" AND \"pessoal\" AND \"extincao\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:929963": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"abando\"* AND \"causa\" AND \"alimen\"* AND \"curado\"* AND \"especi\"* AND \"intima\"* AND \"pessoa\"* AND \"extinc\"*",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:929963": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"abandono\" OR \"causa\" OR \"alimentos\" OR \"curador\" OR \"especial\" OR \"intimacao\" OR \"pessoal\" OR \"extincao\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 25
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.04
+        },
+        "ou_p6": {
+          "consulta": "\"abando\"* OR \"causa\" OR \"alimen\"* OR \"curado\"* OR \"especi\"* OR \"intima\"* OR \"pessoa\"* OR \"extinc\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"aband\"* OR \"causa\" OR \"alime\"* OR \"curad\"* OR \"espec\"* OR \"intim\"* OR \"pesso\"* OR \"extin\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"abandono\" OR \"causa\" OR \"alimentos\" OR \"curador\" OR \"especial\" OR \"intimacao\" OR \"pessoal\" OR \"extincao\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 25
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.04,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 27377,
+          "bytes": 7398,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:927097",
+            "STJ:929963",
+            "STJ:952506",
+            "TJSC:321787307760075170612873344783",
+            "TJSC:321786723753170814272788592888",
+            "STJ:937803",
+            "STJ:950706",
+            "STJ:000907951"
+          ],
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ferramenta_pagina1": {
+          "total": 27377,
+          "bytes": 7398,
+          "ids": [
+            "STJ:927097",
+            "STJ:929963",
+            "STJ:952506",
+            "TJSC:321787307760075170612873344783",
+            "TJSC:321786723753170814272788592888"
+          ],
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "e": {
+          "consulta": "\"extinguir\" AND \"abandono\" AND \"acao\" AND \"alimentos\" AND \"intimar\" AND \"pessoalmente\" AND \"parte\" AND \"representada\" AND \"curador\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:929963": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"exting\"* AND \"abando\"* AND \"acao\" AND \"alimen\"* AND \"intima\"* AND \"pessoa\"* AND \"parte\" AND \"repres\"* AND \"curado\"*",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:929963": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"extinguir\" OR \"abandono\" OR \"acao\" OR \"alimentos\" OR \"intimar\" OR \"pessoalmente\" OR \"parte\" OR \"representada\" OR \"curador\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ou_p6": {
+          "consulta": "\"exting\"* OR \"abando\"* OR \"acao\" OR \"alimen\"* OR \"intima\"* OR \"pessoa\"* OR \"parte\" OR \"repres\"* OR \"curado\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ou_p5": {
+          "consulta": "\"extin\"* OR \"aband\"* OR \"acao\" OR \"alime\"* OR \"intim\"* OR \"pesso\"* OR \"parte\" OR \"repre\"* OR \"curad\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"extinguir\" OR \"abandono\" OR \"acao\" OR \"alimentos\" OR \"intimar\" OR \"pessoalmente\" OR \"parte\" OR \"representada\" OR \"curador\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 2,
+          "bytes": 2892,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "STJ:927097",
+            "STJ:929963"
+          ],
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ferramenta_pagina1": {
+          "total": 2,
+          "bytes": 2892,
+          "ids": [
+            "STJ:927097",
+            "STJ:929963"
+          ],
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "e": {
+          "consulta": "\"abandono\" AND \"alimentos\" AND \"curador\"",
+          "retornados": 2,
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "e_p6": {
+          "consulta": "\"abando\"* AND \"alimen\"* AND \"curado\"*",
+          "retornados": 3,
+          "posicoes": {
+            "STJ:929963": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou": {
+          "consulta": "\"abandono\" OR \"alimentos\" OR \"curador\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ou_p6": {
+          "consulta": "\"abando\"* OR \"alimen\"* OR \"curado\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"aband\"* OR \"alime\"* OR \"curad\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929963": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"abandono\" AND \"alimentos\" AND \"curador\"",
+          "retornados": 2,
+          "posicoes": {
+            "STJ:929963": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "guarda-levantamento-alimentos",
+      "esperados": [
+        "TJSC:321786619979792694803711585644"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 1,
+          "bytes": 1807,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "TJSC:321786619979792694803711585644"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 1,
+          "bytes": 1807,
+          "ids": [
+            "TJSC:321786619979792694803711585644"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"levantamento\" AND \"valores\" AND \"alimentos\" AND \"depositados\" AND \"alteracao\" AND \"guarda\" AND \"genitor\" AND \"guardiao\"",
+          "retornados": 1,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_p6": {
+          "consulta": "\"levant\"* AND \"valore\"* AND \"alimen\"* AND \"deposi\"* AND \"altera\"* AND \"guarda\" AND \"genito\"* AND \"guardi\"*",
+          "retornados": 1,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou": {
+          "consulta": "\"levantamento\" OR \"valores\" OR \"alimentos\" OR \"depositados\" OR \"alteracao\" OR \"guarda\" OR \"genitor\" OR \"guardiao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"levant\"* OR \"valore\"* OR \"alimen\"* OR \"deposi\"* OR \"altera\"* OR \"guarda\" OR \"genito\"* OR \"guardi\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"levan\"* OR \"valor\"* OR \"alime\"* OR \"depos\"* OR \"alter\"* OR \"guard\"* OR \"genit\"* OR \"guard\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"levantamento\" AND \"valores\" AND \"alimentos\" AND \"depositados\" AND \"alteracao\" AND \"guarda\" AND \"genitor\" AND \"guardiao\"",
+          "retornados": 1,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 2442,
+          "bytes": 7249,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321786619979792694803711585644",
+            "STJ:000909490",
+            "STJ:923570",
+            "TJSC:321790081633433507943967757421",
+            "TJSC:321785241743612880408560330269",
+            "TJSC:321786814631739698956761760268",
+            "TJSC:321786467542236744135198737343",
+            "STJ:1435899"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 2442,
+          "bytes": 7249,
+          "ids": [
+            "TJSC:321786619979792694803711585644",
+            "STJ:000909490",
+            "STJ:923570",
+            "TJSC:321790081633433507943967757421",
+            "TJSC:321785241743612880408560330269"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"levantar\" AND \"alimentos\" AND \"depositados\" AND \"guarda\" AND \"filho\" AND \"mudou\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"levant\"* AND \"alimen\"* AND \"deposi\"* AND \"guarda\" AND \"filho\" AND \"mudou\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"levantar\" OR \"alimentos\" OR \"depositados\" OR \"guarda\" OR \"filho\" OR \"mudou\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"levant\"* OR \"alimen\"* OR \"deposi\"* OR \"guarda\" OR \"filho\" OR \"mudou\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"levan\"* OR \"alime\"* OR \"depos\"* OR \"guard\"* OR \"filho\" OR \"mudou\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"levantar\" OR \"alimentos\" OR \"depositados\" OR \"guarda\" OR \"filho\" OR \"mudou\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 3,
+          "bytes": 4228,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "TJSC:321786619979792694803711585644",
+            "TJSC:321790018162675778198000451641",
+            "TJSC:321790018162675778197635758415"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 3,
+          "bytes": 4228,
+          "ids": [
+            "TJSC:321786619979792694803711585644",
+            "TJSC:321790018162675778198000451641",
+            "TJSC:321790018162675778197635758415"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"levantamento\" AND \"alimentos\" AND \"guarda\"",
+          "retornados": 3,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_p6": {
+          "consulta": "\"levant\"* AND \"alimen\"* AND \"guarda\"",
+          "retornados": 4,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou": {
+          "consulta": "\"levantamento\" OR \"alimentos\" OR \"guarda\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"levant\"* OR \"alimen\"* OR \"guarda\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"levan\"* OR \"alime\"* OR \"guard\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"levantamento\" AND \"alimentos\" AND \"guarda\"",
+          "retornados": 3,
+          "posicoes": {
+            "TJSC:321786619979792694803711585644": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "liquidacao-partilha",
+      "esperados": [
+        "TJSC:321786619979792694803573014559"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 10,
+          "bytes": 7024,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321784300707743581318268645545",
+            "TJSC:321787584892160895412758967475",
+            "TJSC:321785241743612880408591946797",
+            "TJSC:321790081633433507943999851674",
+            "TJSC:321785864890251663282941960872",
+            "TJSC:321786898491572648333711885011",
+            "TJSC:321783436066392853207171583712",
+            "TJSC:321785864890251663282205771312"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 10,
+          "bytes": 7024,
+          "ids": [
+            "TJSC:321784300707743581318268645545",
+            "TJSC:321787584892160895412758967475",
+            "TJSC:321785241743612880408591946797",
+            "TJSC:321790081633433507943999851674",
+            "TJSC:321785864890251663282941960872"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"liquidacao\" AND \"sentenca\" AND \"partilha\" AND \"bens\" AND \"apuracao\" AND \"valores\" AND \"divorcio\"",
+          "retornados": 10,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"liquid\"* AND \"senten\"* AND \"partil\"* AND \"bens\" AND \"apurac\"* AND \"valore\"* AND \"divorc\"*",
+          "retornados": 10,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"liquidacao\" OR \"sentenca\" OR \"partilha\" OR \"bens\" OR \"apuracao\" OR \"valores\" OR \"divorcio\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"liquid\"* OR \"senten\"* OR \"partil\"* OR \"bens\" OR \"apurac\"* OR \"valore\"* OR \"divorc\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"liqui\"* OR \"sente\"* OR \"parti\"* OR \"bens\" OR \"apura\"* OR \"valor\"* OR \"divor\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 95
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.010526315789473684
+        },
+        "e_senao_ou": {
+          "consulta": "\"liquidacao\" AND \"sentenca\" AND \"partilha\" AND \"bens\" AND \"apuracao\" AND \"valores\" AND \"divorcio\"",
+          "retornados": 10,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 12256,
+          "bytes": 7221,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:1392410",
+            "TJSC:321786898491572648330165387019",
+            "TJSC:321784558637349305045080353257",
+            "STJ:953654",
+            "STJ:930847",
+            "STJ:000917945",
+            "TJSC:321785864890251663283048188129",
+            "TJSC:321786898491572648333711885011"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 12256,
+          "bytes": 7221,
+          "ids": [
+            "STJ:1392410",
+            "TJSC:321786898491572648330165387019",
+            "TJSC:321784558637349305045080353257",
+            "STJ:953654",
+            "STJ:930847"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"liquida\" AND \"sentenca\" AND \"determinou\" AND \"partilha\" AND \"bens\" AND \"casal\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"liquid\"* AND \"senten\"* AND \"determ\"* AND \"partil\"* AND \"bens\" AND \"casal\"",
+          "retornados": 10,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"liquida\" OR \"sentenca\" OR \"determinou\" OR \"partilha\" OR \"bens\" OR \"casal\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"liquid\"* OR \"senten\"* OR \"determ\"* OR \"partil\"* OR \"bens\" OR \"casal\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"liqui\"* OR \"sente\"* OR \"deter\"* OR \"parti\"* OR \"bens\" OR \"casal\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"liquida\" OR \"sentenca\" OR \"determinou\" OR \"partilha\" OR \"bens\" OR \"casal\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 103,
+          "bytes": 6691,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "TJSC:321781524051010972196552986488",
+            "TJSC:321784558637349305045010305748",
+            "STJ:930847",
+            "TJSC:321786898491572648330165387019",
+            "TJSC:321786982354457870770503692566",
+            "TJSC:321790018162675778198000451641",
+            "STJ:1392410",
+            "TJSC:321785864890251663283048188129"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 103,
+          "bytes": 6691,
+          "ids": [
+            "TJSC:321781524051010972196552986488",
+            "TJSC:321784558637349305045010305748",
+            "STJ:930847",
+            "TJSC:321786898491572648330165387019",
+            "TJSC:321786982354457870770503692566"
+          ],
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"liquidacao\" AND \"partilha\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 12
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.08333333333333333
+        },
+        "e_p6": {
+          "consulta": "\"liquid\"* AND \"partil\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 13
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.07692307692307693
+        },
+        "ou": {
+          "consulta": "\"liquidacao\" OR \"partilha\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 12
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.08333333333333333
+        },
+        "ou_p6": {
+          "consulta": "\"liquid\"* OR \"partil\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 13
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.07692307692307693
+        },
+        "ou_p5": {
+          "consulta": "\"liqui\"* OR \"parti\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 17
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.058823529411764705
+        },
+        "e_senao_ou": {
+          "consulta": "\"liquidacao\" AND \"partilha\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321786619979792694803573014559": 12
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.08333333333333333,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "liquidacao-recurso-cabivel",
+      "esperados": [
+        "STJ:1447604",
+        "TJSC:321786619979792694803573014559"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 2,
+          "bytes": 2852,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "STJ:958096",
+            "STJ:929598"
+          ],
+          "posicoes": {
+            "STJ:1447604": null,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 2,
+          "bytes": 2852,
+          "ids": [
+            "STJ:958096",
+            "STJ:929598"
+          ],
+          "posicoes": {
+            "STJ:1447604": null,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"recurso\" AND \"cabivel\" AND \"decisao\" AND \"julga\" AND \"liquidacao\" AND \"sentenca\" AND \"agravo\" AND \"instrumento\" AND \"apelacao\"",
+          "retornados": 2,
+          "posicoes": {
+            "STJ:1447604": null,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"recurs\"* AND \"cabive\"* AND \"decisa\"* AND \"julga\" AND \"liquid\"* AND \"senten\"* AND \"agravo\" AND \"instru\"* AND \"apelac\"*",
+          "retornados": 2,
+          "posicoes": {
+            "STJ:1447604": null,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"recurso\" OR \"cabivel\" OR \"decisao\" OR \"julga\" OR \"liquidacao\" OR \"sentenca\" OR \"agravo\" OR \"instrumento\" OR \"apelacao\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 12,
+            "TJSC:321786619979792694803573014559": 23
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.08333333333333333
+        },
+        "ou_p6": {
+          "consulta": "\"recurs\"* OR \"cabive\"* OR \"decisa\"* OR \"julga\" OR \"liquid\"* OR \"senten\"* OR \"agravo\" OR \"instru\"* OR \"apelac\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 16,
+            "TJSC:321786619979792694803573014559": 25
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0625
+        },
+        "ou_p5": {
+          "consulta": "\"recur\"* OR \"cabiv\"* OR \"decis\"* OR \"julga\" OR \"liqui\"* OR \"sente\"* OR \"agrav\"* OR \"instr\"* OR \"apela\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 16,
+            "TJSC:321786619979792694803573014559": 24
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0625
+        },
+        "e_senao_ou": {
+          "consulta": "\"recurso\" AND \"cabivel\" AND \"decisao\" AND \"julga\" AND \"liquidacao\" AND \"sentenca\" AND \"agravo\" AND \"instrumento\" AND \"apelacao\"",
+          "retornados": 2,
+          "posicoes": {
+            "STJ:1447604": null,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 39683,
+          "bytes": 7152,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:000899294",
+            "STJ:922871",
+            "STJ:952112",
+            "STJ:952109",
+            "STJ:924381",
+            "STJ:942780",
+            "STJ:1447604",
+            "TJSC:321785864890251663282956263553"
+          ],
+          "posicoes": {
+            "STJ:1447604": 7,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.14285714285714285
+        },
+        "ferramenta_pagina1": {
+          "total": 39683,
+          "bytes": 7152,
+          "ids": [
+            "STJ:000899294",
+            "STJ:922871",
+            "STJ:952112",
+            "STJ:952109",
+            "STJ:924381"
+          ],
+          "posicoes": {
+            "STJ:1447604": null,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"recurso\" AND \"contra\" AND \"decisao\" AND \"encerra\" AND \"liquidacao\" AND \"sentenca\"",
+          "retornados": 7,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "e_p6": {
+          "consulta": "\"recurs\"* AND \"contra\" AND \"decisa\"* AND \"encerr\"* AND \"liquid\"* AND \"senten\"*",
+          "retornados": 23,
+          "posicoes": {
+            "STJ:1447604": 3,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.3333333333333333
+        },
+        "ou": {
+          "consulta": "\"recurso\" OR \"contra\" OR \"decisao\" OR \"encerra\" OR \"liquidacao\" OR \"sentenca\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 7,
+            "TJSC:321786619979792694803573014559": 81
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.14285714285714285
+        },
+        "ou_p6": {
+          "consulta": "\"recurs\"* OR \"contra\" OR \"decisa\"* OR \"encerr\"* OR \"liquid\"* OR \"senten\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "ou_p5": {
+          "consulta": "\"recur\"* OR \"contr\"* OR \"decis\"* OR \"encer\"* OR \"liqui\"* OR \"sente\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "e_senao_ou": {
+          "consulta": "\"recurso\" AND \"contra\" AND \"decisao\" AND \"encerra\" AND \"liquidacao\" AND \"sentenca\"",
+          "retornados": 7,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2,
+          "usou": "e"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 172,
+          "bytes": 6519,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "STJ:000909083",
+            "STJ:942780",
+            "STJ:957186",
+            "STJ:939601",
+            "STJ:1447604",
+            "STJ:930869",
+            "STJ:925432",
+            "STJ:952112"
+          ],
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "ferramenta_pagina1": {
+          "total": 172,
+          "bytes": 6519,
+          "ids": [
+            "STJ:000909083",
+            "STJ:942780",
+            "STJ:957186",
+            "STJ:939601",
+            "STJ:1447604"
+          ],
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": null
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "e": {
+          "consulta": "\"liquidacao\" AND \"recurso\" AND \"cabivel\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": 14
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "e_p6": {
+          "consulta": "\"liquid\"* AND \"recurs\"* AND \"cabive\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 7,
+            "TJSC:321786619979792694803573014559": 10
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.14285714285714285
+        },
+        "ou": {
+          "consulta": "\"liquidacao\" OR \"recurso\" OR \"cabivel\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": 14
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2
+        },
+        "ou_p6": {
+          "consulta": "\"liquid\"* OR \"recurs\"* OR \"cabive\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 7,
+            "TJSC:321786619979792694803573014559": 10
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.14285714285714285
+        },
+        "ou_p5": {
+          "consulta": "\"liqui\"* OR \"recur\"* OR \"cabiv\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 7,
+            "TJSC:321786619979792694803573014559": 10
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.14285714285714285
+        },
+        "e_senao_ou": {
+          "consulta": "\"liquidacao\" AND \"recurso\" AND \"cabivel\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:1447604": 5,
+            "TJSC:321786619979792694803573014559": 14
+          },
+          "hit": true,
+          "recall": 0.5,
+          "rr": 0.2,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "multa-embargos-protelatorios",
+      "esperados": [
+        "STJ:958099"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 27120,
+          "bytes": 6937,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:000898846",
+            "STJ:000915553",
+            "STJ:948761",
+            "STJ:000899539",
+            "STJ:928819",
+            "STJ:000900908",
+            "STJ:921602",
+            "STJ:000920077"
+          ],
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 27120,
+          "bytes": 6937,
+          "ids": [
+            "STJ:000898846",
+            "STJ:000915553",
+            "STJ:948761",
+            "STJ:000899539",
+            "STJ:928819"
+          ],
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"multa\" AND \"embargos\" AND \"declaracao\" AND \"protelatorios\" AND \"artigo\" AND \"1026\" AND \"cpc\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"multa\" AND \"embarg\"* AND \"declar\"* AND \"protel\"* AND \"artigo\" AND \"1026\" AND \"cpc\"",
+          "retornados": 1,
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"multa\" OR \"embargos\" OR \"declaracao\" OR \"protelatorios\" OR \"artigo\" OR \"1026\" OR \"cpc\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 92
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.010869565217391304
+        },
+        "ou_p6": {
+          "consulta": "\"multa\" OR \"embarg\"* OR \"declar\"* OR \"protel\"* OR \"artigo\" OR \"1026\" OR \"cpc\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 81
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.012345679012345678
+        },
+        "ou_p5": {
+          "consulta": "\"multa\" OR \"embar\"* OR \"decla\"* OR \"prote\"* OR \"artig\"* OR \"1026\" OR \"cpc\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 91
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.01098901098901099
+        },
+        "e_senao_ou": {
+          "consulta": "\"multa\" OR \"embargos\" OR \"declaracao\" OR \"protelatorios\" OR \"artigo\" OR \"1026\" OR \"cpc\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 92
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.010869565217391304,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 56,
+          "bytes": 6546,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "STJ:940765",
+            "STJ:000914459",
+            "STJ:936837",
+            "STJ:930138",
+            "STJ:939442",
+            "STJ:939500",
+            "STJ:951928",
+            "STJ:953664"
+          ],
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 56,
+          "bytes": 6546,
+          "ids": [
+            "STJ:940765",
+            "STJ:000914459",
+            "STJ:936837",
+            "STJ:930138",
+            "STJ:939442"
+          ],
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"aplica\" AND \"multa\" AND \"embargos\" AND \"declaracao\" AND \"protelatorios\"",
+          "retornados": 72,
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"aplica\" AND \"multa\" AND \"embarg\"* AND \"declar\"* AND \"protel\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"aplica\" OR \"multa\" OR \"embargos\" OR \"declaracao\" OR \"protelatorios\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 77
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.012987012987012988
+        },
+        "ou_p6": {
+          "consulta": "\"aplica\" OR \"multa\" OR \"embarg\"* OR \"declar\"* OR \"protel\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 67
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.014925373134328358
+        },
+        "ou_p5": {
+          "consulta": "\"aplic\"* OR \"multa\" OR \"embar\"* OR \"decla\"* OR \"prote\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 8
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.125
+        },
+        "e_senao_ou": {
+          "consulta": "\"aplica\" AND \"multa\" AND \"embargos\" AND \"declaracao\" AND \"protelatorios\"",
+          "retornados": 72,
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 479,
+          "bytes": 6501,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "STJ:953932",
+            "STJ:939758",
+            "STJ:927871",
+            "STJ:929626",
+            "STJ:940730",
+            "STJ:948762",
+            "STJ:928819",
+            "STJ:931327"
+          ],
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 479,
+          "bytes": 6501,
+          "ids": [
+            "STJ:953932",
+            "STJ:939758",
+            "STJ:927871",
+            "STJ:929626",
+            "STJ:940730"
+          ],
+          "posicoes": {
+            "STJ:958099": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"embargos\" AND \"protelatorios\" AND \"multa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 70
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.014285714285714285
+        },
+        "e_p6": {
+          "consulta": "\"embarg\"* AND \"protel\"* AND \"multa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 11
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.09090909090909091
+        },
+        "ou": {
+          "consulta": "\"embargos\" OR \"protelatorios\" OR \"multa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 70
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.014285714285714285
+        },
+        "ou_p6": {
+          "consulta": "\"embarg\"* OR \"protel\"* OR \"multa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 11
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.09090909090909091
+        },
+        "ou_p5": {
+          "consulta": "\"embar\"* OR \"prote\"* OR \"multa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 9
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.1111111111111111
+        },
+        "e_senao_ou": {
+          "consulta": "\"embargos\" AND \"protelatorios\" AND \"multa\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:958099": 70
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.014285714285714285,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "credito-educativo-indice",
+      "esperados": [
+        "STJ:957790"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 10622,
+          "bytes": 6844,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:957790",
+            "STJ:938476",
+            "STJ:936836",
+            "STJ:937477",
+            "STJ:939737",
+            "STJ:951600",
+            "STJ:938465",
+            "STJ:1450774"
+          ],
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 10622,
+          "bytes": 6844,
+          "ids": [
+            "STJ:957790",
+            "STJ:938476",
+            "STJ:936836",
+            "STJ:937477",
+            "STJ:939737"
+          ],
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"credito\" AND \"educativo\" AND \"correcao\" AND \"monetaria\" AND \"indice\" AND \"contrato\" AND \"fies\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:957790": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"credit\"* AND \"educat\"* AND \"correc\"* AND \"moneta\"* AND \"indice\" AND \"contra\"* AND \"fies\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:957790": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"credito\" OR \"educativo\" OR \"correcao\" OR \"monetaria\" OR \"indice\" OR \"contrato\" OR \"fies\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"credit\"* OR \"educat\"* OR \"correc\"* OR \"moneta\"* OR \"indice\" OR \"contra\"* OR \"fies\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"credi\"* OR \"educa\"* OR \"corre\"* OR \"monet\"* OR \"indic\"* OR \"contr\"* OR \"fies\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "e_senao_ou": {
+          "consulta": "\"credito\" OR \"educativo\" OR \"correcao\" OR \"monetaria\" OR \"indice\" OR \"contrato\" OR \"fies\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "ou"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 4958,
+          "bytes": 7021,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:957790",
+            "TJSC:321787319262387737604114402029",
+            "STJ:000900125",
+            "STJ:938492",
+            "STJ:1427542",
+            "STJ:938476",
+            "STJ:938479",
+            "STJ:951600"
+          ],
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ferramenta_pagina1": {
+          "total": 4958,
+          "bytes": 7021,
+          "ids": [
+            "STJ:957790",
+            "TJSC:321787319262387737604114402029",
+            "STJ:000900125",
+            "STJ:938492",
+            "STJ:1427542"
+          ],
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "e": {
+          "consulta": "\"indice\" AND \"corrige\" AND \"contratos\" AND \"credito\" AND \"educativo\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:957790": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"indice\" AND \"corrig\"* AND \"contra\"* AND \"credit\"* AND \"educat\"*",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:957790": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"indice\" OR \"corrige\" OR \"contratos\" OR \"credito\" OR \"educativo\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p6": {
+          "consulta": "\"indice\" OR \"corrig\"* OR \"contra\"* OR \"credit\"* OR \"educat\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0
+        },
+        "ou_p5": {
+          "consulta": "\"indic\"* OR \"corri\"* OR \"contr\"* OR \"credi\"* OR \"educa\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 5
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.2
+        },
+        "e_senao_ou": {
+          "consulta": "\"indice\" OR \"corrige\" OR \"contratos\" OR \"credito\" OR \"educativo\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 1
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 1.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 4,
+          "bytes": 5277,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "TJSC:321787319262387737604114402029",
+            "STJ:957790",
+            "STJ:1427542",
+            "TJSC:321785444469907677517426520453"
+          ],
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ferramenta_pagina1": {
+          "total": 4,
+          "bytes": 5277,
+          "ids": [
+            "TJSC:321787319262387737604114402029",
+            "STJ:957790",
+            "STJ:1427542",
+            "TJSC:321785444469907677517426520453"
+          ],
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "e": {
+          "consulta": "\"credito\" AND \"educativo\"",
+          "retornados": 4,
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "e_p6": {
+          "consulta": "\"credit\"* AND \"educat\"*",
+          "retornados": 4,
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ou": {
+          "consulta": "\"credito\" OR \"educativo\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5
+        },
+        "ou_p6": {
+          "consulta": "\"credit\"* OR \"educat\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 3
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.3333333333333333
+        },
+        "ou_p5": {
+          "consulta": "\"credi\"* OR \"educa\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:957790": 19
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.05263157894736842
+        },
+        "e_senao_ou": {
+          "consulta": "\"credito\" AND \"educativo\"",
+          "retornados": 4,
+          "posicoes": {
+            "STJ:957790": 2
+          },
+          "hit": true,
+          "recall": 1.0,
+          "rr": 0.5,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "corretor-atraso-obra",
+      "esperados": [
+        "STJ:929388"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 1,
+          "bytes": 1847,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "STJ:952007"
+          ],
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 1,
+          "bytes": 1847,
+          "ids": [
+            "STJ:952007"
+          ],
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"corretagem\" AND \"atraso\" AND \"entrega\" AND \"obra\" AND \"responsabilidade\" AND \"corretora\" AND \"imobiliaria\"",
+          "retornados": 1,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"corret\"* AND \"atraso\" AND \"entreg\"* AND \"obra\" AND \"respon\"* AND \"corret\"* AND \"imobil\"*",
+          "retornados": 2,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"corretagem\" OR \"atraso\" OR \"entrega\" OR \"obra\" OR \"responsabilidade\" OR \"corretora\" OR \"imobiliaria\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": 10
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.1
+        },
+        "ou_p6": {
+          "consulta": "\"corret\"* OR \"atraso\" OR \"entreg\"* OR \"obra\" OR \"respon\"* OR \"corret\"* OR \"imobil\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": 18
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.05555555555555555
+        },
+        "ou_p5": {
+          "consulta": "\"corre\"* OR \"atras\"* OR \"entre\"* OR \"obra\" OR \"respo\"* OR \"corre\"* OR \"imobi\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": 60
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.016666666666666666
+        },
+        "e_senao_ou": {
+          "consulta": "\"corretagem\" AND \"atraso\" AND \"entrega\" AND \"obra\" AND \"responsabilidade\" AND \"corretora\" AND \"imobiliaria\"",
+          "retornados": 1,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 5125,
+          "bytes": 6943,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:958389",
+            "STJ:000911780",
+            "STJ:948693",
+            "STJ:1467047",
+            "STJ:938113",
+            "STJ:924912",
+            "STJ:950263",
+            "STJ:939211"
+          ],
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 5125,
+          "bytes": 6943,
+          "ids": [
+            "STJ:958389",
+            "STJ:000911780",
+            "STJ:948693",
+            "STJ:1467047",
+            "STJ:938113"
+          ],
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"corretora\" AND \"responde\" AND \"atraso\" AND \"entrega\" AND \"imovel\" AND \"planta\"",
+          "retornados": 0,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"corret\"* AND \"respon\"* AND \"atraso\" AND \"entreg\"* AND \"imovel\" AND \"planta\"",
+          "retornados": 3,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"corretora\" OR \"responde\" OR \"atraso\" OR \"entrega\" OR \"imovel\" OR \"planta\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"corret\"* OR \"respon\"* OR \"atraso\" OR \"entreg\"* OR \"imovel\" OR \"planta\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"corre\"* OR \"respo\"* OR \"atras\"* OR \"entre\"* OR \"imove\"* OR \"plant\"*",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"corretora\" OR \"responde\" OR \"atraso\" OR \"entrega\" OR \"imovel\" OR \"planta\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 10,
+          "bytes": 6789,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "STJ:000919670",
+            "STJ:000912420",
+            "STJ:952463",
+            "STJ:952007",
+            "STJ:1450207",
+            "STJ:951484",
+            "STJ:954324",
+            "STJ:000904433"
+          ],
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 10,
+          "bytes": 6789,
+          "ids": [
+            "STJ:000919670",
+            "STJ:000912420",
+            "STJ:952463",
+            "STJ:952007",
+            "STJ:1450207"
+          ],
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"corretagem\" AND \"atraso\" AND \"obra\"",
+          "retornados": 10,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"corret\"* AND \"atraso\" AND \"obra\"",
+          "retornados": 18,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"corretagem\" OR \"atraso\" OR \"obra\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"corret\"* OR \"atraso\" OR \"obra\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"corre\"* OR \"atras\"* OR \"obra\"",
+          "retornados": 100,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"corretagem\" AND \"atraso\" AND \"obra\"",
+          "retornados": 10,
+          "posicoes": {
+            "STJ:929388": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      }
+    },
+    {
+      "id": "preparo-desercao",
+      "esperados": [
+        "TJSC:321788540458139682713794504964"
+      ],
+      "assessor": {
+        "ferramenta": {
+          "total": 4,
+          "bytes": 5182,
+          "ampliada": false,
+          "paginas": 1,
+          "ids": [
+            "STJ:1431890",
+            "STJ:1431430",
+            "STJ:959961",
+            "STJ:960198"
+          ],
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 4,
+          "bytes": 5182,
+          "ids": [
+            "STJ:1431890",
+            "STJ:1431430",
+            "STJ:959961",
+            "STJ:960198"
+          ],
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"preparo\" AND \"desercao\" AND \"recolhimento\" AND \"custas\" AND \"recursais\" AND \"complementacao\"",
+          "retornados": 4,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"prepar\"* AND \"deserc\"* AND \"recolh\"* AND \"custas\" AND \"recurs\"* AND \"comple\"*",
+          "retornados": 27,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"preparo\" OR \"desercao\" OR \"recolhimento\" OR \"custas\" OR \"recursais\" OR \"complementacao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"prepar\"* OR \"deserc\"* OR \"recolh\"* OR \"custas\" OR \"recurs\"* OR \"comple\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"prepa\"* OR \"deser\"* OR \"recol\"* OR \"custa\"* OR \"recur\"* OR \"compl\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"preparo\" AND \"desercao\" AND \"recolhimento\" AND \"custas\" AND \"recursais\" AND \"complementacao\"",
+          "retornados": 4,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      },
+      "natural": {
+        "ferramenta": {
+          "total": 39231,
+          "bytes": 7258,
+          "ampliada": true,
+          "paginas": 2,
+          "ids": [
+            "STJ:939151",
+            "STJ:000900379",
+            "STJ:921876",
+            "STJ:943573",
+            "STJ:000904264",
+            "STJ:1460622",
+            "STJ:959751",
+            "STJ:936965"
+          ],
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 39231,
+          "bytes": 7258,
+          "ids": [
+            "STJ:939151",
+            "STJ:000900379",
+            "STJ:921876",
+            "STJ:943573",
+            "STJ:000904264"
+          ],
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"recurso\" AND \"deserto\" AND \"preparo\" AND \"recolhido\" AND \"forma\" AND \"insuficiente\" AND \"oportunidade\" AND \"complementar\"",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"recurs\"* AND \"desert\"* AND \"prepar\"* AND \"recolh\"* AND \"forma\" AND \"insufi\"* AND \"oportu\"* AND \"comple\"*",
+          "retornados": 0,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"recurso\" OR \"deserto\" OR \"preparo\" OR \"recolhido\" OR \"forma\" OR \"insuficiente\" OR \"oportunidade\" OR \"complementar\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"recurs\"* OR \"desert\"* OR \"prepar\"* OR \"recolh\"* OR \"forma\" OR \"insufi\"* OR \"oportu\"* OR \"comple\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"recur\"* OR \"deser\"* OR \"prepa\"* OR \"recol\"* OR \"forma\" OR \"insuf\"* OR \"oport\"* OR \"compl\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"recurso\" OR \"deserto\" OR \"preparo\" OR \"recolhido\" OR \"forma\" OR \"insuficiente\" OR \"oportunidade\" OR \"complementar\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "ou"
+        }
+      },
+      "curta": {
+        "ferramenta": {
+          "total": 391,
+          "bytes": 6574,
+          "ampliada": false,
+          "paginas": 2,
+          "ids": [
+            "STJ:942701",
+            "STJ:954184",
+            "STJ:942118",
+            "STJ:1156284",
+            "STJ:1452534",
+            "STJ:941452",
+            "STJ:950861",
+            "STJ:939564"
+          ],
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ferramenta_pagina1": {
+          "total": 391,
+          "bytes": 6574,
+          "ids": [
+            "STJ:942701",
+            "STJ:954184",
+            "STJ:942118",
+            "STJ:1156284",
+            "STJ:1452534"
+          ],
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e": {
+          "consulta": "\"preparo\" AND \"desercao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_p6": {
+          "consulta": "\"prepar\"* AND \"deserc\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou": {
+          "consulta": "\"preparo\" OR \"desercao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p6": {
+          "consulta": "\"prepar\"* OR \"deserc\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "ou_p5": {
+          "consulta": "\"prepa\"* OR \"deser\"*",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0
+        },
+        "e_senao_ou": {
+          "consulta": "\"preparo\" AND \"desercao\"",
+          "retornados": 100,
+          "posicoes": {
+            "TJSC:321788540458139682713794504964": null
+          },
+          "hit": false,
+          "recall": 0.0,
+          "rr": 0.0,
+          "usou": "e"
+        }
+      }
+    }
+  ]
+}

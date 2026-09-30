@@ -1,4 +1,4 @@
-"""Contract flora-mcp-3: the examples of CONTRATO.md and each rule, over the real MCP client."""
+"""Contract flora-mcp-3.1: the examples of CONTRATO.md and each rule, over the real MCP client."""
 
 import asyncio
 import base64
@@ -87,6 +87,9 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
             "pesquisar_jurisprudencia.sem_correspondencia": await ok(
                 "pesquisar_jurisprudencia", {"termos": "pagou pensão"}
             ),
+            "pesquisar_jurisprudencia.ampliada": await ok(
+                "pesquisar_jurisprudencia", {"termos": "guarda de pensão"}
+            ),
             "pesquisar_jurisprudencia.fora_da_cobertura": await ok(
                 "pesquisar_jurisprudencia",
                 {"termos": "alimentos", "data_inicio": "2001-01-01", "data_fim": "2001-12-31"},
@@ -116,7 +119,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         assert_same_shape(example, answers[name], name)
     for name, answer in answers.items():
         if name != "erro":
-            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3", name
+            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.1", name
             assert answer["publicacao_id"], name
     assert answers["erro"]["codigo"] == "documento_nao_encontrado"
     assert answers["pesquisar_jurisprudencia.sem_correspondencia"]["termos_sem_ocorrencia"] == [
@@ -124,6 +127,14 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         "pensão",
     ]
     assert answers["pesquisar_jurisprudencia.filtro_restritivo"]["total_sem_filtros"] == 1
+    broadened = answers["pesquisar_jurisprudencia.ampliada"]
+    assert (
+        broadened["consulta_efetiva"] == documented["pesquisar_jurisprudencia.ampliada"]["consulta_efetiva"]
+    )
+    assert broadened["ampliacao"] == documented["pesquisar_jurisprudencia.ampliada"]["ampliacao"]
+    assert [r["id"] for r in broadened["resultados"]] == ["STJ:2"]
+    for name in answers:
+        assert ("ampliacao" in answers[name]) == (name == "pesquisar_jurisprudencia.ampliada"), name
 
 
 def test_closed_vocabularies_are_enums_and_defaults_are_the_contract():
@@ -225,13 +236,15 @@ def test_empty_page_reasons_follow_the_contract_order(store):
     assert (
         api.search(store, "alimentos", data_inicio="2026-08-25")["total_encontrado"] == 1
     )  # published 09-01
-    inside = api.search(store, "guarda alimentos", data_inicio="2026-08-25")
+    inside = api.search(store, "inexistente ausente", data_inicio="2026-08-25")
     # Filtered, but the same terms find nothing without filters either.
     assert inside["motivo"] == "sem_correspondencia" and "total_sem_filtros" not in inside
     process = api.search(store, "alimentos", processo="999")
     assert (process["motivo"], process["total_sem_filtros"]) == ("filtro_restritivo", 1)
-    none = api.search(store, "alimentos inexistente", orgao="terceira turma")
-    assert none["motivo"] == "sem_correspondencia"
+    # Neither every term nor any term under the filter: today's reason, over the query asked.
+    none = api.search(store, "alimentos inexistente", orgao="quarta turma")
+    assert none["motivo"] == "sem_correspondencia" and "ampliacao" not in none
+    assert none["consulta_efetiva"] == '"alimentos" AND "inexistente"'
     assert none["termos"] == [
         {"termo": "alimentos", "documentos": 1},
         {"termo": "inexistente", "documentos": 0},
@@ -270,7 +283,7 @@ def test_automatic_order_and_coverage_block(store):
 def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(published):
     page = api.search(published, limite=1)
     decoded = json.loads(base64.urlsafe_b64decode(page["proximo_cursor"]))
-    assert decoded["contrato"] == "flora-mcp-3"
+    assert decoded["contrato"] == "flora-mcp-3.1"
     assert decoded["publicacao"] == page["publicacao_id"]
     assert "continua" not in decoded  # no cursor inside a cursor
     legacy = base64.urlsafe_b64encode(
@@ -279,6 +292,7 @@ def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(pub
     for cursor in (
         legacy,
         base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-2"}).encode()),
+        base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-3"}).encode()),
     ):
         with pytest.raises(FloraError) as info:
             api.search(published, limite=1, cursor=cursor if isinstance(cursor, str) else cursor.decode())
