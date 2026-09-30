@@ -2,7 +2,9 @@
 
 Somente leitura: abre a publicacao corrente (ou --publicacao) em modo imutavel.
 Mede a ferramenta como o agente a chama e, em paralelo, compiladores candidatos de
-consulta sobre o mesmo indice, para decidir mudancas da F6 por ganho medido.
+consulta sobre o mesmo indice, para decidir mudancas da F6 por ganho medido. A linha
+ferramenta segue o cursor ate TOPO itens (o orcamento de 8 KiB pode cortar a pagina);
+ferramenta_pagina1 mede so a primeira pagina, como na linha de base r781.
 
 Uso: python scripts/avaliar.py --data-dir <acervo> [--publicacao ID] [--saida arquivo]
 """
@@ -84,16 +86,25 @@ def medidas(pos):
 
 
 def ferramenta(store, texto, esperados):
+    """Os TOPO primeiros da ferramenta, seguindo o cursor quando o orcamento de bytes corta a pagina."""
     resultado = api.search(store, texto, limite=TOPO)
-    ids = [r["id"] for r in resultado["resultados"]]
-    pos = posicoes(ids, esperados)
+    primeira = [r["id"] for r in resultado["resultados"]]
+    ids, paginas, pagina = list(primeira), 1, resultado
+    while len(ids) < TOPO and pagina["proximo_cursor"]:
+        pagina = api.search(store, texto, limite=TOPO, cursor=pagina["proximo_cursor"])
+        ids += [r["id"] for r in pagina["resultados"]]
+        paginas += 1
+    ids = ids[:TOPO]
+    pos, pos_primeira = posicoes(ids, esperados), posicoes(primeira, esperados)
+    comum = {"total": resultado["total_encontrado"], "bytes": len(canonical(resultado).encode())}
     return {
-        "total": resultado["total_encontrado"],
-        "bytes": len(canonical(resultado).encode()),
+        **comum,
+        "ampliada": "ampliacao" in resultado,
+        "paginas": paginas,
         "ids": ids,
         "posicoes": pos,
         **medidas(pos),
-    }, resultado.get("publicacao_id")
+    }, {**comum, "ids": primeira, "posicoes": pos_primeira, **medidas(pos_primeira)}
 
 
 def candidato(db, compilar, texto, esperados):
@@ -137,14 +148,15 @@ def main():
         for p in conjunto["perguntas"]:
             linha = {"id": p["id"], "esperados": p["esperados"]}
             for f in formulacoes:
-                linha[f] = {"ferramenta": ferramenta(store, p[f], p["esperados"])[0]}
+                topo, primeira = ferramenta(store, p[f], p["esperados"])
+                linha[f] = {"ferramenta": topo, "ferramenta_pagina1": primeira}
                 for nome, compilar in CANDIDATOS.items():
                     linha[f][nome] = candidato(db, compilar, p[f], p["esperados"])
                 for nome, (primeiro, recuo) in RECUOS.items():
                     escolhido = primeiro if linha[f][primeiro]["retornados"] else recuo
                     linha[f][nome] = {**linha[f][escolhido], "usou": escolhido}
             por_pergunta.append(linha)
-    nomes = ("ferramenta", *CANDIDATOS, *RECUOS)
+    nomes = ("ferramenta", "ferramenta_pagina1", *CANDIDATOS, *RECUOS)
     resumo = {f: {c: agregado([q[f][c] for q in por_pergunta]) for c in nomes} for f in formulacoes}
     relatorio = {
         "schema": "flora-avaliacao-resultado-1",
@@ -161,7 +173,7 @@ def main():
     for f in formulacoes:
         print(f"== {f}")
         for c, m in resumo[f].items():
-            print(f"  {c:11} " + "  ".join(f"{k}={v}" for k, v in m.items()))
+            print(f"  {c:18} " + "  ".join(f"{k}={v}" for k, v in m.items()))
     print(f"salvo em {saida}")
     return 0
 
