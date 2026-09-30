@@ -88,7 +88,7 @@ class FloraServer(MCPServer):
 
 
 def create_server(store: Store) -> MCPServer:
-    server = FloraServer("Flora-MCP", version="0.2.0a1", instructions=INSTRUCTIONS)
+    server = FloraServer("Flora-MCP", version="0.3.0", instructions=INSTRUCTIONS)
     annotation = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
     def result(call, *args, **kwargs):

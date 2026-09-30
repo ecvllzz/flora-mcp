@@ -108,8 +108,8 @@ async def main():
                         "(disponibilidade do inteiro teor não verificada nesta execução).",
                         "",
                     ]
-    target = Path(__file__).resolve().parents[1] / "docs"
-    target.mkdir(exist_ok=True)
+    target = Path(__file__).resolve().parents[1] / "docs" / "recibos"
+    target.mkdir(parents=True, exist_ok=True)
     (target / "verificacao-mcp.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
     )

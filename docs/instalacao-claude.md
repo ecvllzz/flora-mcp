@@ -1,35 +1,41 @@
 # Flora-MCP no Claude Desktop
 
-## Estado em 29/09/2026
+O Claude Desktop inicia o servidor `stdio` pelo comando registrado em `mcpServers.flora-mcp` e encerra o processo ao sair. Nesta máquina, a instalação é a da Windows Store, e o arquivo efetivo é o que se abre por **Settings → Developer → Edit config**: `C:\Users\Home\AppData\Local\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`.
 
-Configuração adicionada ao arquivo efetivo aberto por **Settings → Developer → Edit config** na instalação Windows Store do Claude. A primeira tentativa usou AppData e falhou no Claude por redirecionamento MSIX. O teste no contexto do Codex não demonstrava acesso pelo Claude. Migração para pasta compartilhada autorizada em 29/09/2026; acompanhar [estado e verificação](migracao-dados-20260929.md).
+## Entrada
 
-- Servidor: `flora-mcp`.
-- Executável: `C:\Users\Home\Documents\Flora-MCP\.venv\Scripts\python.exe`.
-- Argumentos após migração: `-m flora_mcp.cli --data-dir C:\Users\Home\Documents\Flora\Dados\Flora-MCP serve`.
-- Ambiente: `PYTHONUTF8=1`.
-- Base compartilhada ativa: `Documents\Flora\Dados\Flora-MCP`. Um caminho absoluto dentro de AppData continua sujeito ao redirecionamento do aplicativo; a afirmação anterior em sentido contrário estava errada.
-- Configuração efetiva: `C:\Users\Home\AppData\Local\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`.
-- Backup exato e manifesto de hashes: `C:\Users\Home\Documents\Flora\_Archive\backups\claude-flora-mcp-20260929-135706`.
+```json
+{
+  "mcpServers": {
+    "flora-mcp": {
+      "command": "C:\\Users\\Home\\Documents\\Flora-MCP\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "flora_mcp.cli", "--data-dir", "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP", "serve"],
+      "env": {"PYTHONUTF8": "1"}
+    }
+  }
+}
+```
 
-Foi acrescentado somente `mcpServers.flora-mcp`. Os campos anteriores foram preservados e comparados após a gravação.
+- O executável é o do ambiente Python do worktree principal (`Documents\Flora-MCP`), que roda o `main`. Trocar de branch ali muda o código de quem abrir sessão nova.
+- `--data-dir` vem antes de `serve` e aponta para o acervo compartilhado, fora do cofre Obsidian e dos diretórios privados do pacote MSIX. Caminho absoluto dentro de AppData fica sujeito ao redirecionamento do aplicativo; por isso o acervo não mora lá.
+- Acrescente só a entrada `flora-mcp` e preserve os demais campos do arquivo; guarde uma cópia do arquivo antes de editar.
 
-## Verificação já feita
+O Codex usa o mesmo comando em `~\.codex\config.toml` (`[mcp_servers.flora-mcp]`), com o acervo em `FLORA_MCP_DATA_DIR` em vez de `--data-dir`.
 
-Após a migração, o Claude foi encerrado por **File → Exit** e reaberto. Na conversa nova **Flora-mcp technical verification**, chamou `consultar_cobertura`, `pesquisar_jurisprudencia` e `obter_documento` com sucesso. A leitura de `STJ:1466726` entregou ementa, referência completa e relator. Os processos novos usam explicitamente a pasta compartilhada. Caminhos antigos citados em recibos históricos de coleta não indicam o endereço atual do banco.
+## Carregar a mudança
 
-Cliente MCP independente iniciou o comando configurado, completou o protocolo, listou `pesquisar_jurisprudencia`, `obter_documento` e `consultar_cobertura`, e consultou um resultado para `alimentos`, com referência e relatoria presentes. A consulta encontrou 1.130 registros no acervo daquele momento.
+Depois de alterar a configuração ou atualizar o código em `main`, encerre o Claude por **File → Exit** (ou **Quit/Sair**) e abra-o de novo. Em **Settings → Developer**, confira `flora-mcp` com estado **Running**. Use uma conversa nova: a conversa já aberta continua com as ferramentas que descobriu ao começar.
 
-Esse teste comprova o servidor e o comando; não comprova que a instância já aberta do Claude carregou a nova entrada.
-
-## Em futuras alterações de configuração
-
-Encerre o Claude pelo comando **Quit/Sair** do aplicativo e abra-o novamente. Em **Settings → Developer**, confira `flora-mcp` com estado **Running**. Use uma conversa nova para descobrir as ferramentas recém-carregadas.
+Para conferir, peça numa conversa nova `consultar_cobertura`, uma pesquisa curta em `pesquisar_jurisprudencia` e a leitura de um resultado com `obter_documento`, conferindo a referência e o relator.
 
 Pedido de uso sugerido:
 
-> Use o flora-mcp para pesquisar jurisprudência sobre [tema]. Apresente a ementa e a referência completa, com tribunal, classe, processo, relator, órgão julgador e datas. Informe eventuais dados ausentes e os limites da cobertura.
+> Use o flora-mcp para pesquisar jurisprudência sobre [tema]. Apresente a ementa e a referência completa, com tribunal, classe, processo, relator, órgão julgador e datas. Informe eventuais dados ausentes, os limites da cobertura e o atraso da coleta.
 
-A referência é entregue pelo servidor, a partir do espelho original preservado. O acervo é parcial e contém ementas e espelhos, sem garantir o inteiro teor dos votos. As três ferramentas são de leitura.
+## O que o cliente recebe
+
+Quatro ferramentas de leitura: `pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento` e `consultar_cobertura` (contrato em [CONTRATO.md](../CONTRATO.md)). A referência é montada pelo servidor a partir do espelho original preservado. O acervo é parcial e contém ementas e espelhos, sem inteiro teor dos votos.
+
+A instalação e as verificações feitas quando o acervo mudou de pasta estão em [recibos/migracao-dados-20260929.md](recibos/migracao-dados-20260929.md).
 
 Referência técnica: [configuração de um servidor local no Claude Desktop, documentação oficial do MCP Python SDK](https://py.sdk.modelcontextprotocol.io/get-started/real-host/#claude-desktop).

@@ -54,7 +54,7 @@ async def main():
                 "reload"
             ),
         }
-        target = Path(__file__).resolve().parents[1] / "docs" / "conexao-codex.json"
+        target = Path(__file__).resolve().parents[1] / "docs" / "recibos" / "conexao-codex.json"
         target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps({"flora": flora, "receipt": str(target)}, ensure_ascii=False))
         assert flora and flora[0].get("tools"), "Tools not discovered by Codex"

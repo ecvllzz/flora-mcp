@@ -477,7 +477,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 
 ## Pacote administrativo `flora-precedentes-1`
 
-Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-precedents`, que simula por padrão e só grava com `--apply`. O formato de base está em `docs/precedentes-v2.md` (recibo de 29/09/2026, que não se altera). Desde a F5 (30/09/2026), o pacote muda nos pontos abaixo.
+Nenhuma ferramenta MCP importa dados; o pacote é lido por `flora-mcp import-precedents`, que simula por padrão e só grava com `--apply`. O formato de base está em [`docs/recibos/precedentes-v2.md`](docs/recibos/precedentes-v2.md) (recibo de 29/09/2026, que não se altera). Desde a F5 (30/09/2026), o pacote muda nos pontos abaixo.
 
 **Classe de fonte.** Cada item de `fontes` pode declarar `classe`: `estruturada` ou `documento`; sem a chave, a fonte é `documento`. `estruturada` só é aceita para os endereços das fontes estruturadas registradas no produto (`flora_mcp.precedent_sources`): CSV de temas e processos dos dados abertos do STJ, listagem de súmulas do SCON do STJ e sumulário do STF (índice e página de cada súmula, comum ou vinculante). Declarar `estruturada` para outro endereço recusa o pacote com `fonte_invalida`. Temas de repercussão geral do STF e súmulas do TJSC continuam `documento`.
 

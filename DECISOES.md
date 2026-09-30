@@ -1,0 +1,37 @@
+# Decisões
+
+Registro curto das decisões que mudam o que o Flora-MCP é ou como se opera. Uma linha de razão por decisão; o detalhe está no commit, no recibo ou no documento citado. Decisão nova entra no fim, com data.
+
+## 22/09/2026
+
+- **Projeto próprio, fora do vault.** O Flora-MCP é um pacote Python independente, com dados fora do código e configuração externa (desde 29/09, em `Documents\Flora\Dados\Flora-MCP`; ver [recibo da migração](docs/recibos/migracao-dados-20260929.md)). Razão: o acervo cresce e muda por coleta; o vault guarda casos e método, não bases de dados.
+- **Somente leitura para os agentes.** As ferramentas MCP leem; coleta, importação e publicação são comandos administrativos. Razão: nenhum turno de modelo altera o acervo que fundamenta votos.
+- **Original oficial preservado e endereçado por hash.** Todo documento guarda os bytes de origem, a versão e a proveniência. Razão: a referência citada em voto precisa ser reconstruível a partir da fonte.
+- **Busca lexical (SQLite FTS5).** Sem embeddings nesta etapa. Razão: resultado explicável e verificável; busca semântica depende de haver medida de recuperação (ver 30/09, F6).
+
+## 29/09/2026
+
+- **Publicação imutável por geração.** A leitura usa arquivos publicados e um manifesto trocado de forma atômica; a base de trabalho não é lida pelos agentes. Razão: coleta em andamento não altera a resposta de quem está pesquisando.
+- **Precedentes só por admissão conferida.** Tema e súmula entram no acervo de consulta com evidência por campo e conferência; RG 809 fica pendente por falta de prova da publicação da tese. Razão: precedente qualificado mal identificado contamina a fundamentação.
+- **Referência completa em toda resposta.** Relatoria, classe, número, tribunal, órgão e datas saem do espelho original da mesma versão. Razão: o agente cita pelo que a ferramenta devolve, não pelo que infere da ementa.
+- **Relevância textual como opção.** BM25 com desempate por data e ID. Razão: relevância lexical não mede pertinência jurídica, e o agente precisa saber disso.
+
+## 30/09/2026
+
+- **Git e remoto privado (`ecvllzz/flora-mcp`); produção é o `main` no worktree principal.** Desenvolvimento em worktrees separados. Razão: os servidores MCP em uso rodam do worktree principal, e trocar branch ali muda o código de quem abre sessão nova.
+- **Portão de qualidade no commit.** `ruff format`, lint com E501 e C901 e testes no hook `pre-commit`. Razão: o código é mantido por agentes diferentes (Codex, Claude Code, Cowork) e precisa de um critério comum que não dependa de revisão manual.
+- **Coleta manual sob demanda, sem agendamento.** `flora-mcp atualizar` faz backup, coleta limitada, publicação e registro; a resposta informa o atraso de cada fonte. Razão: o operador decide quando a base muda; o agente sabe quão velha ela está.
+- **Backups em depósito.** Originais compartilhados por SHA-256 e manifesto por backup; podagem por retenção. Razão: backups completos por cópia custavam gigabytes para bytes repetidos.
+- **Lote com registro inválido não é recusado inteiro.** Os válidos entram e os rejeitados ficam registrados com motivo. Razão: um espelho sem ementa bloqueava dezenas de acórdãos do STJ.
+- **Índice por `rowid` (`search_map`).** Remoção e reinserção no FTS por `rowid`. Razão: a remoção por varredura custava 155 ms por documento no Windows e tornava a carga do passivo do STJ inviável.
+- **Contrato `flora-mcp-3`.** Triagem por padrão, relevância com termos, `pesquisar_precedentes` como ferramenta própria, metadados no primeiro bloco, `motivo` para resposta vazia, erros tipados. Razão: as duas avaliações de 29/09 mostraram agentes gastando contexto com ementas inteiras e interpretando mal resposta vazia. Contrato em [CONTRATO.md](CONTRATO.md).
+- **Seções CNJ completas.** Cabeçalho, seções numeradas e as duas linhas finais (dispositivos e jurisprudência citados), com a versão do derivador na identidade da publicação. Razão: a tese não pode engolir as citações, e o modelo da Recomendação CNJ 154/2024 é o que o gabinete usa.
+- **Precedentes por confiança na fonte.** Registro de fonte oficial estruturada é admitido por validação de campo com auditoria por amostra do lote; registro vindo de documento continua exigindo conferência individual. Razão: vazão, com o limite na natureza da fonte.
+- **Primeira e Terceira Seções do STJ ficam pendentes.** Temas e súmulas desses órgãos recebem `secao_fora_do_recorte_civil`, qualquer que seja o ramo da fonte. Razão: ali o ramo "processual civil" é processo de direito público ou penal, fora do recorte civil; a liberação caso a caso é do operador.
+- **Direito bancário fora do recorte por ora.** As 46 súmulas do STJ que o SCON classifica como direito bancário ficam em `materia_fora_do_recorte`. Razão: o ramo não estava na lista da decisão; incluí-lo é uma linha de tabela e um teste, se o operador quiser.
+- **Primeiro lote por confiança na fonte.** Temas e IAC do STJ (catálogo de dados abertos) e súmulas do STJ (SCON) importados com amostra de 75 e 34 registros conferida campo a campo por script independente do adaptador; súmulas do STF não entram, porque a fonte não traz ramo. Razão: o acervo tinha seis precedentes; a amostra é o que a decisão exige para fonte estruturada. Limite conhecido: fidelidade à fonte não é vigência material, e súmula que o CPC de 2015 esvaziou sem cancelamento formal aparece como vigente.
+- **Mudança de recuperação só com medida.** Conjunto de referência tirado de minutas reais e `scripts/avaliar.py`; candidata adotada só com ganho medido. Razão: as mudanças de busca anteriores eram por palpite.
+- **Ampliação para OU quando o E zera (contrato `flora-mcp-3.1`).** Mantido o E como regra; sem resultado, a busca refaz com OU entre os termos e diz que ampliou. Razão: na medição, consultas longas e em linguagem natural zeravam em 7 e 13 de 14 perguntas; com a ampliação, nenhuma zera e as curtas não mudam.
+- **Radicalização Snowball e peso de cabeçalho ficam de fora por ora.** Medidas sobre índice temporário da publicação r781 (`avaliacao/candidatas_indice.py`): o peso do cabeçalho não mudou nenhum acerto; a radicalização subiu o hit@8 com ampliação (assessor de 0,357 para 0,571; linguagem natural de 0,571 para 0,643; curta igual), mas piorou a posição média em linguagem natural e tirou dos oito primeiros um esperado que estava lá. Razão: a regra da F6 só adota candidata que melhora sem piorar outra métrica, e 14 perguntas não bastam para pagar uma reindexação; volta à mesa com conjunto maior.
+- **Versão 0.3.0.** Sobe de `0.2.0a1` com o contrato `flora-mcp-3.1` e a admissão de precedentes por fonte estruturada. Razão: o que o servidor responde e o que o acervo admite mudaram desde a linha de base.
+- **Documentação no presente, recibos à parte.** README e guias de `docs/` descrevem o que vale hoje; execuções datadas vão para `docs/recibos/`, que não se reescreve, e decisões para este arquivo. Razão: o README acumulava seções datadas e estado de execuções, e um leitor novo não achava o que era vigente.
