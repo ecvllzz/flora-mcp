@@ -19,7 +19,7 @@ def test_panel_returns_literal_text_and_reference_without_changing_database(stor
     with client(store) as browser:
         response = browser.post("/api/search", json={})
         assert response.status_code == 200
-        assert response.json() == search(store, limite=5)
+        assert response.json() == search(store, limite=5, detalhe="completo")
         row = response.json()["resultados"][0]
         assert row["ementa"] == literal
         assert row["relator"] == "MINISTRA EXEMPLO"

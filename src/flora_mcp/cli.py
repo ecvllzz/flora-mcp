@@ -7,9 +7,18 @@ from filelock import FileLock, Timeout
 
 from .config import load_config
 from .model import FloraError
-from .api import coverage, search
+from .api import coverage, search, search_precedents
+from .precedents import COMPONENTS, SPECIES
 from .sources import client, probe_tjsc, sync_stj
 from .store import Store
+
+
+def add_page_options(parser):
+    parser.add_argument("--ordenar", choices=["relevancia", "mais_recentes", "mais_antigos"])
+    parser.add_argument("--detalhe", choices=["triagem", "completo"], default="triagem")
+    parser.add_argument("--modo-busca", choices=["simples", "avancado"], default="simples")
+    parser.add_argument("--limite", type=int)
+    parser.add_argument("--cursor")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -34,19 +43,27 @@ def build_parser() -> argparse.ArgumentParser:
     export = sub.add_parser("export", help="Exporta documentos e catálogo de leitura")
     export.add_argument("destino", type=Path)
     export.add_argument("--include-judgments", action="store_true", help="Inclui acórdãos ordinários")
-    find = sub.add_parser("search", help="Pesquisa local, sem cliente MCP")
+    find = sub.add_parser("search", help="Pesquisa acórdãos, sem cliente MCP")
     find.add_argument("termos", nargs="?", default="")
-    find.add_argument("--tribunal")
+    find.add_argument("--tribunal", choices=["STJ", "TJSC"])
     find.add_argument("--orgao")
+    find.add_argument("--classe")
+    find.add_argument("--relator")
     find.add_argument("--processo")
-    find.add_argument("--colecao", choices=["acordaos", "precedentes"], default="acordaos")
-    find.add_argument("--campo", default="ementa")
-    find.add_argument("--especie")
-    find.add_argument("--numero")
-    find.add_argument("--detalhe", choices=["completo", "triagem"], default="completo")
-    find.add_argument(
-        "--ordenar", choices=["mais_recentes", "mais_antigos", "relevancia"], default="mais_recentes"
-    )
+    find.add_argument("--data-inicio")
+    find.add_argument("--data-fim")
+    find.add_argument("--tipo-data", choices=["publicacao", "julgamento"], default="publicacao")
+    add_page_options(find)
+    qualified = sub.add_parser("precedentes", help="Pesquisa temas e súmulas, sem cliente MCP")
+    qualified.add_argument("termos", nargs="?", default="")
+    qualified.add_argument("--tribunal", choices=["STJ", "STF", "TJSC"])
+    qualified.add_argument("--especie", choices=sorted(set.union(*SPECIES.values())))
+    qualified.add_argument("--numero")
+    qualified.add_argument("--orgao")
+    qualified.add_argument("--campo", choices=[*COMPONENTS, "todos"], default="todos")
+    qualified.add_argument("--data-inicio")
+    qualified.add_argument("--data-fim")
+    add_page_options(qualified)
     sub.add_parser("serve", help="Servidor MCP stdio, exclusivamente de leitura")
     backup = sub.add_parser("backup", help="Cópia integral de banco e originais (formato antigo)")
     backup.add_argument("destino", type=Path)
@@ -83,12 +100,35 @@ def run_search(args, store):
         processo=args.processo,
         tribunal=args.tribunal,
         orgao=args.orgao,
+        classe=args.classe,
+        relator=args.relator,
+        data_inicio=args.data_inicio,
+        data_fim=args.data_fim,
+        tipo_data=args.tipo_data,
         ordenar=args.ordenar,
-        colecao=args.colecao,
-        campo=args.campo,
+        detalhe=args.detalhe,
+        modo_busca=args.modo_busca,
+        limite=args.limite,
+        cursor=args.cursor,
+    )
+
+
+def run_precedents(args, store):
+    return search_precedents(
+        store,
+        args.termos,
+        tribunal=args.tribunal,
         especie=args.especie,
         numero=args.numero,
+        orgao=args.orgao,
+        campo=args.campo,
+        data_inicio=args.data_inicio,
+        data_fim=args.data_fim,
+        ordenar=args.ordenar,
         detalhe=args.detalhe,
+        modo_busca=args.modo_busca,
+        limite=args.limite,
+        cursor=args.cursor,
     )
 
 
@@ -184,7 +224,7 @@ def run_backups(args, config, store):
         return backups.create(store, root, args.rotulo)
 
 
-READERS = {"coverage": run_coverage, "search": run_search}
+READERS = {"coverage": run_coverage, "search": run_search, "precedentes": run_precedents}
 # Commands that take the locks they need themselves.
 SELF_LOCKED = {"atualizar": run_update, "backups": run_backups}
 WRITERS = {

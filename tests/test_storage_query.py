@@ -35,8 +35,8 @@ def test_same_process_different_decisions_and_search_filters(store):
     assert search(store, termos='"protecao a crianca"', orgao="terceira turma")["total_encontrado"] == 2
     assert search(store, data_inicio="2026-01-01", tipo_data="julgamento")["total_encontrado"] == 2
     assert search(store, tribunal="TJSC")["total_encontrado"] == 0
-    with pytest.raises(FloraError, match="inteiro teor"):
-        search(store, campo="inteiro_teor")
+    with pytest.raises(TypeError):
+        search(store, campo="inteiro_teor")  # campo is no longer a parameter of acórdão search
 
 
 def test_older_resource_cannot_replace_newer_text(store):
@@ -50,7 +50,7 @@ def test_older_resource_cannot_replace_newer_text(store):
 def test_full_unicode_text_and_explicit_lossless_blocks(store):
     text = "Direito à proteção.\n" * 3000 + "FIM AUTÊNTICO"
     ingest(store, [raw_doc(text=text)])
-    assert search(store, "protecao")["resultados"][0]["ementa"] == text
+    assert search(store, "protecao", detalhe="completo")["resultados"][0]["ementa"] == text
     pieces, cursor = [], None
     while True:
         result = document(store, "STJ:1", cursor=cursor, tamanho_bloco=3000)

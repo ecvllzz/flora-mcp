@@ -12,7 +12,7 @@ from starlette.routing import Route
 
 from .config import load_config
 from .model import FloraError
-from .api import search
+from .api import search, search_precedents
 from .publication import Reader
 from .precedents import available
 from .store import Store, collection_delay
@@ -75,10 +75,18 @@ SEARCH_FIELDS = {
     "tipo_data",
     "ordenar",
     "cursor",
-    "colecao",
-    "campo",
+}
+PRECEDENT_FIELDS = {
+    "termos",
+    "tribunal",
+    "orgao",
     "especie",
     "numero",
+    "campo",
+    "data_inicio",
+    "data_fim",
+    "ordenar",
+    "cursor",
 }
 
 
@@ -144,10 +152,10 @@ def catalog_payload(reader: Reader) -> dict:
     }
 
 
-def check_query(values):
+def check_query(values, fields):
     if (
         not isinstance(values, dict)
-        or set(values) - SEARCH_FIELDS
+        or set(values) - fields
         or any(not isinstance(v, (str, type(None))) for v in values.values())
     ):
         raise ValueError("Parâmetros inválidos.")
@@ -155,7 +163,8 @@ def check_query(values):
         raise ValueError("Consulta muito longa.")
 
 
-async def search_response(store: Store, request) -> JSONResponse:
+async def search_response(store: Store, request, call, fields) -> JSONResponse:
+    """The panel reads complete texts, five per page, through the same functions as MCP."""
     try:
         if request.headers.get("content-type", "").split(";")[0] != "application/json":
             return JSONResponse({"mensagem": "Envie JSON."}, status_code=415)
@@ -165,11 +174,11 @@ async def search_response(store: Store, request) -> JSONResponse:
             if len(raw) > 8192:
                 return JSONResponse({"mensagem": "Consulta muito longa."}, status_code=413)
         values = json.loads(raw)
-        check_query(values)
+        check_query(values, fields)
         # Blocking SQLite work belongs on Starlette's worker pool.
         from starlette.concurrency import run_in_threadpool
 
-        result = await run_in_threadpool(search, store, **values, limite=5)
+        result = await run_in_threadpool(call, store, **values, detalhe="completo", limite=5)
         return JSONResponse(result)
     except FloraError as exc:
         return JSONResponse({"codigo": exc.code, "mensagem": str(exc)}, status_code=400)
@@ -187,7 +196,10 @@ def create_panel_app(store: Store, *, port: int = 8766):
         return JSONResponse(catalog_payload(reader))
 
     async def find(request):
-        return await search_response(store, request)
+        return await search_response(store, request, search, SEARCH_FIELDS)
+
+    async def find_precedents(request):
+        return await search_response(store, request, search_precedents, PRECEDENT_FIELDS)
 
     def asset(filename, media_type):
         def serve(request):
@@ -203,6 +215,7 @@ def create_panel_app(store: Store, *, port: int = 8766):
             Route("/api/status", status),
             Route("/api/catalog", catalog),
             Route("/api/search", find, methods=["POST"]),
+            Route("/api/precedentes", find_precedents, methods=["POST"]),
         ],
         middleware=[Middleware(LocalOnly, port=port)],
     )

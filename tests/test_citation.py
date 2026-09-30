@@ -33,7 +33,7 @@ def test_existing_original_is_used_without_changing_bank_or_text(store):
         before = tuple(db.execute("SELECT body,hash FROM documents").fetchone())
         revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
     assert "relator" not in json.loads(before[0])
-    found = search(store, "alimentos")["resultados"][0]
+    found = search(store, "alimentos", detalhe="completo")["resultados"][0]
     assert found["relator"] == "MINISTRA EXEMPLO"
     assert found["referencia"] == (
         "(STJ, AGRAVO INTERNO NO RECURSO ESPECIAL n. 1234567, rel. MINISTRA EXEMPLO, "
@@ -107,7 +107,9 @@ def test_every_text_block_has_reference_without_inserting_it_into_ementa(store):
     reference = search(store)["resultados"][0]["referencia"]
     while True:
         result = document(store, "STJ:1", tamanho_bloco=100, cursor=cursor)
-        assert result["metadados"]["referencia"] == reference
+        assert result["referencia"] == reference
+        # Complete metadata only in the first block.
+        assert ("metadados" in result) == (cursor is None)
         blocks.append(result["texto"])
         cursor = result["proximo_cursor"]
         if cursor is None:
@@ -127,11 +129,10 @@ def test_stdio_exposes_reference_and_agent_instructions(store):
         async with stdio_client(params) as (read, write):
             async with ClientSession(read, write) as session:
                 initialized = await session.initialize()
-                assert "incluí-la em votos" in initialized.instructions
-                tools = (await session.list_tools()).tools
-                for t in tools:
-                    if t.name in {"pesquisar_jurisprudencia", "obter_documento"}:
-                        assert "referencia" in t.description
+                assert "referencia_pendencias" in initialized.instructions
+                tools = {t.name: t for t in (await session.list_tools()).tools}
+                assert "referência" in tools["pesquisar_jurisprudencia"].description
+                assert "referencia_pendencias" in tools["obter_documento"].description
                 result = await session.call_tool("pesquisar_jurisprudencia", {"termos": "alimentos"})
                 found = result.structured_content["resultados"][0]
                 assert found["relator"] == "MINISTRA EXEMPLO"

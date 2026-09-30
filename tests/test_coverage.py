@@ -7,7 +7,7 @@ from flora_mcp.model import FloraError, canonical
 from flora_mcp.store import connection
 
 
-def test_default_summary_preserves_diagnostics_and_legacy_detail(store):
+def test_default_summary_preserves_diagnostics_and_complete_detail(store):
     for dataset in ("espelhos-de-acordaos-terceira-turma", "tjsc-9-civil"):
         resources = [
             {"id": str(i), "name": f"{i:04}.json", "url": "https://example.org/" + str(i)} for i in range(350)
@@ -38,12 +38,16 @@ def test_default_summary_preserves_diagnostics_and_legacy_detail(store):
         assert group["primeiro_lote_pendente"] == "0000.json"
         assert group["ultimo_lote_pendente"] == "0349.json"
         assert group["erros"] == {"Falha HTTP": 1}
-    compact = result["execucoes_recentes"][0]
-    assert compact["status"] == "interrupted"
-    assert compact["detail"] == {k: v for k, v in detail.items() if k not in {"eventos", "janelas"}}
-    assert api.coverage(store, "completo") == before
-    assert api.coverage(store, "legado") == before
-    assert api.coverage(store, "execucoes", limite=1)["itens"][0]["detail"] == detail
+    older = store.start_run("STJ")
+    store.finish_run(older, "ok", {})
+    latest = api.coverage(store)["execucoes_recentes"]
+    # Only the most recent run of each source, without detail; the history is in detalhe=execucoes.
+    assert [(r["source"], r["status"]) for r in latest] == [("STJ", "ok"), ("TJSC", "interrupted")]
+    assert all("detail" not in r for r in latest)
+    assert api.coverage(store, "completo") == {**store.coverage(), "contrato": "flora-mcp-3"}
+    with pytest.raises(FloraError):
+        api.coverage(store, "legado")
+    assert api.coverage(store, "execucoes", limite=2)["itens"][1]["detail"] == detail
     json.dumps(result)  # Counters must remain ordinary JSON objects.
 
 

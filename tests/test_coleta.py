@@ -121,7 +121,10 @@ def test_invalid_mirrors_are_left_out_and_reported(store):
     summary = api.coverage(store)
     assert summary["recursos"][0]["rejeitados"] == 2
     assert summary["recursos"][0]["por_status"] == {"ok": 1}
-    assert summary["execucoes_recentes"][0]["detail"]["rejeitados"] == report["rejeitados"]
+    # The summary keeps the latest run of each source without detail; the history has it.
+    assert "detail" not in summary["execucoes_recentes"][0]
+    run = api.coverage(store, "execucoes", limite=1)["itens"][0]
+    assert run["detail"]["rejeitados"] == report["rejeitados"]
     detail = api.coverage(store, "recursos")["itens"][0]
     assert detail["rejeitados"] == event["rejeitados"]
     with connection(store.path) as db:

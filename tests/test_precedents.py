@@ -62,10 +62,10 @@ def packet(
 
 def test_migration_preserves_legacy_and_is_idempotent(store, tmp_path):
     ingest(store, [raw_doc()])
-    before = api.search(store)
+    before = api.search(store, detalhe="completo")
     assert migrate(store)["alterado"] is True
     assert migrate(store)["alterado"] is False
-    after = api.search(store)
+    after = api.search(store, detalhe="completo")
     assert after["resultados"] == before["resultados"]
     assert after["ementas_completas"] is True
     store.initialize()  # Existing collection commands remain compatible with schema 2.
@@ -76,12 +76,12 @@ def test_import_requires_bytes_and_explicit_review(store, tmp_path):
     path = packet(tmp_path)
     report = import_package(store, path)
     assert report["registros"][0]["admissao"] == "admitido"
-    assert api.search(store, colecao="precedentes", campo="todos")["total_encontrado"] == 0
+    assert api.search_precedents(store, campo="todos")["total_encontrado"] == 0
     data = json.loads(path.read_text(encoding="utf-8"))
     data["registros"][0].pop("conferencia")
     path.write_text(canonical(data), encoding="utf-8")
     assert import_package(store, path, apply=True)["registros"][0]["admissao"] == "pendente"
-    assert api.search(store, colecao="precedentes", campo="todos")["total_encontrado"] == 0
+    assert api.search_precedents(store, campo="todos")["total_encontrado"] == 0
     (tmp_path / "fonte.txt").write_text("adulterado", encoding="utf-8")
     with pytest.raises(FloraError, match="hash"):
         import_package(store, path, apply=True)
@@ -92,7 +92,7 @@ def test_components_reference_literal_pagination_and_idempotence(store, tmp_path
     path = packet(tmp_path)
     assert import_package(store, path, apply=True)["alterado"]
     assert not import_package(store, path, apply=True)["alterado"]
-    result = api.search(store, "enunciado", colecao="precedentes", campo="enunciado", detalhe="triagem")
+    result = api.search_precedents(store, "enunciado", campo="enunciado")
     item = result["resultados"][0]
     assert item["referencia_completa"]
     assert item["campos_correspondentes"] == ["enunciado"]
@@ -102,7 +102,7 @@ def test_components_reference_literal_pagination_and_idempotence(store, tmp_path
     cursor, blocks = None, []
     while True:
         doc = api.document(store, item["id"], "enunciado", cursor, 100)
-        assert doc["metadados"]["referencia"] == item["referencia"]
+        assert doc["referencia"] == item["referencia"]  # every block; metadados only in the first
         blocks.append(doc["texto"])
         cursor = doc["proximo_cursor"]
         if not cursor:
@@ -125,10 +125,7 @@ def test_withdrawal_overrides_snapshot_and_old_hash(store, tmp_path, status, pen
     before = api.document(store, "STJ:sumula:999999", "enunciado", tamanho_bloco=100)
     receipt = import_package(store, packet(tmp_path, status=status, pending=pending), apply=True)
     assert receipt["registros"][0]["admissao"] == admission
-    assert (
-        api.search(store, colecao="precedentes", campo="todos", publicacao_id=publication)["total_encontrado"]
-        == 0
-    )
+    assert api.search_precedents(store, campo="todos", publicacao_id=publication)["total_encontrado"] == 0
     for params in (
         {"publicacao_id": publication},
         {"cursor": before["proximo_cursor"]},
@@ -164,13 +161,13 @@ def test_generations_pagination_integrity_and_retention(store, tmp_path):
         api.search(store)
 
 
-def test_ordinary_triage_and_summary_are_opt_in(store):
+def test_triage_is_default_and_summary_is_compact(store):
     ingest(store, [raw_doc(str(i), text="Árvore e proteção. " * 3000) for i in range(10)])
-    assert len(api.search(store)["resultados"]) == 3
-    triage = api.search(store, detalhe="triagem")
+    assert len(api.search(store, detalhe="completo")["resultados"]) == 3
+    triage = api.search(store)
     assert 1 <= len(triage["resultados"]) <= 8
     assert len(canonical(triage).encode()) <= 8192
-    assert all(item["trecho_parcial"] for item in triage["resultados"])
+    assert all(item["cabecalho_parcial"] for item in triage["resultados"])
     assert "recursos" in api.coverage(store)
     assert len(canonical(api.coverage(store, "resumo")).encode()) < 10000
 
@@ -204,24 +201,19 @@ def test_panel_and_api_share_published_precedents(store, tmp_path):
     migrate(store)
     import_package(store, packet(tmp_path), apply=True)
     publish(store)
-    values = {"colecao": "precedentes", "campo": "todos"}
+    values = {"campo": "todos"}
     with TestClient(create_panel_app(store), base_url="http://127.0.0.1:8766") as browser:
-        assert browser.post("/api/search", json=values).json() == api.search(store, **values, limite=5)
+        assert browser.post("/api/precedentes", json=values).json() == api.search_precedents(
+            store, **values, detalhe="completo", limite=5
+        )
         assert browser.get("/api/catalog").json()["precedentes"][0]["documentos"] == 1
 
 
 def test_search_components_and_cursor_filters(store, tmp_path):
     migrate(store)
     import_package(store, packet(tmp_path, species="tema_repetitivo", text="Tese sintética"), apply=True)
-    assert api.search(store, "sintética", colecao="precedentes", campo="enunciado")["total_encontrado"] == 0
-    result = api.search(
-        store,
-        "sintética",
-        colecao="precedentes",
-        campo="tese_firmada",
-        ordenar="relevancia",
-        detalhe="triagem",
-    )
+    assert api.search_precedents(store, "sintética", campo="enunciado")["total_encontrado"] == 0
+    result = api.search_precedents(store, "sintética", campo="tese_firmada", ordenar="relevancia")
     assert result["resultados"][0]["campos_correspondentes"] == ["tese_firmada"]
     assert result["resultados"][0]["trecho"] == "Tese sintética"
 
@@ -234,12 +226,12 @@ def test_incomplete_observation_preserves_last_state_and_readmission_does_not_re
     old = publish(store)["publicacao_id"]
     path = packet(tmp_path, status="desconhecido")
     assert import_package(store, path, apply=True)["registros"][0]["estado_anterior_conservado"]
-    assert api.search(store, colecao="precedentes", campo="todos")["total_encontrado"] == 1
+    assert api.search_precedents(store, campo="todos")["total_encontrado"] == 1
     import_package(store, packet(tmp_path, status="cancelado"), apply=True)
     import_package(store, packet(tmp_path, text="Nova versão admitida com fonte revista"), apply=True)
     publish(store)
-    assert api.search(store, colecao="precedentes", campo="todos")["total_encontrado"] == 1
-    assert api.search(store, colecao="precedentes", campo="todos", publicacao_id=old)["total_encontrado"] == 0
+    assert api.search_precedents(store, campo="todos")["total_encontrado"] == 1
+    assert api.search_precedents(store, campo="todos", publicacao_id=old)["total_encontrado"] == 0
     with pytest.raises(FloraError, match="Versão retirada"):
         api.document(store, "STJ:sumula:999999", "enunciado", publicacao_id=old)
 
@@ -275,7 +267,7 @@ def test_literal_sections_have_original_unicode_offsets_and_no_qualified_thesis(
     for section in full["metadados"]["secoes_ementa"]:
         part = api.document(store, "STJ:1", "secao:" + section["nome"])
         assert part["texto"] == text[section["inicio"] : section["fim"]]
-    assert api.search(store, colecao="precedentes", campo="todos")["total_encontrado"] == 0
+    assert api.search_precedents(store, campo="todos")["total_encontrado"] == 0
 
 
 def test_qualified_contract_over_real_stdio(store, tmp_path):
@@ -298,10 +290,7 @@ def test_qualified_contract_over_real_stdio(store, tmp_path):
         async with stdio_client(params) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
-                found = await session.call_tool(
-                    "pesquisar_jurisprudencia",
-                    {"colecao": "precedentes", "campo": "todos", "detalhe": "triagem"},
-                )
+                found = await session.call_tool("pesquisar_precedentes", {})
                 result = found.structured_content
                 assert len(canonical(result).encode()) <= 8192
                 item = result["resultados"][0]

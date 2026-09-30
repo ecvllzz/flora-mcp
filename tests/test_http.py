@@ -55,6 +55,7 @@ def test_http_auth_host_and_readonly_protocol(store):
         listed = rpc(client, "tools/list").json()["result"]["tools"]
         assert {t["name"] for t in listed} == {
             "pesquisar_jurisprudencia",
+            "pesquisar_precedentes",
             "obter_documento",
             "consultar_cobertura",
         }
@@ -64,7 +65,7 @@ def test_http_auth_host_and_readonly_protocol(store):
             "tools/call",
             {
                 "name": "pesquisar_jurisprudencia",
-                "arguments": {"termos": "alimentos"},
+                "arguments": {"termos": "alimentos", "detalhe": "completo"},
             },
         ).json()["result"]["structuredContent"]
         assert found["resultados"][0]["ementa"] == original

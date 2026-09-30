@@ -33,10 +33,10 @@ def ranked_store(store):
     return store
 
 
-def test_relevance_promotes_focused_older_documents_without_changing_date_default(ranked_store):
-    options = {"termos": '"guarda compartilhada" alimentos', "orgao": "terceira turma"}
-    chronological = search(ranked_store, **options)
-    ranked = search(ranked_store, **options, ordenar="relevancia")
+def test_relevance_promotes_focused_older_documents(ranked_store):
+    options = {"termos": '"guarda compartilhada" alimentos', "orgao": "terceira turma", "detalhe": "completo"}
+    chronological = search(ranked_store, **options, ordenar="mais_recentes")
+    ranked = search(ranked_store, **options)  # automatic order: relevance when there are terms
     assert chronological["resultados"][0]["id"] == "STJ:3"
     assert [r["id"] for r in ranked["resultados"]] == ["STJ:1", "STJ:2", "STJ:3"]
     assert ranked["total_encontrado"] == chronological["total_encontrado"] == 3

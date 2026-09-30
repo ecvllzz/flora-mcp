@@ -58,7 +58,7 @@ function controls(){for(const el of form.elements)el.disabled=busy;$('refresh').
 async function search(target=0){
  if(busy)return;busy=true;controls();$('message').hidden=true;$('result-count').textContent='Pesquisando…';$('results').replaceChildren();
  try{
-  const result=await api('/api/search',{...criteria,cursor:cursors[target]||null});
+  const result=await api(qualified()?'/api/precedentes':'/api/search',{...criteria,cursor:cursors[target]||null});
   page=target;next=result.proximo_cursor;
   $('results').replaceChildren(...result.resultados.map(resultCard));
   if(!result.resultados.length)$('results').append(node('div','empty','Nenhum documento encontrado neste acervo. Tente outros termos ou reduza os filtros.'));

@@ -33,7 +33,7 @@ class ApiKeyMiddleware:
 
 
 def create_http_app(store: Store, *, api_key: str, allowed_hosts: list[str]):
-    """Reuse exactly the three read-only tools; no collector or filesystem routes."""
+    """Reuse exactly the read-only MCP tools; no collector or filesystem routes."""
     if not allowed_hosts or any(not h or "*" in h or "/" in h for h in allowed_hosts):
         raise ValueError("Informe hosts explícitos, sem curingas nem esquema/caminho.")
     app = create_server(store).streamable_http_app(

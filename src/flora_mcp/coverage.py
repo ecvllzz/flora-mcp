@@ -31,7 +31,7 @@ def validate_filters(tribunal, dataset, detalhe):
         raise FloraError("filtro_invalido", "Filtros tribunal/dataset são usados com detalhe=recursos.")
 
 
-def summary(legacy):
+def summary(legacy, latest_runs):
     result = {k: v for k, v in legacy.items() if k not in {"recursos", "execucoes_recentes"}}
     groups = {}
     for resource in legacy["recursos"]:
@@ -62,21 +62,11 @@ def summary(legacy):
             # Records left out of ingested batches; the list is in detalhe=recursos.
             group["rejeitados"] = group.get("rejeitados", 0) + len(resource["rejeitados"])
     result["recursos"] = [{k: v for k, v in group.items() if k != "erros" or v} for group in groups.values()]
-    result["execucoes_recentes"] = []
-    for run in legacy["execucoes_recentes"]:
-        compact = {k: v for k, v in run.items() if k != "detail"}
-        detail = run["detail"]
-        # Keep explicit reasons/failures and recorded before/after totals verbatim.
-        compact["detail"] = {
-            k: detail[k]
-            for k in ("motivo", "falhas", "rejeitados", "erro", "error", "antes", "depois", "modo")
-            if k in detail and (k != "falhas" or detail[k])
-        }
-        result["execucoes_recentes"].append(compact)
+    result["execucoes_recentes"] = latest_runs
     result["detalhe"] = "resumo"
     result["detalhes_disponiveis"] = {
-        "completo": "Resposta integral anterior, incluindo eventos e janelas.",
+        "completo": "Resposta integral, com as dez execuções mais recentes, eventos e janelas.",
         "recursos": "Lista paginada; filtros opcionais tribunal e dataset.",
-        "execucoes": "Execuções com detail integral; use limite=1 e proximo_cursor.",
+        "execucoes": "Histórico de execuções com detail integral; use limite=1 e proximo_cursor.",
     }
     return result

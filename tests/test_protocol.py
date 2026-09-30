@@ -24,11 +24,14 @@ def test_real_stdio_protocol_lists_and_calls_all_readonly_tools(store):
                 tools = (await session.list_tools()).tools
                 assert {t.name for t in tools} == {
                     "pesquisar_jurisprudencia",
+                    "pesquisar_precedentes",
                     "obter_documento",
                     "consultar_cobertura",
                 }
                 assert all(t.annotations.read_only_hint for t in tools)
-                result = await session.call_tool("pesquisar_jurisprudencia", {"termos": "alimentos"})
+                result = await session.call_tool(
+                    "pesquisar_jurisprudencia", {"termos": "alimentos", "detalhe": "completo"}
+                )
                 assert not result.is_error
                 assert result.structured_content["resultados"][0]["ementa"] == original
                 doc = await session.call_tool("obter_documento", {"id": "STJ:1"})
@@ -36,6 +39,7 @@ def test_real_stdio_protocol_lists_and_calls_all_readonly_tools(store):
                 coverage = await session.call_tool("consultar_cobertura", {})
                 assert coverage.structured_content["cobertura_integral"] is False
                 error = await session.call_tool("obter_documento", {"id": "missing"})
+                assert error.is_error
                 assert error.structured_content["codigo"] == "documento_nao_encontrado"
 
     asyncio.run(exercise())

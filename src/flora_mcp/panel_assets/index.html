@@ -27,7 +27,7 @@
     <aside class="filters">
       <h2 class="section-label"><span>I</span> PESQUISAR</h2>
       <form id="search-form">
-        <label>Coleção<select name="colecao" id="collection"><option value="acordaos">Acórdãos</option><option value="precedentes">Temas e súmulas</option></select></label>
+        <label>Coleção<select id="collection"><option value="acordaos">Acórdãos</option><option value="precedentes">Temas e súmulas</option></select></label>
         <div id="precedent-filters" hidden>
           <label>Componente<select name="campo" id="component"><option value="todos">Todos os componentes</option><option value="enunciado">Enunciado</option><option value="questao_submetida">Questão submetida</option><option value="tese_firmada">Tese firmada</option><option value="modulacao">Modulação</option><option value="suspensao">Suspensão</option></select></label>
           <label>Espécie<select name="especie"><option value="">Todas</option><option value="tema_repetitivo">Tema repetitivo</option><option value="iac">IAC</option><option value="tema_repercussao_geral">Repercussão geral</option><option value="sumula_vinculante">Súmula vinculante</option><option value="sumula">Súmula</option></select></label>
@@ -37,7 +37,7 @@
         <p class="hint">Todas as palavras são procuradas. Use aspas para uma expressão exata.</p>
         <div class="filter-pair">
           <label>Tribunal<select name="tribunal" id="court"><option value="">Todos</option><option>STJ</option><option>TJSC</option><option value="STF" id="stf-option" hidden>STF</option></select></label>
-          <label>Ordenar por<select name="ordenar" id="order"><option value="mais_recentes">Mais recentes</option><option value="relevancia">Relevância textual</option><option value="mais_antigos">Mais antigos</option></select></label>
+          <label>Ordenar por<select name="ordenar" id="order"><option value="">Automática</option><option value="mais_recentes">Mais recentes</option><option value="relevancia">Relevância textual</option><option value="mais_antigos">Mais antigos</option></select></label>
         </div>
         <label>Órgão julgador<select name="orgao" id="organ"><option value="">Todos</option></select></label>
         <label>Classe<select name="classe" id="class"><option value="">Todas</option></select></label>
