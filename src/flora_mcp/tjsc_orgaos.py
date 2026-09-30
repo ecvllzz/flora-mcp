@@ -18,7 +18,9 @@ ESPECIAIS = tuple(f"{n}ª Câmara Especial de Enfrentamento de Acervos" for n in
 # Organs the collector accepts; a name outside the list would reach the portal as an unknown
 # filter, whose answer cannot be told apart from a genuinely empty day.
 ORGAOS = tuple(CIVIL.format(n) for n in range(1, 11)) + ESPECIAIS
-PADRAO = (CIVIL.format(9), CIVIL.format(10))
+# Atualizacao corrente: as dez Camaras de Direito Civil (decisao do operador de 30/09/2026). As
+# Camaras Especiais de Enfrentamento de Acervos sao temporarias e entram so por coleta historica.
+PADRAO = tuple(CIVIL.format(n) for n in range(1, 11))
 
 
 def name(organ: int | str) -> str:

@@ -102,7 +102,8 @@ def test_collector_organs_are_exact_names_of_the_portal_filter():
 
 
 def test_numbered_chamber_keeps_its_dataset_and_other_organs_get_a_named_one():
-    assert PADRAO == (name(9), name(10))
+    assert PADRAO == tuple(name(n) for n in range(1, 11))
+    assert not set(PADRAO) & set(ESPECIAIS)
     assert (name(9), chamber(9), dataset(9)) == ("9ª Câmara de Direito Civil", 9, "tjsc-9-civil")
     assert dataset("10ª Câmara de Direito Civil") == "tjsc-10-civil"
     assert [dataset(o) for o in ESPECIAIS] == [

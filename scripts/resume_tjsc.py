@@ -15,7 +15,7 @@ from flora_mcp.model import FloraError, digest, now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
 from flora_mcp.tjsc import catalog_window, collect_window
-from flora_mcp.tjsc_orgaos import ORGAOS, PADRAO, dataset, envelope_organ, identity, name
+from flora_mcp.tjsc_orgaos import ORGAOS, dataset, envelope_organ, identity, name
 
 
 def save(path, value):
@@ -44,7 +44,11 @@ def groups(store):
         ]
 
 
-def plan(store, start, end, organs=PADRAO):
+# Retomada historica: sem --camaras nem --orgaos, as duas camaras da coleta original.
+RETOMADA = (name(9), name(10))
+
+
+def plan(store, start, end, organs=RETOMADA):
     """organs: portal names or Civil Law Chamber numbers, in collection order."""
     if start > end or end > date.today():
         raise ValueError("Intervalo invertido ou futuro.")
@@ -98,7 +102,9 @@ def plan(store, start, end, organs=PADRAO):
     }
 
 
-def execute(config, store, start, end, report_path, backup_root=None, *, fetch=collect_window, organs=PADRAO):
+def execute(
+    config, store, start, end, report_path, backup_root=None, *, fetch=collect_window, organs=RETOMADA
+):
     """backup_root: raiz dos backups no formato novo; padrão, a pasta irmã <acervo>-backups."""
     report_path = Path(report_path).resolve()
     backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
@@ -186,7 +192,7 @@ def execute(config, store, start, end, report_path, backup_root=None, *, fetch=c
 def selected_organs(camaras: str | None, orgaos: list[str]) -> tuple[str, ...]:
     """Chambers by number, then organs by name, without repeats; neither given: 9 and 10."""
     if camaras is None and not orgaos:
-        return PADRAO
+        return RETOMADA
     numbers = [int(c) for c in camaras.split(",")] if camaras else []
     if any(not 1 <= c <= 10 for c in numbers):
         raise ValueError("Câmaras de Direito Civil: números de 1 a 10.")
