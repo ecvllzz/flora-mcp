@@ -35,7 +35,7 @@ A busca é lexical (SQLite FTS5). No modo simples, as palavras se combinam com E
 - A cobertura é parcial e declarada: toda pesquisa traz `cobertura` com `integral: false` e as fontes em atraso, e `consultar_cobertura` mostra órgãos, datas extremas, lotes pendentes, falhas e registros rejeitados. Resultado vazio não prova que a jurisprudência não exista.
 - A resposta de `consultar_cobertura` traz o atraso da coleta por fonte (bloco `coleta`: `ultima_coleta_ok`, `dias_desde_ultima_coleta`, `limiar_dias` e `atraso`). Os limiares padrão são 45 dias para o STJ, cujo lote é mensal, e 7 para o TJSC; mudam com `atraso_stj_dias` e `atraso_tjsc_dias` na configuração do processo que atende a leitura.
 - O recorte do STJ é pelo nome do arquivo de extração, não pela data de julgamento ou publicação; um arquivo recente pode conter decisões antigas.
-- Precedente com matéria fora de direito civil e processual civil, ou julgado pela Primeira ou pela Terceira Seção do STJ, fica pendente e não é servido.
+- Precedente com matéria fora de direito civil, processual civil e bancário, ou julgado pela Primeira ou pela Terceira Seção do STJ, fica pendente e não é servido. Súmula bancária é apoio: o agente a apresenta depois das de civil e processual civil.
 
 ## Instalação
 
@@ -49,7 +49,7 @@ uv run flora-mcp init                           # só numa instalação nova: cr
 
 A pasta do acervo precisa ser um caminho absoluto. Ela é resolvida nesta ordem: `--data-dir` (antes do subcomando), a variável `FLORA_MCP_DATA_DIR` e `data_dir` no arquivo de configuração. O arquivo é `flora.local.toml`, na raiz do projeto e fora do controle de versão, carregado qualquer que seja o diretório de execução; `--config` ou `FLORA_MCP_CONFIG` escolhem outro. Sem caminho configurado, o programa recusa iniciar. Só `init` cria banco; os demais comandos recusam uma pasta sem `acervo.sqlite`.
 
-Outras chaves da seção `[flora]`, todas com padrão: `resource_from`, `max_resources` (lotes por dataset do STJ por execução, padrão 2), `recheck_days` (7), `max_download_bytes`, `request_delay` (1,0 s), `datasets`, `atraso_stj_dias` e `atraso_tjsc_dias`. O modelo está em [flora.example.toml](flora.example.toml).
+Outras chaves da seção `[flora]`, todas com padrão: `resource_from`, `max_resources` (lotes por dataset do STJ por execução, padrão 2), `recheck_days` (7), `max_download_bytes`, `request_delay` (1,0 s; a coleta do TJSC em uso roda com 2,5 s e sem consultas paralelas ao portal, ver `DECISOES.md`), `datasets`, `atraso_stj_dias` e `atraso_tjsc_dias`. O modelo está em [flora.example.toml](flora.example.toml).
 
 Nesta máquina, o acervo em uso fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP`, fora do cofre Obsidian, e os clientes rodam o código do worktree principal (`Documents\Flora-MCP`, branch `main`). Para experimentar sem risco, aponte `FLORA_MCP_DATA_DIR` para uma cópia.
 
@@ -88,7 +88,7 @@ Em outra máquina, troque os caminhos. Um cliente já aberto continua com as fer
 | Ferramenta | Uso |
 |---|---|
 | `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator e datas. Triagem por padrão (referência, cabeçalho e trecho do termo); resposta vazia com `motivo`. |
-| `pesquisar_precedentes` | Temas, IAC e súmulas admitidos, por espécie, número, órgão e componente. |
+| `pesquisar_precedentes` | Temas, IRDR, IAC e súmulas admitidos, por espécie, número, órgão, matéria e componente. |
 | `obter_documento` | Ementa, seção da ementa, espelho original ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
 | `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |
 
@@ -111,7 +111,7 @@ uv run flora-mcp precedentes "dano moral" --tribunal STJ --especie sumula --camp
 uv run flora-mcp coverage
 ```
 
-`search` aceita `--tribunal`, `--orgao`, `--classe`, `--relator`, `--processo`, `--data-inicio`, `--data-fim` e `--tipo-data`; `precedentes` aceita `--tribunal`, `--especie`, `--numero`, `--orgao`, `--campo`, `--data-inicio` e `--data-fim`. Os dois aceitam `--ordenar`, `--detalhe`, `--modo-busca`, `--limite` e `--cursor`, com os valores do contrato. Para pesquisar as palavras "preparar" ou "amostra" em precedentes, use `flora-mcp precedentes -- preparar`.
+`search` aceita `--tribunal`, `--orgao`, `--classe`, `--relator`, `--processo`, `--data-inicio`, `--data-fim` e `--tipo-data`; `precedentes` aceita `--tribunal`, `--especie`, `--numero`, `--orgao`, `--materia`, `--campo`, `--data-inicio` e `--data-fim`. Os dois aceitam `--ordenar`, `--detalhe`, `--modo-busca`, `--limite` e `--cursor`, com os valores do contrato. Para pesquisar as palavras "preparar" ou "amostra" em precedentes, use `flora-mcp precedentes -- preparar`.
 
 ### Atualização
 
@@ -126,7 +126,7 @@ uv run flora-mcp atualizar --so-stj
 Sob a trava do coletor, `atualizar` faz, em ordem: backup no formato de depósito (rótulo `antes-atualizacao`); coleta do STJ com até `--stj-lotes` lotes por dataset (padrão 2); coleta do TJSC na janela de `--tjsc-dias` dias de publicação (padrão 7, de 1 a 31) que termina hoje no fuso de São Paulo; e publicação, se o acervo já tiver manifesto de publicações. `--so-stj` e `--so-tjsc` limitam a rodada a uma fonte. A falha de uma fonte fica no relatório e não impede a outra. O relatório sai na saída padrão e é gravado em `logs/` na pasta do acervo. Com a trava ocupada, o comando recusa sem fazer nada.
 
 - **STJ.** Cada rodada baixa os lotes pendentes mais recentes primeiro e avança no histórico nas seguintes; descobre arquivos novos, revê metadados alterados e reconfere bytes com mais de `recheck_days` dias. Execução `partial` significa que ainda há lotes pendentes. Um espelho inválido (sem `id`, sem ementa, sem órgão ou com data de julgamento ilegível) não derruba o lote: os válidos entram, e os rejeitados ficam registrados com posição, `id` e motivo. Lote que não é lista, vazio ou sem nenhum espelho válido fica em `error`. Havendo versões divergentes entre lotes, prevalece o arquivo de extração mais recente.
-- **TJSC.** Percorre todas as páginas de cada dia de publicação da 9ª e da 10ª Câmaras de Direito Civil (a janela móvel; lacunas e outros órgãos, com `scripts/resume_tjsc.py`), sem filtro temático; confere órgão, data, quantidade e IDs e reconfere a primeira página. Falha numa janela impede sua conclusão. Janelas antigas continuam no banco quando saem da janela móvel. Não há contorno de CAPTCHA ou autenticação.
+- **TJSC.** Percorre todas as páginas de cada dia de publicação das dez Câmaras de Direito Civil (a janela móvel; lacunas e as Câmaras Especiais de Enfrentamento de Acervos, com `scripts/resume_tjsc.py`), sem filtro temático; confere órgão, data, quantidade e IDs e reconfere a primeira página. Falha numa janela impede sua conclusão. Janelas antigas continuam no banco quando saem da janela móvel. Não há contorno de CAPTCHA ou autenticação.
 
 Os comandos de base continuam disponíveis: `sync-stj [--max-resources N] [--recheck]`, `sync-tjsc --inicio AAAA-MM-DD --fim AAAA-MM-DD` (até 31 dias) e `probe-tjsc` (diagnóstico de acesso, sem ingestão). Os dois primeiros publicam ao fim, se houver manifesto.
 
