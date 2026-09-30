@@ -58,20 +58,15 @@ def markdown(item, components, version):
     return "\n".join(lines).encode("utf-8")
 
 
-def export_documents(store, target: Path, *, include_judgments=False):  # noqa: C901
-    target = target.resolve()
-    if target == store.directory.resolve() or target.is_relative_to(store.directory.resolve()):
-        raise FloraError("destino_invalido", "Exportação deve ficar fora do diretório de dados.")
-    view = Reader(store).resolve()
-    if view.publication is None:
-        raise FloraError("publicacao_pendente", "Publique um snapshot validado antes da exportação.")
-    target.mkdir(parents=True, exist_ok=True)
-    catalog_path = target / "catalogo.json"
+def read_catalog(catalog_path: Path) -> tuple[bytes | None, dict]:
     old_bytes = catalog_path.read_bytes() if catalog_path.exists() else None
     old = json.loads(old_bytes) if old_bytes else {"schema": "flora-catalogo-1", "registros": []}
     if old.get("schema") != "flora-catalogo-1":
         raise FloraError("exportacao_conflitante", "Catálogo existente não pertence a este formato.")
-    previous = {x["arquivo"]: x for x in old["registros"]}
+    return old_bytes, old
+
+
+def verify_managed(target: Path, previous: dict):
     # Validate every managed file before the first mutation; untracked files are never overwritten.
     for name, item in previous.items():
         path = (target / name).resolve()
@@ -82,32 +77,41 @@ def export_documents(store, target: Path, *, include_judgments=False):  # noqa: 
             or digest(path.read_bytes()) != item["sha256"]
         ):
             raise FloraError("exportacao_conflitante", "Documento exportado alterado ou ausente: " + name)
+
+
+def admitted_precedents(db, view) -> list:
+    if not available(db):
+        return []
     prepared = []
-    with view.read() as db:
-        if available(db):
-            for row in db.execute(
-                "SELECT id,hash,body FROM precedents WHERE admission='admitido' ORDER BY id"
-            ):
-                if row["id"] in view.withdrawn or row["id"] + ":" + row["hash"] in view.retired_versions:
-                    continue
-                body = json.loads(row["body"])
-                body["hash_conteudo"] = row["hash"]
-                prepared.append((body, body["componentes"]))
-        if include_judgments:
-            for row in db.execute(
-                "SELECT d.body,v.raw,r.url,r.sha256,r.checked FROM documents d JOIN versions v ON "
-                "v.document_id=d.id AND v.hash=d.hash JOIN resources r ON r.id=d.resource_id ORDER BY d.id"
-            ):
-                body = json.loads(row["body"])
-                body.update(citation_metadata(body, json.loads(row["raw"])))
-                body["fontes"] = [{"url": row["url"], "sha256": row["sha256"], "coletado_em": row["checked"]}]
-                prepared.append((body, {"ementa": body["ementa"]}))
+    for row in db.execute("SELECT id,hash,body FROM precedents WHERE admission='admitido' ORDER BY id"):
+        if row["id"] in view.withdrawn or row["id"] + ":" + row["hash"] in view.retired_versions:
+            continue
+        body = json.loads(row["body"])
+        body["hash_conteudo"] = row["hash"]
+        prepared.append((body, body["componentes"]))
+    return prepared
+
+
+def judgments(db) -> list:
+    prepared = []
+    for row in db.execute(
+        "SELECT d.body,v.raw,r.url,r.sha256,r.checked FROM documents d JOIN versions v ON "
+        "v.document_id=d.id AND v.hash=d.hash JOIN resources r ON r.id=d.resource_id ORDER BY d.id"
+    ):
+        body = json.loads(row["body"])
+        body.update(citation_metadata(body, json.loads(row["raw"])))
+        body["fontes"] = [{"url": row["url"], "sha256": row["sha256"], "coletado_em": row["checked"]}]
+        prepared.append((body, {"ementa": body["ementa"]}))
+    return prepared
+
+
+def render(target: Path, previous: dict, prepared: list, publication) -> tuple[dict, list]:
     files, entries = {}, []
     for body, components in prepared:
         name = digest(body["id"].encode()) + ".md"
         if (target / name).exists() and name not in previous:
             raise FloraError("exportacao_conflitante", "Arquivo não gerenciado no destino: " + name)
-        content = markdown(body, components, view.publication)
+        content = markdown(body, components, publication)
         files[name] = content
         entries.append(
             {
@@ -122,6 +126,44 @@ def export_documents(store, target: Path, *, include_judgments=False):  # noqa: 
                 "componentes": {k: digest(v.encode()) for k, v in components.items()},
             }
         )
+    return files, entries
+
+
+def write_files(target: Path, previous: dict, files: dict):
+    for name, content in files.items():
+        path = target / name
+        if name in previous and (not path.exists() or digest(path.read_bytes()) != previous[name]["sha256"]):
+            raise FloraError("exportacao_conflitante", "Arquivo alterado durante a preparação: " + name)
+        pending = path.with_suffix(".tmp")
+        pending.write_bytes(content)
+        pending.replace(path)
+
+
+def remove_retired(target: Path, previous: dict, files: dict):
+    for name in previous.keys() - files.keys():
+        path = target / name
+        if digest(path.read_bytes()) != previous[name]["sha256"]:
+            raise FloraError("exportacao_conflitante", "Arquivo alterado antes da retirada: " + name)
+        path.unlink()
+
+
+def export_documents(store, target: Path, *, include_judgments=False):
+    target = target.resolve()
+    if target == store.directory.resolve() or target.is_relative_to(store.directory.resolve()):
+        raise FloraError("destino_invalido", "Exportação deve ficar fora do diretório de dados.")
+    view = Reader(store).resolve()
+    if view.publication is None:
+        raise FloraError("publicacao_pendente", "Publique um snapshot validado antes da exportação.")
+    target.mkdir(parents=True, exist_ok=True)
+    catalog_path = target / "catalogo.json"
+    old_bytes, old = read_catalog(catalog_path)
+    previous = {x["arquivo"]: x for x in old["registros"]}
+    verify_managed(target, previous)
+    with view.read() as db:
+        prepared = admitted_precedents(db, view)
+        if include_judgments:
+            prepared += judgments(db)
+    files, entries = render(target, previous, prepared, view.publication)
     catalog = {
         "schema": "flora-catalogo-1",
         "contrato": "flora-mcp-2",
@@ -135,18 +177,8 @@ def export_documents(store, target: Path, *, include_judgments=False):  # noqa: 
         return {"status": "ok", "alterado": False, "documentos": len(entries), "catalogo": str(catalog_path)}
     if (catalog_path.read_bytes() if catalog_path.exists() else None) != old_bytes:
         raise FloraError("exportacao_conflitante", "Catálogo alterado durante a preparação.")
-    for name, content in files.items():
-        path = target / name
-        if name in previous and (not path.exists() or digest(path.read_bytes()) != previous[name]["sha256"]):
-            raise FloraError("exportacao_conflitante", "Arquivo alterado durante a preparação: " + name)
-        pending = path.with_suffix(".tmp")
-        pending.write_bytes(content)
-        pending.replace(path)
-    for name in previous.keys() - files.keys():
-        path = target / name
-        if digest(path.read_bytes()) != previous[name]["sha256"]:
-            raise FloraError("exportacao_conflitante", "Arquivo alterado antes da retirada: " + name)
-        path.unlink()
+    write_files(target, previous, files)
+    remove_retired(target, previous, files)
     pending = catalog_path.with_suffix(".tmp")
     pending.write_text(canonical(catalog), encoding="utf-8")
     pending.replace(catalog_path)
