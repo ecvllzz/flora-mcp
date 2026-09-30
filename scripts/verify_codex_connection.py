@@ -49,7 +49,10 @@ async def main():
             "client": init,
             "flora": flora,
             "next_cursor": status.get("nextCursor"),
-            "scope": "Separate installed Codex app-server process; no model turn and no desktop conversation reload",
+            "scope": (
+                "Separate installed Codex app-server process; no model turn and no desktop conversation "
+                "reload"
+            ),
         }
         target = Path(__file__).resolve().parents[1] / "docs" / "conexao-codex.json"
         target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

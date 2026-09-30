@@ -5,7 +5,7 @@ import re
 from .model import FloraError, digest, folded
 
 
-def advanced_query(value: str) -> str:
+def advanced_query(value: str) -> str:  # noqa: C901
     if len(value) > 500 or value.count('"') % 2:
         raise FloraError("consulta_invalida", "Consulta longa ou aspas sem fechamento.")
     tokens = re.findall(r'"[^"\n]+"|[()]|[^\s()"]+', value)
@@ -65,7 +65,8 @@ def advanced_query(value: str) -> str:
 
 HEADINGS = re.compile(
     r"(?im)^[ \t]*(?:[IVX]+[.\-–:][ \t]*)?"
-    r"(?P<title>CASO EM EXAME|QUEST[ÃA]O EM DISCUSS[ÃA]O|RAZ[ÕO]ES DE DECIDIR|DISPOSITIVO E TESE|TESE DE JULGAMENTO)"
+    r"(?P<title>CASO EM EXAME|QUEST[ÃA]O EM DISCUSS[ÃA]O|RAZ[ÕO]ES DE DECIDIR|DISPOSITIVO E TESE|TESE DE "
+    r"JULGAMENTO)"
     r"[ \t]*(?:[:.\-–][ \t]*|$)"
 )
 NAMES = {

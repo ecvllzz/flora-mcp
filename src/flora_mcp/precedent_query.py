@@ -33,7 +33,7 @@ def metadata(body, sha):
     }
 
 
-def search(
+def search(  # noqa: C901
     store,
     *,
     termos="",
@@ -136,7 +136,8 @@ def search(
                 else ""
             )
             rows = db.execute(
-                f"SELECT p.body,p.hash{highlights} FROM {source} WHERE {where} ORDER BY {order} LIMIT ? OFFSET ?",
+                f"SELECT p.body,p.hash{highlights} FROM {source} WHERE {where} ORDER BY {order} LIMIT ? "
+                f"OFFSET ?",
                 (*params, limite, offset),
             ).fetchall()
         else:

@@ -63,7 +63,7 @@ class LocalOnly:
         await self.app(scope, receive, secure_send)
 
 
-def create_panel_app(store: Store, *, port: int = 8766):
+def create_panel_app(store: Store, *, port: int = 8766):  # noqa: C901
     reader = Reader(store)
 
     def status(request):
@@ -104,7 +104,10 @@ def create_panel_app(store: Store, *, port: int = 8766):
                 [
                     dict(r)
                     for r in db.execute(
-                        "SELECT tribunal,json_extract(body,'$.orgao') AS orgao,species AS especie,count(*) AS documentos FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT value FROM json_each(?)) GROUP BY tribunal,organ,species ORDER BY tribunal,organ,species",
+                        "SELECT tribunal,json_extract(body,'$.orgao') AS orgao,species AS especie,count(*) "
+                        "AS documentos FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT "
+                        "value FROM json_each(?)) GROUP BY tribunal,organ,species ORDER BY tribunal,organ,"
+                        "species",
                         (json.dumps(sorted(getattr(view, "withdrawn", set()))),),
                     )
                 ]

@@ -37,7 +37,7 @@ def lexical_query(terms: str) -> str:
     return " AND ".join('"' + v.replace('"', '""') + '"' for v in values)
 
 
-def search(
+def search(  # noqa: C901
     store: Store,
     termos: str = "",
     processo: str | None = None,

@@ -61,7 +61,8 @@ CREATE TRIGGER precedent_texts_ai AFTER INSERT ON precedent_texts BEGIN
  VALUES(new.rowid,new.enunciado,new.questao_submetida,new.tese_firmada,new.modulacao,new.suspensao);
 END;
 CREATE TRIGGER precedent_texts_ad AFTER DELETE ON precedent_texts BEGIN
- INSERT INTO precedent_search(precedent_search,rowid,enunciado,questao_submetida,tese_firmada,modulacao,suspensao)
+ INSERT INTO precedent_search(precedent_search,rowid,
+  enunciado,questao_submetida,tese_firmada,modulacao,suspensao)
  VALUES('delete',old.rowid,old.enunciado,old.questao_submetida,old.tese_firmada,old.modulacao,old.suspensao);
 END;
 UPDATE meta SET value=2 WHERE key='schema';
@@ -102,7 +103,7 @@ def required_text(value, field):
     return value
 
 
-def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str, bytes]]:
+def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str, bytes]]:  # noqa: C901
     """Validate source bytes and structure. Return a policy decision, never a URL-only admission."""
     if not isinstance(record, dict):
         raise FloraError("pacote_invalido", "Registro deve ser um objeto.")
@@ -231,7 +232,7 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     return body, blobs
 
 
-def import_package(store: Store, package_path: Path, *, apply: bool = False) -> dict:
+def import_package(store: Store, package_path: Path, *, apply: bool = False) -> dict:  # noqa: C901
     package = json.loads(package_path.read_text(encoding="utf-8-sig"))
     if not isinstance(package, dict) or package.get("schema") != "flora-precedentes-1":
         raise FloraError("pacote_invalido", "Esperado pacote flora-precedentes-1.")
@@ -330,7 +331,8 @@ def import_package(store: Store, package_path: Path, *, apply: bool = False) -> 
             db.execute("DELETE FROM precedent_texts WHERE id=?", (body["id"],))
             if body["admissao"] == "admitido":
                 db.execute(
-                    "INSERT INTO precedent_texts(id,enunciado,questao_submetida,tese_firmada,modulacao,suspensao) "
+                    "INSERT INTO precedent_texts(id,enunciado,questao_submetida,tese_firmada,modulacao,"
+                    "suspensao) "
                     "VALUES (?,?,?,?,?,?)",
                     (body["id"], *(body["componentes"].get(x, "") for x in COMPONENTS)),
                 )

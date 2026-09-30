@@ -272,7 +272,9 @@ class Store:
             "recursos": resources,
             "execucoes_recentes": runs,
             "inteiros_teores": 0,
-            "tjsc": "Coleta experimental por dia de publicação; somente janelas registradas estão carregadas.",
+            "tjsc": (
+                "Coleta experimental por dia de publicação; somente janelas registradas estão carregadas."
+            ),
             "limites": [
                 "Carga de recursos JSON selecionados; histórico ZIP não incorporado.",
                 "Datas extremas observadas não comprovam cobertura contínua do período.",

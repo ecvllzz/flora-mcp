@@ -58,7 +58,7 @@ def markdown(item, components, version):
     return "\n".join(lines).encode("utf-8")
 
 
-def export_documents(store, target: Path, *, include_judgments=False):
+def export_documents(store, target: Path, *, include_judgments=False):  # noqa: C901
     target = target.resolve()
     if target == store.directory.resolve() or target.is_relative_to(store.directory.resolve()):
         raise FloraError("destino_invalido", "Exportação deve ficar fora do diretório de dados.")
@@ -95,7 +95,8 @@ def export_documents(store, target: Path, *, include_judgments=False):
                 prepared.append((body, body["componentes"]))
         if include_judgments:
             for row in db.execute(
-                "SELECT d.body,v.raw,r.url,r.sha256,r.checked FROM documents d JOIN versions v ON v.document_id=d.id AND v.hash=d.hash JOIN resources r ON r.id=d.resource_id ORDER BY d.id"
+                "SELECT d.body,v.raw,r.url,r.sha256,r.checked FROM documents d JOIN versions v ON "
+                "v.document_id=d.id AND v.hash=d.hash JOIN resources r ON r.id=d.resource_id ORDER BY d.id"
             ):
                 body = json.loads(row["body"])
                 body.update(citation_metadata(body, json.loads(row["raw"])))

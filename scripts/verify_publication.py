@@ -19,7 +19,8 @@ def fingerprint(store):
     with store.read() as db:
         db.execute("BEGIN")
         for row in db.execute(
-            "SELECT d.id,d.hash,d.body,v.raw FROM documents d JOIN versions v ON v.document_id=d.id AND v.hash=d.hash ORDER BY d.id"
+            "SELECT d.id,d.hash,d.body,v.raw FROM documents d JOIN versions v ON v.document_id=d.id AND "
+            "v.hash=d.hash ORDER BY d.id"
         ):
             body = json.loads(row["body"])
             citation = citation_metadata(body, json.loads(row["raw"]))

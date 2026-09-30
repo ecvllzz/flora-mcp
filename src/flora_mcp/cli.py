@@ -12,7 +12,7 @@ from .sources import client, probe_tjsc, sync_stj
 from .store import Store
 
 
-def main():
+def main():  # noqa: C901
     parser = argparse.ArgumentParser(description="Flora-MCP: acervo oficial local e MCP de leitura")
     parser.add_argument("--config", help="Arquivo TOML de configuração")
     parser.add_argument("--data-dir", help="Diretório do acervo (fora do código e de pastas sincronizadas)")

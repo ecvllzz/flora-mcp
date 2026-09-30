@@ -13,7 +13,7 @@ DERIVER = "flora-read-2.2"
 MANIFEST = "publicacoes.json"
 
 
-def publish(store: Store):
+def publish(store: Store):  # noqa: C901
     """Caller holds collector lock. Never replace an open SQLite file."""
     directory = store.directory / "publicacoes"
     directory.mkdir(exist_ok=True)
@@ -65,10 +65,12 @@ def publish(store: Store):
         dest.execute("DELETE FROM version_origins")
         dest.execute("DELETE FROM resource_history")
         dest.execute(
-            "DELETE FROM versions WHERE NOT EXISTS (SELECT 1 FROM documents d WHERE d.id=document_id AND d.hash=versions.hash)"
+            "DELETE FROM versions WHERE NOT EXISTS (SELECT 1 FROM documents d WHERE d.id=document_id AND "
+            "d.hash=versions.hash)"
         )
         dest.execute(
-            "CREATE TABLE document_details(id TEXT PRIMARY KEY,relator TEXT NOT NULL,relator_fold TEXT NOT NULL,classe_descricao TEXT NOT NULL)"
+            "CREATE TABLE document_details(id TEXT PRIMARY KEY,relator TEXT NOT NULL,relator_fold TEXT NOT "
+            "NULL,classe_descricao TEXT NOT NULL)"
         )
         derived = []
         for body, raw in dest.execute(
@@ -90,7 +92,8 @@ def publish(store: Store):
             dest.execute("DELETE FROM precedent_events")
             dest.execute("DELETE FROM precedents WHERE admission!='admitido'")
             dest.execute(
-                "DELETE FROM precedent_versions WHERE NOT EXISTS (SELECT 1 FROM precedents p WHERE p.id=precedent_versions.id AND p.hash=precedent_versions.hash)"
+                "DELETE FROM precedent_versions WHERE NOT EXISTS (SELECT 1 FROM precedents p WHERE "
+                "p.id=precedent_versions.id AND p.hash=precedent_versions.hash)"
             )
             dest.execute("INSERT INTO precedent_search(precedent_search,rank) VALUES ('integrity-check',1)")
         dest.commit()

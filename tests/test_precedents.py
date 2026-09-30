@@ -265,7 +265,10 @@ def test_opt_in_grammar_preserves_filters_and_phrases(store):
 
 
 def test_literal_sections_have_original_unicode_offsets_and_no_qualified_thesis(store):
-    text = "Árvore.\nI. CASO EM EXAME\nFatos.\nII. QUESTÃO EM DISCUSSÃO\nQuestão.\nIV. DISPOSITIVO E TESE\nConclusão.\nTese de julgamento: texto local."
+    text = (
+        "Árvore.\nI. CASO EM EXAME\nFatos.\nII. QUESTÃO EM DISCUSSÃO\nQuestão.\nIV. DISPOSITIVO E "
+        "TESE\nConclusão.\nTese de julgamento: texto local."
+    )
     ingest(store, [raw_doc(text=text)])
     full = api.document(store, "STJ:1")
     assert full["texto"] == text

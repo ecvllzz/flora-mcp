@@ -157,7 +157,10 @@ def coverage(
                 [
                     dict(r)
                     for r in db.execute(
-                        "SELECT tribunal,species AS especie,admission AS admissao,count(*) AS documentos FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT value FROM json_each(?)) AND (id || ':' || hash) NOT IN (SELECT value FROM json_each(?)) GROUP BY tribunal,species,admission ORDER BY tribunal,species,admission",
+                        "SELECT tribunal,species AS especie,admission AS admissao,count(*) AS documentos "
+                        "FROM precedents WHERE admission='admitido' AND id NOT IN (SELECT value FROM "
+                        "json_each(?)) AND (id || ':' || hash) NOT IN (SELECT value FROM json_each(?)) "
+                        "GROUP BY tribunal,species,admission ORDER BY tribunal,species,admission",
                         (
                             canonical(sorted(getattr(view, "withdrawn", set()))),
                             canonical(sorted(getattr(view, "retired_versions", set()))),
