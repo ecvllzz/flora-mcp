@@ -12,7 +12,7 @@ from .sources import client, probe_tjsc, sync_stj
 from .store import Store
 
 
-def main():  # noqa: C901
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Flora-MCP: acervo oficial local e MCP de leitura")
     parser.add_argument("--config", help="Arquivo TOML de configuração")
     parser.add_argument("--data-dir", help="Diretório do acervo (fora do código e de pastas sincronizadas)")
@@ -50,7 +50,135 @@ def main():  # noqa: C901
     sub.add_parser("serve", help="Servidor MCP stdio, exclusivamente de leitura")
     backup = sub.add_parser("backup", help="Backup consistente de banco e originais")
     backup.add_argument("destino", type=Path)
-    args = parser.parse_args()
+    return parser
+
+
+def run_coverage(args, store):
+    return coverage(store)
+
+
+def run_search(args, store):
+    return search(
+        store,
+        args.termos,
+        processo=args.processo,
+        tribunal=args.tribunal,
+        orgao=args.orgao,
+        ordenar=args.ordenar,
+        colecao=args.colecao,
+        campo=args.campo,
+        especie=args.especie,
+        numero=args.numero,
+        detalhe=args.detalhe,
+    )
+
+
+def backup_before(config, store, label: str) -> dict:
+    """Consistent backup beside the data directory, before an administrative write."""
+    from datetime import datetime
+
+    destination = (
+        config.data_dir.parent
+        / (config.data_dir.name + "-backups")
+        / datetime.now().strftime(label + "-%Y%m%d-%H%M%S-%f")
+    )
+    return store.backup(destination)
+
+
+def run_migrate(args, config, store):
+    from .precedents import migrate
+
+    saved = backup_before(config, store, "antes-migracao")
+    return {**migrate(store), "backup": saved}
+
+
+def run_import(args, config, store):
+    from .precedents import import_package
+
+    result = import_package(store, args.pacote.resolve())
+    if args.apply:
+        saved = backup_before(config, store, "antes-precedentes")
+        result = {**import_package(store, args.pacote.resolve(), apply=True), "backup": saved}
+    return result
+
+
+def run_publish(args, config, store):
+    from .publication import publish
+
+    return publish(store)
+
+
+def run_export(args, config, store):
+    from .export import export_documents
+
+    return export_documents(store, args.destino, include_judgments=args.include_judgments)
+
+
+def run_init(args, config, store):
+    return {"status": "ok", "banco": str(store.path)}
+
+
+def run_backup(args, config, store):
+    destination = args.destino.resolve()
+    if destination == config.data_dir or config.data_dir in destination.parents:
+        raise FloraError("destino_invalido", "Backup deve ficar fora do diretório do acervo.")
+    return store.backup(destination)
+
+
+def run_collection(args, config, store):
+    if args.command == "sync-stj" and args.max_resources is not None:
+        if args.max_resources < 1:
+            raise FloraError("limite_invalido", "Máximo de recursos deve ser positivo.")
+        config.max_resources = args.max_resources
+    with client() as http:
+        if args.command == "sync-stj":
+            return sync_stj(config, store, http, force=args.recheck)
+        if args.command == "sync-tjsc":
+            from datetime import date
+            from .tjsc import sync_tjsc
+
+            return sync_tjsc(
+                config, store, http, date.fromisoformat(args.inicio), date.fromisoformat(args.fim)
+            )
+        return probe_tjsc(config, store, http)
+
+
+READERS = {"coverage": run_coverage, "search": run_search}
+WRITERS = {
+    "migrate": run_migrate,
+    "import-precedents": run_import,
+    "publish": run_publish,
+    "export": run_export,
+    "init": run_init,
+    "backup": run_backup,
+    "sync-stj": run_collection,
+    "sync-tjsc": run_collection,
+    "probe-tjsc": run_collection,
+}
+
+
+def run_locked(args, config, store):
+    """Administrative commands run under the collector lock, on an existing database."""
+    if args.command != "init" and not config.db_path.is_file():
+        raise FloraError(
+            "base_nao_inicializada",
+            "Banco não encontrado na pasta configurada. "
+            "Confira o caminho; a coleta não cria outro acervo automaticamente.",
+        )
+    config.data_dir.mkdir(parents=True, exist_ok=True)
+    with FileLock(str(config.data_dir / "collector.lock"), timeout=0):
+        store.initialize()
+        result = WRITERS[args.command](args, config, store)
+        if args.command in {"sync-stj", "sync-tjsc"} or (args.command == "import-precedents" and args.apply):
+            from .publication import MANIFEST, publish
+
+            if (store.directory / MANIFEST).exists():
+                result["publicacao"] = publish(store)
+    return result
+
+
+def main():
+    args = build_parser().parse_args()
     try:
         config = load_config(args.config, args.data_dir)
         store = Store(config.data_dir)
@@ -59,101 +187,10 @@ def main():  # noqa: C901
 
             create_server(store).run(transport="stdio")
             return
-        if args.command in {"coverage", "search"}:
-            result = (
-                coverage(store)
-                if args.command == "coverage"
-                else search(
-                    store,
-                    args.termos,
-                    processo=args.processo,
-                    tribunal=args.tribunal,
-                    orgao=args.orgao,
-                    ordenar=args.ordenar,
-                    colecao=args.colecao,
-                    campo=args.campo,
-                    especie=args.especie,
-                    numero=args.numero,
-                    detalhe=args.detalhe,
-                )
-            )
+        if args.command in READERS:
+            result = READERS[args.command](args, store)
         else:
-            if args.command != "init" and not config.db_path.is_file():
-                raise FloraError(
-                    "base_nao_inicializada",
-                    "Banco não encontrado na pasta configurada. "
-                    "Confira o caminho; a coleta não cria outro acervo automaticamente.",
-                )
-            config.data_dir.mkdir(parents=True, exist_ok=True)
-            with FileLock(str(config.data_dir / "collector.lock"), timeout=0):
-                store.initialize()
-                if args.command == "migrate":
-                    from datetime import datetime
-                    from .precedents import migrate
-
-                    destination = (
-                        config.data_dir.parent
-                        / (config.data_dir.name + "-backups")
-                        / datetime.now().strftime("antes-migracao-%Y%m%d-%H%M%S-%f")
-                    )
-                    saved = store.backup(destination)
-                    result = {**migrate(store), "backup": saved}
-                elif args.command == "import-precedents":
-                    from datetime import datetime
-                    from .precedents import import_package
-
-                    result = import_package(store, args.pacote.resolve())
-                    if args.apply:
-                        destination = (
-                            config.data_dir.parent
-                            / (config.data_dir.name + "-backups")
-                            / datetime.now().strftime("antes-precedentes-%Y%m%d-%H%M%S-%f")
-                        )
-                        saved = store.backup(destination)
-                        result = {**import_package(store, args.pacote.resolve(), apply=True), "backup": saved}
-                elif args.command == "publish":
-                    from .publication import publish
-
-                    result = publish(store)
-                elif args.command == "export":
-                    from .export import export_documents
-
-                    result = export_documents(store, args.destino, include_judgments=args.include_judgments)
-                elif args.command == "init":
-                    result = {"status": "ok", "banco": str(store.path)}
-                elif args.command == "backup":
-                    destination = args.destino.resolve()
-                    if destination == config.data_dir or config.data_dir in destination.parents:
-                        raise FloraError("destino_invalido", "Backup deve ficar fora do diretório do acervo.")
-                    result = store.backup(destination)
-                else:
-                    if args.command == "sync-stj" and args.max_resources is not None:
-                        if args.max_resources < 1:
-                            raise FloraError("limite_invalido", "Máximo de recursos deve ser positivo.")
-                        config.max_resources = args.max_resources
-                    with client() as http:
-                        if args.command == "sync-stj":
-                            result = sync_stj(config, store, http, force=args.recheck)
-                        elif args.command == "sync-tjsc":
-                            from datetime import date
-                            from .tjsc import sync_tjsc
-
-                            result = sync_tjsc(
-                                config,
-                                store,
-                                http,
-                                date.fromisoformat(args.inicio),
-                                date.fromisoformat(args.fim),
-                            )
-                        else:
-                            result = probe_tjsc(config, store, http)
-                if args.command in {"sync-stj", "sync-tjsc"} or (
-                    args.command == "import-precedents" and args.apply
-                ):
-                    from .publication import MANIFEST, publish
-
-                    if (store.directory / MANIFEST).exists():
-                        result["publicacao"] = publish(store)
+            result = run_locked(args, config, store)
         print(json.dumps(result, ensure_ascii=True, indent=2))
         if result.get("status") == "error":
             raise SystemExit(2)
