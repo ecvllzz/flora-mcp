@@ -7,7 +7,13 @@ name = "flora-mcp"
 version = "0.2.0a1"
 description = "MCP independente para pesquisa de jurisprudência em fontes oficiais brasileiras"
 requires-python = ">=3.12"
-dependencies = ["mcp==2.2.0", "httpx>=0.28,<0.29", "beautifulsoup4>=4.14,<5", "filelock>=3.20,<4"]
+dependencies = [
+    "mcp==2.2.0",
+    "httpx>=0.28,<0.29",
+    "beautifulsoup4>=4.14,<5",
+    "filelock>=3.20,<4",
+    "tzdata>=2025.2",
+]
 
 [project.scripts]
 flora-mcp = "flora_mcp.cli:main"

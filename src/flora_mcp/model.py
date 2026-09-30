@@ -2,7 +2,7 @@ import hashlib
 import json
 import re
 import unicodedata
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 
 class FloraError(Exception):
@@ -13,6 +13,14 @@ class FloraError(Exception):
 
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def local_date(instant: str | None = None) -> date:
+    """Calendar date in São Paulo, where the courts publish, for an ISO instant or for now."""
+    from zoneinfo import ZoneInfo
+
+    moment = datetime.fromisoformat(instant) if instant else datetime.now(timezone.utc)
+    return moment.astimezone(ZoneInfo("America/Sao_Paulo")).date()
 
 
 def canonical(value) -> str:

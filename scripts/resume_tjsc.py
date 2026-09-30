@@ -9,6 +9,7 @@ from pathlib import Path
 
 from filelock import FileLock
 
+from flora_mcp import backups
 from flora_mcp.config import load_config
 from flora_mcp.model import FloraError, digest, now
 from flora_mcp.sources import TJSC_SEARCH, client
@@ -93,13 +94,16 @@ def plan(store, start, end, chambers=(9, 10)):
     }
 
 
-def execute(config, store, start, end, report_path, backup, *, fetch=collect_window):
-    report_path, backup = Path(report_path).resolve(), Path(backup).resolve()
-    if backup.is_relative_to(store.directory.resolve()):
+def execute(config, store, start, end, report_path, backup_root=None, *, fetch=collect_window):
+    """backup_root: raiz dos backups no formato novo; padrão, a pasta irmã <acervo>-backups."""
+    report_path = Path(report_path).resolve()
+    backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
+    if backup_root.is_relative_to(store.directory.resolve()):
         raise ValueError("Backup deve ficar fora do acervo.")
     if report_path.exists():
         raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
     with FileLock(str(store.directory / "collector.lock"), timeout=0):
+        store.initialize()
         work = plan(store, start, end)
         report = {
             "inicio": now(),
@@ -114,7 +118,7 @@ def execute(config, store, start, end, report_path, backup, *, fetch=collect_win
             report.update(status="ok", fim=now(), depois=report["antes"])
             save(report_path, report)
             return report
-        report["backup"] = store.backup(backup)
+        report["backup"] = backups.create(store, backup_root, "antes-retomada-tjsc")
         run = store.start_run("TJSC")
         report.update(execucao=run, status="running")
         save(report_path, report)
@@ -196,10 +200,10 @@ def main():
     parser.add_argument("--fim", required=True)
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--report", type=Path)
-    parser.add_argument("--backup", type=Path)
+    parser.add_argument("--backup", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
     args = parser.parse_args()
-    if args.apply and (not args.report or not args.backup):
-        parser.error("Aplicação exige --report e --backup novos.")
+    if args.apply and not args.report:
+        parser.error("Aplicação exige --report novo.")
     config = load_config(data_dir=args.data_dir)
     store = Store(config.data_dir)
     start, end = date.fromisoformat(args.inicio), date.fromisoformat(args.fim)
