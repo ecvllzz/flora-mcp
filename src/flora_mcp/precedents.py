@@ -5,12 +5,14 @@ ordinary judgment, an official URL alone or a collector's success as legal statu
 """
 
 import json
+import math
 import re
 from datetime import date, datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
 from .model import FloraError, canonical, digest, folded, now
+from .precedent_sources import CLASSES, OUT_OF_SCOPE, structured_url
 from .store import Store, connection
 
 SCHEMA_VERSION = 2
@@ -33,6 +35,8 @@ PUBLICATIONS = {
     "acordao_embargos": "publicação do acórdão de embargos",
 }
 SUMMARIES = {"sumula", "sumula_vinculante"}
+MATTERS = {"civil", "processual_civil"}
+BATCH_MODE = "fonte_estruturada"
 EXCLUDED = {"cancelado", "revogado", "superado", "suspenso"}
 STATUSES = EXCLUDED | {"vigente", "pendente", "desconhecido"}
 SCHEMA = """
@@ -180,8 +184,18 @@ def check_sources(body: dict, root: Path, source_cache=None) -> dict[str, bytes]
         if digest(content) != sha:
             raise FloraError("arquivo_corrompido", "Original diverge do hash declarado.")
         check_collected(source)
+        check_class(source)
         blobs[sha] = content
     return blobs
+
+
+def check_class(source: dict):
+    """A source is a document unless it declares, truthfully, a registered structured origin."""
+    declared = source.get("classe", "documento")
+    if declared not in CLASSES:
+        raise FloraError("pacote_invalido", "Classe de fonte deve ser estruturada ou documento.")
+    if declared == "estruturada" and not structured_url(source["url"]):
+        raise FloraError("fonte_invalida", "Classe estruturada exige fonte estruturada registrada.")
 
 
 def check_collected(source: dict):
@@ -221,13 +235,15 @@ def check_status(body: dict):
         raise FloraError("pacote_invalido", "Pendências devem ser uma lista textual.")
 
 
-def admission_reasons(body: dict, components: dict, evidence: dict) -> list[str]:
+def admission_reasons(body: dict, components: dict, evidence: dict, batch: dict | None = None) -> list[str]:
     """Pending reasons; sets the publication type. Raises only for an incomplete review."""
     status = body["situacao"]
     reasons = list(body.get("pendencias", []))
     if status != "vigente":
         reasons.append("situacao_" + status)
-    if body.get("materia") not in {"civil", "processual_civil"}:
+    if body.get("materia") == OUT_OF_SCOPE:
+        reasons.append("materia_fora_do_recorte")
+    elif body.get("materia") not in MATTERS:
         reasons.append("materia_nao_confirmada")
     needed = {"situacao", "publicacao", "materia"} | {"componente:" + x for x in components}
     reasons += ["evidencia_ausente:" + x for x in sorted(needed - set(evidence))]
@@ -240,14 +256,40 @@ def admission_reasons(body: dict, components: dict, evidence: dict) -> list[str]
     body["tipo_publicacao"] = publication_type
     if not components.get(main):
         reasons.append(main + "_ausente")
-    # A reviewed evidence packet is an explicit input, not inferred from populated metadata.
-    review = body.get("conferencia", {})
-    if not isinstance(review, dict) or review.get("evidencias_conferidas") is not True:
+    if not reviewed(body, needed, evidence, batch):
         reasons.append("conferencia_pendente")
-    else:
+    return reasons
+
+
+def from_structured_sources(body: dict, needed: set, evidence: dict) -> bool:
+    """Main source and every present required evidence come from structured sources."""
+    kinds = {source["sha256"]: source.get("classe", "documento") for source in body["fontes"]}
+    return body["fontes"][0].get("classe") == "estruturada" and all(
+        kinds[evidence[key]["fonte_sha256"]] == "estruturada" for key in needed & set(evidence)
+    )
+
+
+def reviewed(body: dict, needed: set, evidence: dict, batch: dict | None) -> bool:
+    """Individual review of the record, or the approved sample of a structured-source batch.
+
+    A reviewed evidence packet is an explicit input, not inferred from populated metadata.
+    """
+    review = body.get("conferencia", {})
+    if isinstance(review, dict) and review.get("evidencias_conferidas") is True:
         required_text(review.get("responsavel"), "conferencia.responsavel")
         required_text(review.get("data"), "conferencia.data")
-    return reasons
+        return True
+    if batch is None or not from_structured_sources(body, needed, evidence):
+        return False
+    body["conferencia"] = {
+        "modo": BATCH_MODE,
+        "responsavel": batch["responsavel"],
+        "data": batch["data"],
+        "semente": batch["semente"],
+        "tamanho": batch["tamanho"],
+        "amostrado": body["id"] in batch["ids"],
+    }
+    return True
 
 
 def check_links(body: dict, evidence: dict):
@@ -265,6 +307,11 @@ def check_links(body: dict, evidence: dict):
                 raise FloraError("pacote_invalido", "Ementa vinculada exige evidência própria.")
 
 
+def brazilian_date(value: str) -> str:
+    """AAAA-MM-DD to dd/mm/aaaa, as in judgment references."""
+    return date.fromisoformat(value).strftime("%d/%m/%Y")
+
+
 def set_admission_and_reference(body: dict, reasons: list[str]):
     publication = body.get("data_publicacao")
     kind = PUBLICATIONS.get(body["tipo_publicacao"], "publicação de natureza não identificada")
@@ -272,7 +319,7 @@ def set_admission_and_reference(body: dict, reasons: list[str]):
     body["motivos_admissao"] = sorted(set(reasons))
     body["referencia"] = (
         f"{body['tribunal']}, {LABELS[body['especie']]} n. {body['numero']}, {body['orgao']}"
-        + (f", {kind} {publication}" if publication else "")
+        + (f", {kind} {brazilian_date(publication)}" if publication else "")
         + ". Fonte: "
         + body["fontes"][0]["url"]
     )
@@ -280,10 +327,13 @@ def set_admission_and_reference(body: dict, reasons: list[str]):
     body["referencia_pendencias"] = [] if publication else ["data_publicacao"]
 
 
-def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str, bytes]]:
+def prepare(
+    record: dict, root: Path, source_cache=None, batch: dict | None = None
+) -> tuple[dict, dict[str, bytes]]:
     """Validate source bytes and structure. Return a policy decision, never a URL-only admission.
 
-    Blocks run in a fixed order and the first failure is the one reported.
+    Blocks run in a fixed order and the first failure is the one reported. ``batch`` is the
+    approved sample of the package, when the package declares a structured-source review.
     """
     if not isinstance(record, dict):
         raise FloraError("pacote_invalido", "Registro deve ser um objeto.")
@@ -293,20 +343,106 @@ def prepare(record: dict, root: Path, source_cache=None) -> tuple[dict, dict[str
     blobs = check_sources(body, root, source_cache)
     evidence = check_evidence(body, blobs)
     check_status(body)
-    reasons = admission_reasons(body, components, evidence)
+    reasons = admission_reasons(body, components, evidence, batch)
     check_links(body, evidence)
     set_admission_and_reference(body, reasons)
     return body, blobs
 
 
-def read_package(package_path: Path) -> list:
+def read_package(package_path: Path) -> dict:
     package = json.loads(package_path.read_text(encoding="utf-8-sig"))
     if not isinstance(package, dict) or package.get("schema") != "flora-precedentes-1":
         raise FloraError("pacote_invalido", "Esperado pacote flora-precedentes-1.")
     records = package.get("registros")
     if not isinstance(records, list) or not records:
         raise FloraError("pacote_invalido", "Pacote deve conter registros.")
-    return records
+    return package
+
+
+def record_id(record) -> str:
+    """Canonical identity of a raw record, with the same checks as prepare."""
+    if not isinstance(record, dict):
+        raise FloraError("pacote_invalido", "Registro deve ser um objeto.")
+    body = json.loads(canonical(record))
+    check_identity(body)
+    return body["id"]
+
+
+def required_keys(record: dict) -> set:
+    """Evidence keys a sample verification must cover for this record."""
+    components = record.get("componentes")
+    names = components if isinstance(components, dict) else {}
+    return {"situacao", "publicacao", "materia"} | {"componente:" + x for x in names}
+
+
+def minimum_sample(size: int) -> int:
+    """max(10, 5% of the batch rounded up), never more than the batch."""
+    return min(size, max(10, math.ceil(size * 0.05)))
+
+
+def draw(ids, seed: int, size: int) -> list[str]:
+    """Reproducible draw: ids ordered by the SHA-256 of "seed:id", first ``size``."""
+    return sorted(ids, key=lambda value: digest(f"{seed}:{value}".encode()))[:size]
+
+
+def reject_sample(message: str):
+    raise FloraError("amostra_reprovada", "Lote recusado: " + message)
+
+
+def check_verifications(sample: dict, needed: dict[str, set]):
+    checks = sample.get("verificacoes")
+    if not isinstance(checks, list) or len(checks) != len(sample["ids"]):
+        reject_sample("cada id sorteado exige uma verificação.")
+    by_id = {check.get("id"): check for check in checks if isinstance(check, dict)}
+    for value in sample["ids"]:
+        check = by_id.get(value)
+        if check is None:
+            reject_sample(f"verificação ausente para {value}.")
+        fields = check.get("campos_conferidos")
+        if not isinstance(fields, list) or not needed[value] <= set(fields):
+            reject_sample(f"verificação de {value} não cobre os campos obrigatórios.")
+        if check.get("resultado") != "conforme":
+            reject_sample(f"verificação de {value} não está conforme.")
+
+
+def check_batch_review(package: dict, needed: dict[str, set]) -> dict | None:
+    """Approved sample of a structured-source batch; any failure refuses the whole batch."""
+    review = package.get("conferencia")
+    if review is None:
+        return None
+    if not isinstance(review, dict) or review.get("modo") != BATCH_MODE:
+        raise FloraError("pacote_invalido", "Conferência do lote exige modo fonte_estruturada.")
+    sample = review.get("amostra")
+    if not isinstance(sample, dict):
+        reject_sample("amostra ausente.")
+    check_draw(sample, needed)
+    check_verifications(sample, needed)
+    for field in ("responsavel", "data"):
+        if not isinstance(sample.get(field), str) or not sample[field].strip():
+            reject_sample(f"{field} da amostra é obrigatório.")
+    if sample.get("resultado") != "aprovada":
+        reject_sample("resultado da amostra não é aprovada.")
+    return {
+        "semente": sample["semente"],
+        "tamanho": sample["tamanho"],
+        "ids": set(sample["ids"]),
+        "responsavel": sample["responsavel"],
+        "data": sample["data"],
+    }
+
+
+def check_draw(sample: dict, needed: dict[str, set]):
+    """Size, membership and reproducibility of the drawn ids."""
+    seed, size, ids = sample.get("semente"), sample.get("tamanho"), sample.get("ids")
+    if not isinstance(seed, int) or not isinstance(size, int) or not isinstance(ids, list):
+        reject_sample("semente, tamanho e ids são obrigatórios.")
+    minimum = minimum_sample(len(needed))
+    if size < minimum or len(ids) != size:
+        reject_sample(f"a amostra deve ter ao menos {minimum} registros sorteados.")
+    if any(value not in needed for value in ids):
+        reject_sample("id sorteado fora do lote.")
+    if ids != draw(needed, seed, size):
+        reject_sample("ids não correspondem ao sorteio da semente.")
 
 
 def keeps_previous_state(old, body: dict) -> bool:
@@ -356,17 +492,24 @@ def store_current(db, body: dict, sha: str, raw: str):
         )
 
 
-def apply_record(store: Store, db, body: dict, blobs: dict[str, bytes], entry: dict) -> bool:
-    """Record one prepared precedent inside the open transaction; False when nothing changed."""
+def stored_body(store: Store, body: dict, blobs: dict[str, bytes], *, save: bool) -> tuple[str, str]:
+    """Body as recorded, with local paths of the originals; canonical text and its hash."""
     for source in body["fontes"]:
-        _, path = store.save_raw(blobs[source["sha256"]])
+        if save:
+            _, path = store.save_raw(blobs[source["sha256"]])
+        else:
+            path = store.raw_relative(source["sha256"])
         source["raw_path"] = path
         source.pop("arquivo", None)
     raw = canonical(body)
-    sha = digest(raw.encode())
+    return raw, digest(raw.encode())
+
+
+def effect(db, body: dict, sha: str):
+    """What recording this version does to the current state, with the previous row."""
     old = db.execute("SELECT hash,admission,body FROM precedents WHERE id=?", (body["id"],)).fetchone()
     if old and old[0] == sha:
-        return False
+        return "sem_alteracao", old
     if (
         body["admissao"] == "admitido"
         and db.execute(
@@ -374,16 +517,29 @@ def apply_record(store: Store, db, body: dict, blobs: dict[str, bytes], entry: d
         ).fetchone()
     ):
         raise FloraError("versao_retirada", "Readmissão exige nova evidência; este conteúdo foi retirado.")
+    if keeps_previous_state(old, body):
+        return "estado_anterior_conservado", old
+    if retires_previous(old, body):
+        return "substitui_e_retira_anterior", old
+    return ("atualiza" if old else "novo"), old
+
+
+def apply_record(store: Store, db, body: dict, blobs: dict[str, bytes], entry: dict) -> bool:
+    """Record one prepared precedent inside the open transaction; False when nothing changed."""
+    raw, sha = stored_body(store, body, blobs, save=True)
+    entry["efeito"], old = effect(db, body, sha)
+    if entry["efeito"] == "sem_alteracao":
+        return False
     db.execute("INSERT OR IGNORE INTO precedent_versions VALUES (?,?,?,?)", (body["id"], sha, raw, now()))
     db.execute(
         "INSERT INTO precedent_events(id,hash,observed,admission,reasons) VALUES (?,?,?,?,?)",
         (body["id"], sha, now(), body["admissao"], canonical(body["motivos_admissao"])),
     )
-    if keeps_previous_state(old, body):
+    if entry["efeito"] == "estado_anterior_conservado":
         # Retain the incomplete observation only in audit.
         entry["estado_anterior_conservado"] = True
         return True
-    if retires_previous(old, body):
+    if entry["efeito"] == "substitui_e_retira_anterior":
         db.execute(
             "INSERT OR IGNORE INTO precedent_retirements VALUES (?,?,?)",
             (body["id"], old["hash"], now()),
@@ -392,12 +548,27 @@ def apply_record(store: Store, db, body: dict, blobs: dict[str, bytes], entry: d
     return True
 
 
+def simulate_effects(store: Store, prepared: list, entries: list):
+    """Read-only preview against the current database, when there is one to compare with."""
+    if not store.path.exists():
+        return
+    with connection(store.path) as db:
+        if not available(db):
+            return
+        for (body, blobs), entry in zip(prepared, entries, strict=True):
+            _, sha = stored_body(store, json.loads(canonical(body)), blobs, save=False)
+            entry["efeito"], _ = effect(db, body, sha)
+
+
 def import_package(store: Store, package_path: Path, *, apply: bool = False) -> dict:
-    records = read_package(package_path)
-    source_cache = {}
-    prepared = [prepare(record, package_path.parent, source_cache) for record in records]
-    if len({body["id"] for body, _ in prepared}) != len(prepared):
+    package = read_package(package_path)
+    records = package["registros"]
+    needed = {record_id(record): required_keys(record) for record in records}
+    if len(needed) != len(records):
         raise FloraError("id_duplicado", "Pacote contém identidade duplicada.")
+    batch = check_batch_review(package, needed)
+    source_cache = {}
+    prepared = [prepare(record, package_path.parent, source_cache, batch) for record in records]
     receipt = {
         "status": "ok",
         "aplicado": apply,
@@ -406,7 +577,10 @@ def import_package(store: Store, package_path: Path, *, apply: bool = False) -> 
             for body, _ in prepared
         ],
     }
+    if batch is not None:
+        receipt["conferencia_lote"] = {k: batch[k] for k in ("semente", "tamanho", "responsavel", "data")}
     if not apply:
+        simulate_effects(store, prepared, receipt["registros"])
         return receipt
     with connection(store.path, write=True) as db, db:
         if not available(db):
