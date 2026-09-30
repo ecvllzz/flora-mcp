@@ -94,7 +94,9 @@ def plan(store, start, end, chambers=(9, 10)):
     }
 
 
-def execute(config, store, start, end, report_path, backup_root=None, *, fetch=collect_window):
+def execute(
+    config, store, start, end, report_path, backup_root=None, *, fetch=collect_window, chambers=(9, 10)
+):
     """backup_root: raiz dos backups no formato novo; padrão, a pasta irmã <acervo>-backups."""
     report_path = Path(report_path).resolve()
     backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
@@ -104,7 +106,7 @@ def execute(config, store, start, end, report_path, backup_root=None, *, fetch=c
         raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
     with FileLock(str(store.directory / "collector.lock"), timeout=0):
         store.initialize()
-        work = plan(store, start, end)
+        work = plan(store, start, end, chambers)
         report = {
             "inicio": now(),
             "banco": str(store.path),
@@ -201,14 +203,22 @@ def main():
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--report", type=Path)
     parser.add_argument("--backup", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
+    parser.add_argument(
+        "--camaras",
+        default="9,10",
+        help="Câmaras de Direito Civil por número, separadas por vírgula (padrão 9,10)",
+    )
     args = parser.parse_args()
     if args.apply and not args.report:
         parser.error("Aplicação exige --report novo.")
+    chambers = tuple(int(c) for c in args.camaras.split(","))
+    if not chambers or any(not 1 <= c <= 10 for c in chambers):
+        parser.error("Câmaras de Direito Civil: números de 1 a 10.")
     config = load_config(data_dir=args.data_dir)
     store = Store(config.data_dir)
     start, end = date.fromisoformat(args.inicio), date.fromisoformat(args.fim)
     if args.apply:
-        result = execute(config, store, start, end, args.report, args.backup)
+        result = execute(config, store, start, end, args.report, args.backup, chambers=chambers)
         print(
             json.dumps(
                 {
@@ -222,7 +232,8 @@ def main():
             flush=True,
         )
     else:
-        print(json.dumps(plan(store, start, end), ensure_ascii=True, indent=2))
+        work = plan(store, start, end, chambers)
+        print(json.dumps({**work, "pendentes": len(work["pendentes"])}, ensure_ascii=True, indent=2))
 
 
 if __name__ == "__main__":
