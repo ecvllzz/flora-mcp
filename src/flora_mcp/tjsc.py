@@ -4,6 +4,7 @@ import base64
 import json
 import math
 import re
+import threading
 import time
 from datetime import date, datetime, timedelta
 from urllib.parse import urljoin
@@ -15,6 +16,32 @@ from .model import FloraError, now
 from .sources import TJSC_SEARCH, download, tjsc_field_label, validate_tjsc_page
 from .store import Store
 from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name
+
+
+class Pacer:
+    """Global spacing between requests to the portal, shared by every thread of the process.
+
+    Two requests never leave at the same instant, whatever the number of workers: each waits
+    until `interval` seconds after the previous departure. The interval is the configured
+    request_delay, divided by the number of parallel workers when a caller sets one.
+    """
+
+    def __init__(self):
+        self._lock = threading.Lock()
+        self._next = 0.0
+        self.divisor = 1
+
+    def wait(self, delay: float):
+        interval = delay / max(1, self.divisor)
+        with self._lock:
+            at = max(time.monotonic(), self._next)
+            self._next = at + interval
+        pause = at - time.monotonic()
+        if pause > 0:
+            time.sleep(pause)
+
+
+PACER = Pacer()
 
 
 def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[tuple[dict, dict]]]:
@@ -85,7 +112,7 @@ def collect_window(http, config: Config, organ: int | str, day: date):
     pages, rows, ids = [], [], set()
 
     def fetch(page):
-        time.sleep(config.request_delay)
+        PACER.wait(config.request_delay)
         data["hdnPaginaAtual"] = str(page)
         url = TJSC_SEARCH if page == 1 else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
         content = download(http, url, config.max_download_bytes, method="POST", data=data)

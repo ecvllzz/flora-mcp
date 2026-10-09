@@ -15,7 +15,7 @@ from flora_mcp.config import load_config
 from flora_mcp.model import FloraError, digest, now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
-from flora_mcp.tjsc import catalog_window, collect_window
+from flora_mcp.tjsc import PACER, catalog_window, collect_window
 from flora_mcp.tjsc_orgaos import ORGAOS, dataset, envelope_organ, identity, name
 
 
@@ -133,6 +133,7 @@ def fetched_windows(work, fetch, config, workers):
                 yield entry, organ, day, content, rows
         return
     clients = [client() for _ in range(workers)]
+    PACER.divisor = workers  # one request every request_delay / workers seconds, never two at once
     try:
         with ThreadPoolExecutor(max_workers=workers) as pool:
             pending = list(work["pendentes"])
@@ -147,6 +148,7 @@ def fetched_windows(work, fetch, config, workers):
                 organ, day, (content, rows) = future.result()
                 yield entry, organ, day, content, rows
     finally:
+        PACER.divisor = 1
         for http in clients:
             http.close()
 
