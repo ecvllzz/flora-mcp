@@ -46,6 +46,17 @@ def test_tjsc_waf_http200_is_not_empty_search():
         validate_tjsc_page(b"<html>Please enable JavaScript. Your support ID is 1</html>", 9)
 
 
+def test_tjsc_challenge_marker_inside_an_ementa_is_not_a_block():
+    html = """<input id="hdnTotalResultado" value="1">
+    <div class="resultadoItem" id="resultado123">
+    <span class="resLabel">ÓRGÃO JULGADOR</span><span class="resValue">8ª Câmara de Direito Civil</span>
+    <span class="resLabel">EMENTA</span><span class="resValue">Desativação de cadastro em procedimento
+    de verificação de segurança previsto nos termos de uso; captcha.</span></div>"""
+    assert validate_tjsc_page(html.encode("utf-8"), 8)["documentos_na_pagina"] == 1
+    with pytest.raises(FloraError, match="verificação"):
+        validate_tjsc_page(b"<html><h1>Verifica\xc3\xa7\xc3\xa3o de seguran\xc3\xa7a</h1></html>", 8)
+
+
 def test_tjsc_latin1_and_organ_filter():
     html = """<meta charset="iso-8859-1"><input id="hdnTotalResultado" value="1">
     <div class="resultadoItem" id="resultado123">

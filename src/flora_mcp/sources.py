@@ -190,7 +190,12 @@ def validate_tjsc_page(content: bytes, organ: int | str) -> dict:
     """organ: portal name of the filtered organ, or the number of a Civil Law Chamber."""
     expected = name(organ)
     soup = BeautifulSoup(content, "html.parser")
-    html = soup.get_text(" ", strip=True)
+    # The challenge page has no result cards; an ementa may itself mention "verificação de segurança"
+    # or "captcha", so the markers are searched only in the text outside the cards.
+    frame = BeautifulSoup(content, "html.parser")
+    for card in frame.select(".resultadoItem"):
+        card.decompose()
+    html = frame.get_text(" ", strip=True)
     challenge = ("enable javascript", "support id", "verificação de segurança", "captcha")
     if any(marker in html.lower() for marker in challenge):
         raise FloraError(
