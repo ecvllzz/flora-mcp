@@ -53,6 +53,11 @@ def build_parser() -> argparse.ArgumentParser:
     find.add_argument("--data-inicio")
     find.add_argument("--data-fim")
     find.add_argument("--tipo-data", choices=["publicacao", "julgamento"], default="publicacao")
+    find.add_argument(
+        "--cita-precedente", help="Tema, súmula, IRDR ou IAC citado (Tema 1.076; Súmula 7 do STJ)"
+    )
+    find.add_argument("--cita-dispositivo", help="Artigo citado (CPC art. 85; art. 1.634 do CC)")
+    find.add_argument("--cita-acordao", help="Acórdão citado (número CNJ; AgInt no AREsp 1.779.343/DF)")
     add_page_options(find)
     qualified = sub.add_parser(
         "precedentes",
@@ -156,6 +161,9 @@ def run_search(args, store):
         modo_busca=args.modo_busca,
         limite=args.limite,
         cursor=args.cursor,
+        cita_precedente=args.cita_precedente,
+        cita_dispositivo=args.cita_dispositivo,
+        cita_acordao=args.cita_acordao,
     )
 
 

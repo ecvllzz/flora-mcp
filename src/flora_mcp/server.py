@@ -41,7 +41,10 @@ DESCRIPTIONS = {
         "por relevância textual, que não mede pertinência jurídica. Devolve triagem com referência, "
         "cabeçalho e o trecho onde o termo aparece; leia a ementa com obter_documento antes de "
         "citar. Resultado vazio vale só para a base carregada e vem com o motivo. Temas e súmulas: "
-        "pesquisar_precedentes."
+        "pesquisar_precedentes. cita_precedente, cita_dispositivo e cita_acordao restringem aos "
+        "acórdãos que citam um tema ou súmula (Tema 1.076; Súmula 7 do STJ), um artigo (CPC art. 85) "
+        "ou um acórdão (número CNJ; AgInt no AREsp 1.779.343/DF), pelas linhas de citação da ementa "
+        "CNJ e do espelho do STJ; com ordenar=mais_recentes dão a cronologia de aplicação."
     ),
     "pesquisar_precedentes": (
         "Pesquisa temas repetitivos, IAC e súmulas do STJ, temas de repercussão geral e súmulas, "
@@ -54,7 +57,8 @@ DESCRIPTIONS = {
     ),
     "obter_documento": (
         "Lê o texto integral de um resultado pelo id. Acórdão: ementa (padrão), espelho_original "
-        "(campos recebidos da fonte, não é inteiro teor) ou secao:<nome>. Precedente: enunciado, "
+        "(campos recebidos da fonte, não é inteiro teor), citacoes (precedentes, acórdãos e "
+        "dispositivos citados, com o id do acervo quando resolvido) ou secao:<nome>. Precedente: enunciado, "
         "questao_submetida, tese_firmada, modulacao ou suspensao. Concatene os blocos até "
         "proximo_cursor nulo. Cite com a referencia do primeiro bloco e exponha "
         "referencia_pendencias."
@@ -92,7 +96,7 @@ class FloraServer(MCPServer):
 
 
 def create_server(store: Store) -> MCPServer:
-    server = FloraServer("Flora-MCP", version="0.3.0", instructions=INSTRUCTIONS)
+    server = FloraServer("Flora-MCP", version="0.4.0", instructions=INSTRUCTIONS)
     annotation = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
     def result(call, *args, **kwargs):
@@ -118,6 +122,9 @@ def create_server(store: Store) -> MCPServer:
         limite: int | None = None,
         cursor: str | None = None,
         publicacao_id: str | None = None,
+        cita_precedente: str | None = None,
+        cita_dispositivo: str | None = None,
+        cita_acordao: str | None = None,
     ) -> dict[str, Any]:
         return result(
             search,
@@ -136,6 +143,9 @@ def create_server(store: Store) -> MCPServer:
             detalhe=detalhe,
             publicacao_id=publicacao_id,
             modo_busca=modo_busca,
+            cita_precedente=cita_precedente,
+            cita_dispositivo=cita_dispositivo,
+            cita_acordao=cita_acordao,
         )
 
     @server.tool(annotations=annotation, description=DESCRIPTIONS["pesquisar_precedentes"])

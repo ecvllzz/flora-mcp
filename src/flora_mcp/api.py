@@ -49,6 +49,9 @@ def search(
     detalhe="triagem",
     publicacao_id=None,
     modo_busca="simples",
+    cita_precedente=None,
+    cita_dispositivo=None,
+    cita_acordao=None,
 ):
     """Acórdãos only; temas and súmulas are in search_precedents."""
     view = _view(store, cursor, publicacao_id)
@@ -68,6 +71,9 @@ def search(
         relator=relator,
         detalhe=detalhe,
         modo_busca=modo_busca,
+        cita_precedente=cita_precedente,
+        cita_dispositivo=cita_dispositivo,
+        cita_acordao=cita_acordao,
     )
     return _finish(view, result)
 
