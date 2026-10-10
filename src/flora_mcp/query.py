@@ -8,9 +8,12 @@ from .ausencia import empty_reason
 from .citation import citation_metadata
 from .model import FloraError, canonical, digest, folded, number
 from .store import ReadView, collection_delay
+from .citations import TYPES as CITATION_TYPES
+from .citations import extract as extract_citations
+from .citations import filter_key
 from .text import advanced_query, header, matched_window, sections
 
-CONTRATO = "flora-mcp-3.2"
+CONTRATO = "flora-mcp-3.3"
 ORDERS = ("mais_recentes", "mais_antigos", "relevancia")
 # Triage pages stay under 8 KiB of compact JSON, with room for the publication identity.
 TRIAGE_BUDGET = 7500
@@ -221,6 +224,45 @@ json_extract(v.raw,'$.campos.RELATORA')) FROM versions v
 WHERE v.document_id=d.id AND v.hash=d.hash),'')),?)>0"""
 
 
+CITATION_FILTERS = (
+    ("cita_precedente", "precedente", "Tema 1.076, Súmula 7 do STJ, STJ:tema_repetitivo:908"),
+    ("cita_dispositivo", "dispositivo", "CPC art. 85, art. 1.634 do CC, Lei 8.560/1992 art. 2º"),
+    ("cita_acordao", "acordao", "5002677-98.2022.8.24.0034, AgInt no AREsp 1.779.343/DF"),
+)
+
+
+def has_citations(db) -> bool:
+    return bool(
+        db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='document_citations'").fetchone()
+    )
+
+
+def citation_filters(view: ReadView, **values):
+    """EXISTS filters over the published citations table; the key is normalized as at extraction."""
+    filters, params, applied = [], [], {}
+    for name, tipo, examples in CITATION_FILTERS:
+        value = values.get(name)
+        if not value:
+            continue
+        if view.publication is None:
+            raise FloraError("filtro_indisponivel", f"{name} exige publicação do acervo.")
+        with view.read() as db:
+            if not has_citations(db):
+                raise FloraError(
+                    "filtro_indisponivel", f"{name} exige publicação com o derivador citacoes-1; republique."
+                )
+        try:
+            key = filter_key(tipo, value)
+        except ValueError:
+            raise FloraError("filtro_invalido", f"{name} não reconhecido; exemplos: {examples}.") from None
+        filters.append(
+            "EXISTS (SELECT 1 FROM document_citations c WHERE c.document_id=d.id AND c.tipo=? AND c.chave=?)"
+        )
+        params.extend([tipo, key])
+        applied[name] = key
+    return filters, params, applied
+
+
 def judgment_filters(view: ReadView, *, processo, tribunal, orgao, classe, relator):
     filters, params = [], []
     if processo:
@@ -422,6 +464,9 @@ def search(
     relator: str | None = None,
     detalhe: str = "triagem",
     modo_busca: str = "simples",
+    cita_precedente: str | None = None,
+    cita_dispositivo: str | None = None,
+    cita_acordao: str | None = None,
 ) -> dict:
     store = as_view(store)
     plan = JudgmentSearch(
@@ -442,6 +487,10 @@ def search(
         )
     )
     plan.restrict(*date_filters("d." + plan.column, data_inicio, data_fim))
+    cited_filters, cited_params, cited = citation_filters(
+        store, cita_precedente=cita_precedente, cita_dispositivo=cita_dispositivo, cita_acordao=cita_acordao
+    )
+    plan.restrict(cited_filters, cited_params)
     with store.read() as db:
         db.create_function("flora_fold", 1, lambda value: folded(value or ""), deterministic=True)
         db.execute("BEGIN")  # Revision and rows belong to the same read snapshot.
@@ -464,6 +513,7 @@ def search(
         "consulta_efetiva": plan.query,
         **({"ampliacao": plan.broadened} if plan.broadened else {}),
         "ordenacao": plan.ordenar,
+        **({"citacoes_filtradas": cited} if cited else {}),
         "revisao_base": revision,
         "proximo_cursor": following(len(rows)) if plan.offset + len(rows) < total else None,
         "cobertura": coverage_notice(delay),
@@ -481,9 +531,10 @@ def document(
     cursor: str | None = None,
     tamanho_bloco: int = 16000,
 ) -> dict:
-    if componente not in {"ementa", "espelho_original"} and not componente.startswith("secao:"):
+    if componente not in {"ementa", "espelho_original", "citacoes"} and not componente.startswith("secao:"):
         raise FloraError(
-            "componente_indisponivel", "Componentes disponíveis: ementa, espelho_original e secao:<nome>."
+            "componente_indisponivel",
+            "Componentes disponíveis: ementa, espelho_original, citacoes e secao:<nome>.",
         )
     if not 100 <= tamanho_bloco <= 32000:
         raise FloraError("limite_invalido", "Blocos devem ter entre 100 e 32000 caracteres.")
@@ -502,8 +553,9 @@ def document(
                 "SELECT url,sha256,checked,raw_path FROM resources WHERE id=?", (row["resource_id"],)
             ).fetchone()
         )
+        cited = document_citations(db, store, id, body, raw)
     body = {**body, **citation_metadata(body, json.loads(raw))}
-    text = component_text(body, raw, componente)
+    text = component_text(body, raw, componente, cited)
     offset = block_offset(store, cursor, id, componente, row["hash"], len(text))
     block = text[offset : offset + tamanho_bloco]
     following = offset + len(block)
@@ -530,15 +582,44 @@ def document(
     if offset == 0:
         # Complete metadata once, in the first block; later blocks carry the reference only.
         body["secoes_ementa"] = sections(body["ementa"])
+        body["citacoes"] = citation_summary(cited)
         result.update(fonte=source, metadados={k: v for k, v in body.items() if k != "ementa"})
     return result
 
 
-def component_text(body: dict, raw: str, componente: str) -> str:
+def document_citations(db, view: ReadView, id: str, body: dict, raw: str) -> list[dict]:
+    """Published rows when there is a generation; the same extraction, unresolved, over the work base."""
+    if view.publication is not None and has_citations(db):
+        rows = db.execute(
+            "SELECT tipo,chave,texto,origem,resolvido FROM document_citations WHERE document_id=? "
+            "ORDER BY rowid",
+            (id,),
+        ).fetchall()
+        return [dict(r) for r in rows]
+    return [{**item, "resolvido": None} for item in extract_citations(body, json.loads(raw))]
+
+
+def citation_summary(cited: list[dict]) -> dict:
+    counts = {tipo: 0 for tipo in CITATION_TYPES}
+    resolved = 0
+    for item in cited:
+        counts[item["tipo"]] += 1
+        resolved += bool(item.get("resolvido"))
+    return {
+        "total": len(cited),
+        "por_tipo": counts,
+        "resolvidas_no_acervo": resolved,
+        "componente": "citacoes",
+    }
+
+
+def component_text(body: dict, raw: str, componente: str, cited: list[dict] | None = None) -> str:
     if componente == "ementa":
         return body["ementa"]
     if componente == "espelho_original":
         return raw
+    if componente == "citacoes":
+        return json.dumps(cited or [], ensure_ascii=False, indent=1)
     section = next((s for s in sections(body["ementa"]) if s["nome"] == componente[6:]), None)
     if section is None:
         raise FloraError(

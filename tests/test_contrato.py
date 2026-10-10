@@ -1,4 +1,4 @@
-"""Contract flora-mcp-3.2: the examples of CONTRATO.md and each rule, over the real MCP client."""
+"""Contract flora-mcp-3.3: the examples of CONTRATO.md and each rule, over the real MCP client."""
 
 import asyncio
 import base64
@@ -49,7 +49,13 @@ def assert_same_shape(example, actual, path="$"):
 
 @pytest.fixture
 def published(store, tmp_path):
-    ingest(store, [raw_doc("1", text=TEXT, ministroRelator="MINISTRA EXEMPLO"), raw_doc("2", text="Guarda.")])
+    citing = raw_doc(
+        "2",
+        text="Guarda.",
+        numeroProcesso="7654321",
+        jurisprudenciaCitada="(GUARDA)\n   STJ - <<REsp 1234567>>-SP",
+    )
+    ingest(store, [raw_doc("1", text=TEXT, ministroRelator="MINISTRA EXEMPLO"), citing])
     run = store.start_run("STJ")
     store.finish_run(run, "ok", {"eventos": [{"texto": "detalhe fora do resumo"}]})
     migrate(store)
@@ -97,12 +103,18 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
             "pesquisar_jurisprudencia.filtro_restritivo": await ok(
                 "pesquisar_jurisprudencia", {"termos": "alimentos", "tribunal": "TJSC"}
             ),
+            "pesquisar_jurisprudencia.citacao": await ok(
+                "pesquisar_jurisprudencia", {"cita_acordao": "REsp 1234567"}
+            ),
             "pesquisar_precedentes.triagem": await ok("pesquisar_precedentes", {"termos": "sintético"}),
             "pesquisar_precedentes.vazio": await ok("pesquisar_precedentes", {"termos": "tema"}),
             "consultar_cobertura.resumo": await ok("consultar_cobertura", {}),
         }
         first = await ok("obter_documento", {"id": "STJ:1", "tamanho_bloco": 100})
         answers["obter_documento.primeiro_bloco"] = first
+        answers["obter_documento.citacoes"] = await ok(
+            "obter_documento", {"id": "STJ:2", "componente": "citacoes"}
+        )
         answers["obter_documento.bloco_seguinte"] = await ok(
             "obter_documento", {"id": "STJ:1", "tamanho_bloco": 100, "cursor": first["proximo_cursor"]}
         )
@@ -119,7 +131,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         assert_same_shape(example, answers[name], name)
     for name, answer in answers.items():
         if name != "erro":
-            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.2", name
+            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.3", name
             assert answer["publicacao_id"], name
     assert answers["erro"]["codigo"] == "documento_nao_encontrado"
     assert answers["pesquisar_jurisprudencia.sem_correspondencia"]["termos_sem_ocorrencia"] == [
@@ -313,7 +325,7 @@ def test_automatic_order_and_coverage_block(store):
 def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(published):
     page = api.search(published, limite=1)
     decoded = json.loads(base64.urlsafe_b64decode(page["proximo_cursor"]))
-    assert decoded["contrato"] == "flora-mcp-3.2"
+    assert decoded["contrato"] == "flora-mcp-3.3"
     assert decoded["publicacao"] == page["publicacao_id"]
     assert "continua" not in decoded  # no cursor inside a cursor
     legacy = base64.urlsafe_b64encode(

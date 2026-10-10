@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "flora-mcp"
-version = "0.3.0"
+version = "0.4.0"
 description = "MCP independente para pesquisa de jurisprudência em fontes oficiais brasileiras"
 requires-python = ">=3.12"
 dependencies = [

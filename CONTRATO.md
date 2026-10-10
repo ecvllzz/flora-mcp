@@ -1,4 +1,4 @@
-# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.2`)
+# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.3`)
 
 Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatro ferramentas, todas somente leitura (`readOnlyHint: true`), sobre um acervo local parcial coletado de fontes oficiais. Os testes de protocolo (`tests/test_contrato.py`) leem os exemplos marcados abaixo e conferem, pelo cliente MCP real, que as respostas têm exatamente a mesma forma.
 
@@ -11,7 +11,7 @@ Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatr
 
 ## Regras comuns
 
-- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.2"` e, quando o acervo lido é uma publicação, `publicacao_id`.
+- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.3"` e, quando o acervo lido é uma publicação, `publicacao_id`.
 - Parâmetros de vocabulário fechado aparecem no esquema JSON como `enum`; o valor fora da lista é recusado com o erro `parametro_invalido`.
 - Datas no formato `AAAA-MM-DD`. `data_inicio` e `data_fim` são inclusivas.
 - `publicacao_id` fixa a geração lida. Sem ele, lê-se a publicação atual; com cursor, lê-se a publicação do cursor.
@@ -36,10 +36,58 @@ Só acórdãos. Temas e súmulas estão em `pesquisar_precedentes`.
 | `limite` | 1 a 8 em triagem, 1 a 5 em completo | 8 em triagem, 3 em completo |
 | `cursor` | `proximo_cursor` da página anterior | nenhum |
 | `publicacao_id` | identificador de publicação | atual |
+| `cita_precedente` | tema, súmula, IRDR ou IAC citado: `Tema 1.076`, `Súmula 7 do STJ`, `Súmula Vinculante 10`, `IRDR 17` ou a identidade `STJ:tema_repetitivo:908` | nenhum |
+| `cita_dispositivo` | artigo citado: `CPC art. 85`, `art. 1.634 do Código Civil`, `Lei n. 8.560/1992, art. 2º`, `CF/88, art. 5º` | nenhum |
+| `cita_acordao` | acórdão citado: número CNJ (`5002677-98.2022.8.24.0034`), classe e número do STJ (`AgInt no AREsp 1.779.343/DF`) ou número SAJ do TJSC (`AC 2006.011052-9`) | nenhum |
 
 - `ordenar` nulo é automático: `relevancia` quando há termos, `mais_recentes` quando não há. A ordenação efetiva vem em `ordenacao`. Relevância é correspondência textual (BM25) e não mede pertinência jurídica.
 - `modo_busca=avancado` aceita AND, OR, parênteses, frases e `prefixo*`, sem expansão nem ampliação automática; `consulta_efetiva` mostra a expressão enviada ao índice.
 - `detalhe=completo` devolve a ementa integral e todos os metadados de cada resultado (até 5).
+
+### Citações como filtro
+
+Os três filtros `cita_*` restringem aos acórdãos cujas citações, extraídas do original na publicação, têm a chave pedida (seção Citações de `obter_documento`). O valor é normalizado pela mesma regra da extração e a chave aplicada sai em `citacoes_filtradas`; valor não reconhecido é recusado com `filtro_invalido` e exemplos. Com `ordenar=mais_recentes`, a resposta é a cronologia dos acórdãos que aplicam o precedente ou o dispositivo. Ausência não prova que ninguém cita: só entram os acórdãos com linhas de citação na ementa CNJ ou no espelho do STJ, e a chave depende da extração.
+
+<!-- exemplo: pesquisar_jurisprudencia.citacao -->
+```json
+{
+  "status": "ok",
+  "contrato": "flora-mcp-3.3",
+  "total_encontrado": 1,
+  "resultados": [
+    {
+      "id": "STJ:2",
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "classe_descricao": null,
+      "processo": "REsp 7654321",
+      "relator": null,
+      "referencia": "(STJ, REsp n. 7654321, TERCEIRA TURMA, j. 24/08/2026, publ. 01/09/2026)",
+      "referencia_completa": false,
+      "referencia_pendencias": ["relator"],
+      "hash_conteudo": "4b1d7c2e...",
+      "sha256_componente": "a0c3e9f1...",
+      "cabecalho": "Guarda.",
+      "cabecalho_parcial": false
+    }
+  ],
+  "detalhe": "triagem",
+  "ementas_completas": false,
+  "campo_pesquisado": "ementa",
+  "modo_busca": "simples",
+  "consulta_efetiva": "",
+  "ordenacao": "mais_recentes",
+  "citacoes_filtradas": {"cita_acordao": "STJ:RESP:1234567"},
+  "revisao_base": 3,
+  "proximo_cursor": null,
+  "cobertura": {
+    "integral": false,
+    "fontes_em_atraso": ["TJSC"],
+    "aviso": "Resultado negativo vale apenas para a base carregada; detalhes em consultar_cobertura."
+  },
+  "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
+}
+```
 
 ### Triagem
 
@@ -54,7 +102,7 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -109,7 +157,7 @@ A ampliação troca precisão por cobertura: os primeiros resultados podem conte
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -165,7 +213,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -192,7 +240,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -220,7 +268,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -272,7 +320,7 @@ Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -320,7 +368,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "total_encontrado": 0,
   "resultados": [],
   "campo_pesquisado": "todos",
@@ -344,7 +392,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 | Parâmetro | Valores | Padrão |
 |---|---|---|
 | `id` | `id` de um resultado | obrigatório |
-| `componente` | acórdão: `ementa`, `espelho_original`, `secao:<nome>`; precedente: `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao` | `ementa` |
+| `componente` | acórdão: `ementa`, `espelho_original`, `citacoes`, `secao:<nome>`; precedente: `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao` | `ementa` |
 | `cursor` | `proximo_cursor` do bloco anterior | nenhum |
 | `tamanho_bloco` | 100 a 32000 caracteres | 16000 |
 | `hash_conteudo` | versão esperada; outra versão é recusada | nenhum |
@@ -352,6 +400,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 
 - `espelho_original` são os campos recebidos da fonte, em JSON; não é inteiro teor. As seções disponíveis de um acórdão estão em `metadados.secoes_ementa` (`cabecalho`, `caso_em_exame`, `questao_em_discussao`, `razoes_de_decidir`, `dispositivo_e_tese`, `tese_na_ementa`, `dispositivos_citados`, `jurisprudencia_citada`), no modelo da Recomendação CNJ 154/2024: as duas linhas finais, de dispositivos e de jurisprudência citados, são seções próprias e não entram na tese. Reconhece `HIPÓTESE EM EXAME` como `caso_em_exame` e quebras de linha CRLF ou LF. Cada seção traz `inicio`, `fim` (caracteres Unicode da ementa), `sha256_secao`, `sha256_componente` (da ementa inteira) e `derivador` (`ementa-secoes-2`). Seção não delimitada com segurança, inclusive por título repetido, é recusada, nunca aproximada.
 - Precedente exige componente explícito; componente ausente é recusado com a lista dos disponíveis.
+- `citacoes` é a lista, em JSON, do que o acórdão cita, extraída das duas linhas finais da ementa CNJ (TJSC) e dos campos `jurisprudenciaCitada`, `referenciasLegislativas`, `tema` e `acordaosSimilares` do espelho (STJ), pelo derivador `citacoes-1`. Cada item traz `tipo` (`precedente`, `acordao`, `dispositivo`, `similar`), `chave` (a identidade do precedente, `TJSC:<20 dígitos>` ou `STJ:<CLASSE>:<número>` para acórdãos, `<DIPLOMA>:<artigo>` para dispositivos; vazia quando o fragmento não foi reconhecido), `texto` (o fragmento literal), `origem` e `resolvido` (o id do acórdão ou precedente da mesma publicação a que a chave aponta, ou nulo). A chave é normalização, não verificação: confira o fragmento antes de citar. O primeiro bloco da ementa traz o resumo em `metadados.citacoes`.
 - Concatene `texto` de todos os blocos até `proximo_cursor` nulo; `sha256_texto_completo` confere o resultado.
 - O primeiro bloco (`offset == 0`) traz os metadados completos: acórdão, `fonte` e `metadados`; precedente, `metadados`, `evidencia_componente`, `evidencia_situacao` e `julgados_relacionados`. Todos os blocos trazem `referencia` e `referencia_pendencias`.
 
@@ -359,7 +408,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL.\nI. CASO EM EXAME\n1. Habeas corpus contra prisão civ",
@@ -401,7 +450,71 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
     "referencia_pendencias": [],
     "secoes_ementa": [
       {"nome": "caso_em_exame", "inicio": 49, "fim": 150, "sha256_componente": "1aa0739f...", "sha256_secao": "5c1e02d8...", "derivador": "ementa-secoes-2"}
-    ]
+    ],
+    "citacoes": {"total": 0, "por_tipo": {"precedente": 0, "acordao": 0, "dispositivo": 0, "similar": 0}, "resolvidas_no_acervo": 0, "componente": "citacoes"}
+  },
+  "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
+}
+```
+
+<!-- exemplo: obter_documento.citacoes -->
+```json
+{
+  "status": "ok",
+  "contrato": "flora-mcp-3.3",
+  "id": "STJ:2",
+  "componente": "citacoes",
+  "texto": "[\n {\n  \"tipo\": \"acordao\",\n  \"chave\": \"STJ:RESP:1234567\",\n  \"texto\": \"<<REsp 1234567>>-SP\",\n  \"origem\": \"espelho_stj:jurisprudenciaCitada\",\n  \"resolvido\": \"STJ:1\"\n }\n]",
+  "offset": 0,
+  "total_caracteres": 160,
+  "parcial": false,
+  "fim": true,
+  "hash_conteudo": "9d2c1b0a...",
+  "sha256_texto_completo": "77a1c0de...",
+  "referencia": "(STJ, REsp n. 7654321, TERCEIRA TURMA, j. 24/08/2026, publ. 01/09/2026)",
+  "referencia_pendencias": ["relator"],
+  "proximo_cursor": null,
+  "fonte": {"url": "https://dadosabertos.web.stj.jus.br/...", "sha256": "0f6e...", "checked": "2026-09-30T04:37:00+00:00", "raw_path": "raw/0f/0f6e....json"},
+  "metadados": {
+    "atribuicao": "Superior Tribunal de Justiça, dados abertos; licença informada pelo catálogo.",
+    "classe": "REsp",
+    "data_julgamento": "2026-08-24",
+    "data_publicacao": "2026-09-01",
+    "dataset": "espelhos-de-acordaos-terceira-turma",
+    "extrator": "stj-json-v1",
+    "hash_conteudo": "e65f0384...",
+    "id": "STJ:2",
+    "id_origem": "2",
+    "inteiro_teor_disponivel": false,
+    "numero_processo": "7654321",
+    "numero_registro": "202500012345",
+    "orgao": "TERCEIRA TURMA",
+    "processo": "REsp 7654321",
+    "publicacao_original": "DJEN DATA:01/09/2026",
+    "recurso": "20260831.json",
+    "tipo_conteudo": "espelho_de_acordao",
+    "tribunal": "STJ",
+    "url_documento": null,
+    "url_lote": "https://dadosabertos.web.stj.jus.br/...",
+    "relator": null,
+    "classe_descricao": null,
+    "referencia": "(STJ, REsp n. 7654321, TERCEIRA TURMA, j. 24/08/2026, publ. 01/09/2026)",
+    "referencia_completa": false,
+    "referencia_pendencias": [
+      "relator"
+    ],
+    "secoes_ementa": [],
+    "citacoes": {
+      "total": 1,
+      "por_tipo": {
+        "precedente": 0,
+        "acordao": 1,
+        "dispositivo": 0,
+        "similar": 0
+      },
+      "resolvidas_no_acervo": 1,
+      "componente": "citacoes"
+    }
   },
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
 }
@@ -411,7 +524,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "il por dívida de alimentos com pagamento parcial.\nII. QUESTÃO EM DISCUSSÃO\n2. Saber se o pagamento p",
@@ -474,7 +587,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
   "precedentes": [{"tribunal": "STJ", "especie": "sumula", "admissao": "admitido", "documentos": 1}],
   "admissao_atual": {"admitido": 1},
   "proximo_cursor": null,
-  "contrato": "flora-mcp-3.2",
+  "contrato": "flora-mcp-3.3",
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
 }
 ```
@@ -553,6 +666,11 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 - Cite com `referencia` e exponha `referencia_pendencias` quando `referencia_completa` for falso; não complete dados por conta própria.
 
 ## Mudanças do contrato
+
+### `flora-mcp-3.3` (09/10/2026)
+
+- Citações como dado. A publicação deriva `document_citations` (derivador `citacoes-1`) do original de cada acórdão: as duas linhas finais da ementa CNJ do TJSC e os campos `jurisprudenciaCitada`, `referenciasLegislativas`, `tema` e `acordaosSimilares` do espelho do STJ. `pesquisar_jurisprudencia` ganha `cita_precedente`, `cita_dispositivo` e `cita_acordao`, e a resposta filtrada traz `citacoes_filtradas` com a chave aplicada; `obter_documento` ganha o componente `citacoes`, e o primeiro bloco da ementa traz `metadados.citacoes`. Os filtros exigem publicação (`filtro_indisponivel` sobre o banco de trabalho). Nada muda nas respostas sem esses parâmetros, salvo `metadados.citacoes`; cursores de `flora-mcp-3.2` são recusados com `cursor_invalido`.
+- Limite declarado: a chave é normalização por regra, conferível pelo fragmento literal, e só os acórdãos com linhas de citação entram; o TJSC tem essas linhas a partir do modelo CNJ de 2024 e o STJ só nos espelhos analisados pela fonte.
 
 ### `flora-mcp-3.2` (30/09/2026)
 

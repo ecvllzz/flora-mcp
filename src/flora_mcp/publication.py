@@ -9,12 +9,13 @@ from pathlib import Path, PureWindowsPath
 from .model import FloraError, canonical, digest, folded, now
 from .citation import citation_metadata
 from .precedents import available
+from .citations import CITATIONS_DERIVER, extract
 from .text import SECTIONS_DERIVER
 from .store import ReadView, Store, connection
 
 # Derivations computed when a generation is read also name the generation, so changing one of them
 # changes publicacao_id at the next publication.
-DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER}"
+DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER}"
 MANIFEST = "publicacoes.json"
 
 
@@ -97,6 +98,43 @@ def derive_document_details(dest):
     dest.execute("CREATE INDEX details_relator ON document_details(relator_fold)")
 
 
+def derive_document_citations(dest):
+    """Citations of every acórdão, extracted from the stored original, resolved against the generation.
+
+    ``resolvido`` names the acórdão or precedent of this generation the key points to, when any;
+    the key stays as extracted, and a fragment without key keeps its text, so losses are visible.
+    """
+    dest.execute(
+        "CREATE TABLE document_citations(document_id TEXT NOT NULL,tipo TEXT NOT NULL,chave TEXT NOT NULL,"
+        "texto TEXT NOT NULL,origem TEXT NOT NULL,resolvido TEXT)"
+    )
+    rows = []
+    for body, raw in dest.execute(
+        "SELECT d.body,v.raw FROM documents d JOIN versions v ON v.document_id=d.id AND v.hash=d.hash"
+    ):
+        body = json.loads(body)
+        for item in extract(body, json.loads(raw)):
+            rows.append((body["id"], item["tipo"], item["chave"], item["texto"], item["origem"]))
+    dest.executemany("INSERT INTO document_citations VALUES (?,?,?,?,?,NULL)", rows)
+    dest.execute("CREATE INDEX citations_key ON document_citations(tipo,chave)")
+    dest.execute("CREATE INDEX citations_document ON document_citations(document_id)")
+    if available(dest):
+        dest.execute(
+            "UPDATE document_citations SET resolvido=(SELECT id FROM precedents p WHERE p.id=chave) "
+            "WHERE tipo='precedente' AND chave<>''"
+        )
+    dest.execute(
+        "UPDATE document_citations SET resolvido=(SELECT d.id FROM documents d WHERE d.tribunal='TJSC' "
+        "AND d.process=substr(chave,6)) WHERE tipo='acordao' AND chave LIKE 'TJSC:%'"
+    )
+    dest.execute(
+        "UPDATE document_citations SET resolvido=(SELECT d.id FROM documents d WHERE d.tribunal='STJ' "
+        "AND d.class=substr(chave,5,length(chave)-5-length(substr(chave,instr(substr(chave,5),':')+5))) "
+        "AND d.process=substr(chave,instr(substr(chave,5),':')+5) ORDER BY d.judgment DESC LIMIT 1) "
+        "WHERE tipo IN ('acordao','similar') AND chave LIKE 'STJ:%'"
+    )
+
+
 def prune_precedents(dest):
     if not available(dest):
         return
@@ -168,6 +206,7 @@ def publish(store: Store):
         verify_search_index(dest)
         prune_snapshot(dest)
         derive_document_details(dest)
+        derive_document_citations(dest)
         prune_precedents(dest)
         seal_snapshot(dest)
     sha = digest(temporary.read_bytes())

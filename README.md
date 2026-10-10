@@ -2,7 +2,7 @@
 
 Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.2`.
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.3`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
 - Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
 - Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).
@@ -31,6 +31,7 @@ A busca é lexical (SQLite FTS5). No modo simples, as palavras se combinam com E
 | [Jurisprudência do TJSC](https://www.tjsc.jus.br/web/jurisprudencia) | Acórdãos de câmaras cíveis, por dia de publicação, de 2024 em diante; os órgãos e os períodos carregados são os que `consultar_cobertura` informa |
 | Catálogos oficiais de precedentes | Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas, inclusive vinculantes, do STF; IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil e do Órgão Especial do TJSC. Só os admitidos são servidos |
 
+- Citações como dado: a publicação extrai das duas linhas finais da ementa CNJ (TJSC) e dos campos do espelho (STJ) os precedentes, acórdãos e dispositivos citados, com chave normalizada e o id do acervo quando a citação aponta para documento carregado (derivador `citacoes-1`). A chave é normalização por regra, conferível pelo fragmento literal que a acompanha; só entram acórdãos com linhas de citação.
 - O acervo guarda ementa e espelho, não inteiro teor. O campo `decisao` do espelho do STJ não é voto integral, e o link do TJSC não significa documento baixado.
 - A cobertura é parcial e declarada: toda pesquisa traz `cobertura` com `integral: false` e as fontes em atraso, e `consultar_cobertura` mostra órgãos, datas extremas, lotes pendentes, falhas e registros rejeitados. Resultado vazio não prova que a jurisprudência não exista.
 - A resposta de `consultar_cobertura` traz o atraso da coleta por fonte (bloco `coleta`: `ultima_coleta_ok`, `dias_desde_ultima_coleta`, `limiar_dias` e `atraso`). Os limiares padrão são 45 dias para o STJ, cujo lote é mensal, e 7 para o TJSC; mudam com `atraso_stj_dias` e `atraso_tjsc_dias` na configuração do processo que atende a leitura.
@@ -87,9 +88,9 @@ Em outra máquina, troque os caminhos. Um cliente já aberto continua com as fer
 
 | Ferramenta | Uso |
 |---|---|
-| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator e datas. Triagem por padrão (referência, cabeçalho e trecho do termo); resposta vazia com `motivo`. |
+| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão). Triagem por padrão (referência, cabeçalho e trecho do termo); resposta vazia com `motivo`. |
 | `pesquisar_precedentes` | Temas, IRDR, IAC e súmulas admitidos, por espécie, número, órgão, matéria e componente. |
-| `obter_documento` | Ementa, seção da ementa, espelho original ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
+| `obter_documento` | Ementa, seção da ementa, espelho original, citações extraídas (`citacoes`) ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
 | `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |
 
 Cada resultado traz `referencia`, `referencia_completa` e `referencia_pendencias`, montadas do espelho original da mesma versão; dado ausente fica declarado, não inventado. Não há ferramenta de coleta, exclusão ou configuração, e textos recuperados são documentos, não instruções.
