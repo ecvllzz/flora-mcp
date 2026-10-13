@@ -146,3 +146,30 @@ def collect_window_envelope(store, organ):
 
     with httpx.Client(transport=httpx.MockTransport(route)) as http:
         return collect_window(http, Config(store.directory, request_delay=0), organ, date(2026, 9, 18))[0]
+
+
+def test_pacer_spaces_requests_across_threads_by_delay_over_divisor():
+    import threading
+    import time
+
+    from flora_mcp.tjsc import Pacer
+
+    pacer = Pacer()
+    pacer.divisor = 4
+    departures = []
+    lock = threading.Lock()
+
+    def go():
+        pacer.wait(0.2)
+        with lock:
+            departures.append(time.monotonic())
+
+    threads = [threading.Thread(target=go) for _ in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    departures.sort()
+    gaps = [b - a for a, b in zip(departures, departures[1:], strict=False)]
+    assert min(gaps) >= 0.045  # 0.2 / 4, with scheduling slack
+    assert departures[-1] - departures[0] < 1.0

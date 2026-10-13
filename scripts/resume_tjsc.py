@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -14,7 +15,7 @@ from flora_mcp.config import load_config
 from flora_mcp.model import FloraError, digest, now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
-from flora_mcp.tjsc import catalog_window, collect_window
+from flora_mcp.tjsc import PACER, catalog_window, collect_window
 from flora_mcp.tjsc_orgaos import ORGAOS, dataset, envelope_organ, identity, name
 
 
@@ -102,10 +103,73 @@ def plan(store, start, end, organs=RETOMADA):
     }
 
 
+class WindowFailure(Exception):
+    """A window's fetch failed; carries the plan entry so the failure is recorded on its resource."""
+
+    def __init__(self, entry, cause):
+        super().__init__(str(cause))
+        self.entry, self.cause = entry, cause
+
+
+def fetched_windows(work, fetch, config, workers):
+    """Yields (entry, organ, day, content, rows) in plan order.
+
+    With workers > 1, that many threads fetch ahead, each with its own HTTP client and its own
+    request pause, so the portal receives at most `workers` requests per pause; the caller still
+    ingests one window at a time, in order. The first failure stops the yield at its window.
+    """
+
+    def one(http, entry):
+        organ, day = entry["orgao"], date.fromisoformat(entry["dia"])
+        try:
+            return organ, day, fetch(http, config, organ, day)
+        except BaseException as exc:
+            raise WindowFailure(entry, exc) from exc
+
+    if workers <= 1:
+        with client() as http:
+            for entry in work["pendentes"]:
+                organ, day, (content, rows) = one(http, entry)
+                yield entry, organ, day, content, rows
+        return
+    clients = [client() for _ in range(workers)]
+    PACER.divisor = workers  # one request every request_delay / workers seconds, never two at once
+    try:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            pending = list(work["pendentes"])
+            futures = []
+            index = 0
+            while index < len(pending) or futures:
+                while index < len(pending) and len(futures) < workers:
+                    http = clients[index % workers]
+                    futures.append((pending[index], pool.submit(one, http, pending[index])))
+                    index += 1
+                entry, future = futures.pop(0)
+                organ, day, (content, rows) = future.result()
+                yield entry, organ, day, content, rows
+    finally:
+        PACER.divisor = 1
+        for http in clients:
+            http.close()
+
+
 def execute(
-    config, store, start, end, report_path, backup_root=None, *, fetch=collect_window, organs=RETOMADA
+    config,
+    store,
+    start,
+    end,
+    report_path,
+    backup_root=None,
+    *,
+    fetch=collect_window,
+    organs=RETOMADA,
+    workers=1,
 ):
-    """backup_root: raiz dos backups no formato novo; padrão, a pasta irmã <acervo>-backups."""
+    """backup_root: raiz dos backups no formato novo; padrão, a pasta irmã <acervo>-backups.
+
+    workers: janelas buscadas em paralelo (1 = sequencial, o padrão da decisão de 30/09); mais de
+    uma só por autorização expressa do operador para a janela de tempo em que ela vale.
+    """
     report_path = Path(report_path).resolve()
     backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
     if backup_root.is_relative_to(store.directory.resolve()):
@@ -130,25 +194,22 @@ def execute(
             return report
         report["backup"] = backups.create(store, backup_root, "antes-retomada-tjsc")
         run = store.start_run("TJSC")
-        report.update(execucao=run, status="running")
+        report.update(execucao=run, status="running", paralelo=workers)
         save(report_path, report)
         try:
-            with client() as http:
-                for entry in work["pendentes"]:
-                    organ, day = entry["orgao"], date.fromisoformat(entry["dia"])
+            for entry in work["pendentes"]:
+                catalog_window(store, entry["orgao"], date.fromisoformat(entry["dia"]))
+            try:
+                for entry, organ, day, content, rows in fetched_windows(work, fetch, config, workers):
                     report["em_andamento"] = entry
-                    save(report_path, report)
-                    catalog_window(store, organ, day)
                     with connection(store.path) as db:
                         saved = dict(
                             db.execute("SELECT * FROM resources WHERE id=?", (entry["recurso"],)).fetchone()
                         )
                     try:
-                        content, rows = fetch(http, config, organ, day)
                         counts = store.ingest(saved, content, rows, run)
                     except Exception as exc:
-                        store.failure(entry["recurso"], run, str(exc))
-                        raise
+                        raise WindowFailure(entry, exc) from exc
                     event = {
                         **identity(organ),
                         "dia": str(day),
@@ -170,6 +231,10 @@ def execute(
                         ),
                         flush=True,
                     )
+            except WindowFailure as failure:
+                report["em_andamento"] = failure.entry
+                store.failure(failure.entry["recurso"], run, str(failure.cause))
+                raise failure.cause from None
             report["status"] = "ok"
         except BaseException as exc:
             report.update(
@@ -208,6 +273,12 @@ def main():
     parser.add_argument("--report", type=Path)
     parser.add_argument("--backup", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
     parser.add_argument(
+        "--paralelo",
+        type=int,
+        default=1,
+        help="Janelas buscadas ao mesmo tempo (1 a 5); acima de 1 só com autorização do operador",
+    )
+    parser.add_argument(
         "--camaras",
         help="Câmaras de Direito Civil por número, separadas por vírgula; sem --camaras nem --orgaos, 9,10",
     )
@@ -229,8 +300,12 @@ def main():
     config = load_config(data_dir=args.data_dir)
     store = Store(config.data_dir)
     start, end = date.fromisoformat(args.inicio), date.fromisoformat(args.fim)
+    if not 1 <= args.paralelo <= 5:
+        parser.error("--paralelo aceita de 1 a 5.")
     if args.apply:
-        result = execute(config, store, start, end, args.report, args.backup, organs=organs)
+        result = execute(
+            config, store, start, end, args.report, args.backup, organs=organs, workers=args.paralelo
+        )
         print(
             json.dumps(
                 {

@@ -195,3 +195,47 @@ def test_command_line_plans_named_organs_without_writing(monkeypatch, capsys, se
     printed = json.loads(capsys.readouterr().out)
     assert printed["orgaos"] == ["10ª Câmara de Direito Civil", ESPECIAIS[2]]
     assert printed["pendentes"] == 4
+
+
+def test_parallel_fetch_keeps_plan_order_and_records_the_failing_window(setup, tmp_path):
+    import threading
+    import time
+    from datetime import timedelta
+
+    config, store = setup
+    first, last = date(2026, 9, 14), date(2026, 9, 18)
+    seen, lock = [], threading.Lock()
+
+    def slow(http, cfg, organ, day):
+        time.sleep(0.05 if day.day % 2 else 0.01)
+        with lock:
+            seen.append((organ, str(day)))
+        return empty(http, cfg, organ, day)
+
+    result = resume.execute(
+        config, store, first, last, tmp_path / "par.json", tmp_path / "bk", fetch=slow, workers=3
+    )
+    assert result["status"] == "ok" and result["paralelo"] == 3 and len(seen) == 10
+    assert [(e["camara"], e["dia"]) for e in result["eventos"]] == [
+        (c, str(first + timedelta(days=i))) for i in range(5) for c in (9, 10)
+    ]
+
+    def failing(http, cfg, organ, day):
+        if day == date(2026, 9, 23) and organ == resume.name(10):
+            raise FloraError("acesso_bloqueado", "bloqueado")
+        return empty(http, cfg, organ, day)
+
+    with pytest.raises(FloraError, match="bloqueado"):
+        resume.execute(
+            config,
+            store,
+            date(2026, 9, 21),
+            date(2026, 9, 25),
+            tmp_path / "par2.json",
+            tmp_path / "bk",
+            fetch=failing,
+            workers=4,
+        )
+    with connection(store.path) as db:
+        failed = db.execute("SELECT id,status FROM resources WHERE status='error'").fetchall()
+    assert [tuple(r) for r in failed] == [("tjsc-10-civil:2026-09-23", "error")]
