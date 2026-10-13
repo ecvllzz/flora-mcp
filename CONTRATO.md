@@ -569,7 +569,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
     "TJSC": {"ultima_coleta_ok": "2026-09-29T21:14:27+00:00", "dias_desde_ultima_coleta": 1, "limiar_dias": 7, "atraso": false}
   },
   "inteiros_teores": 0,
-  "tjsc": "Coleta experimental por dia de publicação; somente janelas registradas estão carregadas.",
+  "tjsc": "Coleta experimental por dia de publicação, mais acórdãos trazidos por número de processo (coleta dirigida, dataset tjsc-processo); somente janelas e consultas registradas estão carregadas.",
   "limites": ["Datas extremas observadas não comprovam cobertura contínua do período."],
   "recursos": [
     {"tribunal": "STJ", "dataset": "espelhos-de-acordaos-terceira-turma", "total": 1, "por_status": {"ok": 1}, "pendentes": 0, "primeiro_lote_pendente": null, "ultimo_lote_pendente": null}

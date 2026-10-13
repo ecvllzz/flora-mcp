@@ -162,7 +162,8 @@ class Store:
                 # Metadata fingerprint is separate from the downloaded byte hash.
                 metadata = canonical(r)
                 fingerprint = digest(metadata.encode())
-                rank = r["name"][:8] + ":" + str(r.get("last_modified") or "")
+                # A resource may state its own rank (TJSC process searches rank below every window).
+                rank = r.get("rank", r["name"][:8]) + ":" + str(r.get("last_modified") or "")
                 db.execute(
                     """INSERT INTO resources(id,dataset,name,url,metadata,expected_fingerprint,rank)
                     VALUES (?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET
@@ -409,7 +410,11 @@ def coverage_report(reader) -> dict:
         "execucoes_recentes": runs,
         "coleta": delay,
         "inteiros_teores": 0,
-        "tjsc": ("Coleta experimental por dia de publicação; somente janelas registradas estão carregadas."),
+        "tjsc": (
+            "Coleta experimental por dia de publicação, mais acórdãos trazidos por número de processo "
+            "(coleta dirigida, dataset tjsc-processo); somente janelas e consultas registradas estão "
+            "carregadas."
+        ),
         "limites": [
             "Carga de recursos JSON selecionados; histórico ZIP não incorporado.",
             "Datas extremas observadas não comprovam cobertura contínua do período.",

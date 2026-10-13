@@ -1,0 +1,15 @@
+{
+  "url": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados",
+  "metodo": "POST",
+  "parametros": {
+    "txtProcesso": "2008.060866-6",
+    "selOrigem[]": "1",
+    "selTipoDocumento[]": "1",
+    "rdoCampo": "E",
+    "selTamanhoPagina": "10",
+    "hdnPaginaAtual": "1"
+  },
+  "obtido_em": "2026-10-13T16:16:25.475135+00:00",
+  "sha256": "a219e78679b26926aa29fdfa2f43a9ebce034adbf07df23e594f75b03bcb0928",
+  "bytes": 93948
+}

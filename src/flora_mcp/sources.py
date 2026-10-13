@@ -186,9 +186,13 @@ def tjsc_field_label(label) -> str:
     return label.get_text(" ", strip=True)
 
 
-def validate_tjsc_page(content: bytes, organ: int | str) -> dict:
-    """organ: portal name of the filtered organ, or the number of a Civil Law Chamber."""
-    expected = name(organ)
+def validate_tjsc_page(content: bytes, organ: int | str | None) -> dict:
+    """organ: portal name of the filtered organ, or the number of a Civil Law Chamber.
+
+    None for a search by process number, which sends no organ filter: any organ is accepted, and
+    the caller checks that every card belongs to the requested process.
+    """
+    expected = None if organ is None else name(organ)
     soup = BeautifulSoup(content, "html.parser")
     # The challenge page has no result cards; an ementa may itself mention "verificação de segurança"
     # or "captcha", so the markers are searched only in the text outside the cards.
@@ -224,7 +228,7 @@ def validate_tjsc_page(content: bytes, organ: int | str) -> dict:
             value = label.find_next_sibling(class_="resValue")
             if value:
                 fields[tjsc_field_label(label)] = value.get_text("\n", strip=True)
-        if fields.get("ÓRGÃO JULGADOR") != expected:
+        if expected is not None and fields.get("ÓRGÃO JULGADOR") != expected:
             raise FloraError("filtro_nao_respeitado", "TJSC devolveu documento de outro órgão.")
         if not card.get("id", "").startswith("resultado") or not fields.get("EMENTA"):
             raise FloraError("formato_invalido", "Documento TJSC sem identificador ou ementa.")

@@ -1,0 +1,15 @@
+{
+  "url": "https://eprocwebcon.tjsc.jus.br/consulta1g/externo_controlador.php?acao=jurisprudencia@jurisprudencia/listar_resultados",
+  "metodo": "POST",
+  "parametros": {
+    "txtProcesso": "2012.009537-4",
+    "selOrigem[]": "1",
+    "selTipoDocumento[]": "1",
+    "rdoCampo": "E",
+    "selTamanhoPagina": "10",
+    "hdnPaginaAtual": "1"
+  },
+  "obtido_em": "2026-10-13T16:16:22.791435+00:00",
+  "sha256": "9ff14de9ba569fadb099b03ca360dbb893e3835e4b0ccbc5bfc6d2efb2e6320a",
+  "bytes": 134795
+}
