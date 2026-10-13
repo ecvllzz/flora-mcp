@@ -1,4 +1,8 @@
-"""Experimental TJSC collector: complete public publication-day windows or no commit."""
+"""Experimental TJSC collector: complete public publication-day windows or no commit.
+
+Besides the windows, a search by process number brings the acórdãos of one process, whatever the
+organ (directed collection): each number is its own resource, kept apart from the windows.
+"""
 
 import base64
 import json
@@ -12,7 +16,7 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 from .config import Config
-from .model import FloraError, now
+from .model import FloraError, now, number
 from .sources import TJSC_SEARCH, download, tjsc_field_label, validate_tjsc_page
 from .store import Store
 from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name
@@ -44,7 +48,23 @@ class Pacer:
 PACER = Pacer()
 
 
-def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[tuple[dict, dict]]]:
+CNJ = re.compile(r"\b\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}\b")
+# SAJ numbering as the portal shows it (0000.20.12.009537-4) and as votes cite it (2012.009537-4).
+SAJ_PORTAL = re.compile(r"\b0000\.(\d{2})\.(\d{2})\.(\d{6})-(\d)\b")
+SAJ_CITED = re.compile(r"\b(\d{4})\.(\d{6})-(\d)\b")
+
+
+def process_number(field: str) -> str:
+    """Process number of a card: CNJ as shown; SAJ as cited (AAAA.NNNNNN-D); else the field."""
+    cnj = CNJ.search(field)
+    if cnj:
+        return cnj[0]
+    saj = SAJ_PORTAL.search(field)
+    return f"{saj[1]}{saj[2]}.{saj[3]}-{saj[4]}" if saj else field
+
+
+def parse_cards(content: bytes, organ: int | str | None) -> tuple[int, list[tuple[dict, dict]]]:
+    """Validated page and its documents; organ None for a search by process number."""
     validation = validate_tjsc_page(content, organ)
     soup = BeautifulSoup(content, "html.parser")
     rows = []
@@ -59,14 +79,12 @@ def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[t
             judgment = datetime.strptime(fields["DATA DO JULGAMENTO"], "%d/%m/%Y").date()
         except (KeyError, ValueError) as exc:
             raise FloraError("data_invalida", "TJSC sem datas reconhecíveis; janela não concluída.") from exc
-        if publication != day:
-            raise FloraError("filtro_nao_respeitado", "Documento TJSC fora do dia de publicação solicitado.")
         source_id = card["id"].removeprefix("resultado")
         link = card.select_one(".inteiroTeor")
         document_url = urljoin(TJSC_SEARCH, link["data-link"]) if link and link.get("data-link") else None
         raw = {"id": source_id, "campos": fields, "url_documento": document_url}
         process_field = fields.get("PROCESSO", "")
-        process_match = re.search(r"\b\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}\b", process_field)
+        process = process_number(process_field)
         class_match = re.search(r"/TJSC\s+([\w]+)\s+-", process_field)
         body = {
             "id": "TJSC:" + source_id,
@@ -74,8 +92,8 @@ def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[t
             "tribunal": "TJSC",
             "orgao": fields["ÓRGÃO JULGADOR"],
             "classe": fields.get("CLASSE", class_match[1] if class_match else ""),
-            "processo": process_match[0] if process_match else process_field,
-            "numero_processo": process_match[0] if process_match else process_field,
+            "processo": process,
+            "numero_processo": process,
             "processo_original": process_field,
             "numero_registro": "",
             "data_julgamento": judgment.isoformat(),
@@ -94,21 +112,20 @@ def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[t
     return validation["total_informado"], rows
 
 
-def collect_window(http, config: Config, organ: int | str, day: date):
-    """Every page of one publication day of one organ, by portal name or chamber number."""
-    date_string = day.strftime("%d/%m/%Y")
-    data = {
-        "txtPesquisa": "",
-        "selOrgao[]": name(organ),
-        "selOrigem[]": "1",
-        "selTipoDocumento[]": "1",
-        "rdoCampo": "E",
-        "selTamanhoPagina": "10",
-        "dtPublicacaoInicio": date_string,
-        "dtPublicacaoFim": date_string,
-        "hdnPublicacaoInicio": date_string,
-        "hdnPublicacaoFim": date_string,
-    }
+def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[tuple[dict, dict]]]:
+    """Page of a publication-day window: every document must carry that publication day."""
+    total, rows = parse_cards(content, organ)
+    if any(body["data_publicacao"] != day.isoformat() for body, _ in rows):
+        raise FloraError("filtro_nao_respeitado", "Documento TJSC fora do dia de publicação solicitado.")
+    return total, rows
+
+
+def collect_pages(http, config: Config, data: dict, parse) -> tuple[int, list[dict], list]:
+    """Every page of one portal search, with the first page fetched again at the end.
+
+    parse(content) validates one page and returns (declared total, rows). Raises unless the count
+    is stable, pages are full and disjoint, and the first page did not change during the traversal.
+    """
     pages, rows, ids = [], [], set()
 
     def fetch(page):
@@ -116,7 +133,7 @@ def collect_window(http, config: Config, organ: int | str, day: date):
         data["hdnPaginaAtual"] = str(page)
         url = TJSC_SEARCH if page == 1 else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
         content = download(http, url, config.max_download_bytes, method="POST", data=data)
-        total, values = parse_page(content, organ, day)
+        total, values = parse(content)
         pages.append(
             {
                 "pagina": page,
@@ -145,10 +162,29 @@ def collect_window(http, config: Config, organ: int | str, day: date):
         rows.extend(values)
     if len(rows) != total:
         raise FloraError("paginacao_incompleta", "Número recuperado difere da contagem do portal.")
-    # Recheck first page after traversal, including zero-result windows.
+    # Recheck first page after traversal, including zero-result searches.
     end_total, end_first = fetch(1)
     if total != end_total or first != end_first:
         raise FloraError("janela_alterada", "Primeira página mudou durante a coleta; repetir janela.")
+    return total, pages, rows
+
+
+def collect_window(http, config: Config, organ: int | str, day: date):
+    """Every page of one publication day of one organ, by portal name or chamber number."""
+    date_string = day.strftime("%d/%m/%Y")
+    data = {
+        "txtPesquisa": "",
+        "selOrgao[]": name(organ),
+        "selOrigem[]": "1",
+        "selTipoDocumento[]": "1",
+        "rdoCampo": "E",
+        "selTamanhoPagina": "10",
+        "dtPublicacaoInicio": date_string,
+        "dtPublicacaoFim": date_string,
+        "hdnPublicacaoInicio": date_string,
+        "hdnPublicacaoFim": date_string,
+    }
+    total, pages, rows = collect_pages(http, config, data, lambda content: parse_page(content, organ, day))
     payload = {
         "fonte": "TJSC",
         **identity(organ),
@@ -182,6 +218,82 @@ def catalog_window(store: Store, organ: int | str, day: date) -> str:
         complete_listing=False,
     )
     return dataset(organ) + ":" + resource["id"]
+
+
+PROCESSO_DATASET = "tjsc-processo"
+# Rank of a process resource: below every window ("AAAAMMDD"), so a document a window also holds
+# keeps the window as its current version; the search by number only adds what no window has.
+PROCESSO_RANK = "00000000"
+
+
+def process_key(value: str) -> str:
+    """Digits that identify a TJSC process: 20 (CNJ, masked or not) or 11 (SAJ, AAAA.NNNNNN-D)."""
+    text = str(value)
+    portal = SAJ_PORTAL.search(text)
+    found = CNJ.search(text) or SAJ_CITED.search(text)
+    # The portal form of a SAJ number carries four leading zeros before the year.
+    digits = number(portal[0])[4:] if portal and not found else number(found[0] if found else text)
+    if len(digits) in (11, 20):
+        return digits
+    raise FloraError("numero_invalido", f"Número de processo do TJSC não reconhecido: {value}.")
+
+
+def portal_number(key: str) -> str:
+    """Process number as the portal search field takes it and as the card shows it."""
+    if len(key) == 20:
+        return f"{key[:7]}-{key[7:9]}.{key[9:13]}.{key[13]}.{key[14:16]}.{key[16:]}"
+    return f"{key[:4]}.{key[4:10]}-{key[10]}"
+
+
+def parse_process_page(content: bytes, key: str) -> tuple[int, list[tuple[dict, dict]]]:
+    """Page of a search by number: any organ, but every document of the requested process."""
+    total, rows = parse_cards(content, None)
+    for body, _ in rows:
+        shown = number(body["processo_original"].split("/TJSC")[0]).lstrip("0")
+        if shown != key.lstrip("0"):
+            raise FloraError("filtro_nao_respeitado", "TJSC devolveu documento de outro processo.")
+    return total, rows
+
+
+def collect_process(http, config: Config, key: str):
+    """Every acórdão the portal holds for one process number, from any organ."""
+    data = {
+        "txtPesquisa": "",
+        "txtProcesso": portal_number(key),
+        "selOrigem[]": "1",
+        "selTipoDocumento[]": "1",
+        "rdoCampo": "E",
+        "selTamanhoPagina": "10",
+    }
+    total, pages, rows = collect_pages(http, config, data, lambda content: parse_process_page(content, key))
+    payload = {
+        "fonte": "TJSC",
+        "consulta": "processo",
+        "numero_processo": portal_number(key),
+        "total": total,
+        "paginas": pages,
+    }
+    return json.dumps(payload, ensure_ascii=False).encode(), rows
+
+
+def catalog_process(store: Store, key: str) -> str:
+    """Catalog the search of one process number; returns the resource id."""
+    resource = {
+        "id": key,
+        "name": key + ".json",
+        "url": TJSC_SEARCH,
+        "last_modified": now(),
+        "numero_processo": portal_number(key),
+        "tipo": "consulta_processo",
+        "rank": PROCESSO_RANK,
+    }
+    store.catalog(
+        PROCESSO_DATASET,
+        {"fonte": TJSC_SEARCH, "tipo": "consulta_processo"},
+        [resource],
+        complete_listing=False,
+    )
+    return PROCESSO_DATASET + ":" + key
 
 
 def sync_tjsc(config: Config, store: Store, http, start: date, end: date, organs=PADRAO) -> dict:
