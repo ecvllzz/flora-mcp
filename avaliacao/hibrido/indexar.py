@@ -3,6 +3,8 @@
 Vetores normalizados (produto interno = cosseno), float16, na ordem de corpus-meta.json. Backends:
   st        sentence-transformers na GPU (modelos de ate cerca de 1,5 bilhao de parametros em fp16)
   gguf      llama-cpp-python com CUDA (4 a 8 bilhoes quantizados; o mesmo arquivo serve a CPU depois)
+  servidor  llama-server do llama.cpp ja aberto com --embedding --pooling last; --modelo e a URL base
+            (no Windows o llama-cpp-python com CUDA pre-compilado nao le Qwen3)
   aleatorio vetores por hash, so para ensaiar o encanamento do kit sem modelo
 
 Perfis de instrucao (o que vai antes da consulta e do documento):
@@ -12,13 +14,15 @@ Perfis de instrucao (o que vai antes da consulta e do documento):
   nenhum  sem prefixo
 
 Uso: python indexar.py --corpus <pasta> --conjunto <conjunto.json> --nome <rotulo> --backend st
-       --modelo <id HF> [--perfil qwen3] [--max-caracteres 6000] [--lote 16] [--so-consultas]
+       --modelo <id HF> [--perfil qwen3] [--tarefa "..."] [--max-caracteres 6000] [--lote 16]
+       [--so-consultas]
 """
 
 import argparse
 import hashlib
 import json
 import time
+import urllib.request
 from pathlib import Path
 
 import numpy as np
@@ -27,10 +31,10 @@ from comum import gravar_json, ler_json
 
 TAREFA = "Dada uma questão jurídica, recupere ementas de acórdãos brasileiros que a decidem"
 PERFIS = {
-    "qwen3": (lambda q: f"Instruct: {TAREFA}\nQuery:{q}", lambda d: d),
-    "gemma": (lambda q: f"task: search result | query: {q}", lambda d: f"title: none | text: {d}"),
-    "e5": (lambda q: f"query: {q}", lambda d: f"passage: {d}"),
-    "nenhum": (lambda q: q, lambda d: d),
+    "qwen3": (lambda q, t: f"Instruct: {t}\nQuery:{q}", lambda d: d),
+    "gemma": (lambda q, t: f"task: search result | query: {q}", lambda d: f"title: none | text: {d}"),
+    "e5": (lambda q, t: f"query: {q}", lambda d: f"passage: {d}"),
+    "nenhum": (lambda q, t: q, lambda d: d),
 }
 
 
@@ -82,6 +86,22 @@ class Gguf:
         return normalizar([self.m.embed(t) for t in textos])
 
 
+class Servidor:
+    def __init__(self, url, lote):
+        self.url = url.rstrip("/") + "/v1/embeddings"
+        self.lote = lote
+
+    def __call__(self, textos):
+        out = []
+        for n in range(0, len(textos), self.lote):
+            corpo = json.dumps({"input": textos[n : n + self.lote]}).encode()
+            pedido = urllib.request.Request(self.url, corpo, {"Content-Type": "application/json"})
+            with urllib.request.urlopen(pedido, timeout=600) as r:
+                dados = sorted(json.load(r)["data"], key=lambda d: d["index"])
+            out += [d["embedding"] for d in dados]
+        return normalizar(out)
+
+
 def em_lotes(codificar, textos, lote, rotulo):
     ordem = sorted(range(len(textos)), key=lambda i: len(textos[i]))  # comprimentos parecidos por lote
     saida = [None] * len(textos)
@@ -102,9 +122,10 @@ def main():
     a.add_argument("--corpus", required=True)
     a.add_argument("--conjunto", required=True)
     a.add_argument("--nome", required=True)
-    a.add_argument("--backend", choices=("st", "gguf", "aleatorio"), required=True)
-    a.add_argument("--modelo", help="id do Hugging Face (st) ou caminho do .gguf (gguf)")
+    a.add_argument("--backend", choices=("st", "gguf", "servidor", "aleatorio"), required=True)
+    a.add_argument("--modelo", help="id do Hugging Face (st), caminho do .gguf (gguf) ou URL (servidor)")
     a.add_argument("--perfil", choices=tuple(PERFIS), default="qwen3")
+    a.add_argument("--tarefa", default=TAREFA, help="instrucao da consulta no perfil qwen3")
     a.add_argument("--max-caracteres", type=int, default=6000)
     a.add_argument("--lote", type=int, default=16)
     a.add_argument("--dim", type=int, default=64, help="so para o backend aleatorio")
@@ -117,6 +138,7 @@ def main():
         "aleatorio": lambda: Aleatorio(args.dim),
         "st": lambda: SentenceTransformers(args.modelo, args.lote),
         "gguf": lambda: Gguf(args.modelo, args.lote),
+        "servidor": lambda: Servidor(args.modelo, args.lote),
     }[args.backend]()
     consulta, documento = PERFIS[args.perfil]
     inicio = time.time()
@@ -136,7 +158,7 @@ def main():
         for f in conjunto["formulacoes"]:
             if p.get(f):
                 chaves.append([p["id"], f])
-                textos.append(consulta(p[f]))
+                textos.append(consulta(p[f], args.tarefa))
     t0 = time.time()
     q = em_lotes(codificar, textos, args.lote, "consultas")
     por_consulta_ms = round((time.time() - t0) / max(len(textos), 1) * 1000, 1)
@@ -147,6 +169,7 @@ def main():
             "backend": args.backend,
             "modelo": args.modelo,
             "perfil": args.perfil,
+            "tarefa": args.tarefa if args.perfil == "qwen3" else None,
             "max_caracteres": args.max_caracteres,
             "publicacao": meta["publicacao"],
             "dim": int(q.shape[1]),
