@@ -5,6 +5,8 @@ Vetores normalizados (produto interno = cosseno), float16, na ordem de corpus-me
   gguf      llama-cpp-python com CUDA (4 a 8 bilhoes quantizados; o mesmo arquivo serve a CPU depois)
   servidor  llama-server do llama.cpp ja aberto com --embedding --pooling last; --modelo e a URL base
             (no Windows o llama-cpp-python com CUDA pre-compilado nao le Qwen3)
+  voyage    API da Voyage AI (chave em VOYAGE_API_KEY; use o perfil nenhum, o input_type faz o papel do
+            prefixo); o texto sai da maquina, so para o teste com ementas publicas autorizado na R5
   aleatorio vetores por hash, so para ensaiar o encanamento do kit sem modelo
 
 Perfis de instrucao (o que vai antes da consulta e do documento):
@@ -21,7 +23,9 @@ Uso: python indexar.py --corpus <pasta> --conjunto <conjunto.json> --nome <rotul
 import argparse
 import hashlib
 import json
+import os
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -102,6 +106,39 @@ class Servidor:
         return normalizar(out)
 
 
+class Voyage:
+    URL = "https://api.voyageai.com/v1/embeddings"
+
+    def __init__(self, modelo, lote):
+        self.modelo, self.lote = modelo, lote
+        self.chave = os.environ["VOYAGE_API_KEY"]
+        self.tipo = "document"
+        self.tokens = 0
+
+    def pedir(self, textos):
+        corpo = json.dumps({"input": textos, "model": self.modelo, "input_type": self.tipo}).encode()
+        cabecalho = {"Content-Type": "application/json", "Authorization": f"Bearer {self.chave}"}
+        for tentativa in range(8):
+            try:
+                with urllib.request.urlopen(
+                    urllib.request.Request(self.URL, corpo, cabecalho), timeout=300
+                ) as r:
+                    resposta = json.load(r)
+                self.tokens += resposta["usage"]["total_tokens"]
+                return [d["embedding"] for d in sorted(resposta["data"], key=lambda d: d["index"])]
+            except urllib.error.HTTPError as e:
+                if e.code != 429 and e.code < 500 or tentativa == 7:
+                    raise
+                time.sleep(2**tentativa)
+        return None
+
+    def __call__(self, textos):
+        out = []
+        for n in range(0, len(textos), self.lote):
+            out += self.pedir(textos[n : n + self.lote])
+        return normalizar(out)
+
+
 def em_lotes(codificar, textos, lote, rotulo):
     ordem = sorted(range(len(textos)), key=lambda i: len(textos[i]))  # comprimentos parecidos por lote
     saida = [None] * len(textos)
@@ -122,8 +159,10 @@ def main():
     a.add_argument("--corpus", required=True)
     a.add_argument("--conjunto", required=True)
     a.add_argument("--nome", required=True)
-    a.add_argument("--backend", choices=("st", "gguf", "servidor", "aleatorio"), required=True)
-    a.add_argument("--modelo", help="id do Hugging Face (st), caminho do .gguf (gguf) ou URL (servidor)")
+    a.add_argument("--backend", choices=("st", "gguf", "servidor", "voyage", "aleatorio"), required=True)
+    a.add_argument(
+        "--modelo", help="id do Hugging Face (st), caminho do .gguf (gguf), URL (servidor) ou modelo (voyage)"
+    )
     a.add_argument("--perfil", choices=tuple(PERFIS), default="qwen3")
     a.add_argument("--tarefa", default=TAREFA, help="instrucao da consulta no perfil qwen3")
     a.add_argument("--max-caracteres", type=int, default=6000)
@@ -139,6 +178,7 @@ def main():
         "st": lambda: SentenceTransformers(args.modelo, args.lote),
         "gguf": lambda: Gguf(args.modelo, args.lote),
         "servidor": lambda: Servidor(args.modelo, args.lote),
+        "voyage": lambda: Voyage(args.modelo, args.lote),
     }[args.backend]()
     consulta, documento = PERFIS[args.perfil]
     inicio = time.time()
@@ -159,6 +199,8 @@ def main():
             if p.get(f):
                 chaves.append([p["id"], f])
                 textos.append(consulta(p[f], args.tarefa))
+    if isinstance(codificar, Voyage):
+        codificar.tipo = "query"
     t0 = time.time()
     q = em_lotes(codificar, textos, args.lote, "consultas")
     por_consulta_ms = round((time.time() - t0) / max(len(textos), 1) * 1000, 1)
@@ -175,6 +217,7 @@ def main():
             "dim": int(q.shape[1]),
             "segundos_documentos": tempo_docs,
             "ms_por_consulta_em_lote": por_consulta_ms,
+            "tokens_api": getattr(codificar, "tokens", None),
             "chaves": chaves,
             "vetores": q.astype(np.float32).round(6).tolist(),
         },
