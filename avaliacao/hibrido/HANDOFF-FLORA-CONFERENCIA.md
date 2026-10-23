@@ -14,7 +14,7 @@ A R5 mede se uma busca por significado (vetores), somada à busca atual por pala
 
 ## O que você recebe
 
-O arquivo `conferencia-r5.json`, entregue pelo operador, com 40 itens. Cada item traz `n` (número de 1 a 40), `proposicao` (a questão jurídica) e a ementa do acórdão (`id` e `texto`). Não traz o grau já dado, o sistema que trouxe o acórdão nem a posição dele na lista.
+O arquivo `conferencia-r5.json`, com 40 itens. Ele só existe depois do julgamento cego da sessão de Engenharia; quando pronto, fica no PCDADU em `Documents\Flora\Dados\Flora-MCP-r5\conferencia\conferencia-r5.json`, e o operador avisa. Antes disso, não há o que conferir, e os julgamentos não devem ser reconstruídos por outra via. Cada item traz `n` (número de 1 a 40), `proposicao` (a questão jurídica) e a ementa do acórdão (`id` e `texto`). Não traz o grau já dado, o sistema que trouxe o acórdão nem a posição dele na lista.
 
 ## O que fazer
 
@@ -28,7 +28,7 @@ Julgue cada item por si, sem comparar com os outros nem tentar adivinhar o grau 
 
 ## Entrega
 
-Grave `conferencia-r5-respostas.json` no formato:
+Grave `conferencia-r5-respostas.json`, na mesma pasta, no formato:
 
 ```json
 {"1": {"grau": 2, "razao": "uma frase"}, "2": {"grau": 0, "razao": "uma frase"}}
