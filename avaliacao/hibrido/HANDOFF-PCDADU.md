@@ -23,7 +23,7 @@ Medir se vetores semânticos, fundidos com o BM25 atual, recuperam melhor os ac�
 ## Preparação
 
 1. **Repositório.** Se o PCDADU não tiver o Flora-MCP, clone `https://github.com/ecvllzz/flora-mcp` em `Documents\Flora-MCP`; se tiver, `git fetch`. Use o branch `reforma/r5-hibrido-kit`; o kit está em `avaliacao/hibrido/`. Não troque o branch do worktree de produção (`main`), se ele existir aí; crie um worktree próprio.
-2. **Acervo.** O operador traz por pendrive a publicação `r3376-s2-cd895f3434-f0a4721f447f.sqlite` (cerca de 1,1 GB). Copie para uma pasta fora do vault e fora do repositório, por exemplo `Documents\Flora\Dados\Flora-MCP-r5\`, e confira o SHA-256 contra o que o operador informar. Use só essa cópia, sempre somente leitura.
+2. **Acervo.** O operador traz por pendrive a publicação `r3376-s2-cd895f3434-f0a4721f447f.sqlite` (1.109.544.960 bytes), que está no notebook em `Documents\Flora\Dados\Flora-MCP\publicacoes\`. Copie para uma pasta fora do vault e fora do repositório, por exemplo `Documents\Flora\Dados\Flora-MCP-r5\`, e confira o SHA-256: `f0a4721f447fbf42458f3a63a406015858fa20b021e365dca2d6cc545ab5b921`. Se não bater, pare. Use só essa cópia, sempre somente leitura.
 3. **Ambiente.** `nvidia-smi` deve mostrar a RTX 3070. Crie um ambiente Python próprio (3.11 ou 3.12) fora do Flora-MCP. Pacotes: `numpy`, `torch` com CUDA, `transformers`, `sentence-transformers`, `huggingface_hub` e, para os modelos de 4 bilhões, `llama-cpp-python` com CUDA. **Cada download (pacote grande ou modelo) só com confirmação do operador no chat, dizendo nome, origem e tamanho.** Modelos só dos repositórios oficiais no Hugging Face; anote a revisão (hash do commit) de cada um.
 
 ## Passos
