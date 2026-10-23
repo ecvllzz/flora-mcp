@@ -6,7 +6,9 @@ pelo cosseno do denso; pesos e profundidade fixados antes do julgamento),
 para cada <nome> com <nome>-docs.npy e <nome>-consultas.json na pasta do corpus; e <sistema>+rr quando ha
 arquivo de reordenacao. Recortes: geral; sem_obice (tira das listas e dos graus o acordao do STJ com
 obice na verbetacao, pela regra atual de comum.py; a pergunta sem relevante sai da media);
-obice_estrito (o mesmo, so para o obice sem marca de tese da Corte, para medir a perda da regra ampla); camara
+obice_estrito (o mesmo, so para o obice sem marca de tese da Corte, para medir a perda da regra ampla);
+stj_enxuto (o estrito mais os EDcl rejeitados e as copias de texto do STJ; o grau de uma copia passa a
+primeira ocorrencia); camara
 (lexical filtrado pelo orgao e denso restrito a ele). Graus: os do conjunto, completados e corrigidos
 pelos julgamentos (pooling), quando dados.
 
@@ -22,9 +24,21 @@ from pathlib import Path
 
 import numpy as np
 
-from comum import PROFUNDIDADE, TOPO, agregado, gravar_json, ler_json, medida, obice_stj, rrf, tese_stj
+from comum import (
+    PROFUNDIDADE,
+    TOPO,
+    agregado,
+    chave_texto,
+    edcl_rejeitado,
+    gravar_json,
+    ler_json,
+    medida,
+    obice_stj,
+    rrf,
+    tese_stj,
+)
 
-RECORTES = ("geral", "sem_obice", "obice_estrito", "camara")
+RECORTES = ("geral", "sem_obice", "obice_estrito", "stj_enxuto", "camara")
 PARES = 30
 PESOS_RRFP = (1.0, 0.5)
 REORDENA = 100
@@ -32,19 +46,30 @@ REORDENA = 100
 LEXICO_DE = {"hipotetica": "proposicao"}
 
 
-def marcar_obice(corpus, meta):
-    """(obice, estrito): reaplica a regra atual aos marcados no corpus-meta (a regra so encolheu desde a
-    exportacao); estrito e o obice sem marca de tese da Corte."""
-    marcados = {m["id"] for m in meta["itens"] if m["obice_stj"]}
-    obice, estrito = set(), set()
+def marcar_cortes(corpus, meta):
+    """(obice, estrito, enxuto, copia_de) do STJ. obice reaplica a regra atual aos marcados no corpus-meta (a
+    regra so encolheu desde a exportacao); estrito e o obice sem marca de tese da Corte; enxuto soma ao
+    estrito os EDcl rejeitados e as copias de texto, e copia_de liga cada copia a primeira ocorrencia."""
+    por_id = {m["id"]: m for m in meta["itens"]}
+    obice, estrito, rejeitados, primeira, copia_de = set(), set(), set(), {}, {}
     with open(corpus / "corpus-textos.jsonl", encoding="utf-8") as fh:
         for linha in fh:
             d = json.loads(linha)
-            if d["id"] in marcados and obice_stj("STJ", d["texto"]):
+            m = por_id[d["id"]]
+            if m["tribunal"] != "STJ":
+                continue
+            if m["obice_stj"] and obice_stj("STJ", d["texto"]):
                 obice.add(d["id"])
                 if not tese_stj(d["texto"]):
                     estrito.add(d["id"])
-    return obice, estrito
+            if edcl_rejeitado(m["classe"], d["texto"]):
+                rejeitados.add(d["id"])
+            chave = chave_texto(d["texto"])
+            if chave in primeira:
+                copia_de[d["id"]] = primeira[chave]
+            else:
+                primeira[chave] = d["id"]
+    return obice, estrito, estrito | rejeitados | set(copia_de), copia_de
 
 
 def sem(xs, excluir):
@@ -97,14 +122,12 @@ def main():  # noqa: C901
     ids = [m["id"] for m in meta["itens"]]
     posicao = {i: n for n, i in enumerate(ids)}
     organ = np.array([m["organ"] for m in meta["itens"]])
-    obice, estrito = marcar_obice(corpus, meta)
+    obice, estrito, enxuto, copia_de = marcar_cortes(corpus, meta)
     print(
-        len(obice),
-        "acordaos do STJ com obice na verbetacao pela regra atual;",
-        len(estrito),
-        "sem marca de tese",
+        f"STJ: {len(obice)} com obice pela regra atual, {len(estrito)} sem marca de tese; stj_enxuto tira "
+        f"{len(enxuto)} (inclui {len(copia_de)} copias de texto)"
     )
-    fora = {"sem_obice": obice, "obice_estrito": estrito}
+    fora = {"sem_obice": obice, "obice_estrito": estrito, "stj_enxuto": enxuto}
     densos = carregar_densos(corpus, args.nomes, meta)
     julg = ler_json(args.julgamentos) if args.julgamentos else {}
     rr = ler_json(args.reordenacao) if args.reordenacao else {}
@@ -171,6 +194,11 @@ def main():  # noqa: C901
     graus_de = {
         r: {q: {i: v for i, v in g.items() if i not in x} for q, g in graus.items()} for r, x in fora.items()
     }
+    for q, g in graus.items():  # no stj_enxuto o grau de uma copia vale para a primeira ocorrencia
+        for i, v in g.items():
+            if i in copia_de and copia_de[i] not in enxuto:
+                alvo = graus_de["stj_enxuto"][q]
+                alvo[copia_de[i]] = max(alvo.get(copia_de[i], 0), v)
 
     sistemas = sorted({s for (_, _, _, s) in listas})
     resumo, por_pergunta = {}, {}

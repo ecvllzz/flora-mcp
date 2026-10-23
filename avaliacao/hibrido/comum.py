@@ -4,6 +4,7 @@ Os compiladores reproduzem src/flora_mcp/query.py do main (280622a) e do ensaio 
 (reforma/r3-ensaio-ou-simples).
 """
 
+import hashlib
 import json
 import math
 import re
@@ -39,6 +40,14 @@ TESE = re.compile(
     re.I,
 )
 CABECALHO_TESE = 1500
+# Embargos de declaracao rejeitados por falta de vicio, no cabecalho: raramente afirmam tese
+# (recorte stj_enxuto).
+EDCL_REJEITADO = re.compile(
+    r"(OMISS[ÃA]O|CONTRADI[ÇC][ÃA]O|OBSCURIDADE|ERRO MATERIAL)[^.]{0,40}"
+    r"(INEXIST|N[ÃA]O (CONFIGUR|VERIFIC|OCORR))|EMBARGOS (DE DECLARA[ÇC][ÃA]O )?REJEITADOS",
+    re.I,
+)
+CABECALHO_EDCL = 500
 TOPO = 8
 PROFUNDIDADE = 200
 RRF_K = 60
@@ -89,6 +98,15 @@ def obice_stj(tribunal, ementa):
 
 def tese_stj(ementa):
     return bool(TESE.search((ementa or "")[:CABECALHO_TESE]))
+
+
+def edcl_rejeitado(classe, ementa):
+    return (classe or "").startswith("EDCL") and bool(EDCL_REJEITADO.search((ementa or "")[:CABECALHO_EDCL]))
+
+
+def chave_texto(ementa):
+    """Texto sem pontuacao, espacos nem caixa: duas ementas com a mesma chave sao copias."""
+    return hashlib.sha1(re.sub(r"\W+", "", folded(ementa or "")).encode()).hexdigest()
 
 
 def rrf(*listas, k=RRF_K, pesos=None):
