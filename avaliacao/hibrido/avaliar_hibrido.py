@@ -1,6 +1,8 @@
 """Avalia sistemas lexicais, densos e hibridos no conjunto, nos recortes geral, sem_obice e camara.
 
-Sistemas: atual, ou (de candidatos_bm25.json); denso:<nome> e hibrido:<nome> (RRF de ou com denso:<nome>),
+Sistemas: atual, ou (de candidatos_bm25.json); denso:<nome>, hibrido:<nome> (RRF de ou com denso:<nome>),
+rrfp:<nome> (RRF com o lexical pesando 1 e o denso 0,5) e ouden:<nome> (os 100 primeiros do ou reordenados
+pelo cosseno do denso; pesos e profundidade fixados antes do julgamento),
 para cada <nome> com <nome>-docs.npy e <nome>-consultas.json na pasta do corpus; e <sistema>+rr quando ha
 arquivo de reordenacao. Recortes: geral; sem_obice (tira das listas e dos graus o acordao do STJ com
 obice na verbetacao, pela regra atual de comum.py; a pergunta sem relevante sai da media);
@@ -24,6 +26,8 @@ from comum import PROFUNDIDADE, TOPO, agregado, gravar_json, ler_json, medida, o
 
 RECORTES = ("geral", "sem_obice", "obice_estrito", "camara")
 PARES = 30
+PESOS_RRFP = (1.0, 0.5)
+REORDENA = 100
 # A ementa hipotetica passa do limite de termos da busca lexical: a metade lexical vem da proposicao.
 LEXICO_DE = {"hipotetica": "proposicao"}
 
@@ -91,6 +95,7 @@ def main():  # noqa: C901
     meta = ler_json(corpus / "corpus-meta.json")
     assert bm25["publicacao"] == meta["publicacao"], "candidatos e corpus de publicacoes diferentes"
     ids = [m["id"] for m in meta["itens"]]
+    posicao = {i: n for n, i in enumerate(ids)}
     organ = np.array([m["organ"] for m in meta["itens"]])
     obice, estrito = marcar_obice(corpus, meta)
     print(
@@ -124,7 +129,12 @@ def main():  # noqa: C901
                         continue
                     d = sem(lista_densa(docs, vet[p["id"], f], ids, mascara), excluir)
                     listas[p["id"], f, recorte, f"denso:{nome}"] = d
-                    listas[p["id"], f, recorte, f"hibrido:{nome}"] = rrf(listas[p["id"], f, recorte, "ou"], d)
+                    ou = listas[p["id"], f, recorte, "ou"]
+                    listas[p["id"], f, recorte, f"hibrido:{nome}"] = rrf(ou, d)
+                    listas[p["id"], f, recorte, f"rrfp:{nome}"] = rrf(ou, d, pesos=PESOS_RRFP)
+                    cos = docs[[posicao[i] for i in ou[:REORDENA]]] @ vet[p["id"], f]
+                    topo = [ou[n] for n in np.argsort(-cos, kind="stable")]
+                    listas[p["id"], f, recorte, f"ouden:{nome}"] = topo + ou[REORDENA:]
     for (q, f, recorte, s), xs in list(listas.items()):
         chave = f"{q}|{f}|{recorte}|{s}"
         if chave in rr:

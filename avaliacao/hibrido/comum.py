@@ -91,11 +91,11 @@ def tese_stj(ementa):
     return bool(TESE.search((ementa or "")[:CABECALHO_TESE]))
 
 
-def rrf(*listas, k=RRF_K):
+def rrf(*listas, k=RRF_K, pesos=None):
     score = {}
-    for lista in listas:
+    for lista, peso in zip(listas, pesos or [1.0] * len(listas), strict=True):
         for posicao, i in enumerate(lista):
-            score[i] = score.get(i, 0.0) + 1.0 / (k + posicao + 1)
+            score[i] = score.get(i, 0.0) + peso / (k + posicao + 1)
     return [i for i, _ in sorted(score.items(), key=lambda x: (-x[1], x[0]))]
 
 
