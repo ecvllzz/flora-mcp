@@ -9,7 +9,7 @@ completados e corrigidos pelos julgamentos (pooling), quando dados.
 Uso: python avaliar_hibrido.py --conjunto <conj> --bm25 <candidatos.json> --corpus <pasta> --nomes a b
        [--julgamentos julgamentos.json] [--reordenacao rr.json] [--saida resultado.json]
        [--exportar-pares SISTEMA --pares pares.json]
-       [--pool pool.json --pool-sistemas s1 s2 --pool-formulacoes f1 f2]
+       [--pool pool.json --pool-sistemas s1 s2 --pool-formulacoes f1 f2 [--pool-recorte sem_obice]]
 """
 
 import argparse
@@ -63,6 +63,7 @@ def main():  # noqa: C901
     a.add_argument("--pool")
     a.add_argument("--pool-sistemas", nargs="*", default=[])
     a.add_argument("--pool-formulacoes", nargs="*", default=["proposicao"])
+    a.add_argument("--pool-recorte", choices=RECORTES, default="geral")
     args = a.parse_args()
     corpus = Path(args.corpus)
     conjunto, bm25 = ler_json(args.conjunto), ler_json(args.bm25)
@@ -152,7 +153,7 @@ def main():  # noqa: C901
         perguntas = {p["id"]: p for p in conjunto["perguntas"]}
         pool = {}
         for (q, f, recorte, s), xs in listas.items():
-            if recorte == "geral" and s in args.pool_sistemas and f in args.pool_formulacoes:
+            if recorte == args.pool_recorte and s in args.pool_sistemas and f in args.pool_formulacoes:
                 novos = [i for i in xs[:TOPO] if i not in graus[q]]
                 if novos:
                     item = pool.setdefault(q, {"proposicao": perguntas[q]["proposicao"], "ids": []})
