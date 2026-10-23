@@ -10,6 +10,7 @@ requires-python = ">=3.12"
 dependencies = [
     "mcp==2.2.0",
     "httpx>=0.28,<0.29",
+    "certifi>=2026.10.19",
     "beautifulsoup4>=4.14,<5",
     "filelock>=3.20,<4",
     "tzdata>=2025.2",
