@@ -1,0 +1,1443 @@
+{
+ "schema": "flora-avaliacao-2",
+ "descricao": "Conjunto ampliado da R3: perguntas tiradas dos registros de pesquisa dos casos (Controle/pesquisa-*.json), uma por caso e tese, com os acordaos que o papel marcou como fundamento ou contraponto (relevantes) e como descartados (nao relevantes). Compativel com scripts/avaliar.py pelo campo esperados.",
+ "montado_em": "2026-10-23",
+ "publicacao_de_referencia": "r3376-s2-cd895f3434-f0a4721f447f",
+ "graus": {
+  "2": "fundamento, apoio, citado ou selecionado",
+  "1": "contraponto, analogia, reforco ou orientacao",
+  "0": "descartado depois de lido (devolvido e julgado nao pertinente)"
+ },
+ "formulacoes": [
+  "proposicao",
+  "assessor",
+  "curta",
+  "rotulo"
+ ],
+ "formulacoes_descricao": {
+  "proposicao": "a proposicao que a decisao enuncia, em vocabulario de ementa e sem fatos do caso (canon de pesquisa, consulta pela proposicao)",
+  "assessor": "termos que um assessor digitaria de uma vez, sem enxugar",
+  "curta": "dois ou tres termos nucleares",
+  "rotulo": "o rotulo de tese gravado no registro, sem edicao; enviesado, porque alguns rotulos descrevem o julgado encontrado"
+ },
+ "limites": {
+  "nota": "Os esperados sao os acordaos que o papel leu e marcou, nao todos os relevantes do acervo; um acordao relevante nunca devolvido conta como nao relevante. As formulacoes proposicao, assessor e curta foram redigidas a partir do rotulo e da materia do caso, sem ler as ementas esperadas. Os rotulos vieram de buscas feitas com a propria ferramenta, o que favorece o lexical atual. So entram acordaos presentes na publicacao de referencia; temas e sumulas ficam fora.",
+  "descartadas": {
+   "q002": "rotulo insuficiente (requerimento anterior omitido)",
+   "q015": "rotulo insuficiente (secao 2, contraponto)",
+   "q016": "rotulo insuficiente (garantias anteriores)",
+   "q017": "rotulo insuficiente (garantias anteriores)",
+   "q018": "rotulo insuficiente (garantias anteriores)",
+   "q022": "rotulo ambiguo (equidade, proporcionalidade e quantificacao: honorarios ou quantum)",
+   "q023": "rotulo ambiguo (preparo e gratuidade, dispositivo citado incerto)",
+   "q045": "rotulo insuficiente (suficiencia da prova e requerimento tempestivo)",
+   "q053": "rotulo insuficiente (gratuidade, sem proposicao)"
+  }
+ },
+ "perguntas": [
+  {
+   "id": "r001",
+   "caso": "Casos/Familia/AD_5083816_LuizXRaquel",
+   "rotulo": "AJG e honorários executivos",
+   "proposicao": "a gratuidade da justiça suspende a exigibilidade dos honorários advocatícios fixados no cumprimento de sentença",
+   "assessor": "gratuidade justiça honorários cumprimento de sentença execução suspensão exigibilidade",
+   "curta": "gratuidade honorários execução",
+   "esperados": [
+    "STJ:000907419",
+    "STJ:941111",
+    "STJ:942636",
+    "STJ:951903",
+    "TJSC:321786467542236744136161149476",
+    "TJSC:321786968680295199257788760824"
+   ],
+   "graus": {
+    "STJ:000907419": 1,
+    "STJ:941111": 1,
+    "STJ:942636": 2,
+    "STJ:951903": 1,
+    "TJSC:321786467542236744136161149476": 2,
+    "TJSC:321786968680295199257788760824": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q001"
+    ],
+    "registros": [
+     "Casos/Familia/AD_5083816_LuizXRaquel/Controle/pesquisa-analista-2026-10-20.json",
+     "Casos/Familia/AD_5083816_LuizXRaquel/Controle/pesquisa-redator-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r002",
+   "caso": "Casos/Familia/APL_5000260_WilianXIvo",
+   "rotulo": "Estabilidade da gratuidade e efeitos temporais",
+   "proposicao": "a gratuidade da justiça produz efeitos a partir do deferimento e não alcança custas anteriores",
+   "assessor": "gratuidade da justiça efeitos retroativos ex nunc custas anteriores deferimento",
+   "curta": "gratuidade efeitos retroativos",
+   "esperados": [
+    "TJSC:321779444946945217508337863286",
+    "TJSC:321786898491572648339935726247",
+    "TJSC:321786968680295199257788760824"
+   ],
+   "graus": {
+    "TJSC:321779444946945217508337863286": 1,
+    "TJSC:321786898491572648339935726247": 1,
+    "TJSC:321786968680295199257788760824": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q003"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000260_WilianXIvo/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r003",
+   "caso": "Casos/Familia/APL_5000293_LissandraXEvandro",
+   "rotulo": "Prazo especial ECA e informação do sistema",
+   "proposicao": "prazo recursal de dez dias nos procedimentos do ECA e informação divergente do sistema eletrônico",
+   "assessor": "prazo recursal ECA dez dias art. 198 tempestividade informação sistema eletrônico",
+   "curta": "prazo recursal ECA",
+   "esperados": [
+    "TJSC:321786898491572648330168248380",
+    "TJSC:321786898491572648330169645111"
+   ],
+   "graus": {
+    "TJSC:321786898491572648330168248380": 2,
+    "TJSC:321786898491572648330169645111": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q004"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r004",
+   "caso": "Casos/Familia/APL_5000293_LissandraXEvandro",
+   "rotulo": "Publicação para revel sem advogado / Termo inicial do prazo recursal do revel sem patrono: publicação do ato decisório no órgão oficial (art. 346 do CPC); lançamento no sistema eletrônico e intimação para pagamento não o suprem",
+   "proposicao": "o prazo para o revel sem advogado nos autos corre da publicação do ato decisório no órgão oficial",
+   "assessor": "revel sem patrono prazo recursal publicação órgão oficial art. 346 CPC",
+   "curta": "revel prazo publicação",
+   "esperados": [
+    "STJ:951024",
+    "STJ:957491"
+   ],
+   "graus": {
+    "STJ:951024": 2,
+    "STJ:957491": 2,
+    "TJSC:321786619979792694803817041499": 0,
+    "TJSC:321786968680295199257904680711": 0,
+    "TJSC:321790018162675778197648531291": 0
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q005",
+     "q011"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-analista-2026-10-20.json",
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-finalizacao-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r005",
+   "caso": "Casos/Familia/APL_5000293_LissandraXEvandro",
+   "rotulo": "Multa e advertência / Advertência e proteção integral",
+   "proposicao": "substituição da multa por advertência na infração administrativa do art. 249 do ECA",
+   "assessor": "infração administrativa art. 249 ECA multa advertência substituição proteção integral",
+   "curta": "art. 249 ECA advertência",
+   "esperados": [
+    "TJSC:321785864890251663282783123740",
+    "TJSC:321786898491572648332074137184"
+   ],
+   "graus": {
+    "TJSC:321785864890251663282783123740": 2,
+    "TJSC:321786898491572648332074137184": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q006",
+     "q007"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r006",
+   "caso": "Casos/Familia/APL_5000293_LissandraXEvandro",
+   "rotulo": "Elemento subjetivo e esforços dos pais",
+   "proposicao": "a infração do art. 249 do ECA exige culpa e é afastada quando os pais demonstram esforços para cumprir os deveres do poder familiar",
+   "assessor": "art. 249 ECA dolo culpa elemento subjetivo descumprimento deveres poder familiar esforços genitores",
+   "curta": "art. 249 ECA culpa",
+   "esperados": [
+    "TJSC:321786619979792694803817041499"
+   ],
+   "graus": {
+    "TJSC:321786619979792694803817041499": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q008"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r007",
+   "caso": "Casos/Familia/APL_5000293_LissandraXEvandro",
+   "rotulo": "Redução abaixo de três salários",
+   "proposicao": "redução da multa do art. 249 do ECA abaixo do mínimo de três salários de referência",
+   "assessor": "multa art. 249 ECA redução aquém mínimo três salários de referência capacidade econômica",
+   "curta": "multa 249 redução",
+   "esperados": [
+    "TJSC:321785241743612880409012526823"
+   ],
+   "graus": {
+    "TJSC:321785241743612880409012526823": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q009"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r008",
+   "caso": "Casos/Familia/APL_5000293_LissandraXEvandro",
+   "rotulo": "Mérito art. 249, nulidade e dosimetria após ordem Q1",
+   "proposicao": "configuração da infração administrativa do art. 249 do ECA e dosimetria da multa",
+   "assessor": "infração administrativa art. 249 ECA descumprimento dever poder familiar multa dosimetria nulidade",
+   "curta": "infração administrativa ECA",
+   "esperados": [
+    "TJSC:321784300707743581318285094808",
+    "TJSC:321786467542236744135379732716",
+    "TJSC:321786467542236744135381561518",
+    "TJSC:321790018162675778197648531291",
+    "TJSC:321790018162675778197806617655",
+    "TJSC:321790018162675778197990820350"
+   ],
+   "graus": {
+    "TJSC:321784300707743581318285094808": 2,
+    "TJSC:321786467542236744135379732716": 1,
+    "TJSC:321786467542236744135381561518": 2,
+    "TJSC:321786898491572648332039060477": 0,
+    "TJSC:321790018162675778197648531291": 1,
+    "TJSC:321790018162675778197806617655": 2,
+    "TJSC:321790018162675778197826502579": 0,
+    "TJSC:321790018162675778197990820350": 2,
+    "TJSC:321790081633433507944025992641": 0
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q010"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000293_LissandraXEvandro/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r009",
+   "caso": "Casos/Familia/APL_5000464_KristopherXTharles",
+   "rotulo": "novação ou suspensão em acordo parcelado",
+   "proposicao": "o acordo de parcelamento do débito alimentar na execução não implica novação, mas suspensão da execução",
+   "assessor": "acordo parcelamento débito alimentar execução novação suspensão inadimplemento retomada",
+   "curta": "acordo parcelamento novação",
+   "esperados": [
+    "TJSC:321783100975479837791740036936",
+    "TJSC:321786968680295199257677374694",
+    "TJSC:321786982354457870770489382249"
+   ],
+   "graus": {
+    "TJSC:321783100975479837791740036936": 2,
+    "TJSC:321786968680295199257342156076": 0,
+    "TJSC:321786968680295199257677374694": 2,
+    "TJSC:321786982354457870770489382249": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q012"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000464_KristopherXTharles/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r010",
+   "caso": "Casos/Familia/APL_5000769_CarlosXKethlen",
+   "rotulo": "Fixação equitativa de honorários sucumbenciais em causa de valor baixo; tabela OAB/SC como referência orientadora; montante superior ao valor da causa.",
+   "proposicao": "honorários por equidade em causa de valor baixo com a tabela da OAB como referência",
+   "assessor": "honorários equidade art. 85 § 8º valor da causa irrisório tabela OAB referência",
+   "curta": "honorários equidade tabela OAB",
+   "esperados": [
+    "TJSC:321784315470677142859040934522",
+    "TJSC:321786711264905410282030872611"
+   ],
+   "graus": {
+    "TJSC:321784315470677142859040934522": 2,
+    "TJSC:321786711264905410282030872611": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q013"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5000769_CarlosXKethlen/Controle/pesquisa-finalizacao-2026-10-15.json"
+    ]
+   }
+  },
+  {
+   "id": "r011",
+   "caso": "Casos/Familia/APL_5001528_NicolasEAnandaXGuilherme",
+   "rotulo": "secao 1: decisao surpresa em extincao por litispendencia; ponte para o exame imediato",
+   "proposicao": "nulidade da sentença que extingue o processo por litispendência sem prévia oitiva das partes",
+   "assessor": "decisão surpresa art. 10 CPC litispendência extinção sem oitiva prévia nulidade sentença",
+   "curta": "decisão surpresa litispendência",
+   "esperados": [
+    "TJSC:321790081633433507944013363586"
+   ],
+   "graus": {
+    "TJSC:321790081633433507944013363586": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q014"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5001528_NicolasEAnandaXGuilherme/Controle/pesquisa-finalizacao-2026-10-07.json"
+    ]
+   }
+  },
+  {
+   "id": "r012",
+   "caso": "Casos/Familia/APL_5002011_RicardoXFernanda",
+   "rotulo": "Q1: comunicabilidade da dívida de R$ 37 mil perante o irmão do apelante; presunção relativa de proveito comum, impugnação específica e ônus da prova",
+   "proposicao": "partilha de dívida contraída durante a união: presunção relativa de proveito comum e ônus da prova de quem nega a comunicabilidade",
+   "assessor": "partilha dívida contraída constância união estável comunicabilidade presunção proveito comum ônus da prova empréstimo familiar",
+   "curta": "partilha dívida proveito comum",
+   "esperados": [
+    "STJ:000918210",
+    "TJSC:321785864890251663282124414389",
+    "TJSC:321790018162675778197796417107",
+    "TJSC:321790018162675778197866072472",
+    "TJSC:321790018162675778197867737119",
+    "TJSC:321790018162675778198090248730",
+    "TJSC:321790426352499139870553082723"
+   ],
+   "graus": {
+    "STJ:000917945": 0,
+    "STJ:000918210": 2,
+    "TJSC:321785864890251663282124414389": 2,
+    "TJSC:321790018162675778197796417107": 2,
+    "TJSC:321790018162675778197866072472": 2,
+    "TJSC:321790018162675778197867737119": 1,
+    "TJSC:321790018162675778198090248730": 2,
+    "TJSC:321790426352499139870553082723": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q019"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5002011_RicardoXFernanda/Controle/pesquisa-finalizacao-2026-10-09.json"
+    ]
+   }
+  },
+  {
+   "id": "r013",
+   "caso": "Casos/Familia/APL_5002011_RicardoXFernanda",
+   "rotulo": "1.1 e 1.2: exclusão por sub-rogação (empresa e Saveiro)",
+   "proposicao": "exclusão da partilha de bem adquirido com recursos próprios anteriores à união por sub-rogação",
+   "assessor": "partilha sub-rogação bem adquirido valores exclusivos anteriores união art. 1.659 II prova",
+   "curta": "partilha sub-rogação",
+   "esperados": [
+    "TJSC:321784300707743581318266191124"
+   ],
+   "graus": {
+    "TJSC:321784300707743581318266191124": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q020"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5002011_RicardoXFernanda/Controle/pesquisa-finalizacao-2026-10-13.json"
+    ]
+   }
+  },
+  {
+   "id": "r014",
+   "caso": "Casos/Familia/APL_5002011_RicardoXFernanda",
+   "rotulo": "1.2: natureza do crédito trabalhista de período que atravessa a união",
+   "proposicao": "comunicabilidade das verbas trabalhistas referentes a período aquisitivo na constância da união",
+   "assessor": "partilha verbas trabalhistas crédito trabalhista período aquisitivo constância união comunicabilidade",
+   "curta": "partilha verbas trabalhistas",
+   "esperados": [
+    "TJSC:321786204620870896272256164070"
+   ],
+   "graus": {
+    "TJSC:321786204620870896272256164070": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q021"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5002011_RicardoXFernanda/Controle/pesquisa-finalizacao-2026-10-13.json"
+    ]
+   }
+  },
+  {
+   "id": "r015",
+   "caso": "Casos/Familia/APL_5032640_ElfiXElisa",
+   "rotulo": "Uso de bem hereditário e avaliação judicial com percentual. Não fixa percentual universal. / Dispensa perícia onde avaliações locativas convergiam; aqui há apenas avaliação de venda. / Exige uso exclusivo real; aqui moradia e atividade empresarial reconhecidas, diferente de vigilância. / 0,5% em divórcio/acessão em terreno alheio; não transfere taxa sem exame de comparabilidade. / Liquidação pressupõe título; eventual proposta exige conservar condenação certa quanto ao dever.",
+   "proposicao": "arbitramento de aluguel pelo uso exclusivo de imóvel comum por herdeiro ou ex-cônjuge e fixação do valor por avaliação",
+   "assessor": "arbitramento aluguel uso exclusivo imóvel comum herança condômino fixação percentual valor avaliação perícia",
+   "curta": "aluguel uso exclusivo imóvel",
+   "esperados": [
+    "TJSC:321781282382813554471680601494",
+    "TJSC:321781524051010972196518599579",
+    "TJSC:321785241743612880409020080591",
+    "TJSC:321790018162675778197788220358",
+    "TJSC:321790194732642175966203622660"
+   ],
+   "graus": {
+    "TJSC:321781282382813554471680601494": 2,
+    "TJSC:321781524051010972196518599579": 1,
+    "TJSC:321785241743612880409020080591": 1,
+    "TJSC:321790018162675778197788220358": 1,
+    "TJSC:321790194732642175966203622660": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q024",
+     "q025",
+     "q028",
+     "q029",
+     "q030"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5032640_ElfiXElisa/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r016",
+   "caso": "Casos/Familia/APL_5032640_ElfiXElisa",
+   "rotulo": "Proporcionalidade de honorários na exclusão de litisconsorte. / Proporcionalidade sem equidade. Os5% pertencem àquela hipótese, não são tabela.",
+   "proposicao": "honorários proporcionais na exclusão de litisconsorte do processo",
+   "assessor": "honorários advocatícios exclusão litisconsorte proporcionalidade art. 85 § 2º equidade",
+   "curta": "honorários exclusão litisconsorte",
+   "esperados": [
+    "STJ:1447599",
+    "STJ:949253"
+   ],
+   "graus": {
+    "STJ:1447599": 2,
+    "STJ:949253": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q026",
+     "q027"
+    ],
+    "registros": [
+     "Casos/Familia/APL_5032640_ElfiXElisa/Controle/pesquisa-analista-2026-10-20.json"
+    ]
+   }
+  },
+  {
+   "id": "r017",
+   "caso": "S22102026/AD_5089792_AntonioSergioNunesXMPSC",
+   "rotulo": "Convivência supervisionada e virtual, cautela, atualidade da prova e via",
+   "proposicao": "convivência supervisionada ou virtual diante de indícios de risco à criança, com base em prova atual",
+   "assessor": "convivência supervisionada virtual agravo de instrumento cautela risco criança prova atual estudo psicossocial",
+   "curta": "convivência supervisionada",
+   "esperados": [
+    "TJSC:321774819782866796033526350525",
+    "TJSC:321777041984958703556744983232",
+    "TJSC:321784300707743581318212988672",
+    "TJSC:321785241743612880408592057139",
+    "TJSC:321785864890251663282222766050",
+    "TJSC:321786968680295199257548860457",
+    "TJSC:321786968680295199257638145390",
+    "TJSC:321787584892160895412761566797",
+    "TJSC:321790081633433507944023300850"
+   ],
+   "graus": {
+    "TJSC:321774819782866796033526350525": 1,
+    "TJSC:321777041984958703556744983232": 2,
+    "TJSC:321784300707743581318212988672": 1,
+    "TJSC:321785241743612880408592057139": 1,
+    "TJSC:321785864890251663282222766050": 1,
+    "TJSC:321786968680295199257548860457": 2,
+    "TJSC:321786968680295199257638145390": 1,
+    "TJSC:321787584892160895412761566797": 2,
+    "TJSC:321787584892160895412762065025": 0,
+    "TJSC:321790081633433507944023300850": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q031"
+    ],
+    "registros": [
+     "S22102026/AD_5089792_AntonioSergioNunesXMPSC/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r018",
+   "caso": "S22102026/APL_5001070_DaviMendesXAnilsonLuizMendes",
+   "rotulo": "Exoneração, matrícula, necessidade e possibilidade",
+   "proposicao": "exoneração de alimentos devidos a filho maior que comprova matrícula em curso superior",
+   "assessor": "exoneração alimentos filho maior estudante universitário matrícula necessidade possibilidade Súmula 358",
+   "curta": "exoneração filho maior estudante",
+   "esperados": [
+    "TJSC:321773405137329417737209356045",
+    "TJSC:321781524051010972196497266578",
+    "TJSC:321784899206341155673236097357",
+    "TJSC:321784899206341155673261766433",
+    "TJSC:321786814631739698956715855583",
+    "TJSC:321786898491572648330377035023",
+    "TJSC:321786898491572648330380086796",
+    "TJSC:321786898491572648330381937867",
+    "TJSC:321786898491572648332042281498"
+   ],
+   "graus": {
+    "TJSC:321773405137329417737209356045": 1,
+    "TJSC:321781524051010972196497266578": 2,
+    "TJSC:321784899206341155673236097357": 1,
+    "TJSC:321784899206341155673261766433": 2,
+    "TJSC:321786814631739698956715855583": 1,
+    "TJSC:321786898491572648330377035023": 1,
+    "TJSC:321786898491572648330380086796": 1,
+    "TJSC:321786898491572648330381937867": 1,
+    "TJSC:321786898491572648332042281498": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q032"
+    ],
+    "registros": [
+     "S22102026/APL_5001070_DaviMendesXAnilsonLuizMendes/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5001070_DaviMendesXAnilsonLuizMendes/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r019",
+   "caso": "S22102026/APL_5001070_DaviMendesXAnilsonLuizMendes",
+   "rotulo": "Atuação dativa recursal",
+   "proposicao": "fixação de honorários ao defensor dativo pela atuação em grau recursal",
+   "assessor": "honorários defensor dativo atuação recursal fixação tabela",
+   "curta": "honorários dativo recursal",
+   "esperados": [
+    "TJSC:321786982354457870770489382249"
+   ],
+   "graus": {
+    "TJSC:321786982354457870770489382249": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q033"
+    ],
+    "registros": [
+     "S22102026/APL_5001070_DaviMendesXAnilsonLuizMendes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r020",
+   "caso": "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes",
+   "rotulo": "Convivência familiar e dimensionamento conforme prova da rotina e do interesse da criança / instrução e cautela / suficiência",
+   "proposicao": "regulamentação da convivência familiar conforme a prova da rotina e o melhor interesse da criança, com instrução e cautela",
+   "assessor": "regulamentação convivência familiar melhor interesse criança rotina prova instrução cautela ampliação",
+   "curta": "regulamentação convivência",
+   "esperados": [
+    "TJSC:321778511150397013320631492828",
+    "TJSC:321784558637349305045024838278",
+    "TJSC:321785864890251663282051366931",
+    "TJSC:321786204620870896272264603117"
+   ],
+   "graus": {
+    "TJSC:321778511150397013320631492828": 1,
+    "TJSC:321784558637349305045024838278": 1,
+    "TJSC:321785864890251663282051366931": 2,
+    "TJSC:321786204620870896272264603117": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q034",
+     "q039"
+    ],
+    "registros": [
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-finalizacao-2026-10-22.json",
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/versoes/analista-parcial-20261022/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r021",
+   "caso": "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes",
+   "rotulo": "Complementação psicossocial e oitiva no processamento recursal antes de decidir convivência",
+   "proposicao": "conversão do julgamento em diligência para complementar o estudo psicossocial e ouvir a criança antes de decidir a convivência",
+   "assessor": "conversão julgamento em diligência estudo psicossocial complementação oitiva criança convivência",
+   "curta": "diligência estudo psicossocial",
+   "esperados": [
+    "TJSC:321786968680295199257548860457"
+   ],
+   "graus": {
+    "TJSC:321786968680295199257548860457": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q035"
+    ],
+    "registros": [
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-analista-diligencia-2026-10-22.json",
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r022",
+   "caso": "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes",
+   "rotulo": "Convivência conforme interesse da criança e lastro concreto / pernoite sem nova avaliação / mérito diurno / falta de avaliação",
+   "proposicao": "ampliação da convivência com pernoite sem nova avaliação técnica",
+   "assessor": "convivência pernoite ampliação avaliação psicossocial ausência interesse criança visitas",
+   "curta": "pernoite convivência",
+   "esperados": [
+    "TJSC:321778511150397013320663405305",
+    "TJSC:321779115788762517444776401322",
+    "TJSC:321786619979792694803528827437",
+    "TJSC:321786898491572648330333084051"
+   ],
+   "graus": {
+    "TJSC:321778511150397013320663405305": 1,
+    "TJSC:321779115788762517444776401322": 1,
+    "TJSC:321786619979792694803528827437": 1,
+    "TJSC:321786898491572648330333084051": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q036",
+     "q040",
+     "q042"
+    ],
+    "registros": [
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-analista-retomada-2026-10-22.json",
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r023",
+   "caso": "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes",
+   "rotulo": "Contrarrazões e recurso adesivo na mesma peça",
+   "proposicao": "admissibilidade do recurso adesivo interposto na mesma peça das contrarrazões",
+   "assessor": "recurso adesivo contrarrazões mesma peça admissibilidade conhecimento",
+   "curta": "adesivo contrarrazões",
+   "esperados": [
+    "TJSC:321790018162675778197799416551"
+   ],
+   "graus": {
+    "TJSC:321790018162675778197799416551": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q037"
+    ],
+    "registros": [
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-analista-retomada-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r024",
+   "caso": "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes",
+   "rotulo": "Vontade infantojuvenil conforme idade, maturidade e prova técnica / vontade infantil",
+   "proposicao": "peso da vontade da criança ou do adolescente conforme idade, maturidade e prova técnica na definição da convivência",
+   "assessor": "vontade criança adolescente oitiva maturidade idade estudo psicológico convivência guarda",
+   "curta": "vontade da criança",
+   "esperados": [
+    "TJSC:321781524051010972196577490514",
+    "TJSC:321786968680295199257662349206"
+   ],
+   "graus": {
+    "TJSC:321781524051010972196577490514": 1,
+    "TJSC:321786968680295199257662349206": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q038"
+    ],
+    "registros": [
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-analista-retomada-2026-10-22.json",
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r025",
+   "caso": "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes",
+   "rotulo": "família extensa e rotina",
+   "proposicao": "convivência com apoio da família extensa e preservação da rotina da criança",
+   "assessor": "convivência família extensa avós rotina criança",
+   "curta": "família extensa convivência",
+   "esperados": [
+    "TJSC:321790081633433507943992479953"
+   ],
+   "graus": {
+    "TJSC:321790081633433507943992479953": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q041"
+    ],
+    "registros": [
+     "S22102026/APL_5001310_FernandaFernandesXEleniSebastiaoFernandes/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r026",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Proporcionalidade da redução moderada",
+   "proposicao": "redução moderada dos alimentos proporcional à alteração comprovada da capacidade do alimentante",
+   "assessor": "revisional alimentos redução proporcional binômio necessidade possibilidade alteração capacidade",
+   "curta": "redução alimentos proporcional",
+   "esperados": [
+    "TJSC:321790018162675778198099346594"
+   ],
+   "graus": {
+    "TJSC:321790018162675778198099346594": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q043"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r027",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Rateio e prova de despesas extraordinárias",
+   "proposicao": "o rateio de despesas extraordinárias do filho exige prova do gasto",
+   "assessor": "despesas extraordinárias rateio alimentos prova comprovação saúde educação",
+   "curta": "despesas extraordinárias rateio",
+   "esperados": [
+    "TJSC:321790018162675778197891786882"
+   ],
+   "graus": {
+    "TJSC:321790018162675778197891786882": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q044"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r028",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Anuência prévia para despesas de saúde e educação",
+   "proposicao": "necessidade de anuência prévia do alimentante para o rateio de despesas extraordinárias de saúde e educação",
+   "assessor": "despesas extraordinárias anuência prévia consentimento alimentante saúde educação reembolso",
+   "curta": "despesas extraordinárias anuência",
+   "esperados": [
+    "TJSC:321784300707743581318272445487"
+   ],
+   "graus": {
+    "TJSC:321784300707743581318272445487": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q046"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r029",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Motivação suficiente e controle recursal",
+   "proposicao": "sentença com fundamentação sucinta não é nula quando permite o controle recursal",
+   "assessor": "nulidade sentença fundamentação sucinta art. 489 CPC motivação suficiente",
+   "curta": "fundamentação sucinta nulidade",
+   "esperados": [
+    "TJSC:321786898491572648330351586914"
+   ],
+   "graus": {
+    "TJSC:321786898491572648330351586914": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q047"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r030",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Desemprego e nova prole sem prova",
+   "proposicao": "desemprego e nascimento de novo filho não autorizam a redução dos alimentos sem prova da redução da capacidade",
+   "assessor": "revisional alimentos redução desemprego nova prole constituição nova família ausência prova capacidade",
+   "curta": "nova prole redução alimentos",
+   "esperados": [
+    "TJSC:321785864890251663282045801189"
+   ],
+   "graus": {
+    "TJSC:321785864890251663282045801189": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q048"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r031",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Quantum alimentar estimativo e sucumbência",
+   "proposicao": "fixação dos alimentos por estimativa da capacidade do alimentante quando a renda não é comprovada",
+   "assessor": "fixação alimentos renda não comprovada estimativa sinais exteriores capacidade alimentante autônomo",
+   "curta": "alimentos renda não comprovada",
+   "esperados": [
+    "TJSC:321786898491572648330229331345"
+   ],
+   "graus": {
+    "TJSC:321786898491572648330229331345": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q049"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r032",
+   "caso": "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes",
+   "rotulo": "Honorários recursais com arbitramento equitativo na origem",
+   "proposicao": "majoração de honorários recursais quando a verba de origem foi arbitrada por equidade",
+   "assessor": "honorários recursais majoração art. 85 § 11 arbitramento equitativo origem",
+   "curta": "honorários recursais equidade",
+   "esperados": [
+    "STJ:923825"
+   ],
+   "graus": {
+    "STJ:923825": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q050"
+    ],
+    "registros": [
+     "S22102026/APL_5001995_LenoirBrisolaNunesXEvertonGabrielLopesNunes/Controle/pesquisa-redator-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r033",
+   "caso": "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak",
+   "rotulo": "revisional_alteracao_superveniente",
+   "proposicao": "a revisão de alimentos exige alteração superveniente da situação financeira das partes",
+   "assessor": "revisional alimentos alteração superveniente situação financeira art. 1.699 CC binômio prova",
+   "curta": "revisional alteração superveniente",
+   "esperados": [
+    "TJSC:321784899206341155673252816839",
+    "TJSC:321785864890251663282019309971",
+    "TJSC:321790018162675778197982103782"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673252816839": 1,
+    "TJSC:321785864890251663282019309971": 2,
+    "TJSC:321790018162675778197982103782": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q051"
+    ],
+    "registros": [
+     "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r034",
+   "caso": "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak",
+   "rotulo": "alcance_despesas_extraordinarias",
+   "proposicao": "alcance da cláusula de despesas extraordinárias no acordo de alimentos",
+   "assessor": "despesas extraordinárias alcance cláusula acordo alimentos interpretação material escolar plano saúde",
+   "curta": "despesas extraordinárias alcance",
+   "esperados": [
+    "TJSC:321786467542236744135806709101",
+    "TJSC:321786898491572648332782546852",
+    "TJSC:321786968680295199257803597669",
+    "TJSC:321790081633433507943979930417"
+   ],
+   "graus": {
+    "TJSC:321786467542236744135806709101": 1,
+    "TJSC:321786898491572648332782546852": 1,
+    "TJSC:321786968680295199257286426004": 0,
+    "TJSC:321786968680295199257803597669": 1,
+    "TJSC:321790081633433507943979930417": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q052"
+    ],
+    "registros": [
+     "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r035",
+   "caso": "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak",
+   "rotulo": "congruencia_e_interpretacao_pedido / alcance_congruencia_alimentos_menores",
+   "proposicao": "interpretação do pedido e congruência da sentença na ação de alimentos de filhos menores",
+   "assessor": "congruência sentença interpretação lógico-sistemática pedido extra petita alimentos menores",
+   "curta": "congruência pedido alimentos",
+   "esperados": [
+    "STJ:950872",
+    "TJSC:321786467542236744135756685253",
+    "TJSC:321786898491572648332876999996",
+    "TJSC:321790081633433507943968328908"
+   ],
+   "graus": {
+    "STJ:948937": 0,
+    "STJ:950872": 1,
+    "TJSC:321786467542236744135756685253": 1,
+    "TJSC:321786898491572648332876999996": 1,
+    "TJSC:321790081633433507943968328908": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q054",
+     "q055"
+    ],
+    "registros": [
+     "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r036",
+   "caso": "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak",
+   "rotulo": "contraditorio_adicional_qualificacao_juridica",
+   "proposicao": "contraditório prévio quando o julgador adota qualificação jurídica diversa dos fatos",
+   "assessor": "art. 10 CPC qualificação jurídica diversa contraditório prévio decisão surpresa iura novit curia",
+   "curta": "qualificação jurídica decisão surpresa",
+   "esperados": [
+    "STJ:952954"
+   ],
+   "graus": {
+    "STJ:952954": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q056"
+    ],
+    "registros": [
+     "S22102026/APL_5002465_RicardoWrubleskiJatczakXVitoriaDePaulaJatczak/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r037",
+   "caso": "S22102026/APL_5002846_LaudisneiDosSantosNazarioXRuanGarciaNazario",
+   "rotulo": "Necessidade de filho maior estudante com renda insuficiente / Autossustento contraposto; distinção pela frequência universitária",
+   "proposicao": "manutenção de alimentos ao filho maior universitário cuja renda própria é insuficiente para o autossustento",
+   "assessor": "alimentos filho maior estudante universitário renda própria insuficiente autossustento necessidade",
+   "curta": "filho maior universitário",
+   "esperados": [
+    "TJSC:321784899206341155673236097357",
+    "TJSC:321786898491572648330377035023"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673236097357": 1,
+    "TJSC:321786898491572648330377035023": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q057",
+     "q058"
+    ],
+    "registros": [
+     "S22102026/APL_5002846_LaudisneiDosSantosNazarioXRuanGarciaNazario/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r038",
+   "caso": "S22102026/APL_5002846_LaudisneiDosSantosNazarioXRuanGarciaNazario",
+   "rotulo": "Honorários dativos na origem e recurso; autonomia perante sucumbenciais",
+   "proposicao": "honorários do defensor dativo fixados na origem e em grau recursal, autônomos em relação aos sucumbenciais",
+   "assessor": "honorários defensor dativo grau recursal autonomia honorários sucumbenciais Estado",
+   "curta": "honorários dativo",
+   "esperados": [
+    "TJSC:321787929053867758798145332231"
+   ],
+   "graus": {
+    "TJSC:321787929053867758798145332231": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q059"
+    ],
+    "registros": [
+     "S22102026/APL_5002846_LaudisneiDosSantosNazarioXRuanGarciaNazario/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r039",
+   "caso": "S22102026/APL_5002846_LaudisneiDosSantosNazarioXRuanGarciaNazario",
+   "rotulo": "Contraditório específico sobre documento decisivo",
+   "proposicao": "nulidade por falta de vista à parte contrária sobre documento novo decisivo",
+   "assessor": "documento novo juntado sem vista parte contrária contraditório art. 437 § 1º nulidade decisivo",
+   "curta": "documento novo contraditório",
+   "esperados": [
+    "TJSC:321787584892160895412772556289"
+   ],
+   "graus": {
+    "TJSC:321787584892160895412772556289": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q060"
+    ],
+    "registros": [
+     "S22102026/APL_5002846_LaudisneiDosSantosNazarioXRuanGarciaNazario/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r040",
+   "caso": "S22102026/APL_5012768_CatiaPatriciaGuseXLucianoMorchGoncalves",
+   "rotulo": "Convivência virtual e progressão quando há risco emocional demonstrado",
+   "proposicao": "convivência virtual com progressão gradual quando há risco emocional demonstrado à criança",
+   "assessor": "convivência virtual progressão gradual risco emocional criança restrição visitas",
+   "curta": "convivência virtual gradual",
+   "esperados": [
+    "TJSC:321784899206341155673245567894",
+    "TJSC:321790081633433507943996032067"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673245567894": 2,
+    "TJSC:321790081633433507943996032067": 1,
+    "TJSC:321790081633433507944020589340": 0
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q061"
+    ],
+    "registros": [
+     "S22102026/APL_5012768_CatiaPatriciaGuseXLucianoMorchGoncalves/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5012768_CatiaPatriciaGuseXLucianoMorchGoncalves/Controle/versoes/analista-parcial-20261022/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r041",
+   "caso": "S22102026/APL_5012768_CatiaPatriciaGuseXLucianoMorchGoncalves",
+   "rotulo": "Convivência e suporte probatório, cognição e método pericial / Suficiência da prova para restrição e instrução anterior",
+   "proposicao": "a restrição da convivência exige suporte probatório técnico suficiente e instrução prévia",
+   "assessor": "restrição convivência prova pericial psicológica estudo social método laudo instrução",
+   "curta": "restrição convivência perícia",
+   "esperados": [
+    "TJSC:321773944805287522311692476097",
+    "TJSC:321778511150397013320663405305",
+    "TJSC:321784300707743581318279833768",
+    "TJSC:321785241743612880408387287338",
+    "TJSC:321787584892160895412791354879",
+    "TJSC:321790081633433507943977321619"
+   ],
+   "graus": {
+    "TJSC:321773944805287522311692476097": 1,
+    "TJSC:321773944805287522311702521134": 0,
+    "TJSC:321778511150397013320663405305": 1,
+    "TJSC:321784300707743581318279833768": 2,
+    "TJSC:321785241743612880408367067702": 0,
+    "TJSC:321785241743612880408387287338": 2,
+    "TJSC:321787584892160895412762065025": 0,
+    "TJSC:321787584892160895412791354879": 2,
+    "TJSC:321790081633433507943977321619": 1,
+    "TJSC:321790081633433507944007826946": 0
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q062",
+     "q063"
+    ],
+    "registros": [
+     "S22102026/APL_5012768_CatiaPatriciaGuseXLucianoMorchGoncalves/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r042",
+   "caso": "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira",
+   "rotulo": "necessidade com renda parcial / autossuficiencia / Necessidade do maior estudante / Ônus do maior e autossustento",
+   "proposicao": "ônus do filho maior de provar a necessidade de alimentos e a impossibilidade de autossustento, mesmo com renda parcial",
+   "assessor": "alimentos filho maior ônus da prova necessidade autossustento renda parcial estudante",
+   "curta": "filho maior ônus necessidade",
+   "esperados": [
+    "TJSC:321781524051010972196497266578",
+    "TJSC:321784899206341155673236097357",
+    "TJSC:321784899206341155673261766433",
+    "TJSC:321784899206341155673317143837",
+    "TJSC:321786898491572648330377035023",
+    "TJSC:321790018162675778198089715364",
+    "TJSC:321790081633433507944005968342"
+   ],
+   "graus": {
+    "TJSC:321781524051010972196497266578": 1,
+    "TJSC:321784899206341155673236097357": 1,
+    "TJSC:321784899206341155673261766433": 1,
+    "TJSC:321784899206341155673317143837": 2,
+    "TJSC:321786898491572648330377035023": 2,
+    "TJSC:321790018162675778198089715364": 2,
+    "TJSC:321790081633433507944005968342": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q064",
+     "q065",
+     "q071",
+     "q072"
+    ],
+    "registros": [
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r043",
+   "caso": "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira",
+   "rotulo": "nova prole com baixa renda / revisao e nova prole",
+   "proposicao": "o nascimento de nova prole do alimentante de baixa renda autoriza a revisão dos alimentos",
+   "assessor": "revisional alimentos nova prole nascimento filho alimentante baixa renda redução",
+   "curta": "nova prole revisional",
+   "esperados": [
+    "TJSC:321784899206341155673252816839",
+    "TJSC:321790018162675778197976293315"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673252816839": 1,
+    "TJSC:321790018162675778197976293315": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q066",
+     "q068"
+    ],
+    "registros": [
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r044",
+   "caso": "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira",
+   "rotulo": "mera matricula e continuidade",
+   "proposicao": "a mera matrícula em curso não basta para manter alimentos ao filho maior sem prova de frequência e aproveitamento",
+   "assessor": "exoneração alimentos filho maior mera matrícula frequência aproveitamento continuidade estudos",
+   "curta": "matrícula exoneração",
+   "esperados": [
+    "TJSC:321786898491572648332818071517"
+   ],
+   "graus": {
+    "TJSC:321786898491572648332818071517": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q067"
+    ],
+    "registros": [
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r045",
+   "caso": "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira",
+   "rotulo": "suficiencia de fundamentacao / Alteração do binômio e motivação suficiente",
+   "proposicao": "sentença de revisão ou exoneração com motivação suficiente sobre a alteração do binômio não é nula",
+   "assessor": "nulidade sentença fundamentação suficiente art. 489 CPC alteração binômio necessidade possibilidade",
+   "curta": "fundamentação suficiente sentença",
+   "esperados": [
+    "TJSC:321786814631739698956669488358",
+    "TJSC:321790018162675778197704010463"
+   ],
+   "graus": {
+    "TJSC:321786814631739698956669488358": 2,
+    "TJSC:321790018162675778197704010463": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q069",
+     "q073"
+    ],
+    "registros": [
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-finalizacao-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r046",
+   "caso": "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira",
+   "rotulo": "tutela exoneratoria",
+   "proposicao": "tutela de urgência para exoneração provisória de alimentos",
+   "assessor": "tutela de urgência exoneração alimentos provisória filho maior probabilidade direito",
+   "curta": "tutela exoneração alimentos",
+   "esperados": [
+    "TJSC:321771601900610281977950357288"
+   ],
+   "graus": {
+    "TJSC:321771601900610281977950357288": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q070"
+    ],
+    "registros": [
+     "S22102026/APL_5013073_AuriPalmeiraJuniorXCauePalmeira/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r047",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Guarda compartilhada: conflito simples ou prejuízo concreto à parentalidade cooperativa",
+   "proposicao": "a animosidade entre os genitores, sem prejuízo concreto, não afasta a guarda compartilhada",
+   "assessor": "guarda compartilhada animosidade conflito genitores prejuízo concreto regra art. 1.584 § 2º",
+   "curta": "guarda compartilhada animosidade",
+   "esperados": [
+    "TJSC:321790018162675778197883611818",
+    "TJSC:321790081633433507943990063127",
+    "TJSC:321790081633433507944029572190"
+   ],
+   "graus": {
+    "TJSC:321790018162675778197883611818": 2,
+    "TJSC:321790081633433507943990063127": 2,
+    "TJSC:321790081633433507944029572190": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q074"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/versoes/parcial-antes-reconstrucao-20261022/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r048",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Guarda e violência doméstica",
+   "proposicao": "a violência doméstica entre os genitores afasta a guarda compartilhada",
+   "assessor": "guarda compartilhada violência doméstica medida protetiva Lei 14.713/2023 art. 1.584 § 2º",
+   "curta": "guarda violência doméstica",
+   "esperados": [
+    "TJSC:321775833224075037029702781518",
+    "TJSC:321785864890251663282051366931"
+   ],
+   "graus": {
+    "TJSC:321775833224075037029702781518": 2,
+    "TJSC:321785864890251663282051366931": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q075"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-revisor-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r049",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Alimentos e desemprego / Ruptura laboral e contexto comprovado de vulnerabilidade",
+   "proposicao": "o desemprego comprovado do alimentante autoriza a redução dos alimentos",
+   "assessor": "redução alimentos desemprego comprovado alimentante capacidade financeira binômio",
+   "curta": "alimentos desemprego",
+   "esperados": [
+    "TJSC:321786467542236744135347186476",
+    "TJSC:321790081633433507943984964347"
+   ],
+   "graus": {
+    "TJSC:321786467542236744135347186476": 1,
+    "TJSC:321790081633433507943984964347": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q076",
+     "q082"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-revisor-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r050",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Retroatividade da majoração definitiva",
+   "proposicao": "os alimentos definitivos majorados retroagem à data da citação",
+   "assessor": "majoração alimentos definitivos retroatividade data citação art. 13 § 2º Lei de Alimentos Súmula 621",
+   "curta": "alimentos retroatividade citação",
+   "esperados": [
+    "TJSC:321778511150397013320474325111"
+   ],
+   "graus": {
+    "TJSC:321778511150397013320474325111": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q077"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-revisor-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r051",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Alienação parental",
+   "proposicao": "o reconhecimento de alienação parental exige prova técnica",
+   "assessor": "alienação parental Lei 12.318/2010 prova pericial estudo psicossocial reconhecimento",
+   "curta": "alienação parental",
+   "esperados": [
+    "TJSC:321785241743612880409000490802"
+   ],
+   "graus": {
+    "TJSC:321785241743612880409000490802": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q078"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-revisor-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r052",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Fatos supervenientes no recurso",
+   "proposicao": "consideração de fatos supervenientes no julgamento da apelação",
+   "assessor": "fato superveniente art. 493 CPC apelação consideração julgamento alimentos guarda",
+   "curta": "fato superveniente apelação",
+   "esperados": [
+    "TJSC:321776437259671734845693176216"
+   ],
+   "graus": {
+    "TJSC:321776437259671734845693176216": 2
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q079"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-revisor-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r053",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Quantum alimentar 40 para 30",
+   "proposicao": "redução do valor dos alimentos fixados para adequação ao binômio necessidade-possibilidade",
+   "assessor": "fixação alimentos redução percentual salário mínimo binômio necessidade possibilidade proporcionalidade",
+   "curta": "quantum alimentar redução",
+   "esperados": [
+    "TJSC:321790018162675778198119397721",
+    "TJSC:321790081633433507944000598646"
+   ],
+   "graus": {
+    "TJSC:321790018162675778198119397721": 2,
+    "TJSC:321790081633433507944000598646": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q080"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-analista-2026-10-22.json"
+    ]
+   }
+  },
+  {
+   "id": "r054",
+   "caso": "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira",
+   "rotulo": "Sucumbência alimentar e limites qualitativos",
+   "proposicao": "sucumbência na ação de alimentos quando o valor fixado é inferior ao pedido",
+   "assessor": "sucumbência ação de alimentos valor inferior ao pedido sucumbência recíproca mínima honorários",
+   "curta": "sucumbência alimentos",
+   "esperados": [
+    "TJSC:321775833224075037029841941796",
+    "TJSC:321786982354457870770441329854"
+   ],
+   "graus": {
+    "TJSC:321775833224075037029841941796": 2,
+    "TJSC:321786982354457870770441329854": 1
+   },
+   "origem": {
+    "perguntas_brutas": [
+     "q081"
+    ],
+    "registros": [
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-redator-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/pesquisa-revisor-2026-10-22.json",
+     "S22102026/APL_5021639_DionatanJonasGoncalvesSaezXTainaraNogueira/Controle/versoes/antes-ordem-manter-sentenca-20261022/Controle/pesquisa-redator-2026-10-22.json"
+    ]
+   }
+  }
+ ]
+}
