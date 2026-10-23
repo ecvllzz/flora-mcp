@@ -2,9 +2,10 @@
 
 Sistemas: atual, ou (de candidatos_bm25.json); denso:<nome> e hibrido:<nome> (RRF de ou com denso:<nome>),
 para cada <nome> com <nome>-docs.npy e <nome>-consultas.json na pasta do corpus; e <sistema>+rr quando ha
-arquivo de reordenacao. Recortes: geral; sem_obice (tira das listas o acordao do STJ com obice na
-verbetacao); camara (lexical filtrado pelo orgao e denso restrito a ele). Graus: os do conjunto,
-completados e corrigidos pelos julgamentos (pooling), quando dados.
+arquivo de reordenacao. Recortes: geral; sem_obice (tira das listas e dos graus o acordao do STJ com
+obice na verbetacao, pela regra atual de comum.py; a pergunta sem relevante sai da media); camara
+(lexical filtrado pelo orgao e denso restrito a ele). Graus: os do conjunto, completados e corrigidos
+pelos julgamentos (pooling), quando dados.
 
 Uso: python avaliar_hibrido.py --conjunto <conj> --bm25 <candidatos.json> --corpus <pasta> --nomes a b
        [--julgamentos julgamentos.json] [--reordenacao rr.json] [--saida resultado.json]
@@ -18,12 +19,24 @@ from pathlib import Path
 
 import numpy as np
 
-from comum import PROFUNDIDADE, TOPO, agregado, gravar_json, ler_json, medida, rrf
+from comum import PROFUNDIDADE, TOPO, agregado, gravar_json, ler_json, medida, obice_stj, rrf
 
 RECORTES = ("geral", "sem_obice", "camara")
 PARES = 30
 # A ementa hipotetica passa do limite de termos da busca lexical: a metade lexical vem da proposicao.
 LEXICO_DE = {"hipotetica": "proposicao"}
+
+
+def marcar_obice(corpus, meta):
+    """Reaplica a regra atual aos marcados no corpus-meta (a regra so encolheu desde a exportacao)."""
+    marcados = {m["id"] for m in meta["itens"] if m["obice_stj"]}
+    obice = set()
+    with open(corpus / "corpus-textos.jsonl", encoding="utf-8") as fh:
+        for linha in fh:
+            d = json.loads(linha)
+            if d["id"] in marcados and obice_stj("STJ", d["texto"]):
+                obice.add(d["id"])
+    return obice
 
 
 def carregar_densos(corpus, nomes, meta):
@@ -71,7 +84,8 @@ def main():  # noqa: C901
     assert bm25["publicacao"] == meta["publicacao"], "candidatos e corpus de publicacoes diferentes"
     ids = [m["id"] for m in meta["itens"]]
     organ = np.array([m["organ"] for m in meta["itens"]])
-    obice = {m["id"] for m in meta["itens"] if m["obice_stj"]}
+    obice = marcar_obice(corpus, meta)
+    print(len(obice), "acordaos do STJ com obice na verbetacao, pela regra atual")
     densos = carregar_densos(corpus, args.nomes, meta)
     julg = ler_json(args.julgamentos) if args.julgamentos else {}
     rr = ler_json(args.reordenacao) if args.reordenacao else {}
@@ -133,22 +147,26 @@ def main():  # noqa: C901
         g = dict(p["graus"])
         g.update({i: int(v["grau"]) for i, v in julg.get(p["id"], {}).items()})
         graus[p["id"]] = g
+    # No sem_obice o acordao com obice nao e buscavel: sai tambem dos graus.
+    graus_sem_obice = {q: {i: v for i, v in g.items() if i not in obice} for q, g in graus.items()}
 
     sistemas = sorted({s for (_, _, _, s) in listas})
     resumo, por_pergunta = {}, {}
     for f in conjunto["formulacoes"]:
         for recorte in RECORTES:
             for s in sistemas:
-                linhas = []
+                linhas, obice_no_topo = [], 0
                 for p in conjunto["perguntas"]:
                     xs = listas.get((p["id"], f, recorte, s))
-                    if xs is None:
+                    g = graus_sem_obice[p["id"]] if recorte == "sem_obice" else graus[p["id"]]
+                    if xs is None or not any(v > 0 for v in g.values()):
                         continue
-                    m = medida(xs, graus[p["id"]])
+                    m = medida(xs, g)
                     linhas.append(m)
+                    obice_no_topo += sum(i in obice for i in xs[:TOPO])
                     por_pergunta.setdefault(p["id"], {})[f"{f}|{recorte}|{s}"] = {**m, "topo": xs[:TOPO]}
                 if linhas:
-                    resumo[f"{f}|{recorte}|{s}"] = agregado(linhas)
+                    resumo[f"{f}|{recorte}|{s}"] = {**agregado(linhas), "obice_no_topo": obice_no_topo}
     if args.pool:
         perguntas = {p["id"]: p for p in conjunto["perguntas"]}
         pool = {}
@@ -182,7 +200,7 @@ def main():  # noqa: C901
     for k, m in resumo.items():
         f, recorte, s = k.split("|")
         if recorte != "camara" or f == "proposicao":
-            print(f"{f:11} {recorte:9} {s:28} " + "  ".join(f"{x}={y}" for x, y in m.items() if x != "n"))
+            print(f"{f:11} {recorte:9} {s:28} " + "  ".join(f"{x}={y}" for x, y in m.items()))
 
 
 if __name__ == "__main__":

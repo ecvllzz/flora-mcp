@@ -22,10 +22,12 @@ STOPWORDS = frozenset(
 )
 JUDGMENT_STOPWORDS = STOPWORDS | frozenset("NAO SUA SUAS SEU SEUS ISSO ESSE ESSA ESTE".split())
 
-# Obice de admissibilidade na verbetacao (primeiros 350 caracteres da ementa do STJ).
+# Obice de admissibilidade na verbetacao (primeiros 350 caracteres da ementa do STJ). Sem a Sumula 83,
+# que reafirma a tese da Corte em vez de impedir o exame (decisao do operador na R5).
 OBICE = re.compile(
-    r"S[ÚU]MULAS?\s*(N[º°.]?\s*)?(5|7|83|211|282|283|284|356|518)\b|REEXAME|N[ÃA]O CONHECID|"
-    r"PREQUESTIONAMENTO|FUNDAMENTA[ÇC][ÃA]O DEFICIENTE|INCID[ÊE]NCIA D[AE]S? S[ÚU]MULA",
+    r"S[ÚU]MULAS?\s*(N[º°.]?\s*)?(5|7|211|282|283|284|356|518)\b|REEXAME|N[ÃA]O CONHECID|"
+    r"PREQUESTIONAMENTO|FUNDAMENTA[ÇC][ÃA]O DEFICIENTE|"
+    r"INCID[ÊE]NCIA D[AE]S? S[ÚU]MULAS?\s*+(?:N[º°.]?\s*+)?+(?!83\b)",
     re.I,
 )
 CABECALHO_OBICE = 350
