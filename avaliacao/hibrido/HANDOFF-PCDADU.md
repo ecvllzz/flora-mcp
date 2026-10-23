@@ -23,21 +23,24 @@ Medir se vetores semânticos, fundidos com o BM25 atual, recuperam melhor os ac�
 ## Preparação
 
 1. **Repositório.** Se o PCDADU não tiver o Flora-MCP, clone `https://github.com/ecvllzz/flora-mcp` em `Documents\Flora-MCP`; se tiver, `git fetch`. Use o branch `reforma/r5-hibrido-kit`; o kit está em `avaliacao/hibrido/`. Não troque o branch do worktree de produção (`main`), se ele existir aí; crie um worktree próprio.
-2. **Acervo.** O operador traz por pendrive a publicação `r3376-s2-cd895f3434-f0a4721f447f.sqlite` (1.109.544.960 bytes), que está no notebook em `Documents\Flora\Dados\Flora-MCP\publicacoes\`. Copie para uma pasta fora do vault e fora do repositório, por exemplo `Documents\Flora\Dados\Flora-MCP-r5\`, e confira o SHA-256: `f0a4721f447fbf42458f3a63a406015858fa20b021e365dca2d6cc545ab5b921`. Se não bater, pare. Use só essa cópia, sempre somente leitura.
+2. **Corpus.** Não é preciso a publicação inteira: o corpus exportado e as listas lexicais já foram gerados no notebook e estão no branch só de dados `dados/r5-corpus` (um commit, sem código). Escolha uma pasta de trabalho `<C>` fora do vault e fora do repositório, por exemplo `Documents\Flora\Dados\Flora-MCP-r5\corpus`, e extraia nela:
+   ```
+   git fetch origin dados/r5-corpus
+   git worktree add --detach ..\Flora-MCP-r5-dados origin/dados/r5-corpus
+   ```
+   Extraia `..\Flora-MCP-r5-dados\corpus-r3376.zip` em `<C>` (por exemplo com `Expand-Archive` ou o `zipfile` do Python). Confira o SHA-256 do zip (`bfb2557322b9b193e631d2269922f09bdd6c7fed9b485db4caa8a9d1a266886d`, 48.986.279 bytes) e, depois de extrair, os três arquivos contra o `LEIA-ME.md` do mesmo branch. Se não bater, pare. Só se o corpus não chegar assim, o operador traz por pendrive a publicação `r3376-s2-cd895f3434-f0a4721f447f.sqlite` (1.109.544.960 bytes, SHA-256 `f0a4721f447fbf42458f3a63a406015858fa20b021e365dca2d6cc545ab5b921`), e o passo 1 refaz o corpus a partir dela.
 3. **Ambiente.** `nvidia-smi` deve mostrar a RTX 3070. Crie um ambiente Python próprio (3.11 ou 3.12) fora do Flora-MCP. Pacotes: `numpy`, `torch` com CUDA, `transformers`, `sentence-transformers`, `huggingface_hub` e, para os modelos de 4 bilhões, `llama-cpp-python` com CUDA. **Cada download (pacote grande ou modelo) só com confirmação do operador no chat, dizendo nome, origem e tamanho.** Modelos só dos repositórios oficiais no Hugging Face; anote a revisão (hash do commit) de cada um.
 
 ## Passos
 
-Todos os comandos rodam de `avaliacao/hibrido/`, com `<C>` a pasta de trabalho (por exemplo `Dados\Flora-MCP-r5\corpus`) e `<P>` a publicação copiada.
+Todos os comandos rodam de `avaliacao/hibrido/`, com `<C>` a pasta de trabalho do corpus.
 
-1. **Corpus e listas lexicais** (cerca de 10 minutos):
+1. **Conferência do corpus** (segundos):
    ```
-   python exportar_corpus.py <P> <C>
-   python candidatos_bm25.py <P> conjunto-r3.json <C>/candidatos-bm25.json
    python avaliar_hibrido.py --conjunto conjunto-r3.json --bm25 <C>/candidatos-bm25.json --corpus <C>
    ```
-   Confira: 82.176 acórdãos, 16.782 com óbice, SHA-256 dos textos `46fa82bfe84b0ab4c8bad6292d549c6eb59c75514ec74308cc467607abbf5c2a`, e `atual`/`ou` em proposição geral com hit@8 0,519 e 0,611.
-2. **Ementa hipotética** (antes de ver qualquer resultado semântico). Copie o conjunto para `conjunto-r5.json` e acrescente a cada pergunta o campo `hipotetica`: uma ementa no modelo CNJ (cabeçalho em maiúsculas com a matéria e o tema, e uma ou duas frases de tese), de 400 a 900 caracteres, escrita só a partir de `proposicao`, sem consultar o acervo nem os esperados, e sem inventar número de processo, relator ou precedente. Acrescente `"hipotetica"` à lista `formulacoes`. Escreva todas de uma vez, numa só passada, e não as reescreva depois de ver números. Rode de novo o passo 1 com `conjunto-r5.json` (saída `candidatos-bm25-r5.json`). A ementa hipotética passa do limite de 30 termos da busca lexical, então só a metade semântica a usa: nas linhas `hipotetica`, `atual` e `ou` repetem as da proposição, e o híbrido funde o OU da proposição com o vetor da hipotética.
+   Confira `atual` e `ou` em proposição geral com hit@8 0,519 e 0,611. Só no caminho do pendrive, antes disso, com `<P>` a publicação copiada (cerca de 10 minutos): `python exportar_corpus.py <P> <C>` (82.176 acórdãos, 16.782 com óbice, SHA-256 dos textos `46fa82bfe84b0ab4c8bad6292d549c6eb59c75514ec74308cc467607abbf5c2a`) e `python candidatos_bm25.py <P> conjunto-r3.json <C>/candidatos-bm25.json`.
+2. **Ementa hipotética** (antes de ver qualquer resultado semântico). Copie o conjunto para `conjunto-r5.json` e acrescente a cada pergunta o campo `hipotetica`: uma ementa no modelo CNJ (cabeçalho em maiúsculas com a matéria e o tema, e uma ou duas frases de tese), de 400 a 900 caracteres, escrita só a partir de `proposicao`, sem consultar o acervo nem os esperados, e sem inventar número de processo, relator ou precedente. Acrescente `"hipotetica"` à lista `formulacoes`. Escreva todas de uma vez, numa só passada, e não as reescreva depois de ver números. As listas lexicais continuam as de `candidatos-bm25.json`: a ementa hipotética passa do limite de 30 termos da busca lexical, então só a metade semântica a usa: nas linhas `hipotetica`, `atual` e `ou` repetem as da proposição, e o híbrido funde o OU da proposição com o vetor da hipotética.
 3. **Indexação**, nesta ordem, cada uma com confirmação de download:
    | Nome | Modelo | Backend e perfil | Observação |
    |---|---|---|---|
@@ -52,7 +55,7 @@ Todos os comandos rodam de `avaliacao/hibrido/`, com `<C>` a pasta de trabalho (
    O `--max-caracteres 6000` padrão corta as ementas muito longas; mantenha-o igual em todos. No backend `gguf`, confirme no cartão do modelo que o pooling é o do último token (o kit usa `pooling_type=3`); se o resultado do `q4` ficar abaixo do `q06`, suspeite primeiro do pooling e do prefixo.
 4. **Comparação:**
    ```
-   python avaliar_hibrido.py --conjunto conjunto-r5.json --bm25 <C>/candidatos-bm25-r5.json --corpus <C> --nomes q06 q4 ... --saida <C>/resultado-sem-julgamento.json
+   python avaliar_hibrido.py --conjunto conjunto-r5.json --bm25 <C>/candidatos-bm25.json --corpus <C> --nomes q06 q4 ... --saida <C>/resultado-sem-julgamento.json
    ```
 5. **Reordenação** (opcional, sobre o melhor híbrido): exporte as listas com `--exportar-pares hibrido:<melhor> --pares <C>/pares.json`, rode `reordenar.py --backend qwen3 --modelo Qwen/Qwen3-Reranker-0.6B` (confira o formato do prompt contra o cartão do modelo) e avalie de novo com `--reordenacao`. Anote os segundos por lista: no notebook, sem GPU, isso pode ser lento demais para servir.
 6. **Julgamento dos novos primeiros colocados:**
