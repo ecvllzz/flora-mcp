@@ -3,7 +3,8 @@
 Sistemas: atual, ou (de candidatos_bm25.json); denso:<nome> e hibrido:<nome> (RRF de ou com denso:<nome>),
 para cada <nome> com <nome>-docs.npy e <nome>-consultas.json na pasta do corpus; e <sistema>+rr quando ha
 arquivo de reordenacao. Recortes: geral; sem_obice (tira das listas e dos graus o acordao do STJ com
-obice na verbetacao, pela regra atual de comum.py; a pergunta sem relevante sai da media); camara
+obice na verbetacao, pela regra atual de comum.py; a pergunta sem relevante sai da media);
+obice_estrito (o mesmo, so para o obice sem marca de tese da Corte, para medir a perda da regra ampla); camara
 (lexical filtrado pelo orgao e denso restrito a ele). Graus: os do conjunto, completados e corrigidos
 pelos julgamentos (pooling), quando dados.
 
@@ -19,24 +20,31 @@ from pathlib import Path
 
 import numpy as np
 
-from comum import PROFUNDIDADE, TOPO, agregado, gravar_json, ler_json, medida, obice_stj, rrf
+from comum import PROFUNDIDADE, TOPO, agregado, gravar_json, ler_json, medida, obice_stj, rrf, tese_stj
 
-RECORTES = ("geral", "sem_obice", "camara")
+RECORTES = ("geral", "sem_obice", "obice_estrito", "camara")
 PARES = 30
 # A ementa hipotetica passa do limite de termos da busca lexical: a metade lexical vem da proposicao.
 LEXICO_DE = {"hipotetica": "proposicao"}
 
 
 def marcar_obice(corpus, meta):
-    """Reaplica a regra atual aos marcados no corpus-meta (a regra so encolheu desde a exportacao)."""
+    """(obice, estrito): reaplica a regra atual aos marcados no corpus-meta (a regra so encolheu desde a
+    exportacao); estrito e o obice sem marca de tese da Corte."""
     marcados = {m["id"] for m in meta["itens"] if m["obice_stj"]}
-    obice = set()
+    obice, estrito = set(), set()
     with open(corpus / "corpus-textos.jsonl", encoding="utf-8") as fh:
         for linha in fh:
             d = json.loads(linha)
             if d["id"] in marcados and obice_stj("STJ", d["texto"]):
                 obice.add(d["id"])
-    return obice
+                if not tese_stj(d["texto"]):
+                    estrito.add(d["id"])
+    return obice, estrito
+
+
+def sem(xs, excluir):
+    return [x for x in xs if x not in excluir]
 
 
 def carregar_densos(corpus, nomes, meta):
@@ -84,8 +92,14 @@ def main():  # noqa: C901
     assert bm25["publicacao"] == meta["publicacao"], "candidatos e corpus de publicacoes diferentes"
     ids = [m["id"] for m in meta["itens"]]
     organ = np.array([m["organ"] for m in meta["itens"]])
-    obice = marcar_obice(corpus, meta)
-    print(len(obice), "acordaos do STJ com obice na verbetacao, pela regra atual")
+    obice, estrito = marcar_obice(corpus, meta)
+    print(
+        len(obice),
+        "acordaos do STJ com obice na verbetacao pela regra atual;",
+        len(estrito),
+        "sem marca de tese",
+    )
+    fora = {"sem_obice": obice, "obice_estrito": estrito}
     densos = carregar_densos(corpus, args.nomes, meta)
     julg = ler_json(args.julgamentos) if args.julgamentos else {}
     rr = ler_json(args.reordenacao) if args.reordenacao else {}
@@ -98,21 +112,17 @@ def main():  # noqa: C901
             if por_recorte is None:
                 continue
             for recorte in RECORTES:
-                base = por_recorte.get("geral" if recorte == "sem_obice" else recorte)
+                base = por_recorte.get("geral" if recorte in fora else recorte)
                 if base is None:
                     continue
-                filtrar = (
-                    (lambda xs: [x for x in xs if x not in obice])
-                    if recorte == "sem_obice"
-                    else (lambda xs: xs)
-                )
-                listas[p["id"], f, recorte, "atual"] = filtrar(base["atual"]["ids"])
-                listas[p["id"], f, recorte, "ou"] = filtrar(base["ou"]["ids"])
+                excluir = fora.get(recorte, set())
+                listas[p["id"], f, recorte, "atual"] = sem(base["atual"]["ids"], excluir)
+                listas[p["id"], f, recorte, "ou"] = sem(base["ou"]["ids"], excluir)
                 mascara = organ == b["organ_camara"] if recorte == "camara" else None
                 for nome, (docs, vet, _) in densos.items():
                     if (p["id"], f) not in vet:
                         continue
-                    d = filtrar(lista_densa(docs, vet[p["id"], f], ids, mascara))
+                    d = sem(lista_densa(docs, vet[p["id"], f], ids, mascara), excluir)
                     listas[p["id"], f, recorte, f"denso:{nome}"] = d
                     listas[p["id"], f, recorte, f"hibrido:{nome}"] = rrf(listas[p["id"], f, recorte, "ou"], d)
     for (q, f, recorte, s), xs in list(listas.items()):
@@ -147,8 +157,10 @@ def main():  # noqa: C901
         g = dict(p["graus"])
         g.update({i: int(v["grau"]) for i, v in julg.get(p["id"], {}).items()})
         graus[p["id"]] = g
-    # No sem_obice o acordao com obice nao e buscavel: sai tambem dos graus.
-    graus_sem_obice = {q: {i: v for i, v in g.items() if i not in obice} for q, g in graus.items()}
+    # Nos recortes de obice o acordao retirado nao e buscavel: sai tambem dos graus.
+    graus_de = {
+        r: {q: {i: v for i, v in g.items() if i not in x} for q, g in graus.items()} for r, x in fora.items()
+    }
 
     sistemas = sorted({s for (_, _, _, s) in listas})
     resumo, por_pergunta = {}, {}
@@ -158,7 +170,7 @@ def main():  # noqa: C901
                 linhas, obice_no_topo = [], 0
                 for p in conjunto["perguntas"]:
                     xs = listas.get((p["id"], f, recorte, s))
-                    g = graus_sem_obice[p["id"]] if recorte == "sem_obice" else graus[p["id"]]
+                    g = graus_de.get(recorte, graus)[p["id"]]
                     if xs is None or not any(v > 0 for v in g.values()):
                         continue
                     m = medida(xs, g)

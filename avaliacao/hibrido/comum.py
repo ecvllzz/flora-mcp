@@ -31,6 +31,14 @@ OBICE = re.compile(
     re.I,
 )
 CABECALHO_OBICE = 350
+# Marca de tese da Corte no inicio da ementa: o acordao com obice que a traz tambem decide o merito, e o
+# recorte obice_estrito o mantem. Heuristica, medida na R5 (3.816 de 16.782 pela regra antiga).
+TESE = re.compile(
+    r"JURISPRUD[ÊE]NCIA (DESTA CORTE|DO STJ|CONSOLIDADA|PAC[IÍ]FICA)|ENTENDIMENTO (DESTA CORTE|DO STJ)|"
+    r"FIRME NO SENTIDO",
+    re.I,
+)
+CABECALHO_TESE = 1500
 TOPO = 8
 PROFUNDIDADE = 200
 RRF_K = 60
@@ -77,6 +85,10 @@ def consulta_ou(termos):
 
 def obice_stj(tribunal, ementa):
     return tribunal == "STJ" and bool(OBICE.search((ementa or "")[:CABECALHO_OBICE]))
+
+
+def tese_stj(ementa):
+    return bool(TESE.search((ementa or "")[:CABECALHO_TESE]))
 
 
 def rrf(*listas, k=RRF_K):
