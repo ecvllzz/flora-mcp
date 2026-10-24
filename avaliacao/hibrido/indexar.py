@@ -24,6 +24,7 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
 import time
 import urllib.error
 import urllib.request
@@ -139,17 +140,29 @@ class Voyage:
         return normalizar(out)
 
 
-def em_lotes(codificar, textos, lote, rotulo):
+def em_lotes(codificar, textos, lote, rotulo, parcial=None):
+    """parcial: pasta onde cada bloco pronto fica salvo; a execucao interrompida retoma dela com o
+    mesmo --lote (a ordem dos blocos so depende dos textos e do lote)."""
     ordem = sorted(range(len(textos)), key=lambda i: len(textos[i]))  # comprimentos parecidos por lote
     saida = [None] * len(textos)
-    inicio = time.time()
+    inicio, novos = time.time(), 0
+    if parcial is not None:
+        parcial.mkdir(parents=True, exist_ok=True)
     for n in range(0, len(ordem), lote * 32):
         bloco = ordem[n : n + lote * 32]
-        for i, v in zip(bloco, codificar([textos[i] for i in bloco]), strict=True):
+        arquivo = parcial / f"{n:07d}.npy" if parcial is not None else None
+        if arquivo is not None and arquivo.exists():
+            vetores = np.load(arquivo)
+        else:
+            vetores = codificar([textos[i] for i in bloco])
+            novos += len(bloco)
+            if arquivo is not None:
+                np.save(arquivo, vetores.astype(np.float16))
+        for i, v in zip(bloco, vetores, strict=True):
             saida[i] = v
         feito = min(n + lote * 32, len(ordem))
-        taxa = feito / max(time.time() - inicio, 1e-6)
-        faltam = (len(ordem) - feito) / taxa / 60
+        taxa = novos / max(time.time() - inicio, 1e-6)
+        faltam = (len(ordem) - feito) / max(taxa, 1e-6) / 60
         print(f"{rotulo}: {feito}/{len(ordem)} ({taxa:.1f}/s, faltam {faltam:.1f} min)", flush=True)
     return np.stack(saida)
 
@@ -190,8 +203,10 @@ def main():
                 ids.append(d["id"])
                 textos.append(documento(d["texto"][: args.max_caracteres]))
         assert ids == [m["id"] for m in meta["itens"]], "corpus-textos fora da ordem de corpus-meta"
-        docs = em_lotes(codificar, textos, args.lote, "documentos")
+        parcial = corpus / f"{args.nome}-parcial-lote{args.lote}"
+        docs = em_lotes(codificar, textos, args.lote, "documentos", parcial)
         np.save(corpus / f"{args.nome}-docs.npy", docs.astype(np.float16))
+        shutil.rmtree(parcial)
     tempo_docs = round(time.time() - inicio, 1)
     chaves, textos = [], []
     for p in conjunto["perguntas"]:
