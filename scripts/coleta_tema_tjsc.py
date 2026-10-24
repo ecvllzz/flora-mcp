@@ -1,8 +1,10 @@
-"""Coleta de educação no TJSC por consulta de tema, em três fases; o padrão só mostra o plano.
+"""Coleta de um tema no TJSC por consulta, em três fases; o padrão só mostra o plano.
 
-Decisões do operador de 23/10/2026: as 1ª a 5ª Câmaras de Direito Público e o Grupo de Câmaras de
-Direito Público entram só assim, um subtema por vez, com filtro de ingestão (flora_mcp.tema) e
-amostra julgada antes de qualquer gravação.
+Cada tema (educação, família e sucessões) vem do registro de flora_mcp.tema, com órgãos, subtemas,
+período, filtro de ingestão e texto do tema para o julgamento da amostra. Decisões do operador de
+23/10/2026 (educação: as Câmaras de Direito Público entram só assim) e de 24/10/2026 (família e
+sucessões nas Câmaras de Direito Civil, publicação de 2022 e 2023, só o mérito): um subtema por vez,
+com filtro e amostra julgada antes de qualquer gravação.
 
   candidatos  lê o portal (pausa configurada, sem paralelo) e grava cada consulta, com o original
               e a decisão do filtro, numa pasta de preparo fora do acervo; retoma o que falta.
@@ -27,43 +29,21 @@ from flora_mcp.config import load_config
 from flora_mcp.model import now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
-from flora_mcp.tema import FILTRO, educacao
+from flora_mcp.tema import TEMAS, Tema
 from flora_mcp.tjsc import catalog_search, collect_search, term_slug
-from flora_mcp.tjsc_orgaos import PUBLICO, dataset
+from flora_mcp.tjsc_orgaos import dataset
 
 sys.path.insert(0, str(Path(__file__).parent))
 from resume_tjsc import groups, save  # noqa: E402
 
-TERMOS = (
-    "creche",
-    "pré-escola",
-    "transporte escolar",
-    "segundo professor",
-    "professor auxiliar",
-    "acompanhante terapêutico",
-    "matrícula",
-    "vaga escolar",
-    "educação especial",
-    "educação inclusiva",
-    "ensino",
-    "escola",
-)
 AMOSTRA, MINIMO = 50, 0.9
-TEMA = (
-    "Direito à educação: acesso, permanência e condições de ensino da criança, do adolescente e da "
-    "pessoa com deficiência (vaga em creche e pré-escola, matrícula, transporte escolar, professor de "
-    "apoio ou acompanhante, educação especial e inclusiva, ensino superior quando o objeto é o "
-    "próprio direito ao ensino). Fora do tema: servidor público do magistério (piso, carreira, "
-    "vencimentos), contrato com instituição de ensino que só discute cobrança ou consumo sem direito "
-    "ao ensino, registro de imóvel (matrícula imobiliária) e qualquer outra matéria."
-)
 
 
-def consultas(inicio: date, fim: date) -> list[dict]:
+def consultas(tema: Tema, inicio: date, fim: date) -> list[dict]:
     return [
         {"orgao": o, "termo": t, "inicio": inicio, "fim": fim, "arquivo": f"{dataset(o)}/{term_slug(t)}.json"}
-        for o in PUBLICO
-        for t in TERMOS
+        for o in tema.orgaos
+        for t in tema.termos
     ]
 
 
@@ -74,16 +54,17 @@ def gravar(path: Path, payload: bytes):
     temporary.replace(path)
 
 
-def candidatos(config, preparo: Path, todas: list[dict]):
+def candidatos(config, preparo: Path, todas: list[dict], tema: Tema):
     """Lê do portal cada consulta ainda ausente do preparo; para na primeira falha de fonte."""
     pendentes = [c for c in todas if not (preparo / c["arquivo"]).exists()]
     with client() as http:
         for n, c in enumerate(pendentes, 1):
             content, rows = collect_search(http, config, c["orgao"], c["termo"], c["inicio"], c["fim"])
-            itens = [{"body": body, "raw": raw, "motivo": educacao(body["ementa"])} for body, raw in rows]
+            itens = [{"body": body, "raw": raw, "motivo": tema.filtro(body["ementa"])} for body, raw in rows]
             envelope = preparo / c["arquivo"].replace(".json", ".envelope.json")
             gravar(envelope, content)
             registro = {
+                "tema": tema.nome,
                 "orgao": c["orgao"],
                 "termo": c["termo"],
                 "inicio": c["inicio"].isoformat(),
@@ -109,19 +90,22 @@ def candidatos(config, preparo: Path, todas: list[dict]):
             )
 
 
-def ler_preparo(preparo: Path, todas: list[dict]) -> list[dict]:
+def ler_preparo(preparo: Path, todas: list[dict], tema: Tema) -> list[dict]:
     faltam = [c["arquivo"] for c in todas if not (preparo / c["arquivo"]).exists()]
     if faltam:
         raise ValueError(f"Preparo incompleto: faltam {len(faltam)} consultas; rode candidatos.")
     registros = []
     for c in todas:
         registro = json.loads((preparo / c["arquivo"]).read_text(encoding="utf-8"))
+        # The education staging predates the field.
+        if registro.get("tema", "educacao") != tema.nome:
+            raise ValueError(f"Preparo de outro tema: {c['arquivo']}.")
         envelope = (preparo / c["arquivo"].replace(".json", ".envelope.json")).read_bytes()
         if hashlib.sha256(envelope).hexdigest() != registro["envelope_sha256"]:
             raise ValueError(f"Envelope alterado: {c['arquivo']}.")
         # The decision is the current filter's, not the one recorded at collection time.
         for item in registro["itens"]:
-            item["motivo"] = educacao(item["body"]["ementa"])
+            item["motivo"] = tema.filtro(item["body"]["ementa"])
         registros.append({**registro, "arquivo": c["arquivo"], "envelope": envelope})
     return registros
 
@@ -136,7 +120,9 @@ def resumo(registros: list[dict]) -> dict:
     return {"consultas": len(registros), "acordaos_unicos": len(vistos), "passam_unicos": len(passam)}, passam
 
 
-def amostra(registros, semente: int, saida: Path, chave: Path, excluir: tuple[Path, ...] = ()) -> dict:
+def amostra(
+    registros, tema: Tema, semente: int, saida: Path, chave: Path, excluir: tuple[Path, ...] = ()
+) -> dict:
     """Sorteio dos que passam no filtro; os ids das chaves de amostras anteriores ficam de fora,
     para que um filtro apertado pela leitura de uma amostra não seja medido nela mesma."""
     _, passam = resumo(registros)
@@ -146,12 +132,12 @@ def amostra(registros, semente: int, saida: Path, chave: Path, excluir: tuple[Pa
     codigos = {f"e{n:02d}": i for n, i in enumerate(ordem, 1)}
     cego = {
         "schema": "flora-amostra-tema-1",
-        "filtro": FILTRO,
-        "tema": TEMA,
+        "filtro": tema.versao,
+        "tema": tema.texto,
         "instrucao": "Para cada ementa, responda no_tema true ou false e uma frase de razão.",
         "itens": [{"codigo": k, "ementa": passam[i]["body"]["ementa"]} for k, i in codigos.items()],
     }
-    chave_valor = {"semente": semente, "filtro": FILTRO, "excluidos": len(vistos), "codigos": codigos}
+    chave_valor = {"semente": semente, "filtro": tema.versao, "excluidos": len(vistos), "codigos": codigos}
     for path, value in ((saida, cego), (chave, chave_valor)):
         if path.exists():
             raise ValueError(f"Arquivo já existe: {path}.")
@@ -159,15 +145,18 @@ def amostra(registros, semente: int, saida: Path, chave: Path, excluir: tuple[Pa
     return {
         "amostra": len(codigos),
         "semente": semente,
-        "filtro": FILTRO,
+        "filtro": tema.versao,
         "passam": len(passam),
         "excluidos": len(vistos),
     }
 
 
-def aprovar(julgamento: Path, chave: Path) -> dict:
+def aprovar(julgamento: Path, chave: Path, tema: Tema) -> dict:
     juizo = json.loads(julgamento.read_text(encoding="utf-8"))
-    codigos = json.loads(chave.read_text(encoding="utf-8"))["codigos"]
+    chave_valor = json.loads(chave.read_text(encoding="utf-8"))
+    if chave_valor["filtro"] != tema.versao:
+        raise ValueError(f"A amostra mediu o filtro {chave_valor['filtro']}, não {tema.versao}.")
+    codigos = chave_valor["codigos"]
     faltam = sorted(set(codigos) - set(juizo))
     if faltam:
         raise ValueError(f"Julgamento incompleto: faltam {faltam}.")
@@ -179,14 +168,14 @@ def aprovar(julgamento: Path, chave: Path) -> dict:
     return {"no_tema": no_tema, "de": len(codigos), "taxa": round(taxa, 3), "fora_do_tema": fora}
 
 
-def ingerir(store, registro, run) -> dict:
+def ingerir(store, registro, run, tema: Tema) -> dict:
     inicio, fim = date.fromisoformat(registro["inicio"]), date.fromisoformat(registro["fim"])
     resource_id = catalog_search(store, registro["orgao"], registro["termo"], inicio, fim)
     with connection(store.path) as db:
         saved = dict(db.execute("SELECT * FROM resources WHERE id=?", (resource_id,)).fetchone())
     rows = [(i["body"], i["raw"]) for i in registro["itens"] if i["motivo"]]
     rejected = [
-        {"posicao": n, "id": i["body"]["id"], "motivo": "fora_do_tema: " + FILTRO}
+        {"posicao": n, "id": i["body"]["id"], "motivo": "fora_do_tema: " + tema.versao}
         for n, i in enumerate(registro["itens"])
         if not i["motivo"]
     ]
@@ -209,7 +198,7 @@ def concluidas(store) -> set:
         }
 
 
-def aplicar(config, store, registros, aprovacao, report_path: Path, backup_root=None) -> dict:
+def aplicar(config, store, registros, aprovacao, report_path: Path, tema: Tema, backup_root=None) -> dict:
     backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
     if report_path.exists():
         raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
@@ -223,8 +212,9 @@ def aplicar(config, store, registros, aprovacao, report_path: Path, backup_root=
         report = {
             "inicio": now(),
             "banco": str(store.path),
+            "tema": tema.nome,
             "amostra": aprovacao,
-            "filtro": FILTRO,
+            "filtro": tema.versao,
             "resumo": resumo(registros)[0],
             "pendentes": len(pendentes),
             "antes": groups(store),
@@ -236,12 +226,12 @@ def aplicar(config, store, registros, aprovacao, report_path: Path, backup_root=
             report.update(status="ok", fim=now(), depois=report["antes"])
             save(report_path, report)
             return report
-        report["backup"] = backups.create(store, backup_root, "antes-coleta-educacao-tjsc")
+        report["backup"] = backups.create(store, backup_root, tema.rotulo_backup)
         run = store.start_run("TJSC-tema")
         report.update(execucao=run, status="running")
         try:
             for registro in pendentes:
-                report["eventos"].append(ingerir(store, registro, run))
+                report["eventos"].append(ingerir(store, registro, run, tema))
                 save(report_path, report)
             report["status"] = "ok"
         except BaseException as exc:
@@ -263,10 +253,11 @@ def main():
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument("fase", choices=("plano", "candidatos", "amostra", "aplicar"))
+    parser.add_argument("--tema", choices=sorted(TEMAS), required=True)
     parser.add_argument("--data-dir", required=True)
     parser.add_argument("--preparo", type=Path, required=True, help="Pasta fora do acervo")
-    parser.add_argument("--inicio", default="2022-01-01")
-    parser.add_argument("--fim", default=date.today().isoformat())
+    parser.add_argument("--inicio", help="Padrão: o do tema")
+    parser.add_argument("--fim", help="Padrão: o do tema, ou hoje")
     parser.add_argument("--semente", type=int)
     parser.add_argument("--amostra", type=Path, help="Arquivo cego da amostra")
     parser.add_argument("--chave", type=Path, help="Chave dos códigos da amostra")
@@ -277,25 +268,40 @@ def main():
     parser.add_argument("--report", type=Path)
     parser.add_argument("--backup", type=Path)
     args = parser.parse_args()
+    tema = TEMAS[args.tema]
     config = load_config(data_dir=args.data_dir)
     store = Store(config.data_dir)
     preparo = args.preparo.resolve()
     if preparo.is_relative_to(store.directory.resolve()):
         parser.error("O preparo fica fora do acervo.")
-    todas = consultas(date.fromisoformat(args.inicio), date.fromisoformat(args.fim))
+    inicio = date.fromisoformat(args.inicio or tema.inicio)
+    fim = date.fromisoformat(args.fim or tema.fim or date.today().isoformat())
+    todas = consultas(tema, inicio, fim)
     if args.fase == "plano":
         prontas = sum((preparo / c["arquivo"]).exists() for c in todas)
-        print(json.dumps({"consultas": len(todas), "no_preparo": prontas}, ensure_ascii=True))
+        print(
+            json.dumps(
+                {
+                    "tema": tema.nome,
+                    "inicio": inicio.isoformat(),
+                    "fim": fim.isoformat(),
+                    "consultas": len(todas),
+                    "no_preparo": prontas,
+                },
+                ensure_ascii=True,
+            )
+        )
     elif args.fase == "candidatos":
-        candidatos(config, preparo, todas)
-        print(json.dumps(resumo(ler_preparo(preparo, todas))[0], ensure_ascii=True))
+        candidatos(config, preparo, todas, tema)
+        print(json.dumps(resumo(ler_preparo(preparo, todas, tema))[0], ensure_ascii=True))
     elif args.fase == "amostra":
         if args.semente is None or not args.amostra or not args.chave:
             parser.error("amostra exige --semente, --amostra e --chave.")
         print(
             json.dumps(
                 amostra(
-                    ler_preparo(preparo, todas),
+                    ler_preparo(preparo, todas, tema),
+                    tema,
                     args.semente,
                     args.amostra,
                     args.chave,
@@ -306,9 +312,15 @@ def main():
     else:
         if not (args.julgamento and args.chave and args.report):
             parser.error("aplicar exige --julgamento, --chave e --report novo.")
-        aprovacao = aprovar(args.julgamento, args.chave)
+        aprovacao = aprovar(args.julgamento, args.chave, tema)
         result = aplicar(
-            config, store, ler_preparo(preparo, todas), aprovacao, args.report.resolve(), args.backup
+            config,
+            store,
+            ler_preparo(preparo, todas, tema),
+            aprovacao,
+            args.report.resolve(),
+            tema,
+            args.backup,
         )
         print(json.dumps({"status": result["status"], "eventos": len(result["eventos"])}, ensure_ascii=True))
 
