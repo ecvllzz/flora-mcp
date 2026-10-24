@@ -8,6 +8,8 @@ com filtro e amostra julgada antes de qualquer gravação.
 
   candidatos  lê o portal (pausa configurada, sem paralelo) e grava cada consulta, com o original
               e a decisão do filtro, numa pasta de preparo fora do acervo; retoma o que falta.
+  reler       refaz cada consulta do preparo a partir das páginas originais do envelope, com a
+              leitura atual, sem ir ao portal; recusa diferença que não seja só de espaços.
   amostra     sorteia 50 dos que passam no filtro e grava o arquivo cego (tema e ementas, sob
               código) e, à parte, a chave dos códigos.
   aplicar     com o julgamento da amostra (90% ou mais no tema), adquire a trava, faz backup,
@@ -16,6 +18,7 @@ com filtro e amostra julgada antes de qualquer gravação.
 """
 
 import argparse
+import base64
 import hashlib
 import json
 import sys
@@ -30,7 +33,7 @@ from flora_mcp.model import now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
 from flora_mcp.tema import TEMAS, Tema
-from flora_mcp.tjsc import catalog_search, collect_search, term_slug
+from flora_mcp.tjsc import catalog_search, collect_search, parse_period_page, term_slug
 from flora_mcp.tjsc_orgaos import dataset
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -108,6 +111,50 @@ def ler_preparo(preparo: Path, todas: list[dict], tema: Tema) -> list[dict]:
             item["motivo"] = tema.filtro(item["body"]["ementa"])
         registros.append({**registro, "arquivo": c["arquivo"], "envelope": envelope})
     return registros
+
+
+def so_espacos(antes, depois) -> bool:
+    """True when two parsed values differ, if at all, only in whitespace."""
+    if isinstance(antes, dict) and isinstance(depois, dict):
+        return antes.keys() == depois.keys() and all(so_espacos(antes[k], depois[k]) for k in antes)
+    if isinstance(antes, str) and isinstance(depois, str):
+        return "".join(antes.split()) == "".join(depois.split())
+    return antes == depois
+
+
+def reler(preparo: Path, todas: list[dict], tema: Tema) -> dict:
+    """Each staged search read again from its own envelope pages with the current parser.
+
+    The envelope is the portal's answer as received; the items are a reading of it. When the reading
+    changes (the highlight of the searched term, 24/10/2026), the items follow it without a new
+    request, and only a whitespace difference is accepted.
+    """
+    alteradas = acordaos = 0
+    for c in todas:
+        registro = next(r for r in ler_preparo(preparo, [c], tema))
+        envelope = json.loads(registro["envelope"])
+        lidos = {}
+        for parte in envelope["partes"]:
+            inicio, fim = (date.fromisoformat(parte[k]) for k in ("publicacao_inicio", "publicacao_fim"))
+            for pagina in parte["paginas"]:
+                _, rows = parse_period_page(base64.b64decode(pagina["bytes_base64"]), c["orgao"], inicio, fim)
+                lidos.update((body["id"], (body, raw)) for body, raw in rows)
+        itens = registro["itens"]
+        if set(lidos) != {i["body"]["id"] for i in itens}:
+            raise ValueError(f"Releitura com outros acórdãos: {c['arquivo']}.")
+        novos = []
+        for item in itens:
+            body, raw = lidos[item["body"]["id"]]
+            if not (so_espacos(item["body"], body) and so_espacos(item["raw"], raw)):
+                raise ValueError(f"Releitura mudou mais que espaços: {item['body']['id']}.")
+            acordaos += (body, raw) != (item["body"], item["raw"])
+            novos.append({**item, "body": body, "raw": raw, "motivo": tema.filtro(body["ementa"])})
+        if novos != itens:
+            alteradas += 1
+            gravado = json.loads((preparo / c["arquivo"]).read_text(encoding="utf-8"))
+            gravado.update(itens=novos, relido_em=now())
+            gravar(preparo / c["arquivo"], json.dumps(gravado, ensure_ascii=False).encode())
+    return {"consultas": len(todas), "consultas_alteradas": alteradas, "acordaos_alterados": acordaos}
 
 
 def resumo(registros: list[dict]) -> dict:
@@ -252,7 +299,7 @@ def main():
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument("fase", choices=("plano", "candidatos", "amostra", "aplicar"))
+    parser.add_argument("fase", choices=("plano", "candidatos", "reler", "amostra", "aplicar"))
     parser.add_argument("--tema", choices=sorted(TEMAS), required=True)
     parser.add_argument("--data-dir", required=True)
     parser.add_argument("--preparo", type=Path, required=True, help="Pasta fora do acervo")
@@ -291,6 +338,8 @@ def main():
                 ensure_ascii=True,
             )
         )
+    elif args.fase == "reler":
+        print(json.dumps(reler(preparo, todas, tema), ensure_ascii=True))
     elif args.fase == "candidatos":
         candidatos(config, preparo, todas, tema)
         print(json.dumps(resumo(ler_preparo(preparo, todas, tema))[0], ensure_ascii=True))

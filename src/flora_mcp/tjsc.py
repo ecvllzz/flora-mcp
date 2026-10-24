@@ -66,6 +66,23 @@ def process_number(field: str) -> str:
     return f"{saj[1]}{saj[2]}.{saj[3]}-{saj[4]}" if saj else field
 
 
+HIGHLIGHT = re.compile(r"background-color", re.I)
+
+
+def unhighlight(value):
+    """Drop the portal's highlight of the searched term (<B><FONT STYLE="background-color:...">).
+
+    Left in place, the text is joined around it with spaces, and "DE <B>...ALIMENTOS...</B>. PRISÃO"
+    reads "DE ALIMENTOS . PRISÃO": the ementa of a theme search differs from the same card elsewhere.
+    """
+    for font in value.find_all("font", style=HIGHLIGHT):
+        parent = font.parent
+        font.unwrap()
+        if parent is not None and parent.name == "b" and len(parent.contents) == 1:
+            parent.unwrap()
+    value.smooth()
+
+
 def parse_cards(content: bytes, organ: int | str | None) -> tuple[int, list[tuple[dict, dict]]]:
     """Validated page and its documents; organ None for a search by process number."""
     validation = validate_tjsc_page(content, organ)
@@ -76,6 +93,7 @@ def parse_cards(content: bytes, organ: int | str | None) -> tuple[int, list[tupl
         for label in card.select(".resLabel"):
             value = label.find_next_sibling(class_="resValue")
             if value:
+                unhighlight(value)
                 fields[tjsc_field_label(label)] = value.get_text(" ", strip=True)
         try:
             publication = datetime.strptime(fields["DATA DA PUBLICAÇÃO"], "%d/%m/%Y").date()

@@ -1,0 +1,1804 @@
+{
+  "inicio": "2026-10-24T20:29:58.007773+00:00",
+  "banco": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP\\acervo.sqlite",
+  "tema": "familia",
+  "amostra": {
+    "no_tema": 45,
+    "de": 50,
+    "taxa": 0.9,
+    "fora_do_tema": [
+      {
+        "id": "TJSC:321756716601992396255364509829",
+        "no_tema": false,
+        "razao": "Penhora de bens do espólio por dívida comum em cumprimento de sentença; execução de título."
+      },
+      {
+        "id": "TJSC:321756846222709732298810747291",
+        "no_tema": false,
+        "razao": "Cobrança de dívida contratual contra o espólio e má-fé; matéria contratual."
+      },
+      {
+        "id": "TJSC:321756695002037434932896115657",
+        "no_tema": false,
+        "razao": "Dano moral por inscrição indevida decorrente de dívida assumida no divórcio; responsabilidade civil."
+      },
+      {
+        "id": "TJSC:321756866369740100200933334406",
+        "no_tema": false,
+        "razao": "Nulidade da troca de inventariante sem incidente e contraditório; só questão processual."
+      },
+      {
+        "id": "TJSC:321756655402135818389031101259",
+        "no_tema": false,
+        "razao": "Decisão surpresa e cumprimento da partilha homologada; só questão processual."
+      }
+    ]
+  },
+  "filtro": "familia-1",
+  "resumo": {
+    "consultas": 140,
+    "acordaos_unicos": 4723,
+    "passam_unicos": 2049
+  },
+  "pendentes": 140,
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 6617
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4041
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5395
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 4975
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5523
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4078
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4734
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6449
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "status": "ok",
+  "eventos": [
+    {
+      "recurso": "tjsc-1-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 780,
+      "ingeridos": 676,
+      "rejeitados": 104,
+      "novos": 672,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 453,
+      "ingeridos": 338,
+      "rejeitados": 115,
+      "novos": 96,
+      "alterados": 242,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 127,
+      "ingeridos": 97,
+      "rejeitados": 30,
+      "novos": 16,
+      "alterados": 81,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 189,
+      "ingeridos": 148,
+      "rejeitados": 41,
+      "novos": 53,
+      "alterados": 95,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 214,
+      "ingeridos": 160,
+      "rejeitados": 54,
+      "novos": 57,
+      "alterados": 103,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 291,
+      "ingeridos": 205,
+      "rejeitados": 86,
+      "novos": 28,
+      "alterados": 177,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 8,
+      "ingeridos": 6,
+      "rejeitados": 2,
+      "novos": 6,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 110,
+      "ingeridos": 22,
+      "rejeitados": 88,
+      "novos": 7,
+      "alterados": 15,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 20,
+      "ingeridos": 18,
+      "rejeitados": 2,
+      "novos": 1,
+      "alterados": 17,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 140,
+      "ingeridos": 73,
+      "rejeitados": 67,
+      "novos": 44,
+      "alterados": 29,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 55,
+      "ingeridos": 20,
+      "rejeitados": 35,
+      "novos": 1,
+      "alterados": 19,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 6,
+      "ingeridos": 4,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 21,
+      "ingeridos": 10,
+      "rejeitados": 11,
+      "novos": 1,
+      "alterados": 9,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 3,
+      "ingeridos": 3,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 40,
+      "ingeridos": 23,
+      "rejeitados": 17,
+      "novos": 23,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 33,
+      "ingeridos": 2,
+      "rejeitados": 31,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 26,
+      "ingeridos": 1,
+      "rejeitados": 25,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 14,
+      "ingeridos": 3,
+      "rejeitados": 11,
+      "novos": 2,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 35,
+      "ingeridos": 16,
+      "rejeitados": 19,
+      "novos": 11,
+      "alterados": 5,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 55,
+      "ingeridos": 23,
+      "rejeitados": 32,
+      "novos": 16,
+      "alterados": 7,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 146,
+      "ingeridos": 0,
+      "rejeitados": 146,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 128,
+      "ingeridos": 73,
+      "rejeitados": 55,
+      "novos": 48,
+      "alterados": 25,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 38,
+      "ingeridos": 16,
+      "rejeitados": 22,
+      "novos": 2,
+      "alterados": 14,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 6,
+      "ingeridos": 3,
+      "rejeitados": 3,
+      "novos": 2,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 9,
+      "ingeridos": 5,
+      "rejeitados": 4,
+      "novos": 2,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 68,
+      "ingeridos": 57,
+      "rejeitados": 11,
+      "novos": 57,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 55,
+      "ingeridos": 12,
+      "rejeitados": 43,
+      "novos": 4,
+      "alterados": 8,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 7,
+      "ingeridos": 5,
+      "rejeitados": 2,
+      "novos": 1,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 25,
+      "ingeridos": 15,
+      "rejeitados": 10,
+      "novos": 8,
+      "alterados": 7,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 28,
+      "ingeridos": 12,
+      "rejeitados": 16,
+      "novos": 7,
+      "alterados": 5,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 58,
+      "ingeridos": 32,
+      "rejeitados": 26,
+      "novos": 16,
+      "alterados": 16,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 2,
+      "ingeridos": 1,
+      "rejeitados": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 39,
+      "ingeridos": 0,
+      "rejeitados": 39,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 3,
+      "ingeridos": 2,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 99,
+      "ingeridos": 48,
+      "rejeitados": 51,
+      "novos": 30,
+      "alterados": 18,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 46,
+      "ingeridos": 17,
+      "rejeitados": 29,
+      "novos": 2,
+      "alterados": 15,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 4,
+      "ingeridos": 2,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 6,
+      "ingeridos": 4,
+      "rejeitados": 2,
+      "novos": 1,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 2,
+      "ingeridos": 0,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 369,
+      "ingeridos": 275,
+      "rejeitados": 94,
+      "novos": 273,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 236,
+      "ingeridos": 147,
+      "rejeitados": 89,
+      "novos": 52,
+      "alterados": 95,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 46,
+      "ingeridos": 37,
+      "rejeitados": 9,
+      "novos": 11,
+      "alterados": 26,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 102,
+      "ingeridos": 68,
+      "rejeitados": 34,
+      "novos": 25,
+      "alterados": 43,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 136,
+      "ingeridos": 92,
+      "rejeitados": 44,
+      "novos": 36,
+      "alterados": 56,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 186,
+      "ingeridos": 104,
+      "rejeitados": 82,
+      "novos": 28,
+      "alterados": 76,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 8,
+      "ingeridos": 5,
+      "rejeitados": 3,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 181,
+      "ingeridos": 18,
+      "rejeitados": 163,
+      "novos": 6,
+      "alterados": 12,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 9,
+      "ingeridos": 7,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 7,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 189,
+      "ingeridos": 88,
+      "rejeitados": 101,
+      "novos": 50,
+      "alterados": 38,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 74,
+      "ingeridos": 36,
+      "rejeitados": 38,
+      "novos": 5,
+      "alterados": 31,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 6,
+      "ingeridos": 4,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 16,
+      "ingeridos": 7,
+      "rejeitados": 9,
+      "novos": 3,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 4,
+      "ingeridos": 2,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 59,
+      "ingeridos": 44,
+      "rejeitados": 15,
+      "novos": 43,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 52,
+      "ingeridos": 16,
+      "rejeitados": 36,
+      "novos": 1,
+      "alterados": 15,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 14,
+      "ingeridos": 8,
+      "rejeitados": 6,
+      "novos": 2,
+      "alterados": 6,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 32,
+      "ingeridos": 13,
+      "rejeitados": 19,
+      "novos": 3,
+      "alterados": 10,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 42,
+      "ingeridos": 14,
+      "rejeitados": 28,
+      "novos": 7,
+      "alterados": 7,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 77,
+      "ingeridos": 36,
+      "rejeitados": 41,
+      "novos": 24,
+      "alterados": 12,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 5,
+      "ingeridos": 3,
+      "rejeitados": 2,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 96,
+      "ingeridos": 2,
+      "rejeitados": 94,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 1,
+      "ingeridos": 0,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 134,
+      "ingeridos": 72,
+      "rejeitados": 62,
+      "novos": 41,
+      "alterados": 31,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 34,
+      "ingeridos": 14,
+      "rejeitados": 20,
+      "novos": 1,
+      "alterados": 13,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 9,
+      "ingeridos": 4,
+      "rejeitados": 5,
+      "novos": 2,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 4,
+      "ingeridos": 2,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 1,
+      "ingeridos": 1,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 30,
+      "ingeridos": 12,
+      "rejeitados": 18,
+      "novos": 12,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 48,
+      "ingeridos": 7,
+      "rejeitados": 41,
+      "novos": 4,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 4,
+      "ingeridos": 2,
+      "rejeitados": 2,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 13,
+      "ingeridos": 2,
+      "rejeitados": 11,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 38,
+      "ingeridos": 14,
+      "rejeitados": 24,
+      "novos": 10,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 65,
+      "ingeridos": 24,
+      "rejeitados": 41,
+      "novos": 18,
+      "alterados": 6,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 1,
+      "ingeridos": 0,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 72,
+      "ingeridos": 2,
+      "rejeitados": 70,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 109,
+      "ingeridos": 46,
+      "rejeitados": 63,
+      "novos": 25,
+      "alterados": 21,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 38,
+      "ingeridos": 14,
+      "rejeitados": 24,
+      "novos": 0,
+      "alterados": 14,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 8,
+      "ingeridos": 5,
+      "rejeitados": 3,
+      "novos": 3,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 5,
+      "ingeridos": 3,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-6-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 4,
+      "ingeridos": 1,
+      "rejeitados": 3,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 36,
+      "ingeridos": 16,
+      "rejeitados": 20,
+      "novos": 16,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 65,
+      "ingeridos": 5,
+      "rejeitados": 60,
+      "novos": 1,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 16,
+      "ingeridos": 4,
+      "rejeitados": 12,
+      "novos": 3,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 26,
+      "ingeridos": 4,
+      "rejeitados": 22,
+      "novos": 1,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 63,
+      "ingeridos": 9,
+      "rejeitados": 54,
+      "novos": 6,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 88,
+      "ingeridos": 32,
+      "rejeitados": 56,
+      "novos": 26,
+      "alterados": 6,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 5,
+      "ingeridos": 2,
+      "rejeitados": 3,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 318,
+      "ingeridos": 0,
+      "rejeitados": 318,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 153,
+      "ingeridos": 71,
+      "rejeitados": 82,
+      "novos": 43,
+      "alterados": 28,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 72,
+      "ingeridos": 24,
+      "rejeitados": 48,
+      "novos": 0,
+      "alterados": 24,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 12,
+      "ingeridos": 3,
+      "rejeitados": 9,
+      "novos": 2,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 9,
+      "ingeridos": 2,
+      "rejeitados": 7,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-7-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 2,
+      "ingeridos": 1,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 21,
+      "ingeridos": 16,
+      "rejeitados": 5,
+      "novos": 16,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 18,
+      "ingeridos": 12,
+      "rejeitados": 6,
+      "novos": 0,
+      "alterados": 12,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 11,
+      "ingeridos": 6,
+      "rejeitados": 5,
+      "novos": 0,
+      "alterados": 6,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 6,
+      "ingeridos": 4,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 3,
+      "ingeridos": 3,
+      "rejeitados": 0,
+      "novos": 2,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 16,
+      "ingeridos": 6,
+      "rejeitados": 10,
+      "novos": 2,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 11,
+      "ingeridos": 0,
+      "rejeitados": 11,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 15,
+      "ingeridos": 5,
+      "rejeitados": 10,
+      "novos": 2,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 6,
+      "ingeridos": 2,
+      "rejeitados": 4,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 2,
+      "ingeridos": 2,
+      "rejeitados": 0,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 2,
+      "ingeridos": 1,
+      "rejeitados": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-8-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-9-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-alimentos-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-guarda-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-convivencia-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-divorcio-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-uniao-estavel-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-partilha-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-curatela-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-adocao-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-alienacao-parental-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-inventario-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-heranca-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-testamento-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-arrolamento-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-10-civil:tema-sonegados-2022-01-01-2023-12-31",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    }
+  ],
+  "backup": {
+    "status": "ok",
+    "formato": "flora-backup-2",
+    "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-backups\\20261024-172958-152788-antes-coleta-familia-tjsc",
+    "revisao": 3448,
+    "originais": 3486,
+    "originais_copiados": 72,
+    "originais_ja_no_deposito": 3414,
+    "bytes_copiados": 548116910
+  },
+  "execucao": "549f499d-86fe-4f05-ac9e-04e116ca01af",
+  "fim": "2026-10-24T20:32:19.433922+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "publicacao": {
+    "status": "ok",
+    "publicacao_id": "r3588-s2-422d7bab33-549608c37443",
+    "sha256": "549608c37443787ff84cbe6855d491a7365eea851eb3062ddb7c13182c0dcabc",
+    "revisao_base": 3588,
+    "copias_texto": {
+      "grupos": 954,
+      "copias_retiradas": 2007
+    },
+    "limpeza_adiada_arquivo_aberto": []
+  }
+}

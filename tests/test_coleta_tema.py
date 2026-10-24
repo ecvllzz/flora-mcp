@@ -1,5 +1,7 @@
 """Temas do TJSC por consulta: órgãos de direito público, filtros de educação e de família, coleta e fases."""
 
+import base64
+import hashlib
 import importlib.util
 import json
 import re
@@ -14,7 +16,14 @@ from flora_mcp.config import Config
 from flora_mcp.model import FloraError
 from flora_mcp.store import connection
 from flora_mcp.tema import TEMAS, educacao, familia
-from flora_mcp.tjsc import catalog_window, collect_pages, collect_search, collect_union, collect_window
+from flora_mcp.tjsc import (
+    catalog_window,
+    collect_pages,
+    collect_search,
+    collect_union,
+    collect_window,
+    parse_cards,
+)
 from flora_mcp.tjsc_orgaos import PUBLICO, dataset
 
 FIXTURES = Path(__file__).parent / "fixtures" / "tjsc"
@@ -38,6 +47,16 @@ spec = importlib.util.spec_from_file_location(
 script = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(script)
 EDUCACAO = TEMAS["educacao"]
+
+
+def test_the_highlight_of_the_searched_term_leaves_the_ementa_as_the_portal_wrote_it():
+    """The portal marks the term in a theme search; read as text, it once left "REPETITIVAS ." behind."""
+    term = b"REPETITIVAS"
+    marked = PAGE.replace(term, b'<B><FONT STYLE="background-color:#FFFF00">' + term + b"</FONT></B>")
+    assert marked != PAGE
+    plain, highlighted = (parse_cards(page, GRUPO)[1] for page in (PAGE, marked))
+    assert [body["ementa"] for body, _ in highlighted] == [body["ementa"] for body, _ in plain]
+    assert "DEMANDAS REPETITIVAS. RISCO" in highlighted[0][0]["ementa"]
 
 
 def test_public_law_enters_only_by_theme_search(store):
@@ -380,3 +399,50 @@ def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, 
         config, store, registros, aprovacao, tmp_path / "recibo2.json", EDUCACAO, tmp_path / "bk"
     )
     assert again["pendentes"] == 0 and again["eventos"] == []
+
+
+def test_staged_searches_are_read_again_from_their_envelope_pages(tmp_path):
+    """A parser fix reaches the staging without the portal; only whitespace may change."""
+    marked = PAGE.replace(b"REPETITIVAS", b'<B><FONT STYLE="background-color:#FFFF00">REPETITIVAS</FONT></B>')
+    _, plain = parse_cards(PAGE, GRUPO)
+    first, last = (date.fromisoformat(f(b["data_publicacao"] for b, _ in plain)) for f in (min, max))
+    consulta = {
+        "orgao": GRUPO,
+        "termo": "demandas",
+        "inicio": first,
+        "fim": last,
+        "arquivo": "g/demandas.json",
+    }
+    envelope = json.dumps(
+        {
+            "partes": [
+                {
+                    "publicacao_inicio": first.isoformat(),
+                    "publicacao_fim": last.isoformat(),
+                    "paginas": [{"bytes_base64": base64.b64encode(marked).decode()}],
+                }
+            ]
+        }
+    ).encode()
+
+    def stage(itens):
+        (tmp_path / "g").mkdir(exist_ok=True)
+        (tmp_path / "g/demandas.envelope.json").write_bytes(envelope)
+        registro = {"envelope_sha256": hashlib.sha256(envelope).hexdigest(), "itens": itens}
+        (tmp_path / "g/demandas.json").write_text(json.dumps(registro), encoding="utf-8")
+
+    def old_reading(body, raw, ementa):
+        return {
+            "body": {**body, "ementa": ementa},
+            "raw": {**raw, "campos": {**raw["campos"], "EMENTA": ementa}},
+        }
+
+    stage([old_reading(b, r, b["ementa"].replace("REPETITIVAS.", "REPETITIVAS .")) for b, r in plain])
+    assert script.reler(tmp_path, [consulta], EDUCACAO)["acordaos_alterados"] == sum(
+        "REPETITIVAS." in b["ementa"] for b, _ in plain
+    )
+    (registro,) = script.ler_preparo(tmp_path, [consulta], EDUCACAO)
+    assert [i["body"] for i in registro["itens"]] == [body for body, _ in plain]
+    stage([old_reading(b, r, b["ementa"].replace("REPETITIVAS", "REPETIDAS")) for b, r in plain])
+    with pytest.raises(ValueError, match="mais que espaços"):
+        script.reler(tmp_path, [consulta], EDUCACAO)
