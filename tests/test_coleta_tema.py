@@ -76,6 +76,10 @@ def test_education_enters_by_a_mark_of_the_pupils_right(ementa, motivo):
         "APELAÇÃO. RESPONSABILIDADE CIVIL. QUEDA DE ALUNO NA ESCOLA.\n1. Indenização.",
         "APELAÇÃO. CONCURSO PÚBLICO. PROFESSOR DE EDUCAÇÃO ESPECIAL.\n1. Nomeação.",
         "MANDADO DE SEGURANÇA. TRANSPORTE.\n1. Garantido, nos termos do art. 208 da CF.",
+        "AGRAVO. LICITAÇÃO. PREGÃO PARA TRANSPORTE ESCOLAR. HABILITAÇÃO.\n1. Mantida.",
+        "APELAÇÃO. COBRANÇA. CONTRATO DE TRANSPORTE ESCOLAR. PRESCRIÇÃO.\n1. Afastada.",
+        "APELAÇÃO. CONCURSO PÚBLICO. VAGAS NA REDE DE ENSINO.\n1. Nomeação indevida.",
+        "AGRAVO. PRODUÇÃO ANTECIPADA DE PROVAS. IMAGENS DE CÂMERA DE CRECHE.\n1. Cabe.",
         "APELAÇÃO. REGISTRO DE IMÓVEIS. MATRÍCULA. RETIFICAÇÃO.\n1. Cabe.",
         "TRIBUTÁRIO. IPTU. RECURSO ESPECIAL.\n1. Educação especial não se discute.",
     ],
@@ -273,6 +277,6 @@ def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, 
         rejeitados = db.execute(
             "SELECT rejeitados FROM resources WHERE id LIKE 'tjsc-%:tema-%' LIMIT 1"
         ).fetchone()[0]
-    assert json.loads(rejeitados)[0]["motivo"] == "fora_do_tema: educacao-2"
+    assert json.loads(rejeitados)[0]["motivo"] == "fora_do_tema: educacao-3"
     again = script.aplicar(config, store, registros, aprovacao, tmp_path / "recibo2.json", tmp_path / "bk")
     assert again["pendentes"] == 0 and again["eventos"] == []
