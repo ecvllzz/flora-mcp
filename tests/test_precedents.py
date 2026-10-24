@@ -142,18 +142,19 @@ def test_withdrawal_overrides_snapshot_and_old_hash(store, tmp_path, status, pen
 
 
 def test_generations_pagination_integrity_and_retention(store, tmp_path):
-    ingest(store, [raw_doc(str(i)) for i in range(5)])
+    # Distinct ementas: equal texts would be text copies, and the publication keeps only the first.
+    ingest(store, [raw_doc(str(i), text=f"Alimentos. Caso {i}.") for i in range(5)])
     migrate(store)
     first = publish(store)["publicacao_id"]
     page = api.search(store, limite=2)
     old_reader = Reader(store).resolve()
     with old_reader.read() as opened:
-        ingest(store, [raw_doc(str(i)) for i in range(7)])
+        ingest(store, [raw_doc(str(i), text=f"Alimentos. Caso {i}.") for i in range(7)])
         publish(store)
         assert opened.execute("SELECT count(*) FROM documents").fetchone()[0] == 5
         assert api.search(store, limite=2, cursor=page["proximo_cursor"])["publicacao_id"] == first
     for i in range(2):
-        ingest(store, [raw_doc(str(j), text=str(i)) for j in range(7)])
+        ingest(store, [raw_doc(str(j), text=f"{i} e {j}") for j in range(7)])
         publish(store)
     with pytest.raises(FloraError, match="Publicação retirada"):
         api.search(store, publicacao_id=first)

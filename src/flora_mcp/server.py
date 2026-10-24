@@ -61,7 +61,8 @@ DESCRIPTIONS = {
         "dispositivos citados, com o id do acervo quando resolvido) ou secao:<nome>. Precedente: enunciado, "
         "questao_submetida, tese_firmada, modulacao ou suspensao. Concatene os blocos até "
         "proximo_cursor nulo. Cite com a referencia do primeiro bloco e exponha "
-        "referencia_pendencias."
+        "referencia_pendencias. metadados.copias_texto, quando existe, lista os processos com a "
+        "mesma ementa, que a publicação deixa de fora."
     ),
     "consultar_cobertura": (
         "Diz o que a base contém: tribunais e órgãos, períodos, lotes pendentes, atraso da última "

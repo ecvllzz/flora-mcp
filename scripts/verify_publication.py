@@ -9,36 +9,40 @@ from flora_mcp.api import coverage, search
 from flora_mcp.citation import citation_metadata
 from flora_mcp.config import load_config
 from flora_mcp.model import canonical, now
-from flora_mcp.publication import Reader
+from flora_mcp.publication import Reader, plan_text_copies, with_copies
 from flora_mcp.store import Store
 
 
-def fingerprint(store):
+def fingerprint(store, apply_copies=False):
+    """Records and references in id order. Over the work database, apply_copies applies the text copies
+    of the publication (copies left out, the first occurrence naming them), so both sides compare."""
     hasher = hashlib.sha256()
-    count, complete = 0, 0
+    count, complete, groups = 0, 0, {}
     with store.read() as db:
         db.execute("BEGIN")
+        copies, removed = {}, set()
+        if apply_copies:
+            rows = db.execute("SELECT id,body FROM documents")
+            copies = plan_text_copies((r[0], json.loads(r[1])) for r in rows)
+            removed = {item["id"] for items in copies.values() for item in items}
         for row in db.execute(
-            "SELECT d.id,d.hash,d.body,v.raw FROM documents d JOIN versions v ON v.document_id=d.id AND "
-            "v.hash=d.hash ORDER BY d.id"
+            "SELECT d.id,d.hash,d.body,d.tribunal,v.raw FROM documents d JOIN versions v ON "
+            "v.document_id=d.id AND v.hash=d.hash ORDER BY d.id"
         ):
-            body = json.loads(row["body"])
+            if row["id"] in removed:
+                continue
+            body = with_copies(json.loads(row["body"]), copies.get(row["id"]))
             citation = citation_metadata(body, json.loads(row["raw"]))
             hasher.update(canonical([row["id"], row["hash"], body, citation]).encode())
             count += 1
             complete += citation["referencia_completa"]
-        groups = [
-            dict(r)
-            for r in db.execute(
-                "SELECT tribunal,count(*) AS documentos FROM documents GROUP BY tribunal ORDER BY tribunal"
-            )
-        ]
+            groups[row["tribunal"]] = groups.get(row["tribunal"], 0) + 1
         integrity = db.execute("PRAGMA integrity_check").fetchone()[0]
     return {
         "documentos": count,
         "referencias_estruturalmente_completas": complete,
         "sha256_registros_e_referencias": hasher.hexdigest(),
-        "grupos": groups,
+        "grupos": [{"tribunal": t, "documentos": n} for t, n in sorted(groups.items())],
         "integridade": integrity,
     }
 
@@ -52,7 +56,7 @@ def main():
     view = Reader(store).resolve()
     if view.publication is None:
         parser.error("Nenhuma publicação ativada.")
-    original, published = fingerprint(store), fingerprint(view)
+    original, published = fingerprint(store, apply_copies=True), fingerprint(view)
     assert original == published, "Publicação diverge dos registros originais."
     assert original["integridade"] == "ok"
     triage = search(store, "alimentos", detalhe="triagem")

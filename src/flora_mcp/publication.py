@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import re
 import sqlite3
 from contextlib import closing
 from pathlib import Path, PureWindowsPath
@@ -11,11 +12,12 @@ from .citation import citation_metadata
 from .precedents import available
 from .citations import CITATIONS_DERIVER, extract
 from .text import SECTIONS_DERIVER
-from .store import ReadView, Store, connection
+from .store import ReadView, Store, connection, replace_search_row
 
+COPIES_DERIVER = "copias-texto-1"
 # Derivations computed when a generation is read also name the generation, so changing one of them
 # changes publicacao_id at the next publication.
-DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER}"
+DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER};{COPIES_DERIVER}"
 MANIFEST = "publicacoes.json"
 
 
@@ -72,6 +74,53 @@ def prune_snapshot(dest):
         "DELETE FROM versions WHERE NOT EXISTS (SELECT 1 FROM documents d WHERE d.id=document_id AND "
         "d.hash=versions.hash)"
     )
+
+
+def text_key(ementa: str) -> str | None:
+    """Ementa without punctuation, spaces, accents or case; None when nothing is left to compare."""
+    letters = re.sub(r"\W+", "", folded(ementa or ""))
+    return digest(letters.encode()) if letters else None
+
+
+def plan_text_copies(rows) -> dict:
+    """{kept id: [copies]} over (id, body) rows: the first id of each text stays, the others are copies."""
+    first, copies = {}, {}
+    for id, body in sorted(rows, key=lambda r: r[0]):
+        key = text_key(body.get("ementa"))
+        if key is None:
+            continue
+        if key not in first:
+            first[key] = id
+            continue
+        copies.setdefault(first[key], []).append(
+            {
+                "id": id,
+                "processo": body.get("processo"),
+                "orgao": body.get("orgao"),
+                "data_julgamento": body.get("data_julgamento"),
+            }
+        )
+    return copies
+
+
+def with_copies(body: dict, copies: list | None) -> dict:
+    return {**body, "copias_texto": copies} if copies else body
+
+
+def remove_text_copies(dest) -> dict:
+    """Acórdãos whose ementa repeats an earlier one leave the generation; the first lists them.
+
+    The work database keeps every acórdão, its original and provenance; only the reader stops
+    serving the copy, which competed for the first places of a search with the same text.
+    """
+    copies = plan_text_copies((r[0], json.loads(r[1])) for r in dest.execute("SELECT id,body FROM documents"))
+    for kept, items in copies.items():
+        body = json.loads(dest.execute("SELECT body FROM documents WHERE id=?", (kept,)).fetchone()[0])
+        dest.execute("UPDATE documents SET body=? WHERE id=?", (canonical(with_copies(body, items)), kept))
+        for item in items:
+            dest.execute("DELETE FROM documents WHERE id=?", (item["id"],))
+            replace_search_row(dest, item["id"], None)
+    return {"grupos": len(copies), "copias_retiradas": sum(len(v) for v in copies.values())}
 
 
 def derive_document_details(dest):
@@ -204,6 +253,8 @@ def publish(store: Store):
         withdrawn, admission_counts, retired_versions = precedent_state(dest)
         verify_originals(store, dest)
         verify_search_index(dest)
+        copies = remove_text_copies(dest)
+        verify_search_index(dest)
         prune_snapshot(dest)
         derive_document_details(dest)
         derive_document_citations(dest)
@@ -239,6 +290,7 @@ def publish(store: Store):
         "publicacao_id": identity,
         "sha256": sha,
         "revisao_base": revision,
+        "copias_texto": copies,
         "limpeza_adiada_arquivo_aberto": cleanup,
     }
 
