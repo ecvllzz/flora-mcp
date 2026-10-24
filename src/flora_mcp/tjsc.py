@@ -123,19 +123,26 @@ def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[t
     return total, rows
 
 
-def collect_pages(http, config: Config, data: dict, parse) -> tuple[int, list[dict], list]:
+def collect_pages(
+    http, config: Config, data: dict, parse, first_page: bytes | None = None
+) -> tuple[int, list[dict], list]:
     """Every page of one portal search, with the first page fetched again at the end.
 
     parse(content) validates one page and returns (declared total, rows). Raises unless the count
     is stable, pages are full and disjoint, and the first page did not change during the traversal.
+    first_page, when given, is the first page the caller has just fetched with the same data.
     """
     pages, rows, ids = [], [], set()
 
     def fetch(page):
-        PACER.wait(config.request_delay)
+        nonlocal first_page
         data["hdnPaginaAtual"] = str(page)
         url = TJSC_SEARCH if page == 1 else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
-        content = download(http, url, config.max_download_bytes, method="POST", data=data)
+        if first_page is not None:
+            content, first_page = first_page, None
+        else:
+            PACER.wait(config.request_delay)
+            content = download(http, url, config.max_download_bytes, method="POST", data=data)
         total, values = parse(content)
         pages.append(
             {
@@ -232,10 +239,9 @@ def parse_period_page(content: bytes, organ: int | str, start: date, end: date):
     return total, rows
 
 
-def collect_search(http, config: Config, organ: int | str, term: str, start: date, end: date):
-    """Every page of one organ, one search term in the ementa and one publication period."""
+def search_data(organ: int | str, term: str, start: date, end: date) -> dict:
     first, last = start.strftime("%d/%m/%Y"), end.strftime("%d/%m/%Y")
-    data = {
+    return {
         "txtPesquisa": term,
         "selOrgao[]": name(organ),
         "selOrigem[]": "1",
@@ -246,9 +252,57 @@ def collect_search(http, config: Config, organ: int | str, term: str, start: dat
         "dtPublicacaoFim": last,
         "hdnPublicacaoInicio": first,
         "hdnPublicacaoFim": last,
+        "hdnPaginaAtual": "1",
     }
-    parse = lambda content: parse_period_page(content, organ, start, end)  # noqa: E731
-    total, pages, rows = collect_pages(http, config, data, parse)
+
+
+def collect_search(http, config: Config, organ: int | str, term: str, start: date, end: date):
+    """Every acórdão of one organ, one search term in the ementa and one publication period.
+
+    The portal has no ordering field, and a long search by term pages unstably (the same acórdão
+    on two pages). A period with more than one page is split in halves until each part fits one
+    page; only a single day with more results is paged, with the window checks. The first page of
+    every split period stays in the envelope as provenance.
+    """
+    parts, probes, rows, ids = [], [], [], set()
+
+    def visit(a: date, b: date):
+        data = search_data(organ, term, a, b)
+        parse = lambda content: parse_period_page(content, organ, a, b)  # noqa: E731
+        PACER.wait(config.request_delay)
+        probe = download(http, TJSC_SEARCH, config.max_download_bytes, method="POST", data=dict(data))
+        total, _ = parse(probe)
+        if total > 10 and a < b:
+            probes.append(
+                {
+                    "publicacao_inicio": a.isoformat(),
+                    "publicacao_fim": b.isoformat(),
+                    "total": total,
+                    "parametros": data,
+                    "bytes_base64": base64.b64encode(probe).decode(),
+                    "coletado_em": now(),
+                }
+            )
+            middle = a + (b - a) // 2
+            visit(a, middle)
+            visit(middle + timedelta(days=1), b)
+            return
+        part_total, pages, found = collect_pages(http, config, data, parse, first_page=probe)
+        new = {body["id"] for body, _ in found}
+        if ids & new:
+            raise FloraError("paginacao_instavel", "Acórdão TJSC em dois períodos da mesma consulta.")
+        ids.update(new)
+        rows.extend(found)
+        parts.append(
+            {
+                "publicacao_inicio": a.isoformat(),
+                "publicacao_fim": b.isoformat(),
+                "total": part_total,
+                "paginas": pages,
+            }
+        )
+
+    visit(start, end)
     payload = {
         "fonte": "TJSC",
         "consulta": "tema",
@@ -256,8 +310,9 @@ def collect_search(http, config: Config, organ: int | str, term: str, start: dat
         "termo": term,
         "publicacao_inicio": start.isoformat(),
         "publicacao_fim": end.isoformat(),
-        "total": total,
-        "paginas": pages,
+        "total": len(rows),
+        "partes": parts,
+        "sondagens": probes,
     }
     return json.dumps(payload, ensure_ascii=False).encode(), rows
 

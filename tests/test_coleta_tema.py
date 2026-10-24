@@ -27,6 +27,9 @@ PAGE = (
     )
 )
 GRUPO = "Grupo de Câmaras de Direito Público"
+EMPTY = (FIXTURES / "processo-sem-resultado.html").read_bytes()
+# The same page declaring 25 results: a period that answers this has to be split.
+CROWDED = PAGE.replace(b'type="hidden" value="2"', b'type="hidden" value="25"')
 
 spec = importlib.util.spec_from_file_location(
     "coleta_educacao_tjsc", Path(__file__).parents[1] / "scripts/coleta_educacao_tjsc.py"
@@ -101,6 +104,44 @@ def test_theme_search_sends_term_organ_and_period_and_checks_every_card(store):
         with pytest.raises(FloraError) as info:
             collect_search(http, config, GRUPO, "creche", date(2024, 1, 1), date(2026, 10, 24))
         assert info.value.code == "filtro_nao_respeitado"  # the fixture cards are from 2022 and 2023
+
+
+def test_period_with_more_than_one_page_is_split_until_each_part_fits_one(store):
+    sent = []
+
+    def route(req):
+        values = parse_qs(req.content.decode())
+        start, end = (
+            date(*reversed([int(x) for x in values[k][0].split("/")]))
+            for k in ("dtPublicacaoInicio", "dtPublicacaoFim")
+        )
+        sent.append((start, end))
+        if (end - start).days > 1700:
+            return httpx.Response(200, content=CROWDED)
+        # The fixture cards are of 10/08/2022 and 09/08/2023.
+        return httpx.Response(
+            200, content=PAGE if start <= date(2022, 8, 10) and date(2023, 8, 9) <= end else EMPTY
+        )
+
+    with httpx.Client(transport=httpx.MockTransport(route)) as http:
+        content, rows = collect_search(
+            http,
+            Config(store.directory, request_delay=0),
+            GRUPO,
+            "ensino",
+            date(2022, 1, 1),
+            date(2026, 10, 24),
+        )
+    envelope = json.loads(content)
+    assert len(rows) == envelope["total"] == 2
+    assert [(p["publicacao_inicio"], p["publicacao_fim"]) for p in envelope["sondagens"]] == [
+        ("2022-01-01", "2026-10-24")
+    ]
+    assert [(p["publicacao_inicio"], p["total"]) for p in envelope["partes"]] == [
+        ("2022-01-01", 2),
+        ("2024-05-29", 0),
+    ]
+    assert len(sent) == 5  # the crowded probe, then a probe and the final recheck of each half
 
 
 def fake_search(passing_text):
