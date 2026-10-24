@@ -14,7 +14,7 @@ from flora_mcp.config import Config
 from flora_mcp.model import FloraError
 from flora_mcp.store import connection
 from flora_mcp.tema import educacao
-from flora_mcp.tjsc import catalog_window, collect_pages, collect_search, collect_window
+from flora_mcp.tjsc import catalog_window, collect_pages, collect_search, collect_union, collect_window
 from flora_mcp.tjsc_orgaos import PUBLICO, dataset
 
 FIXTURES = Path(__file__).parent / "fixtures" / "tjsc"
@@ -172,6 +172,29 @@ def test_a_part_answered_with_a_repeated_acordao_is_tried_again(store):
             date(2023, 12, 31),
         )
     assert info.value.code == "paginacao_instavel"
+
+
+def test_crowded_day_adds_passes_until_the_distinct_acordaos_reach_the_total(store):
+    def row(n):
+        return ({"id": f"TJSC:{n:02d}"}, {"id": str(n)})
+
+    # Each pass returns the two pages in another order: 10 + 2 rows, overlapping across pages.
+    passes = [[list(range(1, 11)), [1, 2]], [list(range(3, 13)), [11, 12]]]
+    answers = iter(page for each in passes for page in each)
+    config = Config(store.directory, request_delay=0)
+    parse = lambda _content: (12, [row(n) for n in next(answers)])  # noqa: E731
+    with httpx.Client(transport=httpx.MockTransport(lambda req: httpx.Response(200, content=b"x"))) as http:
+        total, pages, rows = collect_union(http, config, {}, parse, 12, b"first")
+        assert (total, len(pages), [r[0]["id"] for r in rows]) == (
+            12,
+            4,
+            [f"TJSC:{n:02d}" for n in range(1, 13)],
+        )
+        short = iter([list(range(1, 11)), [1, 2]] * 6)
+        never = lambda _content: (12, [row(n) for n in next(short)])  # noqa: E731
+        with pytest.raises(FloraError) as info:
+            collect_union(http, config, {}, never, 12, b"first")
+    assert info.value.code == "paginacao_incompleta"
 
 
 def test_single_page_may_return_in_another_order_but_not_with_other_documents(store):

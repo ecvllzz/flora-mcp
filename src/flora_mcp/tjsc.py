@@ -265,6 +265,53 @@ def search_data(organ: int | str, term: str, start: date, end: date) -> dict:
 # Answers of a theme search that a new attempt may cure; anything else stops the search.
 UNSTABLE = {"paginacao_instavel", "paginacao_incompleta", "janela_alterada"}
 SEARCH_ATTEMPTS = 3
+UNION_PASSES = 6
+
+
+def collect_union(http, config: Config, data: dict, parse, total: int, first_page: bytes):
+    """One day of a theme search with more than one page, whose order changes at every request.
+
+    Every pass reads all the pages, and the distinct acórdãos add up until they reach the declared
+    total, which every page must repeat; the same acórdão may not come back different. Up to
+    UNION_PASSES passes; short of the total, the search stops.
+    """
+    pages, found = [], {}
+    page_count = math.ceil(total / 10)
+    for passing in range(1, UNION_PASSES + 1):
+        for page in range(1, page_count + 1):
+            data["hdnPaginaAtual"] = str(page)
+            url = (
+                TJSC_SEARCH
+                if page == 1
+                else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
+            )
+            if first_page is not None:
+                content, first_page = first_page, None
+            else:
+                PACER.wait(config.request_delay)
+                content = download(http, url, config.max_download_bytes, method="POST", data=data)
+            page_total, values = parse(content)
+            if page_total != total:
+                raise FloraError("paginacao_instavel", "Contagem variável no TJSC; repetir consulta.")
+            for body, raw in values:
+                if found.get(body["id"], (body, raw)) != (body, raw):
+                    raise FloraError(
+                        "janela_alterada", "Acórdão TJSC mudou durante a coleta; repetir consulta."
+                    )
+                found[body["id"]] = (body, raw)
+            pages.append(
+                {
+                    "passagem": passing,
+                    "pagina": page,
+                    "url": url,
+                    "parametros": dict(data),
+                    "bytes_base64": base64.b64encode(content).decode(),
+                    "coletado_em": now(),
+                }
+            )
+        if len(found) == total:
+            return total, pages, [found[key] for key in sorted(found)]
+    raise FloraError("paginacao_incompleta", f"TJSC devolveu {len(found)} de {total} acórdãos do dia.")
 
 
 def collect_search(http, config: Config, organ: int | str, term: str, start: date, end: date):
@@ -292,7 +339,10 @@ def collect_search(http, config: Config, organ: int | str, term: str, start: dat
         attempt = 1
         while total <= 10 or a == b:
             try:
-                part_total, pages, found = collect_pages(http, config, data, parse, first_page=probe)
+                if total > 10:  # a single day with more than one page
+                    part_total, pages, found = collect_union(http, config, data, parse, total, probe)
+                else:
+                    part_total, pages, found = collect_pages(http, config, data, parse, first_page=probe)
                 break
             except FloraError as exc:
                 if exc.code not in UNSTABLE or attempt == SEARCH_ATTEMPTS:
