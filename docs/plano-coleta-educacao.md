@@ -8,7 +8,8 @@ A revisão do corpus da publicação r3376, feita na avaliação R5 de busca hí
 
 - **Educação não tem nenhum precedente no acervo.** Todo o TJSC vem das Câmaras de Direito Civil e das Câmaras Especiais de Enfrentamento de Acervos, e todo o STJ da 3ª e da 4ª Turma e da 2ª Seção. Vaga em creche e pré-escola, transporte escolar, professor auxiliar ou acompanhante para aluno com deficiência e matrícula ficam sem nada para os agentes.
 - **Família está presente, mas diluída.** No STJ, só cerca de 6% das ementas trata de família ou criança pelo cabeçalho; o resto é direito privado em geral. Esse resto não é inútil: 9 dos 12 acórdãos do STJ relevantes no conjunto de avaliação são de processo civil vindos de outras matérias (gratuidade, cumprimento de sentença, réu revel). Por isso o plano não corta o STJ por tema.
-- **Há ruído que não depende de tema.** No STJ, 12.424 ementas só aplicam óbice de admissibilidade, sem marca de tese; 1.334 embargos de declaração são rejeitados por falta de vício; 414 textos são cópias de outra ementa. A R5 mede o efeito de tirá-los no recorte `stj_enxuto`.
+- **No TJSC, o tema separa bem, mas processo civil atravessa tudo.** Só 17% das 44.485 ementas do TJSC está no tema pelo cabeçalho (família, criança, educação, sucessões), e ali estão 104 dos 111 relevantes do TJSC no conjunto. Os 7 de fora são processo civil (gratuidade, honorários por equidade, execução de acordo, aluguel de imóvel comum), um deles um recurso não conhecido por intempestividade. Cortar por tema ou por não conhecimento perderia esses casos; marcar o tema e deixar o agente filtrar não perde.
+- **Há ruído que não depende de tema.** No STJ, 12.424 ementas só aplicam óbice de admissibilidade, sem marca de tese; 1.334 embargos de declaração são rejeitados por falta de vício; 414 textos são cópias de outra ementa. No TJSC, 1.574 cópias e 1.238 embargos rejeitados. A R5 mede o efeito de tirar o ruído do STJ no recorte `stj_enxuto`.
 
 ## Princípio: precisão antes de volume
 
@@ -17,7 +18,8 @@ O risco de uma coleta nova é encher o acervo de acórdãos fora do tema, que di
 1. **Órgão competente e filtro de tema, juntos.** Nenhuma fonte nova entra pelo órgão inteiro. O órgão restringe a matéria, e um filtro de tema decide o que entra.
 2. **Filtro conferível.** O filtro usa o que a fonte oficial traz: a legislação citada no espelho do STJ e os termos da ementa no TJSC. Não há classificação por modelo de linguagem, coerente com a coleta sem LLM.
 3. **Amostra antes de publicar.** De cada lote, 50 ementas sorteadas são julgadas no tema ou fora dele; o lote só é publicado com 90% ou mais no tema. Abaixo disso, o filtro aperta e o lote é refeito.
-4. **Ruído marcado, não apagado.** Óbice sem tese, EDcl rejeitado e cópia recebem marca na ingestão. Se tiram ou não esses documentos da publicação, quem decide é o operador, com o número da R5 na mão.
+4. **Ruído marcado; só a cópia sai.** Óbice sem tese e EDcl rejeitado recebem marca na ingestão e ficam até o número da R5. A cópia de texto sai da publicação (decisão do operador de 23/10), ficando a primeira ocorrência.
+5. **Tema como marca, não como corte.** Cada ementa recebe o tema (família, criança e adolescente, educação, sucessões) a partir do cabeçalho e da legislação citada, e o agente pode filtrar por ele; nada sai do acervo por estar fora do tema.
 
 ## Fontes, por prioridade
 
@@ -44,8 +46,8 @@ O risco de uma coleta nova é encher o acervo de acórdãos fora do tema, que di
 
 ### 4. Reforço de família
 
-- **STJ, anos anteriores a 2025:** os mesmos datasets em uso (3ª e 4ª Turma, 2ª Seção), com o filtro de legislação citada: Código Civil arts. 1.511 a 1.783 e 1.784 a 2.027, Lei 5.478/1968, Lei 12.318/2010, ECA. Processo civil geral não entra por essa via, porque o acervo já tem volume suficiente dele.
-- **TJSC, antes de 2024:** as dez Câmaras de Direito Civil, com o campo de pesquisa por subtema de família (alimentos, guarda, convivência, divórcio, união estável, partilha, curatela, adoção, alienação parental). O volume por câmara e ano é medido antes, para o operador escolher a profundidade.
+- **STJ, 2024:** os mesmos datasets em uso (3ª e 4ª Turma, 2ª Seção), recursos de 2024, com o filtro de legislação citada: Código Civil arts. 1.511 a 1.783 e 1.784 a 2.027, Lei 5.478/1968, Lei 12.318/2010, ECA. Processo civil geral não entra por essa via, porque o acervo já tem volume suficiente dele.
+- **TJSC, 2022 e 2023:** as dez Câmaras de Direito Civil, com o campo de pesquisa por subtema de família (alimentos, guarda, convivência, divórcio, união estável, partilha, curatela, adoção, alienação parental). O volume por câmara e ano é medido antes de coletar.
 
 ## Ordem e dependência da R5
 
@@ -54,10 +56,17 @@ O risco de uma coleta nova é encher o acervo de acórdãos fora do tema, que di
 3. Coletar educação no TJSC, depois educação no STJ, depois os temas do STF, depois o reforço de família.
 4. Cada lote publicado vale na hora para a busca lexical. Os vetores dos documentos novos são gerados quando a R5 tiver escolhido o modelo, com o mesmo modelo e a mesma versão usados no corpus, de modo incremental.
 
-## Decisões pedidas ao operador
+## Decisões do operador em 23/10/2026
 
-- Exceção da Primeira Seção e da 1ª e 2ª Turma do STJ, só para educação filtrada.
-- Os seis órgãos de direito público do TJSC na lista do coletor, só com filtro de tema.
-- O STF por temas de repercussão geral, em fase de contrato novo.
-- O destino do ruído marcado (óbice sem tese, EDcl rejeitado, cópia): manter, rebaixar ou tirar da publicação, depois do número da R5.
-- A profundidade do reforço de família no STJ (anos) e no TJSC (anos e câmaras).
+Entram no `DECISOES.md` com a implementação, uma por linha.
+
+- **STJ de direito público só para educação filtrada.** 1ª e 2ª Turma e 1ª Seção entram apenas com o filtro de legislação citada e cabeçalho; o resto da Primeira Seção continua fora do recorte.
+- **TJSC de direito público:** 1ª a 5ª Câmara de Direito Público e Grupo de Câmaras de Direito Público, só com filtro de tema; os Núcleos Públicos de Justiça 4.0 ficam fora.
+- **STF por temas de repercussão geral,** com conferência individual, em fase de contrato novo (espécie `tema_rg`).
+- **Cópias de texto saem da publicação já,** ficando a primeira ocorrência (1.574 no TJSC e 414 no STJ na r3376). Óbice sem tese e EDcl rejeitado ficam marcados até o número da R5.
+- **Reforço de família:** STJ só de 2024 (o acervo já tem 2025 em diante); TJSC de 2022 e 2023.
+- **Tema como marca filtrável** no TJSC e no STJ, sem corte por tema; campo novo no contrato, em fase própria.
+
+## O que executa onde
+
+O acervo real fica no notebook (`AGENTS.md`), e toda escrita nele segue a regra de lá: `collector.lock`, backup antes, ensaio numa cópia e recibo depois. A retirada das cópias é a primeira execução, por ser a menor e a única que não depende de coleta nova: ensaiar na cópia, conferir que a primeira ocorrência fica e publicar com recibo. As coletas novas vêm depois, na ordem acima, cada uma medida antes de ingerir.
