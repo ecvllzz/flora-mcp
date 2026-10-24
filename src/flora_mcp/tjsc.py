@@ -172,11 +172,17 @@ def collect_pages(
         rows.extend(values)
     if len(rows) != total:
         raise FloraError("paginacao_incompleta", "Número recuperado difere da contagem do portal.")
-    # Recheck first page after traversal, including zero-result searches.
+    # Recheck first page after traversal, including zero-result searches. A single page may come back
+    # in another order (a search by term ranks ties at random); it must hold the same documents.
     end_total, end_first = fetch(1)
-    if total != end_total or first != end_first:
+    same = first == end_first or (page_count == 1 and unordered(first) == unordered(end_first))
+    if total != end_total or not same:
         raise FloraError("janela_alterada", "Primeira página mudou durante a coleta; repetir janela.")
     return total, pages, rows
+
+
+def unordered(rows: list) -> list:
+    return sorted(json.dumps(row, ensure_ascii=False, sort_keys=True) for row in rows)
 
 
 def collect_window(http, config: Config, organ: int | str, day: date):

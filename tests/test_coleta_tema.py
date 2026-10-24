@@ -13,7 +13,7 @@ from flora_mcp.config import Config
 from flora_mcp.model import FloraError
 from flora_mcp.store import connection
 from flora_mcp.tema import educacao
-from flora_mcp.tjsc import catalog_window, collect_search, collect_window
+from flora_mcp.tjsc import catalog_window, collect_pages, collect_search, collect_window
 from flora_mcp.tjsc_orgaos import PUBLICO, dataset
 
 FIXTURES = Path(__file__).parent / "fixtures" / "tjsc"
@@ -142,6 +142,17 @@ def test_period_with_more_than_one_page_is_split_until_each_part_fits_one(store)
         ("2024-05-29", 0),
     ]
     assert len(sent) == 5  # the crowded probe, then a probe and the final recheck of each half
+
+
+def test_single_page_may_return_in_another_order_but_not_with_other_documents(store):
+    rows = [({"id": "TJSC:1"}, {"id": "1"}), ({"id": "TJSC:2"}, {"id": "2"})]
+    answers = iter([rows, list(reversed(rows)), rows, rows[:1] + [({"id": "TJSC:3"}, {"id": "3"})]])
+    config = Config(store.directory, request_delay=0)
+    with httpx.Client(transport=httpx.MockTransport(lambda req: httpx.Response(200, content=b"x"))) as http:
+        assert collect_pages(http, config, {}, lambda _content: (2, next(answers)))[0] == 2
+        with pytest.raises(FloraError) as info:
+            collect_pages(http, config, {}, lambda _content: (2, next(answers)))
+    assert info.value.code == "janela_alterada"
 
 
 def fake_search(passing_text):
