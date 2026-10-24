@@ -87,4 +87,11 @@ O acervo real fica no notebook (`AGENTS.md`), e toda escrita nele segue a regra 
   - Amostras cegas de 50: 7 no tema com `educacao-1`, 31 com `educacao-2` e 46 com `educacao-3`. A régua do operador conta no tema honorários, multa e execução em ação de direito à educação; a responsabilidade civil por acidente com aluno fica fora.
   - Publicação servida: r3448-s2-422d7bab33-00157ed1de2e, com 80.345 acórdãos (43.068 do TJSC e 37.277 do STJ) e 1.990 cópias de texto fora.
   - Merge do branch em `main` pendente do operador.
-- **Próximo passo:** educação no STJ, temas do STF e reforço de família, cada um com autorização própria do operador. O catálogo do STJ ainda precisa responder.
+- **24/10/2026, família e sucessões no TJSC, no acervo real** (sessão do notebook, branch `reforma/r9-familia-tjsc`, 8efd5d3; recibos `docs/recibos/coleta-familia-tjsc-20261024.json` e `docs/recibos/verificacao-publicacao-familia-20261024.json`; execução TJSC-tema 549f499d; backup `20261024-172958-152788-antes-coleta-familia-tjsc`).
+  - Dez Câmaras de Direito Civil, publicação de 2022 e 2023, 14 subtemas (os nove de família e mais inventário, herança, testamento, arrolamento e sonegados).
+  - Foram 140 consultas e 4.723 acórdãos distintos. Passaram no filtro `familia-1` 2.049, dos quais 2.039 eram novos; os outros 10 já estavam pela coleta por número, com a mesma ementa. Outros 3.289 foram rejeitados com motivo.
+  - Amostra cega: 45 de 50 no tema, no limite dos 90%. Régua do operador: só o mérito. Fica fora o que decide só honorários, só multa ou só processo comum; fica dentro o direito material de inventário e partilha, mesmo regulado no CPC, e a execução de alimentos que decide débito, prisão ou pagamento.
+  - Publicação servida: r3588-s2-422d7bab33-549608c37443, com 82.367 acórdãos depois das cópias de texto (84.374 no banco de trabalho).
+  - Achado no ensaio: o destaque do termo deixava espaço antes da pontuação na ementa ("ALIMENTOS ."). Foi corrigido antes desta carga, mas 36 ementas de educação gravadas antes ficaram com o defeito; a correção depende do operador.
+  - Pendências do operador: merge e push de `reforma/r8-educacao-tjsc` e `reforma/r9-familia-tjsc`.
+- **Próximo passo:** educação no STJ (o catálogo precisa responder), temas do STF e família no STJ de 2024, cada um com autorização própria do operador.
