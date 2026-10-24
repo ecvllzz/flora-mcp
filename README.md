@@ -2,7 +2,7 @@
 
 Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.3`.
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.4`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
 - Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
 - Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).
@@ -21,7 +21,7 @@ flowchart LR
 
 A coleta grava no banco de trabalho, sob uma trava de escritor (`collector.lock`), e termina publicando uma geração nova: um arquivo SQLite fechado e conferido, apontado por um manifesto trocado de forma atômica. O servidor lê a publicação corrente, de modo que uma coleta em andamento não muda a resposta de quem está pesquisando.
 
-A busca é lexical (SQLite FTS5). No modo simples, as palavras se combinam com E e as frases vão entre aspas; quando nenhum documento contém todos os termos, a busca é refeita com OU, sem palavras vazias, e a resposta diz que ampliou (`ampliacao`). O modo avançado aceita E, OU, parênteses, frases e `prefixo*`, sem ampliação. A ordenação padrão com termos é por relevância textual (BM25), que não mede pertinência jurídica.
+A busca é lexical (SQLite FTS5). No modo simples, as frases vão entre aspas; com a ordenação por relevância, o padrão quando há termos, as palavras se combinam com OU, sem palavras vazias, e a relevância põe primeiro o que tem mais termos e os mais raros. Com a ordenação por data, as palavras se combinam com E, e, quando nenhum documento contém todos os termos, a busca é refeita com OU e a resposta diz que ampliou (`ampliacao`). O modo avançado aceita E, OU, parênteses, frases e `prefixo*`, sem ampliação. A ordenação padrão com termos é por relevância textual (BM25), que não mede pertinência jurídica.
 
 ## Recorte e cobertura
 

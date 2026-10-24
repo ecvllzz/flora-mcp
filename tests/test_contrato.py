@@ -1,4 +1,4 @@
-"""Contract flora-mcp-3.3: the examples of CONTRATO.md and each rule, over the real MCP client."""
+"""Contract flora-mcp-3.4: the examples of CONTRATO.md and each rule, over the real MCP client."""
 
 import asyncio
 import base64
@@ -94,7 +94,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
                 "pesquisar_jurisprudencia", {"termos": "pagou pensão"}
             ),
             "pesquisar_jurisprudencia.ampliada": await ok(
-                "pesquisar_jurisprudencia", {"termos": "guarda de pensão"}
+                "pesquisar_jurisprudencia", {"termos": "guarda de pensão", "ordenar": "mais_recentes"}
             ),
             "pesquisar_jurisprudencia.fora_da_cobertura": await ok(
                 "pesquisar_jurisprudencia",
@@ -131,7 +131,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         assert_same_shape(example, answers[name], name)
     for name, answer in answers.items():
         if name != "erro":
-            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.3", name
+            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.4", name
             assert answer["publicacao_id"], name
     assert answers["erro"]["codigo"] == "documento_nao_encontrado"
     assert answers["pesquisar_jurisprudencia.sem_correspondencia"]["termos_sem_ocorrencia"] == [
@@ -283,8 +283,12 @@ def test_empty_page_reasons_follow_the_contract_order(store):
     assert inside["motivo"] == "sem_correspondencia" and "total_sem_filtros" not in inside
     process = api.search(store, "alimentos", processo="999")
     assert (process["motivo"], process["total_sem_filtros"]) == ("filtro_restritivo", 1)
-    # Neither every term nor any term under the filter: today's reason, over the query asked.
-    none = api.search(store, "alimentos inexistente", orgao="quarta turma")
+    # By relevance, any term: the filter is what empties the page.
+    ranked = api.search(store, "alimentos inexistente", orgao="quarta turma")
+    assert (ranked["motivo"], ranked["total_sem_filtros"]) == ("filtro_restritivo", 1)
+    assert ranked["consulta_efetiva"] == '"alimentos" OR "inexistente"'
+    # By date, neither every term nor any term under the filter: today's reason, over the query asked.
+    none = api.search(store, "alimentos inexistente", orgao="quarta turma", ordenar="mais_recentes")
     assert none["motivo"] == "sem_correspondencia" and "ampliacao" not in none
     assert none["consulta_efetiva"] == '"alimentos" AND "inexistente"'
     assert none["termos"] == [
@@ -325,7 +329,7 @@ def test_automatic_order_and_coverage_block(store):
 def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(published):
     page = api.search(published, limite=1)
     decoded = json.loads(base64.urlsafe_b64decode(page["proximo_cursor"]))
-    assert decoded["contrato"] == "flora-mcp-3.3"
+    assert decoded["contrato"] == "flora-mcp-3.4"
     assert decoded["publicacao"] == page["publicacao_id"]
     assert "continua" not in decoded  # no cursor inside a cursor
     legacy = base64.urlsafe_b64encode(
