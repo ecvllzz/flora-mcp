@@ -47,15 +47,21 @@ LEXICO_DE = {"hipotetica": "proposicao"}
 
 
 def marcar_cortes(corpus, meta):
-    """(obice, estrito, enxuto, copia_de) do STJ. obice reaplica a regra atual aos marcados no corpus-meta (a
+    """(obice, estrito, enxuto, copia_de). obice reaplica a regra atual aos marcados no corpus-meta (a
     regra so encolheu desde a exportacao); estrito e o obice sem marca de tese da Corte; enxuto soma ao
-    estrito os EDcl rejeitados e as copias de texto, e copia_de liga cada copia a primeira ocorrencia."""
+    estrito os EDcl rejeitados e as copias de texto do STJ. copia_de liga cada copia de texto, de qualquer
+    tribunal, a primeira ocorrencia (a mesma regra da derivacao copias-texto-1 da publicacao)."""
     por_id = {m["id"]: m for m in meta["itens"]}
     obice, estrito, rejeitados, primeira, copia_de = set(), set(), set(), {}, {}
     with open(corpus / "corpus-textos.jsonl", encoding="utf-8") as fh:
         for linha in fh:
             d = json.loads(linha)
             m = por_id[d["id"]]
+            chave = chave_texto(d["texto"])
+            if chave in primeira:
+                copia_de[d["id"]] = primeira[chave]
+            else:
+                primeira[chave] = d["id"]
             if m["tribunal"] != "STJ":
                 continue
             if m["obice_stj"] and obice_stj("STJ", d["texto"]):
@@ -64,12 +70,21 @@ def marcar_cortes(corpus, meta):
                     estrito.add(d["id"])
             if edcl_rejeitado(m["classe"], d["texto"]):
                 rejeitados.add(d["id"])
-            chave = chave_texto(d["texto"])
-            if chave in primeira:
-                copia_de[d["id"]] = primeira[chave]
-            else:
-                primeira[chave] = d["id"]
-    return obice, estrito, estrito | rejeitados | set(copia_de), copia_de
+    copias_stj = {i for i in copia_de if por_id[i]["tribunal"] == "STJ"}
+    return obice, estrito, estrito | rejeitados | copias_stj, copia_de
+
+
+def sem_removidos(graus, removidos, copia_de):
+    """Graus sem os acordaos removidos; o grau de uma copia removida passa a primeira ocorrencia, quando ela
+    continua buscavel."""
+    saida = {}
+    for q, g in graus.items():
+        novo = {i: v for i, v in g.items() if i not in removidos}
+        for i, v in g.items():
+            if i in removidos and i in copia_de and copia_de[i] not in removidos:
+                novo[copia_de[i]] = max(novo.get(copia_de[i], 0), v)
+        saida[q] = novo
+    return saida
 
 
 def sem(xs, excluir):
@@ -114,6 +129,11 @@ def main():  # noqa: C901
     a.add_argument("--pool-sistemas", nargs="*", default=[])
     a.add_argument("--pool-formulacoes", nargs="*", default=["proposicao"])
     a.add_argument("--pool-recorte", choices=RECORTES, default="geral")
+    a.add_argument(
+        "--sem-copias",
+        action="store_true",
+        help="tira de todas as listas as copias de texto, como a producao",
+    )
     args = a.parse_args()
     corpus = Path(args.corpus)
     conjunto, bm25 = ler_json(args.conjunto), ler_json(args.bm25)
@@ -125,9 +145,12 @@ def main():  # noqa: C901
     obice, estrito, enxuto, copia_de = marcar_cortes(corpus, meta)
     print(
         f"STJ: {len(obice)} com obice pela regra atual, {len(estrito)} sem marca de tese; stj_enxuto tira "
-        f"{len(enxuto)} (inclui {len(copia_de)} copias de texto)"
+        f"{len(enxuto)}; {len(copia_de)} copias de texto no corpus"
     )
     fora = {"sem_obice": obice, "obice_estrito": estrito, "stj_enxuto": enxuto}
+    copias = set(copia_de) if args.sem_copias else set()
+    if copias:
+        print(len(copias), "copias de texto fora de todas as listas e dos graus")
     densos = carregar_densos(corpus, args.nomes, meta)
     julg = ler_json(args.julgamentos) if args.julgamentos else {}
     rr = ler_json(args.reordenacao) if args.reordenacao else {}
@@ -143,7 +166,7 @@ def main():  # noqa: C901
                 base = por_recorte.get("geral" if recorte in fora else recorte)
                 if base is None:
                     continue
-                excluir = fora.get(recorte, set())
+                excluir = fora.get(recorte, set()) | copias
                 listas[p["id"], f, recorte, "atual"] = sem(base["atual"]["ids"], excluir)
                 listas[p["id"], f, recorte, "ou"] = sem(base["ou"]["ids"], excluir)
                 mascara = organ == b["organ_camara"] if recorte == "camara" else None
@@ -190,15 +213,9 @@ def main():  # noqa: C901
         g = dict(p["graus"])
         g.update({i: int(v["grau"]) for i, v in julg.get(p["id"], {}).items()})
         graus[p["id"]] = g
-    # Nos recortes de obice o acordao retirado nao e buscavel: sai tambem dos graus.
-    graus_de = {
-        r: {q: {i: v for i, v in g.items() if i not in x} for q, g in graus.items()} for r, x in fora.items()
-    }
-    for q, g in graus.items():  # no stj_enxuto o grau de uma copia vale para a primeira ocorrencia
-        for i, v in g.items():
-            if i in copia_de and copia_de[i] not in enxuto:
-                alvo = graus_de["stj_enxuto"][q]
-                alvo[copia_de[i]] = max(alvo.get(copia_de[i], 0), v)
+    graus = sem_removidos(graus, copias, copia_de)
+    # Nos recortes de corte o acordao retirado nao e buscavel: sai tambem dos graus.
+    graus_de = {r: sem_removidos(graus, x, copia_de) for r, x in fora.items()}
 
     sistemas = sorted({s for (_, _, _, s) in listas})
     resumo, por_pergunta = {}, {}
