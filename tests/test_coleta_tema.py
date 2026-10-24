@@ -53,18 +53,16 @@ def test_public_law_enters_only_by_theme_search(store):
 @pytest.mark.parametrize(
     "ementa,motivo",
     [
-        ("APELAÇÃO. ECA. VAGA EM CRECHE. DEVER DO MUNICÍPIO. Recurso desprovido.", "verbetacao: creche"),
-        (
-            "REEXAME NECESSÁRIO. SEGUNDO PROFESSOR PARA ALUNO COM AUTISMO.\n1. Cabe.",
-            "verbetacao: segundo prof",
-        ),
-        ("MANDADO DE SEGURANÇA. TRANSPORTE.\n1. Garantido, nos termos do art. 208 da CF.", "legislacao: CF"),
-        ("APELAÇÃO. OBRIGAÇÃO DE FAZER.\n1. Lei n. 9.394/1996 assegura o atendimento.", "legislacao: LDB"),
-        ("AGRAVO. PROTEÇÃO.\n1. O art. 54 do ECA garante o acesso.", "legislacao: ECA"),
-        ("AGRAVO. INCLUSÃO.\n1. Lei 13.146/2015, art. 28, impõe o apoio.", "legislacao: Lei 13.146"),
+        ("APELAÇÃO. ECA. VAGA EM CRECHE. DEVER DO MUNICÍPIO. Recurso desprovido.", "verbetacao: vaga"),
+        ("REEXAME NECESSÁRIO. SEGUNDO PROFESSOR PARA ALUNO COM AUTISMO.\n1. Cabe.", "verbetacao: apoio"),
+        ("AGRAVO. DIREITO FUNDAMENTAL À EDUCAÇÃO. TRANSPORTE GRATUITO.\n1. Devido.", "verbetacao: direito"),
+        ("AÇÃO CIVIL PÚBLICA. ACESSIBILIDADE EM ESCOLA MUNICIPAL.\n1. Obras devidas.", "verbetacao: acess"),
+        ("APELAÇÃO. REFORMA DA ESCOLA ESTADUAL. SEGURANÇA DOS EDUCANDOS.\n1. Cabe.", "verbetacao: estrutura"),
+        # Barrier words do not stop the explicit right: a servant's child and the vacancy in a crèche.
+        ("APELAÇÃO. FILHO DE SERVIDOR. VAGA EM CRECHE.\n1. Devida.", "verbetacao: vaga"),
     ],
 )
-def test_education_enters_by_heading_or_by_cited_law(ementa, motivo):
+def test_education_enters_by_a_mark_of_the_pupils_right(ementa, motivo):
     assert educacao(ementa).startswith(motivo)
 
 
@@ -72,9 +70,14 @@ def test_education_enters_by_heading_or_by_cited_law(ementa, motivo):
     "ementa",
     [
         "APELAÇÃO. SERVIDOR PÚBLICO. PROFESSOR. PISO SALARIAL DO MAGISTÉRIO.\n1. Devido.",
+        "AGRAVO. FUNDAÇÃO CATARINENSE DE EDUCAÇÃO ESPECIAL. GRATIFICAÇÃO DE PRODUTIVIDADE.\n1. Devida.",
+        "APELAÇÃO. EQUIPARAÇÃO SALARIAL. PROFESSOR AUXILIAR DE SALA.\n1. Indevida.",
+        "APELAÇÃO. PREVIDENCIÁRIO. APOSENTADORIA POR INVALIDEZ. ESCOLARIDADE.\n1. Devida.",
+        "APELAÇÃO. RESPONSABILIDADE CIVIL. QUEDA DE ALUNO NA ESCOLA.\n1. Indenização.",
+        "APELAÇÃO. CONCURSO PÚBLICO. PROFESSOR DE EDUCAÇÃO ESPECIAL.\n1. Nomeação.",
+        "MANDADO DE SEGURANÇA. TRANSPORTE.\n1. Garantido, nos termos do art. 208 da CF.",
         "APELAÇÃO. REGISTRO DE IMÓVEIS. MATRÍCULA. RETIFICAÇÃO.\n1. Cabe.",
         "TRIBUTÁRIO. IPTU. RECURSO ESPECIAL.\n1. Educação especial não se discute.",
-        "APELAÇÃO. SAÚDE. MEDICAMENTO.\n1. O art. 196 da CF assegura a saúde.",
     ],
 )
 def test_other_matters_stay_out(ementa):
@@ -243,6 +246,16 @@ def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, 
     script.amostra(registros, 7, tmp_path / "amostra.json", tmp_path / "chave.json")
     cego = json.loads((tmp_path / "amostra.json").read_text(encoding="utf-8"))
     assert len(cego["itens"]) == 50 and all("id" not in item for item in cego["itens"])
+    # A second sample leaves out what the first one showed: only 22 others pass.
+    novo = script.amostra(
+        registros, 8, tmp_path / "a2.json", tmp_path / "c2.json", (tmp_path / "chave.json",)
+    )
+    primeira, segunda = (
+        json.loads((tmp_path / n).read_text(encoding="utf-8"))["codigos"] for n in ("chave.json", "c2.json")
+    )
+    assert (
+        novo["excluidos"] == 50 and len(segunda) == 22 and not set(primeira.values()) & set(segunda.values())
+    )
     juizo = {item["codigo"]: {"no_tema": True, "razao": "creche"} for item in cego["itens"]}
     for codigo in list(juizo)[:6]:
         juizo[codigo] = {"no_tema": False, "razao": "fora"}
@@ -260,6 +273,6 @@ def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, 
         rejeitados = db.execute(
             "SELECT rejeitados FROM resources WHERE id LIKE 'tjsc-%:tema-%' LIMIT 1"
         ).fetchone()[0]
-    assert json.loads(rejeitados)[0]["motivo"] == "fora_do_tema: educacao"
+    assert json.loads(rejeitados)[0]["motivo"] == "fora_do_tema: educacao-2"
     again = script.aplicar(config, store, registros, aprovacao, tmp_path / "recibo2.json", tmp_path / "bk")
     assert again["pendentes"] == 0 and again["eventos"] == []

@@ -27,7 +27,7 @@ from flora_mcp.config import load_config
 from flora_mcp.model import now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
-from flora_mcp.tema import educacao
+from flora_mcp.tema import FILTRO, educacao
 from flora_mcp.tjsc import catalog_search, collect_search, term_slug
 from flora_mcp.tjsc_orgaos import PUBLICO, dataset
 
@@ -119,6 +119,9 @@ def ler_preparo(preparo: Path, todas: list[dict]) -> list[dict]:
         envelope = (preparo / c["arquivo"].replace(".json", ".envelope.json")).read_bytes()
         if hashlib.sha256(envelope).hexdigest() != registro["envelope_sha256"]:
             raise ValueError(f"Envelope alterado: {c['arquivo']}.")
+        # The decision is the current filter's, not the one recorded at collection time.
+        for item in registro["itens"]:
+            item["motivo"] = educacao(item["body"]["ementa"])
         registros.append({**registro, "arquivo": c["arquivo"], "envelope": envelope})
     return registros
 
@@ -133,21 +136,33 @@ def resumo(registros: list[dict]) -> dict:
     return {"consultas": len(registros), "acordaos_unicos": len(vistos), "passam_unicos": len(passam)}, passam
 
 
-def amostra(registros, semente: int, saida: Path, chave: Path) -> dict:
+def amostra(registros, semente: int, saida: Path, chave: Path, excluir: tuple[Path, ...] = ()) -> dict:
+    """Sorteio dos que passam no filtro; os ids das chaves de amostras anteriores ficam de fora,
+    para que um filtro apertado pela leitura de uma amostra não seja medido nela mesma."""
     _, passam = resumo(registros)
-    ordem = sorted(passam, key=lambda i: hashlib.sha256(f"{semente}:{i}".encode()).hexdigest())[:AMOSTRA]
+    vistos = {i for path in excluir for i in json.loads(path.read_text(encoding="utf-8"))["codigos"].values()}
+    candidatos = [i for i in passam if i not in vistos]
+    ordem = sorted(candidatos, key=lambda i: hashlib.sha256(f"{semente}:{i}".encode()).hexdigest())[:AMOSTRA]
     codigos = {f"e{n:02d}": i for n, i in enumerate(ordem, 1)}
     cego = {
         "schema": "flora-amostra-tema-1",
+        "filtro": FILTRO,
         "tema": TEMA,
         "instrucao": "Para cada ementa, responda no_tema true ou false e uma frase de razão.",
         "itens": [{"codigo": k, "ementa": passam[i]["body"]["ementa"]} for k, i in codigos.items()],
     }
-    for path, value in ((saida, cego), (chave, {"semente": semente, "codigos": codigos})):
+    chave_valor = {"semente": semente, "filtro": FILTRO, "excluidos": len(vistos), "codigos": codigos}
+    for path, value in ((saida, cego), (chave, chave_valor)):
         if path.exists():
             raise ValueError(f"Arquivo já existe: {path}.")
         path.write_text(json.dumps(value, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    return {"amostra": len(codigos), "semente": semente}
+    return {
+        "amostra": len(codigos),
+        "semente": semente,
+        "filtro": FILTRO,
+        "passam": len(passam),
+        "excluidos": len(vistos),
+    }
 
 
 def aprovar(julgamento: Path, chave: Path) -> dict:
@@ -171,7 +186,7 @@ def ingerir(store, registro, run) -> dict:
         saved = dict(db.execute("SELECT * FROM resources WHERE id=?", (resource_id,)).fetchone())
     rows = [(i["body"], i["raw"]) for i in registro["itens"] if i["motivo"]]
     rejected = [
-        {"posicao": n, "id": i["body"]["id"], "motivo": "fora_do_tema: educacao"}
+        {"posicao": n, "id": i["body"]["id"], "motivo": "fora_do_tema: " + FILTRO}
         for n, i in enumerate(registro["itens"])
         if not i["motivo"]
     ]
@@ -209,6 +224,7 @@ def aplicar(config, store, registros, aprovacao, report_path: Path, backup_root=
             "inicio": now(),
             "banco": str(store.path),
             "amostra": aprovacao,
+            "filtro": FILTRO,
             "resumo": resumo(registros)[0],
             "pendentes": len(pendentes),
             "antes": groups(store),
@@ -254,6 +270,9 @@ def main():
     parser.add_argument("--semente", type=int)
     parser.add_argument("--amostra", type=Path, help="Arquivo cego da amostra")
     parser.add_argument("--chave", type=Path, help="Chave dos códigos da amostra")
+    parser.add_argument(
+        "--excluir-chave", type=Path, action="append", default=[], help="Chave de amostra anterior"
+    )
     parser.add_argument("--julgamento", type=Path)
     parser.add_argument("--report", type=Path)
     parser.add_argument("--backup", type=Path)
@@ -273,7 +292,17 @@ def main():
     elif args.fase == "amostra":
         if args.semente is None or not args.amostra or not args.chave:
             parser.error("amostra exige --semente, --amostra e --chave.")
-        print(json.dumps(amostra(ler_preparo(preparo, todas), args.semente, args.amostra, args.chave)))
+        print(
+            json.dumps(
+                amostra(
+                    ler_preparo(preparo, todas),
+                    args.semente,
+                    args.amostra,
+                    args.chave,
+                    tuple(args.excluir_chave),
+                )
+            )
+        )
     else:
         if not (args.julgamento and args.chave and args.report):
             parser.error("aplicar exige --julgamento, --chave e --report novo.")
