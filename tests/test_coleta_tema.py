@@ -101,7 +101,7 @@ def test_other_matters_stay_out(ementa):
         ("AGRAVO. REGULAMENTAÇÃO DE VISITAS. AVÓS.\n1. Ampliadas.", "verbetacao: convivência"),
         (
             "APELAÇÃO. RECONHECIMENTO E DISSOLUÇÃO DE UNIÃO ESTÁVEL. PARTILHA.\n1. Cabe.",
-            "verbetacao: casamento",
+            "verbetacao: divórcio",
         ),
         ("APELAÇÃO. CURATELA. LAUDO PERICIAL.\n1. Decretada.", "verbetacao: curatela"),
         ("APELAÇÃO. DESTITUIÇÃO DO PODER FAMILIAR. ADOÇÃO DE CRIANÇA.\n1. Mantida.", "verbetacao: adoção"),
@@ -110,7 +110,18 @@ def test_other_matters_stay_out(ementa):
         ("APELAÇÃO. AÇÃO DE SONEGADOS. HERDEIRO.\n1. Procedente.", "verbetacao: sucessões"),
         ("APELAÇÃO. TESTAMENTO PÚBLICO. NULIDADE.\n1. Afastada.", "verbetacao: sucessões"),
         # A strong mark passes over a barrier word: the contract is the partilha's object.
-        ("APELAÇÃO. DIVÓRCIO. PARTILHA DE CONTRATO DE FINANCIAMENTO.\n1. Cabe.", "verbetacao: casamento"),
+        ("APELAÇÃO. DIVÓRCIO. PARTILHA DE CONTRATO DE FINANCIAMENTO.\n1. Cabe.", "verbetacao: divórcio"),
+        # The family heading holds the acórdão whatever action follows, unless the action is a civil one.
+        (
+            "DIREITO DE FAMÍLIA. AGRAVO. DESOCUPAÇÃO DE IMÓVEL. MEDIDA PROTETIVA.\n1. Mantida.",
+            "verbetacao: direito",
+        ),
+        # Fees beside a merit decision do not take the acórdão out.
+        (
+            "DIREITO CIVIL. APELAÇÃO. AÇÃO DE ALIMENTOS. FIXAÇÃO DO QUANTUM. BINÔMIO. AFASTAMENTO DA "
+            "SUCUMBÊNCIA RECÍPROCA. RECURSO PROVIDO.\n1. Cabe.",
+            "verbetacao: alimentos",
+        ),
         ("APELAÇÃO. ESPÓLIO. HERDEIROS. ALVARÁ JUDICIAL.\n1. Deferido.", "verbetacao: herdeiros"),
     ],
 )
@@ -130,9 +141,29 @@ def test_family_and_succession_enter_by_a_mark_in_the_verbetacao(ementa, motivo)
         "AGRAVO. EXECUÇÃO DE TÍTULO EXTRAJUDICIAL. PENHORA. CÔNJUGE.\n1. Mantida.",
         "APELAÇÃO. ADOÇÃO DE MEDIDAS DE SEGURANÇA PELO CONDOMÍNIO.\n1. Cabe.",
         "APELAÇÃO. SUCESSÃO PROCESSUAL. EMPRESA INCORPORADA.\n1. Deferida.",
+        "APELAÇÃO. FILIAÇÃO ASSOCIATIVA. DESCONTOS EM BENEFÍCIO.\n1. Válida.",
+        "APELAÇÃO. AÇÃO DE USUCAPIÃO. IMÓVEL RECEBIDO POR HERANÇA.\n1. Reconhecida.",
+        "APELAÇÃO. ACIDENTE DE MOTO. INDENIZAÇÃO E PENSÃO ALIMENTÍCIA.\n1. Devida.",
+        "AGRAVO. DIREITO DA CRIANÇA E DO ADOLESCENTE. EDUCAÇÃO INFANTIL. VAGA.\n1. Devida.",
     ],
 )
 def test_matters_where_family_only_names_the_parties_stay_out(ementa):
+    assert familia(ementa) is None
+
+
+@pytest.mark.parametrize(
+    "ementa",
+    [
+        "DIREITO DE FAMÍLIA. APELAÇÃO. AÇÃO DE DIVÓRCIO. EXTINÇÃO SEM RESOLUÇÃO DO MÉRITO.\n1. Mantida.",
+        "DIREITO PROCESSUAL CIVIL. CONFLITO NEGATIVO DE COMPETÊNCIA. ALVARÁ JUDICIAL.\n1. Procedente.",
+        "DIREITO DAS SUCESSÕES. EMBARGOS DE DECLARAÇÃO. INVENTÁRIO. OMISSÃO INEXISTENTE.\n1. Rejeitados.",
+        "AGRAVO. INVENTÁRIO. GRATUIDADE DA JUSTIÇA. LITIGÂNCIA DE MÁ-FÉ. RECURSO DESPROVIDO.\n1. Mantida.",
+        "APELAÇÃO. INVESTIGAÇÃO DE PATERNIDADE. INSURGÊNCIA RESTRITA AOS HONORÁRIOS.\n1. Reduzidos.",
+        "AGRAVO. COBRANÇA DE HONORÁRIOS SUCUMBENCIAIS DE AÇÃO DE DIVÓRCIO.\n1. Devidos.",
+    ],
+)
+def test_family_acordaos_that_decide_only_procedure_or_fees_stay_out(ementa):
+    """Régua do operador para família: só o mérito."""
     assert familia(ementa) is None
 
 
