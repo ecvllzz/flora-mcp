@@ -262,7 +262,10 @@ def test_opt_in_grammar_preserves_filters_and_phrases(store):
     )
     expression = 'alimentos AND ("dano moral" OR materiais)'
     simple = api.search(store, expression)  # operators are plain words in simple mode
-    assert '"AND"' in simple["consulta_efetiva"] and simple["ampliacao"]["para"] == "qualquer_termo"
+    assert '"AND"' in simple["consulta_efetiva"] and " OR " in simple["consulta_efetiva"]
+    assert "ampliacao" not in simple
+    dated = api.search(store, expression, ordenar="mais_recentes")
+    assert '"AND"' in dated["consulta_efetiva"] and dated["ampliacao"]["para"] == "qualquer_termo"
     assert api.search(store, expression, modo_busca="avancado")["total_encontrado"] == 2
     publish(store)
     assert api.search(store, expression, modo_busca="avancado", relator="lucia")["total_encontrado"] == 1

@@ -1,4 +1,4 @@
-# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.3`)
+# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.4`)
 
 Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatro ferramentas, todas somente leitura (`readOnlyHint: true`), sobre um acervo local parcial coletado de fontes oficiais. Os testes de protocolo (`tests/test_contrato.py`) leem os exemplos marcados abaixo e conferem, pelo cliente MCP real, que as respostas têm exatamente a mesma forma.
 
@@ -11,7 +11,7 @@ Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatr
 
 ## Regras comuns
 
-- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.3"` e, quando o acervo lido é uma publicação, `publicacao_id`.
+- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.4"` e, quando o acervo lido é uma publicação, `publicacao_id`.
 - Parâmetros de vocabulário fechado aparecem no esquema JSON como `enum`; o valor fora da lista é recusado com o erro `parametro_invalido`.
 - Datas no formato `AAAA-MM-DD`. `data_inicio` e `data_fim` são inclusivas.
 - `publicacao_id` fixa a geração lida. Sem ele, lê-se a publicação atual; com cursor, lê-se a publicação do cursor.
@@ -22,7 +22,7 @@ Só acórdãos. Temas e súmulas estão em `pesquisar_precedentes`.
 
 | Parâmetro | Valores | Padrão |
 |---|---|---|
-| `termos` | texto; no modo simples, palavras ligadas por AND e frases entre aspas, com ampliação para OR quando o AND nada encontra | `""` |
+| `termos` | texto; no modo simples, palavras e frases entre aspas, ligadas por OR quando a ordenação é por relevância e por AND quando é por data (com ampliação para OR quando o AND nada encontra) | `""` |
 | `processo` | número do processo ou registro, com ou sem pontuação | nenhum |
 | `tribunal` | `STJ`, `TJSC` | nenhum |
 | `orgao` | nome exato do órgão, sem distinção de acentos e caixa | nenhum |
@@ -52,7 +52,7 @@ Os três filtros `cita_*` restringem aos acórdãos cujas citações, extraídas
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -102,7 +102,7 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -130,7 +130,8 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
   "ementas_completas": false,
   "campo_pesquisado": "ementa",
   "modo_busca": "simples",
-  "consulta_efetiva": "\"pagamento\" AND \"parcial\"",
+  "consulta_efetiva": "\"pagamento\" OR \"parcial\"",
+  "termos_descartados": [],
   "ordenacao": "relevancia",
   "revisao_base": 3,
   "proximo_cursor": null,
@@ -145,9 +146,15 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
 
 `cobertura` é sempre `{integral: false, fontes_em_atraso, aviso}`. `fontes_em_atraso` lista as fontes cuja última coleta concluída passou do limiar configurado (o bloco `coleta` de `consultar_cobertura` tem as datas e os limiares).
 
-### Ampliação para qualquer termo
+### Qualquer termo, por relevância
 
-No modo simples, quando a consulta tem dois ou mais termos (palavras ou frases entre aspas) e nenhum documento, com os mesmos filtros, contém todos eles, a busca é refeita com OR entre os termos, com os mesmos filtros, a mesma ordenação e as demais regras. Na consulta ampliada saem as palavras soltas que são palavras vazias do português (artigos, preposições e suas contrações, conjunções, pronomes relativos e interrogativos e verbos de ligação comuns como `pode`, `deve`, `cabe`, `foi`, `ser`), comparadas sem distinção de caixa e acentos; frases entre aspas ficam inteiras. Se não sobra termo, não há ampliação. Consulta de um termo só e `modo_busca=avancado` nunca são ampliados.
+No modo simples, com a ordenação por relevância (o padrão quando há termos) e dois ou mais termos, a consulta liga por OR as palavras e frases entre aspas, sem as palavras soltas que são palavras vazias do português (artigos, preposições e suas contrações, conjunções, pronomes relativos e interrogativos, verbos de ligação comuns como `pode`, `deve`, `cabe`, `foi`, `ser`, e ainda `não`, `seu`, `sua`, `seus`, `suas`, `esse`, `essa`, `este`, `isso`), comparadas sem distinção de caixa e acentos; frases entre aspas ficam inteiras. A relevância (BM25) põe primeiro o que tem mais termos e os mais raros. `consulta_efetiva` mostra a consulta OR, e `termos_descartados` lista as palavras vazias removidas (lista vazia quando nenhuma saiu). Se só restam palavras vazias, a consulta fica com AND entre todos os termos, sem o campo. Consulta de um termo só, `modo_busca=avancado` e ordenação por data não usam essa regra.
+
+Os primeiros resultados podem conter só parte dos termos. Confira em `trecho_correspondente` quais termos sustentam cada resultado. Na medida da R5 (54 perguntas de família, julgamento cego), essa regra subiu o nDCG@8 da proposição de 0,552 para 0,730 e o do assessor de 0,620 para 0,784, em relação ao AND com ampliação.
+
+### Ampliação para qualquer termo, por data
+
+No modo simples, com ordenação por data (`mais_recentes` ou `mais_antigos`), a consulta liga os termos por AND. Quando ela tem dois ou mais termos e nenhum documento, com os mesmos filtros, contém todos eles, a busca é refeita com OR entre os termos, com os mesmos filtros, a mesma ordenação e as demais regras. Na consulta ampliada saem as palavras vazias da lista acima, sem `não`, `seu`, `sua`, `seus`, `suas`, `esse`, `essa`, `este` e `isso`; frases entre aspas ficam inteiras. Se não sobra termo, não há ampliação. Consulta de um termo só e `modo_busca=avancado` nunca são ampliados.
 
 Quando houve ampliação, `consulta_efetiva` é a consulta OR executada, `total_encontrado` conta a consulta ampliada e a resposta traz `ampliacao`: `de` (`todos_os_termos`), `para` (`qualquer_termo`), `motivo`, `termos` (quantos documentos contêm cada termo mantido, sem filtros, como na resposta vazia) e `termos_descartados` (as palavras vazias removidas). Se a consulta ampliada também nada encontra, a resposta é a vazia descrita abaixo, calculada sobre a consulta original, sem `ampliacao`. Sem ampliação, a resposta não traz o campo. O cursor continua a mesma consulta efetiva: na mesma revisão da base, a decisão de ampliar se repete com o mesmo resultado.
 
@@ -157,7 +164,7 @@ A ampliação troca precisão por cobertura: os primeiros resultados podem conte
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -189,7 +196,7 @@ A ampliação troca precisão por cobertura: os primeiros resultados podem conte
     "termos": [{"termo": "guarda", "documentos": 1}, {"termo": "pensão", "documentos": 0}],
     "termos_descartados": ["de"]
   },
-  "ordenacao": "relevancia",
+  "ordenacao": "mais_recentes",
   "revisao_base": 3,
   "proximo_cursor": null,
   "cobertura": {
@@ -203,7 +210,7 @@ A ampliação troca precisão por cobertura: os primeiros resultados podem conte
 
 ### Resposta vazia
 
-Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da ampliação descrita acima, a ferramenta não reformula a consulta. As regras são aplicadas nesta ordem:
+Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além do OU por relevância e da ampliação descritos acima, a ferramenta não reformula a consulta. As regras são aplicadas nesta ordem:
 
 1. `fora_da_cobertura`: há filtro de datas e o intervalo pedido não intercepta o intervalo de datas (do `tipo_data` pedido) de nenhum grupo carregado que satisfaça os filtros de tribunal e órgão. `intervalos_carregados` lista esses grupos com `inicio` e `fim`.
 2. `filtro_restritivo`: há filtros (tribunal, órgão, classe, relator, datas, processo) e a mesma consulta sem nenhum filtro encontra resultados; `total_sem_filtros` dá quantos.
@@ -213,14 +220,15 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
   "ementas_completas": false,
   "campo_pesquisado": "ementa",
   "modo_busca": "simples",
-  "consulta_efetiva": "\"pagou\" AND \"pensão\"",
+  "consulta_efetiva": "\"pagou\" OR \"pensão\"",
+  "termos_descartados": [],
   "ordenacao": "relevancia",
   "revisao_base": 3,
   "proximo_cursor": null,
@@ -240,7 +248,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -268,7 +276,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além da a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -320,7 +328,7 @@ Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -368,7 +376,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "total_encontrado": 0,
   "resultados": [],
   "campo_pesquisado": "todos",
@@ -409,7 +417,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL.\nI. CASO EM EXAME\n1. Habeas corpus contra prisão civ",
@@ -462,7 +470,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "id": "STJ:2",
   "componente": "citacoes",
   "texto": "[\n {\n  \"tipo\": \"acordao\",\n  \"chave\": \"STJ:RESP:1234567\",\n  \"texto\": \"<<REsp 1234567>>-SP\",\n  \"origem\": \"espelho_stj:jurisprudenciaCitada\",\n  \"resolvido\": \"STJ:1\"\n }\n]",
@@ -525,7 +533,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "il por dívida de alimentos com pagamento parcial.\nII. QUESTÃO EM DISCUSSÃO\n2. Saber se o pagamento p",
@@ -588,7 +596,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
   "precedentes": [{"tribunal": "STJ", "especie": "sumula", "admissao": "admitido", "documentos": 1}],
   "admissao_atual": {"admitido": 1},
   "proximo_cursor": null,
-  "contrato": "flora-mcp-3.3",
+  "contrato": "flora-mcp-3.4",
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
 }
 ```
@@ -656,8 +664,8 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 ## O que o cliente não deve concluir
 
 - Resultado vazio não prova que não exista jurisprudência: vale só para a base carregada, e `motivo` diz por que a página veio vazia. Antes de afirmar ausência, consulte `consultar_cobertura`.
-- `sem_correspondencia` não autoriza trocar os termos em nome do usuário sem dizer; a ferramenta só amplia a consulta simples para qualquer termo, e o diz em `ampliacao`.
-- Resultado de consulta ampliada não contém necessariamente todos os termos pedidos; diga ao usuário que a busca foi ampliada.
+- `sem_correspondencia` não autoriza trocar os termos em nome do usuário sem dizer; a ferramenta só liga os termos por OR na relevância e amplia a consulta por data para qualquer termo, e o diz em `consulta_efetiva` e em `ampliacao`.
+- Resultado da consulta por relevância ou da consulta ampliada não contém necessariamente todos os termos pedidos; confira o trecho antes de afirmar que a ementa trata de cada um.
 - Relevância textual não é pertinência jurídica nem autoridade.
 - Ementa e espelho não são inteiro teor (`inteiro_teor_disponivel: false`).
 - `cabecalho` e `trecho_correspondente` são recortes; leia a ementa com `obter_documento` antes de citar.
@@ -668,6 +676,10 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 - Processo ausente da busca pode ser cópia de texto de outro acórdão: a primeira ocorrência o lista em `metadados.copias_texto`. A ementa é a mesma, mas a `referencia` é a da primeira ocorrência; o processo da cópia se cita pelo que a lista traz, conferido na fonte.
 
 ## Mudanças do contrato
+
+### `flora-mcp-3.4` (24/10/2026)
+
+- `pesquisar_jurisprudencia` no modo simples, com ordenação por relevância e dois ou mais termos, liga os termos por OR desde o início, sem as palavras vazias, e a resposta traz `termos_descartados`. Com ordenação por data, continua o AND com ampliação, e a busca de precedentes e o modo avançado não mudam. Razão: a medida da R5 (branch `reforma/r5-hibrido-kit`, `RESULTADO-R5.md`). Cursores de `flora-mcp-3.3` são recusados com `cursor_invalido`; refaça a consulta.
 
 ### Revisão de `flora-mcp-3.3` (23/10/2026)
 

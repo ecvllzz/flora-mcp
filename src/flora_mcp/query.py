@@ -13,7 +13,7 @@ from .citations import extract as extract_citations
 from .citations import filter_key
 from .text import advanced_query, header, matched_window, sections
 
-CONTRATO = "flora-mcp-3.3"
+CONTRATO = "flora-mcp-3.4"
 ORDERS = ("mais_recentes", "mais_antigos", "relevancia")
 # Triage pages stay under 8 KiB of compact JSON, with room for the publication identity.
 TRIAGE_BUDGET = 7500
@@ -142,6 +142,9 @@ STOPWORDS = frozenset(
     pode podem deve devem cabe cabem foi foram ser sao esta estao ha
     """.upper().split()
 )
+# A ranked simple query of acórdãos also drops the negation, possessives and demonstratives: the
+# compiler measured in the R5 (avaliacao/hibrido/comum.py, consulta_ou).
+RANKED_STOPWORDS = STOPWORDS | frozenset("NAO SUA SUAS SEU SEUS ISSO ESSE ESSA ESTE".split())
 BROADENED = {
     "de": "todos_os_termos",
     "para": "qualquer_termo",
@@ -149,16 +152,24 @@ BROADENED = {
 }
 
 
-def broadening(termos: str) -> tuple[list[str], list[str]] | None:
+def content_terms(termos: str, stopwords=STOPWORDS) -> tuple[list[str], list[str]] | None:
     """Terms kept and stopwords dropped when a simple query of two or more terms is ORed; None if not."""
     tokens = lexical_tokens(termos)
     if len(tokens) < 2:
         return None
     kept, dropped = [], []
     for value, phrase in tokens:
-        stopword = not phrase and re.sub(r"\W", "", folded(value)) in STOPWORDS
+        stopword = not phrase and re.sub(r"\W", "", folded(value)) in stopwords
         (dropped if stopword else kept).append(value)
     return (kept, dropped) if kept else None
+
+
+def broadening(termos: str) -> tuple[list[str], list[str]] | None:
+    return content_terms(termos)
+
+
+def any_term_query(terms: list[str]) -> str:
+    return " OR ".join(quoted(t) for t in terms)
 
 
 def compile_terms(termos: str, modo_busca: str) -> str:
@@ -301,6 +312,13 @@ class JudgmentSearch:
         self.limit = page_limit(detalhe, limite)
         self.query = compile_terms(termos, modo_busca)
         self.ordenar = resolve_order(ordenar, self.query)
+        # Ranked by relevance, a simple query of two or more terms is ORed from the start and BM25 puts
+        # first what has more of them and the rarer ones; ordered by date, it keeps every term.
+        self.any_term = None
+        if modo_busca == "simples" and self.ordenar == "relevancia":
+            self.any_term = content_terms(termos, RANKED_STOPWORDS)
+            if self.any_term:
+                self.query = any_term_query(self.any_term[0])
         self.column = "publication" if tipo_data == "publicacao" else "judgment"
         self.filters, self.params, self.filtered = [], [], False
         self.offset = 0
@@ -349,12 +367,13 @@ class JudgmentSearch:
             raise database_error(exc) from exc
 
     def total(self, db):
-        """Count with every term; when that is zero, retry with any term (simple mode only)."""
+        """Count; a simple query with every term that finds nothing is retried with any term."""
         total = self.count(db)
-        terms = broadening(self.termos) if total == 0 and self.modo_busca == "simples" else None
+        broaden = total == 0 and self.modo_busca == "simples" and not self.any_term
+        terms = broadening(self.termos) if broaden else None
         if terms is None:
             return total
-        self.query = " OR ".join(quoted(t) for t in terms[0])
+        self.query = any_term_query(terms[0])
         total = self.count(db)
         if total == 0:
             self.query = self.original  # The empty answer and its reason stay those of the query asked.
@@ -511,6 +530,7 @@ def search(
         "campo_pesquisado": "ementa",
         "modo_busca": modo_busca,
         "consulta_efetiva": plan.query,
+        **({"termos_descartados": plan.any_term[1]} if plan.any_term else {}),
         **({"ampliacao": plan.broadened} if plan.broadened else {}),
         "ordenacao": plan.ordenar,
         **({"citacoes_filtradas": cited} if cited else {}),
