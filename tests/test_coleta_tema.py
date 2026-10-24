@@ -2,6 +2,7 @@
 
 import importlib.util
 import json
+import re
 from datetime import date
 from pathlib import Path
 from urllib.parse import parse_qs
@@ -142,6 +143,35 @@ def test_period_with_more_than_one_page_is_split_until_each_part_fits_one(store)
         ("2024-05-29", 0),
     ]
     assert len(sent) == 5  # the crowded probe, then a probe and the final recheck of each half
+
+
+def test_a_part_answered_with_a_repeated_acordao_is_tried_again(store):
+    first, second = re.findall(rb'id="resultado(\d+)"', PAGE)[:2]
+    repeated = PAGE.replace(b'id="resultado' + second + b'"', b'id="resultado' + first + b'"')
+    answers = iter([repeated, PAGE, PAGE, PAGE])
+    with httpx.Client(
+        transport=httpx.MockTransport(lambda req: httpx.Response(200, content=next(answers)))
+    ) as http:
+        content, rows = collect_search(
+            http,
+            Config(store.directory, request_delay=0),
+            GRUPO,
+            "creche",
+            date(2022, 1, 1),
+            date(2023, 12, 31),
+        )
+    assert len(rows) == 2 and json.loads(content)["partes"][0]["tentativas"] == 2
+    always = httpx.MockTransport(lambda req: httpx.Response(200, content=repeated))
+    with httpx.Client(transport=always) as http, pytest.raises(FloraError) as info:
+        collect_search(
+            http,
+            Config(store.directory, request_delay=0),
+            GRUPO,
+            "creche",
+            date(2022, 1, 1),
+            date(2023, 12, 31),
+        )
+    assert info.value.code == "paginacao_instavel"
 
 
 def test_single_page_may_return_in_another_order_but_not_with_other_documents(store):

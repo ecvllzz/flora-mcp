@@ -262,22 +262,43 @@ def search_data(organ: int | str, term: str, start: date, end: date) -> dict:
     }
 
 
+# Answers of a theme search that a new attempt may cure; anything else stops the search.
+UNSTABLE = {"paginacao_instavel", "paginacao_incompleta", "janela_alterada"}
+SEARCH_ATTEMPTS = 3
+
+
 def collect_search(http, config: Config, organ: int | str, term: str, start: date, end: date):
     """Every acórdão of one organ, one search term in the ementa and one publication period.
 
     The portal has no ordering field, and a long search by term pages unstably (the same acórdão
     on two pages). A period with more than one page is split in halves until each part fits one
     page; only a single day with more results is paged, with the window checks. The first page of
-    every split period stays in the envelope as provenance.
+    every split period stays in the envelope as provenance. The portal now and then answers a part
+    with a repeated or reordered acórdão: the part is tried again, from a new first page, up to
+    SEARCH_ATTEMPTS times, and the envelope records how many it took.
     """
     parts, probes, rows, ids = [], [], [], set()
 
-    def visit(a: date, b: date):
+    def sound(a: date, b: date):
         data = search_data(organ, term, a, b)
-        parse = lambda content: parse_period_page(content, organ, a, b)  # noqa: E731
         PACER.wait(config.request_delay)
         probe = download(http, TJSC_SEARCH, config.max_download_bytes, method="POST", data=dict(data))
-        total, _ = parse(probe)
+        total, _ = parse_period_page(probe, organ, a, b)
+        return data, probe, total
+
+    def visit(a: date, b: date):
+        data, probe, total = sound(a, b)
+        parse = lambda content: parse_period_page(content, organ, a, b)  # noqa: E731
+        attempt = 1
+        while total <= 10 or a == b:
+            try:
+                part_total, pages, found = collect_pages(http, config, data, parse, first_page=probe)
+                break
+            except FloraError as exc:
+                if exc.code not in UNSTABLE or attempt == SEARCH_ATTEMPTS:
+                    raise
+                attempt += 1
+                data, probe, total = sound(a, b)
         if total > 10 and a < b:
             probes.append(
                 {
@@ -293,7 +314,6 @@ def collect_search(http, config: Config, organ: int | str, term: str, start: dat
             visit(a, middle)
             visit(middle + timedelta(days=1), b)
             return
-        part_total, pages, found = collect_pages(http, config, data, parse, first_page=probe)
         new = {body["id"] for body, _ in found}
         if ids & new:
             raise FloraError("paginacao_instavel", "Acórdão TJSC em dois períodos da mesma consulta.")
@@ -304,6 +324,7 @@ def collect_search(http, config: Config, organ: int | str, term: str, start: dat
                 "publicacao_inicio": a.isoformat(),
                 "publicacao_fim": b.isoformat(),
                 "total": part_total,
+                "tentativas": attempt,
                 "paginas": pages,
             }
         )
