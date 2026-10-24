@@ -1,0 +1,41 @@
+{
+  "schema": "flora-recibo-copias-texto-1",
+  "conferido_em": "2026-10-24T00:54:28.488271+00:00",
+  "publicacao_anterior": "r3376-s2-cd895f3434-f0a4721f447f",
+  "publicacao_id": "r3376-s2-422d7bab33-9701325cf7ff",
+  "sha256": "9701325cf7ffa7591ddfc134c7ad419b241b67e144e0f1dc03da21d29178a05b",
+  "derivador": "flora-read-2.3;ementa-secoes-2;citacoes-1;copias-texto-1",
+  "copias_texto": {
+    "grupos": 937,
+    "copias_retiradas": 1988,
+    "por_tribunal": {
+      "TJSC": 1574,
+      "STJ": 414
+    }
+  },
+  "backup": "20261023-214825-743033-antes-copias-texto",
+  "ensaio": {
+    "pasta": "Flora-MCP-sandbox-r6",
+    "publicacao_id": "r3376-s2-422d7bab33-9701325cf7ff",
+    "identica": true
+  },
+  "conteudo_preservado": {
+    "documentos": 80188,
+    "referencias_estruturalmente_completas": 80150,
+    "sha256_registros_e_referencias": "f0ad4dbc13d98e6f74f0923a47c3b3ba56ba4e2730db3273d28b2458bdd3d9c6",
+    "grupos": [
+      {
+        "tribunal": "STJ",
+        "documentos": 37277
+      },
+      {
+        "tribunal": "TJSC",
+        "documentos": 42911
+      }
+    ],
+    "integridade": "ok"
+  },
+  "igualdade_literal": true,
+  "limite": "verify_publication.py completo falha no resumo da cobertura (14.343 caracteres contra o limite de 10.000), ja no main antes desta mudanca; a igualdade literal foi conferida pela funcao fingerprint do mesmo script.",
+  "codigo": "reforma/r6-copias-texto 44a79a1"
+}
