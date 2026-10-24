@@ -1,0 +1,1118 @@
+{
+  "inicio": "2026-10-24T12:09:49.088039+00:00",
+  "banco": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP\\acervo.sqlite",
+  "amostra": {
+    "no_tema": 46,
+    "de": 50,
+    "taxa": 0.92,
+    "fora_do_tema": [
+      {
+        "id": "TJSC:321787157203799775297021972363",
+        "no_tema": false,
+        "razao": "Pregão de transporte escolar; licitação."
+      },
+      {
+        "id": "TJSC:321756891563305472773519372303",
+        "no_tema": false,
+        "razao": "Ação popular sobre desafetação de área pública para empresa."
+      },
+      {
+        "id": "TJSC:321757082372504477113624316464",
+        "no_tema": false,
+        "razao": "Habilitação de candidata a professora temporária; matéria de servidor."
+      },
+      {
+        "id": "TJSC:321756783797891918382248881499",
+        "no_tema": false,
+        "razao": "Ação popular sobre desafetação de área pública para empresa."
+      }
+    ]
+  },
+  "filtro": "educacao-3",
+  "resumo": {
+    "consultas": 72,
+    "acordaos_unicos": 3139,
+    "passam_unicos": 160
+  },
+  "pendentes": 72,
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 6617
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 4
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4041
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 11
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5395
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 4975
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5523
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4078
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4734
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6449
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 2
+    }
+  ],
+  "status": "ok",
+  "eventos": [
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 16,
+      "ingeridos": 5,
+      "rejeitados": 11,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 10,
+      "ingeridos": 4,
+      "rejeitados": 6,
+      "novos": 3,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-segundo-professor-2022-01-01-2026-10-24",
+      "acordaos": 8,
+      "ingeridos": 0,
+      "rejeitados": 8,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 9,
+      "ingeridos": 3,
+      "rejeitados": 6,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-acompanhante-terapeutico-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 336,
+      "ingeridos": 4,
+      "rejeitados": 332,
+      "novos": 4,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 1,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 120,
+      "ingeridos": 1,
+      "rejeitados": 119,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 3,
+      "ingeridos": 3,
+      "rejeitados": 0,
+      "novos": 2,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 157,
+      "ingeridos": 14,
+      "rejeitados": 143,
+      "novos": 6,
+      "alterados": 8,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 77,
+      "ingeridos": 8,
+      "rejeitados": 69,
+      "novos": 4,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 27,
+      "ingeridos": 12,
+      "rejeitados": 15,
+      "novos": 12,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 1,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 18,
+      "ingeridos": 6,
+      "rejeitados": 12,
+      "novos": 4,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-segundo-professor-2022-01-01-2026-10-24",
+      "acordaos": 20,
+      "ingeridos": 0,
+      "rejeitados": 20,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 9,
+      "ingeridos": 1,
+      "rejeitados": 8,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-acompanhante-terapeutico-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 147,
+      "ingeridos": 8,
+      "rejeitados": 139,
+      "novos": 3,
+      "alterados": 5,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 3,
+      "ingeridos": 2,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 272,
+      "ingeridos": 2,
+      "rejeitados": 270,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 4,
+      "ingeridos": 2,
+      "rejeitados": 2,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 183,
+      "ingeridos": 19,
+      "rejeitados": 164,
+      "novos": 10,
+      "alterados": 9,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 53,
+      "ingeridos": 11,
+      "rejeitados": 42,
+      "novos": 5,
+      "alterados": 6,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 17,
+      "ingeridos": 9,
+      "rejeitados": 8,
+      "novos": 9,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 7,
+      "ingeridos": 3,
+      "rejeitados": 4,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 13,
+      "ingeridos": 2,
+      "rejeitados": 11,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-segundo-professor-2022-01-01-2026-10-24",
+      "acordaos": 20,
+      "ingeridos": 0,
+      "rejeitados": 20,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 9,
+      "ingeridos": 0,
+      "rejeitados": 9,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-acompanhante-terapeutico-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 187,
+      "ingeridos": 4,
+      "rejeitados": 183,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 5,
+      "ingeridos": 2,
+      "rejeitados": 3,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 231,
+      "ingeridos": 0,
+      "rejeitados": 231,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 5,
+      "ingeridos": 3,
+      "rejeitados": 2,
+      "novos": 3,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 198,
+      "ingeridos": 19,
+      "rejeitados": 179,
+      "novos": 12,
+      "alterados": 7,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 107,
+      "ingeridos": 32,
+      "rejeitados": 75,
+      "novos": 18,
+      "alterados": 14,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 23,
+      "ingeridos": 7,
+      "rejeitados": 16,
+      "novos": 7,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 4,
+      "ingeridos": 3,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 12,
+      "ingeridos": 5,
+      "rejeitados": 7,
+      "novos": 5,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-segundo-professor-2022-01-01-2026-10-24",
+      "acordaos": 12,
+      "ingeridos": 0,
+      "rejeitados": 12,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 11,
+      "ingeridos": 1,
+      "rejeitados": 10,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-acompanhante-terapeutico-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 153,
+      "ingeridos": 0,
+      "rejeitados": 153,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 2,
+      "ingeridos": 0,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 176,
+      "ingeridos": 1,
+      "rejeitados": 175,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 3,
+      "ingeridos": 1,
+      "rejeitados": 2,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 186,
+      "ingeridos": 15,
+      "rejeitados": 171,
+      "novos": 10,
+      "alterados": 5,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 49,
+      "ingeridos": 17,
+      "rejeitados": 32,
+      "novos": 6,
+      "alterados": 11,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 15,
+      "ingeridos": 2,
+      "rejeitados": 13,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 2,
+      "ingeridos": 0,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 15,
+      "ingeridos": 2,
+      "rejeitados": 13,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-segundo-professor-2022-01-01-2026-10-24",
+      "acordaos": 6,
+      "ingeridos": 1,
+      "rejeitados": 5,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 10,
+      "ingeridos": 4,
+      "rejeitados": 6,
+      "novos": 4,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-acompanhante-terapeutico-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 1,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 160,
+      "ingeridos": 2,
+      "rejeitados": 158,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 155,
+      "ingeridos": 2,
+      "rejeitados": 153,
+      "novos": 1,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 5,
+      "ingeridos": 4,
+      "rejeitados": 1,
+      "novos": 2,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 167,
+      "ingeridos": 10,
+      "rejeitados": 157,
+      "novos": 5,
+      "alterados": 5,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 51,
+      "ingeridos": 7,
+      "rejeitados": 44,
+      "novos": 2,
+      "alterados": 5,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 0,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-segundo-professor-2022-01-01-2026-10-24",
+      "acordaos": 3,
+      "ingeridos": 0,
+      "rejeitados": 3,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-acompanhante-terapeutico-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 4,
+      "ingeridos": 0,
+      "rejeitados": 4,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 14,
+      "ingeridos": 0,
+      "rejeitados": 14,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 0,
+      "ingeridos": 0,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 36,
+      "ingeridos": 1,
+      "rejeitados": 35,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-grupo-de-camaras-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 0,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0
+    }
+  ],
+  "backup": {
+    "status": "ok",
+    "formato": "flora-backup-2",
+    "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-backups\\20261024-090949-216875-antes-coleta-educacao-tjsc",
+    "revisao": 3376,
+    "originais": 3414,
+    "originais_copiados": 0,
+    "originais_ja_no_deposito": 3414,
+    "bytes_copiados": 0
+  },
+  "execucao": "17f5ccc0-a71d-4825-8d5f-863da3f15fc8",
+  "fim": "2026-10-24T12:11:32.909486+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 6617
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4041
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5395
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 4975
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5523
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4078
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4734
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6449
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "publicacao": {
+    "status": "ok",
+    "publicacao_id": "r3448-s2-422d7bab33-00157ed1de2e",
+    "sha256": "00157ed1de2ea43db94c273a48544cdc163b62fe4ddd952034b25b5c0c1cb07f",
+    "revisao_base": 3448,
+    "copias_texto": {
+      "grupos": 939,
+      "copias_retiradas": 1990
+    },
+    "limpeza_adiada_arquivo_aberto": []
+  }
+}

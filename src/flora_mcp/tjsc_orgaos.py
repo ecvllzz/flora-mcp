@@ -21,13 +21,26 @@ ORGAOS = tuple(CIVIL.format(n) for n in range(1, 11)) + ESPECIAIS
 # Atualizacao corrente: as dez Camaras de Direito Civil (decisao do operador de 30/09/2026). As
 # Camaras Especiais de Enfrentamento de Acervos sao temporarias e entram so por coleta historica.
 PADRAO = tuple(CIVIL.format(n) for n in range(1, 11))
+# Direito publico entra so por consulta de tema, com filtro de ingestao (educacao, decisao do
+# operador de 23/10/2026): nenhuma janela por dia traz o orgao inteiro. Sem os Nucleos 4.0.
+PUBLICO = tuple(f"{n}ª Câmara de Direito Público" for n in range(1, 6)) + (
+    "Grupo de Câmaras de Direito Público",
+)
 
 
 def name(organ: int | str) -> str:
     """Portal name of an organ given by name or by Civil Law Chamber number."""
     value = CIVIL.format(organ) if isinstance(organ, int) else organ
-    if value not in ORGAOS:
+    if value not in ORGAOS + PUBLICO:
         raise FloraError("orgao_invalido", f"Órgão TJSC fora da lista do coletor: {organ}.")
+    return value
+
+
+def window_name(organ: int | str) -> str:
+    """Portal name of an organ collected by publication-day window; public law never is."""
+    value = name(organ)
+    if value in PUBLICO:
+        raise FloraError("orgao_so_por_tema", f"{value} entra só por consulta de tema, nunca por janela.")
     return value
 
 

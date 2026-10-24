@@ -1,7 +1,9 @@
 """Experimental TJSC collector: complete public publication-day windows or no commit.
 
 Besides the windows, a search by process number brings the acórdãos of one process, whatever the
-organ (directed collection): each number is its own resource, kept apart from the windows.
+organ (directed collection): each number is its own resource, kept apart from the windows. A
+search by theme brings, for one organ, one search term and one publication period, every acórdão
+whose ementa the portal matches; the caller filters what enters (public law, education).
 """
 
 import base64
@@ -10,6 +12,7 @@ import math
 import re
 import threading
 import time
+import unicodedata
 from datetime import date, datetime, timedelta
 from urllib.parse import urljoin
 
@@ -19,7 +22,7 @@ from .config import Config
 from .model import FloraError, now, number
 from .sources import TJSC_SEARCH, download, tjsc_field_label, validate_tjsc_page
 from .store import Store
-from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name
+from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name, window_name
 
 
 class Pacer:
@@ -120,19 +123,26 @@ def parse_page(content: bytes, organ: int | str, day: date) -> tuple[int, list[t
     return total, rows
 
 
-def collect_pages(http, config: Config, data: dict, parse) -> tuple[int, list[dict], list]:
+def collect_pages(
+    http, config: Config, data: dict, parse, first_page: bytes | None = None
+) -> tuple[int, list[dict], list]:
     """Every page of one portal search, with the first page fetched again at the end.
 
     parse(content) validates one page and returns (declared total, rows). Raises unless the count
     is stable, pages are full and disjoint, and the first page did not change during the traversal.
+    first_page, when given, is the first page the caller has just fetched with the same data.
     """
     pages, rows, ids = [], [], set()
 
     def fetch(page):
-        PACER.wait(config.request_delay)
+        nonlocal first_page
         data["hdnPaginaAtual"] = str(page)
         url = TJSC_SEARCH if page == 1 else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
-        content = download(http, url, config.max_download_bytes, method="POST", data=data)
+        if first_page is not None:
+            content, first_page = first_page, None
+        else:
+            PACER.wait(config.request_delay)
+            content = download(http, url, config.max_download_bytes, method="POST", data=data)
         total, values = parse(content)
         pages.append(
             {
@@ -162,11 +172,17 @@ def collect_pages(http, config: Config, data: dict, parse) -> tuple[int, list[di
         rows.extend(values)
     if len(rows) != total:
         raise FloraError("paginacao_incompleta", "Número recuperado difere da contagem do portal.")
-    # Recheck first page after traversal, including zero-result searches.
+    # Recheck first page after traversal, including zero-result searches. A single page may come back
+    # in another order (a search by term ranks ties at random); it must hold the same documents.
     end_total, end_first = fetch(1)
-    if total != end_total or first != end_first:
+    same = first == end_first or (page_count == 1 and unordered(first) == unordered(end_first))
+    if total != end_total or not same:
         raise FloraError("janela_alterada", "Primeira página mudou durante a coleta; repetir janela.")
     return total, pages, rows
+
+
+def unordered(rows: list) -> list:
+    return sorted(json.dumps(row, ensure_ascii=False, sort_keys=True) for row in rows)
 
 
 def collect_window(http, config: Config, organ: int | str, day: date):
@@ -174,7 +190,7 @@ def collect_window(http, config: Config, organ: int | str, day: date):
     date_string = day.strftime("%d/%m/%Y")
     data = {
         "txtPesquisa": "",
-        "selOrgao[]": name(organ),
+        "selOrgao[]": window_name(organ),
         "selOrigem[]": "1",
         "selTipoDocumento[]": "1",
         "rdoCampo": "E",
@@ -201,6 +217,7 @@ def catalog_window(store: Store, organ: int | str, day: date) -> str:
     A Civil Law Chamber window keeps the metadata it always had (chamber number); another
     organ's window records the portal name instead.
     """
+    window_name(organ)
     number = chamber(organ)
     resource = {
         "id": day.isoformat(),
@@ -218,6 +235,193 @@ def catalog_window(store: Store, organ: int | str, day: date) -> str:
         complete_listing=False,
     )
     return dataset(organ) + ":" + resource["id"]
+
+
+def parse_period_page(content: bytes, organ: int | str, start: date, end: date):
+    """Page of a theme search: every document of that organ, published within the period."""
+    total, rows = parse_cards(content, organ)
+    if any(not start.isoformat() <= body["data_publicacao"] <= end.isoformat() for body, _ in rows):
+        raise FloraError("filtro_nao_respeitado", "Documento TJSC fora do período de publicação solicitado.")
+    return total, rows
+
+
+def search_data(organ: int | str, term: str, start: date, end: date) -> dict:
+    first, last = start.strftime("%d/%m/%Y"), end.strftime("%d/%m/%Y")
+    return {
+        "txtPesquisa": term,
+        "selOrgao[]": name(organ),
+        "selOrigem[]": "1",
+        "selTipoDocumento[]": "1",
+        "rdoCampo": "E",
+        "selTamanhoPagina": "10",
+        "dtPublicacaoInicio": first,
+        "dtPublicacaoFim": last,
+        "hdnPublicacaoInicio": first,
+        "hdnPublicacaoFim": last,
+        "hdnPaginaAtual": "1",
+    }
+
+
+# Answers of a theme search that a new attempt may cure; anything else stops the search.
+UNSTABLE = {"paginacao_instavel", "paginacao_incompleta", "janela_alterada"}
+SEARCH_ATTEMPTS = 3
+UNION_PASSES = 6
+
+
+def collect_union(http, config: Config, data: dict, parse, total: int, first_page: bytes):
+    """One day of a theme search with more than one page, whose order changes at every request.
+
+    Every pass reads all the pages, and the distinct acórdãos add up until they reach the declared
+    total, which every page must repeat; the same acórdão may not come back different. Up to
+    UNION_PASSES passes; short of the total, the search stops.
+    """
+    pages, found = [], {}
+    page_count = math.ceil(total / 10)
+    for passing in range(1, UNION_PASSES + 1):
+        for page in range(1, page_count + 1):
+            data["hdnPaginaAtual"] = str(page)
+            url = (
+                TJSC_SEARCH
+                if page == 1
+                else TJSC_SEARCH.replace("listar_resultados", "ajax_paginar_resultado")
+            )
+            if first_page is not None:
+                content, first_page = first_page, None
+            else:
+                PACER.wait(config.request_delay)
+                content = download(http, url, config.max_download_bytes, method="POST", data=data)
+            page_total, values = parse(content)
+            if page_total != total:
+                raise FloraError("paginacao_instavel", "Contagem variável no TJSC; repetir consulta.")
+            for body, raw in values:
+                if found.get(body["id"], (body, raw)) != (body, raw):
+                    raise FloraError(
+                        "janela_alterada", "Acórdão TJSC mudou durante a coleta; repetir consulta."
+                    )
+                found[body["id"]] = (body, raw)
+            pages.append(
+                {
+                    "passagem": passing,
+                    "pagina": page,
+                    "url": url,
+                    "parametros": dict(data),
+                    "bytes_base64": base64.b64encode(content).decode(),
+                    "coletado_em": now(),
+                }
+            )
+        if len(found) == total:
+            return total, pages, [found[key] for key in sorted(found)]
+    raise FloraError("paginacao_incompleta", f"TJSC devolveu {len(found)} de {total} acórdãos do dia.")
+
+
+def collect_search(http, config: Config, organ: int | str, term: str, start: date, end: date):
+    """Every acórdão of one organ, one search term in the ementa and one publication period.
+
+    The portal has no ordering field, and a long search by term pages unstably (the same acórdão
+    on two pages). A period with more than one page is split in halves until each part fits one
+    page; only a single day with more results is paged, with the window checks. The first page of
+    every split period stays in the envelope as provenance. The portal now and then answers a part
+    with a repeated or reordered acórdão: the part is tried again, from a new first page, up to
+    SEARCH_ATTEMPTS times, and the envelope records how many it took.
+    """
+    parts, probes, rows, ids = [], [], [], set()
+
+    def sound(a: date, b: date):
+        data = search_data(organ, term, a, b)
+        PACER.wait(config.request_delay)
+        probe = download(http, TJSC_SEARCH, config.max_download_bytes, method="POST", data=dict(data))
+        total, _ = parse_period_page(probe, organ, a, b)
+        return data, probe, total
+
+    def visit(a: date, b: date):
+        data, probe, total = sound(a, b)
+        parse = lambda content: parse_period_page(content, organ, a, b)  # noqa: E731
+        attempt = 1
+        while total <= 10 or a == b:
+            try:
+                if total > 10:  # a single day with more than one page
+                    part_total, pages, found = collect_union(http, config, data, parse, total, probe)
+                else:
+                    part_total, pages, found = collect_pages(http, config, data, parse, first_page=probe)
+                break
+            except FloraError as exc:
+                if exc.code not in UNSTABLE or attempt == SEARCH_ATTEMPTS:
+                    raise
+                attempt += 1
+                data, probe, total = sound(a, b)
+        if total > 10 and a < b:
+            probes.append(
+                {
+                    "publicacao_inicio": a.isoformat(),
+                    "publicacao_fim": b.isoformat(),
+                    "total": total,
+                    "parametros": data,
+                    "bytes_base64": base64.b64encode(probe).decode(),
+                    "coletado_em": now(),
+                }
+            )
+            middle = a + (b - a) // 2
+            visit(a, middle)
+            visit(middle + timedelta(days=1), b)
+            return
+        new = {body["id"] for body, _ in found}
+        if ids & new:
+            raise FloraError("paginacao_instavel", "Acórdão TJSC em dois períodos da mesma consulta.")
+        ids.update(new)
+        rows.extend(found)
+        parts.append(
+            {
+                "publicacao_inicio": a.isoformat(),
+                "publicacao_fim": b.isoformat(),
+                "total": part_total,
+                "tentativas": attempt,
+                "paginas": pages,
+            }
+        )
+
+    visit(start, end)
+    payload = {
+        "fonte": "TJSC",
+        "consulta": "tema",
+        **identity(organ),
+        "termo": term,
+        "publicacao_inicio": start.isoformat(),
+        "publicacao_fim": end.isoformat(),
+        "total": len(rows),
+        "partes": parts,
+        "sondagens": probes,
+    }
+    return json.dumps(payload, ensure_ascii=False).encode(), rows
+
+
+def term_slug(term: str) -> str:
+    plain = unicodedata.normalize("NFKD", term).encode("ascii", "ignore").decode()
+    return "-".join(re.findall(r"[a-z0-9]+", plain.lower()))
+
+
+# Rank of a theme search: above the search by number and below every window ("AAAAMMDD").
+TEMA_RANK = "00000001"
+
+
+def catalog_search(store: Store, organ: int | str, term: str, start: date, end: date) -> str:
+    """Catalog one theme search in the organ's dataset; returns the resource id."""
+    key = f"tema-{term_slug(term)}-{start.isoformat()}-{end.isoformat()}"
+    resource = {
+        "id": key,
+        "name": key + ".json",
+        "url": TJSC_SEARCH,
+        "last_modified": now(),
+        "orgao": name(organ),
+        "termo": term,
+        "publicacao_inicio": start.isoformat(),
+        "publicacao_fim": end.isoformat(),
+        "tipo": "consulta_tema",
+        "rank": TEMA_RANK,
+    }
+    store.catalog(
+        dataset(organ), {"fonte": TJSC_SEARCH, "tipo": "consulta_tema"}, [resource], complete_listing=False
+    )
+    return dataset(organ) + ":" + key
 
 
 PROCESSO_DATASET = "tjsc-processo"
