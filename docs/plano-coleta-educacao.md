@@ -81,4 +81,10 @@ O acervo real fica no notebook (`AGENTS.md`), e toda escrita nele segue a regra 
   - **Família em 2023,** de 48.338 no total (a 8ª entra com 1.600): alimentos 749, adoção 591, guarda 517, partilha 450, união estável 298, divórcio 232, convivência 139, alienação parental 19, curatela 14.
   - Família de 2022 e 2023 é pouco volume, e a coleta por termo cabe em minutos por ano. Hipótese não verificada: os acórdãos de família em segredo de justiça daquela época não estavam no portal.
   - **STJ:** o catálogo de dados abertos não respondeu em nenhum dos seis conjuntos (tempo esgotado e erro 504), nem nos que funcionavam em 09/10; fica para nova tentativa. No acervo, a média é de 3.232 bytes por espelho.
-- **Próximo passo:** a amostra de 50 por fonte e a mudança no coletor, cada uma com autorização do operador.
+- **24/10/2026, educação no TJSC, no acervo real** (sessão do notebook, branch `reforma/r8-educacao-tjsc`, 1fffcdf, 414 testes; recibo `docs/recibos/coleta-educacao-tjsc-20261024.json`; execução TJSC-tema 17f5ccc0; backup `20261024-090949-216875-antes-coleta-educacao-tjsc`; ensaio idêntico no sandbox).
+  - Foram 72 consultas, 6 órgãos e 12 subtemas, com publicação de 01/01/2022 a 24/10/2026. Delas saíram 3.139 acórdãos distintos, 160 passaram no filtro `educacao-3` e 159 eram novos. Outros 3.283 registros foram rejeitados, com o motivo.
+  - Por órgão, na publicação: 1ª Câmara de Direito Público 31, 2ª 46, 3ª 46, 4ª 39, 5ª 25, Grupo 3.
+  - Amostras cegas de 50: 7 no tema com `educacao-1`, 31 com `educacao-2` e 46 com `educacao-3`. A régua do operador conta no tema honorários, multa e execução em ação de direito à educação; a responsabilidade civil por acidente com aluno fica fora.
+  - Publicação servida: r3448-s2-422d7bab33-00157ed1de2e, com 80.345 acórdãos (43.068 do TJSC e 37.277 do STJ) e 1.990 cópias de texto fora.
+  - Merge do branch em `main` pendente do operador.
+- **Próximo passo:** educação no STJ, temas do STF e reforço de família, cada um com autorização própria do operador. O catálogo do STJ ainda precisa responder.
