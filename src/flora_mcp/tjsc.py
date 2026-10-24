@@ -1,7 +1,9 @@
 """Experimental TJSC collector: complete public publication-day windows or no commit.
 
 Besides the windows, a search by process number brings the acórdãos of one process, whatever the
-organ (directed collection): each number is its own resource, kept apart from the windows.
+organ (directed collection): each number is its own resource, kept apart from the windows. A
+search by theme brings, for one organ, one search term and one publication period, every acórdão
+whose ementa the portal matches; the caller filters what enters (public law, education).
 """
 
 import base64
@@ -10,6 +12,7 @@ import math
 import re
 import threading
 import time
+import unicodedata
 from datetime import date, datetime, timedelta
 from urllib.parse import urljoin
 
@@ -19,7 +22,7 @@ from .config import Config
 from .model import FloraError, now, number
 from .sources import TJSC_SEARCH, download, tjsc_field_label, validate_tjsc_page
 from .store import Store
-from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name
+from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name, window_name
 
 
 class Pacer:
@@ -174,7 +177,7 @@ def collect_window(http, config: Config, organ: int | str, day: date):
     date_string = day.strftime("%d/%m/%Y")
     data = {
         "txtPesquisa": "",
-        "selOrgao[]": name(organ),
+        "selOrgao[]": window_name(organ),
         "selOrigem[]": "1",
         "selTipoDocumento[]": "1",
         "rdoCampo": "E",
@@ -201,6 +204,7 @@ def catalog_window(store: Store, organ: int | str, day: date) -> str:
     A Civil Law Chamber window keeps the metadata it always had (chamber number); another
     organ's window records the portal name instead.
     """
+    window_name(organ)
     number = chamber(organ)
     resource = {
         "id": day.isoformat(),
@@ -218,6 +222,74 @@ def catalog_window(store: Store, organ: int | str, day: date) -> str:
         complete_listing=False,
     )
     return dataset(organ) + ":" + resource["id"]
+
+
+def parse_period_page(content: bytes, organ: int | str, start: date, end: date):
+    """Page of a theme search: every document of that organ, published within the period."""
+    total, rows = parse_cards(content, organ)
+    if any(not start.isoformat() <= body["data_publicacao"] <= end.isoformat() for body, _ in rows):
+        raise FloraError("filtro_nao_respeitado", "Documento TJSC fora do período de publicação solicitado.")
+    return total, rows
+
+
+def collect_search(http, config: Config, organ: int | str, term: str, start: date, end: date):
+    """Every page of one organ, one search term in the ementa and one publication period."""
+    first, last = start.strftime("%d/%m/%Y"), end.strftime("%d/%m/%Y")
+    data = {
+        "txtPesquisa": term,
+        "selOrgao[]": name(organ),
+        "selOrigem[]": "1",
+        "selTipoDocumento[]": "1",
+        "rdoCampo": "E",
+        "selTamanhoPagina": "10",
+        "dtPublicacaoInicio": first,
+        "dtPublicacaoFim": last,
+        "hdnPublicacaoInicio": first,
+        "hdnPublicacaoFim": last,
+    }
+    parse = lambda content: parse_period_page(content, organ, start, end)  # noqa: E731
+    total, pages, rows = collect_pages(http, config, data, parse)
+    payload = {
+        "fonte": "TJSC",
+        "consulta": "tema",
+        **identity(organ),
+        "termo": term,
+        "publicacao_inicio": start.isoformat(),
+        "publicacao_fim": end.isoformat(),
+        "total": total,
+        "paginas": pages,
+    }
+    return json.dumps(payload, ensure_ascii=False).encode(), rows
+
+
+def term_slug(term: str) -> str:
+    plain = unicodedata.normalize("NFKD", term).encode("ascii", "ignore").decode()
+    return "-".join(re.findall(r"[a-z0-9]+", plain.lower()))
+
+
+# Rank of a theme search: above the search by number and below every window ("AAAAMMDD").
+TEMA_RANK = "00000001"
+
+
+def catalog_search(store: Store, organ: int | str, term: str, start: date, end: date) -> str:
+    """Catalog one theme search in the organ's dataset; returns the resource id."""
+    key = f"tema-{term_slug(term)}-{start.isoformat()}-{end.isoformat()}"
+    resource = {
+        "id": key,
+        "name": key + ".json",
+        "url": TJSC_SEARCH,
+        "last_modified": now(),
+        "orgao": name(organ),
+        "termo": term,
+        "publicacao_inicio": start.isoformat(),
+        "publicacao_fim": end.isoformat(),
+        "tipo": "consulta_tema",
+        "rank": TEMA_RANK,
+    }
+    store.catalog(
+        dataset(organ), {"fonte": TJSC_SEARCH, "tipo": "consulta_tema"}, [resource], complete_listing=False
+    )
+    return dataset(organ) + ":" + key
 
 
 PROCESSO_DATASET = "tjsc-processo"

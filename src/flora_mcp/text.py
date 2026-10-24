@@ -136,6 +136,12 @@ BODY_START = re.compile(r"\n[ \t]*(?:\r?\n|(?:\d{1,3}|[IVX]{1,5})[ \t]*[.)\-\u20
 
 
 def header(text):
+    """Verbetação of the triage, cut at HEADER_LIMIT on a word boundary, and whether it was cut."""
+    value = verbetacao(text)
+    return value[: word_end(value, 0, HEADER_LIMIT)].rstrip(), len(value) > HEADER_LIMIT
+
+
+def verbetacao(text):
     """Verbetação: up to the first section heading; else up to the first numbered paragraph or blank line.
 
     STJ ementas wrap the verbetação across several lines, so a single line break does not end it.
@@ -149,8 +155,7 @@ def header(text):
     else:
         found = BODY_START.search(text, start)
         end = min(found.start() if found else len(text), spans[0]["inicio"] if spans else len(text))
-    value = text[:end].strip()
-    return value[: word_end(value, 0, HEADER_LIMIT)].rstrip(), len(value) > HEADER_LIMIT
+    return text[:end].strip()
 
 
 def word_end(text, start, limit):

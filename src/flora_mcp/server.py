@@ -35,7 +35,8 @@ INSTRUCTIONS = (
 DESCRIPTIONS = {
     "pesquisar_jurisprudencia": (
         "Pesquisa acórdãos do STJ (Terceira e Quarta Turmas e Segunda Seção) e de câmaras cíveis do "
-        "TJSC na base local; órgãos e períodos carregados estão em consultar_cobertura. Com termos, "
+        "TJSC, mais os de educação das Câmaras de Direito Público, na base local; órgãos e períodos "
+        "carregados estão em consultar_cobertura. Com termos, "
         "ordena por relevância textual, que não mede pertinência jurídica: palavras e frases entre "
         "aspas ligadas por OR, sem palavras vazias, e primeiro o que tem mais termos e os mais raros. "
         "Ordenado por data, liga por AND e, se nada contém todos os termos, amplia para qualquer "
