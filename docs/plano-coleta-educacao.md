@@ -70,3 +70,7 @@ Entram no `DECISOES.md` com a implementação, uma por linha.
 ## O que executa onde
 
 O acervo real fica no notebook (`AGENTS.md`), e toda escrita nele segue a regra de lá: `collector.lock`, backup antes, ensaio numa cópia e recibo depois. A retirada das cópias é a primeira execução, por ser a menor e a única que não depende de coleta nova: ensaiar na cópia, conferir que a primeira ocorrência fica e publicar com recibo. As coletas novas vêm depois, na ordem acima, cada uma medida antes de ingerir.
+
+## Executado
+
+- **23/10/2026, cópias de texto.** Feito pela sessão do notebook, no branch `reforma/r6-copias-texto` (derivação `copias-texto-1`). Saíram 1.988 cópias em 937 grupos, e a publicação passou a r3376-s2-422d7bab33-9701325cf7ff, com 80.188 acórdãos (42.911 do TJSC e 37.277 do STJ). O ensaio no sandbox deu idêntico bit a bit, o backup é `20261023-214825-743033-antes-copias-texto` e o recibo, `docs/recibos/copias-texto-r6-20261023.json`. Falta o merge em `main`: até lá, um `atualizar` rodado do `main` republica com as cópias.
