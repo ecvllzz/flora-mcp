@@ -1,0 +1,608 @@
+{
+ "pares": [
+  {
+   "codigo": "r003-004",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r003-015",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r035-001",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r035-010",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r035-022",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r018-004",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r018-005",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r018-006",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r018-010",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r018-014",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r018-017",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r018-020",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r018-021",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r032-002",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r030-019",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r045-032",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r045-040",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r050-022",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r041-005",
+   "registro": 0,
+   "juiz": 1
+  },
+  {
+   "codigo": "r041-006",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r041-014",
+   "registro": 0,
+   "juiz": 1
+  },
+  {
+   "codigo": "r041-029",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r041-030",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r041-032",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r041-033",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r041-038",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r013-018",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r037-004",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r037-005",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r053-009",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r053-011",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r022-003",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r022-017",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r022-019",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r031-033",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r048-014",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r039-027",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r042-001",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r042-008",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r042-010",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r042-019",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r042-020",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r019-018",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r023-012",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r054-004",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r054-035",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r001-006",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r001-009",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r001-020",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r001-022",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r001-031",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r005-010",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-002",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-004",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r012-009",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-010",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-015",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-020",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-022",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r012-023",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r011-003",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r016-016",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r027-021",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r029-004",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r006-001",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r007-018",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r025-028",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-004",
+   "registro": 0,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-005",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-008",
+   "registro": 0,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-015",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-017",
+   "registro": 0,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-020",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-024",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r008-025",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r021-011",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r026-029",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r040-023",
+   "registro": 0,
+   "juiz": 1
+  },
+  {
+   "codigo": "r044-007",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r020-013",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r020-024",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r024-008",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r047-008",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r047-010",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r047-019",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r033-014",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r033-028",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r033-031",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r049-017",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r049-021",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r051-001",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r002-017",
+   "registro": 1,
+   "juiz": 0
+  },
+  {
+   "codigo": "r002-023",
+   "registro": 1,
+   "juiz": 0
+  },
+  {
+   "codigo": "r009-009",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r009-015",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r009-020",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r034-009",
+   "registro": 1,
+   "juiz": 0
+  },
+  {
+   "codigo": "r034-011",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r034-019",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r004-004",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r004-005",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r004-006",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r004-010",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r015-007",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r015-015",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r015-016",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r043-010",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r043-016",
+   "registro": 1,
+   "juiz": 2
+  },
+  {
+   "codigo": "r010-010",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r017-001",
+   "registro": 0,
+   "juiz": 0
+  },
+  {
+   "codigo": "r017-003",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r017-005",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r017-010",
+   "registro": 2,
+   "juiz": 2
+  },
+  {
+   "codigo": "r017-013",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r017-019",
+   "registro": 2,
+   "juiz": 1
+  },
+  {
+   "codigo": "r017-022",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r017-025",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r017-026",
+   "registro": 1,
+   "juiz": 0
+  },
+  {
+   "codigo": "r017-027",
+   "registro": 1,
+   "juiz": 1
+  },
+  {
+   "codigo": "r038-020",
+   "registro": 2,
+   "juiz": 2
+  }
+ ],
+ "binario": 0.9166666666666666,
+ "kappa_binario": 0.6192893401015227,
+ "exato": 0.5583333333333333,
+ "kappa_exato": 0.25352112676056343
+}
