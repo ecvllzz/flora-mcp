@@ -446,3 +446,32 @@ def test_staged_searches_are_read_again_from_their_envelope_pages(tmp_path):
     stage([old_reading(b, r, b["ementa"].replace("REPETITIVAS", "REPETIDAS")) for b, r in plain])
     with pytest.raises(ValueError, match="mais que espaços"):
         script.reler(tmp_path, [consulta], EDUCACAO)
+
+
+def test_a_concluded_search_takes_a_new_reading_as_a_new_version(store, tmp_path, monkeypatch):
+    """The correction rewrites only what differs, keeps the old version and refuses more than spaces."""
+    monkeypatch.setattr(script, "collect_search", fake_search("APELAÇÃO. VAGA EM CRECHE . DEVIDA.\n1. Cabe."))
+    config = Config(store.directory, request_delay=0)
+    todas = script.consultas(EDUCACAO, date(2022, 1, 1), date(2026, 10, 24))[:2]
+    preparo = tmp_path / "preparo"
+    script.candidatos(config, preparo, todas, EDUCACAO)
+    aprovacao = {"no_tema": 45, "de": 50, "taxa": 0.9, "fora_do_tema": []}
+    registros = script.ler_preparo(preparo, todas, EDUCACAO)
+    script.aplicar(config, store, registros, aprovacao, tmp_path / "r1.json", EDUCACAO, tmp_path / "bk")
+    for registro in registros:
+        for item in registro["itens"]:
+            item["body"]["ementa"] = item["body"]["ementa"].replace("CRECHE .", "CRECHE.")
+            item["raw"]["campos"]["EMENTA"] = item["body"]["ementa"]
+    report = script.corrigir(config, store, registros, tmp_path / "r2.json", EDUCACAO, tmp_path / "bk")
+    assert (report["status"], report["consultas"], report["acordaos"]) == ("ok", 2, 2)
+    assert all(d["so_espacos"] and d["caracteres_alterados"] == 1 for d in report["documentos"])
+    with connection(store.path) as db:
+        assert db.execute("SELECT count(*) FROM documents WHERE body LIKE '%CRECHE .%'").fetchone()[0] == 0
+        assert db.execute("SELECT count(*) FROM versions").fetchone()[0] == 4
+    again = script.corrigir(config, store, registros, tmp_path / "r3.json", EDUCACAO, tmp_path / "bk")
+    assert again["acordaos"] == 0
+    for registro in registros:
+        for item in registro["itens"]:
+            item["motivo"] = "verbetacao: vaga"
+    with pytest.raises(ValueError, match="Outros acórdãos"):
+        script.corrigir(config, store, registros, tmp_path / "r4.json", EDUCACAO, tmp_path / "bk")

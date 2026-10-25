@@ -15,10 +15,15 @@ com filtro e amostra julgada antes de qualquer gravação.
   aplicar     com o julgamento da amostra (90% ou mais no tema), adquire a trava, faz backup,
               ingere cada consulta com os que passam (os demais ficam como rejeitados, com o
               motivo), publica e grava o recibo. Nova execução não repete consulta concluída.
+  corrigir    depois de reler, regrava só as consultas concluídas cujo acórdão gravado difere da
+              releitura, com os mesmos acórdãos no filtro e diferença só de espaços: trava,
+              backup, nova versão (a anterior fica no histórico), publicação e recibo com o
+              diff de cada ementa.
 """
 
 import argparse
 import base64
+import difflib
 import hashlib
 import json
 import sys
@@ -29,8 +34,9 @@ from filelock import FileLock
 
 from flora_mcp import backups
 from flora_mcp.config import load_config
-from flora_mcp.model import now
+from flora_mcp.model import canonical, digest, now
 from flora_mcp.sources import client
+from flora_mcp.publication import plan_text_copies
 from flora_mcp.store import Store, connection
 from flora_mcp.tema import TEMAS, Tema
 from flora_mcp.tjsc import catalog_search, collect_search, parse_period_page, term_slug
@@ -238,6 +244,12 @@ def ingerir(store, registro, run, tema: Tema) -> dict:
     }
 
 
+def recurso(registro) -> str:
+    """Resource id of a staged search, as catalog_search names it."""
+    chave = f"tema-{term_slug(registro['termo'])}-{registro['inicio']}-{registro['fim']}"
+    return f"{dataset(registro['orgao'])}:{chave}"
+
+
 def concluidas(store) -> set:
     with connection(store.path) as db:
         return {
@@ -251,11 +263,7 @@ def aplicar(config, store, registros, aprovacao, report_path: Path, tema: Tema, 
         raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
     with FileLock(str(store.directory / "collector.lock"), timeout=0):
         feitas = concluidas(store)
-        pendentes = [
-            r
-            for r in registros
-            if f"{dataset(r['orgao'])}:tema-{term_slug(r['termo'])}-{r['inicio']}-{r['fim']}" not in feitas
-        ]
+        pendentes = [r for r in registros if recurso(r) not in feitas]
         report = {
             "inicio": now(),
             "banco": str(store.path),
@@ -295,11 +303,112 @@ def aplicar(config, store, registros, aprovacao, report_path: Path, tema: Tema, 
         return report
 
 
+def divergentes(db, registro) -> list[str]:
+    """Ids whose staged reading is not the version this concluded search holds; refuses a search whose
+    acórdãos in the filter are not the ones it holds."""
+    gravados = dict(
+        db.execute(
+            "SELECT document_id,hash FROM observations WHERE resource_id=?", (recurso(registro),)
+        ).fetchall()
+    )
+    passam = {i["body"]["id"]: i for i in registro["itens"] if i["motivo"]}
+    if set(passam) != set(gravados):
+        raise ValueError(f"Outros acórdãos no filtro que os gravados: {recurso(registro)}.")
+    return [i for i, item in passam.items() if digest(canonical(item["raw"]).encode()) != gravados[i]]
+
+
+def ementas(db, ids) -> dict:
+    marcas = ",".join("?" * len(ids))
+    rows = db.execute(f"SELECT id,body FROM documents WHERE id IN ({marcas})", list(ids)).fetchall()
+    return {r[0]: json.loads(r[1])["ementa"] for r in rows}
+
+
+def copias(db, ids) -> dict:
+    """Text-copy group of each id (its first id), over every document, as the publication applies it."""
+    grupos = plan_text_copies((r[0], json.loads(r[1])) for r in db.execute("SELECT id,body FROM documents"))
+    primeiro = {c["id"]: k for k, itens in grupos.items() for c in itens} | {k: k for k in grupos}
+    return {i: primeiro.get(i) for i in ids}
+
+
+def alteracao(antes: str, depois: str) -> dict:
+    """Character diff of one ementa: what changed, where, and whether it is only whitespace."""
+    trechos = [
+        {"antes": antes[a:b], "depois": depois[c:d], "contexto": depois[max(0, c - 30) : d + 10]}
+        for op, a, b, c, d in difflib.SequenceMatcher(None, antes, depois, autojunk=False).get_opcodes()
+        if op != "equal"
+    ]
+    return {
+        "caracteres_alterados": sum(len(t["antes"]) + len(t["depois"]) for t in trechos),
+        "so_espacos": so_espacos(antes, depois),
+        "trechos": trechos,
+    }
+
+
+def corrigir(config, store, registros, report_path: Path, tema: Tema, backup_root=None) -> dict:
+    backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
+    if report_path.exists():
+        raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
+    with FileLock(str(store.directory / "collector.lock"), timeout=0):
+        feitas = concluidas(store)
+        with connection(store.path) as db:
+            alvo = {recurso(r): (r, divergentes(db, r)) for r in registros if recurso(r) in feitas}
+            alvo = {k: v for k, v in alvo.items() if v[1]}
+            ids = sorted({i for _, d in alvo.values() for i in d})
+            antes, grupos_antes = ementas(db, ids), copias(db, ids)
+        report = {
+            "inicio": now(),
+            "banco": str(store.path),
+            "tema": tema.nome,
+            "filtro": tema.versao,
+            "correcao": "leitura do cartão sem o destaque do termo pesquisado (reler)",
+            "consultas": len(alvo),
+            "acordaos": len(ids),
+            "antes": groups(store),
+            "status": "preparado",
+            "eventos": [],
+        }
+        save(report_path, report)
+        if not alvo:
+            report.update(status="ok", fim=now(), depois=report["antes"])
+            save(report_path, report)
+            return report
+        report["backup"] = backups.create(
+            store, backup_root, tema.rotulo_backup.replace("coleta", "correcao")
+        )
+        run = store.start_run("TJSC-tema-correcao")
+        report.update(execucao=run, status="running")
+        try:
+            for registro, _ in alvo.values():
+                report["eventos"].append(ingerir(store, registro, run, tema))
+                save(report_path, report)
+            with connection(store.path) as db:
+                depois, grupos_depois = ementas(db, ids), copias(db, ids)
+            report["documentos"] = [
+                {"id": i, "copia_de_texto": grupos_depois[i], **alteracao(antes[i], depois[i])} for i in ids
+            ]
+            report["grupos_de_copia_iguais"] = grupos_antes == grupos_depois
+            if not all(d["so_espacos"] for d in report["documentos"]) or not report["grupos_de_copia_iguais"]:
+                raise ValueError("A correção mudou mais que espaços ou os grupos de cópia.")
+            report["status"] = "ok"
+        except BaseException as exc:
+            report.update(status="error", erro=f"{type(exc).__name__}: {exc}")
+            raise
+        finally:
+            report.update(fim=now(), depois=groups(store))
+            store.finish_run(run, report["status"], report)
+            from flora_mcp.publication import MANIFEST, publish
+
+            if report["status"] == "ok" and (store.directory / MANIFEST).exists():
+                report["publicacao"] = publish(store)
+            save(report_path, report)
+        return report
+
+
 def main():
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument("fase", choices=("plano", "candidatos", "reler", "amostra", "aplicar"))
+    parser.add_argument("fase", choices=("plano", "candidatos", "reler", "amostra", "aplicar", "corrigir"))
     parser.add_argument("--tema", choices=sorted(TEMAS), required=True)
     parser.add_argument("--data-dir", required=True)
     parser.add_argument("--preparo", type=Path, required=True, help="Pasta fora do acervo")
@@ -338,6 +447,13 @@ def main():
                 ensure_ascii=True,
             )
         )
+    elif args.fase == "corrigir":
+        if not args.report:
+            parser.error("corrigir exige --report novo.")
+        result = corrigir(
+            config, store, ler_preparo(preparo, todas, tema), args.report.resolve(), tema, args.backup
+        )
+        print(json.dumps({k: result[k] for k in ("status", "consultas", "acordaos")}, ensure_ascii=True))
     elif args.fase == "reler":
         print(json.dumps(reler(preparo, todas, tema), ensure_ascii=True))
     elif args.fase == "candidatos":
