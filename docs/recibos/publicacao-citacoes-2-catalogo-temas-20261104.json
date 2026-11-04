@@ -1,0 +1,87 @@
+{
+ "status": "ok",
+ "publicado_em": "2026-11-04T19:23:11.179728+00:00",
+ "conferido_em": "2026-11-04T22:29:53.209384+00:00",
+ "o_que": "Publicacao nova do acervo real com os derivadores citacoes-2, ementa-secoes-3 e catalogo-temas-1 (itens 4 e 5 da primeira etapa da reforma da busca, M7), por ordem do operador (RM-D39), depois do ensaio em copia (docs/recibos/ensaio-citacoes-2-catalogo-temas-20261104.json). Trava do coletor adquirida pelo comando; nenhuma coleta, migracao ou importacao.",
+ "backup": {
+  "status": "ok",
+  "revisao": 3886,
+  "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-backups\\20261104-161615-669860-antes-publicacao-m7"
+ },
+ "publicacao": {
+  "id": "r3886-s2-dafe4a208f-44c3298ee789",
+  "revisao": 3886,
+  "derivador": "flora-read-2.3;ementa-secoes-3;citacoes-2;copias-texto-1;catalogo-temas-1",
+  "sha256": "44c3298ee789b616ec2f06c3d1b3813b2d003be6e29cbd0786d5d8c2cabf11b9"
+ },
+ "publicacoes_disponiveis": [
+  "r3886-s2-dafe4a208f-44c3298ee789",
+  "r3886-s2-422d7bab33-8e624360cc60",
+  "r3667-s2-422d7bab33-be04255dc052"
+ ],
+ "relatorio_publish": {
+  "publicacao_id": "r3886-s2-dafe4a208f-44c3298ee789",
+  "revisao_base": 3886,
+  "copias_texto": {
+   "grupos": 1000,
+   "copias_retiradas": 2160
+  },
+  "catalogo_temas": {
+   "temas": 1496,
+   "fonte": {
+    "url": "https://dadosabertos.web.stj.jus.br/dataset/4238da2f-c07b-4c1a-b345-4402accacdcf/resource/df29da13-7d6b-41ba-ad96-cd1a5bbd191c/download/temas.csv",
+    "sha256": "fed941b07c1f87bfaafed78ca47e1848633d57578635b7df1c31b2f92dd73576",
+    "coletado_em": "2026-09-29T20:22:29.995945+00:00"
+   },
+   "por_situacao": {
+    "Trânsito em Julgado": 1020,
+    "Cancelado": 195,
+    "Afetado": 121,
+    "Acórdão Publicado": 61,
+    "Acórdão Publicado - RE Pendente": 41,
+    "Em Julgamento": 18,
+    "Revisado": 15,
+    "Sobrestado": 12,
+    "Mérito Julgado": 7,
+    "Sem Processo Vinculado": 3,
+    "Admitido": 2,
+    "Afetado - Possível Revisão de Tese": 1
+   }
+  },
+  "limpeza_adiada_arquivo_aberto": []
+ },
+ "contagens": {
+  "acordaos": 86663,
+  "citacoes": 179379,
+  "citacoes_acordao_resolvidas": 12392,
+  "citacoes_acordao_ambiguas": 3332,
+  "vinculos": 19645,
+  "vinculos_ambiguos": 7259,
+  "catalogo_temas": 1496,
+  "catalogo_cancelados": 195,
+  "indice_search_map_rowid": true
+ },
+ "igualdade_literal": {
+  "igual_ao_publicado": true,
+  "publicacao_id": "r3886-s2-dafe4a208f-44c3298ee789",
+  "conteudo_preservado": {
+   "documentos": 86663,
+   "referencias_estruturalmente_completas": 86625,
+   "sha256_registros_e_referencias": "b29c3d6a074d36d4c3cda7444492b98869d26665067eb50d6825c0bcf4fe2b0a",
+   "grupos": [
+    {
+     "tribunal": "STJ",
+     "documentos": 37277
+    },
+    {
+     "tribunal": "TJSC",
+     "documentos": 49386
+    }
+   ],
+   "integridade": "ok"
+  },
+  "triagem_bytes": 6678,
+  "limite": "Igualdade estrutural e literal; não certifica autoridade jurídica dos acórdãos."
+ },
+ "limite": "A publicacao anterior continua disponivel por publicacao_id enquanto estiver no manifesto. Os clientes abertos seguem com o servidor antigo ate reiniciar; os derivadores novos so sao lidos pelo codigo do contrato flora-mcp-3.6."
+}

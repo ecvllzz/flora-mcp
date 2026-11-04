@@ -7,13 +7,14 @@ from datetime import date
 from .ausencia import empty_reason
 from .citation import citation_metadata
 from .model import FloraError, canonical, digest, folded, number
-from .store import ReadView, collection_delay
+from .relacoes import ambiguity, relation_plan, similar_plan
+from .store import ROWID_INDEX, ReadView, collection_delay
 from .citations import TYPES as CITATION_TYPES
 from .citations import extract as extract_citations
 from .citations import filter_key
-from .text import advanced_query, header, matched_window, sections
+from .text import SNIPPET_TOKENS, advanced_query, header, present_terms, query_terms, sections, snippet_window
 
-CONTRATO = "flora-mcp-3.5"
+CONTRATO = "flora-mcp-3.6"
 ORDERS = ("mais_recentes", "mais_antigos", "relevancia")
 # Triage pages stay under 8 KiB of compact JSON, with room for the publication identity.
 TRIAGE_BUDGET = 7500
@@ -304,6 +305,28 @@ def date_filters(column: str, data_inicio, data_fim):
     return [f"{column}{op}?" for op, _ in pairs], [value for _, value in pairs]
 
 
+def rowid_map(db) -> str | None:
+    """Table that maps the FTS rowid of a match to its document id, indexed by the rowid.
+
+    The search reaches the document from the FTS rowid: reading the UNINDEXED ``id`` column of
+    ``search`` loads the stored ementa of every match, and that was most of the cost of a ranked
+    query. A generation published before the index existed gets a temporary copy of
+    ``search_map``, indexed by its primary key, at the cost of one scan per connection. None when
+    the database has no ``search_map`` at all: the plan then joins by ``id``, as before.
+    """
+    if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='search_map'").fetchone():
+        return None
+    if db.execute("SELECT 1 FROM sqlite_master WHERE type='index' AND name=?", (ROWID_INDEX,)).fetchone():
+        return "search_map"
+    db.execute(
+        "CREATE TEMP TABLE IF NOT EXISTS search_rowids"
+        "(fts_rowid INTEGER PRIMARY KEY,document_id TEXT NOT NULL)"
+    )
+    if not db.execute("SELECT 1 FROM temp.search_rowids LIMIT 1").fetchone():
+        db.execute("INSERT INTO temp.search_rowids SELECT fts_rowid,document_id FROM search_map")
+    return "temp.search_rowids"
+
+
 class JudgmentSearch:
     """One acórdão search: validated parameters, SQL plan and the reading of one page."""
 
@@ -326,19 +349,37 @@ class JudgmentSearch:
         self.filters, self.params, self.filtered = [], [], False
         self.offset = 0
         self.original, self.broadened = self.query, None
+        self.map = None  # Set by prepare(db): the rowid map of the database read, or None.
 
     def restrict(self, filters, params):
         self.filters += filters
         self.params += params
         self.filtered = self.filtered or bool(filters)
 
+    def prepare(self, db):
+        self.map = rowid_map(db)
+
+    def matched_source(self) -> str:
+        """documents of the matches, reached from the FTS rowid when the database has the map."""
+        if self.map is None:
+            return "documents d JOIN search ON search.id=d.id"
+        return f"search JOIN {self.map} m ON m.fts_rowid=search.rowid JOIN documents d ON d.id=m.document_id"
+
+    def matched_ids(self) -> str:
+        """Subquery with the ids of the matches; the MATCH placeholder is its only parameter."""
+        if self.map is None:
+            return "SELECT id FROM search WHERE search MATCH ?"
+        return (
+            f"SELECT m.document_id FROM search JOIN {self.map} m ON m.fts_rowid=search.rowid "
+            "WHERE search MATCH ?"
+        )
+
     def plan(self):
         ranked = self.ordenar == "relevancia"
-        source = "documents d JOIN search ON search.id=d.id" if ranked else "documents d"
+        source = self.matched_source() if ranked else "documents d"
         filters, params = list(self.filters), list(self.params)
         if self.query:
-            match = "search MATCH ?" if ranked else "d.id IN (SELECT id FROM search WHERE search MATCH ?)"
-            filters.insert(0, match)
+            filters.insert(0, "search MATCH ?" if ranked else f"d.id IN ({self.matched_ids()})")
             params.insert(0, self.query)
         direction = "ASC" if self.ordenar == "mais_antigos" else "DESC"
         order = f"d.{self.column} IS NULL,d.{self.column} {direction},d.id"
@@ -348,7 +389,8 @@ class JudgmentSearch:
         return source, " AND ".join(filters) or "1=1", params, order
 
     def fingerprint(self, where, params):
-        values = [where, params, self.column, self.ordenar, self.limit, self.detalhe]
+        # The logical query, not the SQL text: the same consultation has one cursor whatever the plan.
+        values = [self.query, self.filters, self.params, self.column, self.ordenar, self.limit, self.detalhe]
         return digest(canonical(values).encode())
 
     def continuation(self, fingerprint, revision, offset):
@@ -403,31 +445,50 @@ class JudgmentSearch:
         return rows, lambda n: self.continuation(fingerprint, revision, offset + n)
 
     def highlights(self, db, ids):
+        """{id: (highlight, snippet)}: the marks over the whole ementa and the window with most terms."""
         if not self.query or not ids or self.detalhe != "triagem":
             return {}
         marks = ",".join("?" * len(ids))
+        columns = f"highlight(search,1,char(1),char(2)),snippet(search,1,char(1),char(2),'',{SNIPPET_TOKENS})"
         try:
-            return dict(
-                db.execute(
-                    "SELECT id,highlight(search,1,char(1),char(2)) FROM search "
-                    f"WHERE search MATCH ? AND id IN ({marks})",
+            if self.map is None:
+                rows = db.execute(
+                    f"SELECT id,{columns} FROM search WHERE search MATCH ? AND id IN ({marks})",
                     (self.query, *ids),
                 ).fetchall()
-            )
+            else:
+                # By rowid, the index answers each page item with one lookup instead of a scan of the matches.
+                rowids = [
+                    r[0]
+                    for r in db.execute(
+                        f"SELECT fts_rowid FROM {self.map} WHERE document_id IN ({marks})", ids
+                    )
+                ]
+                rows = db.execute(
+                    f"SELECT m.document_id,{columns} FROM search JOIN {self.map} m "
+                    f"ON m.fts_rowid=search.rowid WHERE search MATCH ? AND search.rowid IN ({marks})",
+                    (self.query, *rowids),
+                ).fetchall()
         except sqlite3.OperationalError as exc:
             raise database_error(exc) from exc
+        return {r[0]: (r[1], r[2]) for r in rows}
 
-    def item(self, body, original, marked):
+    def item(self, body, original, marks, link=None):
         item = {**body, **citation_metadata(body, original)}
+        if link:
+            item["vinculo"] = link  # quem_cita or o_que_cita over citacoes-2: resolvido or ambiguo
         if self.detalhe == "completo":
             return item
         full = item["ementa"]
         result = {k: item.get(k) for k in TRIAGE_KEYS}
+        if link:
+            result["vinculo"] = link
         cabecalho, parcial = header(full)
         result.update(sha256_componente=digest(full.encode()), cabecalho=cabecalho, cabecalho_parcial=parcial)
         if self.query:
-            start = len(full) - len(full.lstrip())  # The cabecalho is literal, after leading blanks.
-            result["trecho_correspondente"] = matched_window(full, marked, (start, start + len(cabecalho)))
+            marked, snippet = marks or ("", "")
+            result["trecho_correspondente"] = snippet_window(full, snippet)
+            result["termos_presentes"] = present_terms(query_terms(self.query), marked)
         return result
 
     def reason(self, db, tribunal, orgao, dates):
@@ -448,8 +509,7 @@ class JudgmentSearch:
             if not self.query:
                 return db.execute("SELECT count(*) FROM documents").fetchone()[0]
             return db.execute(
-                "SELECT count(*) FROM documents d WHERE d.id IN (SELECT id FROM search WHERE search MATCH ?)",
-                (self.query,),
+                f"SELECT count(*) FROM documents d WHERE d.id IN ({self.matched_ids()})", (self.query,)
             ).fetchone()[0]
 
         def term_counts():
@@ -489,14 +549,23 @@ def search(
     cita_precedente: str | None = None,
     cita_dispositivo: str | None = None,
     cita_acordao: str | None = None,
+    quem_cita: str | None = None,
+    o_que_cita: str | None = None,
+    parecido_com: str | None = None,
 ) -> dict:
     store = as_view(store)
+    if parecido_com and termos:
+        raise FloraError(
+            "consulta_invalida", "parecido_com usa a ementa da semente como consulta; não combine com termos."
+        )
+    if parecido_com and (quem_cita or o_que_cita):
+        raise FloraError("filtro_invalido", "parecido_com não combina com quem_cita ou o_que_cita.")
     plan = JudgmentSearch(
         store,
         termos,
         detalhe=detalhe,
         limite=limite,
-        ordenar=ordenar,
+        ordenar=ordenar if not parecido_com else None,
         modo_busca=modo_busca,
         tipo_data=tipo_data,
     )
@@ -513,21 +582,37 @@ def search(
         store, cita_precedente=cita_precedente, cita_dispositivo=cita_dispositivo, cita_acordao=cita_acordao
     )
     plan.restrict(cited_filters, cited_params)
+    relation = seed = None
     with store.read() as db:
         db.create_function("flora_fold", 1, lambda value: folded(value or ""), deterministic=True)
         db.execute("BEGIN")  # Revision and rows belong to the same read snapshot.
         revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
+        related = relation_plan(db, store, quem_cita=quem_cita, o_que_cita=o_que_cita)
+        if related:
+            plan.restrict(related[0], related[1])
+            relation = related[2]
+        if parecido_com:
+            # The seed's own terms are the query; the seed itself is left out of the answer.
+            terms, seed = similar_plan(db, parecido_com, RANKED_STOPWORDS)
+            plan.query = plan.original = any_term_query(terms)
+            plan.ordenar = resolve_order(ordenar, plan.query)
+            plan.restrict(["d.id<>?"], [parecido_com])
+        plan.prepare(db)
         total = plan.total(db)
         rows, following = plan.page(db, cursor, revision)
         bodies = [(json.loads(r["body"]), json.loads(r["original"]) if r["original"] else None) for r in rows]
         marks = plan.highlights(db, [body["id"] for body, _ in bodies])
+        links = ambiguity(db, relation, [body["id"] for body, _ in bodies]) if relation else {}
         reason = plan.reason(db, tribunal, orgao, (data_inicio, data_fim)) if total == 0 else {}
         delay = collection_delay(db, store.atrasos)
     result = {
         "status": "ok",
         "contrato": CONTRATO,
         "total_encontrado": total,
-        "resultados": [plan.item(body, original, marks.get(body["id"])) for body, original in bodies],
+        "resultados": [
+            plan.item(body, original, marks.get(body["id"]), links.get(body["id"]))
+            for body, original in bodies
+        ],
         "detalhe": detalhe,
         "ementas_completas": detalhe == "completo",
         "campo_pesquisado": "ementa",
@@ -537,6 +622,8 @@ def search(
         **({"ampliacao": plan.broadened} if plan.broadened else {}),
         "ordenacao": plan.ordenar,
         **({"citacoes_filtradas": cited} if cited else {}),
+        **({"relacao": relation} if relation else {}),
+        **({"semente": seed} if seed else {}),
         "revisao_base": revision,
         "proximo_cursor": following(len(rows)) if plan.offset + len(rows) < total else None,
         "cobertura": coverage_notice(delay),
@@ -614,24 +701,38 @@ def document_citations(db, view: ReadView, id: str, body: dict, raw: str) -> lis
     """Published rows when there is a generation; the same extraction, unresolved, over the work base."""
     if view.publication is not None and has_citations(db):
         rows = db.execute(
-            "SELECT tipo,chave,texto,origem,resolvido FROM document_citations WHERE document_id=? "
-            "ORDER BY rowid",
+            f"SELECT tipo,chave,texto,origem,resolvido{candidates_column(db)} FROM document_citations "
+            "WHERE document_id=? ORDER BY rowid",
             (id,),
         ).fetchall()
-        return [dict(r) for r in rows]
+        return [with_candidates(dict(r)) for r in rows]
     return [{**item, "resolvido": None} for item in extract_citations(body, json.loads(raw))]
+
+
+def candidates_column(db) -> str:
+    """The candidatos column exists from the deriver citacoes-2 on; older generations have none."""
+    columns = {r[1] for r in db.execute("PRAGMA table_info(document_citations)")}
+    return ",candidatos" if "candidatos" in columns else ""
+
+
+def with_candidates(item: dict) -> dict:
+    """candidatos as a list, only when the key fits more than one acórdão of the generation."""
+    value = item.pop("candidatos", None)
+    return {**item, "candidatos": json.loads(value)} if value else item
 
 
 def citation_summary(cited: list[dict]) -> dict:
     counts = {tipo: 0 for tipo in CITATION_TYPES}
-    resolved = 0
+    resolved = ambiguous = 0
     for item in cited:
         counts[item["tipo"]] += 1
         resolved += bool(item.get("resolvido"))
+        ambiguous += bool(item.get("candidatos"))
     return {
         "total": len(cited),
         "por_tipo": counts,
         "resolvidas_no_acervo": resolved,
+        "ambiguas_no_acervo": ambiguous,
         "componente": "citacoes",
     }
 

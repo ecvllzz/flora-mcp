@@ -1,6 +1,6 @@
 # Transporte HTTP para o Studio
 
-O adaptador HTTP é uma extensão do servidor stdio, que continua sendo o transporte principal. Ele expõe as mesmas quatro ferramentas de leitura (`pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento` e `consultar_cobertura`, contrato em [CONTRATO.md](../CONTRATO.md)) sobre o mesmo acervo; não publica arquivos SQLite, coletor, APIs de escrita ou autos particulares. Não há hospedagem nem conexão com o Studio em funcionamento: a seção final lista o que falta.
+O adaptador HTTP é uma extensão do servidor stdio, que continua sendo o transporte principal. Ele expõe as mesmas cinco ferramentas de leitura (`pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento`, `consultar_cobertura` e `conferir_referencias`, contrato em [CONTRATO.md](../CONTRATO.md)) sobre o mesmo acervo; não publica arquivos SQLite, coletor, APIs de escrita ou autos particulares. Não há hospedagem nem conexão com o Studio em funcionamento: a seção final lista o que falta.
 
 ## Executar
 
@@ -28,6 +28,6 @@ O script copia o arquivo da publicação corrente, confere o SHA-256 contra o ma
 
 Hospedagem contínua autorizada, domínio/TLS, configuração de segredo, volume persistente para a cópia de leitura, reinício/monitoramento e o passo de sincronização depois de cada publicação. A coleta não precisa rodar no host. A opção concreta depende da infraestrutura disponível ao operador. Este documento não cria nem contrata hospedagem.
 
-No Studio novo: Ferramentas → adicionar MCP → endereço HTTPS `/mcp` → API key no cabeçalho acima. Confirmar descoberta das quatro ferramentas e testar cobertura, pesquisa e recuperação integral do componente em um caso sintético. Verificar políticas do ambiente antes de vincular o serviço. Não conceder acesso a autos por esse MCP de jurisprudência pública.
+No Studio novo: Ferramentas → adicionar MCP → endereço HTTPS `/mcp` → API key no cabeçalho acima. Confirmar descoberta das cinco ferramentas e testar cobertura, pesquisa e recuperação integral do componente em um caso sintético. Verificar políticas do ambiente antes de vincular o serviço. Não conceder acesso a autos por esse MCP de jurisprudência pública.
 
 Referência: [MCP na experiência nova do Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/tools-add-mcp-server).

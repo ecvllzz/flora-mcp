@@ -1,4 +1,4 @@
-"""Contract flora-mcp-3.5: the examples of CONTRATO.md and each rule, over the real MCP client.
+"""Contract flora-mcp-3.6: the examples of CONTRATO.md and each rule, over the real MCP client.
 
 The edges of 3.5 have their own tests in test_bordas_contrato.py.
 """
@@ -112,6 +112,20 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
             "pesquisar_precedentes.triagem": await ok("pesquisar_precedentes", {"termos": "sintético"}),
             "pesquisar_precedentes.vazio": await ok("pesquisar_precedentes", {"termos": "tema"}),
             "consultar_cobertura.resumo": await ok("consultar_cobertura", {}),
+            "pesquisar_jurisprudencia.quem_cita": await ok(
+                "pesquisar_jurisprudencia", {"quem_cita": "STJ:1"}
+            ),
+            "conferir_referencias": await ok(
+                "conferir_referencias",
+                {
+                    "referencias": [
+                        "STJ, REsp n. 1234567, rel. Ministra Exemplo, Terceira Turma, j. 24/08/2026",
+                        "5002677-97.2022.8.24.0034",
+                        "Súmula 999999 do STJ",
+                        "REsp 1",
+                    ]
+                },
+            ),
         }
         first = await ok("obter_documento", {"id": "STJ:1", "tamanho_bloco": 100})
         answers["obter_documento.primeiro_bloco"] = first
@@ -134,7 +148,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         assert_same_shape(example, answers[name], name)
     for name, answer in answers.items():
         if name != "erro":
-            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.5", name
+            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.6", name
             assert answer["publicacao_id"], name
     assert answers["erro"]["codigo"] == "documento_nao_encontrado"
     assert answers["pesquisar_jurisprudencia.sem_correspondencia"]["termos_sem_ocorrencia"] == [
@@ -164,6 +178,7 @@ def test_closed_vocabularies_are_enums_and_defaults_are_the_contract():
         "pesquisar_precedentes",
         "obter_documento",
         "consultar_cobertura",
+        "conferir_referencias",
     }
 
     def enum(schema):
@@ -219,33 +234,38 @@ def test_triage_item_has_header_and_matched_window_with_unicode_offsets(store):
     item = api.search(store, "compensatorios")["resultados"][0]
     full = api.search(store, "compensatorios", detalhe="completo")["resultados"][0]["ementa"]
     window = item["trecho_correspondente"]
-    # 25 characters before the occurrence fall on a word start here; otherwise the next word opens.
-    assert window["offset"] == full.index("COMPENSATÓRIOS") - 25
+    # The window is literal: the offset counts Unicode characters of the original ementa.
     assert full[window["offset"] : window["offset"] + len(window["texto"])] == window["texto"]
-    end = window["offset"] + len(window["texto"])
-    assert len(window["texto"]) <= 100 and full[end] == " " and window["parcial"] is True
-    assert window["texto"].startswith("é órfã. Ação") and "COMPENSATÓRIOS" in window["texto"]
+    assert "COMPENSATÓRIOS" in window["texto"] and window["parcial"] is True
+    assert len(window["texto"].split()) <= 16 + 1  # 16 tokens; "1." is a token and a half
+    assert item["termos_presentes"] == ["compensatorios"]
     # The cabecalho stops at 120 characters, on a word boundary.
     assert item["cabecalho"] == ("Ação é órfã. " * 9).strip() and item["cabecalho_parcial"] is True
     assert not {"trecho", "offset", "trecho_parcial", "campos_correspondentes", "ementa"} & set(item)
     assert "trecho_correspondente" not in api.search(store)["resultados"][0]
+    assert "termos_presentes" not in api.search(store)["resultados"][0]
 
 
-def test_matched_window_opens_on_a_whole_word(store):
+def test_matched_window_opens_and_closes_on_whole_words(store):
     text = "VERBETE.\n1. " + "Palavrasextensas " * 4 + "ALVO no meio do texto. " + "Fim. " * 50
     ingest(store, [raw_doc("1", text=text)])
     window = api.search(store, "alvo")["resultados"][0]["trecho_correspondente"]
-    assert window["offset"] == 63 and window["texto"].startswith("Palavrasextensas ALVO")
+    assert window["offset"] == 0 or not text[window["offset"] - 1].isalnum()
+    end = window["offset"] + len(window["texto"])
+    assert end == len(text) or not text[end].isalnum()
+    assert "ALVO" in window["texto"]
 
 
-def test_matched_window_is_the_occurrence_alone_when_the_cabecalho_shows_it(store):
+def test_matched_window_is_the_run_with_most_distinct_terms(store):
     ingest(store, [raw_doc("1", text=TEXT)])
     inside = api.search(store, "alimentos")["resultados"][0]
     assert inside["cabecalho"] == "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL."
-    assert inside["trecho_correspondente"] == {"texto": "ALIMENTOS", "offset": 24, "parcial": True}
-    outside = api.search(store, "pagamento")["resultados"][0]["trecho_correspondente"]
-    assert outside["offset"] == TEXT.index("dívida de alimentos com pagamento")
-    assert TEXT[outside["offset"] :].startswith(outside["texto"]) and "pagamento" in outside["texto"]
+    assert "alimentos" in inside["trecho_correspondente"]["texto"].lower()
+    both = api.search(store, "pagamento prisão")["resultados"][0]
+    window = both["trecho_correspondente"]
+    assert TEXT[window["offset"] :].startswith(window["texto"])
+    assert "pagamento" in window["texto"] and "prisão" in window["texto"]
+    assert both["termos_presentes"] == ["pagamento", "prisão"]
 
 
 @pytest.mark.parametrize(
@@ -332,7 +352,7 @@ def test_automatic_order_and_coverage_block(store):
 def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(published):
     page = api.search(published, limite=1)
     decoded = json.loads(base64.urlsafe_b64decode(page["proximo_cursor"]))
-    assert decoded["contrato"] == "flora-mcp-3.5"
+    assert decoded["contrato"] == "flora-mcp-3.6"
     assert decoded["publicacao"] == page["publicacao_id"]
     assert "continua" not in decoded  # no cursor inside a cursor
     legacy = base64.urlsafe_b64encode(
@@ -343,6 +363,7 @@ def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(pub
         base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-2"}).encode()),
         base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-3"}).encode()),
         base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-3.1"}).encode()),
+        base64.urlsafe_b64encode(canonical({**decoded, "contrato": "flora-mcp-3.5"}).encode()),
     ):
         with pytest.raises(FloraError) as info:
             api.search(published, limite=1, cursor=cursor if isinstance(cursor, str) else cursor.decode())

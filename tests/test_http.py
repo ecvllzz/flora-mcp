@@ -58,6 +58,7 @@ def test_http_auth_host_and_readonly_protocol(store):
             "pesquisar_precedentes",
             "obter_documento",
             "consultar_cobertura",
+            "conferir_referencias",
         }
         assert all(t["annotations"]["readOnlyHint"] for t in listed)
         found = rpc(

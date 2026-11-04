@@ -95,7 +95,8 @@ def advanced_query(value: str) -> str:
 HEADINGS = re.compile(
     r"(?im)^[ \t]*(?:[IVX]+[ \t]*[.\-\u2013:][ \t]*)?"
     r"(?P<title>CASO EM EXAME|HIP[ÓO]TESE EM EXAME|QUEST[ÃA]O EM DISCUSS[ÃA]O|RAZ[ÕO]ES DE DECIDIR|"
-    r"DISPOSITIVO E TESE|TESE DE JULGAMENTO|DISPOSITIVOS RELEVANTES CITADOS|"
+    r"DISPOSITIVO E TESE|(?-i:D)ISPOSITIVO(?=[ \t]*[:.\-–]?[ \t]*\r?$)|TESE DE JULGAMENTO|"
+    r"DISPOSITIVOS RELEVANTES CITADOS|"
     r"JURISPRUD[ÊE]NCIA RELEVANTE CITADA)"
     r"[ \t]*(?:[:.\-\u2013][ \t]*|\r?$)"
 )
@@ -105,19 +106,21 @@ NAMES = {
     "QUESTAO EM DISCUSSAO": "questao_em_discussao",
     "RAZOES DE DECIDIR": "razoes_de_decidir",
     "DISPOSITIVO E TESE": "dispositivo_e_tese",
+    "DISPOSITIVO": "dispositivo_e_tese",
     "TESE DE JULGAMENTO": "tese_na_ementa",
     "DISPOSITIVOS RELEVANTES CITADOS": "dispositivos_citados",
     "JURISPRUDENCIA RELEVANTE CITADA": "jurisprudencia_citada",
 }
 SECTION_NAMES = ("cabecalho", *dict.fromkeys(NAMES.values()))
-SECTIONS_DERIVER = "ementa-secoes-2"
+SECTIONS_DERIVER = "ementa-secoes-3"
 
 
 def sections(text):
     """Literal sections of a CNJ-model ementa (Recomendação CNJ 154/2024), by character offsets.
 
-    Recognizes the four numbered parts, the thesis and the two closing lines (dispositivos and
-    jurisprudência citados), with CRLF or LF line endings. The text before the first heading is
+    Recognizes the four numbered parts (the fourth titled DISPOSITIVO E TESE or DISPOSITIVO alone),
+    the thesis and the two closing lines (dispositivos and jurisprudência citados), with CRLF or LF
+    line endings. The text before the first heading is
     the cabecalho. Repeated headings make the division ambiguous, and nothing is returned.
     """
     matches = list(HEADINGS.finditer(text))
@@ -195,17 +198,47 @@ def window(text, position, size, lead):
     return start, text[start : word_end(text, start, size)].rstrip()
 
 
-def matched_window(text, marked, shown=(0, 0)):
-    """Window around the first mark that FTS5 highlight() put in marked; offsets are in text.
+# Tokens of the triage window that FTS5 snippet() chooses: the run of this many tokens with the most
+# distinct query terms (a repeated term counts almost nothing). 16 tokens run about 110 characters,
+# the size of the window before, which showed a single occurrence.
+SNIPPET_TOKENS = 16
+MARK, END = "\x01", "\x02"
+MARKED = re.compile(MARK + "(.*?)" + END)
 
-    When the marked occurrence lies inside shown (the span of text already delivered as the
-    cabecalho), the window is the occurrence alone: its context is already on the page.
+
+def snippet_window(text, snippet):
+    """{texto, offset, parcial} of the window snippet() chose: its literal text, located in text.
+
+    The snippet is the text between the first and the last token of the window, so it is a
+    substring of the ementa; the marks are removed and the first occurrence of the substring gives
+    the offset. Without a snippet (no term in the text), the window opens at the start.
     """
-    position = marked.find("\x01") if marked else -1
-    if position >= 0:
-        end = marked.find("\x02", position) - 1
-        if shown[0] <= position and 0 <= end <= shown[1]:
-            value = text[position:end]
-            return {"texto": value, "offset": position, "parcial": position > 0 or end < len(text)}
-    start, value = window(text, max(position, 0), WINDOW, LEAD)
+    value = snippet.replace(MARK, "").replace(END, "") if snippet else ""
+    start = text.find(value) if value else -1
+    if start < 0:
+        start, value = window(text, 0, WINDOW, LEAD)
     return {"texto": value, "offset": start, "parcial": start > 0 or start + len(value) < len(text)}
+
+
+def plain(value):
+    """Letters, digits and single spaces, without accents or case: how the index compares a token."""
+    return " ".join(re.sub(r"[^\w\s]", " ", folded(value)).split())
+
+
+def query_terms(fts_query):
+    """(term, prefix) of every quoted term of a compiled FTS query, in order, once each."""
+    found = {}
+    for quoted, star in re.findall(r'"((?:[^"]|"")*)"(\*?)', fts_query):
+        found.setdefault((quoted.replace('""', '"'), bool(star)), None)
+    return list(found)
+
+
+def present_terms(terms, marked):
+    """Query terms that highlight() marked somewhere in the text, in query order."""
+    spans = {plain(s) for s in MARKED.findall(marked or "")}
+    found = []
+    for term, prefix in terms:
+        key = plain(term)
+        if key and (key in spans or (prefix and any(s.startswith(key) for s in spans))):
+            found.append(term + ("*" if prefix else ""))
+    return found

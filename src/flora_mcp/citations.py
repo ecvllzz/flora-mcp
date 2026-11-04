@@ -1,5 +1,10 @@
 """Citations as data: precedents, acórdãos and statutory provisions cited by each acórdão.
 
+Deriver citacoes-2 (04/11/2026): an IRDR or IAC named by its CNJ process number keeps the fragment
+without key (the acórdão key carries the number), a súmula line of the STJ mirror that says STF gets
+the STF key even when the alias line is indented, and a key that fits more than one acórdão of the
+generation is marked ambiguous at publication instead of resolved to one of them.
+
 The source is the stored original: the two closing lines of the CNJ-model ementa of the TJSC
 ("Dispositivos relevantes citados" and "Jurisprudência relevante citada") and the fields
 ``jurisprudenciaCitada``, ``referenciasLegislativas``, ``tema`` and ``acordaosSimilares`` of the STJ
@@ -22,7 +27,7 @@ import re
 from .model import folded
 from .text import sections
 
-CITATIONS_DERIVER = "citacoes-1"
+CITATIONS_DERIVER = "citacoes-2"
 TYPES = ("precedente", "acordao", "dispositivo", "similar")
 
 # Statutes by the names the TJSC writes and by the STJ aliases, to one key each.
@@ -91,6 +96,11 @@ PRECEDENT = re.compile(
     r"(?P<tema_n>\d{1,3}(?:\.\d{3})?|\d{1,5}))|"
     r"(?P<sumula>S[úu]mula(?P<vinc> Vinculante)?\s*n?[.º°o]*\s*(?P<sumula_n>\d{1,3}(?:\.\d{3})?|\d{1,4}))|"
     r"(?P<irdr>IRDR\s*n?[.º°o]*\s*(?P<irdr_n>\d{1,4}))|(?P<iac>IAC\s*n?[.º°o]*\s*(?P<iac_n>\d{1,4})))"
+    r"(?!\d|[.\-/]\d)"  # The number ends here: "IRDR n. 5011469-46..." is a process, not IRDR 5011.
+)
+# An incident named by its process number: the key needs the tribunal numbering the fragment lacks.
+INCIDENT_PROCESS = re.compile(
+    r"(?i)\b(?P<kind>IRDR|IAC)\s*n?[.º°o]*\s*(?=\d{7}-?\d{2}\.?\d{4}\.?\d\.?\d{2}\.?\d{4})"
 )
 CNJ_NUMBER = re.compile(r"\b(\d{7})-?(\d{2})\.?(\d{4})\.?(\d)\.?(\d{2})\.?(\d{4})\b")
 STJ_CLASSES = (
@@ -128,7 +138,7 @@ TRIBUNAL_PREFIX = re.compile(r"(?i)^\s*(?:e\s+)?(?P<court>STF|STJ|TJ-?[A-Z]{2}|T
 STJ_LAW = re.compile(r"LEG:(?P<scope>\w+)\s+(?P<kind>\w+):(?P<number>[\w*]+)\s+ANO:(?P<year>[\w*]+)")
 STJ_ARTICLE = re.compile(r"\bART:(?P<n>\d+)(?P<suffix>[A-Z])?")
 STJ_SUMMARY = re.compile(r"\bSUM:(?P<n>\d+)")
-STJ_ALIAS = re.compile(r"(?m)^\*{5}\s+(?P<alias>\S+)")
+STJ_ALIAS = re.compile(r"(?m)^\s*\*{5}\s+(?P<alias>\S+)")  # The line may be indented.
 SIMILAR = re.compile(r"^\s*(?P<classe>[A-Za-z][A-Za-z ]*?)\s+(?P<numero>\d+)\s+(?P<uf>[A-Z]{2})\b")
 
 
@@ -212,6 +222,8 @@ def precedent_citations(text: str, court: str | None, origem: str) -> list[dict]
         else:
             key = f"TJSC:iac:{int(m.group('iac_n'))}" if court in {None, "TJSC"} else None
         found.append(citation("precedente", key, m.group(0), origem))
+    for m in INCIDENT_PROCESS.finditer(text):
+        found.append(citation("precedente", None, text[m.start() : m.start() + 60], origem))
     return found
 
 

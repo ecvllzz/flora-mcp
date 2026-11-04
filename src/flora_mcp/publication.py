@@ -10,14 +10,15 @@ from pathlib import Path, PureWindowsPath
 from .model import FloraError, canonical, digest, folded, now
 from .citation import citation_metadata
 from .precedents import available
+from .catalogo import CATALOG_DERIVER, derive_theme_catalog
 from .citations import CITATIONS_DERIVER, extract
 from .text import SECTIONS_DERIVER
-from .store import ReadView, Store, connection, replace_search_row
+from .store import ReadView, Store, connection, ensure_search_map, replace_search_row
 
 COPIES_DERIVER = "copias-texto-1"
 # Derivations computed when a generation is read also name the generation, so changing one of them
 # changes publicacao_id at the next publication.
-DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER};{COPIES_DERIVER}"
+DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER};{COPIES_DERIVER};{CATALOG_DERIVER}"
 MANIFEST = "publicacoes.json"
 
 
@@ -150,12 +151,16 @@ def derive_document_details(dest):
 def derive_document_citations(dest):
     """Citations of every acórdão, extracted from the stored original, resolved against the generation.
 
-    ``resolvido`` names the acórdão or precedent of this generation the key points to, when any;
-    the key stays as extracted, and a fragment without key keeps its text, so losses are visible.
+    ``resolvido`` names the acórdão or precedent of this generation the key points to, when exactly one
+    fits; when the process (or the class and number of the STJ) has several acórdãos in the generation,
+    ``resolvido`` stays null and ``candidatos`` lists them, so the ambiguity is visible instead of
+    decided. The key stays as extracted, and a fragment without key keeps its text, so losses are visible.
+    ``citation_links`` has one row per (citing acórdão, candidate cited acórdão), with ``ambiguo`` set
+    when the candidate shares the key with others: the rows behind quem_cita and o_que_cita.
     """
     dest.execute(
         "CREATE TABLE document_citations(document_id TEXT NOT NULL,tipo TEXT NOT NULL,chave TEXT NOT NULL,"
-        "texto TEXT NOT NULL,origem TEXT NOT NULL,resolvido TEXT)"
+        "texto TEXT NOT NULL,origem TEXT NOT NULL,resolvido TEXT,candidatos TEXT)"
     )
     rows = []
     for body, raw in dest.execute(
@@ -164,7 +169,7 @@ def derive_document_citations(dest):
         body = json.loads(body)
         for item in extract(body, json.loads(raw)):
             rows.append((body["id"], item["tipo"], item["chave"], item["texto"], item["origem"]))
-    dest.executemany("INSERT INTO document_citations VALUES (?,?,?,?,?,NULL)", rows)
+    dest.executemany("INSERT INTO document_citations VALUES (?,?,?,?,?,NULL,NULL)", rows)
     dest.execute("CREATE INDEX citations_key ON document_citations(tipo,chave)")
     dest.execute("CREATE INDEX citations_document ON document_citations(document_id)")
     if available(dest):
@@ -172,16 +177,48 @@ def derive_document_citations(dest):
             "UPDATE document_citations SET resolvido=(SELECT id FROM precedents p WHERE p.id=chave) "
             "WHERE tipo='precedente' AND chave<>''"
         )
+    resolve_judgment_citations(dest)
+
+
+def resolve_judgment_citations(dest):
+    """Acórdão keys to the acórdãos of the generation: one match resolves, several are candidates.
+
+    CROSS JOIN fixes the order: citations outer, documents probed by the process index. Left to the
+    planner, documents went outer and every one of them scanned the citations (hours, not seconds).
+    """
+    dest.execute("CREATE TEMP TABLE targets(citation INTEGER NOT NULL,cited TEXT NOT NULL)")
     dest.execute(
-        "UPDATE document_citations SET resolvido=(SELECT d.id FROM documents d WHERE d.tribunal='TJSC' "
-        "AND d.process=substr(chave,6)) WHERE tipo='acordao' AND chave LIKE 'TJSC:%'"
+        "INSERT INTO targets SELECT c.rowid,d.id FROM document_citations c CROSS JOIN documents d ON "
+        "d.tribunal='TJSC' AND d.process=substr(c.chave,6) WHERE c.tipo='acordao' AND c.chave LIKE 'TJSC:%'"
     )
     dest.execute(
-        "UPDATE document_citations SET resolvido=(SELECT d.id FROM documents d WHERE d.tribunal='STJ' "
-        "AND d.class=substr(chave,5,length(chave)-5-length(substr(chave,instr(substr(chave,5),':')+5))) "
-        "AND d.process=substr(chave,instr(substr(chave,5),':')+5) ORDER BY d.judgment DESC LIMIT 1) "
-        "WHERE tipo IN ('acordao','similar') AND chave LIKE 'STJ:%'"
+        "INSERT INTO targets SELECT c.rowid,d.id FROM document_citations c CROSS JOIN documents d ON "
+        "d.tribunal='STJ' AND d.class=substr(c.chave,5,length(c.chave)-5-length(substr(c.chave,"
+        "instr(substr(c.chave,5),':')+5))) AND d.process=substr(c.chave,instr(substr(c.chave,5),':')+5) "
+        "WHERE c.tipo IN ('acordao','similar') AND c.chave LIKE 'STJ:%'"
     )
+    dest.execute("CREATE INDEX temp.targets_citation ON targets(citation)")
+    dest.execute(
+        "UPDATE document_citations SET resolvido=(SELECT cited FROM targets t WHERE t.citation="
+        "document_citations.rowid) WHERE (SELECT count(*) FROM targets t WHERE t.citation="
+        "document_citations.rowid)=1"
+    )
+    dest.execute(
+        "UPDATE document_citations SET candidatos=(SELECT json_group_array(cited) FROM (SELECT cited FROM "
+        "targets t WHERE t.citation=document_citations.rowid ORDER BY cited)) WHERE (SELECT count(*) FROM "
+        "targets t WHERE t.citation=document_citations.rowid)>1"
+    )
+    dest.execute(
+        "CREATE TABLE citation_links(document_id TEXT NOT NULL,cited_id TEXT NOT NULL,"
+        "ambiguo INTEGER NOT NULL,PRIMARY KEY(document_id,cited_id))"
+    )
+    dest.execute(
+        "INSERT OR IGNORE INTO citation_links SELECT c.document_id,t.cited,c.resolvido IS NULL "
+        "FROM targets t JOIN document_citations c ON c.rowid=t.citation "
+        "WHERE c.tipo='acordao' AND c.document_id<>t.cited ORDER BY c.resolvido IS NULL"
+    )
+    dest.execute("CREATE INDEX links_cited ON citation_links(cited_id)")
+    dest.execute("DROP TABLE targets")
 
 
 def prune_precedents(dest):
@@ -256,8 +293,10 @@ def publish(store: Store):
         copies = remove_text_copies(dest)
         verify_search_index(dest)
         prune_snapshot(dest)
+        ensure_search_map(dest)  # The index on the FTS rowid, for a work database that predates it.
         derive_document_details(dest)
         derive_document_citations(dest)
+        catalog = derive_theme_catalog(store, dest)
         prune_precedents(dest)
         seal_snapshot(dest)
     sha = file_digest(temporary)
@@ -291,6 +330,7 @@ def publish(store: Store):
         "sha256": sha,
         "revisao_base": revision,
         "copias_texto": copies,
+        "catalogo_temas": catalog,
         "limpeza_adiada_arquivo_aberto": cleanup,
     }
 

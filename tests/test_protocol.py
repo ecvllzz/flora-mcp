@@ -27,6 +27,7 @@ def test_real_stdio_protocol_lists_and_calls_all_readonly_tools(store):
                     "pesquisar_precedentes",
                     "obter_documento",
                     "consultar_cobertura",
+                    "conferir_referencias",
                 }
                 assert all(t.annotations.read_only_hint for t in tools)
                 result = await session.call_tool(

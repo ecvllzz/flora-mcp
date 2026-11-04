@@ -1,8 +1,8 @@
 # Flora-MCP
 
-Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
+Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Cinco ferramentas MCP, todas somente leitura, pesquisam, leem e conferem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.5`.
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.6`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
 - Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
 - Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).
@@ -89,14 +89,15 @@ Em outra máquina, troque os caminhos. Um cliente já aberto continua com as fer
 
 | Ferramenta | Uso |
 |---|---|
-| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão). Triagem por padrão (referência, cabeçalho e trecho do termo); resposta vazia com `motivo`. |
+| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão) e, a partir de um acórdão da base, `quem_cita`, `o_que_cita` e `parecido_com`. Triagem por padrão (referência, cabeçalho, trecho com os termos e lista dos termos presentes); resposta vazia com `motivo`. |
 | `pesquisar_precedentes` | Temas, IRDR, IAC e súmulas admitidos, por espécie, número, órgão, matéria e componente. |
 | `obter_documento` | Ementa, seção da ementa, espelho original, citações extraídas (`citacoes`) ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
 | `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |
+| `conferir_referencias` | Lista de referências (número CNJ, classe e número do STJ, tema, súmula) conferida de uma vez contra a base: `numero_invalido`, `localizado` com os campos conferidos, `nao_localizado` (nunca "inexistente": a base é parcial). Só referências, nunca texto de peça. |
 
 Cada resultado traz `referencia`, `referencia_completa` e `referencia_pendencias`, montadas do espelho original da mesma versão; dado ausente fica declarado, não inventado. Não há ferramenta de coleta, exclusão ou configuração, e textos recuperados são documentos, não instruções.
 
-**HTTP (extensão).** `python -m flora_mcp.http_server` serve as mesmas quatro ferramentas por Streamable HTTP, com chave no cabeçalho `x-flora-api-key` e lista explícita de hosts, para ficar atrás de um proxy HTTPS. Não há hospedagem em uso. Ver [docs/http-studio.md](docs/http-studio.md).
+**HTTP (extensão).** `python -m flora_mcp.http_server` serve as mesmas cinco ferramentas por Streamable HTTP, com chave no cabeçalho `x-flora-api-key` e lista explícita de hosts, para ficar atrás de um proxy HTTPS. Não há hospedagem em uso. Ver [docs/http-studio.md](docs/http-studio.md).
 
 **Painel.** Interface local de consulta em `http://127.0.0.1:8766/`, iniciada por `scripts/start_panel.ps1`. Ver [docs/painel-jurisprudencia.md](docs/painel-jurisprudencia.md).
 
