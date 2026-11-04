@@ -6,6 +6,8 @@ build-backend = "hatchling.build"
 name = "flora-mcp"
 version = "0.7.0"
 description = "MCP independente para pesquisa de jurisprudência em fontes oficiais brasileiras"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "mcp==2.2.0",

@@ -214,4 +214,8 @@ Scripts de verificação sobre um acervo, somente leitura: `scripts/verify_publi
 - Ementas não são encurtadas. Documento longo sai em blocos, e a concatenação reproduz exatamente o texto armazenado, conferível por `sha256_texto_completo`. Isso não certifica a completude editorial do texto publicado pelo tribunal.
 - No TJSC, janela concluída significa todos os resultados que o portal informou no momento da consulta; o portal não oferece snapshot transacional.
 - Nenhuma afirmação de vigência material de precedente, de superação ou de atualidade editorial: fidelidade à fonte não é vigência, e súmula esvaziada sem cancelamento formal aparece como vigente.
-- A disponibilidade pública da fonte não dispensa respeitar seus limites de acesso. O catálogo do STJ informa licença `cc-by`, com atribuição ao STJ. O código próprio não tem licença de distribuição escolhida.
+- A disponibilidade pública da fonte não dispensa respeitar seus limites de acesso. O catálogo do STJ informa licença `cc-by`, com atribuição ao STJ.
+
+## Licença
+
+O código (servidor, coletor, scripts e testes) está sob a licença MIT, em [LICENSE](LICENSE). O acervo publicado (gerações em `publicacoes/`, arquivo das Releases e exportações) está sob CC BY 4.0, com a proveniência por fonte, a atribuição sugerida e os limites em [LICENCA-DADOS.md](LICENCA-DADOS.md): o texto das decisões é oficial e não tem proteção autoral; os dados abertos do STJ são CC BY, com atribuição ao STJ; a seleção, os recibos e a publicação são obra do gabinete que mantém o projeto.
