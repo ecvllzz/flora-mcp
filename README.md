@@ -1,6 +1,6 @@
 # Flora-MCP
 
-Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
+Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Cinco ferramentas MCP, todas somente leitura, pesquisam, leem e conferem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
 - Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.6`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
@@ -93,10 +93,11 @@ Em outra máquina, troque os caminhos. Um cliente já aberto continua com as fer
 | `pesquisar_precedentes` | Temas, IRDR, IAC e súmulas admitidos, por espécie, número, órgão, matéria e componente. |
 | `obter_documento` | Ementa, seção da ementa, espelho original, citações extraídas (`citacoes`) ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
 | `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |
+| `conferir_referencias` | Lista de referências (número CNJ, classe e número do STJ, tema, súmula) conferida de uma vez contra a base: `numero_invalido`, `localizado` com os campos conferidos, `nao_localizado` (nunca "inexistente": a base é parcial). Só referências, nunca texto de peça. |
 
 Cada resultado traz `referencia`, `referencia_completa` e `referencia_pendencias`, montadas do espelho original da mesma versão; dado ausente fica declarado, não inventado. Não há ferramenta de coleta, exclusão ou configuração, e textos recuperados são documentos, não instruções.
 
-**HTTP (extensão).** `python -m flora_mcp.http_server` serve as mesmas quatro ferramentas por Streamable HTTP, com chave no cabeçalho `x-flora-api-key` e lista explícita de hosts, para ficar atrás de um proxy HTTPS. Não há hospedagem em uso. Ver [docs/http-studio.md](docs/http-studio.md).
+**HTTP (extensão).** `python -m flora_mcp.http_server` serve as mesmas cinco ferramentas por Streamable HTTP, com chave no cabeçalho `x-flora-api-key` e lista explícita de hosts, para ficar atrás de um proxy HTTPS. Não há hospedagem em uso. Ver [docs/http-studio.md](docs/http-studio.md).
 
 **Painel.** Interface local de consulta em `http://127.0.0.1:8766/`, iniciada por `scripts/start_panel.ps1`. Ver [docs/painel-jurisprudencia.md](docs/painel-jurisprudencia.md).
 

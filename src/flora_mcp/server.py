@@ -8,7 +8,7 @@ from mcp.types import CallToolResult, TextContent, ToolAnnotations
 from pydantic import BeforeValidator, Field, ValidationError
 
 from . import __version__
-from .api import coverage, document, search, search_precedents
+from .api import check_references, coverage, document, search, search_precedents
 from .model import FloraError
 from .precedents import COMPONENTS
 from .store import Store
@@ -185,6 +185,20 @@ TribunalCobertura = Annotated[
     Literal["STJ", "STF", "TJSC"] | None, Field(description="Filtro de detalhe=recursos: STJ, STF ou TJSC.")
 ]
 Dataset = Annotated[str | None, Field(description="Filtro de detalhe=recursos: nome exato do dataset.")]
+Referencias = Annotated[
+    list[Annotated[str, Field(min_length=1, max_length=200)]],
+    Field(
+        min_length=1,
+        max_length=50,
+        description=(
+            "Lista de 1 a 50 referências, uma por item, até 200 caracteres cada: número CNJ "
+            "(5002677-98.2022.8.24.0034), classe e número do STJ (AgInt no AREsp 1.779.343/DF), número SAJ "
+            "do TJSC (AC 2006.011052-9), tema, súmula, IRDR ou IAC (Tema 1.076, Súmula 7 do STJ, IRDR 17), "
+            "com o que a citação disser de relator, órgão e data, que é conferido. Só a referência, nunca "
+            "texto de peça."
+        ),
+    ),
+]
 
 INSTRUCTIONS = (
     "A base é parcial: resultado vazio vale só para o que está carregado; consultar_cobertura "
@@ -229,6 +243,17 @@ DESCRIPTIONS = {
         "proximo_cursor nulo. Cite com a referencia do primeiro bloco e exponha "
         "referencia_pendencias. metadados.copias_texto, quando existe, lista os processos com a "
         "mesma ementa, que a publicação deixa de fora."
+    ),
+    "conferir_referencias": (
+        "Confere de uma vez uma lista de referências contra a base carregada: número CNJ, classe e "
+        "número do STJ, número SAJ do TJSC, tema, súmula, IRDR ou IAC, um por item, com o que a citação "
+        "disser de relator, órgão e data. Devolve um estado por referência: numero_invalido (dígito "
+        "verificador do CNJ errado, refutado sem consultar a base), localizado (o registro, com cada campo "
+        "da citação marcado confere ou diverge, e conferir quando o processo tem mais de um acórdão), "
+        "nao_localizado (não carregado; a base é parcial e isso nunca quer dizer que não existe), "
+        "inexistente_na_fonte (só tema do STJ ausente do catálogo oficial, quando a publicação o traz) e "
+        "nao_reconhecida. Aceita só a referência, nunca o texto da peça. Serve para conferir dezenas de "
+        "citações de uma vez e abrir com obter_documento só as marcadas."
     ),
     "consultar_cobertura": (
         "Diz o que a base contém: tribunais e órgãos, períodos, lotes pendentes, atraso da última "
@@ -404,5 +429,12 @@ def create_server(store: Store) -> MCPServer:
         dataset: Dataset = None,
     ) -> dict[str, Any]:
         return result(coverage, detalhe, cursor, limite, publicacao_id, tribunal, dataset)
+
+    @server.tool(annotations=annotation, description=DESCRIPTIONS["conferir_referencias"])
+    def conferir_referencias(
+        referencias: Referencias,
+        publicacao_id: PublicacaoId = None,
+    ) -> dict[str, Any]:
+        return result(check_references, referencias, publicacao_id=publicacao_id)
 
     return server

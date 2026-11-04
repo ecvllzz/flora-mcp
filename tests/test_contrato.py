@@ -112,6 +112,17 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
             "pesquisar_precedentes.triagem": await ok("pesquisar_precedentes", {"termos": "sintético"}),
             "pesquisar_precedentes.vazio": await ok("pesquisar_precedentes", {"termos": "tema"}),
             "consultar_cobertura.resumo": await ok("consultar_cobertura", {}),
+            "conferir_referencias": await ok(
+                "conferir_referencias",
+                {
+                    "referencias": [
+                        "STJ, REsp n. 1234567, rel. Ministra Exemplo, Terceira Turma, j. 24/08/2026",
+                        "5002677-97.2022.8.24.0034",
+                        "Súmula 999999 do STJ",
+                        "REsp 1",
+                    ]
+                },
+            ),
         }
         first = await ok("obter_documento", {"id": "STJ:1", "tamanho_bloco": 100})
         answers["obter_documento.primeiro_bloco"] = first
@@ -164,6 +175,7 @@ def test_closed_vocabularies_are_enums_and_defaults_are_the_contract():
         "pesquisar_precedentes",
         "obter_documento",
         "consultar_cobertura",
+        "conferir_referencias",
     }
 
     def enum(schema):

@@ -2,7 +2,7 @@
 
 import json
 
-from . import precedent_query, query
+from . import conferencia, precedent_query, query
 from .coverage import filtered_resources, summary, validate_filters
 from .model import FloraError
 from .model import canonical
@@ -139,6 +139,12 @@ def document(
         if hash_conteudo and result["hash_conteudo"] != hash_conteudo:
             raise FloraError("versao_indisponivel", "Versão indisponível nesta publicação.")
     return _finish(view, result)
+
+
+def check_references(store, referencias, *, publicacao_id=None):
+    """A list of references in, one proven state out for each; never the text of a brief."""
+    view = _view(store, None, publicacao_id)
+    return _finish(view, conferencia.check(view, referencias))
 
 
 COVERAGE_DETAILS = ("resumo", "completo", "recursos", "execucoes")
