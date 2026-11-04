@@ -95,7 +95,8 @@ def advanced_query(value: str) -> str:
 HEADINGS = re.compile(
     r"(?im)^[ \t]*(?:[IVX]+[ \t]*[.\-\u2013:][ \t]*)?"
     r"(?P<title>CASO EM EXAME|HIP[ÓO]TESE EM EXAME|QUEST[ÃA]O EM DISCUSS[ÃA]O|RAZ[ÕO]ES DE DECIDIR|"
-    r"DISPOSITIVO E TESE|DISPOSITIVO|TESE DE JULGAMENTO|DISPOSITIVOS RELEVANTES CITADOS|"
+    r"DISPOSITIVO E TESE|(?-i:D)ISPOSITIVO(?=[ \t]*[:.\-–]?[ \t]*\r?$)|TESE DE JULGAMENTO|"
+    r"DISPOSITIVOS RELEVANTES CITADOS|"
     r"JURISPRUD[ÊE]NCIA RELEVANTE CITADA)"
     r"[ \t]*(?:[:.\-\u2013][ \t]*|\r?$)"
 )

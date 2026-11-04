@@ -100,3 +100,17 @@ def test_key_that_fits_several_acordaos_is_marked_ambiguous_not_picked(store, tm
     assert "candidatos" not in listed[2] and listed[2]["resolvido"] == "STJ:4"
     summary = api.document(store, "STJ:2")["metadados"]["citacoes"]
     assert summary["resolvidas_no_acervo"] == 2 and summary["ambiguas_no_acervo"] == 1
+
+
+def test_bare_dispositivo_only_when_the_line_is_the_title():
+    # The word at the end of a verbetação line, or a "Dispositivo:" line with text, is not a heading.
+    verbete = "ERRO MATERIAL NO\n DISPOSITIVO. CORREÇÃO.\n I. Caso em exame\n 1. x\n IV. Dispositivo\n 2. y"
+    assert [s["nome"] for s in sections(verbete)] == ["cabecalho", "caso_em_exame", "dispositivo_e_tese"]
+    inside = "A.\nIV. DISPOSITIVO E TESE\n4. Provido.\nDispositivo: recurso provido.\nTese de julgamento: t."
+    assert [s["nome"] for s in sections(inside)] == ["cabecalho", "dispositivo_e_tese", "tese_na_ementa"]
+    closing = "A.\nIV. DISPOSITIVO\n4. x\nJurisprudência relevante citada: STJ, REsp 1, erro no\ndispositivo."
+    assert [s["nome"] for s in sections(closing)] == [
+        "cabecalho",
+        "dispositivo_e_tese",
+        "jurisprudencia_citada",
+    ]
