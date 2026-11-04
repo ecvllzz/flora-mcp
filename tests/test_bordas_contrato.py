@@ -15,6 +15,7 @@ from flora_mcp.precedents import import_package, migrate, normalized_number
 from flora_mcp.publication import publish
 from flora_mcp.server import create_server
 from flora_mcp.store import connection
+from flora_mcp.text import advanced_query
 from test_contrato import stdio
 from test_precedents import packet
 
@@ -161,6 +162,65 @@ def test_judgment_default_stays_the_ementa(store):
     result = call(store, "obter_documento", {"id": "STJ:1"})
     assert result.structured_content["componente"] == "ementa"
     assert result.structured_content["texto"] == "Alimentos."
+
+
+# E and OU in the advanced mode
+
+
+@pytest.mark.parametrize(
+    "value,expected",
+    [
+        ("guarda OU alimentos", '"guarda" OR "alimentos"'),
+        ("guarda ou alimentos", '"guarda" OR "alimentos"'),
+        ("guarda OR alimentos", '"guarda" OR "alimentos"'),
+        ("guarda or alimentos", '"guarda" OR "alimentos"'),
+        ("guarda E alimentos", '"guarda" AND "alimentos"'),
+        ("guarda e alimentos", '"guarda" AND "alimentos"'),
+        ("guarda AND alimentos", '"guarda" AND "alimentos"'),
+        ('(dano OU guarda) E "pensão alimentícia"', '("dano" OR "guarda") AND "pensão alimentícia"'),
+        ('guarda "ou" alimentos', '"guarda" AND "ou" AND "alimentos"'),
+        ("guarda não alimentos", '"guarda" AND "não" AND "alimentos"'),
+        ("ou* E guarda", '"ou"* AND "guarda"'),
+    ],
+)
+def test_portuguese_operators_of_the_advanced_mode(value, expected):
+    assert advanced_query(value) == expected
+
+
+@pytest.mark.parametrize(
+    "value",
+    ["guarda NOT alimentos", "guarda not alimentos", "guarda NÃO alimentos", "guarda NAO alimentos"]
+    + ["guarda NEAR alimentos", "guarda near alimentos", "NEAR/5 guarda", "E guarda", "guarda OU", "OU"],
+)
+def test_operator_the_grammar_does_not_offer_is_refused(store, value):
+    ingest(store, [raw_doc()])
+    assert_error(
+        call(store, "pesquisar_jurisprudencia", {"termos": value, "modo_busca": "avancado"}),
+        "consulta_invalida",
+    )
+
+
+def test_advanced_or_in_portuguese_finds_either_term_through_the_tool(store):
+    ingest(
+        store, [raw_doc("1", text="Guarda."), raw_doc("2", text="Alimentos."), raw_doc("3", text="Outro.")]
+    )
+    either = {"termos": "guarda OU alimentos", "modo_busca": "avancado"}
+    result = call(store, "pesquisar_jurisprudencia", either)
+    assert result.structured_content["total_encontrado"] == 2
+    assert result.structured_content["consulta_efetiva"] == '"guarda" OR "alimentos"'
+    both = call(store, "pesquisar_jurisprudencia", {"termos": "guarda E alimentos", "modo_busca": "avancado"})
+    assert both.structured_content["total_encontrado"] == 0
+
+
+def test_operators_also_hold_in_the_advanced_search_of_precedents(tema):
+    found = api.search_precedents(tema, "sintético OU inexistente", modo_busca="avancado")
+    assert found["consulta_efetiva"] == '"sintético" OR "inexistente"' and found["total_encontrado"] == 1
+
+
+def test_simple_mode_keeps_operators_as_plain_words(store):
+    ingest(store, [raw_doc("1", text="Guarda ou alimentos.")])
+    assert '"ou"' not in api.search(store, "guarda ou alimentos")["consulta_efetiva"]  # a stopword
+    assert " AND " in api.search(store, "guarda ou alimentos", ordenar="mais_recentes")["consulta_efetiva"]
 
 
 # Version
