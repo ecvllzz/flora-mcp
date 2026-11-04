@@ -121,7 +121,7 @@ def search_precedents(
 def document(
     store,
     id,
-    componente="ementa",
+    componente=None,
     cursor=None,
     tamanho_bloco=16000,
     *,
@@ -135,7 +135,7 @@ def document(
     if is_precedent or parse_id(id) is not None:
         result = precedent_query.document(view, id, componente, cursor, tamanho_bloco, hash_conteudo)
     else:
-        result = query.document(view, id, componente, cursor, tamanho_bloco)
+        result = query.document(view, id, componente or "ementa", cursor, tamanho_bloco)
         if hash_conteudo and result["hash_conteudo"] != hash_conteudo:
             raise FloraError("versao_indisponivel", "Versão indisponível nesta publicação.")
     return _finish(view, result)

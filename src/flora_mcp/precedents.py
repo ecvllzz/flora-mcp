@@ -17,6 +17,8 @@ from .store import Store, connection
 
 SCHEMA_VERSION = 2
 COMPONENTS = ("enunciado", "questao_submetida", "tese_firmada", "modulacao", "suspensao")
+# What is read when no component is asked for: first what the precedent says, then what it decides on.
+DEFAULT_COMPONENTS = ("enunciado", "tese_firmada", "questao_submetida", "modulacao", "suspensao")
 SPECIES = {
     "STJ": {"tema_repetitivo", "iac", "sumula"},
     "STF": {"tema_repercussao_geral", "sumula_vinculante", "sumula"},

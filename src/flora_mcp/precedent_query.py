@@ -5,7 +5,7 @@ import sqlite3
 
 from .ausencia import empty_reason
 from .model import FloraError, canonical, digest, folded
-from .precedents import COMPONENTS, MATTERS, SPECIES, available, normalized_number
+from .precedents import COMPONENTS, DEFAULT_COMPONENTS, MATTERS, SPECIES, available, normalized_number
 from .query import (
     BROADENED,
     CONTRATO,
@@ -298,7 +298,7 @@ def search(
     return result
 
 
-def document(store, id, componente="enunciado", cursor=None, tamanho_bloco=16000, hash_conteudo=None):
+def document(store, id, componente=None, cursor=None, tamanho_bloco=16000, hash_conteudo=None):
     if id in store.withdrawn:
         raise FloraError("documento_nao_encontrado", "Precedente retirado do uso ativo.")
     if not 100 <= tamanho_bloco <= 32000:
@@ -317,6 +317,9 @@ def document(store, id, componente="enunciado", cursor=None, tamanho_bloco=16000
         raise FloraError("versao_indisponivel", "Versão não disponível nesta publicação.")
     body = json.loads(row["body"])
     components = body["componentes"]
+    if componente in {None, "ementa"}:
+        # A precedent has no ementa: both ask for its default, and the answer names what was read.
+        componente = next((c for c in DEFAULT_COMPONENTS if c in components), componente)
     if componente not in components:
         raise FloraError("componente_indisponivel", "Componentes disponíveis: " + ", ".join(components))
     text = components[componente]

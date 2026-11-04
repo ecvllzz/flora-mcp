@@ -193,7 +193,7 @@ def create_server(store: Store) -> MCPServer:
     @server.tool(annotations=annotation, description=DESCRIPTIONS["obter_documento"])
     def obter_documento(
         id: str,
-        componente: str = "ementa",
+        componente: str | None = None,
         cursor: str | None = None,
         tamanho_bloco: int = 16000,
         hash_conteudo: str | None = None,

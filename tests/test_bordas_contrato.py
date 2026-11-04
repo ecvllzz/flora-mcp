@@ -10,10 +10,11 @@ from mcp.client.client import Client
 
 from conftest import ingest, raw_doc
 from flora_mcp import __version__, api
-from flora_mcp.model import FloraError
+from flora_mcp.model import FloraError, canonical
 from flora_mcp.precedents import import_package, migrate, normalized_number
 from flora_mcp.publication import publish
 from flora_mcp.server import create_server
+from flora_mcp.store import connection
 from test_contrato import stdio
 from test_precedents import packet
 
@@ -100,6 +101,66 @@ def test_cursor_is_the_same_query_for_every_way_of_writing_the_number(store, tmp
     assert plain["resultados"] == dotted["resultados"]
     refused = call(store, "pesquisar_precedentes", {"numero": "tema mil e setenta e seis"})
     assert_error(refused, "filtro_invalido")
+
+
+# Default component
+
+
+def test_precedent_read_without_component_answers_with_its_default_and_names_it(store, tmp_path):
+    migrate(store)
+    import_package(store, packet(tmp_path), apply=True)
+    import_package(store, packet(tmp_path, number="1076", species="tema_repetitivo"), apply=True)
+    sumula = call(store, "obter_documento", {"id": "STJ:sumula:999999"})
+    assert not sumula.is_error
+    assert sumula.structured_content["componente"] == "enunciado"
+    tema_lido = call(store, "obter_documento", {"id": "STJ:tema_repetitivo:1076"})
+    assert not tema_lido.is_error
+    assert tema_lido.structured_content["componente"] == "tese_firmada"
+
+
+def test_default_component_of_a_precedent_prefers_what_it_says(store, tmp_path):
+    migrate(store)
+    import_package(store, packet(tmp_path, number="1076", species="tema_repetitivo"), apply=True)
+    with connection(store.path, write=True) as db, db:
+        row = db.execute("SELECT body FROM precedents WHERE id='STJ:tema_repetitivo:1076'").fetchone()
+        body = json.loads(row["body"])
+        body["componentes"] = {"questao_submetida": "Questão.", "tese_firmada": "Tese."}
+        db.execute("UPDATE precedents SET body=? WHERE id='STJ:tema_repetitivo:1076'", (canonical(body),))
+    assert api.document(store, "STJ:tema_repetitivo:1076")["componente"] == "tese_firmada"
+    assert api.document(store, "STJ:tema_repetitivo:1076", "questao_submetida")["texto"] == "Questão."
+
+
+def test_ementa_of_a_precedent_is_its_default_not_a_failure(store, tmp_path):
+    migrate(store)
+    import_package(store, packet(tmp_path), apply=True)
+    result = call(store, "obter_documento", {"id": "STJ:sumula:999999", "componente": "ementa"})
+    assert not result.is_error
+    assert result.structured_content["componente"] == "enunciado"
+
+
+def test_block_cursor_continues_a_precedent_read_with_the_default(store, tmp_path):
+    migrate(store)
+    import_package(store, packet(tmp_path), apply=True)
+    first = api.document(store, "STJ:sumula:999999", tamanho_bloco=100)
+    second = api.document(store, "STJ:sumula:999999", None, first["proximo_cursor"], 100)
+    assert second["offset"] == 100 and second["componente"] == "enunciado"
+    explicit = api.document(store, "STJ:sumula:999999", "enunciado", first["proximo_cursor"], 100)
+    assert explicit["texto"] == second["texto"]
+
+
+def test_precedent_keeps_refusing_a_component_it_does_not_have(store, tmp_path):
+    migrate(store)
+    import_package(store, packet(tmp_path), apply=True)
+    result = call(store, "obter_documento", {"id": "STJ:sumula:999999", "componente": "tese_firmada"})
+    assert_error(result, "componente_indisponivel")
+    assert "enunciado" in result.structured_content["mensagem"]
+
+
+def test_judgment_default_stays_the_ementa(store):
+    ingest(store, [raw_doc(text="Alimentos.")])
+    result = call(store, "obter_documento", {"id": "STJ:1"})
+    assert result.structured_content["componente"] == "ementa"
+    assert result.structured_content["texto"] == "Alimentos."
 
 
 # Version
