@@ -112,6 +112,9 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
             "pesquisar_precedentes.triagem": await ok("pesquisar_precedentes", {"termos": "sintético"}),
             "pesquisar_precedentes.vazio": await ok("pesquisar_precedentes", {"termos": "tema"}),
             "consultar_cobertura.resumo": await ok("consultar_cobertura", {}),
+            "pesquisar_jurisprudencia.quem_cita": await ok(
+                "pesquisar_jurisprudencia", {"quem_cita": "STJ:1"}
+            ),
             "conferir_referencias": await ok(
                 "conferir_referencias",
                 {

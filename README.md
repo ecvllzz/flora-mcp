@@ -89,7 +89,7 @@ Em outra máquina, troque os caminhos. Um cliente já aberto continua com as fer
 
 | Ferramenta | Uso |
 |---|---|
-| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão). Triagem por padrão (referência, cabeçalho, trecho com os termos e lista dos termos presentes); resposta vazia com `motivo`. |
+| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão) e, a partir de um acórdão da base, `quem_cita`, `o_que_cita` e `parecido_com`. Triagem por padrão (referência, cabeçalho, trecho com os termos e lista dos termos presentes); resposta vazia com `motivo`. |
 | `pesquisar_precedentes` | Temas, IRDR, IAC e súmulas admitidos, por espécie, número, órgão, matéria e componente. |
 | `obter_documento` | Ementa, seção da ementa, espelho original, citações extraídas (`citacoes`) ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
 | `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |

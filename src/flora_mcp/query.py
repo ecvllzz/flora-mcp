@@ -7,6 +7,7 @@ from datetime import date
 from .ausencia import empty_reason
 from .citation import citation_metadata
 from .model import FloraError, canonical, digest, folded, number
+from .relacoes import ambiguity, relation_plan, similar_plan
 from .store import ROWID_INDEX, ReadView, collection_delay
 from .citations import TYPES as CITATION_TYPES
 from .citations import extract as extract_citations
@@ -472,12 +473,16 @@ class JudgmentSearch:
             raise database_error(exc) from exc
         return {r[0]: (r[1], r[2]) for r in rows}
 
-    def item(self, body, original, marks):
+    def item(self, body, original, marks, link=None):
         item = {**body, **citation_metadata(body, original)}
+        if link:
+            item["vinculo"] = link  # quem_cita or o_que_cita over citacoes-2: resolvido or ambiguo
         if self.detalhe == "completo":
             return item
         full = item["ementa"]
         result = {k: item.get(k) for k in TRIAGE_KEYS}
+        if link:
+            result["vinculo"] = link
         cabecalho, parcial = header(full)
         result.update(sha256_componente=digest(full.encode()), cabecalho=cabecalho, cabecalho_parcial=parcial)
         if self.query:
@@ -544,14 +549,23 @@ def search(
     cita_precedente: str | None = None,
     cita_dispositivo: str | None = None,
     cita_acordao: str | None = None,
+    quem_cita: str | None = None,
+    o_que_cita: str | None = None,
+    parecido_com: str | None = None,
 ) -> dict:
     store = as_view(store)
+    if parecido_com and termos:
+        raise FloraError(
+            "consulta_invalida", "parecido_com usa a ementa da semente como consulta; não combine com termos."
+        )
+    if parecido_com and (quem_cita or o_que_cita):
+        raise FloraError("filtro_invalido", "parecido_com não combina com quem_cita ou o_que_cita.")
     plan = JudgmentSearch(
         store,
         termos,
         detalhe=detalhe,
         limite=limite,
-        ordenar=ordenar,
+        ordenar=ordenar if not parecido_com else None,
         modo_busca=modo_busca,
         tipo_data=tipo_data,
     )
@@ -568,22 +582,37 @@ def search(
         store, cita_precedente=cita_precedente, cita_dispositivo=cita_dispositivo, cita_acordao=cita_acordao
     )
     plan.restrict(cited_filters, cited_params)
+    relation = seed = None
     with store.read() as db:
         db.create_function("flora_fold", 1, lambda value: folded(value or ""), deterministic=True)
         db.execute("BEGIN")  # Revision and rows belong to the same read snapshot.
         revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
+        related = relation_plan(db, store, quem_cita=quem_cita, o_que_cita=o_que_cita)
+        if related:
+            plan.restrict(related[0], related[1])
+            relation = related[2]
+        if parecido_com:
+            # The seed's own terms are the query; the seed itself is left out of the answer.
+            terms, seed = similar_plan(db, parecido_com, RANKED_STOPWORDS)
+            plan.query = plan.original = any_term_query(terms)
+            plan.ordenar = resolve_order(ordenar, plan.query)
+            plan.restrict(["d.id<>?"], [parecido_com])
         plan.prepare(db)
         total = plan.total(db)
         rows, following = plan.page(db, cursor, revision)
         bodies = [(json.loads(r["body"]), json.loads(r["original"]) if r["original"] else None) for r in rows]
         marks = plan.highlights(db, [body["id"] for body, _ in bodies])
+        links = ambiguity(db, relation, [body["id"] for body, _ in bodies]) if relation else {}
         reason = plan.reason(db, tribunal, orgao, (data_inicio, data_fim)) if total == 0 else {}
         delay = collection_delay(db, store.atrasos)
     result = {
         "status": "ok",
         "contrato": CONTRATO,
         "total_encontrado": total,
-        "resultados": [plan.item(body, original, marks.get(body["id"])) for body, original in bodies],
+        "resultados": [
+            plan.item(body, original, marks.get(body["id"]), links.get(body["id"]))
+            for body, original in bodies
+        ],
         "detalhe": detalhe,
         "ementas_completas": detalhe == "completo",
         "campo_pesquisado": "ementa",
@@ -593,6 +622,8 @@ def search(
         **({"ampliacao": plan.broadened} if plan.broadened else {}),
         "ordenacao": plan.ordenar,
         **({"citacoes_filtradas": cited} if cited else {}),
+        **({"relacao": relation} if relation else {}),
+        **({"semente": seed} if seed else {}),
         "revisao_base": revision,
         "proximo_cursor": following(len(rows)) if plan.offset + len(rows) < total else None,
         "cobertura": coverage_notice(delay),

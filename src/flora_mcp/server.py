@@ -134,6 +134,36 @@ CitaAcordao = Annotated[
     str | None,
     Field(description="Só acórdãos que citam o acórdão: número CNJ, AgInt no AREsp 1.779.343/DF."),
 ]
+QuemCita = Annotated[
+    str | None,
+    Field(
+        description=(
+            "id de um acórdão da base: devolve os acórdãos da base que o citam, pelas chaves de citação "
+            "derivadas na publicação. relacao traz a contagem de citantes, que é informação e não ordena "
+            "nem mede entendimento. O padrão da busca não muda sem este parâmetro."
+        )
+    ),
+]
+OQueCita = Annotated[
+    str | None,
+    Field(
+        description=(
+            "id de um acórdão da base: devolve os acórdãos da base que ele cita e que estão carregados. "
+            "Citação que cabe em mais de um acórdão do processo vem com vinculo=ambiguo. Não combine com "
+            "quem_cita."
+        )
+    ),
+]
+ParecidoCom = Annotated[
+    str | None,
+    Field(
+        description=(
+            "id de um acórdão da base: os 25 termos mais distintivos da ementa dele viram a consulta (OR), "
+            "e a resposta lista os termos em semente. Vizinho por texto não é pertinência jurídica. Não "
+            "combine com termos; a semente fica fora do resultado."
+        )
+    ),
+]
 Especie = Annotated[
     Literal["tema_repetitivo", "irdr", "iac", "sumula", "tema_repercussao_geral", "sumula_vinculante"] | None,
     Field(description="tema_repetitivo, irdr, iac, sumula, tema_repercussao_geral ou sumula_vinculante."),
@@ -223,7 +253,9 @@ DESCRIPTIONS = {
         "cabeçalho e o trecho onde o termo aparece; leia a ementa com obter_documento antes de "
         "citar. Resultado vazio vale só para a base carregada e vem com o motivo. Temas e súmulas: "
         "pesquisar_precedentes. Os filtros cita_* leem as linhas de citação da ementa CNJ e do "
-        "espelho do STJ; com ordenar=mais_recentes dão a cronologia de aplicação."
+        "espelho do STJ; com ordenar=mais_recentes dão a cronologia de aplicação. A partir de um acórdão "
+        "da base, quem_cita e o_que_cita listam quem o cita e o que ele cita, e parecido_com acha os "
+        "acórdãos de vocabulário mais próximo; sem esses parâmetros nada muda."
     ),
     "pesquisar_precedentes": (
         "Pesquisa temas repetitivos, IAC e súmulas do STJ, temas de repercussão geral e súmulas, "
@@ -340,6 +372,9 @@ def create_server(store: Store) -> MCPServer:
         cita_precedente: CitaPrecedente = None,
         cita_dispositivo: CitaDispositivo = None,
         cita_acordao: CitaAcordao = None,
+        quem_cita: QuemCita = None,
+        o_que_cita: OQueCita = None,
+        parecido_com: ParecidoCom = None,
     ) -> dict[str, Any]:
         return result(
             search,
@@ -361,6 +396,9 @@ def create_server(store: Store) -> MCPServer:
             cita_precedente=cita_precedente,
             cita_dispositivo=cita_dispositivo,
             cita_acordao=cita_acordao,
+            quem_cita=quem_cita,
+            o_que_cita=o_que_cita,
+            parecido_com=parecido_com,
         )
 
     @server.tool(annotations=annotation, description=DESCRIPTIONS["pesquisar_precedentes"])

@@ -52,6 +52,9 @@ def search(
     cita_precedente=None,
     cita_dispositivo=None,
     cita_acordao=None,
+    quem_cita=None,
+    o_que_cita=None,
+    parecido_com=None,
 ):
     """Acórdãos only; temas and súmulas are in search_precedents."""
     view = _view(store, cursor, publicacao_id)
@@ -74,6 +77,9 @@ def search(
         cita_precedente=cita_precedente,
         cita_dispositivo=cita_dispositivo,
         cita_acordao=cita_acordao,
+        quem_cita=quem_cita,
+        o_que_cita=o_que_cita,
+        parecido_com=parecido_com,
     )
     return _finish(view, result)
 

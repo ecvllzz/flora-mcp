@@ -34,7 +34,7 @@ Pedido de uso sugerido:
 
 ## O que o cliente recebe
 
-Quatro ferramentas de leitura: `pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento` e `consultar_cobertura` (contrato em [CONTRATO.md](../CONTRATO.md)). A referência é montada pelo servidor a partir do espelho original preservado. O acervo é parcial e contém ementas e espelhos, sem inteiro teor dos votos.
+Cinco ferramentas de leitura: `pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento`, `consultar_cobertura` e `conferir_referencias` (contrato em [CONTRATO.md](../CONTRATO.md)). A referência é montada pelo servidor a partir do espelho original preservado. O acervo é parcial e contém ementas e espelhos, sem inteiro teor dos votos.
 
 A instalação e as verificações feitas quando o acervo mudou de pasta estão em [recibos/migracao-dados-20260929.md](recibos/migracao-dados-20260929.md).
 
