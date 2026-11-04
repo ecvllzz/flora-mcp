@@ -1,0 +1,1434 @@
+{
+ "schema": "flora-avaliacao-3",
+ "descricao": "Conjunto do caminho real (item M1): as 54 perguntas da R3, de 23/10/2026, mais 26 perguntas novas só do STJ, tiradas dos registros de pesquisa do gabinete. Sem caso, origem nem rótulo gravado: nada aqui aponta para um processo. Método em avaliacao/METODO.md.",
+ "montado_em": "2026-11-04",
+ "publicacao_de_referencia": "r3376-s2-cd895f3434-f0a4721f447f",
+ "graus": {
+  "2": "fundamento, apoio, citado ou selecionado",
+  "1": "contraponto, analogia, reforço ou orientação; nas perguntas novas, também lido e não usado com ratio sobre a proposição",
+  "0": "descartado depois de lido"
+ },
+ "formulacoes": [
+  "proposicao",
+  "assessor",
+  "curta",
+  "avancada"
+ ],
+ "formulacoes_descricao": {
+  "proposicao": "a proposicao que a decisao enuncia, em vocabulario de ementa e sem fatos do caso (canon de pesquisa, consulta pela proposicao)",
+  "assessor": "termos que um assessor digitaria de uma vez, sem enxugar",
+  "curta": "dois ou tres termos nucleares",
+  "avancada": "expressão do modo avançado no formato dos registros (grupos ligados por AND, sinônimos por OR, frases, prefixo), redigida numa passada só, a partir só da proposição, sem ver registros, esperados nem resultados",
+  "hipotetica": "ementa hipotetica no modelo CNJ (cabecalho em maiusculas e uma ou duas frases de tese), de 400 a 900 caracteres, escrita so a partir da proposicao numa unica passada em 23/10/2026, antes de qualquer resultado semantico, sem consultar o acervo nem os esperados; so a metade semantica a usa, a lexical repete a da proposicao; só no bloco r3; não entra nesta medida"
+ },
+ "stj": {
+  "perguntas_so_do_stj": 30,
+  "antes": 4,
+  "novas": 26,
+  "motivo": "Com 30, uma pergunta vale 3,3 pontos e 6 ganhos sem perda (20% do bloco) já passam no teste do sinal a 5%, o que basta para decidir M2; com 20, seria preciso 30%. Fixado antes de medir."
+ },
+ "limites": {
+  "nota": "Os esperados sao os acordaos que o papel leu e marcou, nao todos os relevantes do acervo; um acordao relevante nunca devolvido conta como nao relevante. As formulacoes proposicao, assessor e curta foram redigidas a partir do rotulo e da materia do caso, sem ler as ementas esperadas. Os rotulos vieram de buscas feitas com a propria ferramenta, o que favorece o lexical atual. So entram acordaos presentes na publicacao de referencia; temas e sumulas ficam fora.",
+  "descartadas": {
+   "q002": "rotulo insuficiente (requerimento anterior omitido)",
+   "q015": "rotulo insuficiente (secao 2, contraponto)",
+   "q016": "rotulo insuficiente (garantias anteriores)",
+   "q017": "rotulo insuficiente (garantias anteriores)",
+   "q018": "rotulo insuficiente (garantias anteriores)",
+   "q022": "rotulo ambiguo (equidade, proporcionalidade e quantificacao: honorarios ou quantum)",
+   "q023": "rotulo ambiguo (preparo e gratuidade, dispositivo citado incerto)",
+   "q045": "rotulo insuficiente (suficiencia da prova e requerimento tempestivo)",
+   "q053": "rotulo insuficiente (gratuidade, sem proposicao)"
+  }
+ },
+ "perguntas": [
+  {
+   "id": "r001",
+   "bloco": "r3",
+   "proposicao": "a gratuidade da justiça suspende a exigibilidade dos honorários advocatícios fixados no cumprimento de sentença",
+   "assessor": "gratuidade justiça honorários cumprimento de sentença execução suspensão exigibilidade",
+   "curta": "gratuidade honorários execução",
+   "avancada": "gratuidade AND (honorarios OR sucumbencia) AND (\"cumprimento de sentenca\" OR exigibilidade) AND (suspensa OR suspensiva OR \"condicao suspensiva\")",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CUMPRIMENTO DE SENTENÇA. HONORÁRIOS ADVOCATÍCIOS. GRATUIDADE DA JUSTIÇA. SUSPENSÃO DA EXIGIBILIDADE. 1. A concessão da gratuidade da justiça não afasta a responsabilidade do beneficiário pelos honorários advocatícios fixados no cumprimento de sentença, mas suspende sua exigibilidade, nos termos do art. 98, § 3º, do CPC. 2. A cobrança da verba fica condicionada à demonstração, pelo credor, de que deixou de existir a situação de insuficiência de recursos no prazo de cinco anos, extinguindo-se a obrigação após esse prazo.",
+   "esperados": [
+    "STJ:000907419",
+    "STJ:941111",
+    "STJ:942636",
+    "STJ:951903",
+    "TJSC:321786467542236744136161149476",
+    "TJSC:321786968680295199257788760824"
+   ],
+   "graus": {
+    "STJ:000907419": 1,
+    "STJ:941111": 1,
+    "STJ:942636": 2,
+    "STJ:951903": 1,
+    "TJSC:321786467542236744136161149476": 2,
+    "TJSC:321786968680295199257788760824": 1
+   }
+  },
+  {
+   "id": "r002",
+   "bloco": "r3",
+   "proposicao": "a gratuidade da justiça produz efeitos a partir do deferimento e não alcança custas anteriores",
+   "assessor": "gratuidade da justiça efeitos retroativos ex nunc custas anteriores deferimento",
+   "curta": "gratuidade efeitos retroativos",
+   "avancada": "gratuidade AND (deferimento OR concessao) AND (efeitos OR retroativ* OR \"ex nunc\") AND (custas OR despesas)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. GRATUIDADE DA JUSTIÇA. EFEITOS. MARCO INICIAL. CUSTAS E DESPESAS ANTERIORES AO DEFERIMENTO. 1. O benefício da gratuidade da justiça produz efeitos a partir de seu deferimento, sem eficácia retroativa, de modo que não alcança custas, despesas processuais e honorários constituídos antes do pedido. 2. A concessão posterior do benefício não autoriza a dispensa de encargos já exigíveis nem a restituição de valores recolhidos.",
+   "esperados": [
+    "TJSC:321779444946945217508337863286",
+    "TJSC:321786898491572648339935726247",
+    "TJSC:321786968680295199257788760824"
+   ],
+   "graus": {
+    "TJSC:321779444946945217508337863286": 1,
+    "TJSC:321786898491572648339935726247": 1,
+    "TJSC:321786968680295199257788760824": 1
+   }
+  },
+  {
+   "id": "r003",
+   "bloco": "r3",
+   "proposicao": "prazo recursal de dez dias nos procedimentos do ECA e informação divergente do sistema eletrônico",
+   "assessor": "prazo recursal ECA dez dias art. 198 tempestividade informação sistema eletrônico",
+   "curta": "prazo recursal ECA",
+   "avancada": "(ECA OR \"estatuto da crianca\") AND recurso AND (\"dez dias\" OR prazo) AND (sistema OR eproc OR eletronico) AND (informacao OR divergente OR erro)",
+   "hipotetica": "DIREITO DA CRIANÇA E DO ADOLESCENTE. PROCESSUAL CIVIL. PRAZO RECURSAL NOS PROCEDIMENTOS DO ECA. DEZ DIAS. INFORMAÇÃO DIVERGENTE NO SISTEMA ELETRÔNICO. TEMPESTIVIDADE. 1. Nos procedimentos regidos pelo Estatuto da Criança e do Adolescente, o prazo para interposição de apelação é de dez dias, contado em dias corridos, nos termos do art. 198, II, do ECA. 2. A informação equivocada de prazo maior lançada pelo sistema eletrônico do tribunal, quando induz a parte em erro, configura justa causa e preserva a tempestividade do recurso, em atenção à boa-fé e à confiança legítima.",
+   "esperados": [
+    "TJSC:321786898491572648330168248380",
+    "TJSC:321786898491572648330169645111"
+   ],
+   "graus": {
+    "TJSC:321786898491572648330168248380": 2,
+    "TJSC:321786898491572648330169645111": 1
+   }
+  },
+  {
+   "id": "r004",
+   "bloco": "r3",
+   "proposicao": "o prazo para o revel sem advogado nos autos corre da publicação do ato decisório no órgão oficial",
+   "assessor": "revel sem patrono prazo recursal publicação órgão oficial art. 346 CPC",
+   "curta": "revel prazo publicação",
+   "avancada": "revel AND (prazo OR recursal) AND (publicacao OR intimacao) AND (\"orgao oficial\" OR \"diario\" OR advogado)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. REVELIA. RÉU REVEL SEM ADVOGADO CONSTITUÍDO NOS AUTOS. FLUÊNCIA DOS PRAZOS. PUBLICAÇÃO DO ATO DECISÓRIO NO ÓRGÃO OFICIAL. 1. Os prazos contra o revel que não tenha patrono nos autos fluem da data de publicação do ato decisório no órgão oficial, nos termos do art. 346 do CPC, dispensada a intimação pessoal. 2. O revel pode intervir no processo em qualquer fase, recebendo-o no estado em que se encontrar, sem reabertura dos prazos já transcorridos.",
+   "esperados": [
+    "STJ:951024",
+    "STJ:957491"
+   ],
+   "graus": {
+    "STJ:951024": 2,
+    "STJ:957491": 2,
+    "TJSC:321786619979792694803817041499": 0,
+    "TJSC:321786968680295199257904680711": 0,
+    "TJSC:321790018162675778197648531291": 0
+   }
+  },
+  {
+   "id": "r005",
+   "bloco": "r3",
+   "proposicao": "substituição da multa por advertência na infração administrativa do art. 249 do ECA",
+   "assessor": "infração administrativa art. 249 ECA multa advertência substituição proteção integral",
+   "curta": "art. 249 ECA advertência",
+   "avancada": "\"art. 249\" AND (ECA OR estatuto) AND (advertencia OR substituicao) AND multa",
+   "hipotetica": "DIREITO DA CRIANÇA E DO ADOLESCENTE. INFRAÇÃO ADMINISTRATIVA. ART. 249 DO ECA. DESCUMPRIMENTO DOS DEVERES DO PODER FAMILIAR. SUBSTITUIÇÃO DA MULTA POR ADVERTÊNCIA. 1. Configurada a infração administrativa do art. 249 do ECA, a pena de multa pode ser substituída por advertência quando as circunstâncias do caso, a condição econômica dos responsáveis e a finalidade pedagógica da sanção indicarem que a medida mais branda é suficiente. 2. A substituição atende à proteção integral da criança e evita onerar o núcleo familiar em prejuízo do próprio protegido.",
+   "esperados": [
+    "TJSC:321785864890251663282783123740",
+    "TJSC:321786898491572648332074137184"
+   ],
+   "graus": {
+    "TJSC:321785864890251663282783123740": 2,
+    "TJSC:321786898491572648332074137184": 1
+   }
+  },
+  {
+   "id": "r006",
+   "bloco": "r3",
+   "proposicao": "a infração do art. 249 do ECA exige culpa e é afastada quando os pais demonstram esforços para cumprir os deveres do poder familiar",
+   "assessor": "art. 249 ECA dolo culpa elemento subjetivo descumprimento deveres poder familiar esforços genitores",
+   "curta": "art. 249 ECA culpa",
+   "avancada": "\"art. 249\" AND (culpa OR dolo OR esforcos) AND (\"poder familiar\" OR pais) AND (afastada OR afastamento OR improcedencia)",
+   "hipotetica": "DIREITO DA CRIANÇA E DO ADOLESCENTE. INFRAÇÃO ADMINISTRATIVA. ART. 249 DO ECA. ELEMENTO SUBJETIVO. CULPA OU DOLO. ESFORÇOS DOS PAIS PARA CUMPRIR OS DEVERES DO PODER FAMILIAR. 1. A infração administrativa do art. 249 do ECA exige a demonstração de dolo ou culpa dos pais ou responsáveis no descumprimento dos deveres inerentes ao poder familiar, não bastando o resultado objetivo. 2. Afasta-se a sanção quando os genitores demonstram ter adotado as providências ao seu alcance, como matrícula, acompanhamento escolar e busca de apoio da rede de proteção, para cumprir esses deveres.",
+   "esperados": [
+    "TJSC:321786619979792694803817041499"
+   ],
+   "graus": {
+    "TJSC:321786619979792694803817041499": 1
+   }
+  },
+  {
+   "id": "r007",
+   "bloco": "r3",
+   "proposicao": "redução da multa do art. 249 do ECA abaixo do mínimo de três salários de referência",
+   "assessor": "multa art. 249 ECA redução aquém mínimo três salários de referência capacidade econômica",
+   "curta": "multa 249 redução",
+   "avancada": "\"art. 249\" AND multa AND (reducao OR minoracao OR reduzida) AND (\"salarios de referencia\" OR minimo OR \"tres salarios\")",
+   "hipotetica": "DIREITO DA CRIANÇA E DO ADOLESCENTE. INFRAÇÃO ADMINISTRATIVA. ART. 249 DO ECA. MULTA. PISO LEGAL DE TRÊS SALÁRIOS DE REFERÊNCIA. REDUÇÃO ABAIXO DO MÍNIMO. 1. A multa prevista no art. 249 do ECA tem limites fixados em lei, de três a vinte salários de referência, e o julgador não pode reduzi-la abaixo do mínimo legal a pretexto de proporcionalidade ou de hipossuficiência do infrator. 2. A condição econômica dos responsáveis orienta a dosimetria dentro da faixa legal, sem autorizar a fixação aquém do piso.",
+   "esperados": [
+    "TJSC:321785241743612880409012526823"
+   ],
+   "graus": {
+    "TJSC:321785241743612880409012526823": 1
+   }
+  },
+  {
+   "id": "r008",
+   "bloco": "r3",
+   "proposicao": "configuração da infração administrativa do art. 249 do ECA e dosimetria da multa",
+   "assessor": "infração administrativa art. 249 ECA descumprimento dever poder familiar multa dosimetria nulidade",
+   "curta": "infração administrativa ECA",
+   "avancada": "\"art. 249\" AND (infracao administrativa OR infracao) AND (multa OR dosimetria) AND (configuracao OR caracterizada OR \"poder familiar\")",
+   "hipotetica": "DIREITO DA CRIANÇA E DO ADOLESCENTE. INFRAÇÃO ADMINISTRATIVA. ART. 249 DO ECA. CONFIGURAÇÃO. DESCUMPRIMENTO DOLOSO OU CULPOSO DOS DEVERES DO PODER FAMILIAR. DOSIMETRIA DA MULTA. 1. Configura a infração administrativa do art. 249 do ECA o descumprimento, doloso ou culposo, dos deveres inerentes ao poder familiar, como a omissão reiterada na frequência escolar ou nos cuidados de saúde do filho. 2. A multa deve ser fixada entre três e vinte salários de referência, segundo a gravidade da conduta, a reincidência e a capacidade econômica do responsável.",
+   "esperados": [
+    "TJSC:321784300707743581318285094808",
+    "TJSC:321786467542236744135379732716",
+    "TJSC:321786467542236744135381561518",
+    "TJSC:321790018162675778197648531291",
+    "TJSC:321790018162675778197806617655",
+    "TJSC:321790018162675778197990820350"
+   ],
+   "graus": {
+    "TJSC:321784300707743581318285094808": 2,
+    "TJSC:321786467542236744135379732716": 1,
+    "TJSC:321786467542236744135381561518": 2,
+    "TJSC:321786898491572648332039060477": 0,
+    "TJSC:321790018162675778197648531291": 1,
+    "TJSC:321790018162675778197806617655": 2,
+    "TJSC:321790018162675778197826502579": 0,
+    "TJSC:321790018162675778197990820350": 2,
+    "TJSC:321790081633433507944025992641": 0
+   }
+  },
+  {
+   "id": "r009",
+   "bloco": "r3",
+   "proposicao": "o acordo de parcelamento do débito alimentar na execução não implica novação, mas suspensão da execução",
+   "assessor": "acordo parcelamento débito alimentar execução novação suspensão inadimplemento retomada",
+   "curta": "acordo parcelamento novação",
+   "avancada": "(acordo OR parcelamento) AND (alimentos OR alimentar) AND execucao AND (novacao OR suspensao)",
+   "hipotetica": "DIREITO DE FAMÍLIA. PROCESSUAL CIVIL. EXECUÇÃO DE ALIMENTOS. ACORDO DE PARCELAMENTO DO DÉBITO. NOVAÇÃO NÃO CONFIGURADA. SUSPENSÃO DA EXECUÇÃO. 1. O acordo de parcelamento do débito alimentar celebrado no curso da execução não implica novação, à falta de ânimo de novar, e apenas suspende a execução durante o prazo concedido para o cumprimento, nos termos do art. 922 do CPC. 2. Descumprido o acordo, a execução retoma seu curso pelo saldo remanescente, sem necessidade de nova citação e com manutenção do rito originalmente adotado.",
+   "esperados": [
+    "TJSC:321783100975479837791740036936",
+    "TJSC:321786968680295199257677374694",
+    "TJSC:321786982354457870770489382249"
+   ],
+   "graus": {
+    "TJSC:321783100975479837791740036936": 2,
+    "TJSC:321786968680295199257342156076": 0,
+    "TJSC:321786968680295199257677374694": 2,
+    "TJSC:321786982354457870770489382249": 2
+   }
+  },
+  {
+   "id": "r010",
+   "bloco": "r3",
+   "proposicao": "honorários por equidade em causa de valor baixo com a tabela da OAB como referência",
+   "assessor": "honorários equidade art. 85 § 8º valor da causa irrisório tabela OAB referência",
+   "curta": "honorários equidade tabela OAB",
+   "avancada": "honorarios AND equidade AND (\"valor baixo\" OR irrisorio OR \"valor inestimavel\") AND (\"tabela da OAB\" OR OAB)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. HONORÁRIOS ADVOCATÍCIOS. CAUSA DE VALOR BAIXO OU IRRISÓRIO. FIXAÇÃO POR EQUIDADE. TABELA DA OAB COMO REFERÊNCIA. 1. Nas causas de valor irrisório ou de proveito econômico muito baixo, os honorários advocatícios são fixados por apreciação equitativa, na forma do art. 85, § 8º, do CPC. 2. Na fixação equitativa, os valores recomendados pela tabela do Conselho Seccional da OAB servem de referência, nos termos do § 8º-A do mesmo artigo, sem vincular o julgador, que considera o grau de zelo, a natureza da causa e o trabalho realizado.",
+   "esperados": [
+    "TJSC:321784315470677142859040934522",
+    "TJSC:321786711264905410282030872611"
+   ],
+   "graus": {
+    "TJSC:321784315470677142859040934522": 2,
+    "TJSC:321786711264905410282030872611": 2
+   }
+  },
+  {
+   "id": "r011",
+   "bloco": "r3",
+   "proposicao": "nulidade da sentença que extingue o processo por litispendência sem prévia oitiva das partes",
+   "assessor": "decisão surpresa art. 10 CPC litispendência extinção sem oitiva prévia nulidade sentença",
+   "curta": "decisão surpresa litispendência",
+   "avancada": "(nulidade OR anulacao) AND sentenca AND litispendencia AND (extincao OR extinguiu) AND (oitiva OR manifestacao OR contraditorio)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. EXTINÇÃO DO PROCESSO SEM RESOLUÇÃO DO MÉRITO. LITISPENDÊNCIA RECONHECIDA DE OFÍCIO. AUSÊNCIA DE PRÉVIA OITIVA DAS PARTES. DECISÃO SURPRESA. NULIDADE. 1. É nula a sentença que extingue o processo por litispendência reconhecida de ofício sem conceder às partes oportunidade de manifestação prévia, em violação aos arts. 9º e 10 do CPC. 2. A vedação à decisão surpresa alcança as matérias cognoscíveis de ofício, e o prejuízo se evidencia quando a parte poderia demonstrar a ausência de identidade entre as ações.",
+   "esperados": [
+    "TJSC:321790081633433507944013363586"
+   ],
+   "graus": {
+    "TJSC:321790081633433507944013363586": 2
+   }
+  },
+  {
+   "id": "r012",
+   "bloco": "r3",
+   "proposicao": "partilha de dívida contraída durante a união: presunção relativa de proveito comum e ônus da prova de quem nega a comunicabilidade",
+   "assessor": "partilha dívida contraída constância união estável comunicabilidade presunção proveito comum ônus da prova empréstimo familiar",
+   "curta": "partilha dívida proveito comum",
+   "avancada": "(divida OR dividas) AND (uniao OR \"uniao estavel\" OR casamento) AND partilha AND (\"proveito comum\" OR comunicabilidade) AND (\"onus da prova\" OR presuncao)",
+   "hipotetica": "DIREITO DE FAMÍLIA. UNIÃO ESTÁVEL. DISSOLUÇÃO. PARTILHA DE DÍVIDAS CONTRAÍDAS NA CONSTÂNCIA DA UNIÃO. PRESUNÇÃO RELATIVA DE PROVEITO COMUM. ÔNUS DA PROVA. 1. As dívidas contraídas por um dos companheiros durante a união estável presumem-se revertidas em proveito da entidade familiar e integram a partilha. 2. A presunção é relativa, e cabe ao companheiro que nega a comunicabilidade provar que o débito foi assumido em benefício exclusivo do outro ou sem relação com as necessidades da família.",
+   "esperados": [
+    "STJ:000918210",
+    "TJSC:321785864890251663282124414389",
+    "TJSC:321790018162675778197796417107",
+    "TJSC:321790018162675778197866072472",
+    "TJSC:321790018162675778197867737119",
+    "TJSC:321790018162675778198090248730",
+    "TJSC:321790426352499139870553082723"
+   ],
+   "graus": {
+    "STJ:000917945": 0,
+    "STJ:000918210": 2,
+    "TJSC:321785864890251663282124414389": 2,
+    "TJSC:321790018162675778197796417107": 2,
+    "TJSC:321790018162675778197866072472": 2,
+    "TJSC:321790018162675778197867737119": 1,
+    "TJSC:321790018162675778198090248730": 2,
+    "TJSC:321790426352499139870553082723": 2
+   }
+  },
+  {
+   "id": "r013",
+   "bloco": "r3",
+   "proposicao": "exclusão da partilha de bem adquirido com recursos próprios anteriores à união por sub-rogação",
+   "assessor": "partilha sub-rogação bem adquirido valores exclusivos anteriores união art. 1.659 II prova",
+   "curta": "partilha sub-rogação",
+   "avancada": "partilha AND (\"sub-rogacao\" OR subrogacao) AND (\"recursos proprios\" OR \"patrimonio anterior\" OR exclusao) AND (uniao OR \"uniao estavel\")",
+   "hipotetica": "DIREITO DE FAMÍLIA. UNIÃO ESTÁVEL. PARTILHA DE BENS. BEM ADQUIRIDO COM RECURSOS PRÓPRIOS ANTERIORES À UNIÃO. SUB-ROGAÇÃO. EXCLUSÃO DA MEAÇÃO. 1. Exclui-se da partilha o bem adquirido durante a união com valores pertencentes exclusivamente a um dos companheiros antes de seu início, em sub-rogação de bens particulares, nos termos do art. 1.659, II, do Código Civil. 2. A sub-rogação deve ser comprovada por quem a alega, com demonstração do vínculo entre o patrimônio anterior e a aquisição; não comprovada, prevalece a presunção de esforço comum.",
+   "esperados": [
+    "TJSC:321784300707743581318266191124"
+   ],
+   "graus": {
+    "TJSC:321784300707743581318266191124": 2
+   }
+  },
+  {
+   "id": "r014",
+   "bloco": "r3",
+   "proposicao": "comunicabilidade das verbas trabalhistas referentes a período aquisitivo na constância da união",
+   "assessor": "partilha verbas trabalhistas crédito trabalhista período aquisitivo constância união comunicabilidade",
+   "curta": "partilha verbas trabalhistas",
+   "avancada": "(\"verbas trabalhistas\" OR FGTS OR \"periodo aquisitivo\") AND (comunicabilidade OR partilha OR comunicam) AND (constancia OR uniao OR casamento)",
+   "hipotetica": "DIREITO DE FAMÍLIA. CASAMENTO OU UNIÃO ESTÁVEL. PARTILHA. VERBAS TRABALHISTAS. PERÍODO AQUISITIVO NA CONSTÂNCIA DA UNIÃO. COMUNICABILIDADE. 1. Integram o patrimônio comum e devem ser partilhadas as verbas trabalhistas cujo direito foi adquirido durante a convivência, ainda que recebidas após a separação. 2. O critério decisivo é o período aquisitivo do direito, e não a data do pagamento, de modo que as parcelas relativas a período anterior ou posterior à união permanecem incomunicáveis.",
+   "esperados": [
+    "TJSC:321786204620870896272256164070"
+   ],
+   "graus": {
+    "TJSC:321786204620870896272256164070": 2
+   }
+  },
+  {
+   "id": "r015",
+   "bloco": "r3",
+   "proposicao": "arbitramento de aluguel pelo uso exclusivo de imóvel comum por herdeiro ou ex-cônjuge e fixação do valor por avaliação",
+   "assessor": "arbitramento aluguel uso exclusivo imóvel comum herança condômino fixação percentual valor avaliação perícia",
+   "curta": "aluguel uso exclusivo imóvel",
+   "avancada": "aluguel AND (\"uso exclusivo\" OR ocupacao) AND (imovel OR bem) AND (arbitramento OR fixacao) AND (avaliacao OR coproprietario OR herdeiro OR ex-conjuge)",
+   "hipotetica": "DIREITO CIVIL. CONDOMÍNIO. IMÓVEL COMUM. USO EXCLUSIVO POR HERDEIRO OU EX-CÔNJUGE. ARBITRAMENTO DE ALUGUEL. FIXAÇÃO DO VALOR POR AVALIAÇÃO. 1. O coproprietário, herdeiro ou ex-cônjuge que usa com exclusividade o imóvel comum deve indenizar os demais pela fruição, mediante aluguel proporcional à cota de cada um, devido a partir da ciência inequívoca da oposição ao uso gratuito. 2. O valor do aluguel deve ser apurado por avaliação técnica ou liquidação, e não por estimativa unilateral de uma das partes.",
+   "esperados": [
+    "TJSC:321781282382813554471680601494",
+    "TJSC:321781524051010972196518599579",
+    "TJSC:321785241743612880409020080591",
+    "TJSC:321790018162675778197788220358",
+    "TJSC:321790194732642175966203622660"
+   ],
+   "graus": {
+    "TJSC:321781282382813554471680601494": 2,
+    "TJSC:321781524051010972196518599579": 1,
+    "TJSC:321785241743612880409020080591": 1,
+    "TJSC:321790018162675778197788220358": 1,
+    "TJSC:321790194732642175966203622660": 1
+   }
+  },
+  {
+   "id": "r016",
+   "bloco": "r3",
+   "proposicao": "honorários proporcionais na exclusão de litisconsorte do processo",
+   "assessor": "honorários advocatícios exclusão litisconsorte proporcionalidade art. 85 § 2º equidade",
+   "curta": "honorários exclusão litisconsorte",
+   "avancada": "honorarios AND (litisconsorte OR litisconsorcio) AND (exclusao OR ilegitimidade) AND (proporcional* OR proporcao)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. EXCLUSÃO DE LITISCONSORTE. EXTINÇÃO PARCIAL DO PROCESSO. HONORÁRIOS ADVOCATÍCIOS PROPORCIONAIS. 1. A exclusão de litisconsorte do processo, por ilegitimidade ou outro fundamento, enseja a fixação de honorários advocatícios em favor de seu patrono. 2. Os honorários devem ser proporcionais à parcela do processo resolvida em relação ao excluído, nos termos do art. 85 do CPC, admitindo-se a apreciação equitativa quando o proveito econômico não for mensurável.",
+   "esperados": [
+    "STJ:1447599",
+    "STJ:949253"
+   ],
+   "graus": {
+    "STJ:1447599": 2,
+    "STJ:949253": 2
+   }
+  },
+  {
+   "id": "r017",
+   "bloco": "r3",
+   "proposicao": "convivência supervisionada ou virtual diante de indícios de risco à criança, com base em prova atual",
+   "assessor": "convivência supervisionada virtual agravo de instrumento cautela risco criança prova atual estudo psicossocial",
+   "curta": "convivência supervisionada",
+   "avancada": "convivencia AND (supervisionada OR virtual) AND (risco OR indicios) AND (crianca OR menor) AND (prova OR atual)",
+   "hipotetica": "DIREITO DE FAMÍLIA. CONVIVÊNCIA FAMILIAR. INDÍCIOS DE RISCO À CRIANÇA. CONVIVÊNCIA SUPERVISIONADA OU VIRTUAL. PROVA ATUAL. MELHOR INTERESSE. 1. Diante de indícios concretos de risco à integridade física ou psicológica da criança, admite-se a fixação provisória de convivência supervisionada ou virtual, como medida de proteção que preserva o vínculo com o genitor. 2. A restrição deve apoiar-se em prova atual, como estudo social ou avaliação psicológica recente, e ser revista à medida que a instrução esclarecer o risco.",
+   "esperados": [
+    "TJSC:321774819782866796033526350525",
+    "TJSC:321777041984958703556744983232",
+    "TJSC:321784300707743581318212988672",
+    "TJSC:321785241743612880408592057139",
+    "TJSC:321785864890251663282222766050",
+    "TJSC:321786968680295199257548860457",
+    "TJSC:321786968680295199257638145390",
+    "TJSC:321787584892160895412761566797",
+    "TJSC:321790081633433507944023300850"
+   ],
+   "graus": {
+    "TJSC:321774819782866796033526350525": 1,
+    "TJSC:321777041984958703556744983232": 2,
+    "TJSC:321784300707743581318212988672": 1,
+    "TJSC:321785241743612880408592057139": 1,
+    "TJSC:321785864890251663282222766050": 1,
+    "TJSC:321786968680295199257548860457": 2,
+    "TJSC:321786968680295199257638145390": 1,
+    "TJSC:321787584892160895412761566797": 2,
+    "TJSC:321787584892160895412762065025": 0,
+    "TJSC:321790081633433507944023300850": 2
+   }
+  },
+  {
+   "id": "r018",
+   "bloco": "r3",
+   "proposicao": "exoneração de alimentos devidos a filho maior que comprova matrícula em curso superior",
+   "assessor": "exoneração alimentos filho maior estudante universitário matrícula necessidade possibilidade Súmula 358",
+   "curta": "exoneração filho maior estudante",
+   "avancada": "(exoneracao OR exonerar) AND alimentos AND (\"filho maior\" OR maioridade) AND (\"curso superior\" OR universitario OR matricula)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. EXONERAÇÃO. FILHO MAIOR. MATRÍCULA EM CURSO SUPERIOR. NECESSIDADE COMPROVADA. 1. A maioridade civil não extingue automaticamente o dever alimentar, que passa a fundar-se no parentesco e exige prova da necessidade. 2. O filho maior que comprova matrícula e frequência em curso superior, sem renda suficiente para o próprio sustento, mantém o direito aos alimentos até a conclusão da formação, o que afasta o pedido de exoneração.",
+   "esperados": [
+    "TJSC:321773405137329417737209356045",
+    "TJSC:321781524051010972196497266578",
+    "TJSC:321784899206341155673236097357",
+    "TJSC:321784899206341155673261766433",
+    "TJSC:321786814631739698956715855583",
+    "TJSC:321786898491572648330377035023",
+    "TJSC:321786898491572648330380086796",
+    "TJSC:321786898491572648330381937867",
+    "TJSC:321786898491572648332042281498"
+   ],
+   "graus": {
+    "TJSC:321773405137329417737209356045": 1,
+    "TJSC:321781524051010972196497266578": 2,
+    "TJSC:321784899206341155673236097357": 1,
+    "TJSC:321784899206341155673261766433": 2,
+    "TJSC:321786814631739698956715855583": 1,
+    "TJSC:321786898491572648330377035023": 1,
+    "TJSC:321786898491572648330380086796": 1,
+    "TJSC:321786898491572648330381937867": 1,
+    "TJSC:321786898491572648332042281498": 1
+   }
+  },
+  {
+   "id": "r019",
+   "bloco": "r3",
+   "proposicao": "fixação de honorários ao defensor dativo pela atuação em grau recursal",
+   "assessor": "honorários defensor dativo atuação recursal fixação tabela",
+   "curta": "honorários dativo recursal",
+   "avancada": "honorarios AND (\"defensor dativo\" OR dativo) AND (\"grau recursal\" OR recurso OR apelacao) AND (fixacao OR arbitramento)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. DEFENSOR DATIVO. ATUAÇÃO EM GRAU RECURSAL. FIXAÇÃO DE HONORÁRIOS PELO TRIBUNAL. 1. O advogado nomeado como defensor dativo para patrocinar o beneficiário da gratuidade tem direito a honorários pelo trabalho realizado em grau recursal, a cargo do Estado. 2. Os honorários pela atuação no recurso são arbitrados pelo tribunal, segundo a complexidade da causa e o trabalho desenvolvido, com observância da tabela ou ato normativo que regula a remuneração da advocacia dativa.",
+   "esperados": [
+    "TJSC:321786982354457870770489382249"
+   ],
+   "graus": {
+    "TJSC:321786982354457870770489382249": 2
+   }
+  },
+  {
+   "id": "r020",
+   "bloco": "r3",
+   "proposicao": "regulamentação da convivência familiar conforme a prova da rotina e o melhor interesse da criança, com instrução e cautela",
+   "assessor": "regulamentação convivência familiar melhor interesse criança rotina prova instrução cautela ampliação",
+   "curta": "regulamentação convivência",
+   "avancada": "convivencia AND (regulamentacao OR regulamentar) AND (\"melhor interesse\" OR rotina) AND (instrucao OR cautela OR prova)",
+   "hipotetica": "DIREITO DE FAMÍLIA. REGULAMENTAÇÃO DA CONVIVÊNCIA FAMILIAR. PROVA DA ROTINA DA CRIANÇA. MELHOR INTERESSE. INSTRUÇÃO E CAUTELA. 1. A regulamentação da convivência deve observar o melhor interesse da criança e ser definida a partir da prova da rotina escolar, dos cuidados diários e da relação com cada genitor. 2. Na falta de elementos seguros, recomenda-se instrução com estudo social e psicológico e fixação cautelosa do regime, com ampliação gradual, em vez de alteração abrupta da rotina.",
+   "esperados": [
+    "TJSC:321778511150397013320631492828",
+    "TJSC:321784558637349305045024838278",
+    "TJSC:321785864890251663282051366931",
+    "TJSC:321786204620870896272264603117"
+   ],
+   "graus": {
+    "TJSC:321778511150397013320631492828": 1,
+    "TJSC:321784558637349305045024838278": 1,
+    "TJSC:321785864890251663282051366931": 2,
+    "TJSC:321786204620870896272264603117": 2
+   }
+  },
+  {
+   "id": "r021",
+   "bloco": "r3",
+   "proposicao": "conversão do julgamento em diligência para complementar o estudo psicossocial e ouvir a criança antes de decidir a convivência",
+   "assessor": "conversão julgamento em diligência estudo psicossocial complementação oitiva criança convivência",
+   "curta": "diligência estudo psicossocial",
+   "avancada": "(\"conversao do julgamento em diligencia\" OR diligencia) AND (\"estudo psicossocial\" OR psicossocial) AND (oitiva OR ouvir) AND (crianca OR convivencia)",
+   "hipotetica": "DIREITO DE FAMÍLIA. PROCESSUAL CIVIL. CONVIVÊNCIA FAMILIAR. ESTUDO PSICOSSOCIAL INSUFICIENTE. ESCUTA DA CRIANÇA. CONVERSÃO DO JULGAMENTO EM DILIGÊNCIA. 1. Quando o estudo psicossocial é desatualizado ou insuficiente para esclarecer a dinâmica familiar, o tribunal pode converter o julgamento em diligência para sua complementação antes de decidir a convivência. 2. A escuta da criança, por equipe técnica e em condições adequadas à sua idade, integra a instrução necessária à definição do regime que atenda ao seu melhor interesse.",
+   "esperados": [
+    "TJSC:321786968680295199257548860457"
+   ],
+   "graus": {
+    "TJSC:321786968680295199257548860457": 2
+   }
+  },
+  {
+   "id": "r022",
+   "bloco": "r3",
+   "proposicao": "ampliação da convivência com pernoite sem nova avaliação técnica",
+   "assessor": "convivência pernoite ampliação avaliação psicossocial ausência interesse criança visitas",
+   "curta": "pernoite convivência",
+   "avancada": "convivencia AND (ampliacao OR ampliar) AND pernoite AND (avaliacao OR \"estudo psicossocial\" OR tecnica)",
+   "hipotetica": "DIREITO DE FAMÍLIA. CONVIVÊNCIA FAMILIAR. AMPLIAÇÃO COM PERNOITE. DESNECESSIDADE DE NOVA AVALIAÇÃO TÉCNICA. 1. A ampliação da convivência para incluir pernoites com o genitor não guardião dispensa nova avaliação técnica quando a prova existente demonstra vínculo afetivo saudável e ausência de risco à criança. 2. A progressão do regime de convivência atende ao direito da criança ao convívio equilibrado com ambos os genitores e não depende de laudo novo se nada indica alteração das circunstâncias.",
+   "esperados": [
+    "TJSC:321778511150397013320663405305",
+    "TJSC:321779115788762517444776401322",
+    "TJSC:321786619979792694803528827437",
+    "TJSC:321786898491572648330333084051"
+   ],
+   "graus": {
+    "TJSC:321778511150397013320663405305": 1,
+    "TJSC:321779115788762517444776401322": 1,
+    "TJSC:321786619979792694803528827437": 1,
+    "TJSC:321786898491572648330333084051": 2
+   }
+  },
+  {
+   "id": "r023",
+   "bloco": "r3",
+   "proposicao": "admissibilidade do recurso adesivo interposto na mesma peça das contrarrazões",
+   "assessor": "recurso adesivo contrarrazões mesma peça admissibilidade conhecimento",
+   "curta": "adesivo contrarrazões",
+   "avancada": "\"recurso adesivo\" AND (contrarrazoes OR \"mesma peca\") AND (admissibilidade OR cabimento OR conhecimento)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. RECURSO ADESIVO. INTERPOSIÇÃO NA MESMA PEÇA DAS CONTRARRAZÕES. ADMISSIBILIDADE. INSTRUMENTALIDADE DAS FORMAS. 1. É admissível o recurso adesivo apresentado na mesma peça das contrarrazões, desde que observado o prazo de resposta e que as razões recursais estejam claramente identificadas e delimitadas. 2. A exigência de peças separadas não decorre do art. 997 do CPC, e a reunião em petição única não impede o contraditório nem a compreensão da insurgência.",
+   "esperados": [
+    "TJSC:321790018162675778197799416551"
+   ],
+   "graus": {
+    "TJSC:321790018162675778197799416551": 2
+   }
+  },
+  {
+   "id": "r024",
+   "bloco": "r3",
+   "proposicao": "peso da vontade da criança ou do adolescente conforme idade, maturidade e prova técnica na definição da convivência",
+   "assessor": "vontade criança adolescente oitiva maturidade idade estudo psicológico convivência guarda",
+   "curta": "vontade da criança",
+   "avancada": "(vontade OR opiniao OR desejo) AND (crianca OR adolescente) AND (maturidade OR idade) AND (convivencia OR guarda) AND (\"prova tecnica\" OR \"estudo psicossocial\" OR laudo)",
+   "hipotetica": "DIREITO DE FAMÍLIA. CONVIVÊNCIA FAMILIAR. VONTADE DA CRIANÇA OU DO ADOLESCENTE. IDADE E MATURIDADE. PROVA TÉCNICA. MELHOR INTERESSE. 1. A opinião da criança ou do adolescente sobre a convivência deve ser considerada com peso proporcional à sua idade e maturidade, colhida por equipe técnica e em ambiente adequado. 2. A vontade manifestada não vincula o julgador e deve ser confrontada com a prova técnica, para afastar influência indevida de um dos genitores e assegurar o melhor interesse do protegido.",
+   "esperados": [
+    "TJSC:321781524051010972196577490514",
+    "TJSC:321786968680295199257662349206"
+   ],
+   "graus": {
+    "TJSC:321781524051010972196577490514": 1,
+    "TJSC:321786968680295199257662349206": 1
+   }
+  },
+  {
+   "id": "r025",
+   "bloco": "r3",
+   "proposicao": "convivência com apoio da família extensa e preservação da rotina da criança",
+   "assessor": "convivência família extensa avós rotina criança",
+   "curta": "família extensa convivência",
+   "avancada": "convivencia AND (\"familia extensa\" OR avos OR avo) AND (rotina OR apoio) AND crianca",
+   "hipotetica": "DIREITO DE FAMÍLIA. CONVIVÊNCIA FAMILIAR. APOIO DA FAMÍLIA EXTENSA. PRESERVAÇÃO DA ROTINA DA CRIANÇA. MELHOR INTERESSE. 1. A participação da família extensa, como avós e tios, no exercício da convivência é legítima e pode viabilizá-la quando o genitor depende de apoio para os cuidados com a criança. 2. A definição do regime deve preservar a rotina escolar e de cuidados já consolidada, evitando mudanças que desestabilizem a criança sem benefício demonstrado.",
+   "esperados": [
+    "TJSC:321790081633433507943992479953"
+   ],
+   "graus": {
+    "TJSC:321790081633433507943992479953": 2
+   }
+  },
+  {
+   "id": "r026",
+   "bloco": "r3",
+   "proposicao": "redução moderada dos alimentos proporcional à alteração comprovada da capacidade do alimentante",
+   "assessor": "revisional alimentos redução proporcional binômio necessidade possibilidade alteração capacidade",
+   "curta": "redução alimentos proporcional",
+   "avancada": "alimentos AND (reducao OR minoracao) AND (moderada OR proporcional OR parcial) AND (capacidade OR possibilidade) AND (alteracao OR comprovada)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. AÇÃO REVISIONAL. ALTERAÇÃO COMPROVADA DA CAPACIDADE DO ALIMENTANTE. REDUÇÃO MODERADA E PROPORCIONAL. 1. Comprovada a alteração superveniente da capacidade financeira do alimentante, admite-se a redução dos alimentos, na forma do art. 1.699 do Código Civil. 2. A redução deve ser moderada e proporcional à diminuição demonstrada, de modo a preservar as necessidades do alimentando dentro da nova possibilidade do devedor, sem exoneração parcial desproporcional.",
+   "esperados": [
+    "TJSC:321790018162675778198099346594"
+   ],
+   "graus": {
+    "TJSC:321790018162675778198099346594": 2
+   }
+  },
+  {
+   "id": "r027",
+   "bloco": "r3",
+   "proposicao": "o rateio de despesas extraordinárias do filho exige prova do gasto",
+   "assessor": "despesas extraordinárias rateio alimentos prova comprovação saúde educação",
+   "curta": "despesas extraordinárias rateio",
+   "avancada": "(\"despesas extraordinarias\" OR extraordinarias) AND (rateio OR ratear) AND (prova OR comprovacao OR comprovante) AND (filho OR alimentos)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. DESPESAS EXTRAORDINÁRIAS DO FILHO. RATEIO ENTRE OS GENITORES. NECESSIDADE DE PROVA DO GASTO. 1. O rateio de despesas extraordinárias do filho, previsto em acordo ou decisão, pressupõe a prova efetiva do gasto, mediante documentos idôneos como notas fiscais e recibos. 2. Sem comprovação da despesa e de sua natureza extraordinária, não se pode exigir do outro genitor a cota correspondente, sob pena de enriquecimento sem causa.",
+   "esperados": [
+    "TJSC:321790018162675778197891786882"
+   ],
+   "graus": {
+    "TJSC:321790018162675778197891786882": 2
+   }
+  },
+  {
+   "id": "r028",
+   "bloco": "r3",
+   "proposicao": "necessidade de anuência prévia do alimentante para o rateio de despesas extraordinárias de saúde e educação",
+   "assessor": "despesas extraordinárias anuência prévia consentimento alimentante saúde educação reembolso",
+   "curta": "despesas extraordinárias anuência",
+   "avancada": "(\"despesas extraordinarias\" OR extraordinarias) AND (anuencia OR concordancia OR \"previa autorizacao\") AND (saude OR educacao) AND alimentante",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. DESPESAS EXTRAORDINÁRIAS DE SAÚDE E EDUCAÇÃO. RATEIO. ANUÊNCIA PRÉVIA DO ALIMENTANTE. 1. O rateio de despesas extraordinárias de saúde e educação do filho depende, em regra, de comunicação e anuência prévia do alimentante, salvo urgência ou previsão expressa em contrário no título. 2. A despesa realizada unilateralmente, sem consulta e fora de situação emergencial, não obriga o outro genitor a arcar com sua cota, especialmente quando havia alternativa menos onerosa.",
+   "esperados": [
+    "TJSC:321784300707743581318272445487"
+   ],
+   "graus": {
+    "TJSC:321784300707743581318272445487": 2
+   }
+  },
+  {
+   "id": "r029",
+   "bloco": "r3",
+   "proposicao": "sentença com fundamentação sucinta não é nula quando permite o controle recursal",
+   "assessor": "nulidade sentença fundamentação sucinta art. 489 CPC motivação suficiente",
+   "curta": "fundamentação sucinta nulidade",
+   "avancada": "sentenca AND (fundamentacao OR motivacao) AND (sucinta OR concisa OR resumida) AND (nulidade OR nula) AND (controle OR recurso)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. SENTENÇA. FUNDAMENTAÇÃO SUCINTA. NULIDADE NÃO CONFIGURADA. CONTROLE RECURSAL VIABILIZADO. 1. Não é nula a sentença de fundamentação concisa que enfrenta as questões essenciais e expõe as razões de convencimento, permitindo às partes impugná-la e ao tribunal revisá-la. 2. Fundamentação sucinta não se confunde com ausência de fundamentação, e o art. 489, § 1º, do CPC não exige resposta a todos os argumentos incapazes de infirmar a conclusão.",
+   "esperados": [
+    "TJSC:321786898491572648330351586914"
+   ],
+   "graus": {
+    "TJSC:321786898491572648330351586914": 2
+   }
+  },
+  {
+   "id": "r030",
+   "bloco": "r3",
+   "proposicao": "desemprego e nascimento de novo filho não autorizam a redução dos alimentos sem prova da redução da capacidade",
+   "assessor": "revisional alimentos redução desemprego nova prole constituição nova família ausência prova capacidade",
+   "curta": "nova prole redução alimentos",
+   "avancada": "alimentos AND (desemprego OR desempregado) AND (\"novo filho\" OR \"nova prole\" OR nascimento) AND (reducao OR minoracao) AND (capacidade OR prova)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. AÇÃO REVISIONAL. DESEMPREGO E NASCIMENTO DE NOVO FILHO. AUSÊNCIA DE PROVA DA REDUÇÃO DA CAPACIDADE. IMPROCEDÊNCIA. 1. O desemprego e o nascimento de novo filho não autorizam, por si sós, a redução dos alimentos, sendo indispensável a prova de que esses fatos reduziram efetivamente a capacidade financeira do alimentante. 2. A constituição de nova família é escolha do devedor e não justifica a diminuição da pensão sem demonstração concreta do impacto no seu orçamento.",
+   "esperados": [
+    "TJSC:321785864890251663282045801189"
+   ],
+   "graus": {
+    "TJSC:321785864890251663282045801189": 1
+   }
+  },
+  {
+   "id": "r031",
+   "bloco": "r3",
+   "proposicao": "fixação dos alimentos por estimativa da capacidade do alimentante quando a renda não é comprovada",
+   "assessor": "fixação alimentos renda não comprovada estimativa sinais exteriores capacidade alimentante autônomo",
+   "curta": "alimentos renda não comprovada",
+   "avancada": "alimentos AND (fixacao OR arbitramento) AND (capacidade OR possibilidade) AND (estimativa OR presuncao OR estimada) AND (renda OR rendimentos) AND (\"nao comprovada\" OR ausencia)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. RENDA DO ALIMENTANTE NÃO COMPROVADA. FIXAÇÃO POR ESTIMATIVA DA CAPACIDADE. SINAIS EXTERIORES DE RIQUEZA. 1. Quando o alimentante não comprova sua renda, especialmente se trabalhador autônomo ou informal, os alimentos podem ser fixados por estimativa de sua capacidade contributiva, com base no padrão de vida e nos sinais exteriores de riqueza. 2. A omissão do devedor em demonstrar seus rendimentos não pode prejudicar o alimentando, a quem não se exige prova impossível da renda alheia.",
+   "esperados": [
+    "TJSC:321786898491572648330229331345"
+   ],
+   "graus": {
+    "TJSC:321786898491572648330229331345": 2
+   }
+  },
+  {
+   "id": "r032",
+   "bloco": "r3",
+   "proposicao": "majoração de honorários recursais quando a verba de origem foi arbitrada por equidade",
+   "assessor": "honorários recursais majoração art. 85 § 11 arbitramento equitativo origem",
+   "curta": "honorários recursais equidade",
+   "avancada": "honorarios AND (recursais OR \"grau recursal\") AND (majoracao OR majorados) AND equidade",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. HONORÁRIOS RECURSAIS. MAJORAÇÃO. VERBA DE ORIGEM ARBITRADA POR EQUIDADE. 1. A majoração dos honorários em grau recursal, prevista no art. 85, § 11, do CPC, aplica-se também quando a verba fixada na origem foi arbitrada por apreciação equitativa. 2. Nesse caso, o acréscimo é feito em valor fixo, segundo o trabalho adicional realizado no recurso, e não em percentual, observados os limites legais para a fase de conhecimento.",
+   "esperados": [
+    "STJ:923825"
+   ],
+   "graus": {
+    "STJ:923825": 2
+   }
+  },
+  {
+   "id": "r033",
+   "bloco": "r3",
+   "proposicao": "a revisão de alimentos exige alteração superveniente da situação financeira das partes",
+   "assessor": "revisional alimentos alteração superveniente situação financeira art. 1.699 CC binômio prova",
+   "curta": "revisional alteração superveniente",
+   "avancada": "(revisao OR revisional) AND alimentos AND (superveniente OR \"modificacao\" OR alteracao) AND (\"situacao financeira\" OR binomio OR possibilidade)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. AÇÃO REVISIONAL. ALTERAÇÃO SUPERVENIENTE DA SITUAÇÃO FINANCEIRA. ÔNUS DA PROVA. 1. A revisão dos alimentos exige a demonstração de mudança superveniente na situação financeira de quem os supre ou na de quem os recebe, nos termos do art. 1.699 do Código Civil. 2. Ausente prova de alteração relevante do binômio necessidade e possibilidade desde a fixação anterior, mantém-se o valor estabelecido, pois a revisional não serve para rediscutir os fatos já considerados.",
+   "esperados": [
+    "TJSC:321784899206341155673252816839",
+    "TJSC:321785864890251663282019309971",
+    "TJSC:321790018162675778197982103782"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673252816839": 1,
+    "TJSC:321785864890251663282019309971": 2,
+    "TJSC:321790018162675778197982103782": 2
+   }
+  },
+  {
+   "id": "r034",
+   "bloco": "r3",
+   "proposicao": "alcance da cláusula de despesas extraordinárias no acordo de alimentos",
+   "assessor": "despesas extraordinárias alcance cláusula acordo alimentos interpretação material escolar plano saúde",
+   "curta": "despesas extraordinárias alcance",
+   "avancada": "alimentos AND (acordo OR clausula) AND (\"despesas extraordinarias\" OR extraordinarias) AND (alcance OR interpretacao OR abrangencia)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. ACORDO HOMOLOGADO. CLÁUSULA DE DESPESAS EXTRAORDINÁRIAS. INTERPRETAÇÃO E ALCANCE. 1. A cláusula de acordo de alimentos que prevê o rateio de despesas extraordinárias deve ser interpretada segundo a intenção das partes e de modo restritivo, abrangendo apenas os gastos imprevisíveis ou excepcionais nela indicados. 2. Despesas ordinárias e previsíveis, como mensalidade escolar e material regular, consideram-se incluídas na pensão fixa e não autorizam cobrança adicional a esse título.",
+   "esperados": [
+    "TJSC:321786467542236744135806709101",
+    "TJSC:321786898491572648332782546852",
+    "TJSC:321786968680295199257803597669",
+    "TJSC:321790081633433507943979930417"
+   ],
+   "graus": {
+    "TJSC:321786467542236744135806709101": 1,
+    "TJSC:321786898491572648332782546852": 1,
+    "TJSC:321786968680295199257286426004": 0,
+    "TJSC:321786968680295199257803597669": 1,
+    "TJSC:321790081633433507943979930417": 1
+   }
+  },
+  {
+   "id": "r035",
+   "bloco": "r3",
+   "proposicao": "interpretação do pedido e congruência da sentença na ação de alimentos de filhos menores",
+   "assessor": "congruência sentença interpretação lógico-sistemática pedido extra petita alimentos menores",
+   "curta": "congruência pedido alimentos",
+   "avancada": "alimentos AND (pedido OR \"interpretacao do pedido\") AND (congruencia OR \"principio da congruencia\" OR \"extra petita\" OR \"ultra petita\") AND (filhos OR menores)",
+   "hipotetica": "DIREITO DE FAMÍLIA. PROCESSUAL CIVIL. AÇÃO DE ALIMENTOS. FILHOS MENORES. INTERPRETAÇÃO DO PEDIDO. CONGRUÊNCIA DA SENTENÇA. 1. O pedido na ação de alimentos deve ser interpretado pelo conjunto da postulação e segundo a boa-fé, nos termos do art. 322, § 2º, do CPC, sem apego excessivo à literalidade. 2. Não é extra ou ultra petita a sentença que fixa alimentos aos filhos menores em valor ou forma diversos do indicado, desde que dentro do que foi pedido e conforme o binômio necessidade e possibilidade.",
+   "esperados": [
+    "STJ:950872",
+    "TJSC:321786467542236744135756685253",
+    "TJSC:321786898491572648332876999996",
+    "TJSC:321790081633433507943968328908"
+   ],
+   "graus": {
+    "STJ:948937": 0,
+    "STJ:950872": 1,
+    "TJSC:321786467542236744135756685253": 1,
+    "TJSC:321786898491572648332876999996": 1,
+    "TJSC:321790081633433507943968328908": 1
+   }
+  },
+  {
+   "id": "r036",
+   "bloco": "r3",
+   "proposicao": "contraditório prévio quando o julgador adota qualificação jurídica diversa dos fatos",
+   "assessor": "art. 10 CPC qualificação jurídica diversa contraditório prévio decisão surpresa iura novit curia",
+   "curta": "qualificação jurídica decisão surpresa",
+   "avancada": "(contraditorio OR \"decisao surpresa\") AND (qualificacao OR enquadramento) AND (juridica OR fatos) AND (julgador OR juiz)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CONTRADITÓRIO PRÉVIO. QUALIFICAÇÃO JURÍDICA DIVERSA DOS FATOS. VEDAÇÃO À DECISÃO SURPRESA. 1. O julgador pode atribuir aos fatos qualificação jurídica diversa da sustentada pelas partes, mas deve, antes, conceder-lhes oportunidade de manifestação quando o novo enquadramento for determinante e não debatido, nos termos dos arts. 9º e 10 do CPC. 2. A aplicação do brocardo segundo o qual o juiz conhece o direito não dispensa o contraditório substancial sobre o fundamento jurídico decisivo.",
+   "esperados": [
+    "STJ:952954"
+   ],
+   "graus": {
+    "STJ:952954": 2
+   }
+  },
+  {
+   "id": "r037",
+   "bloco": "r3",
+   "proposicao": "manutenção de alimentos ao filho maior universitário cuja renda própria é insuficiente para o autossustento",
+   "assessor": "alimentos filho maior estudante universitário renda própria insuficiente autossustento necessidade",
+   "curta": "filho maior universitário",
+   "avancada": "alimentos AND (\"filho maior\" OR maior) AND (universitario OR \"curso superior\") AND (autossustento OR sustento OR renda) AND (manutencao OR mantidos)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. FILHO MAIOR UNIVERSITÁRIO. RENDA PRÓPRIA INSUFICIENTE. MANUTENÇÃO DA OBRIGAÇÃO. 1. Mantém-se a obrigação alimentar em favor do filho maior que cursa ensino superior quando sua renda própria, oriunda de estágio ou trabalho parcial, é insuficiente para o autossustento. 2. O exercício de atividade remunerada não afasta, por si só, a necessidade, podendo justificar apenas a readequação do valor à luz do binômio necessidade e possibilidade.",
+   "esperados": [
+    "TJSC:321784899206341155673236097357",
+    "TJSC:321786898491572648330377035023"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673236097357": 1,
+    "TJSC:321786898491572648330377035023": 2
+   }
+  },
+  {
+   "id": "r038",
+   "bloco": "r3",
+   "proposicao": "honorários do defensor dativo fixados na origem e em grau recursal, autônomos em relação aos sucumbenciais",
+   "assessor": "honorários defensor dativo grau recursal autonomia honorários sucumbenciais Estado",
+   "curta": "honorários dativo",
+   "avancada": "honorarios AND (\"defensor dativo\" OR dativo) AND (autonomos OR autonomia OR cumulacao) AND (sucumbenciais OR sucumbencia) AND (origem OR recursal)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. DEFENSOR DATIVO. HONORÁRIOS FIXADOS NA ORIGEM E EM GRAU RECURSAL. AUTONOMIA EM RELAÇÃO AOS HONORÁRIOS SUCUMBENCIAIS. 1. Os honorários devidos pelo Estado ao defensor dativo pela atuação na origem e no recurso têm natureza remuneratória do serviço prestado e são autônomos em relação aos honorários de sucumbência. 2. A fixação da verba dativa não se confunde com a majoração do art. 85, § 11, do CPC, nem é afetada pela distribuição dos ônus sucumbenciais entre as partes.",
+   "esperados": [
+    "TJSC:321787929053867758798145332231"
+   ],
+   "graus": {
+    "TJSC:321787929053867758798145332231": 2
+   }
+  },
+  {
+   "id": "r039",
+   "bloco": "r3",
+   "proposicao": "nulidade por falta de vista à parte contrária sobre documento novo decisivo",
+   "assessor": "documento novo juntado sem vista parte contrária contraditório art. 437 § 1º nulidade decisivo",
+   "curta": "documento novo contraditório",
+   "avancada": "(nulidade OR cerceamento) AND (vista OR manifestacao) AND (\"parte contraria\" OR contraditorio) AND (\"documento novo\" OR juntada) AND decisivo",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. DOCUMENTO NOVO. AUSÊNCIA DE VISTA À PARTE CONTRÁRIA. CONTRADITÓRIO. PREJUÍZO. NULIDADE. 1. A juntada de documento novo exige a intimação da parte contrária para se manifestar, nos termos do art. 437, § 1º, do CPC. 2. É nula a decisão que se apoia de modo decisivo em documento sobre o qual a parte adversa não teve oportunidade de se pronunciar, pois o prejuízo ao contraditório é manifesto quando o documento fundamenta o resultado.",
+   "esperados": [
+    "TJSC:321787584892160895412772556289"
+   ],
+   "graus": {
+    "TJSC:321787584892160895412772556289": 2
+   }
+  },
+  {
+   "id": "r040",
+   "bloco": "r3",
+   "proposicao": "convivência virtual com progressão gradual quando há risco emocional demonstrado à criança",
+   "assessor": "convivência virtual progressão gradual risco emocional criança restrição visitas",
+   "curta": "convivência virtual gradual",
+   "avancada": "convivencia AND virtual AND (gradual OR progressiva OR progressao) AND (risco OR prejuizo) AND (emocional OR psicologico) AND crianca",
+   "hipotetica": "DIREITO DE FAMÍLIA. CONVIVÊNCIA FAMILIAR. RISCO EMOCIONAL DEMONSTRADO À CRIANÇA. CONVIVÊNCIA VIRTUAL. PROGRESSÃO GRADUAL. 1. Demonstrado por prova técnica o risco emocional decorrente do contato presencial imediato, admite-se a fixação inicial de convivência por meio virtual, como forma de preservar o vínculo com o genitor. 2. O regime deve prever progressão gradual para encontros presenciais, assistidos e depois livres, conforme a evolução acompanhada pela equipe técnica e o melhor interesse da criança.",
+   "esperados": [
+    "TJSC:321784899206341155673245567894",
+    "TJSC:321790081633433507943996032067"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673245567894": 2,
+    "TJSC:321790081633433507943996032067": 1,
+    "TJSC:321790081633433507944020589340": 0
+   }
+  },
+  {
+   "id": "r041",
+   "bloco": "r3",
+   "proposicao": "a restrição da convivência exige suporte probatório técnico suficiente e instrução prévia",
+   "assessor": "restrição convivência prova pericial psicológica estudo social método laudo instrução",
+   "curta": "restrição convivência perícia",
+   "avancada": "convivencia AND (restricao OR suspensao OR limitacao) AND (prova OR laudo OR tecnico) AND (instrucao OR suficiente OR insuficiente)",
+   "hipotetica": "DIREITO DE FAMÍLIA. CONVIVÊNCIA FAMILIAR. RESTRIÇÃO OU SUSPENSÃO. NECESSIDADE DE SUPORTE PROBATÓRIO TÉCNICO E INSTRUÇÃO PRÉVIA. 1. A restrição ou suspensão da convivência entre a criança e o genitor é medida excepcional, que exige suporte probatório técnico suficiente, como estudo social e avaliação psicológica, demonstrando risco concreto. 2. Alegações unilaterais, sem instrução prévia, não justificam limitar o direito fundamental à convivência familiar, que pertence sobretudo à criança.",
+   "esperados": [
+    "TJSC:321773944805287522311692476097",
+    "TJSC:321778511150397013320663405305",
+    "TJSC:321784300707743581318279833768",
+    "TJSC:321785241743612880408387287338",
+    "TJSC:321787584892160895412791354879",
+    "TJSC:321790081633433507943977321619"
+   ],
+   "graus": {
+    "TJSC:321773944805287522311692476097": 1,
+    "TJSC:321773944805287522311702521134": 0,
+    "TJSC:321778511150397013320663405305": 1,
+    "TJSC:321784300707743581318279833768": 2,
+    "TJSC:321785241743612880408367067702": 0,
+    "TJSC:321785241743612880408387287338": 2,
+    "TJSC:321787584892160895412762065025": 0,
+    "TJSC:321787584892160895412791354879": 2,
+    "TJSC:321790081633433507943977321619": 1,
+    "TJSC:321790081633433507944007826946": 0
+   }
+  },
+  {
+   "id": "r042",
+   "bloco": "r3",
+   "proposicao": "ônus do filho maior de provar a necessidade de alimentos e a impossibilidade de autossustento, mesmo com renda parcial",
+   "assessor": "alimentos filho maior ônus da prova necessidade autossustento renda parcial estudante",
+   "curta": "filho maior ônus necessidade",
+   "avancada": "alimentos AND (\"filho maior\" OR maioridade) AND (\"onus da prova\" OR comprovar OR prova) AND (necessidade OR autossustento) AND (renda OR trabalho OR estagio)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. FILHO MAIOR. ÔNUS DA PROVA DA NECESSIDADE E DA IMPOSSIBILIDADE DE AUTOSSUSTENTO. RENDA PARCIAL. 1. Atingida a maioridade, cessa a presunção de necessidade, e cabe ao filho maior provar que necessita dos alimentos e não tem condições de prover o próprio sustento. 2. A existência de renda parcial não afasta, por si só, o direito, mas impõe ao alimentando demonstrar que ela é insuficiente diante de suas despesas e de sua formação em curso.",
+   "esperados": [
+    "TJSC:321781524051010972196497266578",
+    "TJSC:321784899206341155673236097357",
+    "TJSC:321784899206341155673261766433",
+    "TJSC:321784899206341155673317143837",
+    "TJSC:321786898491572648330377035023",
+    "TJSC:321790018162675778198089715364",
+    "TJSC:321790081633433507944005968342"
+   ],
+   "graus": {
+    "TJSC:321781524051010972196497266578": 1,
+    "TJSC:321784899206341155673236097357": 1,
+    "TJSC:321784899206341155673261766433": 1,
+    "TJSC:321784899206341155673317143837": 2,
+    "TJSC:321786898491572648330377035023": 2,
+    "TJSC:321790018162675778198089715364": 2,
+    "TJSC:321790081633433507944005968342": 2
+   }
+  },
+  {
+   "id": "r043",
+   "bloco": "r3",
+   "proposicao": "o nascimento de nova prole do alimentante de baixa renda autoriza a revisão dos alimentos",
+   "assessor": "revisional alimentos nova prole nascimento filho alimentante baixa renda redução",
+   "curta": "nova prole revisional",
+   "avancada": "alimentos AND (revisao OR reducao) AND (\"nova prole\" OR \"novo filho\" OR nascimento) AND (\"baixa renda\" OR hipossuficiente OR \"renda limitada\") AND alimentante",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. AÇÃO REVISIONAL. NASCIMENTO DE NOVA PROLE. ALIMENTANTE DE BAIXA RENDA. REDUÇÃO. 1. O nascimento de novo filho do alimentante constitui fato superveniente apto a justificar a revisão dos alimentos quando, diante de sua baixa renda, os novos encargos comprometem efetivamente a capacidade de manter o valor anterior. 2. A readequação deve assegurar tratamento isonômico entre os filhos, distribuindo os recursos disponíveis de modo proporcional às necessidades de cada um.",
+   "esperados": [
+    "TJSC:321784899206341155673252816839",
+    "TJSC:321790018162675778197976293315"
+   ],
+   "graus": {
+    "TJSC:321784899206341155673252816839": 1,
+    "TJSC:321790018162675778197976293315": 2
+   }
+  },
+  {
+   "id": "r044",
+   "bloco": "r3",
+   "proposicao": "a mera matrícula em curso não basta para manter alimentos ao filho maior sem prova de frequência e aproveitamento",
+   "assessor": "exoneração alimentos filho maior mera matrícula frequência aproveitamento continuidade estudos",
+   "curta": "matrícula exoneração",
+   "avancada": "alimentos AND (\"filho maior\" OR maioridade) AND matricula AND (frequencia OR aproveitamento OR desempenho) AND (prova OR insuficiente)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. FILHO MAIOR. MATRÍCULA EM CURSO. AUSÊNCIA DE PROVA DE FREQUÊNCIA E APROVEITAMENTO. EXONERAÇÃO. 1. A simples matrícula em curso superior ou técnico não basta para manter a obrigação alimentar em favor do filho maior, que deve comprovar frequência regular e aproveitamento compatível com a conclusão da formação. 2. Ausente essa prova, presume-se a capacidade de autossustento do filho maior e capaz, autorizando a exoneração do alimentante.",
+   "esperados": [
+    "TJSC:321786898491572648332818071517"
+   ],
+   "graus": {
+    "TJSC:321786898491572648332818071517": 1
+   }
+  },
+  {
+   "id": "r045",
+   "bloco": "r3",
+   "proposicao": "sentença de revisão ou exoneração com motivação suficiente sobre a alteração do binômio não é nula",
+   "assessor": "nulidade sentença fundamentação suficiente art. 489 CPC alteração binômio necessidade possibilidade",
+   "curta": "fundamentação suficiente sentença",
+   "avancada": "sentenca AND (revisao OR exoneracao) AND alimentos AND (motivacao OR fundamentacao) AND (binomio OR \"necessidade e possibilidade\") AND (nulidade OR nula)",
+   "hipotetica": "DIREITO DE FAMÍLIA. PROCESSUAL CIVIL. AÇÃO DE REVISÃO OU EXONERAÇÃO DE ALIMENTOS. SENTENÇA. MOTIVAÇÃO SUFICIENTE SOBRE O BINÔMIO. NULIDADE NÃO CONFIGURADA. 1. Não é nula a sentença de revisão ou exoneração de alimentos que expõe de forma suficiente as razões pelas quais reconhece ou nega a alteração do binômio necessidade e possibilidade. 2. O dever de fundamentação não exige a análise exaustiva de todos os argumentos e provas, bastando que a decisão permita compreender seu fundamento e impugná-lo.",
+   "esperados": [
+    "TJSC:321786814631739698956669488358",
+    "TJSC:321790018162675778197704010463"
+   ],
+   "graus": {
+    "TJSC:321786814631739698956669488358": 2,
+    "TJSC:321790018162675778197704010463": 2
+   }
+  },
+  {
+   "id": "r046",
+   "bloco": "r3",
+   "proposicao": "tutela de urgência para exoneração provisória de alimentos",
+   "assessor": "tutela de urgência exoneração alimentos provisória filho maior probabilidade direito",
+   "curta": "tutela exoneração alimentos",
+   "avancada": "\"tutela de urgencia\" AND (exoneracao OR exonerar) AND alimentos AND (provisoria OR liminar OR antecipada)",
+   "hipotetica": "DIREITO DE FAMÍLIA. PROCESSUAL CIVIL. AÇÃO DE EXONERAÇÃO DE ALIMENTOS. TUTELA DE URGÊNCIA. EXONERAÇÃO PROVISÓRIA. REQUISITOS. 1. A exoneração provisória de alimentos em tutela de urgência exige probabilidade do direito e perigo de dano, nos termos do art. 300 do CPC, e é medida excepcional diante da natureza da verba. 2. Admite-se a medida quando há prova inequívoca de que o alimentando, maior e capaz, já provê o próprio sustento, mas não com base apenas na maioridade ou em alegações a serem apuradas na instrução.",
+   "esperados": [
+    "TJSC:321771601900610281977950357288"
+   ],
+   "graus": {
+    "TJSC:321771601900610281977950357288": 2
+   }
+  },
+  {
+   "id": "r047",
+   "bloco": "r3",
+   "proposicao": "a animosidade entre os genitores, sem prejuízo concreto, não afasta a guarda compartilhada",
+   "assessor": "guarda compartilhada animosidade conflito genitores prejuízo concreto regra art. 1.584 § 2º",
+   "curta": "guarda compartilhada animosidade",
+   "avancada": "\"guarda compartilhada\" AND (animosidade OR litigio OR conflito OR desavenca) AND (genitores OR pais) AND (prejuizo OR afasta* OR obstaculo)",
+   "hipotetica": "DIREITO DE FAMÍLIA. GUARDA COMPARTILHADA. ANIMOSIDADE ENTRE OS GENITORES. AUSÊNCIA DE PREJUÍZO CONCRETO À CRIANÇA. REGRA LEGAL MANTIDA. 1. A guarda compartilhada é a regra no ordenamento, nos termos do art. 1.584, § 2º, do Código Civil, e só é afastada quando um dos genitores declara não a desejar ou não está apto ao exercício do poder familiar. 2. A animosidade ou a dificuldade de diálogo entre os genitores, sem prejuízo concreto demonstrado à criança, não basta para afastar o compartilhamento.",
+   "esperados": [
+    "TJSC:321790018162675778197883611818",
+    "TJSC:321790081633433507943990063127",
+    "TJSC:321790081633433507944029572190"
+   ],
+   "graus": {
+    "TJSC:321790018162675778197883611818": 2,
+    "TJSC:321790081633433507943990063127": 2,
+    "TJSC:321790081633433507944029572190": 2
+   }
+  },
+  {
+   "id": "r048",
+   "bloco": "r3",
+   "proposicao": "a violência doméstica entre os genitores afasta a guarda compartilhada",
+   "assessor": "guarda compartilhada violência doméstica medida protetiva Lei 14.713/2023 art. 1.584 § 2º",
+   "curta": "guarda violência doméstica",
+   "avancada": "\"guarda compartilhada\" AND \"violencia domestica\" AND (genitores OR genitor OR pais) AND (afasta* OR inviavel OR impossibilidade)",
+   "hipotetica": "DIREITO DE FAMÍLIA. GUARDA DOS FILHOS. VIOLÊNCIA DOMÉSTICA ENTRE OS GENITORES. AFASTAMENTO DA GUARDA COMPARTILHADA. GUARDA UNILATERAL. 1. A existência de elementos que evidenciem a probabilidade de violência doméstica ou familiar afasta a guarda compartilhada, nos termos do art. 1.584, § 2º, do Código Civil, com a redação dada pela Lei n. 14.713/2023. 2. Nesse contexto, fixa-se a guarda unilateral em favor do genitor não agressor, com convivência do outro regulada de forma a proteger a criança e a vítima.",
+   "esperados": [
+    "TJSC:321775833224075037029702781518",
+    "TJSC:321785864890251663282051366931"
+   ],
+   "graus": {
+    "TJSC:321775833224075037029702781518": 2,
+    "TJSC:321785864890251663282051366931": 2
+   }
+  },
+  {
+   "id": "r049",
+   "bloco": "r3",
+   "proposicao": "o desemprego comprovado do alimentante autoriza a redução dos alimentos",
+   "assessor": "redução alimentos desemprego comprovado alimentante capacidade financeira binômio",
+   "curta": "alimentos desemprego",
+   "avancada": "alimentos AND (desemprego OR desempregado) AND (reducao OR minoracao) AND (alimentante OR genitor) AND (comprovado OR comprovacao)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. AÇÃO REVISIONAL. DESEMPREGO COMPROVADO DO ALIMENTANTE. REDUÇÃO DA PENSÃO. 1. O desemprego involuntário e comprovado do alimentante, com perda da renda que embasou a fixação, constitui alteração superveniente da possibilidade que autoriza a redução dos alimentos, nos termos do art. 1.699 do Código Civil. 2. A redução deve preservar o mínimo necessário ao alimentando e pode ser revista quando o devedor retornar ao mercado de trabalho.",
+   "esperados": [
+    "TJSC:321786467542236744135347186476",
+    "TJSC:321790081633433507943984964347"
+   ],
+   "graus": {
+    "TJSC:321786467542236744135347186476": 1,
+    "TJSC:321790081633433507943984964347": 1
+   }
+  },
+  {
+   "id": "r050",
+   "bloco": "r3",
+   "proposicao": "os alimentos definitivos majorados retroagem à data da citação",
+   "assessor": "majoração alimentos definitivos retroatividade data citação art. 13 § 2º Lei de Alimentos Súmula 621",
+   "curta": "alimentos retroatividade citação",
+   "avancada": "alimentos AND (majorados OR majoracao OR majorados) AND (retroagem OR retroativ* OR termo) AND (citacao OR \"data da citacao\")",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. MAJORAÇÃO. ALIMENTOS DEFINITIVOS. EFEITO RETROATIVO À DATA DA CITAÇÃO. 1. Os alimentos fixados ou majorados em sentença retroagem à data da citação, nos termos do art. 13, § 2º, da Lei n. 5.478/1968. 2. As diferenças entre o valor provisório e o definitivo majorado são devidas desde a citação, compensadas as parcelas já pagas, sem que isso dependa de pedido expresso.",
+   "esperados": [
+    "TJSC:321778511150397013320474325111"
+   ],
+   "graus": {
+    "TJSC:321778511150397013320474325111": 2
+   }
+  },
+  {
+   "id": "r051",
+   "bloco": "r3",
+   "proposicao": "o reconhecimento de alienação parental exige prova técnica",
+   "assessor": "alienação parental Lei 12.318/2010 prova pericial estudo psicossocial reconhecimento",
+   "curta": "alienação parental",
+   "avancada": "\"alienacao parental\" AND (reconhecimento OR configuracao) AND (\"prova tecnica\" OR pericia OR laudo OR \"estudo psicossocial\")",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIENAÇÃO PARENTAL. RECONHECIMENTO. NECESSIDADE DE PROVA TÉCNICA. PERÍCIA PSICOLÓGICA OU BIOPSICOSSOCIAL. 1. O reconhecimento de alienação parental exige prova técnica, em regra perícia psicológica ou biopsicossocial, nos termos do art. 5º da Lei n. 12.318/2010, não bastando alegações unilaterais ou conflitos usuais entre os genitores. 2. Ausente laudo que identifique os atos de alienação e seus efeitos sobre a criança, não se aplicam as medidas previstas na lei.",
+   "esperados": [
+    "TJSC:321785241743612880409000490802"
+   ],
+   "graus": {
+    "TJSC:321785241743612880409000490802": 2
+   }
+  },
+  {
+   "id": "r052",
+   "bloco": "r3",
+   "proposicao": "consideração de fatos supervenientes no julgamento da apelação",
+   "assessor": "fato superveniente art. 493 CPC apelação consideração julgamento alimentos guarda",
+   "curta": "fato superveniente apelação",
+   "avancada": "(\"fato superveniente\" OR \"fatos supervenientes\" OR superveniente*) AND apelacao AND (consideracao OR \"art. 493\" OR julgamento) AND (tribunal OR recurso)",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. APELAÇÃO. FATOS SUPERVENIENTES. CONSIDERAÇÃO NO JULGAMENTO. ART. 493 DO CPC. CONTRADITÓRIO. 1. O tribunal deve considerar, no julgamento da apelação, o fato constitutivo, modificativo ou extintivo do direito ocorrido após a propositura da ação e capaz de influir no resultado, nos termos do art. 493 do CPC. 2. A consideração do fato superveniente pressupõe prévia oportunidade de manifestação das partes e é especialmente relevante nas relações continuativas, como as de família.",
+   "esperados": [
+    "TJSC:321776437259671734845693176216"
+   ],
+   "graus": {
+    "TJSC:321776437259671734845693176216": 2
+   }
+  },
+  {
+   "id": "r053",
+   "bloco": "r3",
+   "proposicao": "redução do valor dos alimentos fixados para adequação ao binômio necessidade-possibilidade",
+   "assessor": "fixação alimentos redução percentual salário mínimo binômio necessidade possibilidade proporcionalidade",
+   "curta": "quantum alimentar redução",
+   "avancada": "alimentos AND (reducao OR minoracao OR reduzidos) AND (binomio OR \"necessidade e possibilidade\") AND (adequacao OR adequar OR proporcionalidade)",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. REDUÇÃO DO VALOR FIXADO. ADEQUAÇÃO AO BINÔMIO NECESSIDADE E POSSIBILIDADE. 1. Os alimentos devem ser fixados na proporção das necessidades do alimentando e dos recursos do alimentante, nos termos do art. 1.694, § 1º, do Código Civil. 2. Reduz-se o valor arbitrado quando excede a capacidade contributiva demonstrada do devedor, comprometendo sua subsistência, sem prova de necessidades do alimentando que justifiquem o montante.",
+   "esperados": [
+    "TJSC:321790018162675778198119397721",
+    "TJSC:321790081633433507944000598646"
+   ],
+   "graus": {
+    "TJSC:321790018162675778198119397721": 2,
+    "TJSC:321790081633433507944000598646": 1
+   }
+  },
+  {
+   "id": "r054",
+   "bloco": "r3",
+   "proposicao": "sucumbência na ação de alimentos quando o valor fixado é inferior ao pedido",
+   "assessor": "sucumbência ação de alimentos valor inferior ao pedido sucumbência recíproca mínima honorários",
+   "curta": "sucumbência alimentos",
+   "avancada": "alimentos AND (sucumbencia OR sucumbente) AND (\"valor inferior\" OR \"menor que o pedido\" OR minimo) AND (recıproca OR reciproca OR honorarios)",
+   "hipotetica": "DIREITO DE FAMÍLIA. PROCESSUAL CIVIL. AÇÃO DE ALIMENTOS. VALOR FIXADO INFERIOR AO PEDIDO. SUCUMBÊNCIA. 1. Na ação de alimentos, a fixação da pensão em valor inferior ao pretendido não configura sucumbência recíproca, pois o pedido é estimativo e o valor depende do binômio necessidade e possibilidade apurado no processo. 2. Reconhecido o direito aos alimentos, o réu responde integralmente pelos ônus sucumbenciais, ainda que o montante seja menor que o indicado na inicial.",
+   "esperados": [
+    "TJSC:321775833224075037029841941796",
+    "TJSC:321786982354457870770441329854"
+   ],
+   "graus": {
+    "TJSC:321775833224075037029841941796": 2,
+    "TJSC:321786982354457870770441329854": 1
+   }
+  },
+  {
+   "id": "s001",
+   "bloco": "stj-2026-11",
+   "proposicao": "o divórcio é direito potestativo e pode ser decretado por julgamento parcial de mérito, prosseguindo o processo quanto às questões acessórias",
+   "assessor": "divórcio direito potestativo julgamento antecipado parcial mérito prosseguimento partilha guarda alimentos",
+   "curta": "divórcio julgamento parcial",
+   "avancada": "divorcio AND (\"direito potestativo\" OR potestativo) AND (\"julgamento parcial\" OR \"julgamento antecipado parcial\") AND (acessorias OR \"questoes acessorias\" OR prosseguimento)",
+   "esperados": [
+    "STJ:000904254"
+   ],
+   "graus": {
+    "STJ:000904254": 2
+   }
+  },
+  {
+   "id": "s002",
+   "bloco": "stj-2026-11",
+   "proposicao": "a falta ou nulidade de citação é vício transrescisório que pode ser arguido a qualquer tempo, por simples petição ou querela nullitatis",
+   "assessor": "nulidade citação vício transrescisório querela nullitatis simples petição qualquer tempo trânsito em julgado",
+   "curta": "querela nullitatis citação",
+   "avancada": "citacao AND (nulidade OR falta) AND (transrescisorio OR \"querela nullitatis\" OR \"qualquer tempo\") AND (vicio OR peticao)",
+   "esperados": [
+    "STJ:000905387",
+    "STJ:000918202",
+    "STJ:921886"
+   ],
+   "graus": {
+    "STJ:000905387": 2,
+    "STJ:000918202": 2,
+    "STJ:921886": 1
+   }
+  },
+  {
+   "id": "s003",
+   "bloco": "stj-2026-11",
+   "proposicao": "a nulidade da citação contamina os atos subsequentes que dela dependem",
+   "assessor": "nulidade citação art. 281 CPC atos subsequentes dependentes contaminação",
+   "curta": "nulidade citação atos subsequentes",
+   "avancada": "citacao AND nulidade AND (contamina OR contaminacao OR subsequentes OR posteriores) AND (atos OR dependem)",
+   "esperados": [
+    "STJ:958394"
+   ],
+   "graus": {
+    "STJ:958394": 2
+   }
+  },
+  {
+   "id": "s004",
+   "bloco": "stj-2026-11",
+   "proposicao": "há cerceamento de defesa quando o juiz indefere a prova requerida e julga improcedente o pedido por falta dela",
+   "assessor": "cerceamento de defesa indeferimento produção de prova improcedência ausência de prova julgamento antecipado necessidade prova oral",
+   "curta": "cerceamento indeferimento prova",
+   "avancada": "(cerceamento OR \"cerceamento de defesa\") AND prova AND (indeferimento OR indeferiu) AND (improcedencia OR improcedente) AND (\"falta de prova\" OR ausencia)",
+   "esperados": [
+    "STJ:000911547",
+    "STJ:000918827"
+   ],
+   "graus": {
+    "STJ:000911547": 2,
+    "STJ:000918827": 1
+   }
+  },
+  {
+   "id": "s005",
+   "bloco": "stj-2026-11",
+   "proposicao": "o tribunal pode determinar de ofício a complementação da prova em grau recursal",
+   "assessor": "poderes instrutórios relator tribunal produção de prova de ofício art. 932 I art. 938 § 3º conversão em diligência",
+   "curta": "relator prova diligência",
+   "avancada": "tribunal AND (\"de oficio\" OR oficio) AND (complementacao OR complementar OR diligencia) AND prova AND (\"grau recursal\" OR apelacao OR recurso)",
+   "esperados": [
+    "STJ:941572"
+   ],
+   "graus": {
+    "STJ:941572": 2
+   }
+  },
+  {
+   "id": "s006",
+   "bloco": "stj-2026-11",
+   "proposicao": "a constituição de nova família ou o nascimento de novo filho não autoriza, por si só, a redução dos alimentos, cabendo ao alimentante provar a diminuição de seus recursos",
+   "assessor": "revisional alimentos nova família novo filho redução por si só depauperamento alimentante ônus prova",
+   "curta": "nova família redução alimentos",
+   "avancada": "alimentos AND (\"nova familia\" OR \"novo filho\" OR \"nova prole\" OR constituicao) AND (reducao OR minoracao) AND (alimentante) AND (\"onus da prova\" OR prova OR diminuicao)",
+   "esperados": [
+    "STJ:1392463"
+   ],
+   "graus": {
+    "STJ:1392463": 2
+   }
+  },
+  {
+   "id": "s007",
+   "bloco": "stj-2026-11",
+   "proposicao": "a maioridade do filho não extingue automaticamente o dever alimentar e a exoneração exige exame concreto da necessidade",
+   "assessor": "exoneração alimentos maioridade não automática necessidade contraditório Súmula 358 art. 1.694 CC",
+   "curta": "maioridade exoneração alimentos",
+   "avancada": "alimentos AND maioridade AND (extincao OR exoneracao OR automatica*) AND (necessidade OR concreto OR \"exame concreto\")",
+   "esperados": [
+    "STJ:937969"
+   ],
+   "graus": {
+    "STJ:1043571": 0,
+    "STJ:1424557": 0,
+    "STJ:1447110": 0,
+    "STJ:937969": 1
+   }
+  },
+  {
+   "id": "s008",
+   "bloco": "stj-2026-11",
+   "proposicao": "o filho maior que prossegue em curso superior tem presunção relativa de necessidade, cabendo ao alimentante a prova em contrário",
+   "assessor": "alimentos filho maior curso superior presunção relativa necessidade ônus prova alimentante",
+   "curta": "presunção necessidade estudante",
+   "avancada": "alimentos AND (\"filho maior\" OR maior) AND (\"curso superior\" OR universitario) AND (presuncao OR relativa) AND (\"prova em contrario\" OR alimentante OR \"onus\")",
+   "esperados": [
+    "STJ:959812"
+   ],
+   "graus": {
+    "STJ:959812": 2
+   }
+  },
+  {
+   "id": "s009",
+   "bloco": "stj-2026-11",
+   "proposicao": "quem apenas intermedeia a venda de produto ou serviço não responde solidariamente pela inexecução do fornecedor, salvo defeito próprio ou mesmo grupo econômico",
+   "assessor": "intermediador agência de viagens cadeia de consumo solidariedade responsabilidade art. 7º CDC passagens inexecução fornecedor ilegitimidade",
+   "curta": "intermediador solidariedade consumo",
+   "avancada": "(intermediacao OR intermedia OR intermediario) AND (venda OR plataforma OR marketplace) AND (solidaria OR solidariedade OR responsabilidade) AND (fornecedor OR inexecucao) AND (\"grupo economico\" OR defeito)",
+   "esperados": [
+    "STJ:1438507",
+    "STJ:1452222",
+    "STJ:931246",
+    "STJ:932009",
+    "STJ:939467"
+   ],
+   "graus": {
+    "STJ:1438507": 1,
+    "STJ:1452222": 1,
+    "STJ:931246": 2,
+    "STJ:932009": 1,
+    "STJ:939467": 1
+   }
+  },
+  {
+   "id": "s010",
+   "bloco": "stj-2026-11",
+   "proposicao": "não cabem honorários em incidente resolvido por decisão interlocutória que não extingue o processo, nem sua majoração no agravo correspondente",
+   "assessor": "honorários advocatícios incidente decisão interlocutória impugnação penhora agravo de instrumento majoração art. 85 § 11",
+   "curta": "honorários incidente interlocutória",
+   "avancada": "honorarios AND (incidente OR \"decisao interlocutoria\") AND (agravo OR \"agravo de instrumento\") AND (majoracao OR recursais OR descabimento OR incabiveis)",
+   "esperados": [
+    "STJ:1443252",
+    "STJ:951345"
+   ],
+   "graus": {
+    "STJ:1443252": 2,
+    "STJ:951345": 2
+   }
+  },
+  {
+   "id": "s011",
+   "bloco": "stj-2026-11",
+   "proposicao": "a alteração do regime de bens para comunhão universal pode ter efeitos retroativos, ressalvados os direitos de terceiros",
+   "assessor": "alteração regime de bens separação comunhão universal efeitos retroativos ex tunc terceiros art. 1.639 § 2º CC",
+   "curta": "alteração regime bens retroatividade",
+   "avancada": "(\"regime de bens\" OR \"alteracao de regime\") AND (\"comunhao universal\") AND (retroativ* OR \"efeitos ex tunc\" OR \"efeitos retroativos\") AND (terceiros OR ressalva)",
+   "esperados": [
+    "STJ:1452104"
+   ],
+   "graus": {
+    "STJ:1452104": 2
+   }
+  },
+  {
+   "id": "s012",
+   "bloco": "stj-2026-11",
+   "proposicao": "o acolhimento institucional da criança é legítimo enquanto perdurar a situação de risco, até a reintegração familiar ou a colocação em família substituta",
+   "assessor": "acolhimento institucional criança situação de risco manutenção reintegração família de origem família substituta ECA melhor interesse",
+   "curta": "acolhimento institucional risco",
+   "avancada": "(acolhimento OR \"acolhimento institucional\") AND crianca AND (risco OR \"situacao de risco\") AND (reintegracao OR \"familia substituta\" OR \"familia natural\")",
+   "esperados": [
+    "STJ:1457608"
+   ],
+   "graus": {
+    "STJ:1457608": 2
+   }
+  },
+  {
+   "id": "s013",
+   "bloco": "stj-2026-11",
+   "proposicao": "o acordo de parcelamento na execução impõe a suspensão do processo até o adimplemento, sem o limite de seis meses do art. 313, § 4º, do CPC",
+   "assessor": "parcelamento acordo execução suspensão art. 922 CPC art. 313 § 4º seis meses extinção art. 924 moratória",
+   "curta": "parcelamento execução suspensão",
+   "avancada": "(parcelamento OR acordo) AND execucao AND suspensao AND (adimplemento OR cumprimento) AND (\"seis meses\" OR \"art. 313\" OR prazo)",
+   "esperados": [
+    "STJ:1460318",
+    "STJ:956241",
+    "STJ:959693"
+   ],
+   "graus": {
+    "STJ:1460318": 2,
+    "STJ:956241": 1,
+    "STJ:959693": 2
+   }
+  },
+  {
+   "id": "s014",
+   "bloco": "stj-2026-11",
+   "proposicao": "a Selic é índice único dos consectários, sem cumulação, e a adequação de ofício dos índices não configura reformatio in pejus",
+   "assessor": "taxa Selic juros correção monetária sem cumulação consectários legais adequação de ofício reformatio in pejus",
+   "curta": "Selic ofício reformatio",
+   "avancada": "Selic AND (consectarios OR \"juros e correcao\" OR atualizacao) AND (cumulacao OR \"indice unico\") AND (\"reformatio in pejus\" OR \"de oficio\")",
+   "esperados": [
+    "STJ:921829"
+   ],
+   "graus": {
+    "STJ:921829": 2
+   }
+  },
+  {
+   "id": "s015",
+   "bloco": "stj-2026-11",
+   "proposicao": "os honorários sucumbenciais, como consectários legais, podem ser fixados ou retificados de ofício pelo tribunal sem reformatio in pejus",
+   "assessor": "honorários sucumbenciais consectário legal fixação de ofício tribunal reformatio in pejus recurso exclusivo omissão",
+   "curta": "honorários ofício reformatio",
+   "avancada": "honorarios AND (sucumbenciais OR sucumbencia) AND (consectarios OR \"consectario legal\") AND (\"de oficio\" OR oficio) AND (\"reformatio in pejus\" OR retificacao)",
+   "esperados": [
+    "STJ:951752",
+    "STJ:955210"
+   ],
+   "graus": {
+    "STJ:951752": 2,
+    "STJ:955210": 2
+   }
+  },
+  {
+   "id": "s016",
+   "bloco": "stj-2026-11",
+   "proposicao": "a correção de ofício decorrente das consequências jurídicas do pedido não constitui decisão surpresa",
+   "assessor": "decisão surpresa art. 10 CPC correção de ofício valor da causa art. 292 § 3º consequência jurídica contraditório",
+   "curta": "decisão surpresa correção ofício",
+   "avancada": "(\"decisao surpresa\" OR surpresa) AND (\"de oficio\" OR correcao) AND (consequencias OR \"consequencia juridica\" OR pedido) AND (contraditorio OR afastada)",
+   "esperados": [
+    "STJ:1446899",
+    "STJ:1447483",
+    "STJ:955196"
+   ],
+   "graus": {
+    "STJ:1446899": 1,
+    "STJ:1447483": 1,
+    "STJ:955196": 1
+   }
+  },
+  {
+   "id": "s017",
+   "bloco": "stj-2026-11",
+   "proposicao": "no processo eletrônico, o prazo recursal só começa com intimação formal ou ciência inequívoca do conteúdo da decisão",
+   "assessor": "termo inicial prazo recursal intimação processo eletrônico ciência inequívoca comparecimento espontâneo inteiro teor",
+   "curta": "ciência inequívoca prazo recursal",
+   "avancada": "(\"processo eletronico\" OR eproc OR eletronico) AND prazo AND (recursal OR recurso) AND (intimacao OR \"ciencia inequivoca\") AND (inicio OR termo OR contagem)",
+   "esperados": [
+    "STJ:1020517",
+    "STJ:943102"
+   ],
+   "graus": {
+    "STJ:1020517": 1,
+    "STJ:943102": 1
+   }
+  },
+  {
+   "id": "s018",
+   "bloco": "stj-2026-11",
+   "proposicao": "a falta de intimação do Ministério Público em processo com interesse de menor gera nulidade quando demonstrado o prejuízo",
+   "assessor": "nulidade ausência intimação Ministério Público interesse incapaz menor prejuízo art. 279 CPC",
+   "curta": "intimação Ministério Público menor nulidade",
+   "avancada": "(\"Ministerio Publico\" OR MP) AND intimacao AND (falta OR ausencia) AND (nulidade) AND (prejuizo OR \"pas de nullite\") AND (menor OR crianca OR adolescente)",
+   "esperados": [
+    "STJ:938840",
+    "STJ:952625"
+   ],
+   "graus": {
+    "STJ:938840": 1,
+    "STJ:952625": 1
+   }
+  },
+  {
+   "id": "s019",
+   "bloco": "stj-2026-11",
+   "proposicao": "o não conhecimento do recurso por intempestividade, sem prévia intimação das partes, não configura decisão surpresa nem ofende o art. 933 do CPC",
+   "assessor": "art. 933 CPC decisão surpresa intempestividade juízo de admissibilidade de ofício intimação prévia vista",
+   "curta": "art. 933 decisão surpresa",
+   "avancada": "(intempestividade OR intempestivo) AND (\"nao conhecimento\" OR \"nao conheceu\") AND (\"decisao surpresa\" OR surpresa) AND (\"art. 933\" OR intimacao OR contraditorio)",
+   "esperados": [
+    "STJ:939606",
+    "STJ:951010"
+   ],
+   "graus": {
+    "STJ:939606": 2,
+    "STJ:951010": 1
+   }
+  },
+  {
+   "id": "s020",
+   "bloco": "stj-2026-11",
+   "proposicao": "o juiz não pode decidir sem dar às partes oportunidade de manifestação, ainda que a matéria seja conhecível de ofício",
+   "assessor": "art. 10 CPC vedação decisão surpresa matéria de ofício contraditório substancial oportunidade manifestação nulidade acórdão",
+   "curta": "matéria de ofício contraditório",
+   "avancada": "(\"decisao surpresa\" OR contraditorio) AND (oportunidade OR manifestacao) AND (\"de oficio\" OR oficio) AND (materia OR cognoscivel OR conhecivel)",
+   "esperados": [
+    "STJ:941361"
+   ],
+   "graus": {
+    "STJ:941361": 1
+   }
+  },
+  {
+   "id": "s021",
+   "bloco": "stj-2026-11",
+   "proposicao": "sinais exteriores de riqueza, inclusive em redes sociais, são indícios da capacidade do alimentante quando somados às demais provas",
+   "assessor": "alimentos sinais exteriores de riqueza redes sociais indícios capacidade alimentante teoria da aparência provas",
+   "curta": "sinais exteriores riqueza alimentos",
+   "avancada": "alimentos AND (\"sinais exteriores de riqueza\" OR \"sinais de riqueza\" OR \"redes sociais\") AND (capacidade OR possibilidade) AND (alimentante) AND (indicios OR provas)",
+   "esperados": [
+    "STJ:937967"
+   ],
+   "graus": {
+    "STJ:937967": 1
+   }
+  },
+  {
+   "id": "s022",
+   "bloco": "stj-2026-11",
+   "proposicao": "procedente o pedido de alimentos em valor menor que o pleiteado, não há sucumbência recíproca e o alimentante arca com os ônus",
+   "assessor": "sucumbência recíproca alimentos valor menor pleiteado pedido estimativo alimentante ônus honorários",
+   "curta": "sucumbência alimentos valor menor",
+   "avancada": "alimentos AND (\"valor menor\" OR \"valor inferior\" OR inferior) AND (pedido OR pleiteado) AND (sucumbencia OR sucumbente) AND (reciproca OR alimentante OR onus)",
+   "esperados": [
+    "STJ:938147"
+   ],
+   "graus": {
+    "STJ:1457080": 0,
+    "STJ:938147": 2
+   }
+  },
+  {
+   "id": "s023",
+   "bloco": "stj-2026-11",
+   "proposicao": "a decisão sobre exibição de documento proferida nos próprios autos é agravável, e a falta de agravo gera preclusão",
+   "assessor": "exibição de documento decisão interlocutória agravo de instrumento art. 1.015 VI CPC preclusão sem incidente",
+   "curta": "exibição agravo preclusão",
+   "avancada": "(exibicao OR \"exibicao de documento\") AND (\"nos proprios autos\" OR incidente) AND (agravo OR agravavel) AND (preclusao)",
+   "esperados": [
+    "STJ:951973"
+   ],
+   "graus": {
+    "STJ:951973": 2
+   }
+  },
+  {
+   "id": "s024",
+   "bloco": "stj-2026-11",
+   "proposicao": "o arquivamento da averiguação oficiosa de paternidade não viola o direito da criança, porque subsiste a ação investigatória",
+   "assessor": "averiguação oficiosa paternidade arquivamento Lei 8.560/1992 ação investigatória DNA direito da criança",
+   "curta": "averiguação paternidade arquivamento",
+   "avancada": "(\"averiguacao oficiosa\" OR \"averiguacao de paternidade\") AND (arquivamento OR arquivada) AND (\"acao investigatoria\" OR investigatoria) AND (crianca OR direito)",
+   "esperados": [
+    "STJ:954534"
+   ],
+   "graus": {
+    "STJ:954534": 2
+   }
+  },
+  {
+   "id": "s025",
+   "bloco": "stj-2026-11",
+   "proposicao": "a infidelidade conjugal, por si só, não gera dano moral indenizável",
+   "assessor": "infidelidade conjugal dano moral indenização ilícito violência exposição humilhante cônjuge",
+   "curta": "infidelidade dano moral",
+   "avancada": "(infidelidade OR adulterio) AND (\"dano moral\" OR indenizacao) AND (conjugal OR casamento OR conjuge) AND (\"por si so\" OR indenizavel OR ilicito)",
+   "esperados": [
+    "STJ:957469"
+   ],
+   "graus": {
+    "STJ:957469": 2
+   }
+  },
+  {
+   "id": "s026",
+   "bloco": "stj-2026-11",
+   "proposicao": "o recurso exclusivo sobre honorários de advogado sujeita-se a preparo, salvo gratuidade do próprio advogado, e sua falta leva a intimação para recolhimento em dobro",
+   "assessor": "preparo recurso exclusivo honorários advogado gratuidade deserção recolhimento em dobro art. 1.007 § 4º art. 99 § 5º CPC",
+   "curta": "preparo honorários recurso exclusivo",
+   "avancada": "honorarios AND (preparo OR \"recurso exclusivo\") AND (\"em dobro\" OR dobro OR recolhimento) AND (gratuidade OR advogado OR deserção)",
+   "esperados": [
+    "STJ:000896955"
+   ],
+   "graus": {
+    "STJ:000896955": 1
+   }
+  }
+ ]
+}
