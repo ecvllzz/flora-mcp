@@ -201,6 +201,7 @@ def test_component_citacoes_and_first_block_summary(published):
         "total": 3,
         "por_tipo": {"precedente": 1, "acordao": 1, "dispositivo": 1, "similar": 0},
         "resolvidas_no_acervo": 2,
+        "ambiguas_no_acervo": 0,
         "componente": "citacoes",
     }
     block = api.document(published, "STJ:2", "citacoes")

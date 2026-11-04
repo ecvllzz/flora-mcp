@@ -670,24 +670,38 @@ def document_citations(db, view: ReadView, id: str, body: dict, raw: str) -> lis
     """Published rows when there is a generation; the same extraction, unresolved, over the work base."""
     if view.publication is not None and has_citations(db):
         rows = db.execute(
-            "SELECT tipo,chave,texto,origem,resolvido FROM document_citations WHERE document_id=? "
-            "ORDER BY rowid",
+            f"SELECT tipo,chave,texto,origem,resolvido{candidates_column(db)} FROM document_citations "
+            "WHERE document_id=? ORDER BY rowid",
             (id,),
         ).fetchall()
-        return [dict(r) for r in rows]
+        return [with_candidates(dict(r)) for r in rows]
     return [{**item, "resolvido": None} for item in extract_citations(body, json.loads(raw))]
+
+
+def candidates_column(db) -> str:
+    """The candidatos column exists from the deriver citacoes-2 on; older generations have none."""
+    columns = {r[1] for r in db.execute("PRAGMA table_info(document_citations)")}
+    return ",candidatos" if "candidatos" in columns else ""
+
+
+def with_candidates(item: dict) -> dict:
+    """candidatos as a list, only when the key fits more than one acórdão of the generation."""
+    value = item.pop("candidatos", None)
+    return {**item, "candidatos": json.loads(value)} if value else item
 
 
 def citation_summary(cited: list[dict]) -> dict:
     counts = {tipo: 0 for tipo in CITATION_TYPES}
-    resolved = 0
+    resolved = ambiguous = 0
     for item in cited:
         counts[item["tipo"]] += 1
         resolved += bool(item.get("resolvido"))
+        ambiguous += bool(item.get("candidatos"))
     return {
         "total": len(cited),
         "por_tipo": counts,
         "resolvidas_no_acervo": resolved,
+        "ambiguas_no_acervo": ambiguous,
         "componente": "citacoes",
     }
 

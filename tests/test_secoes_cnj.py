@@ -45,7 +45,7 @@ def test_stj_hypothesis_heading_and_offsets_rebuild_the_literal_text():
     assert [s["nome"] for s in spans][:2] == ["cabecalho", "caso_em_exame"]
     assert "Dispositivos" not in STJ[spans[-3]["inicio"] : spans[-3]["fim"]]
     assert "".join(STJ[s["inicio"] : s["fim"]] for s in spans) == STJ
-    assert all(s["derivador"] == "ementa-secoes-2" and len(s["sha256_secao"]) == 64 for s in spans)
+    assert all(s["derivador"] == "ementa-secoes-3" and len(s["sha256_secao"]) == 64 for s in spans)
 
 
 def test_repeated_heading_returns_nothing():

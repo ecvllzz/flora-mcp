@@ -95,7 +95,7 @@ def advanced_query(value: str) -> str:
 HEADINGS = re.compile(
     r"(?im)^[ \t]*(?:[IVX]+[ \t]*[.\-\u2013:][ \t]*)?"
     r"(?P<title>CASO EM EXAME|HIP[ÓO]TESE EM EXAME|QUEST[ÃA]O EM DISCUSS[ÃA]O|RAZ[ÕO]ES DE DECIDIR|"
-    r"DISPOSITIVO E TESE|TESE DE JULGAMENTO|DISPOSITIVOS RELEVANTES CITADOS|"
+    r"DISPOSITIVO E TESE|DISPOSITIVO|TESE DE JULGAMENTO|DISPOSITIVOS RELEVANTES CITADOS|"
     r"JURISPRUD[ÊE]NCIA RELEVANTE CITADA)"
     r"[ \t]*(?:[:.\-\u2013][ \t]*|\r?$)"
 )
@@ -105,19 +105,21 @@ NAMES = {
     "QUESTAO EM DISCUSSAO": "questao_em_discussao",
     "RAZOES DE DECIDIR": "razoes_de_decidir",
     "DISPOSITIVO E TESE": "dispositivo_e_tese",
+    "DISPOSITIVO": "dispositivo_e_tese",
     "TESE DE JULGAMENTO": "tese_na_ementa",
     "DISPOSITIVOS RELEVANTES CITADOS": "dispositivos_citados",
     "JURISPRUDENCIA RELEVANTE CITADA": "jurisprudencia_citada",
 }
 SECTION_NAMES = ("cabecalho", *dict.fromkeys(NAMES.values()))
-SECTIONS_DERIVER = "ementa-secoes-2"
+SECTIONS_DERIVER = "ementa-secoes-3"
 
 
 def sections(text):
     """Literal sections of a CNJ-model ementa (Recomendação CNJ 154/2024), by character offsets.
 
-    Recognizes the four numbered parts, the thesis and the two closing lines (dispositivos and
-    jurisprudência citados), with CRLF or LF line endings. The text before the first heading is
+    Recognizes the four numbered parts (the fourth titled DISPOSITIVO E TESE or DISPOSITIVO alone),
+    the thesis and the two closing lines (dispositivos and jurisprudência citados), with CRLF or LF
+    line endings. The text before the first heading is
     the cabecalho. Repeated headings make the division ambiguous, and nothing is returned.
     """
     matches = list(HEADINGS.finditer(text))
