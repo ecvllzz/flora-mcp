@@ -33,6 +33,7 @@ def test_pergunta_sem_campo_de_caso(conjunto):
         "assessor",
         "curta",
         "avancada",
+        "longa",
         "hipotetica",
         "esperados",
         "graus",

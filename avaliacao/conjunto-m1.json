@@ -19,7 +19,8 @@
   "assessor": "termos que um assessor digitaria de uma vez, sem enxugar",
   "curta": "dois ou tres termos nucleares",
   "avancada": "expressão do modo avançado no formato dos registros (grupos ligados por AND, sinônimos por OR, frases, prefixo), redigida numa passada só, a partir só da proposição, sem ver registros, esperados nem resultados",
-  "hipotetica": "ementa hipotetica no modelo CNJ (cabecalho em maiusculas e uma ou duas frases de tese), de 400 a 900 caracteres, escrita so a partir da proposicao numa unica passada em 23/10/2026, antes de qualquer resultado semantico, sem consultar o acervo nem os esperados; so a metade semantica a usa, a lexical repete a da proposicao; só no bloco r3; não entra nesta medida"
+  "hipotetica": "ementa hipotetica no modelo CNJ (cabecalho em maiusculas e uma ou duas frases de tese), de 400 a 900 caracteres, escrita so a partir da proposicao numa unica passada em 23/10/2026, antes de qualquer resultado semantico, sem consultar o acervo nem os esperados; so a metade semantica a usa, a lexical repete a da proposicao; nas 26 perguntas novas, escrita igualmente às cegas em 04/11/2026",
+  "longa": "pergunta em frase inteira, de 45 a 90 palavras, sem fatos de caso, redigida às cegas a partir só da proposição; passa do limite de 30 termos e por isso mede a recusa de hoje (RM-D35, RM-D37)"
  },
  "stj": {
   "perguntas_so_do_stj": 30,
@@ -65,7 +66,8 @@
     "STJ:951903": 1,
     "TJSC:321786467542236744136161149476": 2,
     "TJSC:321786968680295199257788760824": 1
-   }
+   },
+   "longa": "Na fase de cumprimento de sentença, quando a parte executada é beneficiária da gratuidade da justiça, a exigibilidade dos honorários advocatícios fixados nessa fase fica suspensa? Interessa saber como os tribunais tratam a condição suspensiva de exigibilidade, o prazo legal para demonstrar que deixou de existir a situação de insuficiência de recursos e a possibilidade de cobrança dessa verba."
   },
   {
    "id": "r002",
@@ -84,7 +86,8 @@
     "TJSC:321779444946945217508337863286": 1,
     "TJSC:321786898491572648339935726247": 1,
     "TJSC:321786968680295199257788760824": 1
-   }
+   },
+   "longa": "Quando o juiz defere o pedido de gratuidade da justiça no curso do processo, o benefício vale apenas daquele momento em diante ou alcança também as custas e despesas anteriores ao deferimento? Busco entendimento sobre a eficácia não retroativa da gratuidade e a manutenção da exigibilidade dos encargos processuais já vencidos antes da decisão que concedeu o benefício."
   },
   {
    "id": "r003",
@@ -101,7 +104,8 @@
    "graus": {
     "TJSC:321786898491572648330168248380": 2,
     "TJSC:321786898491572648330169645111": 1
-   }
+   },
+   "longa": "Nos procedimentos regidos pelo Estatuto da Criança e do Adolescente, o prazo para recorrer é de dez dias, e a dúvida surge quando o sistema eletrônico indica prazo diverso, por exemplo de quinze dias. O recurso interposto com base na informação divergente do sistema é tempestivo, ou prevalece a regra legal especial do estatuto sobre o apelante?"
   },
   {
    "id": "r004",
@@ -121,7 +125,8 @@
     "TJSC:321786619979792694803817041499": 0,
     "TJSC:321786968680295199257904680711": 0,
     "TJSC:321790018162675778197648531291": 0
-   }
+   },
+   "longa": "Quando o réu é revel e não possui advogado constituído nos autos, o prazo para recorrer ou se manifestar corre a partir da publicação do ato decisório no órgão oficial, dispensada a intimação pessoal? Procuro o entendimento sobre o termo inicial do prazo para o revel sem patrono e a regra de que os prazos fluem independentemente de intimação."
   },
   {
    "id": "r005",
@@ -138,7 +143,8 @@
    "graus": {
     "TJSC:321785864890251663282783123740": 2,
     "TJSC:321786898491572648332074137184": 1
-   }
+   },
+   "longa": "Na infração administrativa prevista no art. 249 do ECA, pelo descumprimento dos deveres inerentes ao poder familiar, é possível substituir a multa por simples advertência quando as circunstâncias do fato revelam menor gravidade? Quais fundamentos os tribunais empregam para admitir essa substituição e em que situações a penalidade pecuniária é mantida contra o genitor ou responsável?"
   },
   {
    "id": "r006",
@@ -153,7 +159,8 @@
    ],
    "graus": {
     "TJSC:321786619979792694803817041499": 1
-   }
+   },
+   "longa": "A configuração da infração administrativa do art. 249 do ECA exige culpa do genitor ou responsável, de modo que ela é afastada quando os pais demonstram ter empregado esforços razoáveis para cumprir os deveres do poder familiar? Interessa o entendimento sobre a natureza subjetiva da infração e sobre a prova dos esforços parentais capaz de excluir a penalidade."
   },
   {
    "id": "r007",
@@ -168,7 +175,8 @@
    ],
    "graus": {
     "TJSC:321785241743612880409012526823": 1
-   }
+   },
+   "longa": "É possível reduzir a multa aplicada com base no art. 249 do ECA para valor inferior ao mínimo legal de três salários de referência, em atenção à proporcionalidade e à condição econômica do apenado? Busco julgados que discutam se o piso previsto na lei vincula o julgador ou se admite adequação excepcional da sanção ao caso."
   },
   {
    "id": "r008",
@@ -196,7 +204,8 @@
     "TJSC:321790018162675778197826502579": 0,
     "TJSC:321790018162675778197990820350": 2,
     "TJSC:321790081633433507944025992641": 0
-   }
+   },
+   "longa": "Como os tribunais caracterizam a infração administrativa do art. 249 do ECA, por descumprimento dos deveres do poder familiar ou de determinação da autoridade, e de que forma dosam o valor da multa dentro da faixa legal? Interessam os critérios de gravidade, reincidência, capacidade econômica do infrator e a fundamentação exigida na fixação da penalidade."
   },
   {
    "id": "r009",
@@ -216,7 +225,8 @@
     "TJSC:321786968680295199257342156076": 0,
     "TJSC:321786968680295199257677374694": 2,
     "TJSC:321786982354457870770489382249": 2
-   }
+   },
+   "longa": "Na execução de alimentos, o acordo de parcelamento do débito alimentar celebrado entre as partes implica novação da dívida ou apenas suspensão da execução até o cumprimento do ajuste? Procuro o entendimento sobre os efeitos do parcelamento, a manutenção do título original, a possibilidade de prosseguimento em caso de inadimplemento e o regime de prisão civil após o acordo."
   },
   {
    "id": "r010",
@@ -233,7 +243,8 @@
    "graus": {
     "TJSC:321784315470677142859040934522": 2,
     "TJSC:321786711264905410282030872611": 2
-   }
+   },
+   "longa": "Quando o valor da causa ou da condenação é muito baixo, é cabível fixar os honorários advocatícios por apreciação equitativa, tomando a tabela de honorários da OAB como referência para evitar quantia irrisória? Interessa saber em que hipóteses a equidade é admitida pela lei processual e como o tribunal usa a tabela como parâmetro de razoabilidade da verba."
   },
   {
    "id": "r011",
@@ -248,7 +259,8 @@
    ],
    "graus": {
     "TJSC:321790081633433507944013363586": 2
-   }
+   },
+   "longa": "É nula a sentença que extingue o processo por litispendência sem que as partes tenham sido previamente ouvidas sobre a questão, ainda que a matéria seja cognoscível de ofício? Busco o entendimento sobre a vedação à decisão surpresa e a necessidade de contraditório prévio antes do reconhecimento de pressuposto processual negativo pelo juiz."
   },
   {
    "id": "r012",
@@ -276,7 +288,8 @@
     "TJSC:321790018162675778197867737119": 1,
     "TJSC:321790018162675778198090248730": 2,
     "TJSC:321790426352499139870553082723": 2
-   }
+   },
+   "longa": "Na partilha de bens após o fim da união, a dívida contraída por um dos companheiros durante a convivência presume-se contraída em proveito da entidade familiar, e quem nega a comunicabilidade da dívida tem o ônus de provar que ela não beneficiou o casal? Interessa a natureza relativa dessa presunção e a distribuição do ônus probatório entre as partes."
   },
   {
    "id": "r013",
@@ -291,7 +304,8 @@
    ],
    "graus": {
     "TJSC:321784300707743581318266191124": 2
-   }
+   },
+   "longa": "Pode ser excluído da partilha o bem adquirido durante a união com recursos próprios que o ex-companheiro já possuía antes dela, em razão da sub-rogação do patrimônio particular? Procuro julgados sobre a prova da origem exclusiva dos valores, o ônus de demonstrá-la e a incomunicabilidade do bem adquirido em substituição a bem particular anterior à convivência."
   },
   {
    "id": "r014",
@@ -306,7 +320,8 @@
    ],
    "graus": {
     "TJSC:321786204620870896272256164070": 2
-   }
+   },
+   "longa": "As verbas trabalhistas recebidas depois do fim da união, mas referentes a período aquisitivo ou de trabalho ocorrido na constância da convivência, comunicam-se e devem ser partilhadas entre os ex-companheiros? Busco entendimento sobre o momento do direito, e não do pagamento, como critério de comunicabilidade de verbas como saldo de salário, férias e fundo de garantia."
   },
   {
    "id": "r015",
@@ -329,7 +344,8 @@
     "TJSC:321785241743612880409020080591": 1,
     "TJSC:321790018162675778197788220358": 1,
     "TJSC:321790194732642175966203622660": 1
-   }
+   },
+   "longa": "É cabível o arbitramento de aluguel em favor do coproprietário que não usa o imóvel comum, quando o herdeiro ou o ex-cônjuge ocupa o bem com exclusividade antes da partilha? Interessa saber desde quando o encargo é devido, se exige notificação ou resistência à fruição e como o valor locativo é fixado, inclusive por avaliação técnica."
   },
   {
    "id": "r016",
@@ -346,7 +362,8 @@
    "graus": {
     "STJ:1447599": 2,
     "STJ:949253": 2
-   }
+   },
+   "longa": "Quando um dos litisconsortes é excluído do processo, por ilegitimidade ou outro motivo, como se fixam os honorários advocatícios devidos a ele e ao seu patrono? Procuro o entendimento sobre a proporcionalidade da verba, a divisão da condenação entre os remanescentes e o critério de cálculo diante da exclusão parcial da relação processual."
   },
   {
    "id": "r017",
@@ -378,7 +395,8 @@
     "TJSC:321787584892160895412761566797": 2,
     "TJSC:321787584892160895412762065025": 0,
     "TJSC:321790081633433507944023300850": 2
-   }
+   },
+   "longa": "Havendo indícios de risco à integridade física ou emocional da criança, é possível determinar convivência supervisionada ou virtual com o genitor não guardião, desde que a medida se apoie em prova atual e não em fatos antigos? Interessa saber como o tribunal pondera o melhor interesse da criança e a atualidade dos elementos que justificam a restrição."
   },
   {
    "id": "r018",
@@ -409,7 +427,8 @@
     "TJSC:321786898491572648330380086796": 1,
     "TJSC:321786898491572648330381937867": 1,
     "TJSC:321786898491572648332042281498": 1
-   }
+   },
+   "longa": "O alimentante pode ser exonerado da obrigação de alimentos devidos a filho que atingiu a maioridade, quando este comprova estar matriculado em curso superior? Busco o entendimento sobre a persistência do dever alimentar após a maioridade, a presunção de necessidade do estudante e o exame concreto da possibilidade do alimentante e da capacidade de autossustento do alimentado."
   },
   {
    "id": "r019",
@@ -424,7 +443,8 @@
    ],
    "graus": {
     "TJSC:321786982354457870770489382249": 2
-   }
+   },
+   "longa": "Como se fixam os honorários devidos ao defensor dativo nomeado, em razão da atuação específica em grau recursal, quando já houve arbitramento na origem? Procuro o entendimento sobre a remuneração autônoma pela fase recursal, os parâmetros da tabela aplicável e a responsabilidade do Estado pelo pagamento da verba ao advogado nomeado."
   },
   {
    "id": "r020",
@@ -445,7 +465,8 @@
     "TJSC:321784558637349305045024838278": 1,
     "TJSC:321785864890251663282051366931": 2,
     "TJSC:321786204620870896272264603117": 2
-   }
+   },
+   "longa": "Na regulamentação do direito de convivência familiar, como o julgador deve definir dias, horários e pernoites com base na prova da rotina da criança e no seu melhor interesse, adotando instrução adequada e cautela na mudança do regime existente? Interessa o entendimento sobre a necessidade de elementos concretos e a gradação das medidas quando há conflito entre os genitores."
   },
   {
    "id": "r021",
@@ -460,7 +481,8 @@
    ],
    "graus": {
     "TJSC:321786968680295199257548860457": 2
-   }
+   },
+   "longa": "Antes de decidir sobre a convivência de criança com o genitor, o tribunal pode converter o julgamento em diligência para complementar o estudo psicossocial e ouvir a própria criança? Busco julgados que reconheçam a insuficiência da instrução e a anulação ou o retorno dos autos para produção de prova técnica antes da definição do regime de convivência."
   },
   {
    "id": "r022",
@@ -481,7 +503,8 @@
     "TJSC:321779115788762517444776401322": 1,
     "TJSC:321786619979792694803528827437": 1,
     "TJSC:321786898491572648330333084051": 2
-   }
+   },
+   "longa": "É possível ampliar o regime de convivência para incluir pernoites do filho pequeno com o genitor sem nova avaliação técnica por equipe interdisciplinar, apenas com a prova já produzida? Interessa saber em que situações a ampliação exige estudo psicossocial atualizado, considerando a idade da criança, a adaptação ao novo regime e a ausência de risco demonstrado."
   },
   {
    "id": "r023",
@@ -496,7 +519,8 @@
    ],
    "graus": {
     "TJSC:321790018162675778197799416551": 2
-   }
+   },
+   "longa": "O recurso adesivo pode ser admitido quando a parte o interpõe na mesma peça das contrarrazões ao recurso principal, ou a lei exige petição própria e autônoma? Procuro o entendimento sobre o preenchimento dos requisitos de admissibilidade, o prazo de quinze dias, a sucumbência recíproca e a tolerância quanto ao aspecto formal da peça única."
   },
   {
    "id": "r024",
@@ -513,7 +537,8 @@
    "graus": {
     "TJSC:321781524051010972196577490514": 1,
     "TJSC:321786968680295199257662349206": 1
-   }
+   },
+   "longa": "Na definição do regime de convivência, qual peso deve ser dado à vontade manifestada pela criança ou pelo adolescente, considerando a idade, a maturidade e a prova técnica produzida, como o estudo psicossocial e a escuta especializada? Interessa saber em que medida a opinião do menor vincula o julgador e quando deve ser relativizada diante do seu melhor interesse."
   },
   {
    "id": "r025",
@@ -528,7 +553,8 @@
    ],
    "graus": {
     "TJSC:321790081633433507943992479953": 2
-   }
+   },
+   "longa": "A convivência da criança com o genitor pode ser estruturada com o apoio da família extensa, como avós e tios, sem desconsiderar a preservação da rotina escolar e afetiva da criança? Busco julgados que tratem da participação de parentes na execução do regime de convivência, especialmente para assegurar a continuidade dos vínculos e a estabilidade do menor."
   },
   {
    "id": "r026",
@@ -543,7 +569,8 @@
    ],
    "graus": {
     "TJSC:321790018162675778198099346594": 2
-   }
+   },
+   "longa": "Quando o alimentante comprova a diminuição de sua capacidade financeira, a pensão alimentícia pode ser reduzida de forma moderada e proporcional a essa alteração, sem exoneração nem corte drástico, resguardadas as necessidades do alimentado? Interessa saber como o tribunal avalia a prova da mudança de condições e define o percentual ou o valor ajustado no binômio necessidade e possibilidade."
   },
   {
    "id": "r027",
@@ -558,7 +585,8 @@
    ],
    "graus": {
     "TJSC:321790018162675778197891786882": 2
-   }
+   },
+   "longa": "O rateio entre os genitores das despesas extraordinárias do filho, como saúde e educação, depende da comprovação do gasto realizado, de modo que o genitor que pretende o reembolso deve apresentar documentos que demonstrem a despesa? Busco entendimento sobre o ônus de provar o valor e a pertinência da despesa para o cumprimento da cláusula."
   },
   {
    "id": "r028",
@@ -573,7 +601,8 @@
    ],
    "graus": {
     "TJSC:321784300707743581318272445487": 2
-   }
+   },
+   "longa": "O rateio de despesas extraordinárias de saúde e educação do filho exige anuência prévia do alimentante, ou basta a comprovação da necessidade e do pagamento pelo genitor guardião? Procuro julgados sobre a exigência de consulta prévia, a boa-fé na gestão dessas despesas e os limites para a cobrança quando o genitor não foi comunicado antes do gasto."
   },
   {
    "id": "r029",
@@ -588,7 +617,8 @@
    ],
    "graus": {
     "TJSC:321786898491572648330351586914": 2
-   }
+   },
+   "longa": "A sentença com fundamentação sucinta, que indica de forma breve as razões de decidir, é nula por falta de motivação quando ainda permite à parte compreender os fundamentos e exercer o controle recursal? Interessa o entendimento sobre o dever de fundamentação, a distinção entre motivação concisa e ausência de motivação e a inexistência de prejuízo ao apelante."
   },
   {
    "id": "r030",
@@ -603,7 +633,8 @@
    ],
    "graus": {
     "TJSC:321785864890251663282045801189": 1
-   }
+   },
+   "longa": "O desemprego do alimentante e o nascimento de novo filho, por si só, autorizam a redução da pensão alimentícia, mesmo sem prova concreta da diminuição de sua capacidade financeira? Busco o entendimento sobre o ônus do alimentante de demonstrar a redução de recursos e sobre a insuficiência de alegações genéricas de mudança na situação familiar."
   },
   {
    "id": "r031",
@@ -618,7 +649,8 @@
    ],
    "graus": {
     "TJSC:321786898491572648330229331345": 2
-   }
+   },
+   "longa": "Quando o alimentante não comprova a sua renda, os alimentos podem ser fixados por estimativa da capacidade contributiva, com base em sinais indiretos de padrão de vida, profissão e atividade? Interessa saber como o julgador arbitra o valor sem prova documental, aplicando o binômio necessidade e possibilidade e a presunção decorrente da falta de comprovação."
   },
   {
    "id": "r032",
@@ -633,7 +665,8 @@
    ],
    "graus": {
     "STJ:923825": 2
-   }
+   },
+   "longa": "Os honorários recursais podem ser majorados quando a verba de origem foi arbitrada por equidade, e como se calcula o acréscimo diante da inexistência de percentual sobre condenação ou proveito econômico? Procuro o entendimento sobre a aplicação da regra de majoração em grau recursal a honorários fixados em valor determinado e sobre os limites legais dessa elevação."
   },
   {
    "id": "r033",
@@ -652,7 +685,8 @@
     "TJSC:321784899206341155673252816839": 1,
     "TJSC:321785864890251663282019309971": 2,
     "TJSC:321790018162675778197982103782": 2
-   }
+   },
+   "longa": "A revisão do valor dos alimentos exige a demonstração de alteração superveniente da situação financeira das partes, de modo que a simples insatisfação com o valor fixado ou fatos já existentes à época do acordo ou da sentença não autorizam modificação? Interessa o entendimento sobre o requisito da mudança nas condições do alimentante ou do alimentado."
   },
   {
    "id": "r034",
@@ -674,7 +708,8 @@
     "TJSC:321786968680295199257286426004": 0,
     "TJSC:321786968680295199257803597669": 1,
     "TJSC:321790081633433507943979930417": 1
-   }
+   },
+   "longa": "Qual o alcance da cláusula de despesas extraordinárias prevista em acordo de alimentos homologado, e quais gastos com saúde, educação e lazer do filho nela se incluem, para fins de rateio entre os genitores? Busco julgados sobre a interpretação do ajuste, o caráter excepcional da despesa e a necessidade de previsibilidade e comprovação do gasto."
   },
   {
    "id": "r035",
@@ -696,7 +731,8 @@
     "TJSC:321786467542236744135756685253": 1,
     "TJSC:321786898491572648332876999996": 1,
     "TJSC:321790081633433507943968328908": 1
-   }
+   },
+   "longa": "Na ação de alimentos de filhos menores, como o julgador interpreta o pedido de forma ampla e lógica, e em que medida a sentença respeita a congruência com o que foi pleiteado quando concede valor, forma de pagamento ou critério diverso do indicado na inicial? Interessa o limite entre a interpretação do pedido e o julgamento extra ou ultra petita."
   },
   {
    "id": "r036",
@@ -711,7 +747,8 @@
    ],
    "graus": {
     "STJ:952954": 2
-   }
+   },
+   "longa": "Quando o julgador pretende adotar qualificação jurídica diversa daquela que as partes deram aos fatos, é necessário abrir contraditório prévio para que se manifestem antes da decisão? Procuro o entendimento sobre a aplicação do princípio da vedação à decisão surpresa e sobre a possibilidade de o juiz aplicar o direito sem ouvir as partes sobre a nova tese jurídica."
   },
   {
    "id": "r037",
@@ -728,7 +765,8 @@
    "graus": {
     "TJSC:321784899206341155673236097357": 1,
     "TJSC:321786898491572648330377035023": 2
-   }
+   },
+   "longa": "Os alimentos devidos a filho maior que cursa ensino superior devem ser mantidos quando a renda própria dele, proveniente de estágio ou trabalho eventual, é insuficiente para o autossustento? Interessa saber como o tribunal avalia a necessidade do estudante, a razoabilidade do tempo de formação e a possibilidade do genitor alimentante nessa situação."
   },
   {
    "id": "r038",
@@ -743,7 +781,8 @@
    ],
    "graus": {
     "TJSC:321787929053867758798145332231": 2
-   }
+   },
+   "longa": "Os honorários do defensor dativo, fixados na origem e novamente em grau recursal pela atuação perante o tribunal, são autônomos em relação aos honorários sucumbenciais devidos entre as partes? Busco o entendimento sobre a natureza da remuneração paga pelo Estado ao advogado nomeado e sobre a possibilidade de cumulação das verbas sem compensação."
   },
   {
    "id": "r039",
@@ -758,7 +797,8 @@
    ],
    "graus": {
     "TJSC:321787584892160895412772556289": 2
-   }
+   },
+   "longa": "A falta de vista à parte contrária sobre documento novo juntado aos autos, quando ele é decisivo para o julgamento, gera nulidade da sentença por violação ao contraditório? Interessa o entendimento sobre o prazo de manifestação, a demonstração de prejuízo e a possibilidade de o juiz utilizar a prova nova sem ouvir a outra parte."
   },
   {
    "id": "r040",
@@ -776,7 +816,8 @@
     "TJSC:321784899206341155673245567894": 2,
     "TJSC:321790081633433507943996032067": 1,
     "TJSC:321790081633433507944020589340": 0
-   }
+   },
+   "longa": "Havendo risco emocional demonstrado à criança no contato com um dos genitores, é adequado estabelecer convivência virtual com progressão gradual, evoluindo para o contato presencial conforme a resposta da criança e o acompanhamento técnico? Busco julgados sobre a adaptação progressiva do regime de convivência e sobre a prova do risco que justifica a restrição inicial."
   },
   {
    "id": "r041",
@@ -805,7 +846,8 @@
     "TJSC:321787584892160895412791354879": 2,
     "TJSC:321790081633433507943977321619": 1,
     "TJSC:321790081633433507944007826946": 0
-   }
+   },
+   "longa": "A restrição do direito de convivência entre o genitor e a criança exige suporte probatório técnico suficiente e instrução prévia, não bastando alegações unilaterais ou suspeitas sem confirmação? Interessa saber que elementos o tribunal considera necessários, como laudo psicossocial e escuta da criança, para limitar um direito que decorre do melhor interesse do menor."
   },
   {
    "id": "r042",
@@ -832,7 +874,8 @@
     "TJSC:321786898491572648330377035023": 2,
     "TJSC:321790018162675778198089715364": 2,
     "TJSC:321790081633433507944005968342": 2
-   }
+   },
+   "longa": "O filho maior que pede alimentos ao genitor tem o ônus de provar a necessidade da verba e a impossibilidade de prover o próprio sustento, mesmo quando possui renda parcial, de modo que a renda insuficiente não presume por si a necessidade integral? Busco o entendimento sobre a distribuição do ônus da prova e o exame concreto das despesas e da capacidade laborativa."
   },
   {
    "id": "r043",
@@ -849,7 +892,8 @@
    "graus": {
     "TJSC:321784899206341155673252816839": 1,
     "TJSC:321790018162675778197976293315": 2
-   }
+   },
+   "longa": "O nascimento de nova prole do alimentante de baixa renda autoriza a revisão do valor dos alimentos devidos ao filho anterior, em razão do novo encargo e do princípio da igualdade entre os filhos? Interessa saber como o tribunal pondera a redução proporcional da pensão, a prova da renda e a manutenção do mínimo necessário ao alimentado."
   },
   {
    "id": "r044",
@@ -864,7 +908,8 @@
    ],
    "graus": {
     "TJSC:321786898491572648332818071517": 1
-   }
+   },
+   "longa": "A mera matrícula do filho maior em curso superior basta para a manutenção dos alimentos, ou é necessária a prova de frequência regular e de aproveitamento acadêmico para justificar a continuidade do dever alimentar? Procuro o entendimento sobre a diligência exigida do alimentado e a exoneração quando o estudo não é efetivo."
   },
   {
    "id": "r045",
@@ -881,7 +926,8 @@
    "graus": {
     "TJSC:321786814631739698956669488358": 2,
     "TJSC:321790018162675778197704010463": 2
-   }
+   },
+   "longa": "A sentença que revisa ou exonera alimentos é nula quando a motivação é suficiente sobre a alteração do binômio necessidade e possibilidade, ainda que de forma concisa e sem enfrentar cada argumento das partes? Interessa o entendimento sobre o dever de fundamentação, a análise das provas da mudança das condições das partes e a ausência de nulidade."
   },
   {
    "id": "r046",
@@ -896,7 +942,8 @@
    ],
    "graus": {
     "TJSC:321771601900610281977950357288": 2
-   }
+   },
+   "longa": "É possível conceder tutela de urgência para exonerar provisoriamente o alimentante da obrigação de alimentos antes da sentença, e quais requisitos de probabilidade do direito e perigo de dano devem estar presentes? Busco julgados sobre a cautela exigida diante do caráter alimentar da verba, da irrepetibilidade dos alimentos e do risco de dano ao alimentado."
   },
   {
    "id": "r047",
@@ -915,7 +962,8 @@
     "TJSC:321790018162675778197883611818": 2,
     "TJSC:321790081633433507943990063127": 2,
     "TJSC:321790081633433507944029572190": 2
-   }
+   },
+   "longa": "A animosidade entre os genitores, sem demonstração de prejuízo concreto ao filho, é motivo suficiente para afastar a guarda compartilhada, ou o regime deve ser mantido como regra legal mesmo diante de conflito? Interessa o entendimento sobre o dever de cooperação dos pais, o melhor interesse da criança e a exigência de risco concreto para afastar a modalidade."
   },
   {
    "id": "r048",
@@ -932,7 +980,8 @@
    "graus": {
     "TJSC:321775833224075037029702781518": 2,
     "TJSC:321785864890251663282051366931": 2
-   }
+   },
+   "longa": "A violência doméstica praticada entre os genitores afasta a possibilidade de guarda compartilhada dos filhos, ainda que a lei a estabeleça como regra? Busco o entendimento sobre a incompatibilidade entre o exercício conjunto da autoridade parental e o contexto de agressões, as medidas protetivas e a proteção da criança exposta ao ambiente de violência."
   },
   {
    "id": "r049",
@@ -949,7 +998,8 @@
    "graus": {
     "TJSC:321786467542236744135347186476": 1,
     "TJSC:321790081633433507943984964347": 1
-   }
+   },
+   "longa": "O desemprego comprovado do alimentante autoriza a redução do valor dos alimentos, ou é necessário que demonstre também a impossibilidade de obter outra fonte de renda e a ausência de patrimônio? Interessa saber como o tribunal avalia a transitoriedade do desemprego, a prova da alteração da capacidade e a preservação da necessidade do alimentado."
   },
   {
    "id": "r050",
@@ -964,7 +1014,8 @@
    ],
    "graus": {
     "TJSC:321778511150397013320474325111": 2
-   }
+   },
+   "longa": "Os alimentos definitivos fixados em valor maior que o provisório ou anterior retroagem à data da citação do alimentante, em razão da regra de que a sentença de alimentos produz efeitos desde a citação? Procuro o entendimento sobre o termo inicial da majoração e a incidência retroativa do novo valor, bem como a compensação de valores já pagos."
   },
   {
    "id": "r051",
@@ -979,7 +1030,8 @@
    ],
    "graus": {
     "TJSC:321785241743612880409000490802": 2
-   }
+   },
+   "longa": "O reconhecimento da alienação parental exige prova técnica, como perícia psicológica ou biopsicossocial, ou pode basear-se apenas em indícios e na prova oral produzida nos autos? Interessa saber como os tribunais exigem a demonstração dos atos de interferência na formação psicológica da criança e a cautela antes de aplicar as sanções legais ao genitor."
   },
   {
    "id": "r052",
@@ -994,7 +1046,8 @@
    ],
    "graus": {
     "TJSC:321776437259671734845693176216": 2
-   }
+   },
+   "longa": "No julgamento da apelação, o tribunal pode considerar fatos supervenientes que alterem a situação jurídica discutida, como a mudança nas condições das partes ou da criança surgida após a sentença? Busco o entendimento sobre o alcance do efeito devolutivo, a exigência de contraditório e a atualização do quadro fático ao tempo do julgamento do recurso."
   },
   {
    "id": "r053",
@@ -1011,7 +1064,8 @@
    "graus": {
     "TJSC:321790018162675778198119397721": 2,
     "TJSC:321790081633433507944000598646": 1
-   }
+   },
+   "longa": "Em ação de alimentos, o valor fixado pode ser reduzido para adequá-lo ao binômio necessidade e possibilidade quando a pensão se mostra desproporcional à capacidade do alimentante ou excede o necessário para o alimentado? Interessa saber que provas o tribunal exige para ajustar o valor e qual margem de proporcionalidade é admitida na redução."
   },
   {
    "id": "r054",
@@ -1028,7 +1082,8 @@
    "graus": {
     "TJSC:321775833224075037029841941796": 2,
     "TJSC:321786982354457870770441329854": 1
-   }
+   },
+   "longa": "Na ação de alimentos, quando o valor fixado na sentença é inferior ao que foi pedido na inicial, há sucumbência recíproca ou o alimentante arca integralmente com as custas e os honorários? Procuro o entendimento sobre a natureza estimativa do pedido de alimentos e sobre a distribuição dos ônus de sucumbência nessa hipótese."
   },
   {
    "id": "s001",
@@ -1042,7 +1097,9 @@
    ],
    "graus": {
     "STJ:000904254": 2
-   }
+   },
+   "longa": "O divórcio é direito potestativo, de modo que pode ser decretado por julgamento parcial de mérito antes da solução das demais questões, prosseguindo o processo quanto à partilha, aos alimentos e à guarda? Busco o entendimento sobre a desnecessidade de discutir culpa ou prazo, a autonomia do pedido de divórcio e o cabimento do julgamento antecipado parcial.",
+   "hipotetica": "DIREITO DE FAMÍLIA. DIVÓRCIO. DIREITO POTESTATIVO. JULGAMENTO PARCIAL DE MÉRITO. QUESTÕES ACESSÓRIAS.\n1. O divórcio é direito potestativo, que se exerce pela só manifestação de vontade de um dos cônjuges, sem necessidade de discussão de culpa ou de requisito temporal, razão pela qual o pedido pode ser decretado por julgamento parcial de mérito.\n2. Decretado o divórcio, o processo prossegue quanto às questões acessórias, como partilha de bens, alimentos e guarda, que não impedem a dissolução do vínculo conjugal."
   },
   {
    "id": "s002",
@@ -1060,7 +1117,9 @@
     "STJ:000905387": 2,
     "STJ:000918202": 2,
     "STJ:921886": 1
-   }
+   },
+   "longa": "A falta ou a nulidade de citação do réu é vício transrescisório, que pode ser arguido a qualquer tempo, inclusive por simples petição nos próprios autos ou por ação declaratória de nulidade, a querela nullitatis, mesmo após o trânsito em julgado? Interessa saber como o tribunal trata a revelia e a inexistência de relação processual válida nesses casos.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CITAÇÃO. FALTA OU NULIDADE. VÍCIO TRANSRESCISÓRIO. QUERELA NULLITATIS. ARGUIÇÃO A QUALQUER TEMPO.\n1. A falta ou a nulidade de citação, quando o réu revel não compareceu ao processo, é vício que atinge a própria formação da relação processual e subsiste mesmo após o trânsito em julgado, podendo ser arguido a qualquer tempo.\n2. A nulidade pode ser alegada por simples petição nos autos ou por ação declaratória de nulidade, a querela nullitatis, sem observância do prazo da ação rescisória."
   },
   {
    "id": "s003",
@@ -1074,7 +1133,9 @@
    ],
    "graus": {
     "STJ:958394": 2
-   }
+   },
+   "longa": "A nulidade da citação contamina os atos processuais subsequentes que dela dependem, de modo que a sentença proferida e os demais atos praticados contra o réu não citado devem ser anulados? Busco o entendimento sobre o alcance da nulidade, o aproveitamento de atos independentes e o retorno do processo ao momento da citação.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CITAÇÃO. NULIDADE. ATOS SUBSEQUENTES. EFEITOS.\n1. A nulidade da citação compromete a validade da relação processual e contamina os atos subsequentes que dela dependem, inclusive a sentença proferida contra o réu que não foi regularmente chamado a juízo.\n2. Reconhecido o vício, anulam-se os atos praticados a partir da citação, com o retorno dos autos à origem para que a citação seja renovada e o processo tenha regular prosseguimento, ressalvados os atos que dela não dependam."
   },
   {
    "id": "s004",
@@ -1090,7 +1151,9 @@
    "graus": {
     "STJ:000911547": 2,
     "STJ:000918827": 1
-   }
+   },
+   "longa": "Há cerceamento de defesa quando o juiz indefere a produção da prova requerida pela parte e, em seguida, julga improcedente o pedido justamente por falta dessa prova? Interessa o entendimento sobre a contradição entre indeferir a prova e decidir contra quem tinha o ônus de produzi-la, a nulidade da sentença e o retorno dos autos para instrução.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CERCEAMENTO DE DEFESA. INDEFERIMENTO DE PROVA. IMPROCEDÊNCIA POR AUSÊNCIA DE PROVA. NULIDADE DA SENTENÇA.\n1. Configura cerceamento de defesa o indeferimento da prova requerida e necessária ao esclarecimento dos fatos, quando o pedido é depois julgado improcedente por insuficiência de prova.\n2. A sentença é nula, devendo os autos retornar à origem para a reabertura da instrução e a produção da prova indeferida, com novo julgamento."
   },
   {
    "id": "s005",
@@ -1104,7 +1167,9 @@
    ],
    "graus": {
     "STJ:941572": 2
-   }
+   },
+   "longa": "O tribunal pode determinar de ofício a complementação da prova em grau recursal, convertendo o julgamento em diligência para que seja produzida prova necessária ao esclarecimento dos fatos? Busco o entendimento sobre os poderes instrutórios do relator ou do órgão colegiado na apelação, a observância do contraditório e o retorno ao juízo de origem para a instrução.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. APELAÇÃO. PROVA. COMPLEMENTAÇÃO DE OFÍCIO. CONVERSÃO DO JULGAMENTO EM DILIGÊNCIA.\n1. O tribunal pode, de ofício, determinar a complementação da prova em grau recursal quando ela for necessária ao esclarecimento dos fatos e ao correto julgamento da causa, em exercício dos poderes instrutórios que a lei processual confere ao julgador.\n2. Convertido o julgamento em diligência, assegura-se às partes o contraditório sobre a prova produzida, ficando o exame do mérito para momento posterior."
   },
   {
    "id": "s006",
@@ -1118,7 +1183,9 @@
    ],
    "graus": {
     "STJ:1392463": 2
-   }
+   },
+   "longa": "A constituição de nova família ou o nascimento de novo filho do alimentante autoriza, por si só, a redução dos alimentos devidos ao filho anterior, ou cabe ao alimentante provar a efetiva diminuição de seus recursos? Interessa saber como o tribunal distribui o ônus da prova na ação revisional e o exame do binômio necessidade e possibilidade.",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. REVISÃO. REDUÇÃO. NOVA FAMÍLIA. NASCIMENTO DE NOVO FILHO. ÔNUS DA PROVA.\n1. A constituição de nova família ou o nascimento de novo filho do alimentante não autoriza, por si só, a redução dos alimentos devidos ao filho anterior.\n2. Cabe ao alimentante provar a efetiva diminuição de seus recursos, de modo a demonstrar a alteração do binômio necessidade e possibilidade que justifique a revisão do valor da pensão."
   },
   {
    "id": "s007",
@@ -1135,7 +1202,9 @@
     "STJ:1424557": 0,
     "STJ:1447110": 0,
     "STJ:937969": 1
-   }
+   },
+   "longa": "A maioridade do filho extingue automaticamente o dever de prestar alimentos, ou a exoneração depende de exame concreto da necessidade do alimentado e da possibilidade do alimentante, assegurado o contraditório? Busco o entendimento sobre a cessação do poder familiar e a permanência do dever alimentar fundado no parentesco quando o filho não pode prover o próprio sustento.",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. FILHO MAIOR. EXONERAÇÃO. NECESSIDADE. EXAME CONCRETO.\n1. A maioridade do filho não extingue automaticamente o dever alimentar, que, cessado o poder familiar, passa a fundar-se no parentesco e na solidariedade familiar.\n2. A exoneração do alimentante exige exame concreto da necessidade do alimentado e da possibilidade de quem presta, assegurado o contraditório, não bastando o advento da maioridade."
   },
   {
    "id": "s008",
@@ -1149,7 +1218,9 @@
    ],
    "graus": {
     "STJ:959812": 2
-   }
+   },
+   "longa": "O filho maior que prossegue em curso superior tem a seu favor presunção relativa de necessidade de alimentos, cabendo ao alimentante o ônus de provar o contrário, como a capacidade de autossustento ou a falta de aproveitamento? Interessa o entendimento sobre a distribuição do ônus probatório na ação de exoneração envolvendo estudante universitário.",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. FILHO MAIOR. CURSO SUPERIOR. PRESUNÇÃO RELATIVA DE NECESSIDADE. ÔNUS DA PROVA.\n1. O filho maior que prossegue em curso superior, em regular formação, goza de presunção relativa de necessidade de alimentos até a conclusão dos estudos em prazo razoável.\n2. Cabe ao alimentante o ônus de provar o contrário, demonstrando que o alimentado tem meios próprios de sustento ou que não há dedicação efetiva aos estudos."
   },
   {
    "id": "s009",
@@ -1171,7 +1242,9 @@
     "STJ:931246": 2,
     "STJ:932009": 1,
     "STJ:939467": 1
-   }
+   },
+   "longa": "Quem apenas intermedeia a venda de produto ou serviço, atuando como plataforma ou agente, responde solidariamente pela inexecução do contrato pelo fornecedor, ou só quando houver defeito próprio na sua atividade ou integração ao mesmo grupo econômico? Busco o entendimento sobre os limites da responsabilidade do intermediário na relação de consumo.",
+   "hipotetica": "DIREITO DO CONSUMIDOR. RESPONSABILIDADE CIVIL. INTERMEDIAÇÃO. SOLIDARIEDADE. FORNECEDOR. GRUPO ECONÔMICO.\n1. Quem apenas intermedeia a venda de produto ou serviço, sem integrar a cadeia de fornecimento, não responde solidariamente pela inexecução do contrato pelo fornecedor direto.\n2. A responsabilidade do intermediário somente se configura se houver defeito na sua própria atividade ou se pertencer ao mesmo grupo econômico do fornecedor, hipóteses que devem ser demonstradas nos autos."
   },
   {
    "id": "s010",
@@ -1187,7 +1260,9 @@
    "graus": {
     "STJ:1443252": 2,
     "STJ:951345": 2
-   }
+   },
+   "longa": "Cabem honorários advocatícios em incidente processual resolvido por decisão interlocutória que não extingue o processo, e é possível sua majoração no agravo de instrumento interposto contra essa decisão? Interessa saber como o tribunal conceitua a sucumbência em incidente e a aplicação da regra de honorários recursais no agravo.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. HONORÁRIOS ADVOCATÍCIOS. INCIDENTE. DECISÃO INTERLOCUTÓRIA. AGRAVO DE INSTRUMENTO. MAJORAÇÃO.\n1. Não cabem honorários advocatícios em incidente processual resolvido por decisão interlocutória que não extingue o processo, pois a verba sucumbencial se fixa na sentença ou na decisão que põe fim ao feito.\n2. Por consequência, não há majoração de honorários no agravo interposto contra essa decisão, ausente condenação anterior a ser elevada em grau recursal."
   },
   {
    "id": "s011",
@@ -1201,7 +1276,9 @@
    ],
    "graus": {
     "STJ:1452104": 2
-   }
+   },
+   "longa": "A alteração do regime de bens do casamento para comunhão universal pode ter efeitos retroativos à data do casamento, ressalvados os direitos de terceiros? Busco o entendimento sobre a eficácia ex tunc da mudança de regime autorizada judicialmente, a proteção de credores e a compatibilidade com a necessidade de motivação do pedido.",
+   "hipotetica": "DIREITO DE FAMÍLIA. REGIME DE BENS. ALTERAÇÃO. COMUNHÃO UNIVERSAL. EFEITOS RETROATIVOS. DIREITOS DE TERCEIROS.\n1. A alteração do regime de bens do casamento para o de comunhão universal pode ter efeitos retroativos, alcançando o patrimônio constituído desde a celebração das núpcias, se esse for o desejo manifestado pelos cônjuges.\n2. A retroatividade é admitida desde que ressalvados os direitos de terceiros de boa-fé, que não podem ser prejudicados pela mudança do regime."
   },
   {
    "id": "s012",
@@ -1215,7 +1292,9 @@
    ],
    "graus": {
     "STJ:1457608": 2
-   }
+   },
+   "longa": "O acolhimento institucional da criança é medida legítima enquanto perdurar a situação de risco, até a reintegração à família de origem ou a colocação em família substituta? Interessa o entendimento sobre o caráter provisório e excepcional da medida, a reavaliação periódica e o limite temporal dessa providência de proteção.",
+   "hipotetica": "DIREITO DA CRIANÇA E DO ADOLESCENTE. ACOLHIMENTO INSTITUCIONAL. MEDIDA DE PROTEÇÃO. SITUAÇÃO DE RISCO. REINTEGRAÇÃO FAMILIAR.\n1. O acolhimento institucional é medida excepcional e provisória de proteção, legítima enquanto perdurar a situação de risco que a justificou.\n2. A medida se mantém até a reintegração da criança à família de origem ou sua colocação em família substituta, com reavaliação periódica e priorização do melhor interesse do acolhido."
   },
   {
    "id": "s013",
@@ -1233,7 +1312,9 @@
     "STJ:1460318": 2,
     "STJ:956241": 1,
     "STJ:959693": 2
-   }
+   },
+   "longa": "O acordo de parcelamento celebrado na execução impõe a suspensão do processo até o adimplemento integral, sem se sujeitar ao limite de seis meses previsto no art. 313, § 4º, do CPC? Busco o entendimento sobre a natureza dessa suspensão, a vontade das partes e o prosseguimento da execução em caso de descumprimento.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. EXECUÇÃO. ACORDO DE PARCELAMENTO. SUSPENSÃO DO PROCESSO. ART. 313, § 4º, DO CPC.\n1. O acordo de parcelamento celebrado na execução impõe a suspensão do processo até o adimplemento das obrigações pactuadas, por força da convenção das partes.\n2. Essa suspensão não se submete ao limite de seis meses do art. 313, § 4º, do CPC, que trata de hipótese distinta, devendo o feito prosseguir somente com o inadimplemento do ajuste."
   },
   {
    "id": "s014",
@@ -1247,7 +1328,9 @@
    ],
    "graus": {
     "STJ:921829": 2
-   }
+   },
+   "longa": "A taxa Selic é índice único para os consectários da condenação, sem cumulação com outros índices de correção ou juros, e a adequação de ofício dos índices pelo tribunal não configura reformatio in pejus? Interessa saber como se trata a matéria de ordem pública dos consectários legais em recurso exclusivo de uma das partes.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CONSECTÁRIOS. SELIC. ÍNDICE ÚNICO. ADEQUAÇÃO DE OFÍCIO. REFORMATIO IN PEJUS.\n1. A Selic constitui índice único de correção monetária e juros, sendo vedada sua cumulação com outro índice ou taxa.\n2. A adequação dos índices dos consectários pelo tribunal, de ofício, por se tratar de matéria de ordem pública, não configura reformatio in pejus, ainda que o recurso seja exclusivo de uma das partes."
   },
   {
    "id": "s015",
@@ -1263,7 +1346,9 @@
    "graus": {
     "STJ:951752": 2,
     "STJ:955210": 2
-   }
+   },
+   "longa": "Os honorários sucumbenciais, por serem consectários legais da condenação, podem ser fixados ou retificados de ofício pelo tribunal, sem que isso configure reformatio in pejus? Busco o entendimento sobre a natureza de matéria de ordem pública da verba, a omissão da sentença e a correção de erro na fixação.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. HONORÁRIOS SUCUMBENCIAIS. CONSECTÁRIO LEGAL. FIXAÇÃO DE OFÍCIO. REFORMATIO IN PEJUS.\n1. Os honorários sucumbenciais são consectários legais da condenação e decorrem da lei, podendo ser fixados ou retificados de ofício pelo tribunal.\n2. A fixação ou retificação da verba, ainda que o recurso seja exclusivo de uma das partes, não configura reformatio in pejus, por se tratar de efeito necessário do julgamento."
   },
   {
    "id": "s016",
@@ -1281,7 +1366,9 @@
     "STJ:1446899": 1,
     "STJ:1447483": 1,
     "STJ:955196": 1
-   }
+   },
+   "longa": "A correção de ofício feita pelo julgador, decorrente das consequências jurídicas do próprio pedido, constitui decisão surpresa a exigir prévia manifestação das partes? Interessa o entendimento sobre a diferença entre fundamento novo não debatido e efeito legal necessário do pedido formulado, e a aplicação do princípio do contraditório.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CONTRADITÓRIO. DECISÃO SURPRESA. CORREÇÃO DE OFÍCIO. CONSEQUÊNCIAS JURÍDICAS DO PEDIDO.\n1. A correção de ofício decorrente das consequências jurídicas do pedido formulado não constitui decisão surpresa, pois resulta de efeito legal previsível da própria pretensão deduzida.\n2. Não há violação ao contraditório quando a matéria já integra o debate processual, dispensada a prévia manifestação das partes."
   },
   {
    "id": "s017",
@@ -1297,7 +1384,9 @@
    "graus": {
     "STJ:1020517": 1,
     "STJ:943102": 1
-   }
+   },
+   "longa": "No processo eletrônico, o prazo recursal só começa a correr com a intimação formal ou com a ciência inequívoca do conteúdo da decisão pela parte, e não com o simples lançamento do ato no sistema? Busco o entendimento sobre o termo inicial do prazo, a tempestividade do recurso e o conceito de ciência inequívoca.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. PROCESSO ELETRÔNICO. PRAZO RECURSAL. TERMO INICIAL. INTIMAÇÃO. CIÊNCIA INEQUÍVOCA.\n1. No processo eletrônico, o prazo recursal somente se inicia com a intimação formal da parte ou com a ciência inequívoca do conteúdo da decisão, não bastando a mera disponibilização do ato no sistema.\n2. Sem intimação ou ciência inequívoca, não corre o prazo, e o recurso interposto deve ser considerado tempestivo."
   },
   {
    "id": "s018",
@@ -1313,7 +1402,9 @@
    "graus": {
     "STJ:938840": 1,
     "STJ:952625": 1
-   }
+   },
+   "longa": "A falta de intimação do Ministério Público em processo no qual há interesse de menor gera nulidade quando se demonstra o prejuízo concreto à criança? Interessa saber como os tribunais tratam a exigência de intervenção ministerial obrigatória, a prova do prejuízo e a possibilidade de aproveitamento dos atos praticados sem a participação do órgão.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. MINISTÉRIO PÚBLICO. INTIMAÇÃO. INTERESSE DE MENOR. NULIDADE. PREJUÍZO.\n1. A falta de intimação do Ministério Público em processo com interesse de menor gera nulidade quando demonstrado o prejuízo ao incapaz.\n2. Ausente prova de prejuízo à criança, não se decreta a nulidade, em atenção ao princípio da instrumentalidade das formas e do aproveitamento dos atos processuais."
   },
   {
    "id": "s019",
@@ -1329,7 +1420,9 @@
    "graus": {
     "STJ:939606": 2,
     "STJ:951010": 1
-   }
+   },
+   "longa": "O não conhecimento do recurso por intempestividade, sem prévia intimação das partes para se manifestarem, configura decisão surpresa ou ofende o art. 933 do CPC? Busco o entendimento sobre a admissibilidade como matéria de ordem pública, a desnecessidade de contraditório prévio quando o vício é verificável nos autos e o dever de colaboração.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. RECURSO. INTEMPESTIVIDADE. NÃO CONHECIMENTO. DECISÃO SURPRESA. ART. 933 DO CPC.\n1. O não conhecimento do recurso por intempestividade, sem prévia intimação das partes, não configura decisão surpresa, pois o prazo é verificável objetivamente nos autos.\n2. Não há ofensa ao art. 933 do CPC, que se refere a fato ou questão a ser conhecida de ofício que dependa de manifestação, o que não se exige para o vício aferível de plano."
   },
   {
    "id": "s020",
@@ -1343,7 +1436,9 @@
    ],
    "graus": {
     "STJ:941361": 1
-   }
+   },
+   "longa": "O juiz pode decidir sem dar às partes oportunidade de manifestação prévia, ainda que a matéria seja cognoscível de ofício? Interessa o entendimento sobre a vedação à decisão surpresa, o princípio do contraditório como garantia de influência e as exceções legais, como a tutela provisória de urgência e a improcedência liminar.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. CONTRADITÓRIO. DECISÃO SURPRESA. MATÉRIA COGNOSCÍVEL DE OFÍCIO.\n1. O juiz não pode decidir com base em fundamento a respeito do qual não tenha sido dada às partes oportunidade de manifestação, ainda que se trate de matéria sobre a qual deva decidir de ofício.\n2. O contraditório é garantia de participação e de influência na decisão, de modo que a ausência de manifestação prévia acarreta nulidade, salvo nas hipóteses expressamente ressalvadas em lei."
   },
   {
    "id": "s021",
@@ -1357,7 +1452,9 @@
    ],
    "graus": {
     "STJ:937967": 1
-   }
+   },
+   "longa": "Os sinais exteriores de riqueza do alimentante, inclusive os divulgados em redes sociais, constituem indícios de sua capacidade financeira quando somados às demais provas dos autos? Busco o entendimento sobre o valor probatório desses elementos, a ausência de renda formal comprovada e o arbitramento da pensão com base no padrão de vida demonstrado.",
+   "hipotetica": "DIREITO DE FAMÍLIA. ALIMENTOS. CAPACIDADE DO ALIMENTANTE. SINAIS EXTERIORES DE RIQUEZA. REDES SOCIAIS. PROVA.\n1. Os sinais exteriores de riqueza, inclusive os exibidos em redes sociais, constituem indícios da capacidade financeira do alimentante, a serem valorados em conjunto com as demais provas.\n2. Isoladamente, não bastam para fixar a pensão, mas, somados a outros elementos, autorizam estimar a capacidade contributiva quando a renda formal não é comprovada."
   },
   {
    "id": "s022",
@@ -1372,7 +1469,9 @@
    "graus": {
     "STJ:1457080": 0,
     "STJ:938147": 2
-   }
+   },
+   "longa": "Quando o pedido de alimentos é julgado procedente, mas em valor menor do que o pleiteado, há sucumbência recíproca, ou o alimentante arca integralmente com as custas e os honorários? Interessa saber como o tribunal trata o caráter estimativo do pedido de alimentos e a distribuição dos ônus sucumbenciais nesse caso.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. AÇÃO DE ALIMENTOS. PROCEDÊNCIA PARCIAL. VALOR INFERIOR AO PLEITEADO. SUCUMBÊNCIA.\n1. Procedente o pedido de alimentos em valor inferior ao pleiteado, não há sucumbência recíproca, em razão do caráter estimativo do pedido, que depende do arbitramento judicial segundo o binômio necessidade e possibilidade.\n2. O alimentante, por ter dado causa à ação, arca com as custas e os honorários advocatícios."
   },
   {
    "id": "s023",
@@ -1386,7 +1485,9 @@
    ],
    "graus": {
     "STJ:951973": 2
-   }
+   },
+   "longa": "A decisão sobre exibição de documento proferida nos próprios autos é impugnável por agravo de instrumento, e a ausência do recurso gera preclusão da matéria? Busco o entendimento sobre o rol de decisões agraváveis, a distinção entre exibição incidental e ação autônoma e os efeitos da inércia da parte.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. EXIBIÇÃO DE DOCUMENTO. DECISÃO INTERLOCUTÓRIA. AGRAVO DE INSTRUMENTO. PRECLUSÃO.\n1. A decisão que resolve o pedido de exibição de documento ou coisa, proferida nos próprios autos, é interlocutória e impugnável por agravo de instrumento.\n2. A falta de interposição do agravo no prazo legal acarreta preclusão, impedindo a rediscussão da matéria em apelação."
   },
   {
    "id": "s024",
@@ -1400,7 +1501,9 @@
    ],
    "graus": {
     "STJ:954534": 2
-   }
+   },
+   "longa": "O arquivamento do procedimento de averiguação oficiosa de paternidade viola o direito da criança ao reconhecimento do pai, ou subsiste a possibilidade de propor ação investigatória de paternidade? Interessa o entendimento sobre a natureza administrativa do procedimento, a ausência de coisa julgada e a proteção do direito à filiação.",
+   "hipotetica": "DIREITO DE FAMÍLIA. AVERIGUAÇÃO OFICIOSA DE PATERNIDADE. ARQUIVAMENTO. AÇÃO INVESTIGATÓRIA. DIREITO DA CRIANÇA.\n1. O arquivamento da averiguação oficiosa de paternidade não viola o direito da criança ao reconhecimento da filiação, porque o procedimento tem natureza administrativa e não impede a via judicial.\n2. Subsiste a possibilidade de ajuizamento da ação investigatória de paternidade, sem formação de coisa julgada material."
   },
   {
    "id": "s025",
@@ -1414,7 +1517,9 @@
    ],
    "graus": {
     "STJ:957469": 2
-   }
+   },
+   "longa": "A infidelidade conjugal, por si só, gera dano moral indenizável ao cônjuge traído, ou é necessário demonstrar ofensa à honra ou outra circunstância que ultrapasse o descumprimento do dever de fidelidade? Busco o entendimento sobre a responsabilidade civil no casamento e a caracterização de ato ilícito autônomo em ações indenizatórias.",
+   "hipotetica": "DIREITO CIVIL. RESPONSABILIDADE CIVIL. INFIDELIDADE CONJUGAL. DANO MORAL. AUSÊNCIA DE ATO ILÍCITO AUTÔNOMO.\n1. A infidelidade conjugal, por si só, não gera dano moral indenizável, pois constitui descumprimento de dever de natureza familiar, sem repercussão patrimonial automática.\n2. A indenização exige prova de ato ilícito autônomo, como exposição vexatória ou ofensa à honra, que ultrapasse o mero rompimento do dever de fidelidade."
   },
   {
    "id": "s026",
@@ -1428,7 +1533,9 @@
    ],
    "graus": {
     "STJ:000896955": 1
-   }
+   },
+   "longa": "O recurso exclusivo sobre honorários advocatícios está sujeito a preparo, salvo se o próprio advogado for beneficiário da gratuidade, e a falta de recolhimento leva à intimação para pagamento em dobro? Interessa o entendimento sobre a legitimidade recursal do advogado, a gratuidade da parte que não alcança o patrono e a deserção.",
+   "hipotetica": "DIREITO PROCESSUAL CIVIL. RECURSO. HONORÁRIOS ADVOCATÍCIOS. PREPARO. GRATUIDADE. DESERÇÃO.\n1. O recurso interposto exclusivamente para discutir honorários advocatícios sujeita-se a preparo, salvo se o próprio advogado for beneficiário da gratuidade da justiça, pois a gratuidade concedida à parte não se estende ao patrono.\n2. Na falta de recolhimento, o recorrente deve ser intimado para efetuar o preparo em dobro, sob pena de deserção."
   }
  ]
 }

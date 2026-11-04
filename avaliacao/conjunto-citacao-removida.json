@@ -1,0 +1,1935 @@
+{
+ "schema": "flora-avaliacao-citacao-1",
+ "montado_em": "2026-11-04",
+ "publicacao_de_referencia": "r3622-s2-422d7bab33-d1f6a0397baf",
+ "semente": 20261104,
+ "regra": "Ementa do TJSC no modelo CNJ que cita tema, súmula ou acórdão do STJ resolvido no acervo, na linha de jurisprudência citada; um documento por citado, na ordem de sha256(semente:id).",
+ "universo": {
+  "precedente": 1878,
+  "acordao": 746
+ },
+ "blocos": {
+  "precedente": [
+   {
+    "documento": "TJSC:321790354612325082502295164370",
+    "citados": [
+     "STJ:tema_repetitivo:1178"
+    ]
+   },
+   {
+    "documento": "TJSC:321783113138064268022968694291",
+    "citados": [
+     "STJ:tema_repetitivo:1059"
+    ]
+   },
+   {
+    "documento": "TJSC:321776443889334599434944163926",
+    "citados": [
+     "STJ:tema_repetitivo:123"
+    ]
+   },
+   {
+    "documento": "TJSC:321776443889334599434938118594",
+    "citados": [
+     "STJ:tema_repetitivo:1306"
+    ]
+   },
+   {
+    "documento": "TJSC:321787264678145379208296412989",
+    "citados": [
+     "STJ:sumula:479"
+    ]
+   },
+   {
+    "documento": "TJSC:321784301537117662368883872842",
+    "citados": [
+     "STJ:sumula:227",
+     "STJ:sumula:362"
+    ]
+   },
+   {
+    "documento": "TJSC:321790713147757342249885122283",
+    "citados": [
+     "STJ:tema_repetitivo:1282"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249336857669",
+    "citados": [
+     "STJ:tema_repetitivo:1417"
+    ]
+   },
+   {
+    "documento": "TJSC:321786478271381134705830623158",
+    "citados": [
+     "STJ:tema_repetitivo:1198"
+    ]
+   },
+   {
+    "documento": "TJSC:321778190243934609596770225704",
+    "citados": [
+     "STJ:sumula:54"
+    ]
+   },
+   {
+    "documento": "TJSC:321778789128111031119568925979",
+    "citados": [
+     "STJ:sumula:481"
+    ]
+   },
+   {
+    "documento": "TJSC:321787847136252660639369890150",
+    "citados": [
+     "STJ:tema_repetitivo:1137"
+    ]
+   },
+   {
+    "documento": "TJSC:321775089870328499101672099821",
+    "citados": [
+     "STJ:sumula:359"
+    ]
+   },
+   {
+    "documento": "TJSC:321773407659307733635358253405",
+    "citados": [
+     "STJ:sumula:7",
+     "STJ:sumula:83"
+    ]
+   },
+   {
+    "documento": "TJSC:321769621463294855159372821001",
+    "citados": [
+     "STJ:sumula:132"
+    ]
+   },
+   {
+    "documento": "TJSC:321780523288679436061408133142",
+    "citados": [
+     "STJ:tema_repetitivo:59"
+    ]
+   },
+   {
+    "documento": "TJSC:321771603850941300626951948048",
+    "citados": [
+     "STJ:tema_repetitivo:1112"
+    ]
+   },
+   {
+    "documento": "TJSC:321774032306512721430814136181",
+    "citados": [
+     "STJ:tema_repetitivo:648"
+    ]
+   },
+   {
+    "documento": "TJSC:321787319262387737604114402029",
+    "citados": [
+     "STJ:tema_repetitivo:587"
+    ]
+   },
+   {
+    "documento": "TJSC:321776364637924565205765282421",
+    "citados": [
+     "STJ:tema_repetitivo:1266"
+    ]
+   },
+   {
+    "documento": "TJSC:321774635895493656824073905882",
+    "citados": [
+     "STJ:tema_repetitivo:1368"
+    ]
+   },
+   {
+    "documento": "TJSC:321770665813749790177842043286",
+    "citados": [
+     "STJ:tema_repetitivo:988"
+    ]
+   },
+   {
+    "documento": "TJSC:321774975867539561760253912480",
+    "citados": [
+     "STJ:sumula:43",
+     "STJ:tema_repetitivo:1368"
+    ]
+   },
+   {
+    "documento": "TJSC:321777911215768809158979872853",
+    "citados": [
+     "STJ:tema_repetitivo:25"
+    ]
+   },
+   {
+    "documento": "TJSC:321777567531856055052819204113",
+    "citados": [
+     "STJ:tema_repetitivo:136"
+    ]
+   },
+   {
+    "documento": "TJSC:321775843040585772931075214286",
+    "citados": [
+     "STJ:sumula:297",
+     "STJ:sumula:479"
+    ]
+   },
+   {
+    "documento": "TJSC:321777567531856055052821001563",
+    "citados": [
+     "STJ:tema_repetitivo:120"
+    ]
+   },
+   {
+    "documento": "TJSC:321780074823312259514533077401",
+    "citados": [
+     "STJ:sumula:403",
+     "STJ:tema_repetitivo:1059"
+    ]
+   },
+   {
+    "documento": "TJSC:321780086150582408605595248399",
+    "citados": [
+     "STJ:sumula:30",
+     "STJ:sumula:548",
+     "STJ:sumula:55",
+     "STJ:tema_repetitivo:1368"
+    ]
+   },
+   {
+    "documento": "TJSC:321779398559761519463680376089",
+    "citados": [
+     "STJ:sumula:54",
+     "STJ:tema_repetitivo:1368",
+     "STJ:tema_repetitivo:25",
+     "STJ:tema_repetitivo:929"
+    ]
+   },
+   {
+    "documento": "TJSC:321789150449880095196028811602",
+    "citados": [
+     "STJ:sumula:42",
+     "STJ:tema_repetitivo:1150",
+     "STJ:tema_repetitivo:1387",
+     "STJ:tema_repetitivo:988"
+    ]
+   },
+   {
+    "documento": "TJSC:321773155468497375340949244456",
+    "citados": [
+     "STJ:sumula:358"
+    ]
+   },
+   {
+    "documento": "TJSC:321776364637924565205371476950",
+    "citados": [
+     "STJ:tema_repetitivo:1061"
+    ]
+   },
+   {
+    "documento": "TJSC:321785848800336571951898311273",
+    "citados": [
+     "STJ:sumula:240"
+    ]
+   },
+   {
+    "documento": "TJSC:321787663685894477642068372743",
+    "citados": [
+     "STJ:tema_repetitivo:1059",
+     "STJ:tema_repetitivo:1076"
+    ]
+   },
+   {
+    "documento": "TJSC:321769425907160476042412553908",
+    "citados": [
+     "STJ:sumula:29"
+    ]
+   },
+   {
+    "documento": "TJSC:321789150449880095196028254548",
+    "citados": [
+     "STJ:sumula:106"
+    ]
+   },
+   {
+    "documento": "TJSC:321785523609930677505731053062",
+    "citados": [
+     "STJ:tema_repetitivo:677"
+    ]
+   },
+   {
+    "documento": "TJSC:321786962568987417589001776350",
+    "citados": [
+     "STJ:tema_repetitivo:410"
+    ]
+   },
+   {
+    "documento": "TJSC:321778190243934609596773511583",
+    "citados": [
+     "STJ:sumula:303"
+    ]
+   },
+   {
+    "documento": "TJSC:321785523609930677505725993539",
+    "citados": [
+     "STJ:tema_repetitivo:989"
+    ]
+   },
+   {
+    "documento": "TJSC:321772814893028915193123913496",
+    "citados": [
+     "STJ:sumula:476",
+     "STJ:tema_repetitivo:464"
+    ]
+   },
+   {
+    "documento": "TJSC:321772557345038575597443851311",
+    "citados": [
+     "STJ:sumula:98"
+    ]
+   },
+   {
+    "documento": "TJSC:321791306331688655542528486020",
+    "citados": [
+     "STJ:sumula:632"
+    ]
+   },
+   {
+    "documento": "TJSC:321774545132048437334548485686",
+    "citados": [
+     "STJ:sumula:543",
+     "STJ:tema_repetitivo:1002"
+    ]
+   },
+   {
+    "documento": "TJSC:321790958175395842595580547592",
+    "citados": [
+     "STJ:tema_repetitivo:1150",
+     "STJ:tema_repetitivo:1300",
+     "STJ:tema_repetitivo:988"
+    ]
+   },
+   {
+    "documento": "TJSC:321787318729796191534363823581",
+    "citados": [
+     "STJ:sumula:344"
+    ]
+   },
+   {
+    "documento": "TJSC:321784653460094402084492365503",
+    "citados": [
+     "STJ:tema_repetitivo:1002",
+     "STJ:tema_repetitivo:1368",
+     "STJ:tema_repetitivo:971"
+    ]
+   },
+   {
+    "documento": "TJSC:321774032306512721430814013269",
+    "citados": [
+     "STJ:sumula:132",
+     "STJ:sumula:2"
+    ]
+   },
+   {
+    "documento": "TJSC:321790355940392578272430978225",
+    "citados": [
+     "STJ:sumula:303",
+     "STJ:sumula:375"
+    ]
+   },
+   {
+    "documento": "TJSC:321781875448184691843194113213",
+    "citados": [
+     "STJ:sumula:235"
+    ]
+   },
+   {
+    "documento": "TJSC:321787258345255610377632025839",
+    "citados": [
+     "STJ:sumula:568"
+    ]
+   },
+   {
+    "documento": "TJSC:321788187820940002805154953954",
+    "citados": [
+     "STJ:sumula:29",
+     "STJ:sumula:55",
+     "STJ:tema_repetitivo:1365"
+    ]
+   },
+   {
+    "documento": "TJSC:321783708410626561715454178170",
+    "citados": [
+     "STJ:sumula:83",
+     "STJ:tema_repetitivo:105"
+    ]
+   },
+   {
+    "documento": "TJSC:321780086150582408605596631251",
+    "citados": [
+     "STJ:sumula:608"
+    ]
+   },
+   {
+    "documento": "TJSC:321788187820940002805153354147",
+    "citados": [
+     "STJ:sumula:385"
+    ]
+   },
+   {
+    "documento": "TJSC:321787771654067360641459080479",
+    "citados": [
+     "STJ:tema_repetitivo:106"
+    ]
+   },
+   {
+    "documento": "TJSC:321779456371275692529924662806",
+    "citados": [
+     "STJ:tema_repetitivo:872"
+    ]
+   },
+   {
+    "documento": "TJSC:321786057051149313431668533841",
+    "citados": [
+     "STJ:sumula:278",
+     "STJ:tema_repetitivo:1306"
+    ]
+   },
+   {
+    "documento": "TJSC:321791494626521951341832930611",
+    "citados": [
+     "STJ:sumula:52",
+     "STJ:tema_repetitivo:996"
+    ]
+   },
+   {
+    "documento": "TJSC:321784653137415874284813159104",
+    "citados": [
+     "STJ:sumula:380",
+     "STJ:tema_repetitivo:677"
+    ]
+   },
+   {
+    "documento": "TJSC:321775843040585772930645017212",
+    "citados": [
+     "STJ:sumula:214",
+     "STJ:tema_repetitivo:1306"
+    ]
+   },
+   {
+    "documento": "TJSC:321785848800336571951898803294",
+    "citados": [
+     "STJ:tema_repetitivo:622"
+    ]
+   },
+   {
+    "documento": "TJSC:321762292643129148179779787280",
+    "citados": [
+     "STJ:tema_repetitivo:698"
+    ]
+   },
+   {
+    "documento": "TJSC:321790958175395842595580117044",
+    "citados": [
+     "STJ:sumula:519",
+     "STJ:tema_repetitivo:408",
+     "STJ:tema_repetitivo:674",
+     "STJ:tema_repetitivo:675",
+     "STJ:tema_repetitivo:676"
+    ]
+   },
+   {
+    "documento": "TJSC:321781275843701246852138405421",
+    "citados": [
+     "STJ:sumula:476",
+     "STJ:tema_repetitivo:463"
+    ]
+   },
+   {
+    "documento": "TJSC:321786968680295199257272556909",
+    "citados": [
+     "STJ:sumula:301"
+    ]
+   },
+   {
+    "documento": "TJSC:321779398559761519463679519094",
+    "citados": [
+     "STJ:tema_repetitivo:113"
+    ]
+   },
+   {
+    "documento": "TJSC:321769190352872663833076980044",
+    "citados": [
+     "STJ:tema_repetitivo:955"
+    ]
+   },
+   {
+    "documento": "TJSC:321788294158615373316237820081",
+    "citados": [
+     "STJ:sumula:326",
+     "STJ:sumula:387"
+    ]
+   },
+   {
+    "documento": "TJSC:321787663685894477642073438087",
+    "citados": [
+     "STJ:tema_repetitivo:938"
+    ]
+   },
+   {
+    "documento": "TJSC:321757060777561773791245803378",
+    "citados": [
+     "STJ:sumula:194"
+    ]
+   },
+   {
+    "documento": "TJSC:321774645765376509015105753990",
+    "citados": [
+     "STJ:sumula:410"
+    ]
+   },
+   {
+    "documento": "TJSC:321784043773750134812110535746",
+    "citados": [
+     "STJ:sumula:260",
+     "STJ:sumula:43"
+    ]
+   },
+   {
+    "documento": "TJSC:321789491670565286502251015180",
+    "citados": [
+     "STJ:sumula:537",
+     "STJ:tema_repetitivo:1059"
+    ]
+   },
+   {
+    "documento": "TJSC:321783030695479529104778018490",
+    "citados": [
+     "STJ:tema_repetitivo:115"
+    ]
+   },
+   {
+    "documento": "TJSC:321790878608702732037296626685",
+    "citados": [
+     "STJ:tema_repetitivo:1059",
+     "STJ:tema_repetitivo:1173"
+    ]
+   },
+   {
+    "documento": "TJSC:321786478271381134705833749508",
+    "citados": [
+     "STJ:tema_repetitivo:970"
+    ]
+   },
+   {
+    "documento": "TJSC:321779391557668970783557831764",
+    "citados": [
+     "STJ:sumula:296",
+     "STJ:tema_repetitivo:24",
+     "STJ:tema_repetitivo:27",
+     "STJ:tema_repetitivo:972"
+    ]
+   },
+   {
+    "documento": "TJSC:321778103846420337607788125172",
+    "citados": [
+     "STJ:tema_repetitivo:107"
+    ]
+   },
+   {
+    "documento": "TJSC:321784847936048238514883576180",
+    "citados": [
+     "STJ:tema_repetitivo:28"
+    ]
+   },
+   {
+    "documento": "TJSC:321786721935365202681574322071",
+    "citados": [
+     "STJ:sumula:188",
+     "STJ:tema_repetitivo:1059"
+    ]
+   },
+   {
+    "documento": "TJSC:321770760785261618587732737735",
+    "citados": [
+     "STJ:sumula:543",
+     "STJ:tema_repetitivo:577",
+     "STJ:tema_repetitivo:938",
+     "STJ:tema_repetitivo:971"
+    ]
+   },
+   {
+    "documento": "TJSC:321766091378273659518394955060",
+    "citados": [
+     "STJ:tema_repetitivo:967"
+    ]
+   },
+   {
+    "documento": "TJSC:321770654732238857666711286297",
+    "citados": [
+     "STJ:sumula:64"
+    ]
+   },
+   {
+    "documento": "TJSC:321784049262733962451157076074",
+    "citados": [
+     "STJ:tema_repetitivo:100",
+     "STJ:tema_repetitivo:938"
+    ]
+   },
+   {
+    "documento": "TJSC:321784294974892099387015370275",
+    "citados": [
+     "STJ:tema_repetitivo:1019"
+    ]
+   },
+   {
+    "documento": "TJSC:321788807317157912121149125001",
+    "citados": [
+     "STJ:tema_repetitivo:1074"
+    ]
+   },
+   {
+    "documento": "TJSC:321782818406810725304927426599",
+    "citados": [
+     "STJ:sumula:150"
+    ]
+   },
+   {
+    "documento": "TJSC:321785864890251663282941960872",
+    "citados": [
+     "STJ:tema_repetitivo:689"
+    ]
+   },
+   {
+    "documento": "TJSC:321786898491572648330291389995",
+    "citados": [
+     "STJ:sumula:596"
+    ]
+   },
+   {
+    "documento": "TJSC:321785523540334621835756267442",
+    "citados": [
+     "STJ:tema_repetitivo:1069"
+    ]
+   },
+   {
+    "documento": "TJSC:321791552371211889717892892805",
+    "citados": [
+     "STJ:sumula:56"
+    ]
+   },
+   {
+    "documento": "TJSC:321774370857867116527568358456",
+    "citados": [
+     "STJ:sumula:402"
+    ]
+   },
+   {
+    "documento": "TJSC:321787264678145379208367592852",
+    "citados": [
+     "STJ:sumula:246"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249332903982",
+    "citados": [
+     "STJ:sumula:106",
+     "STJ:tema_repetitivo:568"
+    ]
+   },
+   {
+    "documento": "TJSC:321770654732238857666700952138",
+    "citados": [
+     "STJ:tema_repetitivo:710"
+    ]
+   },
+   {
+    "documento": "TJSC:321783097884603085341370885745",
+    "citados": [
+     "STJ:sumula:130"
+    ]
+   },
+   {
+    "documento": "TJSC:321781524051010972196380518850",
+    "citados": [
+     "STJ:sumula:517"
+    ]
+   },
+   {
+    "documento": "TJSC:321790878608702732037300208608",
+    "citados": [
+     "STJ:tema_repetitivo:1059",
+     "STJ:tema_repetitivo:437"
+    ]
+   },
+   {
+    "documento": "TJSC:321773767008112295653342185490",
+    "citados": [
+     "STJ:tema_repetitivo:566"
+    ]
+   },
+   {
+    "documento": "TJSC:321785446033132515738774482653",
+    "citados": [
+     "STJ:sumula:492"
+    ]
+   },
+   {
+    "documento": "TJSC:321790102588439065795875308835",
+    "citados": [
+     "STJ:tema_repetitivo:1424"
+    ]
+   },
+   {
+    "documento": "TJSC:321779396763889653943293311235",
+    "citados": [
+     "STJ:sumula:32"
+    ]
+   },
+   {
+    "documento": "TJSC:321788273239964897875045580123",
+    "citados": [
+     "STJ:tema_repetitivo:1210"
+    ]
+   },
+   {
+    "documento": "TJSC:321790018162675778197767304034",
+    "citados": [
+     "STJ:sumula:211",
+     "STJ:sumula:358"
+    ]
+   },
+   {
+    "documento": "TJSC:321784233179516742980470848733",
+    "citados": [
+     "STJ:tema_repetitivo:1150",
+     "STJ:tema_repetitivo:1201"
+    ]
+   },
+   {
+    "documento": "TJSC:321780078158117383964733263292",
+    "citados": [
+     "STJ:tema_repetitivo:886"
+    ]
+   },
+   {
+    "documento": "TJSC:321785236068720915978155799596",
+    "citados": [
+     "STJ:sumula:393"
+    ]
+   },
+   {
+    "documento": "TJSC:321786057461124829501716927314",
+    "citados": [
+     "STJ:tema_repetitivo:130"
+    ]
+   },
+   {
+    "documento": "TJSC:321790713147757342249885963178",
+    "citados": [
+     "STJ:tema_repetitivo:1051"
+    ]
+   },
+   {
+    "documento": "TJSC:321775089870328499101672391499",
+    "citados": [
+     "STJ:tema_repetitivo:1261"
+    ]
+   },
+   {
+    "documento": "TJSC:321770386216436714470515593731",
+    "citados": [
+     "STJ:sumula:359",
+     "STJ:sumula:404"
+    ]
+   },
+   {
+    "documento": "TJSC:321771603850941300626954391921",
+    "citados": [
+     "STJ:sumula:286"
+    ]
+   },
+   {
+    "documento": "TJSC:321769425907160476042420122968",
+    "citados": [
+     "STJ:sumula:247"
+    ]
+   },
+   {
+    "documento": "TJSC:321773954374261880972607293892",
+    "citados": [
+     "STJ:sumula:473"
+    ]
+   },
+   {
+    "documento": "TJSC:321784381681939756516048771970",
+    "citados": [
+     "STJ:tema_repetitivo:1234"
+    ]
+   },
+   {
+    "documento": "TJSC:321770399563969424009947773049",
+    "citados": [
+     "STJ:tema_repetitivo:589"
+    ]
+   },
+   {
+    "documento": "TJSC:321772188262331779817455203256",
+    "citados": [
+     "STJ:sumula:63",
+     "STJ:tema_repetitivo:115"
+    ]
+   },
+   {
+    "documento": "TJSC:321777470265791841383166735525",
+    "citados": [
+     "STJ:sumula:308",
+     "STJ:tema_repetitivo:1059"
+    ]
+   },
+   {
+    "documento": "TJSC:321790074243954216576000927342",
+    "citados": [
+     "STJ:sumula:335"
+    ]
+   },
+   {
+    "documento": "TJSC:321785258322410893609136121263",
+    "citados": [
+     "STJ:sumula:30",
+     "STJ:sumula:31",
+     "STJ:sumula:35",
+     "STJ:sumula:479"
+    ]
+   },
+   {
+    "documento": "TJSC:321786467542236744135749923393",
+    "citados": [
+     "STJ:sumula:383",
+     "STJ:tema_repetitivo:988"
+    ]
+   },
+   {
+    "documento": "TJSC:321785523609930677505729837437",
+    "citados": [
+     "STJ:tema_repetitivo:952"
+    ]
+   },
+   {
+    "documento": "TJSC:321786968680295199257528689753",
+    "citados": [
+     "STJ:sumula:377"
+    ]
+   },
+   {
+    "documento": "TJSC:321779798519067363097942702078",
+    "citados": [
+     "STJ:tema_repetitivo:966"
+    ]
+   },
+   {
+    "documento": "TJSC:321775843040585772930650433552",
+    "citados": [
+     "STJ:tema_repetitivo:725"
+    ]
+   },
+   {
+    "documento": "TJSC:321784847936048238514882339125",
+    "citados": [
+     "STJ:sumula:581",
+     "STJ:tema_repetitivo:1306"
+    ]
+   },
+   {
+    "documento": "TJSC:321787073276006632379479847101",
+    "citados": [
+     "STJ:sumula:182"
+    ]
+   },
+   {
+    "documento": "TJSC:321790354612325082502296012154",
+    "citados": [
+     "STJ:sumula:410",
+     "STJ:tema_repetitivo:1296"
+    ]
+   },
+   {
+    "documento": "TJSC:321784301537117662368884702655",
+    "citados": [
+     "STJ:sumula:33"
+    ]
+   },
+   {
+    "documento": "TJSC:321786057051149313431670666246",
+    "citados": [
+     "STJ:sumula:430"
+    ]
+   },
+   {
+    "documento": "TJSC:321790690525778054238879741520",
+    "citados": [
+     "STJ:tema_repetitivo:1153"
+    ]
+   },
+   {
+    "documento": "TJSC:321791494626521951341834461045",
+    "citados": [
+     "STJ:tema_repetitivo:1082"
+    ]
+   },
+   {
+    "documento": "TJSC:321786723753170814272788592888",
+    "citados": [
+     "STJ:tema_repetitivo:1235"
+    ]
+   },
+   {
+    "documento": "TJSC:321786982354457870770441329854",
+    "citados": [
+     "STJ:sumula:621"
+    ]
+   },
+   {
+    "documento": "TJSC:321770987895883231634942019288",
+    "citados": [
+     "STJ:sumula:239"
+    ]
+   },
+   {
+    "documento": "TJSC:321775580954523445664147949815",
+    "citados": [
+     "STJ:sumula:297",
+     "STJ:tema_repetitivo:1061",
+     "STJ:tema_repetitivo:38"
+    ]
+   },
+   {
+    "documento": "TJSC:321787090128929122219988959225",
+    "citados": [
+     "STJ:sumula:76"
+    ]
+   },
+   {
+    "documento": "TJSC:321791552371211889717892369768",
+    "citados": [
+     "STJ:tema_repetitivo:30",
+     "STJ:tema_repetitivo:886"
+    ]
+   },
+   {
+    "documento": "TJSC:321771941700173898403899089632",
+    "citados": [
+     "STJ:sumula:563"
+    ]
+   },
+   {
+    "documento": "TJSC:321787663685894477642073018762",
+    "citados": [
+     "STJ:tema_repetitivo:908",
+     "STJ:tema_repetitivo:936"
+    ]
+   },
+   {
+    "documento": "TJSC:321787264678145379208294412762",
+    "citados": [
+     "STJ:sumula:620",
+     "STJ:sumula:632"
+    ]
+   },
+   {
+    "documento": "TJSC:321780074823312259514533512375",
+    "citados": [
+     "STJ:tema_repetitivo:312"
+    ]
+   },
+   {
+    "documento": "TJSC:321786057051149313431666568286",
+    "citados": [
+     "STJ:sumula:435"
+    ]
+   },
+   {
+    "documento": "TJSC:321786135125123002039846552168",
+    "citados": [
+     "STJ:sumula:486",
+     "STJ:tema_repetitivo:1059"
+    ]
+   },
+   {
+    "documento": "TJSC:321776187504224911336767733607",
+    "citados": [
+     "STJ:sumula:59"
+    ]
+   },
+   {
+    "documento": "TJSC:321784847936048238514879339235",
+    "citados": [
+     "STJ:sumula:179",
+     "STJ:sumula:98",
+     "STJ:tema_repetitivo:677"
+    ]
+   },
+   {
+    "documento": "TJSC:321780078158117383964735771652",
+    "citados": [
+     "STJ:tema_repetitivo:103"
+    ]
+   },
+   {
+    "documento": "TJSC:321776443889334599434943683731",
+    "citados": [
+     "STJ:tema_repetitivo:1000"
+    ]
+   },
+   {
+    "documento": "TJSC:321790606252800870169370186015",
+    "citados": [
+     "STJ:sumula:98",
+     "STJ:tema_repetitivo:1059",
+     "STJ:tema_repetitivo:1338"
+    ]
+   },
+   {
+    "documento": "TJSC:321778845110331402475446977422",
+    "citados": [
+     "STJ:tema_repetitivo:769"
+    ]
+   },
+   {
+    "documento": "TJSC:321779398559761519463680086205",
+    "citados": [
+     "STJ:tema_repetitivo:129"
+    ]
+   },
+   {
+    "documento": "TJSC:321778231553394728551106471724",
+    "citados": [
+     "STJ:sumula:405"
+    ]
+   },
+   {
+    "documento": "TJSC:321790966669261287677263021480",
+    "citados": [
+     "STJ:tema_repetitivo:109"
+    ]
+   },
+   {
+    "documento": "TJSC:321772557345038575597448597357",
+    "citados": [
+     "STJ:sumula:549"
+    ]
+   },
+   {
+    "documento": "TJSC:321782914719811441872181370565",
+    "citados": [
+     "STJ:tema_repetitivo:1025"
+    ]
+   },
+   {
+    "documento": "TJSC:321780078158117383964728141179",
+    "citados": [
+     "STJ:sumula:359",
+     "STJ:sumula:404",
+     "STJ:tema_repetitivo:1198",
+     "STJ:tema_repetitivo:1315"
+    ]
+   },
+   {
+    "documento": "TJSC:321781027811909389684814482657",
+    "citados": [
+     "STJ:sumula:84"
+    ]
+   },
+   {
+    "documento": "TJSC:321780078158117383964730791356",
+    "citados": [
+     "STJ:sumula:602"
+    ]
+   },
+   {
+    "documento": "TJSC:321774470447782694407164369043",
+    "citados": [
+     "STJ:tema_repetitivo:572"
+    ]
+   },
+   {
+    "documento": "TJSC:321770992053921552133851190245",
+    "citados": [
+     "STJ:sumula:340"
+    ]
+   },
+   {
+    "documento": "TJSC:321787258345255610377635061478",
+    "citados": [
+     "STJ:tema_repetitivo:115",
+     "STJ:tema_repetitivo:138"
+    ]
+   },
+   {
+    "documento": "TJSC:321780069730526688993881312281",
+    "citados": [
+     "STJ:sumula:233"
+    ]
+   },
+   {
+    "documento": "TJSC:321783030695479529104776576821",
+    "citados": [
+     "STJ:sumula:656"
+    ]
+   },
+   {
+    "documento": "TJSC:321791552837301247218008374366",
+    "citados": [
+     "STJ:sumula:375",
+     "STJ:tema_repetitivo:1059",
+     "STJ:tema_repetitivo:243"
+    ]
+   },
+   {
+    "documento": "TJSC:321769425907160476042412436590",
+    "citados": [
+     "STJ:sumula:297",
+     "STJ:sumula:323",
+     "STJ:sumula:54"
+    ]
+   },
+   {
+    "documento": "TJSC:321777050449083085827251683029",
+    "citados": [
+     "STJ:sumula:632",
+     "STJ:tema_repetitivo:111",
+     "STJ:tema_repetitivo:136"
+    ]
+   },
+   {
+    "documento": "TJSC:321789154647723862746474498715",
+    "citados": [
+     "STJ:sumula:449"
+    ]
+   },
+   {
+    "documento": "TJSC:321789491670565286502250676846",
+    "citados": [
+     "STJ:tema_repetitivo:105",
+     "STJ:tema_repetitivo:142"
+    ]
+   },
+   {
+    "documento": "TJSC:321781875448184691843190877919",
+    "citados": [
+     "STJ:sumula:597"
+    ]
+   },
+   {
+    "documento": "TJSC:321785512320837481234546622796",
+    "citados": [
+     "STJ:sumula:529"
+    ]
+   },
+   {
+    "documento": "TJSC:321787863536937228411202916482",
+    "citados": [
+     "STJ:tema_repetitivo:907"
+    ]
+   },
+   {
+    "documento": "TJSC:321785848800336571951903176569",
+    "citados": [
+     "STJ:tema_repetitivo:117",
+     "STJ:tema_repetitivo:25"
+    ]
+   },
+   {
+    "documento": "TJSC:321773419893959961787133488106",
+    "citados": [
+     "STJ:tema_repetitivo:1306",
+     "STJ:tema_repetitivo:998"
+    ]
+   },
+   {
+    "documento": "TJSC:321789744097954957908277666776",
+    "citados": [
+     "STJ:sumula:538"
+    ]
+   },
+   {
+    "documento": "TJSC:321776456447548764084969436084",
+    "citados": [
+     "STJ:sumula:481",
+     "STJ:sumula:595"
+    ]
+   },
+   {
+    "documento": "TJSC:321773405137329417737212092040",
+    "citados": [
+     "STJ:sumula:85"
+    ]
+   },
+   {
+    "documento": "TJSC:321779469749382846570936036720",
+    "citados": [
+     "STJ:sumula:405",
+     "STJ:sumula:573",
+     "STJ:tema_repetitivo:883"
+    ]
+   },
+   {
+    "documento": "TJSC:321773767008112295653315603552",
+    "citados": [
+     "STJ:tema_repetitivo:1040",
+     "STJ:tema_repetitivo:1132"
+    ]
+   },
+   {
+    "documento": "TJSC:321777917503299733838211939185",
+    "citados": [
+     "STJ:sumula:549",
+     "STJ:tema_repetitivo:1091"
+    ]
+   },
+   {
+    "documento": "TJSC:321785184334584519020148895323",
+    "citados": [
+     "STJ:sumula:53"
+    ]
+   },
+   {
+    "documento": "TJSC:321789678868640763991436937296",
+    "citados": [
+     "STJ:sumula:609"
+    ]
+   },
+   {
+    "documento": "TJSC:321786898491572648330247648624",
+    "citados": [
+     "STJ:tema_repetitivo:706"
+    ]
+   },
+   {
+    "documento": "TJSC:321786128310696183269137921028",
+    "citados": [
+     "STJ:tema_repetitivo:1235",
+     "STJ:tema_repetitivo:1285"
+    ]
+   },
+   {
+    "documento": "TJSC:321790286213267350215129919740",
+    "citados": [
+     "STJ:sumula:229"
+    ]
+   },
+   {
+    "documento": "TJSC:321791552371211889717893991345",
+    "citados": [
+     "STJ:tema_repetitivo:1230"
+    ]
+   },
+   {
+    "documento": "TJSC:321782652165983733104634554986",
+    "citados": [
+     "STJ:tema_repetitivo:942"
+    ]
+   },
+   {
+    "documento": "TJSC:321776187504224911336763765648",
+    "citados": [
+     "STJ:sumula:610"
+    ]
+   },
+   {
+    "documento": "TJSC:321773931252382497043033165512",
+    "citados": [
+     "STJ:tema_repetitivo:806"
+    ]
+   },
+   {
+    "documento": "TJSC:321787584892160895412754552712",
+    "citados": [
+     "STJ:tema_repetitivo:192"
+    ]
+   },
+   {
+    "documento": "TJSC:321777567531856055052826737576",
+    "citados": [
+     "STJ:tema_repetitivo:1264"
+    ]
+   },
+   {
+    "documento": "TJSC:321786467542236744136172171386",
+    "citados": [
+     "STJ:sumula:34"
+    ]
+   },
+   {
+    "documento": "TJSC:321785173854326566549052392209",
+    "citados": [
+     "STJ:tema_repetitivo:1268",
+     "STJ:tema_repetitivo:25"
+    ]
+   },
+   {
+    "documento": "TJSC:321790282806637864854876832233",
+    "citados": [
+     "STJ:tema_repetitivo:1178",
+     "STJ:tema_repetitivo:1452"
+    ]
+   },
+   {
+    "documento": "TJSC:321777050646783702557270270750",
+    "citados": [
+     "STJ:tema_repetitivo:107",
+     "STJ:tema_repetitivo:1255",
+     "STJ:tema_repetitivo:872"
+    ]
+   },
+   {
+    "documento": "TJSC:321775089870328499101671911476",
+    "citados": [
+     "STJ:sumula:33",
+     "STJ:tema_repetitivo:128"
+    ]
+   },
+   {
+    "documento": "TJSC:321785446033132515738770985275",
+    "citados": [
+     "STJ:tema_repetitivo:102",
+     "STJ:tema_repetitivo:955"
+    ]
+   },
+   {
+    "documento": "TJSC:321783120314878130363785056520",
+    "citados": [
+     "STJ:tema_repetitivo:949"
+    ]
+   },
+   {
+    "documento": "TJSC:321781869696591874973653936651",
+    "citados": [
+     "STJ:sumula:451"
+    ]
+   }
+  ],
+  "acordao": [
+   {
+    "documento": "TJSC:321789491670565286502247644237",
+    "citados": [
+     "STJ:000908307",
+     "STJ:000919062"
+    ]
+   },
+   {
+    "documento": "TJSC:321790081633433507943995772266",
+    "citados": [
+     "STJ:000904121"
+    ]
+   },
+   {
+    "documento": "TJSC:321764694913902761862385116388",
+    "citados": [
+     "STJ:000906535"
+    ]
+   },
+   {
+    "documento": "TJSC:321788273239964897875047088251",
+    "citados": [
+     "STJ:955234"
+    ]
+   },
+   {
+    "documento": "TJSC:321782914719811441872181259842",
+    "citados": [
+     "STJ:1431299"
+    ]
+   },
+   {
+    "documento": "TJSC:321779398559761519463678689863",
+    "citados": [
+     "STJ:952914"
+    ]
+   },
+   {
+    "documento": "TJSC:321786135125123002039847338459",
+    "citados": [
+     "STJ:938979"
+    ]
+   },
+   {
+    "documento": "TJSC:321773407659307733635358253405",
+    "citados": [
+     "STJ:943171"
+    ]
+   },
+   {
+    "documento": "TJSC:321791306417108816482944893256",
+    "citados": [
+     "STJ:940773"
+    ]
+   },
+   {
+    "documento": "TJSC:321781305666943580153450500716",
+    "citados": [
+     "STJ:951866"
+    ]
+   },
+   {
+    "documento": "TJSC:321787771654067360641455294170",
+    "citados": [
+     "STJ:952525"
+    ]
+   },
+   {
+    "documento": "TJSC:321788895159981692879256752785",
+    "citados": [
+     "STJ:956969"
+    ]
+   },
+   {
+    "documento": "TJSC:321787319262387737604114402029",
+    "citados": [
+     "STJ:949083"
+    ]
+   },
+   {
+    "documento": "TJSC:321776364637924565205765282421",
+    "citados": [
+     "STJ:000912005",
+     "STJ:000912006",
+     "STJ:000912007"
+    ]
+   },
+   {
+    "documento": "TJSC:321770992053921552133855573003",
+    "citados": [
+     "STJ:937963",
+     "STJ:943184"
+    ]
+   },
+   {
+    "documento": "TJSC:321777911215768809158979872853",
+    "citados": [
+     "STJ:950977"
+    ]
+   },
+   {
+    "documento": "TJSC:321780086150582408605595248399",
+    "citados": [
+     "STJ:937833"
+    ]
+   },
+   {
+    "documento": "TJSC:321781120380482940434068974538",
+    "citados": [
+     "STJ:930922",
+     "STJ:952693",
+     "STJ:955378"
+    ]
+   },
+   {
+    "documento": "TJSC:321787264678145379208367214456",
+    "citados": [
+     "STJ:1427493",
+     "STJ:1450191"
+    ]
+   },
+   {
+    "documento": "TJSC:321789491670565286502254602360",
+    "citados": [
+     "STJ:943042"
+    ]
+   },
+   {
+    "documento": "TJSC:321774645765376509015110214359",
+    "citados": [
+     "STJ:000920237"
+    ]
+   },
+   {
+    "documento": "TJSC:321790354612325082502295473617",
+    "citados": [
+     "STJ:1435886"
+    ]
+   },
+   {
+    "documento": "TJSC:321782400585120002669522241469",
+    "citados": [
+     "STJ:000917766"
+    ]
+   },
+   {
+    "documento": "TJSC:321790958175395842595579788727",
+    "citados": [
+     "STJ:000911820"
+    ]
+   },
+   {
+    "documento": "TJSC:321790606252800870169367675767",
+    "citados": [
+     "STJ:927596"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249334138606",
+    "citados": [
+     "STJ:948846"
+    ]
+   },
+   {
+    "documento": "TJSC:321781524051010972196548231076",
+    "citados": [
+     "STJ:000910508"
+    ]
+   },
+   {
+    "documento": "TJSC:321781811552957163417318628880",
+    "citados": [
+     "STJ:952790"
+    ]
+   },
+   {
+    "documento": "TJSC:321774545132048437334548485686",
+    "citados": [
+     "STJ:000900287"
+    ]
+   },
+   {
+    "documento": "TJSC:321776187504224911336768950485",
+    "citados": [
+     "STJ:953502"
+    ]
+   },
+   {
+    "documento": "TJSC:321790779582806001078364673107",
+    "citados": [
+     "STJ:1450750"
+    ]
+   },
+   {
+    "documento": "TJSC:321784653460094402084492365503",
+    "citados": [
+     "STJ:1020408"
+    ]
+   },
+   {
+    "documento": "TJSC:321788187820940002805144888452",
+    "citados": [
+     "STJ:1437184"
+    ]
+   },
+   {
+    "documento": "TJSC:321785864890251663282124414389",
+    "citados": [
+     "STJ:000918210"
+    ]
+   },
+   {
+    "documento": "TJSC:321776364637924565205376427618",
+    "citados": [
+     "STJ:930015",
+     "STJ:930956"
+    ]
+   },
+   {
+    "documento": "TJSC:321786898491572648333467871454",
+    "citados": [
+     "STJ:927807"
+    ]
+   },
+   {
+    "documento": "TJSC:321782740609618412443920006573",
+    "citados": [
+     "STJ:950491"
+    ]
+   },
+   {
+    "documento": "TJSC:321782411117560118829500914739",
+    "citados": [
+     "STJ:000899967",
+     "STJ:952685"
+    ]
+   },
+   {
+    "documento": "TJSC:321791552371211889717894721249",
+    "citados": [
+     "STJ:000899488"
+    ]
+   },
+   {
+    "documento": "TJSC:321782411117560118829482795620",
+    "citados": [
+     "STJ:949150"
+    ]
+   },
+   {
+    "documento": "TJSC:321773241476222800197976528361",
+    "citados": [
+     "STJ:000909326"
+    ]
+   },
+   {
+    "documento": "TJSC:321780086150582408605596631251",
+    "citados": [
+     "STJ:928470"
+    ]
+   },
+   {
+    "documento": "TJSC:321774645765376509015105652027",
+    "citados": [
+     "STJ:949073"
+    ]
+   },
+   {
+    "documento": "TJSC:321788434232712101834403683170",
+    "citados": [
+     "STJ:000913063",
+     "STJ:927587"
+    ]
+   },
+   {
+    "documento": "TJSC:321776187504224911336766900773",
+    "citados": [
+     "STJ:000912155"
+    ]
+   },
+   {
+    "documento": "TJSC:321787257468639841947532371179",
+    "citados": [
+     "STJ:942893"
+    ]
+   },
+   {
+    "documento": "TJSC:321787929053867758798172872998",
+    "citados": [
+     "STJ:000896604",
+     "STJ:000910343"
+    ]
+   },
+   {
+    "documento": "TJSC:321780065957583490793875466962",
+    "citados": [
+     "STJ:929964"
+    ]
+   },
+   {
+    "documento": "TJSC:321788471740004480514984279696",
+    "citados": [
+     "STJ:930343"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249337330016",
+    "citados": [
+     "STJ:949839"
+    ]
+   },
+   {
+    "documento": "TJSC:321784048971568712811098974629",
+    "citados": [
+     "STJ:923920",
+     "STJ:942356"
+    ]
+   },
+   {
+    "documento": "TJSC:321787937364684334408832790953",
+    "citados": [
+     "STJ:942354"
+    ]
+   },
+   {
+    "documento": "TJSC:321783085209831433100481338921",
+    "citados": [
+     "STJ:000908786"
+    ]
+   },
+   {
+    "documento": "TJSC:321786138154123796790164842242",
+    "citados": [
+     "STJ:930806"
+    ]
+   },
+   {
+    "documento": "TJSC:321790189420764220274971756415",
+    "citados": [
+     "STJ:1392447"
+    ]
+   },
+   {
+    "documento": "TJSC:321785862972954448171349930357",
+    "citados": [
+     "STJ:941433",
+     "STJ:950638"
+    ]
+   },
+   {
+    "documento": "TJSC:321772741531370023565425659572",
+    "citados": [
+     "STJ:921468",
+     "STJ:941050"
+    ]
+   },
+   {
+    "documento": "TJSC:321790102588439065795874727146",
+    "citados": [
+     "STJ:943358"
+    ]
+   },
+   {
+    "documento": "TJSC:321770760785261618587730488084",
+    "citados": [
+     "STJ:000903910",
+     "STJ:000906609"
+    ]
+   },
+   {
+    "documento": "TJSC:321790702015683694169911237458",
+    "citados": [
+     "STJ:956388"
+    ]
+   },
+   {
+    "documento": "TJSC:321786057461124829501717444665",
+    "citados": [
+     "STJ:000908928"
+    ]
+   },
+   {
+    "documento": "TJSC:321769516532466818379361950340",
+    "citados": [
+     "STJ:000906140"
+    ]
+   },
+   {
+    "documento": "TJSC:321790286213267350215125758109",
+    "citados": [
+     "STJ:951500"
+    ]
+   },
+   {
+    "documento": "TJSC:321777906456990706677100658333",
+    "citados": [
+     "STJ:950448"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249339051791",
+    "citados": [
+     "STJ:937392"
+    ]
+   },
+   {
+    "documento": "TJSC:321773755334781491791859136020",
+    "citados": [
+     "STJ:943527"
+    ]
+   },
+   {
+    "documento": "TJSC:321774645765376509015108781833",
+    "citados": [
+     "STJ:000910799"
+    ]
+   },
+   {
+    "documento": "TJSC:321781202000522995622597216000",
+    "citados": [
+     "STJ:000906589"
+    ]
+   },
+   {
+    "documento": "TJSC:321789390583815324333204119271",
+    "citados": [
+     "STJ:1383694"
+    ]
+   },
+   {
+    "documento": "TJSC:321772226642911992221436719491",
+    "citados": [
+     "STJ:000917216"
+    ]
+   },
+   {
+    "documento": "TJSC:321787663685894477642073438087",
+    "citados": [
+     "STJ:939333"
+    ]
+   },
+   {
+    "documento": "TJSC:321784294974892099387015255583",
+    "citados": [
+     "STJ:928299",
+     "STJ:942624"
+    ]
+   },
+   {
+    "documento": "TJSC:321757060777561773791245803378",
+    "citados": [
+     "STJ:000906043"
+    ]
+   },
+   {
+    "documento": "TJSC:321788187820940002805163864288",
+    "citados": [
+     "STJ:1444020"
+    ]
+   },
+   {
+    "documento": "TJSC:321788187820940002805152457647",
+    "citados": [
+     "STJ:959687"
+    ]
+   },
+   {
+    "documento": "TJSC:321790878608702732037296626685",
+    "citados": [
+     "STJ:929388"
+    ]
+   },
+   {
+    "documento": "TJSC:321782914719811441872180760596",
+    "citados": [
+     "STJ:000910987",
+     "STJ:950248"
+    ]
+   },
+   {
+    "documento": "TJSC:321790017958274256457051406416",
+    "citados": [
+     "STJ:1443854",
+     "STJ:937833"
+    ]
+   },
+   {
+    "documento": "TJSC:321784312527379187239092828537",
+    "citados": [
+     "STJ:937540"
+    ]
+   },
+   {
+    "documento": "TJSC:321784233179516742980470518086",
+    "citados": [
+     "STJ:939891"
+    ]
+   },
+   {
+    "documento": "TJSC:321773954374261880972610386481",
+    "citados": [
+     "STJ:931413"
+    ]
+   },
+   {
+    "documento": "TJSC:321772193440915303541119267769",
+    "citados": [
+     "STJ:939668"
+    ]
+   },
+   {
+    "documento": "TJSC:321778610676674527571736636009",
+    "citados": [
+     "STJ:943233"
+    ]
+   },
+   {
+    "documento": "TJSC:321789491670565286502254303040",
+    "citados": [
+     "STJ:954558"
+    ]
+   },
+   {
+    "documento": "TJSC:321772624065052945824000373595",
+    "citados": [
+     "STJ:941449"
+    ]
+   },
+   {
+    "documento": "TJSC:321786478271381134705832487544",
+    "citados": [
+     "STJ:000896625",
+     "STJ:938090"
+    ]
+   },
+   {
+    "documento": "TJSC:321790017958274256457049911395",
+    "citados": [
+     "STJ:937833",
+     "STJ:940459",
+     "STJ:958674"
+    ]
+   },
+   {
+    "documento": "TJSC:321791306331688655542525566588",
+    "citados": [
+     "STJ:941157"
+    ]
+   },
+   {
+    "documento": "TJSC:321774819782866796033485727231",
+    "citados": [
+     "STJ:000915134"
+    ]
+   },
+   {
+    "documento": "TJSC:321790017958274256457050061839",
+    "citados": [
+     "STJ:959194"
+    ]
+   },
+   {
+    "documento": "TJSC:321779398559761519463677463008",
+    "citados": [
+     "STJ:936967"
+    ]
+   },
+   {
+    "documento": "TJSC:321770307961256378032216350465",
+    "citados": [
+     "STJ:929294"
+    ]
+   },
+   {
+    "documento": "TJSC:321784294974892099387018589826",
+    "citados": [
+     "STJ:1433129"
+    ]
+   },
+   {
+    "documento": "TJSC:321785864890251663282941960872",
+    "citados": [
+     "STJ:925480"
+    ]
+   },
+   {
+    "documento": "TJSC:321773241476222800197976745380",
+    "citados": [
+     "STJ:924180",
+     "STJ:937893"
+    ]
+   },
+   {
+    "documento": "TJSC:321791306331688655542525681557",
+    "citados": [
+     "STJ:000900156"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249337208514",
+    "citados": [
+     "STJ:950137"
+    ]
+   },
+   {
+    "documento": "TJSC:321781027811909389684816912585",
+    "citados": [
+     "STJ:949846"
+    ]
+   },
+   {
+    "documento": "TJSC:321784222802351414249330628124",
+    "citados": [
+     "STJ:949822",
+     "STJ:950094"
+    ]
+   },
+   {
+    "documento": "TJSC:321782400585120002669522728441",
+    "citados": [
+     "STJ:000910385"
+    ]
+   }
+  ]
+ }
+}

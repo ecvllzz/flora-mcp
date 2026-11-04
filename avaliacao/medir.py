@@ -35,6 +35,7 @@ LINHAS = (
     ("avancada", "avancado"),
     ("curta", "avancado"),
 )
+LINHAS_LONGAS = (("longa", "simples"), ("hipotetica", "simples"))
 FILTROS = ("sem", "tribunal", "camara")
 CAMARAS = {
     "10A CAMARA DE DIREITO CIVIL": "10a Camara de Direito Civil",
@@ -196,7 +197,7 @@ def estrato(pergunta):
     return tribunais.pop() if len(tribunais) == 1 else "misto"
 
 
-def medir_pergunta(store, db, pergunta, orgaos, obices, julgamentos):
+def medir_pergunta(store, db, pergunta, orgaos, obices, julgamentos, linhas):
     julgados = None
     if pergunta["id"] in julgamentos:
         julgados = {**pergunta["graus"], **{i: int(g) for i, g in julgamentos[pergunta["id"]].items()}}
@@ -209,7 +210,7 @@ def medir_pergunta(store, db, pergunta, orgaos, obices, julgamentos):
             if i.startswith(do_fundo.get("tribunal", ""))
             and orgaos.get(i) == do_fundo.get("orgao", orgaos.get(i))
         }
-        for formulacao, modo in LINHAS:
+        for formulacao, modo in linhas:
             resposta, ids = buscar(store, pergunta[formulacao], modo, da_ferramenta)
             fundo = profundo(db, resposta["consulta_efetiva"], **do_fundo)
             chave = f"{formulacao}|{modo}|{filtro}"
@@ -217,8 +218,8 @@ def medir_pergunta(store, db, pergunta, orgaos, obices, julgamentos):
     return linha
 
 
-def resumir(por_pergunta, selecao=lambda _: True):
-    chaves = [f"{f}|{m}|{x}" for x in FILTROS for f, m in LINHAS]
+def resumir(por_pergunta, linhas, selecao=lambda _: True):
+    chaves = [f"{f}|{m}|{x}" for x in FILTROS for f, m in linhas]
     return {
         k: agregado([p["linhas"][k] for p in por_pergunta if k in p["linhas"] and selecao(p)]) for k in chaves
     }
@@ -237,7 +238,9 @@ def main():
     parser.add_argument("--conjunto", required=True)
     parser.add_argument("--julgamentos", help="Graus do julgamento cego da R5, por pergunta")
     parser.add_argument("--saida", required=True)
+    parser.add_argument("--longas", action="store_true", help="Mede só as formulações longas")
     args = parser.parse_args()
+    linhas = LINHAS_LONGAS if args.longas else LINHAS
     if not args.data_dir:
         parser.error("Informe --data-dir ou FLORA_MCP_DATA_DIR: esta medida roda sobre uma cópia.")
     bruto = Path(args.conjunto).read_bytes()
@@ -252,7 +255,7 @@ def main():
         obices = obices_estritos(db)
         por_pergunta = []
         for pergunta in conjunto["perguntas"]:
-            por_pergunta.append(medir_pergunta(store, db, pergunta, orgaos, obices, julgamentos))
+            por_pergunta.append(medir_pergunta(store, db, pergunta, orgaos, obices, julgamentos, linhas))
             print(pergunta["id"], round(time.time() - inicio), flush=True)
     relatorio = {
         "schema": "flora-avaliacao-resultado-3",
@@ -265,12 +268,12 @@ def main():
         "segundos": round(time.time() - inicio, 1),
         "documentos": {"total": len(orgaos), "obice_estrito_stj": len(obices)},
         "graus_fora_da_publicacao": ausentes,
-        "resumo": resumir(por_pergunta),
+        "resumo": resumir(por_pergunta, linhas),
         "por_estrato": {
-            "bloco_r3": resumir(por_pergunta, lambda p: p["bloco"] == "r3"),
-            "stj": resumir(por_pergunta, lambda p: p["estrato"] == "STJ"),
-            "tjsc": resumir(por_pergunta, lambda p: p["estrato"] == "TJSC"),
-            "misto": resumir(por_pergunta, lambda p: p["estrato"] == "misto"),
+            "bloco_r3": resumir(por_pergunta, linhas, lambda p: p["bloco"] == "r3"),
+            "stj": resumir(por_pergunta, linhas, lambda p: p["estrato"] == "STJ"),
+            "tjsc": resumir(por_pergunta, linhas, lambda p: p["estrato"] == "TJSC"),
+            "misto": resumir(por_pergunta, linhas, lambda p: p["estrato"] == "misto"),
         },
         "por_pergunta": por_pergunta,
     }
