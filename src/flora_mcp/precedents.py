@@ -17,6 +17,8 @@ from .store import Store, connection
 
 SCHEMA_VERSION = 2
 COMPONENTS = ("enunciado", "questao_submetida", "tese_firmada", "modulacao", "suspensao")
+# What is read when no component is asked for: first what the precedent says, then what it decides on.
+DEFAULT_COMPONENTS = ("enunciado", "tese_firmada", "questao_submetida", "modulacao", "suspensao")
 SPECIES = {
     "STJ": {"tema_repetitivo", "iac", "sumula"},
     "STF": {"tema_repercussao_geral", "sumula_vinculante", "sumula"},
@@ -97,6 +99,21 @@ def parse_id(value: str) -> tuple[str, str, str | None, str] | None:
     if not re.fullmatch(r"[1-9][0-9]{0,6}", number):
         return None
     return tribunal, species, scope, number
+
+
+def normalized_number(value: str | None) -> str | None:
+    """The number as the identity stores it: "1.076", "Tema 1.076" and "1076" are all 1076.
+
+    A blank value is no filter. A text with no number, or with more than one, is refused: guessing
+    would answer about another precedent, and a plain comparison would answer with an empty page.
+    """
+    if value is None or not value.strip():
+        return None
+    found = re.findall(r"\d+(?:\.\d{3})*", value)
+    digits = found[0].replace(".", "").lstrip("0") if len(found) == 1 else ""
+    if not re.fullmatch(r"[1-9][0-9]{0,6}", digits):
+        raise FloraError("filtro_invalido", "numero não reconhecido; use 1076, 1.076 ou Tema 1.076.")
+    return digits
 
 
 def available(db):

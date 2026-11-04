@@ -100,8 +100,7 @@ def test_components_reference_literal_pagination_and_idempotence(store, tmp_path
     assert item["referencia_completa"]
     assert item["campos_correspondentes"] == ["enunciado"]
     assert len(canonical(result).encode()) <= 8192
-    with pytest.raises(FloraError, match="Componentes disponíveis: enunciado"):
-        api.document(store, item["id"])
+    assert api.document(store, item["id"])["componente"] == "enunciado"
     cursor, blocks = None, []
     while True:
         doc = api.document(store, item["id"], "enunciado", cursor, 100)
