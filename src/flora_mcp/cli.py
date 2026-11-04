@@ -93,6 +93,9 @@ def build_parser() -> argparse.ArgumentParser:
     directed.add_argument("--apply", action="store_true", help="Coleta sob a trava, depois de backup")
     directed.add_argument("--report", type=Path, help="Recibo novo; obrigatório com --apply")
     directed.add_argument("--backup", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
+    directed.add_argument(
+        "--sem-publicar", action="store_true", help="Não publica no fim; a conferência vem antes do publish"
+    )
     directed.add_argument("--stj-dataset", action="append", help="Só este dataset do STJ; repita para mais")
     directed.add_argument("--stj-desde", help="Só arquivos do STJ a partir de AAAAMMDD")
     directed.add_argument("--stj-ate", help="Só arquivos do STJ até AAAAMMDD")
@@ -303,7 +306,16 @@ def run_directed(args, config, store):
     if not args.report:
         raise FloraError("recibo_obrigatorio", "Aplicação exige --report novo.")
     return directed.summary(
-        directed.execute(config, store, entries, refused, args.report, args.backup, scope=scope)
+        directed.execute(
+            config,
+            store,
+            entries,
+            refused,
+            args.report,
+            args.backup,
+            scope=scope,
+            publish_at_end=not args.sem_publicar,
+        )
     )
 
 

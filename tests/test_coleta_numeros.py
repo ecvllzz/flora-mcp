@@ -411,6 +411,25 @@ def test_execute_takes_one_list_of_both_courts_with_one_backup_and_receipt(store
         execute(Config(store.directory), store, entries, refused, tmp_path / "recibo.json", tmp_path / "bk")
 
 
+def test_load_can_leave_the_publication_for_after_the_check(store, source, tmp_path):
+    publish(store)
+    before = (store.directory / "publicacoes.json").read_bytes()
+    entries, refused = merge([("REsp 100", None, "lista")])
+    report = execute(
+        Config(store.directory, request_delay=0),
+        store,
+        entries,
+        refused,
+        tmp_path / "recibo.json",
+        tmp_path / "bk",
+        http_factory=source.client,
+        publish_at_end=False,
+    )
+    assert report["publicacao"] == "adiada"
+    assert (store.directory / "publicacoes.json").read_bytes() == before
+    assert current_ids(store) == {"STJ:10", "STJ:11"}
+
+
 def test_plan_reports_what_the_collection_holds(store, source):
     collect(store, source, "REsp 100")
     plan = plan_stj(store, entries_of("EDcl no REsp 100", "REsp 999"))

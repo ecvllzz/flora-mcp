@@ -166,6 +166,7 @@ def execute(
     collect=collect_one,
     scope: dict | None = None,
     http_factory=client,
+    publish_at_end: bool = True,
 ) -> dict:
     report_path = Path(report_path).resolve()
     backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
@@ -207,7 +208,10 @@ def execute(
                     report["status"] = "ok"
         finally:
             report.update(fim=now(), depois=groups(store))
-            _publish(store, report)
+            if publish_at_end:
+                _publish(store, report)
+            else:
+                report["publicacao"] = "adiada"
             save(report_path, report)
         return report
 
