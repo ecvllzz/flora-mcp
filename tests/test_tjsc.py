@@ -9,7 +9,8 @@ import pytest
 from flora_mcp.config import Config
 from flora_mcp.model import FloraError
 from flora_mcp.sources import validate_tjsc_page
-from flora_mcp.tjsc import collect_window, parse_page
+from flora_mcp.store import connection
+from flora_mcp.tjsc import UNION_PASSES, collect_window, parse_page, sync_tjsc
 from flora_mcp.tjsc_orgaos import ESPECIAIS, ORGAOS, PADRAO, chamber, dataset, name, portal_names
 
 # Portal search form read once on 30/09/2026 (receipt beside it); source of the organ names.
@@ -63,9 +64,138 @@ def test_window_commit_requires_all_pages_and_stable_first_page(store, scenario)
             assert rows[0][0]["numero_processo"] == "5000000-00.2026.8.24.0000"
             assert b"bytes_base64" in content
             assert first_calls == 2
+            assert "coleta" not in json.loads(content)
+        elif scenario == "first_page_changes":
+            content, rows = collect_window(http, config, 9, date(2026, 9, 18))
+            envelope = json.loads(content)
+            assert len(rows) == 12 and envelope["total"] == 12
+            assert (envelope["coleta"], envelope["instabilidade"]) == (
+                "uniao_de_passagens",
+                "janela_alterada",
+            )
+            assert all("passagem" in saved for saved in envelope["paginas"])
         else:
             with pytest.raises(FloraError):
                 collect_window(http, config, 9, date(2026, 9, 18))
+
+
+def window_route(answers):
+    """Answers in sequence; each request gets the next (ids, keyword arguments of page)."""
+    pending = iter(answers)
+
+    def route(_req):
+        ids, options = next(pending)
+        return httpx.Response(200, content=page(ids, **options))
+
+    return route
+
+
+def recollect(store, answers):
+    with httpx.Client(transport=httpx.MockTransport(window_route(answers))) as http:
+        return collect_window(http, Config(store.directory, request_delay=0), 9, date(2026, 9, 18))
+
+
+def test_pages_that_change_order_between_passes_conclude_with_the_total(store):
+    content, rows = recollect(
+        store,
+        [
+            (range(10), {}),  # first reading: page 2 repeats a document
+            ([0, 1], {}),
+            (range(10), {}),  # new first page, first pass misses 10 and 11
+            ([8, 9], {}),
+            (range(2, 12), {}),  # second pass brings them
+            ([0, 1], {}),
+        ],
+    )
+    envelope = json.loads(content)
+    assert {body["id"] for body, _ in rows} == {f"TJSC:{i}" for i in range(12)}
+    assert (envelope["coleta"], envelope["instabilidade"]) == ("uniao_de_passagens", "paginacao_instavel")
+    assert [(p["passagem"], p["pagina"]) for p in envelope["paginas"]] == [(1, 1), (1, 2), (2, 1), (2, 2)]
+
+
+def test_same_document_with_different_content_fails(store):
+    other = page([0, 11]).replace("Texto público".encode("latin1"), b"Outro texto")
+    answers = [(range(10), {}), ([0, 1], {}), (range(10), {})]
+    pending = iter(answers)
+
+    def route(_req):
+        try:
+            ids, options = next(pending)
+        except StopIteration:
+            return httpx.Response(200, content=other)  # document 0 comes back with another ementa
+        return httpx.Response(200, content=page(ids, **options))
+
+    with httpx.Client(transport=httpx.MockTransport(route)) as http:
+        with pytest.raises(FloraError) as info:
+            collect_window(http, Config(store.directory, request_delay=0), 9, date(2026, 9, 18))
+    assert info.value.code == "janela_alterada"
+
+
+def test_union_short_of_the_total_does_not_conclude(store):
+    answers = [(range(10), {}), ([0, 1], {})] + [(range(10), {}), ([0, 1], {})] * UNION_PASSES
+    with pytest.raises(FloraError) as info:
+        recollect(store, answers)
+    assert info.value.code == "paginacao_incompleta"
+
+
+def test_single_page_is_read_again_and_recorded(store):
+    answers = [([1, 2], {"total": 2}), ([3, 4], {"total": 2})]  # first reading ends in a changed page
+    answers += [([1, 2], {"total": 2}), ([1, 2], {"total": 2})]
+    content, rows = recollect(store, answers)
+    envelope = json.loads(content)
+    assert len(rows) == 2 and envelope["coleta"] == "nova_leitura"
+
+
+def test_block_during_the_new_reading_stops_the_window(store):
+    calls = 0
+
+    def route(_req):
+        nonlocal calls
+        calls += 1
+        if calls > 2:
+            return httpx.Response(200, content=b"<html>captcha</html>")
+        return httpx.Response(200, content=page(range(10)) if calls == 1 else page([0, 1]))
+
+    with httpx.Client(transport=httpx.MockTransport(route)) as http:
+        with pytest.raises(FloraError) as info:
+            collect_window(http, Config(store.directory, request_delay=0), 9, date(2026, 9, 18))
+    assert info.value.code == "acesso_bloqueado"
+
+
+def sync_days(store, monkeypatch, failing_code):
+    """sync_tjsc over three days of two chambers, the first chamber failing on the second day."""
+    calls = []
+
+    def fetch(_http, _config, organ, day):
+        calls.append((organ, day))
+        if (organ, day) == (9, date(2026, 9, 2)):
+            raise FloraError(failing_code, "falha da janela")
+        envelope = {"fonte": "TJSC", "camara": organ, "data_publicacao": str(day), "total": 0}
+        return json.dumps(envelope).encode(), []
+
+    monkeypatch.setattr("flora_mcp.tjsc.collect_window", fetch)
+    config = Config(store.directory, request_delay=0)
+    result = sync_tjsc(config, store, None, date(2026, 9, 1), date(2026, 9, 3), organs=(9, 10))
+    with connection(store.path) as db:
+        run = db.execute("SELECT status FROM runs WHERE id=?", (result["execucao"],)).fetchone()[0]
+        failed = [r[0] for r in db.execute("SELECT id FROM resources WHERE status='error'")]
+    return result, calls, run, failed
+
+
+@pytest.mark.parametrize("code", ["paginacao_instavel", "paginacao_incompleta", "janela_alterada"])
+def test_unstable_window_does_not_stop_sync(store, monkeypatch, code):
+    result, calls, run, failed = sync_days(store, monkeypatch, code)
+    assert len(calls) == 6 and len(result["eventos"]) == 5
+    assert (result["status"], run) == ("partial", "partial")
+    assert failed == ["tjsc-9-civil:2026-09-02"]
+    assert [(f["codigo"], f["dia"]) for f in result["falhas"]] == [(code, "2026-09-02")]
+
+
+def test_blocked_portal_stops_sync(store, monkeypatch):
+    result, calls, run, failed = sync_days(store, monkeypatch, "acesso_bloqueado")
+    assert len(calls) == 2 and len(result["eventos"]) == 1
+    assert (result["status"], run) == ("error", "error")
+    assert failed == ["tjsc-9-civil:2026-09-02"]
 
 
 def test_zero_is_distinguished_from_unknown_page():
