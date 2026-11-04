@@ -2,7 +2,7 @@
 
 Servidor MCP de jurisprudência sobre um acervo próprio: ementas de acórdãos do STJ e do TJSC e temas e súmulas admitidos, coletados diretamente das fontes oficiais e guardados num banco SQLite local. Quatro ferramentas MCP, todas somente leitura, pesquisam e leem esse acervo. A coleta é um comando administrativo, sem modelo de IA e sem API jurídica paga; o servidor responde sem internet.
 
-- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.5`.
+- Contrato das ferramentas (parâmetros, respostas, erros, cursores): [CONTRATO.md](CONTRATO.md), versão `flora-mcp-3.6`.
 - Decisões de projeto e suas razões: [DECISOES.md](DECISOES.md).
 - Instruções para agentes que mexem no código: [AGENTS.md](AGENTS.md).
 - Recibos de execuções e verificações passadas: [docs/recibos/](docs/recibos/README.md).
@@ -89,7 +89,7 @@ Em outra máquina, troque os caminhos. Um cliente já aberto continua com as fer
 
 | Ferramenta | Uso |
 |---|---|
-| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão). Triagem por padrão (referência, cabeçalho e trecho do termo); resposta vazia com `motivo`. |
+| `pesquisar_jurisprudencia` | Acórdãos por termos, processo, tribunal, órgão, classe, relator, datas e citação (`cita_precedente`, `cita_dispositivo`, `cita_acordao`: quem aplica o Tema 1.076, quem cita o art. 85 do CPC, quem cita este acórdão). Triagem por padrão (referência, cabeçalho, trecho com os termos e lista dos termos presentes); resposta vazia com `motivo`. |
 | `pesquisar_precedentes` | Temas, IRDR, IAC e súmulas admitidos, por espécie, número, órgão, matéria e componente. |
 | `obter_documento` | Ementa, seção da ementa, espelho original, citações extraídas (`citacoes`) ou componente de precedente, em blocos com continuação explícita, fonte e hashes. |
 | `consultar_cobertura` | O que o acervo contém, lotes pendentes, falhas, registros rejeitados e atraso da coleta. |

@@ -11,9 +11,9 @@ from .store import ROWID_INDEX, ReadView, collection_delay
 from .citations import TYPES as CITATION_TYPES
 from .citations import extract as extract_citations
 from .citations import filter_key
-from .text import advanced_query, header, matched_window, sections
+from .text import SNIPPET_TOKENS, advanced_query, header, present_terms, query_terms, sections, snippet_window
 
-CONTRATO = "flora-mcp-3.5"
+CONTRATO = "flora-mcp-3.6"
 ORDERS = ("mais_recentes", "mais_antigos", "relevancia")
 # Triage pages stay under 8 KiB of compact JSON, with room for the publication identity.
 TRIAGE_BUDGET = 7500
@@ -444,34 +444,35 @@ class JudgmentSearch:
         return rows, lambda n: self.continuation(fingerprint, revision, offset + n)
 
     def highlights(self, db, ids):
+        """{id: (highlight, snippet)}: the marks over the whole ementa and the window with most terms."""
         if not self.query or not ids or self.detalhe != "triagem":
             return {}
         marks = ",".join("?" * len(ids))
+        columns = f"highlight(search,1,char(1),char(2)),snippet(search,1,char(1),char(2),'',{SNIPPET_TOKENS})"
         try:
             if self.map is None:
-                return dict(
-                    db.execute(
-                        "SELECT id,highlight(search,1,char(1),char(2)) FROM search "
-                        f"WHERE search MATCH ? AND id IN ({marks})",
-                        (self.query, *ids),
-                    ).fetchall()
-                )
-            # By rowid, the index answers each page item with one lookup instead of a scan of the matches.
-            rowids = [
-                r[0]
-                for r in db.execute(f"SELECT fts_rowid FROM {self.map} WHERE document_id IN ({marks})", ids)
-            ]
-            return dict(
-                db.execute(
-                    f"SELECT m.document_id,highlight(search,1,char(1),char(2)) FROM search JOIN {self.map} m "
+                rows = db.execute(
+                    f"SELECT id,{columns} FROM search WHERE search MATCH ? AND id IN ({marks})",
+                    (self.query, *ids),
+                ).fetchall()
+            else:
+                # By rowid, the index answers each page item with one lookup instead of a scan of the matches.
+                rowids = [
+                    r[0]
+                    for r in db.execute(
+                        f"SELECT fts_rowid FROM {self.map} WHERE document_id IN ({marks})", ids
+                    )
+                ]
+                rows = db.execute(
+                    f"SELECT m.document_id,{columns} FROM search JOIN {self.map} m "
                     f"ON m.fts_rowid=search.rowid WHERE search MATCH ? AND search.rowid IN ({marks})",
                     (self.query, *rowids),
                 ).fetchall()
-            )
         except sqlite3.OperationalError as exc:
             raise database_error(exc) from exc
+        return {r[0]: (r[1], r[2]) for r in rows}
 
-    def item(self, body, original, marked):
+    def item(self, body, original, marks):
         item = {**body, **citation_metadata(body, original)}
         if self.detalhe == "completo":
             return item
@@ -480,8 +481,9 @@ class JudgmentSearch:
         cabecalho, parcial = header(full)
         result.update(sha256_componente=digest(full.encode()), cabecalho=cabecalho, cabecalho_parcial=parcial)
         if self.query:
-            start = len(full) - len(full.lstrip())  # The cabecalho is literal, after leading blanks.
-            result["trecho_correspondente"] = matched_window(full, marked, (start, start + len(cabecalho)))
+            marked, snippet = marks or ("", "")
+            result["trecho_correspondente"] = snippet_window(full, snippet)
+            result["termos_presentes"] = present_terms(query_terms(self.query), marked)
         return result
 
     def reason(self, db, tribunal, orgao, dates):
