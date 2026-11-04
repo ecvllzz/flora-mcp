@@ -1,4 +1,4 @@
-# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.4`)
+# Contrato das ferramentas do Flora-MCP (`flora-mcp-3.5`)
 
 Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatro ferramentas, todas somente leitura (`readOnlyHint: true`), sobre um acervo local parcial coletado de fontes oficiais. Os testes de protocolo (`tests/test_contrato.py`) leem os exemplos marcados abaixo e conferem, pelo cliente MCP real, que as respostas têm exatamente a mesma forma.
 
@@ -11,9 +11,9 @@ Este arquivo é a fonte do contrato das ferramentas MCP. O servidor expõe quatr
 
 ## Regras comuns
 
-- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.4"` e, quando o acervo lido é uma publicação, `publicacao_id`.
-- Parâmetros de vocabulário fechado aparecem no esquema JSON como `enum`; o valor fora da lista é recusado com o erro `parametro_invalido`.
-- Datas no formato `AAAA-MM-DD`. `data_inicio` e `data_fim` são inclusivas.
+- Toda resposta de sucesso traz `status: "ok"`, `contrato: "flora-mcp-3.5"` e, quando o acervo lido é uma publicação, `publicacao_id`.
+- O esquema JSON de cada ferramenta descreve todo parâmetro e traz os vocabulários fechados como `enum` e os limites como `minimum`, `maximum` e `maxLength`. Valor fora do esquema é recusado com `parametro_invalido`, que nomeia o parâmetro e diz o que ele aceita. O que o esquema não expressa tem código próprio: mais de 5 itens em `completo` é `limite_invalido`, e mais de 30 termos é `consulta_invalida`. Valores e limites de parâmetros opcionais também estão no texto da descrição, porque há cliente que não mostra ao modelo o conteúdo do `anyOf`.
+- Datas no formato `AAAA-MM-DD`, declaradas no esquema como `format: date`. `data_inicio` e `data_fim` são inclusivas. Data fora do formato ou inexistente é `data_invalida`.
 - `publicacao_id` fixa a geração lida. Sem ele, lê-se a publicação atual; com cursor, lê-se a publicação do cursor.
 
 ## `pesquisar_jurisprudencia`
@@ -22,12 +22,12 @@ Só acórdãos. Temas e súmulas estão em `pesquisar_precedentes`.
 
 | Parâmetro | Valores | Padrão |
 |---|---|---|
-| `termos` | texto; no modo simples, palavras e frases entre aspas, ligadas por OR quando a ordenação é por relevância e por AND quando é por data (com ampliação para OR quando o AND nada encontra) | `""` |
-| `processo` | número do processo ou registro, com ou sem pontuação | nenhum |
+| `termos` | texto; no modo simples, palavras e frases entre aspas, ligadas por OR quando a ordenação é por relevância e por AND quando é por data (com ampliação para OR quando o AND nada encontra); até 500 caracteres e 30 termos | `""` |
+| `processo` | número do processo ou registro, com ou sem pontuação, em texto ou número JSON | nenhum |
 | `tribunal` | `STJ`, `TJSC` | nenhum |
 | `orgao` | nome exato do órgão, sem distinção de acentos e caixa | nenhum |
-| `classe` | sigla exata da classe | nenhum |
-| `relator` | parte do nome, sem distinção de acentos e caixa | nenhum |
+| `classe` | classe exata, como no campo `classe` do item, sem distinção de acentos e caixa | nenhum |
+| `relator` | parte do nome, até 150 caracteres, sem distinção de acentos e caixa | nenhum |
 | `data_inicio`, `data_fim` | `AAAA-MM-DD` | nenhum |
 | `tipo_data` | `publicacao`, `julgamento` | `publicacao` |
 | `ordenar` | `relevancia`, `mais_recentes`, `mais_antigos` ou nulo | nulo (automático) |
@@ -41,7 +41,7 @@ Só acórdãos. Temas e súmulas estão em `pesquisar_precedentes`.
 | `cita_acordao` | acórdão citado: número CNJ (`5002677-98.2022.8.24.0034`), classe e número do STJ (`AgInt no AREsp 1.779.343/DF`) ou número SAJ do TJSC (`AC 2006.011052-9`) | nenhum |
 
 - `ordenar` nulo é automático: `relevancia` quando há termos, `mais_recentes` quando não há. A ordenação efetiva vem em `ordenacao`. Relevância é correspondência textual (BM25) e não mede pertinência jurídica.
-- `modo_busca=avancado` aceita AND, OR, parênteses, frases e `prefixo*`, sem expansão nem ampliação automática; `consulta_efetiva` mostra a expressão enviada ao índice.
+- `modo_busca=avancado` aceita `E` ou `AND`, `OU` ou `OR`, parênteses, frases e `prefixo*`, sem expansão nem ampliação automática; termos lado a lado se ligam por AND. Os operadores valem em qualquer caixa, e entre aspas a palavra é termo literal (`"ou"`). `NOT` e `NEAR`, em qualquer caixa, e `NÃO` e `NAO`, em maiúsculas, são recusados com `consulta_invalida`: a gramática não os oferece e, como termos, responderiam outra coisa. `consulta_efetiva` mostra a expressão enviada ao índice, com `AND` e `OR`.
 - `detalhe=completo` devolve a ementa integral e todos os metadados de cada resultado (até 5).
 
 ### Citações como filtro
@@ -52,7 +52,7 @@ Os três filtros `cita_*` restringem aos acórdãos cujas citações, extraídas
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -91,7 +91,7 @@ Os três filtros `cita_*` restringem aos acórdãos cujas citações, extraídas
 
 ### Triagem
 
-Cada item de triagem traz `id`, `tribunal`, `orgao`, `classe_descricao`, `processo`, `relator`, `referencia`, `referencia_completa`, `referencia_pendencias`, `hash_conteudo` e `sha256_componente` (SHA-256 da ementa inteira), mais:
+Cada item de triagem traz `id`, `tribunal`, `orgao`, `classe`, `classe_descricao`, `processo`, `relator`, `data_julgamento`, `data_publicacao` (em `AAAA-MM-DD`; nula quando a fonte não dá uma data única), `referencia`, `referencia_completa`, `referencia_pendencias`, `hash_conteudo` e `sha256_componente` (SHA-256 da ementa inteira), mais:
 
 - `cabecalho`: a verbetação, do início da ementa até o primeiro título de seção reconhecido (ver seções, em `obter_documento`) ou o primeiro parágrafo numerado, o que vier antes (`1.`, `I -`, `2)`) ou a primeira linha em branco, porque a verbetação do STJ ocupa várias linhas; quando a ementa abre com um título, a primeira linha. O texto é literal, com as quebras de linha da fonte, e limitado a 120 caracteres, cortado em fronteira de palavra (sai a palavra que o limite partiria; uma palavra só, maior que o limite, é cortada nele). `cabecalho_parcial` é verdadeiro quando o limite cortou a verbetação.
 - `trecho_correspondente`, só quando há termos: `{texto, offset, parcial}`, janela de até 100 caracteres em torno da primeira ocorrência marcada pelo índice. A janela começa na primeira palavra inteira a partir de 25 caracteres antes da ocorrência (nunca depois dela) e termina em fronteira de palavra. Quando a ocorrência está dentro do `cabecalho` entregue, o contexto já está na página e `texto` é só a ocorrência, como o índice a marcou (por exemplo `{"texto": "ALIMENTOS", "offset": 24, "parcial": true}` para a ementa do exemplo abaixo e o termo `alimentos`). `offset` conta caracteres Unicode da ementa original, de modo que `ementa[offset:offset+len(texto)] == texto`. `parcial` é verdadeiro quando a janela não cobre a ementa inteira.
@@ -102,7 +102,7 @@ A página de triagem cabe em 8 KiB de JSON compacto (orçamento de 7.500 bytes a
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -164,7 +164,7 @@ A ampliação troca precisão por cobertura: os primeiros resultados podem conte
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -220,7 +220,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além do O
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -248,7 +248,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além do O
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -276,7 +276,7 @@ Quando `total_encontrado` é zero, a resposta traz `motivo`, factual. Além do O
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 0,
   "resultados": [],
   "detalhe": "triagem",
@@ -304,10 +304,10 @@ Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas
 
 | Parâmetro | Valores | Padrão |
 |---|---|---|
-| `termos` | como em `pesquisar_jurisprudencia` | `""` |
+| `termos` | palavras e frases entre aspas, ligadas por AND em qualquer ordenação, com ampliação para OR quando o AND nada encontra; até 500 caracteres e 30 termos. No modo avançado, como em `pesquisar_jurisprudencia` | `""` |
 | `tribunal` | `STJ`, `STF`, `TJSC` | nenhum |
 | `especie` | `tema_repetitivo`, `irdr`, `iac`, `sumula`, `tema_repercussao_geral`, `sumula_vinculante` | nenhuma |
-| `numero` | número exato do tema, incidente ou súmula | nenhum |
+| `numero` | número do tema, incidente ou súmula: `1076`, `1.076` e `Tema 1.076` são o mesmo, e aceita-se número JSON. Em branco não filtra; texto sem número, ou com mais de um, é recusado com `filtro_invalido` | nenhum |
 | `orgao` | nome exato, sem distinção de acentos e caixa | nenhum |
 | `materia` | `civil`, `processual_civil`, `bancario` | nenhuma |
 | `campo` | `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao`, `todos` | `todos` |
@@ -328,7 +328,7 @@ Na `referencia` de um precedente, a data de publicação sai em dd/mm/aaaa, como
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 1,
   "resultados": [
     {
@@ -376,7 +376,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "total_encontrado": 0,
   "resultados": [],
   "campo_pesquisado": "todos",
@@ -400,14 +400,14 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 | Parâmetro | Valores | Padrão |
 |---|---|---|
 | `id` | `id` de um resultado | obrigatório |
-| `componente` | acórdão: `ementa`, `espelho_original`, `citacoes`, `secao:<nome>`; precedente: `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao` | `ementa` |
+| `componente` | acórdão: `ementa`, `espelho_original`, `citacoes`, `secao:<nome>`; precedente: `enunciado`, `questao_submetida`, `tese_firmada`, `modulacao`, `suspensao` | nulo: o padrão do tipo do documento |
 | `cursor` | `proximo_cursor` do bloco anterior | nenhum |
 | `tamanho_bloco` | 100 a 32000 caracteres | 16000 |
 | `hash_conteudo` | versão esperada; outra versão é recusada | nenhum |
 | `publicacao_id` | como nas pesquisas | atual |
 
 - `espelho_original` são os campos recebidos da fonte, em JSON; não é inteiro teor. As seções disponíveis de um acórdão estão em `metadados.secoes_ementa` (`cabecalho`, `caso_em_exame`, `questao_em_discussao`, `razoes_de_decidir`, `dispositivo_e_tese`, `tese_na_ementa`, `dispositivos_citados`, `jurisprudencia_citada`), no modelo da Recomendação CNJ 154/2024: as duas linhas finais, de dispositivos e de jurisprudência citados, são seções próprias e não entram na tese. Reconhece `HIPÓTESE EM EXAME` como `caso_em_exame` e quebras de linha CRLF ou LF. Cada seção traz `inicio`, `fim` (caracteres Unicode da ementa), `sha256_secao`, `sha256_componente` (da ementa inteira) e `derivador` (`ementa-secoes-2`). Seção não delimitada com segurança, inclusive por título repetido, é recusada, nunca aproximada.
-- Precedente exige componente explícito; componente ausente é recusado com a lista dos disponíveis.
+- Sem `componente`, lê-se o padrão do tipo: `ementa` no acórdão; no precedente, o primeiro disponível na ordem `enunciado`, `tese_firmada`, `questao_submetida`, `modulacao`, `suspensao`. `componente=ementa` num precedente vale como o padrão, porque precedente não tem ementa. O campo `componente` da resposta diz o que foi lido, e o cursor continua esse componente. Componente que o documento não tem é recusado com `componente_indisponivel`, com a lista dos disponíveis.
 - `citacoes` é a lista, em JSON, do que o acórdão cita, extraída das duas linhas finais da ementa CNJ (TJSC) e dos campos `jurisprudenciaCitada`, `referenciasLegislativas`, `tema` e `acordaosSimilares` do espelho (STJ), pelo derivador `citacoes-1`. Cada item traz `tipo` (`precedente`, `acordao`, `dispositivo`, `similar`), `chave` (a identidade do precedente, `TJSC:<20 dígitos>` ou `STJ:<CLASSE>:<número>` para acórdãos, `<DIPLOMA>:<artigo>` para dispositivos; vazia quando o fragmento não foi reconhecido), `texto` (o fragmento literal), `origem` e `resolvido` (o id do acórdão ou precedente da mesma publicação a que a chave aponta, ou nulo). A chave é normalização, não verificação: confira o fragmento antes de citar. O primeiro bloco da ementa traz o resumo em `metadados.citacoes`.
 - `metadados.copias_texto` aparece só no acórdão cuja ementa outros acórdãos repetem: a lista, por `id`, dos que têm a mesma ementa (comparada sem acentos, caixa, espaços e pontuação), cada um com `id`, `processo`, `orgao` e `data_julgamento`. Fica na publicação o primeiro `id` de cada texto; os demais saem da publicação, da busca e das citações resolvidas (derivador `copias-texto-1`), e só o banco de trabalho os guarda. Em geral são outros processos com a mesma ementa, como casos repetitivos e embargos padronizados: o processo de uma cópia não é encontrado por `processo` nem por `cita_acordao`, e se acha pela lista da primeira ocorrência.
 - Concatene `texto` de todos os blocos até `proximo_cursor` nulo; `sha256_texto_completo` confere o resultado.
@@ -417,7 +417,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "DIREITO CIVIL. FAMÍLIA. ALIMENTOS. PRISÃO CIVIL.\nI. CASO EM EXAME\n1. Habeas corpus contra prisão civ",
@@ -470,7 +470,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "id": "STJ:2",
   "componente": "citacoes",
   "texto": "[\n {\n  \"tipo\": \"acordao\",\n  \"chave\": \"STJ:RESP:1234567\",\n  \"texto\": \"<<REsp 1234567>>-SP\",\n  \"origem\": \"espelho_stj:jurisprudenciaCitada\",\n  \"resolvido\": \"STJ:1\"\n }\n]",
@@ -533,7 +533,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
 ```json
 {
   "status": "ok",
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "id": "STJ:1",
   "componente": "ementa",
   "texto": "il por dívida de alimentos com pagamento parcial.\nII. QUESTÃO EM DISCUSSÃO\n2. Saber se o pagamento p",
@@ -596,7 +596,7 @@ A resposta vazia traz `ausencia` e `motivo`, pelas mesmas regras da pesquisa de 
   "precedentes": [{"tribunal": "STJ", "especie": "sumula", "admissao": "admitido", "documentos": 1}],
   "admissao_atual": {"admitido": 1},
   "proximo_cursor": null,
-  "contrato": "flora-mcp-3.4",
+  "contrato": "flora-mcp-3.5",
   "publicacao_id": "r3-s2-84014663fa-4bbb4313ab69"
 }
 ```
@@ -652,7 +652,9 @@ Erro de ferramenta volta com `isError: true`. O conteúdo estruturado é `{statu
 {"status": "erro", "codigo": "documento_nao_encontrado", "mensagem": "Identificador não encontrado na base local."}
 ```
 
-Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `consulta_invalida`, `limite_invalido`, `data_invalida`, `tribunal_invalido`, `processo_invalido`, `campo_indisponivel`, `componente_indisponivel`, `documento_nao_encontrado`, `versao_indisponivel`, `versao_retirada`, `documento_alterado`, `cursor_invalido`, `base_alterada`, `publicacao_expirada`, `publicacao_invalida`, `referencia_excede_orcamento`, `base_indisponivel`, `base_nao_inicializada`.
+Falha inesperada do servidor volta na mesma forma, com `codigo: "erro_interno"`. A mensagem não traz a causa, que fica só no registro do servidor. Toda ferramenta é de leitura, e a chamada que falha não altera a base.
+
+Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `filtro_indisponivel`, `consulta_invalida`, `limite_invalido`, `data_invalida`, `tribunal_invalido`, `processo_invalido`, `campo_indisponivel`, `componente_indisponivel`, `documento_nao_encontrado`, `versao_indisponivel`, `versao_retirada`, `documento_alterado`, `cursor_invalido`, `base_alterada`, `publicacao_expirada`, `publicacao_invalida`, `referencia_excede_orcamento`, `base_indisponivel`, `base_nao_inicializada`, `erro_interno`.
 
 ## Cursor e publicação
 
@@ -676,6 +678,19 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `cons
 - Processo ausente da busca pode ser cópia de texto de outro acórdão: a primeira ocorrência o lista em `metadados.copias_texto`. A ementa é a mesma, mas a `referencia` é a da primeira ocorrência; o processo da cópia se cita pelo que a lista traz, conferido na fonte.
 
 ## Mudanças do contrato
+
+### `flora-mcp-3.5` (04/11/2026)
+
+Bordas do contrato, da revisão de 2026-11 (`RM-D33`). As respostas ganham campos e nenhum some. A busca, a ordem dos resultados e a publicação não mudam: o `publicacao_id` e os derivadores são os mesmos, e não há o que republicar.
+
+- Esquema: toda ferramenta descreve cada parâmetro e declara limites (`limite`, `tamanho_bloco`, `termos`, `relator`), formato de data e o vocabulário de `componente`. Pelo MCP, valor além do limite passa a `parametro_invalido`, antes `limite_invalido`, `filtro_invalido` ou `consulta_invalida` conforme o parâmetro, e `componente` fora da lista também, antes `componente_indisponivel`. Quem chama a fachada Python, como o painel e o CLI, continua com os códigos antigos.
+- `numero` de `pesquisar_precedentes` é normalizado: `1.076` e `Tema 1.076` acham o Tema 1076, e texto que não seja um único número é recusado com `filtro_invalido`, antes página vazia. `numero` e `processo` aceitam número JSON, antes `parametro_invalido`: o cliente que não mostra o tipo do parâmetro opcional manda `1076` como número.
+- `obter_documento`: o padrão de `componente` passa de `ementa` a nulo, que lê o padrão do tipo do documento. Precedente sem `componente`, ou com `ementa`, deixa de falhar com `componente_indisponivel`.
+- `modo_busca=avancado` aceita `E` e `OU`, e os quatro operadores valem em qualquer caixa. Antes, `OU`, `E`, `or` e `and` viravam termos literais ligados por AND, com resultado plausível e errado. Quem quer a palavra usa aspas. `NOT`, `NEAR`, `NÃO` e `NAO` são recusados com `consulta_invalida`, antes termos literais.
+- Erro inesperado volta como `{status, codigo: "erro_interno", mensagem}`, antes só um texto sem código nem conteúdo estruturado. A causa fica no registro do servidor.
+- O item de triagem de acórdão traz `classe`, `data_julgamento` e `data_publicacao`. A página tem menos folga no orçamento de 8 KiB e pode trazer um item a menos; siga `proximo_cursor`, nada é pulado.
+- O servidor anuncia a versão do pacote (`__version__`), 0.6.0; antes anunciava 0.4.0, fixo no código.
+- Cursores de `flora-mcp-3.4` são recusados com `cursor_invalido`; refaça a consulta.
 
 ### `flora-mcp-3.4` (24/10/2026)
 

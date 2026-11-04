@@ -6,6 +6,7 @@ from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import CallToolResult, TextContent, ToolAnnotations
 from pydantic import ValidationError
 
+from . import __version__
 from .api import coverage, document, search, search_precedents
 from .model import FloraError
 from .store import Store
@@ -100,7 +101,7 @@ class FloraServer(MCPServer):
 
 
 def create_server(store: Store) -> MCPServer:
-    server = FloraServer("Flora-MCP", version="0.4.0", instructions=INSTRUCTIONS)
+    server = FloraServer("Flora-MCP", version=__version__, instructions=INSTRUCTIONS)
     annotation = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
     def result(call, *args, **kwargs):
