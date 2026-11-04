@@ -181,14 +181,18 @@ def derive_document_citations(dest):
 
 
 def resolve_judgment_citations(dest):
-    """Acórdão keys to the acórdãos of the generation: one match resolves, several are candidates."""
+    """Acórdão keys to the acórdãos of the generation: one match resolves, several are candidates.
+
+    CROSS JOIN fixes the order: citations outer, documents probed by the process index. Left to the
+    planner, documents went outer and every one of them scanned the citations (hours, not seconds).
+    """
     dest.execute("CREATE TEMP TABLE targets(citation INTEGER NOT NULL,cited TEXT NOT NULL)")
     dest.execute(
-        "INSERT INTO targets SELECT c.rowid,d.id FROM document_citations c JOIN documents d ON "
+        "INSERT INTO targets SELECT c.rowid,d.id FROM document_citations c CROSS JOIN documents d ON "
         "d.tribunal='TJSC' AND d.process=substr(c.chave,6) WHERE c.tipo='acordao' AND c.chave LIKE 'TJSC:%'"
     )
     dest.execute(
-        "INSERT INTO targets SELECT c.rowid,d.id FROM document_citations c JOIN documents d ON "
+        "INSERT INTO targets SELECT c.rowid,d.id FROM document_citations c CROSS JOIN documents d ON "
         "d.tribunal='STJ' AND d.class=substr(c.chave,5,length(c.chave)-5-length(substr(c.chave,"
         "instr(substr(c.chave,5),':')+5))) AND d.process=substr(c.chave,instr(substr(c.chave,5),':')+5) "
         "WHERE c.tipo IN ('acordao','similar') AND c.chave LIKE 'STJ:%'"
