@@ -32,14 +32,21 @@ STJ_NUMBER = re.compile(
 REGISTRATION = re.compile(r"^\d{12}$")
 # The class of the embargos keeps the number of the appeal they attack.
 FAMILY = {"ERESP": "RESP", "EARESP": "ARESP"}
+INCIDENTAL = ("AGINT", "AGRG", "EDCL", "RCD", "PROAFR")
 # Precedents have their own catalogs; here they would come back as "not offered".
 NOT_A_PROCESS = {"TEMA", "SUMULA", "IRDR", "IAC"}
 
 
 def stj_family(class_name: str) -> str:
-    """Class of the process an acórdão belongs to: the last one named (AGINT NO ARESP is ARESP)."""
+    """Class of the process an acórdão belongs to: the last one named (AGINT NO ARESP is ARESP).
+
+    Lists also write the class without a separator (AgIntAREsp, EDclEAREsp): the incidental classes
+    at the start of the word fall too.
+    """
     words = stj_class(class_name).split()
     last = words[-1] if words else ""
+    while (prefix := next((p for p in INCIDENTAL if last.startswith(p) and last != p), None)) is not None:
+        last = last[len(prefix) :]
     return FAMILY.get(last, last)
 
 

@@ -35,6 +35,11 @@ OTHER = "espelhos-de-acordaos-quarta-turma"
         ("AgInt-AREsp-1046016-RJ", "ARESP:1046016"),
         ("EREsp 1.280.825/RJ", "RESP:1280825"),
         ("EAREsp 12", "ARESP:12"),
+        ("AgIntAREsp 2174028", "ARESP:2174028"),
+        ("AgIntEDclREsp-2088069-RS", "RESP:2088069"),
+        ("EDclEAREsp 1065125", "ARESP:1065125"),
+        ("RCD no AREsp 1118950", "ARESP:1118950"),
+        ("RCDAREsp 1118950", "ARESP:1118950"),
         ("RESP:1", "RESP:1"),
         ("AGINT NO ARESP:1779343", "ARESP:1779343"),
         ("REsp 1.234.567/SP, rel. Min. Fulano, j. 01/01/2020", "RESP:1234567"),
@@ -287,6 +292,30 @@ def test_offered_but_defective_is_not_absent(store):
     with connection(store.path) as db:
         rejected = json.loads(db.execute("SELECT rejeitados FROM resources").fetchone()[0])
     assert rejected[0]["id"] == "40"
+
+
+def test_broken_file_of_the_source_leaves_only_its_own_digits_unproven(store):
+    # As the STJ published one monthly file: one mirror and one closing brace too many.
+    content = b'[ {\n "id" : "000", "numeroProcesso" : "700", "siglaClasse" : "REsp"\n}\n} ]'
+    readable = json.dumps([mirror("60", 800)]).encode()
+    source = Source({DATASET: {"20240229.json": content, "20240331.json": readable}})
+    report = collect(store, source, "REsp 700", "REsp 800", "REsp 900")
+    assert report["status"] == "ok"
+    assert report["varredura_completa"] is True
+    assert report["arquivos_ilegiveis"][0]["sha256"] == digest(content)
+    assert [e["chave"] for e in report["talvez_em_arquivo_ilegivel"]] == ["RESP:700"]
+    assert [e["chave"] for e in report["selecionados"]] == ["RESP:800"]
+    assert [e["chave"] for e in report["nao_oferecidos"]] == ["RESP:900"]
+    assert current_ids(store) == {"STJ:60"}
+
+
+def test_class_of_an_older_file_loses_its_line_break(store):
+    source = Source({DATASET: {"20050101.json": json.dumps([mirror("70", 1000, "REsp\n")]).encode()}})
+    report = collect(store, source, "REsp 1000")
+    assert [e["chave"] for e in report["selecionados"]] == ["RESP:1000"]
+    with connection(store.path) as db:
+        body = json.loads(db.execute("SELECT body FROM documents").fetchone()[0])
+    assert (body["classe"], body["processo"]) == ("REsp", "REsp 1000")
 
 
 def test_acordao_of_the_current_collection_stays_where_it_is(store, source):

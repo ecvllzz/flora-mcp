@@ -260,7 +260,7 @@ def publish(store: Store):
         derive_document_citations(dest)
         prune_precedents(dest)
         seal_snapshot(dest)
-    sha = digest(temporary.read_bytes())
+    sha = file_digest(temporary)
     identity = f"r{revision}-s{schema}-{digest(DERIVER.encode())[:10]}-{sha[:12]}"
     target = directory / (identity + ".sqlite")
     install_snapshot(temporary, target, sha)

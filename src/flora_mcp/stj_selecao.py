@@ -240,6 +240,17 @@ def apply_result(store, source, content, result, sha, index, earlier, run, repor
     load_selection(store, source, content, sha, rows, rejected, earlier, run, report)
 
 
+def note_unreadable(entry: dict, content: bytes, exc: FloraError, index: dict, report: dict) -> None:
+    """A JSON file the source publishes broken does not stop the reading: only a number whose digits
+    occur in its bytes stays unproven. Otherwise one defective file would forbid any absence.
+    """
+    report["arquivos_ilegiveis"].append({**entry, "erro": str(exc)})
+    for key, results in index.items():
+        digits = key.split(":")[1].encode()
+        if re.search(rb"(?<!\d)" + digits + rb"(?!\d)", content):
+            results["inconclusivo"].append({"dataset": entry["dataset"], "arquivo": entry["arquivo"]})
+
+
 def scan_file(http, config: Config, store, source, index, earlier, run, report) -> None:
     dataset, _, file = source
     is_zip = file["name"].endswith(".zip")
@@ -247,8 +258,14 @@ def scan_file(http, config: Config, store, source, index, earlier, run, report) 
     content = download(http, file["url"], limit)
     sha = digest(content)
     kept = earlier.get(f"{STJ_SELECAO}:{dataset}/{file['name']}", set())
-    result = read_file(content, file["name"], set(index), kept)
     entry = {"dataset": dataset, "arquivo": file["name"], "sha256": sha, "bytes": len(content)}
+    try:
+        result = read_file(content, file["name"], set(index), kept)
+    except FloraError as exc:
+        if is_zip or exc.code != "formato_invalido":
+            raise
+        note_unreadable(entry, content, exc, index, report)
+        return
     entry.update(registros=result["registros"], achados=len(result["achados"]))
     if result["conflitos"]:
         entry["conflitos"] = result["conflitos"]
@@ -284,17 +301,20 @@ def scan_dataset(http, config, store, dataset, scope, index, earlier, run, repor
 
 def conclude(entries: list[dict], index: dict, report: dict, narrowed: bool) -> None:
     """Selected and absent numbers. Only a complete reading of the source proves an absence."""
-    found, refused, absent = [], [], []
+    found, refused, unproven, absent = [], [], [], []
     for entry in entries:
         results = index[entry["chave"]]
         if results["documentos"]:
-            found.append({**entry, **results})
+            found.append({**entry, "documentos": results["documentos"], "rejeitados": results["rejeitados"]})
         elif results["rejeitados"]:
             refused.append({**entry, "rejeitados": results["rejeitados"]})
+        elif results["inconclusivo"]:
+            unproven.append({**entry, "em_arquivo_ilegivel": results["inconclusivo"]})
         else:
             absent.append({"numero": entry["numero"], "chave": entry["chave"], "origens": entry["origens"]})
     complete = not narrowed and not report["falhas"]
     report.update(selecionados=found, oferecidos_com_defeito=refused, varredura_completa=complete)
+    report["talvez_em_arquivo_ilegivel"] = unproven
     report["nao_oferecidos" if complete else "nao_localizados_no_recorte"] = absent
 
 
@@ -312,7 +332,7 @@ def collect_selection(
     """Read the source and load what the entries point at. The caller holds the collector lock."""
     scope = scope or {}
     narrowed = bool(scope.get("datasets") or scope.get("desde") or scope.get("ate"))
-    index = {entry["chave"]: {"documentos": [], "rejeitados": []} for entry in entries}
+    index = {entry["chave"]: {"documentos": [], "rejeitados": [], "inconclusivo": []} for entry in entries}
     run = store.start_run(RUN_SOURCE)
     report = {
         "execucao": run,
@@ -322,6 +342,7 @@ def collect_selection(
         "numeros": len(entries),
         "arquivos_varridos": [],
         "arquivos_guardados": [],
+        "arquivos_ilegiveis": [],
         "falhas": [],
         "status": "running",
     }
