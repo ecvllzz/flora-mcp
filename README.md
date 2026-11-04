@@ -55,6 +55,17 @@ Outras chaves da seção `[flora]`, todas com padrão: `resource_from`, `max_res
 
 Para experimentar sem risco, aponte `FLORA_MCP_DATA_DIR` para uma cópia do acervo; a variável tem precedência sobre o arquivo.
 
+### Servir uma publicação a partir da Release
+
+Quem só quer consultar não precisa coletar. A [Release](https://github.com/ecvllzz/flora-mcp/releases) traz uma geração publicada num arquivo único, `publicacao.sqlite.gz`, e `scripts/instalar_publicacao.py` monta com ele uma pasta de leitura, sem banco de trabalho, sem originais e sem coletor:
+
+```powershell
+uv run python scripts/instalar_publicacao.py --arquivo publicacao.sqlite.gz --destino <pasta de leitura>
+uv run flora-mcp --data-dir <pasta de leitura> coverage
+```
+
+O script descomprime o arquivo, confere a integridade e, se `--sha256` for dado, o hash do banco descomprimido, lê revisão e schema do próprio arquivo e grava `publicacoes.json` apontando para ele; o `publicacao_id` ganha a marca `instalada` no lugar do hash do derivador, que o arquivo não registra. A pasta serve as cinco ferramentas por `flora-mcp --data-dir <pasta de leitura> serve` e pelo adaptador HTTP. A geração da Release é a do dia em que foi publicada, com os derivadores daquela data: modos que exigem derivador posterior (`cita_*`, `quem_cita`, `o_que_cita`, catálogo de temas) respondem `filtro_indisponivel` ou o estado equivalente, e `consultar_cobertura` diz o que a geração contém. A licença do acervo está em [LICENCA-DADOS.md](LICENCA-DADOS.md). Hospedagem não faz parte do projeto; o guia do adaptador HTTP diz o que uma implantação exigiria.
+
 ## Conectar a um cliente MCP
 
 O transporte é `stdio`: o cliente inicia e encerra o processo `flora-mcp serve`.
