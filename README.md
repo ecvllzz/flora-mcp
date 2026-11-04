@@ -192,7 +192,7 @@ O script só lê a publicação e mede a ferramenta como o agente a chama (hit@8
 
 ```powershell
 scripts\check.ps1            # ou scripts/check.sh
-scripts\install-hooks.ps1    # uma vez por clone: hook pre-commit com o mesmo portão
+scripts\install-hooks.ps1    # uma vez por clone: hooks com o mesmo portão e conferência de traço de caso no envio
 ```
 
 O portão roda `ruff format --check`, `ruff check` (linha de 110 e complexidade 12) e `pytest`. Os testes de protocolo (`tests/test_contrato.py`) conferem pelo cliente MCP real que as respostas têm a forma dos exemplos do contrato.

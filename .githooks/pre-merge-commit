@@ -1,0 +1,3 @@
+#!/bin/sh
+# `git merge` não roda o pre-commit; o commit de merge passa pelas mesmas barreiras.
+exec sh "$(dirname "$0")/pre-commit"

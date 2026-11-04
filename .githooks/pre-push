@@ -1,0 +1,4 @@
+#!/bin/sh
+# Bloqueia o envio de commit com traço de caso: o repositório é público. Instale com scripts/install-hooks.ps1.
+. "$(dirname "$0")/comum.sh"
+exec "$PY_HOOKS" "$CONFERENCIA" --envio "$1"

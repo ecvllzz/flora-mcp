@@ -12,7 +12,7 @@ O acervo em uso fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP` (configu
 
 ## Portão de qualidade
 
-`scripts/check.ps1` (Windows) ou `scripts/check.sh`: `ruff format --check`, `ruff check` (inclui linha de 110 e complexidade 12) e `pytest`. O hook `pre-commit` roda o mesmo portão; instale com `scripts/install-hooks.ps1`. Funções marcadas com `# noqa: C901` são dívida registrada; não acrescente novas sem justificar no commit.
+`scripts/check.ps1` (Windows) ou `scripts/check.sh`: conferência de traço de caso (`scripts/conferir_traco_caso.py`), `ruff format --check`, `ruff check` (inclui linha de 110 e complexidade 12) e `pytest`. Os hooks `pre-commit` e `pre-merge-commit` rodam o mesmo portão, e o `pre-push` confere os commits a enviar. `scripts/install-hooks.ps1` os aponta, no `.git` comum, para os do worktree principal, e assim valem em todo worktree. O repositório é público: nada que identifique caso do gabinete entra nele, nem caminho, nem nome de pasta de caso, nem mensagem de commit. Funções marcadas com `# noqa: C901` são dívida registrada; não acrescente novas sem justificar no commit.
 
 ## Regras
 

@@ -1,3 +1,5 @@
 #!/bin/sh
-# Bloqueia o commit quando o portão de qualidade falha. Instale com scripts/install-hooks.ps1.
+# Bloqueia o commit com traço de caso ou com o portão de qualidade falhando. Instale com scripts/install-hooks.ps1.
+. "$(dirname "$0")/comum.sh"
+"$PY_HOOKS" "$CONFERENCIA" || exit 1
 exec sh "$(git rev-parse --show-toplevel)/scripts/check.sh"
