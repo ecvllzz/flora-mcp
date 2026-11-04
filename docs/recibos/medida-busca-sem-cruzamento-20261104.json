@@ -1,0 +1,968 @@
+{
+ "status": "ok",
+ "medido_em": "2026-11-04T14:15:26.440601+00:00",
+ "o_que": "Item 1 da reforma da busca (M7): consulta ranqueada sem o cruzamento documents JOIN search ON search.id=d.id, lendo o documento pelo rowid do indice via search_map. Plano legado e plano atual comparados sobre a publicacao atual, aberta so com mode=ro&immutable=1.",
+ "publicacao": "r3667-s2-422d7bab33-be04255dc052.sqlite",
+ "amostra": "14 perguntas de avaliacao/conjunto.json em tres formulacoes (assessor, natural, curta), mais 6 formulacoes longas (assessor e natural juntas) e 4 curtas, cada uma por relevancia e por data; tres paginas de 8 por consulta, cursor seguido; latencia de contagem mais pagina mais destaque, conexao nova por consulta como no servidor, mediana de tres execucoes intercaladas com cache quente. A publicacao atual nao tem o indice search_map_rowid: o plano atual usou a copia temporaria de search_map, que custa uma varredura por conexao e entra na medida.",
+ "resultado": {
+  "publicacao": "r3667-s2-422d7bab33-be04255dc052.sqlite",
+  "consultas": 104,
+  "recusadas": 0,
+  "ordem_identica_em_todas": true,
+  "primeira_execucao_fria_ms": {
+   "legado": 4653.844399999798,
+   "atual": 559.0639000001829
+  },
+  "relevancia": {
+   "legado_mediana_ms": 1933.5,
+   "atual_mediana_ms": 881.0,
+   "legado_max_ms": 9407,
+   "atual_max_ms": 3953
+  },
+  "mais_recentes": {
+   "legado_mediana_ms": 403.5,
+   "atual_mediana_ms": 323.5,
+   "legado_max_ms": 11568,
+   "atual_max_ms": 4408
+  }
+ },
+ "consultas": [
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 8825,
+   "ordem_identica": true,
+   "legado_ms": 1162,
+   "atual_ms": 555,
+   "termos": "inventário extinção abandono inércia inventariante"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 18,
+   "ordem_identica": true,
+   "legado_ms": 20,
+   "atual_ms": 127,
+   "termos": "inventário extinção abandono inércia inventariante"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 22057,
+   "ordem_identica": true,
+   "legado_ms": 2512,
+   "atual_ms": 1151,
+   "termos": "o juiz pode extinguir o inventário sem julgar o mérito porque o inventariante fi"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 22057,
+   "ordem_identica": true,
+   "legado_ms": 2700,
+   "atual_ms": 1242,
+   "termos": "o juiz pode extinguir o inventário sem julgar o mérito porque o inventariante fi"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 2093,
+   "ordem_identica": true,
+   "legado_ms": 335,
+   "atual_ms": 262,
+   "termos": "inventário abandono"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 42,
+   "ordem_identica": true,
+   "legado_ms": 31,
+   "atual_ms": 207,
+   "termos": "inventário abandono"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 49956,
+   "ordem_identica": true,
+   "legado_ms": 5528,
+   "atual_ms": 2177,
+   "termos": "conexão ação de alimentos divórcio competência reunião processos"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 49956,
+   "ordem_identica": true,
+   "legado_ms": 5798,
+   "atual_ms": 2312,
+   "termos": "conexão ação de alimentos divórcio competência reunião processos"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 48013,
+   "ordem_identica": true,
+   "legado_ms": 5146,
+   "atual_ms": 2105,
+   "termos": "a ação de alimentos deve ser reunida à ação de divórcio por conexão?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 48013,
+   "ordem_identica": true,
+   "legado_ms": 5159,
+   "atual_ms": 2332,
+   "termos": "a ação de alimentos deve ser reunida à ação de divórcio por conexão?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 3888,
+   "ordem_identica": true,
+   "legado_ms": 510,
+   "atual_ms": 341,
+   "termos": "conexão alimentos divórcio"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 2,
+   "ordem_identica": true,
+   "legado_ms": 6,
+   "atual_ms": 64,
+   "termos": "conexão alimentos divórcio"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 68030,
+   "ordem_identica": true,
+   "legado_ms": 8530,
+   "atual_ms": 3103,
+   "termos": "decisão surpresa artigo 10 CPC contraditório prévio fundamento não debatido"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 79651,
+   "ordem_identica": true,
+   "legado_ms": 9320,
+   "atual_ms": 4125,
+   "termos": "decisão surpresa artigo 10 CPC contraditório prévio fundamento não debatido"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 51275,
+   "ordem_identica": true,
+   "legado_ms": 5854,
+   "atual_ms": 2355,
+   "termos": "o juiz pode decidir com base em fundamento sobre o qual as partes não se manifes"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 76578,
+   "ordem_identica": true,
+   "legado_ms": 8169,
+   "atual_ms": 3729,
+   "termos": "o juiz pode decidir com base em fundamento sobre o qual as partes não se manifes"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 42368,
+   "ordem_identica": true,
+   "legado_ms": 3365,
+   "atual_ms": 1356,
+   "termos": "decisão surpresa"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 858,
+   "ordem_identica": true,
+   "legado_ms": 234,
+   "atual_ms": 210,
+   "termos": "decisão surpresa"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 8032,
+   "ordem_identica": true,
+   "legado_ms": 817,
+   "atual_ms": 419,
+   "termos": "diluição solidária dívida condomínio rateio inadimplência"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 8032,
+   "ordem_identica": true,
+   "legado_ms": 863,
+   "atual_ms": 479,
+   "termos": "diluição solidária dívida condomínio rateio inadimplência"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 15421,
+   "ordem_identica": true,
+   "legado_ms": 1450,
+   "atual_ms": 661,
+   "termos": "é válida a diluição solidária do débito entre os demais condôminos?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 15421,
+   "ordem_identica": true,
+   "legado_ms": 1579,
+   "atual_ms": 756,
+   "termos": "é válida a diluição solidária do débito entre os demais condôminos?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 2053,
+   "ordem_identica": true,
+   "legado_ms": 258,
+   "atual_ms": 202,
+   "termos": "diluição solidária"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 10,
+   "ordem_identica": true,
+   "legado_ms": 8,
+   "atual_ms": 87,
+   "termos": "diluição solidária"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 60231,
+   "ordem_identica": true,
+   "legado_ms": 4722,
+   "atual_ms": 1895,
+   "termos": "ação monitória mensalidades escolares prova escrita contrato de prestação de ser"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 4,
+   "ordem_identica": true,
+   "legado_ms": 24,
+   "atual_ms": 88,
+   "termos": "ação monitória mensalidades escolares prova escrita contrato de prestação de ser"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 47947,
+   "ordem_identica": true,
+   "legado_ms": 3677,
+   "atual_ms": 1497,
+   "termos": "cabe ação monitória para cobrar mensalidades escolares em atraso?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 47947,
+   "ordem_identica": true,
+   "legado_ms": 3888,
+   "atual_ms": 1772,
+   "termos": "cabe ação monitória para cobrar mensalidades escolares em atraso?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 1769,
+   "ordem_identica": true,
+   "legado_ms": 237,
+   "atual_ms": 177,
+   "termos": "monitória mensalidades"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 56,
+   "ordem_identica": true,
+   "legado_ms": 29,
+   "atual_ms": 109,
+   "termos": "monitória mensalidades"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 5207,
+   "ordem_identica": true,
+   "legado_ms": 542,
+   "atual_ms": 318,
+   "termos": "suprimento de consentimento passaporte menor viagem exterior genitor"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 5207,
+   "ordem_identica": true,
+   "legado_ms": 624,
+   "atual_ms": 395,
+   "termos": "suprimento de consentimento passaporte menor viagem exterior genitor"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 8080,
+   "ordem_identica": true,
+   "legado_ms": 837,
+   "atual_ms": 431,
+   "termos": "o juiz pode suprir a autorização de um dos pais para emissão de passaporte do fi"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 8080,
+   "ordem_identica": true,
+   "legado_ms": 908,
+   "atual_ms": 513,
+   "termos": "o juiz pode suprir a autorização de um dos pais para emissão de passaporte do fi"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 424,
+   "ordem_identica": true,
+   "legado_ms": 85,
+   "atual_ms": 121,
+   "termos": "passaporte suprimento"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 6,
+   "ordem_identica": true,
+   "legado_ms": 6,
+   "atual_ms": 66,
+   "termos": "passaporte suprimento"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 54535,
+   "ordem_identica": true,
+   "legado_ms": 3836,
+   "atual_ms": 1683,
+   "termos": "abandono de causa alimentos curador especial intimação pessoal extinção"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 54535,
+   "ordem_identica": true,
+   "legado_ms": 4339,
+   "atual_ms": 2070,
+   "termos": "abandono de causa alimentos curador especial intimação pessoal extinção"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 64214,
+   "ordem_identica": true,
+   "legado_ms": 4831,
+   "atual_ms": 1908,
+   "termos": "pode extinguir por abandono a ação de alimentos sem intimar pessoalmente a parte"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 64214,
+   "ordem_identica": true,
+   "legado_ms": 5256,
+   "atual_ms": 2340,
+   "termos": "pode extinguir por abandono a ação de alimentos sem intimar pessoalmente a parte"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 3704,
+   "ordem_identica": true,
+   "legado_ms": 473,
+   "atual_ms": 335,
+   "termos": "abandono alimentos curador"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 2,
+   "ordem_identica": true,
+   "legado_ms": 5,
+   "atual_ms": 79,
+   "termos": "abandono alimentos curador"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 20841,
+   "ordem_identica": true,
+   "legado_ms": 1931,
+   "atual_ms": 896,
+   "termos": "levantamento de valores de alimentos depositados alteração de guarda genitor gua"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 1,
+   "ordem_identica": true,
+   "legado_ms": 15,
+   "atual_ms": 65,
+   "termos": "levantamento de valores de alimentos depositados alteração de guarda genitor gua"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 5056,
+   "ordem_identica": true,
+   "legado_ms": 509,
+   "atual_ms": 308,
+   "termos": "quem pode levantar os alimentos depositados quando a guarda do filho mudou?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 5056,
+   "ordem_identica": true,
+   "legado_ms": 637,
+   "atual_ms": 355,
+   "termos": "quem pode levantar os alimentos depositados quando a guarda do filho mudou?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 4802,
+   "ordem_identica": true,
+   "legado_ms": 473,
+   "atual_ms": 288,
+   "termos": "levantamento alimentos guarda"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 3,
+   "ordem_identica": true,
+   "legado_ms": 6,
+   "atual_ms": 61,
+   "termos": "levantamento alimentos guarda"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 45502,
+   "ordem_identica": true,
+   "legado_ms": 3557,
+   "atual_ms": 1485,
+   "termos": "liquidação de sentença partilha de bens apuração de valores divórcio"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 14,
+   "ordem_identica": true,
+   "legado_ms": 77,
+   "atual_ms": 155,
+   "termos": "liquidação de sentença partilha de bens apuração de valores divórcio"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 42825,
+   "ordem_identica": true,
+   "legado_ms": 3470,
+   "atual_ms": 1396,
+   "termos": "como se liquida a sentença que determinou a partilha de bens do casal?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 42825,
+   "ordem_identica": true,
+   "legado_ms": 4301,
+   "atual_ms": 1719,
+   "termos": "como se liquida a sentença que determinou a partilha de bens do casal?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 4389,
+   "ordem_identica": true,
+   "legado_ms": 465,
+   "atual_ms": 283,
+   "termos": "liquidação partilha"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 163,
+   "ordem_identica": true,
+   "legado_ms": 48,
+   "atual_ms": 126,
+   "termos": "liquidação partilha"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 81896,
+   "ordem_identica": true,
+   "legado_ms": 6496,
+   "atual_ms": 2848,
+   "termos": "recurso cabível decisão que julga liquidação de sentença agravo de instrumento a"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 2,
+   "ordem_identica": true,
+   "legado_ms": 98,
+   "atual_ms": 180,
+   "termos": "recurso cabível decisão que julga liquidação de sentença agravo de instrumento a"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 80470,
+   "ordem_identica": true,
+   "legado_ms": 6636,
+   "atual_ms": 2870,
+   "termos": "qual o recurso contra a decisão que encerra a liquidação de sentença?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 2,
+   "ordem_identica": true,
+   "legado_ms": 118,
+   "atual_ms": 171,
+   "termos": "qual o recurso contra a decisão que encerra a liquidação de sentença?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 77497,
+   "ordem_identica": true,
+   "legado_ms": 6461,
+   "atual_ms": 2712,
+   "termos": "liquidação recurso cabível"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 386,
+   "ordem_identica": true,
+   "legado_ms": 200,
+   "atual_ms": 228,
+   "termos": "liquidação recurso cabível"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 58296,
+   "ordem_identica": true,
+   "legado_ms": 5352,
+   "atual_ms": 2107,
+   "termos": "multa embargos de declaração protelatórios artigo 1026 CPC"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 58296,
+   "ordem_identica": true,
+   "legado_ms": 5971,
+   "atual_ms": 2737,
+   "termos": "multa embargos de declaração protelatórios artigo 1026 CPC"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 34467,
+   "ordem_identica": true,
+   "legado_ms": 3584,
+   "atual_ms": 1510,
+   "termos": "quando se aplica multa por embargos de declaração protelatórios?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 78,
+   "ordem_identica": true,
+   "legado_ms": 174,
+   "atual_ms": 229,
+   "termos": "quando se aplica multa por embargos de declaração protelatórios?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 28135,
+   "ordem_identica": true,
+   "legado_ms": 2722,
+   "atual_ms": 1184,
+   "termos": "embargos protelatórios multa"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 922,
+   "ordem_identica": true,
+   "legado_ms": 242,
+   "atual_ms": 230,
+   "termos": "embargos protelatórios multa"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 27074,
+   "ordem_identica": true,
+   "legado_ms": 2647,
+   "atual_ms": 1214,
+   "termos": "crédito educativo correção monetária índice contrato FIES"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 27074,
+   "ordem_identica": true,
+   "legado_ms": 2554,
+   "atual_ms": 1160,
+   "termos": "crédito educativo correção monetária índice contrato FIES"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 12394,
+   "ordem_identica": true,
+   "legado_ms": 1270,
+   "atual_ms": 609,
+   "termos": "qual índice corrige os contratos de crédito educativo?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 12394,
+   "ordem_identica": true,
+   "legado_ms": 1324,
+   "atual_ms": 655,
+   "termos": "qual índice corrige os contratos de crédito educativo?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 8112,
+   "ordem_identica": true,
+   "legado_ms": 1087,
+   "atual_ms": 589,
+   "termos": "crédito educativo"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 7,
+   "ordem_identica": true,
+   "legado_ms": 8,
+   "atual_ms": 86,
+   "termos": "crédito educativo"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 16915,
+   "ordem_identica": true,
+   "legado_ms": 1649,
+   "atual_ms": 686,
+   "termos": "corretagem atraso na entrega da obra responsabilidade corretora imobiliária"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 4,
+   "ordem_identica": true,
+   "legado_ms": 20,
+   "atual_ms": 81,
+   "termos": "corretagem atraso na entrega da obra responsabilidade corretora imobiliária"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 14526,
+   "ordem_identica": true,
+   "legado_ms": 1682,
+   "atual_ms": 866,
+   "termos": "a corretora responde pelo atraso na entrega do imóvel na planta?"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 14526,
+   "ordem_identica": true,
+   "legado_ms": 2060,
+   "atual_ms": 1019,
+   "termos": "a corretora responde pelo atraso na entrega do imóvel na planta?"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 3448,
+   "ordem_identica": true,
+   "legado_ms": 545,
+   "atual_ms": 348,
+   "termos": "corretagem atraso obra"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 26,
+   "ordem_identica": true,
+   "legado_ms": 19,
+   "atual_ms": 136,
+   "termos": "corretagem atraso obra"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "relevancia",
+   "total": 17894,
+   "ordem_identica": true,
+   "legado_ms": 2590,
+   "atual_ms": 1164,
+   "termos": "preparo deserção recolhimento custas recursais complementação"
+  },
+  {
+   "formulacao": "assessor",
+   "ordenar": "mais_recentes",
+   "total": 4,
+   "ordem_identica": true,
+   "legado_ms": 19,
+   "atual_ms": 104,
+   "termos": "preparo deserção recolhimento custas recursais complementação"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "relevancia",
+   "total": 78273,
+   "ordem_identica": true,
+   "legado_ms": 7457,
+   "atual_ms": 2989,
+   "termos": "o recurso é deserto se o preparo foi recolhido de forma insuficiente sem oportun"
+  },
+  {
+   "formulacao": "natural",
+   "ordenar": "mais_recentes",
+   "total": 78273,
+   "ordem_identica": true,
+   "legado_ms": 5792,
+   "atual_ms": 2679,
+   "termos": "o recurso é deserto se o preparo foi recolhido de forma insuficiente sem oportun"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "relevancia",
+   "total": 1743,
+   "ordem_identica": true,
+   "legado_ms": 191,
+   "atual_ms": 162,
+   "termos": "preparo deserção"
+  },
+  {
+   "formulacao": "curta",
+   "ordenar": "mais_recentes",
+   "total": 830,
+   "ordem_identica": true,
+   "legado_ms": 166,
+   "atual_ms": 162,
+   "termos": "preparo deserção"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "relevancia",
+   "total": 25391,
+   "ordem_identica": true,
+   "legado_ms": 1922,
+   "atual_ms": 803,
+   "termos": "inventário extinção abandono inércia inventariante o juiz pode extinguir o inven"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "mais_recentes",
+   "total": 25391,
+   "ordem_identica": true,
+   "legado_ms": 1940,
+   "atual_ms": 973,
+   "termos": "inventário extinção abandono inércia inventariante o juiz pode extinguir o inven"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "relevancia",
+   "total": 49957,
+   "ordem_identica": true,
+   "legado_ms": 4348,
+   "atual_ms": 1814,
+   "termos": "conexão ação de alimentos divórcio competência reunião processos a ação de alime"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "mais_recentes",
+   "total": 49957,
+   "ordem_identica": true,
+   "legado_ms": 4503,
+   "atual_ms": 2005,
+   "termos": "conexão ação de alimentos divórcio competência reunião processos a ação de alime"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "relevancia",
+   "total": 72418,
+   "ordem_identica": true,
+   "legado_ms": 6144,
+   "atual_ms": 2580,
+   "termos": "decisão surpresa artigo 10 CPC contraditório prévio fundamento não debatido o ju"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "mais_recentes",
+   "total": 80227,
+   "ordem_identica": true,
+   "legado_ms": 8402,
+   "atual_ms": 3804,
+   "termos": "decisão surpresa artigo 10 CPC contraditório prévio fundamento não debatido o ju"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "relevancia",
+   "total": 19101,
+   "ordem_identica": true,
+   "legado_ms": 1936,
+   "atual_ms": 847,
+   "termos": "diluição solidária dívida condomínio rateio inadimplência é válida a diluição so"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "mais_recentes",
+   "total": 19101,
+   "ordem_identica": true,
+   "legado_ms": 3109,
+   "atual_ms": 1304,
+   "termos": "diluição solidária dívida condomínio rateio inadimplência é válida a diluição so"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "relevancia",
+   "total": 60455,
+   "ordem_identica": true,
+   "legado_ms": 9407,
+   "atual_ms": 3953,
+   "termos": "ação monitória mensalidades escolares prova escrita contrato de prestação de ser"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "mais_recentes",
+   "total": 60455,
+   "ordem_identica": true,
+   "legado_ms": 11568,
+   "atual_ms": 4408,
+   "termos": "ação monitória mensalidades escolares prova escrita contrato de prestação de ser"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "relevancia",
+   "total": 12033,
+   "ordem_identica": true,
+   "legado_ms": 2172,
+   "atual_ms": 933,
+   "termos": "suprimento de consentimento passaporte menor viagem exterior genitor o juiz pode"
+  },
+  {
+   "formulacao": "longa",
+   "ordenar": "mais_recentes",
+   "total": 12033,
+   "ordem_identica": true,
+   "legado_ms": 1848,
+   "atual_ms": 916,
+   "termos": "suprimento de consentimento passaporte menor viagem exterior genitor o juiz pode"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "relevancia",
+   "total": 1826,
+   "ordem_identica": true,
+   "legado_ms": 317,
+   "atual_ms": 262,
+   "termos": "guarda compartilhada"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "mais_recentes",
+   "total": 281,
+   "ordem_identica": true,
+   "legado_ms": 101,
+   "atual_ms": 179,
+   "termos": "guarda compartilhada"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "relevancia",
+   "total": 2856,
+   "ordem_identica": true,
+   "legado_ms": 325,
+   "atual_ms": 224,
+   "termos": "alimentos gravídicos"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "mais_recentes",
+   "total": 28,
+   "ordem_identica": true,
+   "legado_ms": 19,
+   "atual_ms": 160,
+   "termos": "alimentos gravídicos"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "relevancia",
+   "total": 2833,
+   "ordem_identica": true,
+   "legado_ms": 530,
+   "atual_ms": 309,
+   "termos": "inventário partilha"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "mais_recentes",
+   "total": 541,
+   "ordem_identica": true,
+   "legado_ms": 236,
+   "atual_ms": 292,
+   "termos": "inventário partilha"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "relevancia",
+   "total": 1719,
+   "ordem_identica": true,
+   "legado_ms": 478,
+   "atual_ms": 303,
+   "termos": "usucapião"
+  },
+  {
+   "formulacao": "data",
+   "ordenar": "mais_recentes",
+   "total": 1719,
+   "ordem_identica": true,
+   "legado_ms": 565,
+   "atual_ms": 438,
+   "termos": "usucapião"
+  }
+ ],
+ "limite": "Mede o SQL no comando do banco, nao a ferramenta inteira; a maquina estava em uso por outras sessoes. Ordem identica inclui o desempate por data e id dentro do mesmo escore BM25."
+}
