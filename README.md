@@ -188,6 +188,8 @@ uv run python scripts/avaliar.py --data-dir <acervo> [--publicacao ID] [--saida 
 
 O script só lê a publicação e mede a ferramenta como o agente a chama (hit@8, recall@8, MRR e respostas vazias) e, em paralelo, compiladores candidatos de consulta sobre o mesmo índice. O resultado vai para `avaliacao/resultados/<publicacao>.json`. `avaliacao/candidatas_indice.py` mede candidatas que exigiriam reindexar, sobre índices temporários, sem tocar no acervo.
 
+Desde 04/11/2026, a régua é a de `avaliacao/METODO.md`: 80 perguntas rotuladas, 30 delas só do STJ, medidas no modo simples e no avançado, com filtro de tribunal e de câmara; 300 perguntas de citação removida, cujo gabarito dispensa juízo; e perguntas longas reescritas sem fato de caso.
+
 ## Verificação
 
 ```powershell

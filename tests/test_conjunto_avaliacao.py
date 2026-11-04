@@ -1,6 +1,7 @@
 """O conjunto de avaliação fica no repositório público: sem traço de caso e com o tamanho declarado."""
 
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -48,6 +49,14 @@ def test_pergunta_sem_campo_de_caso(conjunto):
 def test_consultas_avancadas_compilam(conjunto):
     for pergunta in conjunto["perguntas"]:
         assert advanced_query(pergunta["avancada"]), pergunta["id"]
+
+
+def test_perguntas_longas_sem_fato_de_caso():
+    longas = json.loads((AVALIACAO / "perguntas-longas.json").read_text(encoding="utf-8"))
+    assert set(longas["tipos"]) == {"recusada", "longa", "falha"}
+    for pergunta in longas["perguntas"]:
+        assert set(pergunta) == {"id", "tipo", "texto", "termos", "caracteres", "acima_dos_limites"}
+        assert not re.search(r"R\$ ?[0-9]|[0-9]{7}-[0-9]{2}", pergunta["texto"]), pergunta["id"]
 
 
 @pytest.mark.parametrize(
