@@ -239,3 +239,58 @@ def test_parallel_fetch_keeps_plan_order_and_records_the_failing_window(setup, t
     with connection(store.path) as db:
         failed = db.execute("SELECT id,status FROM resources WHERE status='error'").fetchall()
     assert [tuple(r) for r in failed] == [("tjsc-10-civil:2026-09-23", "error")]
+
+
+@pytest.mark.parametrize("workers", [1, 3])
+def test_unstable_window_does_not_stop_the_resume(setup, tmp_path, workers):
+    config, store = setup
+    first, last = date(2026, 9, 14), date(2026, 9, 15)
+
+    def unstable(http, cfg, organ, day):
+        if day == first and organ == resume.name(9):
+            raise FloraError("paginacao_instavel", "instavel")
+        return empty(http, cfg, organ, day)
+
+    path = tmp_path / "run.json"
+    result = resume.execute(
+        config, store, first, last, path, tmp_path / "bk", fetch=unstable, workers=workers
+    )
+    assert result["status"] == "partial" and len(result["eventos"]) == 3
+    assert [(f["dia"], f["camara"], f["codigo"]) for f in result["falhas"]] == [
+        ("2026-09-14", 9, "paginacao_instavel")
+    ]
+    assert json.loads(path.read_text(encoding="utf-8"))["falhas"] == result["falhas"]
+    assert "em_andamento" not in result
+    with connection(store.path) as db:
+        run = db.execute("SELECT status FROM runs").fetchone()[0]
+        failed = [r[0] for r in db.execute("SELECT id FROM resources WHERE status='error'")]
+    assert run == "partial" and failed == ["tjsc-9-civil:2026-09-14"]
+
+    # The failed window stays pending, and the next run only goes after it.
+    work = resume.plan(store, first, last)
+    assert [(e["dia"], e["camara"], e["estado_anterior"]) for e in work["pendentes"]] == [
+        ("2026-09-14", 9, "error")
+    ]
+    again = resume.execute(config, store, first, last, tmp_path / "again.json", tmp_path / "bk", fetch=empty)
+    assert again["status"] == "ok" and again["falhas"] == []
+
+
+def test_blocked_portal_stops_the_resume(setup, tmp_path):
+    config, store = setup
+    first, last = date(2026, 9, 14), date(2026, 9, 15)
+    called = []
+
+    def blocked(http, cfg, organ, day):
+        called.append((organ, day))
+        if len(called) == 2:
+            raise FloraError("acesso_bloqueado", "bloqueado")
+        return empty(http, cfg, organ, day)
+
+    path = tmp_path / "run.json"
+    with pytest.raises(FloraError, match="bloqueado") as info:
+        resume.execute(config, store, first, last, path, tmp_path / "bk", fetch=blocked)
+    assert info.value.code == "acesso_bloqueado" and len(called) == 2
+    report = json.loads(path.read_text(encoding="utf-8"))
+    assert (report["status"], report["codigo"], report["falhas"]) == ("error", "acesso_bloqueado", [])
+    with connection(store.path) as db:
+        assert db.execute("SELECT status FROM runs").fetchone()[0] == "error"
