@@ -10,6 +10,7 @@ from pathlib import Path, PureWindowsPath
 from .model import FloraError, canonical, digest, folded, now
 from .citation import citation_metadata
 from .precedents import available
+from .catalogo import CATALOG_DERIVER, derive_theme_catalog
 from .citations import CITATIONS_DERIVER, extract
 from .text import SECTIONS_DERIVER
 from .store import ReadView, Store, connection, ensure_search_map, replace_search_row
@@ -17,7 +18,7 @@ from .store import ReadView, Store, connection, ensure_search_map, replace_searc
 COPIES_DERIVER = "copias-texto-1"
 # Derivations computed when a generation is read also name the generation, so changing one of them
 # changes publicacao_id at the next publication.
-DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER};{COPIES_DERIVER}"
+DERIVER = f"flora-read-2.3;{SECTIONS_DERIVER};{CITATIONS_DERIVER};{COPIES_DERIVER};{CATALOG_DERIVER}"
 MANIFEST = "publicacoes.json"
 
 
@@ -291,6 +292,7 @@ def publish(store: Store):
         ensure_search_map(dest)  # The index on the FTS rowid, for a work database that predates it.
         derive_document_details(dest)
         derive_document_citations(dest)
+        catalog = derive_theme_catalog(store, dest)
         prune_precedents(dest)
         seal_snapshot(dest)
     sha = digest(temporary.read_bytes())
@@ -324,6 +326,7 @@ def publish(store: Store):
         "sha256": sha,
         "revisao_base": revision,
         "copias_texto": copies,
+        "catalogo_temas": catalog,
         "limpeza_adiada_arquivo_aberto": cleanup,
     }
 

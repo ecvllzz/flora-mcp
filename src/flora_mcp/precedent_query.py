@@ -4,6 +4,7 @@ import json
 import sqlite3
 
 from .ausencia import empty_reason
+from .catalogo import catalog_entries, catalog_lookup
 from .model import FloraError, canonical, digest, folded
 from .precedents import COMPONENTS, DEFAULT_COMPONENTS, MATTERS, SPECIES, available, normalized_number
 from .query import (
@@ -29,29 +30,34 @@ MARK = chr(1)  # highlight() opening mark
 WINDOW, LEAD = 240, 60
 
 
-def metadata(body, sha):
-    return {
-        k: body.get(k)
-        for k in (
-            "id",
-            "tribunal",
-            "especie",
-            "numero",
-            "orgao",
-            "materia",
-            "data_publicacao",
-            "referencia",
-            "referencia_completa",
-            "referencia_pendencias",
-            "situacao",
-            "admissao",
-            "tipo_publicacao",
-        )
-    } | {
-        "hash_conteudo": sha,
-        "componentes_disponiveis": list(body["componentes"]),
-        "fontes": [{k: s.get(k) for k in ("url", "sha256", "coletado_em")} for s in body["fontes"]],
-    }
+def metadata(body, sha, catalog=None):
+    """Metadata of a precedent; situacao_fonte only when the official catalog has the id."""
+    return (
+        {
+            k: body.get(k)
+            for k in (
+                "id",
+                "tribunal",
+                "especie",
+                "numero",
+                "orgao",
+                "materia",
+                "data_publicacao",
+                "referencia",
+                "referencia_completa",
+                "referencia_pendencias",
+                "situacao",
+                "admissao",
+                "tipo_publicacao",
+            )
+        }
+        | {
+            "hash_conteudo": sha,
+            "componentes_disponiveis": list(body["componentes"]),
+            "fontes": [{k: s.get(k) for k in ("url", "sha256", "coletado_em")} for s in body["fontes"]],
+        }
+        | ({"situacao_fonte": catalog["situacao_fonte"]} if catalog else {})
+    )
 
 
 class PrecedentSearch:
@@ -171,9 +177,9 @@ class PrecedentSearch:
             raise database_error(exc) from exc
         return rows, fingerprint
 
-    def item(self, row):
+    def item(self, row, catalog=None):
         body = json.loads(row["body"])
-        item = metadata(body, row["hash"])
+        item = metadata(body, row["hash"], catalog)
         if self.detalhe == "completo":
             item["componentes"] = body["componentes"]
             item["julgados_relacionados"] = body.get("julgados_relacionados", [])
@@ -271,6 +277,8 @@ def search(
         total = plan.total(db)
         rows, fingerprint = plan.page(db, cursor, revision, total)
         reason = plan.reason(db, (data_inicio, data_fim)) if total == 0 else {}
+        catalog = catalog_entries(db, [json.loads(r["body"])["id"] for r in rows])
+        source_status = catalog_lookup(db, tribunal, especie, plan.params) if total == 0 and numero else []
 
     def following(n):
         return encode_cursor(store, {"consulta": fingerprint, "revisao": revision, "offset": plan.offset + n})
@@ -279,7 +287,7 @@ def search(
         "status": "ok",
         "contrato": CONTRATO,
         "total_encontrado": total,
-        "resultados": [plan.item(row) for row in rows],
+        "resultados": [plan.item(row, catalog.get(json.loads(row["body"])["id"])) for row in rows],
         "campo_pesquisado": campo,
         "modo_busca": modo_busca,
         "consulta_efetiva": plan.scoped(plan.query),
@@ -290,6 +298,7 @@ def search(
         "proximo_cursor": following(len(rows)) if plan.offset + len(rows) < total else None,
         "cobertura": {"integral": False, "aviso": "Busca limitada aos precedentes admitidos no acervo."},
         **reason,
+        **({"situacao_na_fonte": source_status} if source_status else {}),
     }
     if detalhe == "triagem":
         fit_triage(result, following)
@@ -298,19 +307,32 @@ def search(
     return result
 
 
+def not_served(db, id, message):
+    """The refusal of a precedent that is not served: with the official situation when the catalog has it."""
+    entry = catalog_entries(db, [id]).get(id)
+    if entry:
+        raise FloraError(
+            "precedente_nao_servido",
+            f"{id} consta na fonte oficial como '{entry['situacao_fonte']}' (temas.csv coletado em "
+            f"{entry['coletado_em'][:10]}); não é servido e a tese não é fornecida.",
+        )
+    raise FloraError("documento_nao_encontrado", message)
+
+
 def document(store, id, componente=None, cursor=None, tamanho_bloco=16000, hash_conteudo=None):
-    if id in store.withdrawn:
-        raise FloraError("documento_nao_encontrado", "Precedente retirado do uso ativo.")
     if not 100 <= tamanho_bloco <= 32000:
         raise FloraError("limite_invalido", "Blocos devem ter entre 100 e 32000 caracteres.")
     with store.read() as db:
+        if id in store.withdrawn:
+            not_served(db, id, "Precedente retirado do uso ativo.")
         row = (
             db.execute("SELECT * FROM precedents WHERE id=? AND admission='admitido'", (id,)).fetchone()
             if available(db)
             else None
         )
-    if not row:
-        raise FloraError("documento_nao_encontrado", "Precedente ausente ou não admitido para uso.")
+        if not row:
+            not_served(db, id, "Precedente ausente ou não admitido para uso.")
+        catalog = catalog_entries(db, [id]).get(id)
     if id + ":" + row["hash"] in store.retired_versions:
         raise FloraError("versao_retirada", "Versão retirada do uso ativo.")
     if hash_conteudo and hash_conteudo != row["hash"]:
@@ -351,7 +373,7 @@ def document(store, id, componente=None, cursor=None, tamanho_bloco=16000, hash_
         result.update(
             evidencia_componente=body["evidencias"].get("componente:" + componente),
             evidencia_situacao=body["evidencias"].get("situacao"),
-            metadados=metadata(body, row["hash"]),
+            metadados=metadata(body, row["hash"], catalog),
             julgados_relacionados=body.get("julgados_relacionados", []),
         )
     return result

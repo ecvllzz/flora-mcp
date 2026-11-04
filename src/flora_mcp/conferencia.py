@@ -29,6 +29,7 @@ from .citations import (
     split_court,
     stj_class,
 )
+from .catalogo import catalog_entries, has_catalog
 from .citation import citation_metadata
 from .model import FloraError, folded
 from .precedents import LABELS, available
@@ -197,17 +198,6 @@ def check_judgment(db, tipo: str, key: str, reference: str) -> dict:
     return located(reference, records)
 
 
-def has_catalog(db) -> bool:
-    return bool(
-        db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='theme_catalog'").fetchone()
-    )
-
-
-def catalog_entry(db, key: str) -> dict | None:
-    row = db.execute("SELECT * FROM theme_catalog WHERE id=?", (key,)).fetchone()
-    return dict(row) if row else None
-
-
 def check_precedent(db, view, key: str) -> dict:
     row = (
         db.execute("SELECT body,admission,hash FROM precedents WHERE id=?", (key,)).fetchone()
@@ -220,7 +210,7 @@ def check_precedent(db, view, key: str) -> dict:
         and key not in view.withdrawn
         and key + ":" + row["hash"] not in view.retired_versions
     )
-    catalog = catalog_entry(db, key) if has_catalog(db) else None
+    catalog = catalog_entries(db, [key]).get(key)
     if served:
         body = json.loads(row["body"])
         item = {
