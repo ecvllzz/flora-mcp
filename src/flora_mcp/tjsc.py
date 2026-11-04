@@ -22,7 +22,7 @@ from .config import Config
 from .model import FloraError, now, number
 from .sources import TJSC_SEARCH, download, tjsc_field_label, validate_tjsc_page
 from .store import Store
-from .tjsc_orgaos import PADRAO, chamber, dataset, identity, name, window_name
+from .tjsc_orgaos import chamber, dataset, identity, name, window_name
 
 
 class Pacer:
@@ -545,7 +545,9 @@ def catalog_process(store: Store, key: str) -> str:
     return PROCESSO_DATASET + ":" + key
 
 
-def sync_tjsc(config: Config, store: Store, http, start: date, end: date, organs=PADRAO) -> dict:
+def sync_tjsc(config: Config, store: Store, http, start: date, end: date, organs=None) -> dict:
+    """organs: portal names or chamber numbers; None collects the organs of the configuration."""
+    organs = config.tjsc_orgaos if organs is None else organs
     if start > end or (end - start).days > 30:
         raise FloraError("intervalo_invalido", "Escolha de 1 a 31 dias por execução TJSC.")
     run = store.start_run("TJSC")

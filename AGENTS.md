@@ -18,6 +18,7 @@ O acervo em uso fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP` (configu
 
 - Recibos em `docs/recibos/` são evidência e não se reescrevem; o `.gitattributes` os guarda byte a byte. Execução nova sobre o acervo grava recibo novo ali, com data no nome. Em `docs/` ficam só os guias vigentes.
 - O contrato das ferramentas MCP está em `CONTRATO.md`. Mudança de contrato só em fase que a declare.
+- Regra que só vale para este gabinete não entra no código: vai para `flora.local.toml` (chaves no `README.md`), com padrão neutro. O inventário do que foi para configuração e do que fica no código, com a razão, está em `docs/regras-do-gabinete.md`.
 - Decisão que muda o que o Flora-MCP é ou como se opera entra no fim do `DECISOES.md`, com data e uma linha de razão.
 - Trabalho de reforma em branch `reforma/fN-descricao`, commits pequenos, mensagens em português.
 - Sem travessões (caractere U+2014) em textos, mensagens de commit e documentos.

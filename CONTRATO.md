@@ -401,7 +401,7 @@ Temas repetitivos, IAC e súmulas do STJ; temas de repercussão geral e súmulas
 | `limite` | 1 a 8 em triagem, 1 a 5 em completo | 8 em triagem, 3 em completo |
 | `cursor`, `publicacao_id` | como em `pesquisar_jurisprudencia` | |
 
-`materia` é a matéria atribuída na admissão, pelo ramo da fonte: `civil` (inclui família, sucessões, consumidor e empresarial), `processual_civil` ou `bancario`. Com ramos mistos, vale a primeira presente nessa ordem, de modo que bancário com civil é `civil`; ramo fora da tabela deixa o registro fora do recorte. Súmula bancária é apoio: o agente apresenta antes as de civil e processual civil.
+`materia` é a matéria atribuída na admissão, pelo ramo da fonte: `civil` (inclui família, sucessões, consumidor e empresarial), `processual_civil` ou `bancario`. Com ramos mistos, vale a primeira presente nessa ordem, de modo que bancário com civil é `civil`; ramo fora da tabela deixa o registro fora do recorte. A ordem em que o agente apresenta as matérias não é regra do contrato: a instalação que a quiser a dá em `[flora.orientacoes]` da configuração, que acrescenta texto ao fim da descrição da ferramenta.
 
 O item de triagem traz os metadados do precedente (inclusive `materia`), `componente` (o primeiro componente em que o termo aparece, ou o primeiro disponível), `campos_correspondentes`, `trecho` (até 240 caracteres, da primeira palavra inteira a partir de 60 caracteres antes da ocorrência até uma fronteira de palavra), `offset`, `trecho_parcial` e `sha256_componente`. Em `completo`, vêm `componentes` e `julgados_relacionados`. A cobertura é `{integral: false, aviso}`.
 
@@ -865,6 +865,10 @@ Códigos: `parametro_invalido` (valor fora do esquema), `filtro_invalido`, `filt
 - Processo ausente da busca pode ser cópia de texto de outro acórdão: a primeira ocorrência o lista em `metadados.copias_texto`. A ementa é a mesma, mas a `referencia` é a da primeira ocorrência; o processo da cópia se cita pelo que a lista traz, conferido na fonte.
 
 ## Mudanças do contrato
+
+### Revisão de `flora-mcp-3.6` (04/11/2026, M4)
+
+- Descrições das ferramentas sem regra do gabinete: `pesquisar_jurisprudencia` deixa de enumerar os órgãos do acervo (a cobertura é a de `consultar_cobertura`), e `pesquisar_precedentes` deixa de dizer que súmula bancária é apoio. A instalação acrescenta texto ao fim de qualquer descrição por `[flora.orientacoes]` em `flora.local.toml`. A forma das respostas, a busca, os cursores e o `publicacao_id` não mudam.
 
 ### `flora-mcp-3.6` (04/11/2026)
 

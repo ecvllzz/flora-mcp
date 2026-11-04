@@ -3,7 +3,6 @@ $ErrorActionPreference = 'Stop'
 $panelRoot = Split-Path -Parent $PSScriptRoot
 $panelPython = Join-Path $panelRoot '.venv\Scripts\python.exe'
 $panelUrl = 'http://127.0.0.1:8766/'
-$panelNote = 'C:\Users\Home\Documents\Flora\Flora\Jurisprudência.md'
 
 function Get-PanelStatus {
     try { Invoke-RestMethod -Uri ($panelUrl + 'api/status') -TimeoutSec 2 }
@@ -12,7 +11,7 @@ function Get-PanelStatus {
 
 try {
     if (-not (Test-Path -LiteralPath $panelPython)) { throw 'Ambiente Python do Flora-MCP não encontrado.' }
-    $panelConfig = & $panelPython -c 'import hashlib,json; from flora_mcp.config import load_config; c=load_config(); print(json.dumps(dict(directory=str(c.data_dir),key=hashlib.sha256(str(c.db_path.resolve()).encode()).hexdigest())))'
+    $panelConfig = & $panelPython -c 'import hashlib,json; from flora_mcp.config import load_config; c=load_config(); print(json.dumps(dict(directory=str(c.data_dir),key=hashlib.sha256(str(c.db_path.resolve()).encode()).hexdigest(),note=c.painel_nota)))'
     if ($LASTEXITCODE -ne 0) { throw 'Não foi possível ler a configuração do Flora-MCP.' }
     $panelConfig = $panelConfig | ConvertFrom-Json
     $panelState = Get-PanelStatus
@@ -35,8 +34,13 @@ try {
         throw 'Não foi possível confirmar o painel e o acervo corretos na porta 8766.'
     }
     if (-not $NoOpen) {
-        $panelUri = 'obsidian://open?path=' + [uri]::EscapeDataString($panelNote)
-        Start-Process $panelUri
+        # painel_nota em flora.local.toml abre a nota do Obsidian; sem ela, o painel abre no navegador.
+        if ($panelConfig.note) {
+            $panelUri = 'obsidian://open?path=' + [uri]::EscapeDataString($panelConfig.note)
+            Start-Process $panelUri
+        } else {
+            Start-Process $panelUrl
+        }
     }
     Write-Output $panelUrl
 }
