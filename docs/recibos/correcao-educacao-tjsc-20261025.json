@@ -1,0 +1,1559 @@
+{
+  "inicio": "2026-10-25T15:42:22.652669+00:00",
+  "banco": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP\\acervo.sqlite",
+  "tema": "educacao",
+  "filtro": "educacao-3",
+  "correcao": "leitura do cartão sem o destaque do termo pesquisado (reler)",
+  "consultas": 34,
+  "acordaos": 67,
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "status": "ok",
+  "eventos": [
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 16,
+      "ingeridos": 5,
+      "rejeitados": 11,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 2,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 10,
+      "ingeridos": 4,
+      "rejeitados": 6,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 9,
+      "ingeridos": 3,
+      "rejeitados": 6,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 1,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 120,
+      "ingeridos": 1,
+      "rejeitados": 119,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 3,
+      "ingeridos": 3,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 157,
+      "ingeridos": 14,
+      "rejeitados": 143,
+      "novos": 0,
+      "alterados": 8,
+      "inalterados": 6,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-1a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 77,
+      "ingeridos": 8,
+      "rejeitados": 69,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 4,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 27,
+      "ingeridos": 12,
+      "rejeitados": 15,
+      "novos": 0,
+      "alterados": 11,
+      "inalterados": 1,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 1,
+      "ingeridos": 1,
+      "rejeitados": 0,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 18,
+      "ingeridos": 6,
+      "rejeitados": 12,
+      "novos": 0,
+      "alterados": 4,
+      "inalterados": 2,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-matricula-2022-01-01-2026-10-24",
+      "acordaos": 147,
+      "ingeridos": 8,
+      "rejeitados": 139,
+      "novos": 0,
+      "alterados": 7,
+      "inalterados": 1,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 3,
+      "ingeridos": 2,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 272,
+      "ingeridos": 2,
+      "rejeitados": 270,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 4,
+      "ingeridos": 2,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 183,
+      "ingeridos": 19,
+      "rejeitados": 164,
+      "novos": 0,
+      "alterados": 15,
+      "inalterados": 4,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-2a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 53,
+      "ingeridos": 11,
+      "rejeitados": 42,
+      "novos": 0,
+      "alterados": 7,
+      "inalterados": 4,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 17,
+      "ingeridos": 9,
+      "rejeitados": 8,
+      "novos": 0,
+      "alterados": 9,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 7,
+      "ingeridos": 3,
+      "rejeitados": 4,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 13,
+      "ingeridos": 2,
+      "rejeitados": 11,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 1,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-vaga-escolar-2022-01-01-2026-10-24",
+      "acordaos": 5,
+      "ingeridos": 2,
+      "rejeitados": 3,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 5,
+      "ingeridos": 3,
+      "rejeitados": 2,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 198,
+      "ingeridos": 19,
+      "rejeitados": 179,
+      "novos": 0,
+      "alterados": 16,
+      "inalterados": 3,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-3a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 107,
+      "ingeridos": 32,
+      "rejeitados": 75,
+      "novos": 0,
+      "alterados": 15,
+      "inalterados": 17,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 23,
+      "ingeridos": 7,
+      "rejeitados": 16,
+      "novos": 0,
+      "alterados": 7,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-pre-escola-2022-01-01-2026-10-24",
+      "acordaos": 4,
+      "ingeridos": 3,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-educacao-especial-2022-01-01-2026-10-24",
+      "acordaos": 176,
+      "ingeridos": 1,
+      "rejeitados": 175,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 186,
+      "ingeridos": 15,
+      "rejeitados": 171,
+      "novos": 0,
+      "alterados": 13,
+      "inalterados": 2,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-4a-camara-de-direito-publico:tema-escola-2022-01-01-2026-10-24",
+      "acordaos": 49,
+      "ingeridos": 17,
+      "rejeitados": 32,
+      "novos": 0,
+      "alterados": 11,
+      "inalterados": 6,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-creche-2022-01-01-2026-10-24",
+      "acordaos": 15,
+      "ingeridos": 2,
+      "rejeitados": 13,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 0,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-transporte-escolar-2022-01-01-2026-10-24",
+      "acordaos": 15,
+      "ingeridos": 2,
+      "rejeitados": 13,
+      "novos": 0,
+      "alterados": 1,
+      "inalterados": 1,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-professor-auxiliar-2022-01-01-2026-10-24",
+      "acordaos": 10,
+      "ingeridos": 4,
+      "rejeitados": 6,
+      "novos": 0,
+      "alterados": 2,
+      "inalterados": 2,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-educacao-inclusiva-2022-01-01-2026-10-24",
+      "acordaos": 5,
+      "ingeridos": 4,
+      "rejeitados": 1,
+      "novos": 0,
+      "alterados": 3,
+      "inalterados": 1,
+      "removidos": 0
+    },
+    {
+      "recurso": "tjsc-5a-camara-de-direito-publico:tema-ensino-2022-01-01-2026-10-24",
+      "acordaos": 167,
+      "ingeridos": 10,
+      "rejeitados": 157,
+      "novos": 0,
+      "alterados": 8,
+      "inalterados": 2,
+      "removidos": 0
+    }
+  ],
+  "backup": {
+    "status": "ok",
+    "formato": "flora-backup-2",
+    "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-backups\\20261025-124222-834818-antes-correcao-educacao-tjsc",
+    "revisao": 3588,
+    "originais": 3626,
+    "originais_copiados": 140,
+    "originais_ja_no_deposito": 3486,
+    "bytes_copiados": 1056982555
+  },
+  "execucao": "1bf522c3-cd03-4c1b-aa6a-2b0926589e4c",
+  "documentos": [
+    {
+      "id": "TJSC:321756647729471881077952942224",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "CAÇÃO INFANTIL. VAGA EM CRECHE. DEVER DO"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756651802213584598480456008",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ARÁ DE FUNCIONAMENTO DA ESCOLA. NECESSID"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756651802213584598629297386",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ONIBILIZAÇÃO DE VAGA EM CRECHE. DECISÃO "
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ANÇA HIPOSSUFICIENTE EM CRECHE, DE FORMA"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756655402135818388735209221",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": " À EDUCAÇÃO. REFORMA DE ESCOLA, A FIM DE"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756666202149546700029918847",
+      "copia_de_texto": "TJSC:321756666202149546700029918847",
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "A DE VAGA. EDUCAÇÃO INFANTIL (CRECHE). T"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "AGA. EDUCAÇÃO INFANTIL (CRECHE). TUTELA "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756666202149546709878732621",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "DO DE GARANTIR ACESSO À ESCOLA. PRECEDEN"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756676577860071300947743454",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "AÇÃO DE VAGAS EM CRECHE E PRÉ-ESCOLA PAR"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "nclusive nas creches e na pré-escola par"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756676577860071301198310685",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "nclusive nas creches e na pré-escola par"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756683901784154561659006690",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "AÇÃO DE VAGAS EM CRECHE E PRÉ-ESCOLA PAR"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "nclusive nas creches e na pré-escola par"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756691280901978402643557348",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756708922168708384309072253",
+      "copia_de_texto": "TJSC:321756666202149546700029918847",
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "A DE VAGA. EDUCAÇÃO INFANTIL (CRECHE). T"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "AGA. EDUCAÇÃO INFANTIL (CRECHE). TUTELA "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756716601992396255193914035",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "TRATAÇÃO DE PROFESSOR AUXILIAR. JUÍZO A "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756716601992396255443940897",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "nclusive nas creches e na pré-escola par"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756723802161983026069063925",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756734810454493017301233822",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ORTES DE INSTITUIÇÃO DE ENSINO. EXTINÇÃO"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ORTES DE INSTITUIÇÃO DE ENSINO. EDIFICAÇ"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756734810454493017323008572",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "AÇÃO DE FAZER - VAGA EM CRECHE. ENTE PÚB"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756734810454493017350663760",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "DO VALOR DO TRANSPORTE ESCOLAR.\r\nELOCUÇÃ"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756745823684711188212174172",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "nclusive nas creches e na pré-escola par"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756751293012884668943670847",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": " PROMOVER A EDUCAÇÃO INCLUSIVA. MÉRITO. "
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "políticas públicas de educação, mas sim "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756751293012884668998406574",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756755829230794859221884502",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": " DE FALHAS ESTRUTURAIS NA EBM-ESCOLA BÁS"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756765578275016490269817861",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ORTES DE INSTITUIÇÃO DE ENSINO. SUPOSTA "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756765578275016490331934258",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "do valor do transporte escolar. Elocução"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756766541834474970481038624",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "APELAÇÃO CÍVEL. VAGA EM CRECHE. HONORÁRI"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756772762982026251017550546",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ades na rede privada de ensino, sob pena"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756775402244423031285961810",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "QUADO DE INSTITUIÇÃO DE ENSINO. URGÊNCIA"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756777558833416131593418287",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756783797891918382248881499",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "TENTES NA EDIFICAÇÃO DE CRECHE, COM OFER"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756785002432822012389812087",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "TAM A REDE MUNICIPAL DE ENSINO. PROCEDÊN"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756801566308731434049627288",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "GRAVO DE INSTRUMENTO. EDUCAÇÃO. AÇÃO DE "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756815970138743935576970175",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ietário ser instrutor de auto-escola, nã"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "o ser instrutor de auto-escola, não pode"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756863618091149380651857588",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ONIBILIZAÇÃO DE VAGA EM CRECHE. CRIANÇAS"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ONCESSÃO DAS VAGAS PARA CRECHE, EM CONFO"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756891563305472773519372303",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "IGAÇÃO DE EDIFICAÇÃO DE CRECHE, COM OFER"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756893350192177603750982283",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756903809298856434862952281",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "para o funcionamento da escola.\" (TJSC, "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756931173564114747697018596",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "COLHA DA INSTITUIÇÃO DE ENSINO. AGRAVO D"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756939809979413338570591152",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "DO DE GARANTIR ACESSO À ESCOLA. GARANTIA"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756956418369139910383825476",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "CAÇÃO INFANTIL. VAGA EM CRECHE. PEDIDO N"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756958281271687950498605834",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "nclusive nas creches e na pré-escola par"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756958281271687950574548790",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "IO DE GARANTIR ACESSO À ESCOLA. GARANTIA"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321756960030927182840681312167",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756965087665236971289529864",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321756981568545240373009690100",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": ". EDUCAÇÃO. TRANSPORTE ESCOLAR. COLOCAÇÃ"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321757022615744274397372247806",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "EGURANÇA NO TRANSPORTE ESCOLAR. INTERLOC"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321757035208187585368681997707",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "IDADE EM INSTITUIÇÃO DE ENSINO. RECURSO "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321757035208187585368714981318",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "LARIDADE APRESENTADA NA ESCOLA. PRAZO FI"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321757082372504477113624316464",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321774459084724327505634530386",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ILIDADE E À EDUCAÇÃO INCLUSIVA. INTERVEN"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321775851275676055081534772185",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "m as normas gerais da educação, das atri"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "te firmado pelo Órgão Especial, preserva"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321784049011809093401631919114",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321784720549465955131553713794",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": ". DIREITO À EDUCAÇÃO INCLUSIVA. ALUNO CO"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321785762528458802801717336341",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ITO À EDUCAÇÃO. VAGA EM CRECHE. HONORÁRI"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321785762528458802801815461143",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321785869962191083362451257980",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "damentais à educação inclusiva, à acessi"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ao serviço público de educação, não have"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321786560145137375194410883753",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321787157203799775297021972363",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "PREÇOS PARA TRANSPORTE ESCOLAR, TÉCNICO "
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321787776634937257162161335371",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "TEGRAL. RENOVAÇÃO DE MATRÍCULA. REAVALIA"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321787942751603563659413203399",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "apontadas na unidade de ensino. 6. A int"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321788206658390610397089199681",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321788958917124082557507661351",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321789563335533274942540864358",
+      "copia_de_texto": "TJSC:321789563335533274942540864358",
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ITO À EDUCAÇÃO. VAGA EM CRECHE. HONORÁRI"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321789573419769981790415348042",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "IDADE EM INSTITUIÇÃO DE ENSINO. DEVER IN"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321790944138775434654481815354",
+      "copia_de_texto": "TJSC:321789563335533274942540864358",
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "ITO À EDUCAÇÃO. VAGA EM CRECHE. HONORÁRI"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321790944138775434654487365152",
+      "copia_de_texto": null,
+      "caracteres_alterados": 0,
+      "so_espacos": true,
+      "trechos": []
+    },
+    {
+      "id": "TJSC:321790944138775434654492334035",
+      "copia_de_texto": null,
+      "caracteres_alterados": 2,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "erta de vaga em creche ou pré-escola, co"
+        },
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "e vaga em creche ou pré-escola, conforme"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321791921944244983306645017097",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "NSTRUMENTO. EDUCAÇÃO INCLUSIVA. TEA. PRO"
+        }
+      ]
+    },
+    {
+      "id": "TJSC:321792011178164589015999776653",
+      "copia_de_texto": null,
+      "caracteres_alterados": 1,
+      "so_espacos": true,
+      "trechos": [
+        {
+          "antes": " ",
+          "depois": "",
+          "contexto": "EM UNIDADE MUNICIPAL DE ENSINO. TUTELA D"
+        }
+      ]
+    }
+  ],
+  "grupos_de_copia_iguais": true,
+  "fim": "2026-10-25T15:45:34.485477+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "publicacao": {
+    "status": "ok",
+    "publicacao_id": "r3622-s2-422d7bab33-d1f6a0397baf",
+    "sha256": "d1f6a0397bafbe204a4d5e3e94b8adca5b3698ceee435241bf901f4e7b1587a0",
+    "revisao_base": 3622,
+    "copias_texto": {
+      "grupos": 954,
+      "copias_retiradas": 2007
+    },
+    "limpeza_adiada_arquivo_aberto": []
+  }
+}

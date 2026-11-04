@@ -1,0 +1,25 @@
+{
+  "status": "ok",
+  "conferido_em": "2026-10-24T20:38:40.536119+00:00",
+  "publicacao_id": "r3588-s2-422d7bab33-549608c37443",
+  "conteudo_preservado": {
+    "documentos": 82367,
+    "referencias_estruturalmente_completas": 82329,
+    "sha256_registros_e_referencias": "d63e1fdaca10fface0de2f0f5fc737a2ddf9236bfb0db243ae237ad216817b0b",
+    "grupos": [
+      {
+        "tribunal": "STJ",
+        "documentos": 37277
+      },
+      {
+        "tribunal": "TJSC",
+        "documentos": 45090
+      }
+    ],
+    "integridade": "ok"
+  },
+  "igual_ao_publicado": true,
+  "triagem_bytes": 7259,
+  "cobertura_resumo_caracteres": 16610,
+  "limite": "Igualdade estrutural e literal; nao certifica autoridade juridica. O resumo de cobertura passa de 10 mil caracteres, limite preexistente registrado."
+}

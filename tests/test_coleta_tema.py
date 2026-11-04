@@ -1,5 +1,7 @@
-"""Educação no TJSC por consulta de tema: órgãos de direito público, filtro, coleta e as três fases."""
+"""Temas do TJSC por consulta: órgãos de direito público, filtros de educação e de família, coleta e fases."""
 
+import base64
+import hashlib
 import importlib.util
 import json
 import re
@@ -13,8 +15,15 @@ import pytest
 from flora_mcp.config import Config
 from flora_mcp.model import FloraError
 from flora_mcp.store import connection
-from flora_mcp.tema import educacao
-from flora_mcp.tjsc import catalog_window, collect_pages, collect_search, collect_union, collect_window
+from flora_mcp.tema import TEMAS, educacao, familia
+from flora_mcp.tjsc import (
+    catalog_window,
+    collect_pages,
+    collect_search,
+    collect_union,
+    collect_window,
+    parse_cards,
+)
 from flora_mcp.tjsc_orgaos import PUBLICO, dataset
 
 FIXTURES = Path(__file__).parent / "fixtures" / "tjsc"
@@ -33,10 +42,21 @@ EMPTY = (FIXTURES / "processo-sem-resultado.html").read_bytes()
 CROWDED = PAGE.replace(b'type="hidden" value="2"', b'type="hidden" value="25"')
 
 spec = importlib.util.spec_from_file_location(
-    "coleta_educacao_tjsc", Path(__file__).parents[1] / "scripts/coleta_educacao_tjsc.py"
+    "coleta_tema_tjsc", Path(__file__).parents[1] / "scripts/coleta_tema_tjsc.py"
 )
 script = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(script)
+EDUCACAO = TEMAS["educacao"]
+
+
+def test_the_highlight_of_the_searched_term_leaves_the_ementa_as_the_portal_wrote_it():
+    """The portal marks the term in a theme search; read as text, it once left "REPETITIVAS ." behind."""
+    term = b"REPETITIVAS"
+    marked = PAGE.replace(term, b'<B><FONT STYLE="background-color:#FFFF00">' + term + b"</FONT></B>")
+    assert marked != PAGE
+    plain, highlighted = (parse_cards(page, GRUPO)[1] for page in (PAGE, marked))
+    assert [body["ementa"] for body, _ in highlighted] == [body["ementa"] for body, _ in plain]
+    assert "DEMANDAS REPETITIVAS. RISCO" in highlighted[0][0]["ementa"]
 
 
 def test_public_law_enters_only_by_theme_search(store):
@@ -86,6 +106,101 @@ def test_education_enters_by_a_mark_of_the_pupils_right(ementa, motivo):
 )
 def test_other_matters_stay_out(ementa):
     assert educacao(ementa) is None
+
+
+@pytest.mark.parametrize(
+    "ementa,motivo",
+    [
+        (
+            "APELAÇÃO CÍVEL. AÇÃO REVISIONAL DE ALIMENTOS. BINÔMIO NECESSIDADE-POSSIBILIDADE.\n1. Mantido.",
+            "verbetacao: alimentos",
+        ),
+        ("AGRAVO DE INSTRUMENTO. EXECUÇÃO DE ALIMENTOS. PRISÃO CIVIL.\n1. Cabe.", "verbetacao: alimentos"),
+        ("APELAÇÃO. GUARDA COMPARTILHADA. MELHOR INTERESSE DA CRIANÇA.\n1. Fixada.", "verbetacao: guarda"),
+        ("AGRAVO. REGULAMENTAÇÃO DE VISITAS. AVÓS.\n1. Ampliadas.", "verbetacao: convivência"),
+        (
+            "APELAÇÃO. RECONHECIMENTO E DISSOLUÇÃO DE UNIÃO ESTÁVEL. PARTILHA.\n1. Cabe.",
+            "verbetacao: divórcio",
+        ),
+        ("APELAÇÃO. CURATELA. LAUDO PERICIAL.\n1. Decretada.", "verbetacao: curatela"),
+        ("APELAÇÃO. DESTITUIÇÃO DO PODER FAMILIAR. ADOÇÃO DE CRIANÇA.\n1. Mantida.", "verbetacao: adoção"),
+        ("APELAÇÃO. INVESTIGAÇÃO DE PATERNIDADE. EXAME DE DNA.\n1. Procedente.", "verbetacao: filiação"),
+        ("AGRAVO. INVENTÁRIO. REMOÇÃO DA INVENTARIANTE.\n1. Mantida.", "verbetacao: sucessões"),
+        ("APELAÇÃO. AÇÃO DE SONEGADOS. HERDEIRO.\n1. Procedente.", "verbetacao: sucessões"),
+        ("APELAÇÃO. TESTAMENTO PÚBLICO. NULIDADE.\n1. Afastada.", "verbetacao: sucessões"),
+        # A strong mark passes over a barrier word: the contract is the partilha's object.
+        ("APELAÇÃO. DIVÓRCIO. PARTILHA DE CONTRATO DE FINANCIAMENTO.\n1. Cabe.", "verbetacao: divórcio"),
+        # The family heading holds the acórdão whatever action follows, unless the action is a civil one.
+        (
+            "DIREITO DE FAMÍLIA. AGRAVO. DESOCUPAÇÃO DE IMÓVEL. MEDIDA PROTETIVA.\n1. Mantida.",
+            "verbetacao: direito",
+        ),
+        # Fees beside a merit decision do not take the acórdão out.
+        (
+            "DIREITO CIVIL. APELAÇÃO. AÇÃO DE ALIMENTOS. FIXAÇÃO DO QUANTUM. BINÔMIO. AFASTAMENTO DA "
+            "SUCUMBÊNCIA RECÍPROCA. RECURSO PROVIDO.\n1. Cabe.",
+            "verbetacao: alimentos",
+        ),
+        ("APELAÇÃO. ESPÓLIO. HERDEIROS. ALVARÁ JUDICIAL.\n1. Deferido.", "verbetacao: herdeiros"),
+    ],
+)
+def test_family_and_succession_enter_by_a_mark_in_the_verbetacao(ementa, motivo):
+    assert familia(ementa).startswith(motivo)
+
+
+@pytest.mark.parametrize(
+    "ementa",
+    [
+        "APELAÇÃO. CONTRATO BANCÁRIO. ESPÓLIO COMO PARTE. JUROS.\n1. Revisão.",
+        "APELAÇÃO. SEGURO DE VIDA. BENEFICIÁRIOS HERDEIROS.\n1. Indenização devida.",
+        "APELAÇÃO. RESPONSABILIDADE CIVIL. ACIDENTE DE TRÂNSITO. PENSÃO AOS GENITORES.\n1. Devida.",
+        "APELAÇÃO. INTOXICAÇÃO ALIMENTAR. CONSUMIDOR. ALIMENTOS ESTRAGADOS.\n1. Dano moral.",
+        "APELAÇÃO. ATO INFRACIONAL. MEDIDA SOCIOEDUCATIVA. GUARDA.\n1. Mantida.",
+        "APELAÇÃO. USUCAPIÃO EXTRAORDINÁRIA. POSSE DOS HERDEIROS.\n1. Reconhecida.",
+        "AGRAVO. EXECUÇÃO DE TÍTULO EXTRAJUDICIAL. PENHORA. CÔNJUGE.\n1. Mantida.",
+        "APELAÇÃO. ADOÇÃO DE MEDIDAS DE SEGURANÇA PELO CONDOMÍNIO.\n1. Cabe.",
+        "APELAÇÃO. SUCESSÃO PROCESSUAL. EMPRESA INCORPORADA.\n1. Deferida.",
+        "APELAÇÃO. FILIAÇÃO ASSOCIATIVA. DESCONTOS EM BENEFÍCIO.\n1. Válida.",
+        "APELAÇÃO. AÇÃO DE USUCAPIÃO. IMÓVEL RECEBIDO POR HERANÇA.\n1. Reconhecida.",
+        "APELAÇÃO. ACIDENTE DE MOTO. INDENIZAÇÃO E PENSÃO ALIMENTÍCIA.\n1. Devida.",
+        "AGRAVO. DIREITO DA CRIANÇA E DO ADOLESCENTE. EDUCAÇÃO INFANTIL. VAGA.\n1. Devida.",
+    ],
+)
+def test_matters_where_family_only_names_the_parties_stay_out(ementa):
+    assert familia(ementa) is None
+
+
+@pytest.mark.parametrize(
+    "ementa",
+    [
+        "DIREITO DE FAMÍLIA. APELAÇÃO. AÇÃO DE DIVÓRCIO. EXTINÇÃO SEM RESOLUÇÃO DO MÉRITO.\n1. Mantida.",
+        "DIREITO PROCESSUAL CIVIL. CONFLITO NEGATIVO DE COMPETÊNCIA. ALVARÁ JUDICIAL.\n1. Procedente.",
+        "DIREITO DAS SUCESSÕES. EMBARGOS DE DECLARAÇÃO. INVENTÁRIO. OMISSÃO INEXISTENTE.\n1. Rejeitados.",
+        "AGRAVO. INVENTÁRIO. GRATUIDADE DA JUSTIÇA. LITIGÂNCIA DE MÁ-FÉ. RECURSO DESPROVIDO.\n1. Mantida.",
+        "APELAÇÃO. INVESTIGAÇÃO DE PATERNIDADE. INSURGÊNCIA RESTRITA AOS HONORÁRIOS.\n1. Reduzidos.",
+        "AGRAVO. COBRANÇA DE HONORÁRIOS SUCUMBENCIAIS DE AÇÃO DE DIVÓRCIO.\n1. Devidos.",
+    ],
+)
+def test_family_acordaos_that_decide_only_procedure_or_fees_stay_out(ementa):
+    """Régua do operador para família: só o mérito."""
+    assert familia(ementa) is None
+
+
+def test_family_plan_covers_the_civil_chambers_and_refuses_other_staging(tmp_path):
+    tema = TEMAS["familia"]
+    todas = script.consultas(tema, date(2022, 1, 1), date(2023, 12, 31))
+    assert len(todas) == 140 and todas[0]["arquivo"].startswith("tjsc-")
+    chave = tmp_path / "chave.json"
+    chave.write_text(json.dumps({"filtro": "educacao-3", "codigos": {}}), encoding="utf-8")
+    (tmp_path / "j.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(ValueError, match="mediu o filtro"):
+        script.aprovar(tmp_path / "j.json", chave, tema)
+    registro = {"orgao": todas[0]["orgao"], "envelope_sha256": "", "itens": []}
+    for c in todas:
+        (tmp_path / "p" / c["arquivo"]).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / "p" / c["arquivo"]).write_text(json.dumps(registro), encoding="utf-8")
+    with pytest.raises(ValueError, match="outro tema"):
+        script.ler_preparo(tmp_path / "p", todas, tema)
 
 
 def test_theme_search_sends_term_organ_and_period_and_checks_every_card(store):
@@ -242,17 +357,17 @@ def fake_search(passing_text):
 def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, monkeypatch):
     monkeypatch.setattr(script, "collect_search", fake_search("APELAÇÃO. VAGA EM CRECHE.\n1. Devida."))
     config = Config(store.directory, request_delay=0)
-    preparo, todas = tmp_path / "preparo", script.consultas(date(2022, 1, 1), date(2026, 10, 24))
-    script.candidatos(config, preparo, todas)
-    registros = script.ler_preparo(preparo, todas)
+    preparo, todas = tmp_path / "preparo", script.consultas(EDUCACAO, date(2022, 1, 1), date(2026, 10, 24))
+    script.candidatos(config, preparo, todas, EDUCACAO)
+    registros = script.ler_preparo(preparo, todas, EDUCACAO)
     total, passam = script.resumo(registros)
     assert total == {"consultas": 72, "acordaos_unicos": 144, "passam_unicos": 72} and len(passam) == 72
-    script.amostra(registros, 7, tmp_path / "amostra.json", tmp_path / "chave.json")
+    script.amostra(registros, EDUCACAO, 7, tmp_path / "amostra.json", tmp_path / "chave.json")
     cego = json.loads((tmp_path / "amostra.json").read_text(encoding="utf-8"))
     assert len(cego["itens"]) == 50 and all("id" not in item for item in cego["itens"])
     # A second sample leaves out what the first one showed: only 22 others pass.
     novo = script.amostra(
-        registros, 8, tmp_path / "a2.json", tmp_path / "c2.json", (tmp_path / "chave.json",)
+        registros, EDUCACAO, 8, tmp_path / "a2.json", tmp_path / "c2.json", (tmp_path / "chave.json",)
     )
     primeira, segunda = (
         json.loads((tmp_path / n).read_text(encoding="utf-8"))["codigos"] for n in ("chave.json", "c2.json")
@@ -265,12 +380,14 @@ def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, 
         juizo[codigo] = {"no_tema": False, "razao": "fora"}
     (tmp_path / "julgamento.json").write_text(json.dumps(juizo), encoding="utf-8")
     with pytest.raises(ValueError, match="reprovada"):
-        script.aprovar(tmp_path / "julgamento.json", tmp_path / "chave.json")
+        script.aprovar(tmp_path / "julgamento.json", tmp_path / "chave.json", EDUCACAO)
     juizo = {k: {"no_tema": i >= 5, "razao": "r"} for i, k in enumerate(juizo)}
     (tmp_path / "julgamento.json").write_text(json.dumps(juizo), encoding="utf-8")
-    aprovacao = script.aprovar(tmp_path / "julgamento.json", tmp_path / "chave.json")
+    aprovacao = script.aprovar(tmp_path / "julgamento.json", tmp_path / "chave.json", EDUCACAO)
     assert (aprovacao["no_tema"], aprovacao["taxa"]) == (45, 0.9)
-    report = script.aplicar(config, store, registros, aprovacao, tmp_path / "recibo.json", tmp_path / "bk")
+    report = script.aplicar(
+        config, store, registros, aprovacao, tmp_path / "recibo.json", EDUCACAO, tmp_path / "bk"
+    )
     assert report["status"] == "ok" and len(report["eventos"]) == 72
     with connection(store.path) as db:
         assert db.execute("SELECT count(*) FROM documents").fetchone()[0] == 72
@@ -278,5 +395,83 @@ def test_three_phases_stage_sample_and_ingest_only_what_passes(store, tmp_path, 
             "SELECT rejeitados FROM resources WHERE id LIKE 'tjsc-%:tema-%' LIMIT 1"
         ).fetchone()[0]
     assert json.loads(rejeitados)[0]["motivo"] == "fora_do_tema: educacao-3"
-    again = script.aplicar(config, store, registros, aprovacao, tmp_path / "recibo2.json", tmp_path / "bk")
+    again = script.aplicar(
+        config, store, registros, aprovacao, tmp_path / "recibo2.json", EDUCACAO, tmp_path / "bk"
+    )
     assert again["pendentes"] == 0 and again["eventos"] == []
+
+
+def test_staged_searches_are_read_again_from_their_envelope_pages(tmp_path):
+    """A parser fix reaches the staging without the portal; only whitespace may change."""
+    marked = PAGE.replace(b"REPETITIVAS", b'<B><FONT STYLE="background-color:#FFFF00">REPETITIVAS</FONT></B>')
+    _, plain = parse_cards(PAGE, GRUPO)
+    first, last = (date.fromisoformat(f(b["data_publicacao"] for b, _ in plain)) for f in (min, max))
+    consulta = {
+        "orgao": GRUPO,
+        "termo": "demandas",
+        "inicio": first,
+        "fim": last,
+        "arquivo": "g/demandas.json",
+    }
+    envelope = json.dumps(
+        {
+            "partes": [
+                {
+                    "publicacao_inicio": first.isoformat(),
+                    "publicacao_fim": last.isoformat(),
+                    "paginas": [{"bytes_base64": base64.b64encode(marked).decode()}],
+                }
+            ]
+        }
+    ).encode()
+
+    def stage(itens):
+        (tmp_path / "g").mkdir(exist_ok=True)
+        (tmp_path / "g/demandas.envelope.json").write_bytes(envelope)
+        registro = {"envelope_sha256": hashlib.sha256(envelope).hexdigest(), "itens": itens}
+        (tmp_path / "g/demandas.json").write_text(json.dumps(registro), encoding="utf-8")
+
+    def old_reading(body, raw, ementa):
+        return {
+            "body": {**body, "ementa": ementa},
+            "raw": {**raw, "campos": {**raw["campos"], "EMENTA": ementa}},
+        }
+
+    stage([old_reading(b, r, b["ementa"].replace("REPETITIVAS.", "REPETITIVAS .")) for b, r in plain])
+    assert script.reler(tmp_path, [consulta], EDUCACAO)["acordaos_alterados"] == sum(
+        "REPETITIVAS." in b["ementa"] for b, _ in plain
+    )
+    (registro,) = script.ler_preparo(tmp_path, [consulta], EDUCACAO)
+    assert [i["body"] for i in registro["itens"]] == [body for body, _ in plain]
+    stage([old_reading(b, r, b["ementa"].replace("REPETITIVAS", "REPETIDAS")) for b, r in plain])
+    with pytest.raises(ValueError, match="mais que espaços"):
+        script.reler(tmp_path, [consulta], EDUCACAO)
+
+
+def test_a_concluded_search_takes_a_new_reading_as_a_new_version(store, tmp_path, monkeypatch):
+    """The correction rewrites only what differs, keeps the old version and refuses more than spaces."""
+    monkeypatch.setattr(script, "collect_search", fake_search("APELAÇÃO. VAGA EM CRECHE . DEVIDA.\n1. Cabe."))
+    config = Config(store.directory, request_delay=0)
+    todas = script.consultas(EDUCACAO, date(2022, 1, 1), date(2026, 10, 24))[:2]
+    preparo = tmp_path / "preparo"
+    script.candidatos(config, preparo, todas, EDUCACAO)
+    aprovacao = {"no_tema": 45, "de": 50, "taxa": 0.9, "fora_do_tema": []}
+    registros = script.ler_preparo(preparo, todas, EDUCACAO)
+    script.aplicar(config, store, registros, aprovacao, tmp_path / "r1.json", EDUCACAO, tmp_path / "bk")
+    for registro in registros:
+        for item in registro["itens"]:
+            item["body"]["ementa"] = item["body"]["ementa"].replace("CRECHE .", "CRECHE.")
+            item["raw"]["campos"]["EMENTA"] = item["body"]["ementa"]
+    report = script.corrigir(config, store, registros, tmp_path / "r2.json", EDUCACAO, tmp_path / "bk")
+    assert (report["status"], report["consultas"], report["acordaos"]) == ("ok", 2, 2)
+    assert all(d["so_espacos"] and d["caracteres_alterados"] == 1 for d in report["documentos"])
+    with connection(store.path) as db:
+        assert db.execute("SELECT count(*) FROM documents WHERE body LIKE '%CRECHE .%'").fetchone()[0] == 0
+        assert db.execute("SELECT count(*) FROM versions").fetchone()[0] == 4
+    again = script.corrigir(config, store, registros, tmp_path / "r3.json", EDUCACAO, tmp_path / "bk")
+    assert again["acordaos"] == 0
+    for registro in registros:
+        for item in registro["itens"]:
+            item["motivo"] = "verbetacao: vaga"
+    with pytest.raises(ValueError, match="Outros acórdãos"):
+        script.corrigir(config, store, registros, tmp_path / "r4.json", EDUCACAO, tmp_path / "bk")
