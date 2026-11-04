@@ -1,0 +1,185 @@
+{
+  "operacao": "limpeza das cópias de ensaio antigas (RM-D12, item I5 da revisão de 11/2026)",
+  "conferido_em": "2026-11-04T10:36:08+00:00",
+  "pasta": "C:\\Users\\Home\\Documents\\Flora\\Dados",
+  "medido_antes_em": "2026-11-04T10:24:44+00:00",
+  "apagado_por": "operador, com script travado na lista exata de nomes; a sessão só mediu e conferiu",
+  "script_sha256": "81cf70e8f683d7153e8341a9295ac9d0b397bb9eff0684cef653563146d216f0",
+  "total_apagado_bytes": 44929728118,
+  "total_apagado_gb": 41.84,
+  "conferencia_antes": {
+    "raw_das_copias_fora_do_acervo_real": 0,
+    "envelopes_de_preparo_educacao_e_familia_no_raw_real": "212 de 212"
+  },
+  "apagados_sem_copia_no_acervo_real": [
+    {
+      "arquivo": "Flora-MCP-preparo-educacao/chave-amostra-20261024.json",
+      "sha256": "2c0d31bcc9779f3f310eb9b74bef989e1b575c6c7677b1529d81340ab5ea7772",
+      "bytes": 2497
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao/chave-amostra-20261025.json",
+      "sha256": "057b27bd8a3bf687206603dd9258f78b8322e349a21d9291230f3ad39491a42b",
+      "bytes": 2542
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao/chave-amostra-20261026.json",
+      "sha256": "94e00dcfc81b1c2621fb3d32d6c3a6801e379638970fdd25ddb5631aaa1a4aba",
+      "bytes": 2543
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-familia/amostra-familia-tjsc-20261024.json",
+      "sha256": "c7939d3dd57b9c701e41ef3e3c1bebaf3d8c34049620f6fc9521de75bb279dba",
+      "bytes": 46953
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-familia/chave-amostra-familia-20261024.json",
+      "sha256": "a3b762df0ef6442bccb07fe196b742a07677cfce29b0cca6374e93e2cf3d27bc",
+      "bytes": 2540
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao-tentativa1/tjsc-1a-camara-de-direito-publico/acompanhante-terapeutico.envelope.json",
+      "sha256": "552082592e0bd9de902f8f939a7f89e3d37b4d1cdfd66f0a300e1f3a39e8f971",
+      "bytes": 257999
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao-tentativa1/tjsc-1a-camara-de-direito-publico/creche.envelope.json",
+      "sha256": "178e1571f513f9177372dcb1abbc053b892b300f5c696d2588538737654db3de",
+      "bytes": 858887
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao-tentativa1/tjsc-1a-camara-de-direito-publico/pre-escola.envelope.json",
+      "sha256": "f90555480f98de16c50ffb98d861519aa4d02d5d6e02346084f68157fdbf5642",
+      "bytes": 257917
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao-tentativa1/tjsc-1a-camara-de-direito-publico/professor-auxiliar.envelope.json",
+      "sha256": "be867fa35bc427d910f5fccb87bb4198db5925ca63d2c4c1f676364a0394bec1",
+      "bytes": 697914
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao-tentativa1/tjsc-1a-camara-de-direito-publico/segundo-professor.envelope.json",
+      "sha256": "6dfbc63af610b604bc06396b0c9c21c0594dd2f9caf29a42d8da2504c448ead6",
+      "bytes": 670455
+    },
+    {
+      "arquivo": "Flora-MCP-preparo-educacao-tentativa1/tjsc-1a-camara-de-direito-publico/transporte-escolar.envelope.json",
+      "sha256": "448a3a26549728db851902cea9b24a2c71ee2b4e559d1c52ba471be84ba100d5",
+      "bytes": 764339
+    }
+  ],
+  "itens": {
+    "Flora-MCP-sandbox": {
+      "situacao": "apagado",
+      "o_que_e": "sandbox de 29/09",
+      "arquivos": 668,
+      "bytes": 542183498,
+      "ultima_alteracao": "2026-09-30T14:14:50+00:00"
+    },
+    "Flora-MCP-sandbox-r6": {
+      "situacao": "apagado",
+      "o_que_e": "ensaio r6",
+      "arquivos": 3497,
+      "bytes": 6582829068,
+      "ultima_alteracao": "2026-10-24T12:09:26+00:00"
+    },
+    "Flora-MCP-sandbox-r6-backups": {
+      "situacao": "apagado",
+      "o_que_e": "backups do ensaio r6",
+      "arquivos": 3638,
+      "bytes": 12976267641,
+      "ultima_alteracao": "2026-10-24T23:17:22+00:00"
+    },
+    "Flora-MCP-sandbox-r9": {
+      "situacao": "apagado",
+      "o_que_e": "ensaio r9",
+      "arquivos": 3632,
+      "bytes": 7697947227,
+      "ultima_alteracao": "2026-10-24T20:07:43+00:00"
+    },
+    "Flora-MCP-sandbox-r9b": {
+      "situacao": "apagado",
+      "o_que_e": "ensaio r9b",
+      "arquivos": 3632,
+      "bytes": 7698057819,
+      "ultima_alteracao": "2026-10-24T20:29:33+00:00"
+    },
+    "Flora-MCP-sandbox-r10": {
+      "situacao": "apagado",
+      "o_que_e": "ensaio r10",
+      "arquivos": 3632,
+      "bytes": 7717976667,
+      "ultima_alteracao": "2026-10-24T23:21:53+00:00"
+    },
+    "Flora-MCP-preparo-educacao": {
+      "situacao": "apagado",
+      "o_que_e": "preparo da coleta de educação",
+      "arquivos": 147,
+      "bytes": 570042265,
+      "ultima_alteracao": "2026-10-24T23:09:48+00:00"
+    },
+    "Flora-MCP-preparo-educacao-antes-releitura": {
+      "situacao": "apagado",
+      "o_que_e": "preparo de educação antes da releitura",
+      "arquivos": 72,
+      "bytes": 21949049,
+      "ultima_alteracao": "2026-10-24T23:05:16+00:00"
+    },
+    "Flora-MCP-preparo-educacao-tentativa1": {
+      "situacao": "apagado",
+      "o_que_e": "primeira tentativa do preparo de educação",
+      "arquivos": 12,
+      "bytes": 3714717,
+      "ultima_alteracao": "2026-10-24T04:53:38+00:00"
+    },
+    "Flora-MCP-preparo-familia": {
+      "situacao": "apagado",
+      "o_que_e": "preparo da coleta de família",
+      "arquivos": 282,
+      "bytes": 1087861670,
+      "ultima_alteracao": "2026-10-24T20:21:27+00:00"
+    },
+    "Flora-MCP-preparo-familia-antes-releitura": {
+      "situacao": "apagado",
+      "o_que_e": "preparo de família antes da releitura",
+      "arquivos": 140,
+      "bytes": 30898497,
+      "ultima_alteracao": "2026-10-24T20:12:55+00:00"
+    },
+    "Flora-MCP": {
+      "situacao": "mantido",
+      "motivo": "acervo real",
+      "arquivos": 3665,
+      "bytes": 8827144727,
+      "igual_ao_medido_antes": true
+    },
+    "Flora-MCP-backups": {
+      "situacao": "mantido",
+      "motivo": "backups do acervo real",
+      "arquivos": 3636,
+      "bytes": 11430964018,
+      "igual_ao_medido_antes": true
+    },
+    "Flora-MCP-CERFS": {
+      "situacao": "mantido",
+      "motivo": "função não examinada pela revisão (RM-D12)",
+      "arquivos": 50295,
+      "bytes": 821386356,
+      "igual_ao_medido_antes": true
+    },
+    "Flora-MCP-exportacao": {
+      "situacao": "mantido",
+      "motivo": "fora da lista de RM-D12",
+      "arquivos": 7,
+      "bytes": 16546,
+      "igual_ao_medido_antes": true
+    },
+    "Flora-MCP-sandbox-revisao": {
+      "situacao": "mantido",
+      "motivo": "entra quando a frente da revisão acabar (plano, item I5)",
+      "arquivos": 5,
+      "bytes": 2645068564,
+      "igual_ao_medido_antes": true
+    }
+  }
+}
