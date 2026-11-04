@@ -2,8 +2,6 @@
 
 import argparse
 import json
-import os
-import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 from pathlib import Path
@@ -11,38 +9,13 @@ from pathlib import Path
 from filelock import FileLock
 
 from flora_mcp import backups
+from flora_mcp.coleta_numeros import groups, save
 from flora_mcp.config import load_config
 from flora_mcp.model import FloraError, digest, now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
 from flora_mcp.tjsc import PACER, catalog_window, collect_window
 from flora_mcp.tjsc_orgaos import ORGAOS, dataset, envelope_organ, identity, name
-
-
-def save(path, value):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd, temporary = tempfile.mkstemp(dir=path.parent, prefix=".retomada-")
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as stream:
-            json.dump(value, stream, ensure_ascii=False, indent=2)
-            stream.flush()
-            os.fsync(stream.fileno())
-        os.replace(temporary, path)
-    finally:
-        if os.path.exists(temporary):
-            os.unlink(temporary)
-
-
-def groups(store):
-    with connection(store.path) as db:
-        return [
-            dict(r)
-            for r in db.execute(
-                "SELECT tribunal,json_extract(body,'$.orgao') AS orgao,count(*) AS documentos "
-                "FROM documents GROUP BY tribunal,organ ORDER BY tribunal,organ"
-            )
-        ]
 
 
 # Retomada historica: sem --camaras nem --orgaos, as duas camaras da coleta original.
