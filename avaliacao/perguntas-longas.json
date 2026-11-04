@@ -1,0 +1,1156 @@
+{
+ "schema": "flora-avaliacao-longas-1",
+ "montado_em": "2026-11-04",
+ "descricao": "Perguntas reais de pesquisa reescritas por sessão, reduzindo o fato à categoria jurídica (RM-D38). Sem gabarito: o acerto delas depende do julgamento independente de RM-D37. A pergunta original e a correspondência ficam só no vault. Conferências no recibo docs/recibos/lote-perguntas-longas-20261104.json.",
+ "perguntas": [
+  {
+   "id": "l001",
+   "tipo": "falha",
+   "texto": "comunicabilidade de dívida de mútuo entre parentes documentada em título assinado só por um convivente, com alegado proveito comum da família",
+   "termos": 21,
+   "caracteres": 141,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l002",
+   "tipo": "falha",
+   "texto": "enfrentamento nominal da regra do STJ sobre o ônus da prova do meeiro",
+   "termos": 13,
+   "caracteres": 69,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l003",
+   "tipo": "falha",
+   "texto": "Afastamento da homologação patrimonial com prosseguimento contencioso no mesmo feito, contra pedido de extinção do outro interessado",
+   "termos": 17,
+   "caracteres": 132,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l004",
+   "tipo": "falha",
+   "texto": "Afastamento de suspensão sucumbencial em sentença posterior a indeferimento de justiça gratuita impugnado em recurso",
+   "termos": 15,
+   "caracteres": 116,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l005",
+   "tipo": "falha",
+   "texto": "Aplicação da distinção entre rateio pecuniário e ressarcimento de alimentos in natura a um título executivo",
+   "termos": 16,
+   "caracteres": 107,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l006",
+   "tipo": "falha",
+   "texto": "Art. 10 do CPC na quantificação de ofício de honorários omitidos",
+   "termos": 11,
+   "caracteres": 64,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l007",
+   "tipo": "falha",
+   "texto": "Art. 85, § 8-A, do CPC e tabela da OAB como fonte independente do precedente aderente",
+   "termos": 16,
+   "caracteres": 85,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l008",
+   "tipo": "falha",
+   "texto": "Cassação parcial de capítulo indenizatório autônomo por prova revogada, preservados capítulos patrimoniais",
+   "termos": 12,
+   "caracteres": 106,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l009",
+   "tipo": "falha",
+   "texto": "Competência para embargos de terceiro opostos por empresa pública federal e via singular para declará-la, no tribunal estadual",
+   "termos": 18,
+   "caracteres": 126,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l010",
+   "tipo": "falha",
+   "texto": "Conjugação de calendários de convivência autônomos de familiares diversos com a criança e amplitude de pernoite e metade das férias",
+   "termos": 20,
+   "caracteres": 131,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l011",
+   "tipo": "falha",
+   "texto": "Conservação provisória dos alimentos homologados até reapreciação urgente na origem, após cassação",
+   "termos": 12,
+   "caracteres": 98,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l012",
+   "tipo": "falha",
+   "texto": "Continuidade ou restabelecimento da tutela após sentença e declaração incidental de nulidade em processo dos honorários",
+   "termos": 16,
+   "caracteres": 119,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l013",
+   "tipo": "falha",
+   "texto": "Conversão em diligência com sentença favorável a quem requereu a prova e recurso do réu",
+   "termos": 15,
+   "caracteres": 87,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l014",
+   "tipo": "falha",
+   "texto": "Decisão monocrática do TJSC que, em apelação, anula sentença por incompetência absoluta em favor da Justiça Federal sem oitiva prévia",
+   "termos": 20,
+   "caracteres": 133,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l015",
+   "tipo": "falha",
+   "texto": "Distinção expressa entre execução de quota pecuniária de rateio e sub-rogação do representante legal",
+   "termos": 14,
+   "caracteres": 100,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l016",
+   "tipo": "falha",
+   "texto": "Erro de prazo eletrônico como justa causa no ECA",
+   "termos": 9,
+   "caracteres": 48,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l017",
+   "tipo": "falha",
+   "texto": "Integração de ofício da quantificação omitida em revisional alimentar de baixo valor, recurso exclusivo do condenado",
+   "termos": 16,
+   "caracteres": 116,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l018",
+   "tipo": "falha",
+   "texto": "Integração do valor omitido de honorários por decisão singular",
+   "termos": 9,
+   "caracteres": 62,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l019",
+   "tipo": "falha",
+   "texto": "Litígio do curador contra o curatelado como impedimento geral apto a fundar a prognose de remoção",
+   "termos": 16,
+   "caracteres": 97,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l020",
+   "tipo": "falha",
+   "texto": "Manutenção de indenização por violência doméstica com base apenas em declarações extrajudiciais da vítima, impugnadas, sem prova produzida em contraditório",
+   "termos": 20,
+   "caracteres": 155,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l021",
+   "tipo": "falha",
+   "texto": "Manutenção de indenização por violência doméstica com declaração contemporânea e corroboração periférica, sem prova oral produzida em juízo",
+   "termos": 18,
+   "caracteres": 139,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l022",
+   "tipo": "falha",
+   "texto": "Criança em acolhimento, vínculo afetivo, sofrimento pelo afastamento e necessidade de avaliação técnica atual sobre contato virtual",
+   "termos": 17,
+   "caracteres": 131,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l023",
+   "tipo": "falha",
+   "texto": "Natureza dos jetons de órgão colegiado administrativo para o art. 833, IV, do CPC",
+   "termos": 14,
+   "caracteres": 81,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l024",
+   "tipo": "falha",
+   "texto": "Castigo imoderado do art. 1.638, I, do CC como fundamento nominal da destituição do poder familiar, em contraste com precedentes de violência física que trabalham com os arts. 22 e 24 do ECA e o art. 1.638, II e III, e proporcionalidade",
+   "termos": 42,
+   "caracteres": 236,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l025",
+   "tipo": "falha",
+   "texto": "Padrão de prova na responsabilidade civil por violência doméstica após arquivamento do inquérito por insuficiência de prova",
+   "termos": 17,
+   "caracteres": 123,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l026",
+   "tipo": "falha",
+   "texto": "Indenização por ameaça isolada em contexto doméstico, com parâmetro a fortiori",
+   "termos": 11,
+   "caracteres": 78,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l027",
+   "tipo": "falha",
+   "texto": "Precedente de câmara de direito civil no rumo da complementação técnica antes do arranjo definitivo de guarda",
+   "termos": 17,
+   "caracteres": 109,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l028",
+   "tipo": "falha",
+   "texto": "Publicação da sentença específica para revel sem advogado",
+   "termos": 8,
+   "caracteres": 57,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l029",
+   "tipo": "falha",
+   "texto": "Teto judicial prévio de 60 dias para suspensão por tratativas",
+   "termos": 10,
+   "caracteres": 61,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l030",
+   "tipo": "falha",
+   "texto": "Questão específica de ausência de entrevista psicológica da criança em estudo técnico e orientação para julgamento singular",
+   "termos": 17,
+   "caracteres": 123,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l031",
+   "tipo": "falha",
+   "texto": "Recusa de homologação de cláusulas sobre filhos por oposição anterior, no STJ",
+   "termos": 12,
+   "caracteres": 77,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l032",
+   "tipo": "falha",
+   "texto": "Título executivo e reembolso de alimentos in natura",
+   "termos": 8,
+   "caracteres": 51,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l033",
+   "tipo": "falha",
+   "texto": "Existência de jurisprudência dominante aderente para julgamento monocrático (art. 932, VIII, CPC c/c art. 132, XV, RITJSC)",
+   "termos": 17,
+   "caracteres": 122,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l034",
+   "tipo": "falha",
+   "texto": "Nulidade por decisão surpresa e exame imediato pelo tribunal",
+   "termos": 9,
+   "caracteres": 60,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l035",
+   "tipo": "falha",
+   "texto": "Segundo imóvel do alimentando maior e art. 1.695 do CC",
+   "termos": 10,
+   "caracteres": 54,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l036",
+   "tipo": "falha",
+   "texto": "Suficiência do estudo psicológico judicial que, com justificativa, dispensou a entrevista da criança (precedente aderente de câmara de direito civil ou do STJ)",
+   "termos": 23,
+   "caracteres": 159,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l037",
+   "tipo": "longa",
+   "texto": "Redução de alimentos, alteração da capacidade financeira do alimentante e impossibilidade de percentual padrão.",
+   "termos": 14,
+   "caracteres": 111,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l038",
+   "tipo": "longa",
+   "texto": "agravo interno e embargos de declaração prazo recursal Estatuto da Criança e do Adolescente indicação do sistema eletrônico confiança legítima",
+   "termos": 20,
+   "caracteres": 142,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l039",
+   "tipo": "longa",
+   "texto": "A nulidade da citação não atinge a tutela provisória liminar anteriormente concedida, independente do ato citatório anulado. Conservação dos atos anteriores autônomos e art. 281 do CPC.",
+   "termos": 27,
+   "caracteres": 185,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l040",
+   "tipo": "longa",
+   "texto": "ADI 5.357 escolas privadas educação inclusiva pessoa com deficiência dever de oferecer recursos de acessibilidade e apoio sem cobrança adicional constitucionalidade art. 28 § 1º Lei 13.146/2015",
+   "termos": 27,
+   "caracteres": 193,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l041",
+   "tipo": "longa",
+   "texto": "AgInt no REsp 1.901.733 honorarios advocaticios em procedimento de jurisdicao voluntaria, contestacao instaura litigiosidade e excepciona a regra de nao cabimento, principio da causalidade, suprimento de consentimento",
+   "termos": 27,
+   "caracteres": 217,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l042",
+   "tipo": "longa",
+   "texto": "Apelação Cível ação civil pública julgamento ultra petita condenação com base em pedido não formulado nulidade do pronunciamento no ponto arts. 141 e 492",
+   "termos": 24,
+   "caracteres": 153,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l043",
+   "tipo": "longa",
+   "texto": "Averiguação oficiosa: suposto pai notificado sem reconhecimento; impossibilidade de DNA no procedimento administrativo; arquivamento e remessa ao MP",
+   "termos": 18,
+   "caracteres": 148,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l044",
+   "tipo": "longa",
+   "texto": "Casamento celebrado na vigência do CC/1916: alteração da separação de bens para comunhão universal com efeitos retroativos, arts. 1.639, § 2º, e 2.039 do CC, ressalva de terceiros",
+   "termos": 28,
+   "caracteres": 179,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l045",
+   "tipo": "longa",
+   "texto": "EAREsp 1.759.860 informação equivocada sistema eletrônico termo final prazo recurso justa causa. Procedimento ECA prazo dez dias e indicação de quinze dias.",
+   "termos": 22,
+   "caracteres": 156,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l046",
+   "tipo": "longa",
+   "texto": "Indeferimento de exibição incidental de documento em poder da parte contrária recorribilidade imediata agravo de instrumento art. 1.015 VI CPC preclusão impugnação na apelação",
+   "termos": 24,
+   "caracteres": 175,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l047",
+   "tipo": "longa",
+   "texto": "Monocrática TJSC em apelação do MP contra arquivamento de averiguação; art. 932 CPC; art. 132, XV, RITJSC; jurisprudência dominante",
+   "termos": 19,
+   "caracteres": 131,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l048",
+   "tipo": "longa",
+   "texto": "Protocolo para Julgamento com Perspectiva de Gênero Resolução CNJ 492/2023 ação de indenização cível violência doméstica valoração da prova depoimento da vítima boletim de ocorrência sem testemunhas condenação mantida",
+   "termos": 29,
+   "caracteres": 217,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l049",
+   "tipo": "longa",
+   "texto": "REsp 1.114.398 Tema 437 julgamento antecipado da lide cerceamento de defesa elementos documentais suficientes recurso repetitivo",
+   "termos": 16,
+   "caracteres": 128,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l050",
+   "tipo": "longa",
+   "texto": "REsp 1.658.165/SP RHC 172.742/RS alimentos in natura sub-rogação genitora reembolso despesas rateio previsto título executivo",
+   "termos": 15,
+   "caracteres": 125,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l051",
+   "tipo": "longa",
+   "texto": "REsp 2.025.039/SP inventário extinção sem resolução do mérito inércia do inventariante remoção art. 622 CPC interesse público",
+   "termos": 17,
+   "caracteres": 125,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l052",
+   "tipo": "longa",
+   "texto": "Responsabilidade solidária do CDC de quem apenas intermedeia, divulga ou cede espaço para serviço de terceiro; agência de turismo; cadeia de fornecimento",
+   "termos": 22,
+   "caracteres": 153,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l053",
+   "tipo": "longa",
+   "texto": "TJSC execução alimentos acordo parcelamento cláusula penal novação art. 361 suspensão art. 922 pedido expresso suspensão extinção",
+   "termos": 17,
+   "caracteres": 129,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l054",
+   "tipo": "longa",
+   "texto": "TJSC revisão majoração provisória alimentos acordo criança aumento necessidades capacidade contributiva não comprovada autônomo outros filhos ônus da prova",
+   "termos": 19,
+   "caracteres": 155,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l055",
+   "tipo": "longa",
+   "texto": "TJSC Agravo de Instrumento agravo interno prazo certificado pelo eproc justa causa contestação tempestiva",
+   "termos": 14,
+   "caracteres": 105,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l056",
+   "tipo": "longa",
+   "texto": "TJSC Apelação multa art. 249 ECA patamar inferior ao mínimo legal hipossuficiência estudo social",
+   "termos": 14,
+   "caracteres": 96,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l057",
+   "tipo": "longa",
+   "texto": "Decreto 12.686/2025 estudo de caso PAEE PEI profissional de apoio escolar independe de laudo médico",
+   "termos": 15,
+   "caracteres": 99,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l058",
+   "tipo": "longa",
+   "texto": "acao de remocao ou destituicao de curador, tutor ou inventariante extinta por perda superveniente do objeto; onus sucumbenciais pela causalidade",
+   "termos": 20,
+   "caracteres": 144,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l059",
+   "tipo": "longa",
+   "texto": "apelação exclusiva sobre honorários do advogado particular; gratuidade da parte não se estende; relator intima monocraticamente para preparo em dobro antes da deserção",
+   "termos": 23,
+   "caracteres": 167,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l060",
+   "tipo": "longa",
+   "texto": "art. 132, XV e XVI, do Regimento Interno do TJSC decisão monocrática apelação dar provimento negar provimento jurisprudência dominante do Tribunal art. 932 VIII CPC",
+   "termos": 25,
+   "caracteres": 164,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l061",
+   "tipo": "longa",
+   "texto": "arts. 10 e 933 CPC decisão surpresa incompetência absoluta de ofício sem oitiva; fundamento jurídico x legal",
+   "termos": 17,
+   "caracteres": 108,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l062",
+   "tipo": "longa",
+   "texto": "cerceamento de defesa julgamento antecipado da lide instituicao de ensino bolsa de estudos cobranca de mensalidades prova documental suficiente prova oral desnecessaria art. 355, I, e art. 370 do CPC",
+   "termos": 30,
+   "caracteres": 199,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l063",
+   "tipo": "longa",
+   "texto": "conversão do julgamento em diligência para intimar o apelante a apresentar contrarrazões ao recurso adesivo não intimado na origem art. 938 § 1º CPC regularização no tribunal",
+   "termos": 27,
+   "caracteres": 174,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l064",
+   "tipo": "longa",
+   "texto": "dano moral entre ex-companheiros; infidelidade e termino conturbado da uniao estavel nao geram por si indenizacao; necessidade de prova de ato ilicito concreto; violencia psicologica e humilhacao alegadas sem prova",
+   "termos": 30,
+   "caracteres": 214,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l065",
+   "tipo": "longa",
+   "texto": "decisão monocrática apelação reconhecimento de ofício incompetência absoluta Justiça Estadual empresa pública federal art. 109 I anulação sentença remessa Justiça Federal recurso prejudicado",
+   "termos": 23,
+   "caracteres": 190,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l066",
+   "tipo": "longa",
+   "texto": "embargos de terceiro opostos por empresa pública federal contra penhora em execução estadual; competência federal; incompetência em apelação; anulação e remessa; decisão monocrática; FGTS alimentos",
+   "termos": 25,
+   "caracteres": 197,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l067",
+   "tipo": "longa",
+   "texto": "extinção de condomínio com coproprietário incapaz ou curatelado, alienação judicial da coisa comum indivisível, direito potestativo, arts. 1.320 e 1.322 CC, art. 730 CPC; STJ, TJSC",
+   "termos": 26,
+   "caracteres": 180,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l068",
+   "tipo": "longa",
+   "texto": "extra petita/reformatio: definição do critério de liquidação da partilha por interpretação do pedido; efeito devolutivo em profundidade",
+   "termos": 17,
+   "caracteres": 135,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l069",
+   "tipo": "longa",
+   "texto": "gratuidade de justiça deferida após a sentença: suspensão da exigibilidade dos honorários sucumbenciais fixados anteriormente, efeitos ex nunc, art. 98, § 3º, do CPC",
+   "termos": 24,
+   "caracteres": 165,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l070",
+   "tipo": "longa",
+   "texto": "guarda de menor sentença cassada para complementação da prova técnica estudo social psicológico insuficiente melhor interesse da criança instrução deficiente retorno à origem Câmara de Direito Civil TJSC família",
+   "termos": 29,
+   "caracteres": 211,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l071",
+   "tipo": "longa",
+   "texto": "mera juntada de declaração de hipossuficiência sem pedido expresso equivale a requerimento; pedido implícito; deferimento tácito pressupõe pedido; efeitos ex nunc",
+   "termos": 21,
+   "caracteres": 162,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l072",
+   "tipo": "longa",
+   "texto": "partilha de bens financiados na uniao estavel sob comunhao parcial; comunicam-se apenas as parcelas pagas durante a convivencia; parcelas pagas apos a separacao de fato pertencem a quem as adimpliu",
+   "termos": 30,
+   "caracteres": 197,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l073",
+   "tipo": "longa",
+   "texto": "partilha de direitos sobre lote de assentamento da reforma agrária em dissolução de união estável, ausência de titulação pelo INCRA, benfeitorias",
+   "termos": 21,
+   "caracteres": 145,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l074",
+   "tipo": "longa",
+   "texto": "partilha de imovel financiado: percentual das parcelas pagas durante a relacao incide apenas sobre a parte do preco financiada, quando houve entrada com recursos proprios ou bem particular",
+   "termos": 28,
+   "caracteres": 188,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l075",
+   "tipo": "longa",
+   "texto": "partilha de imóvel ou veículo financiado: meação pela proporção das parcelas pagas na convivência sobre o valor de mercado na separação, deduzido o saldo devedor",
+   "termos": 25,
+   "caracteres": 161,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l076",
+   "tipo": "longa",
+   "texto": "partilha divórcio união estável dívida contraída por um dos cônjuges ônus da prova benefício da família meeiro presunção de comunicabilidade art. 1.664 CC",
+   "termos": 23,
+   "caracteres": 154,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l077",
+   "tipo": "longa",
+   "texto": "partilha união estável dívida contraída por um dos conviventes empréstimo de familiar promissória ônus da prova proveito da família presunção relativa arts. 1.664 1.663 1.666 CC",
+   "termos": 26,
+   "caracteres": 177,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l078",
+   "tipo": "longa",
+   "texto": "pensão em percentual do salário mínimo não incide sobre 13º e terço de férias; Tema 192 e rendimentos",
+   "termos": 18,
+   "caracteres": 101,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l079",
+   "tipo": "longa",
+   "texto": "redução da indenização por dano moral abaixo do pedido subsidiário do apelante; quem pede a exclusão pede a redução",
+   "termos": 19,
+   "caracteres": 115,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l080",
+   "tipo": "longa",
+   "texto": "remocao de curador que ajuizou acao contra o proprio curatelado; conflito de interesses; art. 1.735, II, do CC",
+   "termos": 18,
+   "caracteres": 110,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l081",
+   "tipo": "longa",
+   "texto": "suspensão para tratativas, teto de 60 dias, art. 313, II, § 4º, e art. 922 em cumprimento de sentença de alimentos",
+   "termos": 21,
+   "caracteres": 114,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l082",
+   "tipo": "recusada",
+   "texto": "Alimentos devidos a dois filhos. Pedido de fixação de percentuais distintos entre irmãos em razão de condição de saúde de um deles. Princípio da igualdade entre os filhos; distinção só com necessidade excepcional demonstrada.",
+   "termos": 34,
+   "caracteres": 225,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l083",
+   "tipo": "recusada",
+   "texto": "Alimentos devidos a filho maior que dispõe de patrimônio próprio: art. 1.695 do Código Civil, bens suficientes para a própria mantença, patrimônio que não gera renda, imóvel de moradia, necessidade alimentar",
+   "termos": 31,
+   "caracteres": 207,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l084",
+   "tipo": "recusada",
+   "texto": "Alimentos devidos pela genitora ao filho após inversão da guarda no curso do processo. Pedido de alimentos formulado incidentalmente, depois da citação, na própria ação de guarda e alimentos. Termo inicial da obrigação alimentar: intimação ou ciência do pedido, e não a citação originária. Reconvenção, pedido incidental, retroação à data em que a parte foi cientificada do pedido, art. 13, § 2º, da Lei 5.478/68, Súmula 277 e Súmula 621 do STJ.",
+   "termos": 72,
+   "caracteres": 445,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l085",
+   "tipo": "recusada",
+   "texto": "Alimentos fixados de forma global (intuitu familiae) em favor de vários filhos, sem individualização de quotas. Exoneração ou maioridade de um dos alimentandos. Redução proporcional ou automática da pensão em favor dos demais: possibilidade ou necessidade de ação revisional com prova da alteração do binômio necessidade-possibilidade.",
+   "termos": 46,
+   "caracteres": 335,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l086",
+   "tipo": "recusada",
+   "texto": "Alteração judicial do regime de bens do casamento: desnecessidade de exigir prova da inexistência de dívidas ou relação pormenorizada de bens, bastando a ressalva legal dos direitos de terceiros (art. 1.639, § 2º, CC)",
+   "termos": 34,
+   "caracteres": 217,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l087",
+   "tipo": "recusada",
+   "texto": "Ampliação da convivência do genitor não guardião com pernoite. Regime de visitas restrito sem pernoite fixado por cautela em razão de fatos pretéritos; ausência de risco atual concreto no ambiente do genitor; estudos psicossociais favoráveis; ampliação gradual da convivência com pernoite; direito da criança à convivência familiar, art. 227 da Constituição e art. 19 do ECA.",
+   "termos": 56,
+   "caracteres": 375,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l088",
+   "tipo": "recusada",
+   "texto": "Anulação de sentença de exoneração de alimentos por nulidade ou ausência de citação do alimentando: restabelecimento da obrigação alimentar e exigibilidade das prestações vencidas no período, efeitos sobre a tutela de urgência exoneratória concedida antes da citação",
+   "termos": 37,
+   "caracteres": 266,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l089",
+   "tipo": "recusada",
+   "texto": "Anulação ou reconhecimento incidental de nulidade de sentença por vício de citação: efeitos sobre a tutela antecipada anteriormente concedida e confirmada pela sentença. Absorção da tutela provisória pelo julgamento definitivo, restabelecimento ou conservação da liminar após invalidação e limites do art. 296 do CPC à pendência do processo. Distinguir nulidade da citação de revogação da tutela e possibilidade de aferição incidental da exigibilidade de título alimentar.",
+   "termos": 66,
+   "caracteres": 472,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l090",
+   "tipo": "recusada",
+   "texto": "Averiguação oficiosa de paternidade, suposto pai identificado e notificado, sem reconhecimento no prazo de trinta dias: arquivamento art. 2º §4º Lei 8.560/1992 ou audiência de conciliação e exame DNA voluntário? Distinguir recusa da mãe em indicar pai de ausência de manifestação do suposto genitor.",
+   "termos": 44,
+   "caracteres": 299,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l091",
+   "tipo": "recusada",
+   "texto": "Ação revisional de alimentos ajuizada pelo alimentante para reduzir a pensão, julgada procedente em extensão menor que a pretendida: sucumbência recíproca ou ausência de sucumbência do autor; natureza estimativa do pedido alimentar; art. 86 do CPC",
+   "termos": 36,
+   "caracteres": 247,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l092",
+   "tipo": "recusada",
+   "texto": "Ação revisional de alimentos. Alteração superveniente do binômio necessidade possibilidade. Nova prole e redução da atividade econômica do alimentante. Pretensões recíprocas de redução e majoração. Prova comparativa da capacidade contributiva e das necessidades dos filhos menores.",
+   "termos": 36,
+   "caracteres": 281,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l093",
+   "tipo": "recusada",
+   "texto": "Ação revisional de alimentos. Obrigação alimentar fixada em valor único para vários filhos sem discriminação das quotas. Exoneração de um dos filhos que atingiu a maioridade. Pedido de redução proporcional da pensão em favor dos filhos remanescentes. Redução proporcional deferida ou indeferida.",
+   "termos": 42,
+   "caracteres": 295,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l094",
+   "tipo": "recusada",
+   "texto": "Cumprimento de sentença de alimentos; título que fixa metade das despesas extraordinárias mediante depósito; despesas adiantadas pela genitora representante; execução da quota pelo filho; inexistência de sub-rogação; desnecessidade de ação autônoma; controle das despesas comprovadas",
+   "termos": 35,
+   "caracteres": 283,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l095",
+   "tipo": "recusada",
+   "texto": "Destituição do poder familiar por castigo físico imoderado do filho, art. 1.638, I, do Código Civil; violência física comprovada por prova técnica; pedido subsidiário de suspensão do poder familiar (art. 1.637) rejeitado por insuficiência da medida menos gravosa; avaliação psicológica da função protetiva; apelação desprovida",
+   "termos": 45,
+   "caracteres": 326,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l096",
+   "tipo": "recusada",
+   "texto": "Direito de família. Cumprimento de sentença de partilha de bens, meação ou obrigação patrimonial decorrente de divórcio. Acordo para pagamento parcelado. Suspensão da execução artigo 922 CPC. Extinção pela presunção de quitação após silêncio da credora, artigo 924 II CPC. Advertência na homologação e intimação posterior sobre cumprimento do acordo.",
+   "termos": 50,
+   "caracteres": 350,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l097",
+   "tipo": "recusada",
+   "texto": "Exoneração liminar de alimentos a filho maior sem citação válida e sem prévio contraditório. A Súmula 358 do STJ impede a exoneração em tutela de urgência inaudita altera parte ou admite exceção fundada em prova inequívoca da desnecessidade? Distinção entre nulidade processual, erro de julgamento da tutela e conservação da decisão anterior à citação anulada.",
+   "termos": 55,
+   "caracteres": 360,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l098",
+   "tipo": "recusada",
+   "texto": "Guarda compartilhada afastada por elementos que evidenciem probabilidade de risco de violência doméstica ou familiar, art. 1.584, § 2º, do Código Civil, redação da Lei n. 14.713/2023; guarda unilateral diante de suspeita de violência contra a criança, apuração criminal sem conclusão e medida protetiva; convivência assistida ou supervisionada",
+   "termos": 48,
+   "caracteres": 343,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l099",
+   "tipo": "recusada",
+   "texto": "Guarda unilateral mantida em favor de um dos genitores. Guarda compartilhada inviável por animosidade e comunicação conflituosa entre os genitores, residência consolidada com o guardião e episódios pretéritos de negligência no lar do outro genitor. Melhor interesse da criança, arts. 1.583 e 1.584 do Código Civil. Apelação do outro genitor desprovida quanto à guarda.",
+   "termos": 54,
+   "caracteres": 368,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l100",
+   "tipo": "recusada",
+   "texto": "Indenização por violência doméstica entre ex-companheiros: suficiência da palavra da vítima, declarações policiais, BO e medidas protetivas sem testemunhas; arquivamento do inquérito não impede responsabilidade civil (art. 935); perspectiva de gênero",
+   "termos": 31,
+   "caracteres": 250,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l101",
+   "tipo": "recusada",
+   "texto": "Inventário extinto sem resolução do mérito por abandono da causa e inércia do inventariante, remoção (art. 622 do CPC), intimação pessoal do art. 485, § 1º; existência de outros herdeiros interessados. Sentença cassada.",
+   "termos": 33,
+   "caracteres": 219,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l102",
+   "tipo": "recusada",
+   "texto": "Liminar ou tutela antecipada que suspende ou exonera alimentos posteriormente revogada ou sem efeito: as prestações do período de vigência da liminar tornam-se exigíveis retroativamente ou permanecem inexigíveis em execução de alimentos",
+   "termos": 32,
+   "caracteres": 236,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l103",
+   "tipo": "recusada",
+   "texto": "Majoração de alimentos em apelação negada por ausência de prova da capacidade contributiva do alimentante e do valor pretendido; binômio necessidade e possibilidade, art. 1.694, § 1º, do Código Civil; pedido de reabertura da instrução em segundo grau para apurar renda do alimentante indeferido; alimentos fixados em percentual do salário mínimo mantidos; via revisional.",
+   "termos": 54,
+   "caracteres": 371,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l104",
+   "tipo": "recusada",
+   "texto": "Nulidade da citação em ação de exoneração de alimentos: conservação da tutela antecipada concedida antes do ato citatório inválido (CPC arts. 281, 282 e 296); cobrança de prestações suspensas; possibilidade de reconhecimento incidental da nulidade da sentença sem querela nullitatis autônoma e limites subjetivos da coisa julgada em cumprimento de honorários. Suspensão por prejudicialidade externa sem ação autônoma ajuizada.",
+   "termos": 59,
+   "caracteres": 426,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l105",
+   "tipo": "recusada",
+   "texto": "Partilha, em dissolucao de uniao estavel ou divorcio, de direitos possessorios e benfeitorias sobre lote de assentamento da reforma agraria (INCRA) sem titulacao em nome dos conviventes; possibilidade de partilha da expressao economica da posse entre os ex-companheiros sem efeito perante o INCRA, a Uniao ou terceiros; acessao em terreno alheio e necessidade de participacao do proprietario",
+   "termos": 57,
+   "caracteres": 391,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l106",
+   "tipo": "recusada",
+   "texto": "Cumprimento de sentença; honorários de 10% do art. 523 §1º devidos mas com exigibilidade suspensa pela justiça gratuita, distinção entre exclusão da planilha e suspensão da cobrança. Gratuidade requerida na primeira manifestação do executado, omissão do juízo, posterior concessão.",
+   "termos": 39,
+   "caracteres": 281,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l107",
+   "tipo": "recusada",
+   "texto": "Preliminar de nulidade da sentença por deficiência de fundamentação (art. 489, § 1º, IV, CPC) rejeitada: questão suscitada e não enfrentada na origem é devolvida ao tribunal pela apelação (art. 1.013, § 1º) e, estando a causa em condições de imediato julgamento, o tribunal decide desde logo o mérito (art. 1.013, § 3º, IV), sendo desnecessária a anulação ou cassação da sentença; teoria da causa madura; ausência de prejuízo. Ação de exoneração de alimentos, filho maior.",
+   "termos": 76,
+   "caracteres": 472,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l108",
+   "tipo": "recusada",
+   "texto": "Revisional de alimentos ajuizada pelo genitor. Redução da atividade econômica e nascimento de novo filho. Redução parcial do encargo quando a nova prole integra alteração concreta e comprovada da capacidade contributiva; renda informal não apurada.",
+   "termos": 35,
+   "caracteres": 248,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l109",
+   "tipo": "recusada",
+   "texto": "Revisional de alimentos. Majoração pretendida em razão de transtorno do espectro autista do filho. Necessidade de prova da insuficiência da verba e da capacidade contributiva do alimentante; diagnóstico preexistente à fixação anterior não autoriza majoração automática.",
+   "termos": 36,
+   "caracteres": 269,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l110",
+   "tipo": "recusada",
+   "texto": "Revisão de alimentos a filho maior estudante universitário com emprego e renda própria: redução proporcional, despesas acadêmicas, preservação do sustento do genitor. Diferenciar bolsa integral e parcial e demonstrar alteração do binômio necessidade possibilidade.",
+   "termos": 34,
+   "caracteres": 264,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l111",
+   "tipo": "recusada",
+   "texto": "Revisão de alimentos a filho maior com renda e patrimônio próprios. Art. 1.695 do Código Civil: bens suficientes para própria manutenção, renda variável, necessidade residual e preservação do sustento do genitor. Distinguir patrimônio sem renda de capacidade de autossustento.",
+   "termos": 39,
+   "caracteres": 276,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l112",
+   "tipo": "recusada",
+   "texto": "acao de alimentos ajuizada por filhos menores representados pela genitora; extincao por abandono da causa (art. 485, III) apos intimacao pessoal da representante; direito indisponivel do incapaz; conflito de interesses; curador especial pela Defensoria Publica (art. 72, I, CPC; art. 142, p.u., ECA); nulidade da sentenca extintiva",
+   "termos": 47,
+   "caracteres": 331,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l113",
+   "tipo": "recusada",
+   "texto": "alienação de imóvel de incapaz curatelado ou tutelado exige autorização judicial e demonstração de manifesta vantagem, art. 1.750 do Código Civil, prévia avaliação judicial, alvará; tribunais STJ, TJSC, STF",
+   "termos": 29,
+   "caracteres": 206,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l114",
+   "tipo": "recusada",
+   "texto": "alimentos filho menor fixados em percentual dos rendimentos do genitor com vinculo empregaticio e, para a hipotese de desemprego ou trabalho informal, em percentual do salario minimo; base substitutiva; binomio necessidade e possibilidade",
+   "termos": 33,
+   "caracteres": 238,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l115",
+   "tipo": "recusada",
+   "texto": "alimentos provisorios fixados em favor de filhos menores, com deposito na conta da genitora; superveniente incerteza sobre a guarda de fato e sobre quem custeia as despesas dos alimentandos; alimentos pertencem aos filhos e devem ser destinados a quem exerce a guarda fatica; restabelecimento condicionado a apuracao da residencia e do responsavel de fato",
+   "termos": 54,
+   "caracteres": 355,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l116",
+   "tipo": "recusada",
+   "texto": "apelação guarda compartilhada indícios de violência doméstica entre genitores mensagens laudo pericial não enfrentou conversão do julgamento em diligência art. 938 §3 CPC esclarecimentos do perito complementação estudo psicossocial Lei 14.713/2023 art. 1.584 §2 Código Civil",
+   "termos": 36,
+   "caracteres": 274,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l117",
+   "tipo": "recusada",
+   "texto": "astreintes multa diária fixada em tutela provisória obrigação de fazer redução do valor e do teto em apelação proporcionalidade art. 537 § 1º CPC Tema 706 REsp 1.333.988 ação civil pública educação",
+   "termos": 32,
+   "caracteres": 197,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l118",
+   "tipo": "recusada",
+   "texto": "autorizacao judicial para viagem de crianca ao exterior com apenas um dos genitores, recusa injustificada do outro genitor, suprimento do consentimento, poder familiar nao confere veto imotivado, ausencia de risco de retencao no exterior, Convencao da Haia sobre sequestro internacional nao caracterizado, melhor interesse da crianca, recurso especial",
+   "termos": 48,
+   "caracteres": 351,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l119",
+   "tipo": "recusada",
+   "texto": "ação civil pública Ministério Público sucumbência recíproca parcial provimento custas art. 18 Lei 7.347/1985 isenção do autor coletivo réu responde pelas custas EAREsp 962.250 AgInt no AREsp 1.046.016 julgamento extra petita nulidade parcial julgamento imediato art. 1.013 § 3º II CPC",
+   "termos": 41,
+   "caracteres": 284,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l120",
+   "tipo": "recusada",
+   "texto": "ação civil pública escola privada obrigação de fornecer profissional de apoio escolar ou segundo professor a aluno com TEA necessidade comprovada avaliação individual laudo médico não basta sem cobrança adicional (LBI 28, Lei 12.764 art. 3º, Res. CEE/SC 100/2016, Lei 17.292/2017)",
+   "termos": 41,
+   "caracteres": 280,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l121",
+   "tipo": "recusada",
+   "texto": "ação de oferta de alimentos ajuizada pelo genitor e ação revisional de alimentos ajuizada pelos filhos: não há litispendência nem continência, apenas conexão; reunião dos processos no juízo prevento para julgamento conjunto; extinção sem resolução do mérito afastada",
+   "termos": 38,
+   "caracteres": 266,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l122",
+   "tipo": "recusada",
+   "texto": "bolsa de estudo concedida por instituicao de ensino privada cancelamento retroativo cobranca de mensalidades de semestres ja cursados sem clausula expressa e sem previa notificacao do aluno; dever de informacao e boa-fe objetiva no contrato educacional; inexigibilidade do debito; art. 46 e 47 do CDC",
+   "termos": 45,
+   "caracteres": 300,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l123",
+   "tipo": "recusada",
+   "texto": "cerceamento de defesa julgamento antecipado da lide com prova documental deferida como relevante e nao produzida por terceiro; sentenca cassada para completar a instrucao; exoneracao de alimentos de filho maior estudante universitario; atestado de matricula nao comprova frequencia e aproveitamento academico",
+   "termos": 41,
+   "caracteres": 308,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l124",
+   "tipo": "recusada",
+   "texto": "cobranca indevida de mensalidade escolar ou debito declarado inexigivel sem inscricao em cadastro de inadimplentes: dano moral nao configurado, mero dissabor, ausencia de prova de repercussao concreta; instituicao de ensino; onus da prova do consumidor quanto ao abalo",
+   "termos": 38,
+   "caracteres": 268,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l125",
+   "tipo": "recusada",
+   "texto": "divórcio partilha comunhão parcial imóvel adquirido na constância do casamento em nome do cônjuge alegação de doação dissimulada prova da liberalidade ônus de quem alega exclusão da partilha prova documental insuficiente presunção de comunicabilidade art. 1.660 I e art. 1.659 I do Código Civil",
+   "termos": 44,
+   "caracteres": 294,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l126",
+   "tipo": "recusada",
+   "texto": "embargos à execução planilha de débito elaborada unilateralmente pelo credor demonstrativo discriminado art. 798 I b CPC liquidez do título mensalidades escolares embargante não aponta excesso de execução nem apresenta valor que entende correto art. 917 § 3º e § 4º",
+   "termos": 41,
+   "caracteres": 265,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l127",
+   "tipo": "recusada",
+   "texto": "estudo psicossocial ou avaliação psicológica judicial em ação de guarda ou regulamentação de visitas realizado sem entrevista ou escuta da criança; alegação de nulidade ou cerceamento de defesa; juiz não adstrito ao laudo; apreciação motivada da prova técnica em conjunto com os demais elementos; art. 479 do CPC; melhor interesse da criança",
+   "termos": 52,
+   "caracteres": 341,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l128",
+   "tipo": "recusada",
+   "texto": "execução de mensalidades escolares contrato de prestação de serviços educacionais embargos à execução multa moratória de 2% art. 52 § 1º CDC juros de mora de 1% ao mês encargos contratuais não abusivos relação de consumo revisão exige demonstração de desequilíbrio",
+   "termos": 41,
+   "caracteres": 264,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l129",
+   "tipo": "recusada",
+   "texto": "indenização por dano moral violência doméstica ação cível arquivamento do inquérito policial não impede responsabilidade civil independência das instâncias standard probatório civil distinto do penal preponderância das provas palavra da vítima",
+   "termos": 31,
+   "caracteres": 243,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l130",
+   "tipo": "recusada",
+   "texto": "instituicao de ensino cobranca de mensalidades onus da prova do fornecedor quanto a origem e composicao do debito art. 373, II, do CPC; extrato ou demonstrativo unilateral nao comprova a causa da divida; contradicao entre a comunicacao da credora e os lancamentos cobrados; inexigibilidade do debito",
+   "termos": 46,
+   "caracteres": 299,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l131",
+   "tipo": "recusada",
+   "texto": "interpretacao do titulo judicial na fase de liquidacao pela conjugacao de todos os seus elementos (art. 489, par. 3, CPC), sem ofensa ao art. 509, par. 4; limites objetivos da coisa julgada; alcance de exemplo numerico contido na fundamentacao",
+   "termos": 39,
+   "caracteres": 243,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l132",
+   "tipo": "recusada",
+   "texto": "multa do art. 1.026, par. 2, do CPC exige embargos de declaracao manifestamente protelatorios; rejeicao ou nao conhecimento dos embargos nao caracteriza por si intuito protelatorio; afastamento da multa em apelacao; EDcl no AREsp 2.598.634",
+   "termos": 35,
+   "caracteres": 239,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l133",
+   "tipo": "recusada",
+   "texto": "nulidade da sentenca por julgamento antecipado apos deferimento de prova reputada relevante pelo proprio juizo e nao produzida; cerceamento de defesa; oficio nao respondido por terceiro; sentenca anulada e retorno dos autos a origem para instrucao; alimentos filho maior",
+   "termos": 39,
+   "caracteres": 270,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l134",
+   "tipo": "recusada",
+   "texto": "obrigação de fazer escola elaborar plano educacional individualizado PEI estudo de caso aluno com deficiência autismo prazo de dias para elaboração e disponibilização de profissional de apoio ou professor auxiliar sob pena de multa",
+   "termos": 34,
+   "caracteres": 231,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l135",
+   "tipo": "recusada",
+   "texto": "partilha de imovel financiado: numero total de parcelas, parcelas pagas durante a relacao, percentual de meacao sobre o valor do bem deduzido o saldo devedor",
+   "termos": 25,
+   "caracteres": 157,
+   "acima_dos_limites": false
+  },
+  {
+   "id": "l136",
+   "tipo": "recusada",
+   "texto": "partilha divórcio comunhão parcial bens registrados em nome do cônjuge presunção de aquisição na constância art. 1.662 do Código Civil alegação de titularidade de terceiro tradição não comprovada; construção edificada durante o casamento sobre terreno particular do cônjuge acessão benfeitoria comunicação do valor da edificação art. 1.660 IV",
+   "termos": 48,
+   "caracteres": 342,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l137",
+   "tipo": "recusada",
+   "texto": "preclusao de decisao interlocutoria proferida na fase de liquidacao de sentenca que indeferiu prova pericial, agravavel de imediato pelo art. 1.015, paragrafo unico, do CPC, e nao impugnada; inaplicabilidade do art. 1.009, par. 1; impossibilidade de reabrir a questao na apelacao; cerceamento de defesa nao configurado",
+   "termos": 46,
+   "caracteres": 318,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l138",
+   "tipo": "recusada",
+   "texto": "recurso cabivel contra decisao que julga liquidacao de sentenca e extingue a fase com fundamento no art. 487, I, do CPC: natureza de sentenca, apelacao e nao agravo de instrumento, art. 1.015, paragrafo unico, art. 203, par. 1; REsp 2.070.236; REsp 1.698.344",
+   "termos": 42,
+   "caracteres": 258,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l139",
+   "tipo": "recusada",
+   "texto": "regulamentação de convivência familiar; restrição temporária da convivência com retomada presencial gradual; laudo psicológico judicial que dispensou a oitiva da criança; alegação de nulidade ou insuficiência do estudo psicossocial; livre valoração motivada da prova técnica (arts. 371 e 479 do CPC); melhor interesse da criança",
+   "termos": 45,
+   "caracteres": 328,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l140",
+   "tipo": "recusada",
+   "texto": "sentença extinguiu o processo por litispendência sem ouvir a parte autora sobre a alegação; decisão surpresa arts. 9º e 10 do CPC; tribunal afasta a litispendência e determina o prosseguimento sem anular a sentença porque pode decidir a favor da parte a quem aproveitaria a nulidade (art. 282, § 2º, do CPC; art. 1.013, § 3º, I)",
+   "termos": 57,
+   "caracteres": 328,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l141",
+   "tipo": "recusada",
+   "texto": "standard probatório no processo civil preponderância das provas distinto do processo penal prova além de dúvida razoável responsabilidade civil mesmo fato absolvição ou arquivamento por insuficiência de provas não vincula o juízo cível",
+   "termos": 33,
+   "caracteres": 235,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l142",
+   "tipo": "recusada",
+   "texto": "suprimento judicial de consentimento paterno para viagem internacional de crianca na companhia de apenas um dos genitores, autorizacao inserida no passaporte, discordancia parental sem demonstracao de risco concreto de evasao ou retencao no exterior, melhor interesse da crianca, art. 84 do ECA, art. 1.631 do Codigo Civil",
+   "termos": 47,
+   "caracteres": 322,
+   "acima_dos_limites": true
+  },
+  {
+   "id": "l143",
+   "tipo": "recusada",
+   "texto": "veiculo comum vendido por um dos ex-companheiros apos a separacao de fato; produto da venda pertence a ambos em partes iguais; condenacao a restituir apenas a meacao do saldo liquido apos quitacao do financiamento",
+   "termos": 34,
+   "caracteres": 213,
+   "acima_dos_limites": true
+  }
+ ],
+ "tipos": {
+  "recusada": "passava de 30 termos ou de 500 caracteres",
+  "longa": "frase longa dentro dos limites",
+  "falha": "lacuna registrada na pesquisa: algo que se buscou e não se achou"
+ }
+}

@@ -218,15 +218,42 @@ def collect_window(http, config: Config, organ: int | str, day: date):
         "hdnPublicacaoInicio": date_string,
         "hdnPublicacaoFim": date_string,
     }
-    total, pages, rows = collect_pages(http, config, data, lambda content: parse_page(content, organ, day))
+    parse = lambda content: parse_page(content, organ, day)  # noqa: E731
+    recovery = {}
+    try:
+        total, pages, rows = collect_pages(http, config, data, parse)
+    except FloraError as exc:
+        if exc.code not in UNSTABLE:
+            raise
+        total, pages, rows, mode = recollect_unstable(http, config, data, parse)
+        recovery = {"coleta": mode, "instabilidade": exc.code}
     payload = {
         "fonte": "TJSC",
         **identity(organ),
         "data_publicacao": day.isoformat(),
         "total": total,
+        **recovery,
         "paginas": pages,
     }
     return json.dumps(payload, ensure_ascii=False).encode(), rows
+
+
+def recollect_unstable(http, config: Config, data: dict, parse):
+    """A window whose in-order reading failed, read again from a new first page.
+
+    With more than one page, passes add up to the declared total (collect_union); with one page,
+    the usual reading. Either way the window only concludes with the declared total. Returns
+    (total, pages, rows, mode), the mode being what the envelope records.
+    """
+    data["hdnPaginaAtual"] = "1"
+    PACER.wait(config.request_delay)
+    probe = download(http, TJSC_SEARCH, config.max_download_bytes, method="POST", data=dict(data))
+    total, _ = parse(probe)
+    if total <= 10:
+        return (*collect_pages(http, config, data, parse, first_page=probe), "nova_leitura")
+    if math.ceil(total / 10) > 100:
+        raise FloraError("janela_grande", "TJSC excedeu 100 páginas no dia; janela não concluída.")
+    return (*collect_union(http, config, data, parse, total, probe), "uniao_de_passagens")
 
 
 def catalog_window(store: Store, organ: int | str, day: date) -> str:
@@ -280,7 +307,7 @@ def search_data(organ: int | str, term: str, start: date, end: date) -> dict:
     }
 
 
-# Answers of a theme search that a new attempt may cure; anything else stops the search.
+# Answers of the portal that a new reading may cure; anything else stops the search or the run.
 UNSTABLE = {"paginacao_instavel", "paginacao_incompleta", "janela_alterada"}
 SEARCH_ATTEMPTS = 3
 UNION_PASSES = 6
@@ -550,13 +577,15 @@ def sync_tjsc(config: Config, store: Store, http, start: date, end: date, organs
                             "erro": str(exc),
                         }
                     )
-                    # Stop on first source failure, retain earlier committed windows.
-                    result["status"] = "error"
-                    store.finish_run(run, "error", result)
-                    return result
+                    # An unstable window stays pending and the run goes on; any other failure (a
+                    # blocked portal above all) stops it, retaining earlier committed windows.
+                    if result["falhas"][-1]["codigo"] not in UNSTABLE:
+                        result["status"] = "error"
+                        store.finish_run(run, "error", result)
+                        return result
                 day += timedelta(days=1)
-        result["status"] = "ok"
-        store.finish_run(run, "ok", result)
+        result["status"] = "partial" if result["falhas"] else "ok"
+        store.finish_run(run, result["status"], result)
         return result
     except BaseException:
         store.finish_run(run, "interrupted", {"erro": "Execução interrompida; repetir janela."})

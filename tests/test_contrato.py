@@ -1,4 +1,7 @@
-"""Contract flora-mcp-3.4: the examples of CONTRATO.md and each rule, over the real MCP client."""
+"""Contract flora-mcp-3.5: the examples of CONTRATO.md and each rule, over the real MCP client.
+
+The edges of 3.5 have their own tests in test_bordas_contrato.py.
+"""
 
 import asyncio
 import base64
@@ -131,7 +134,7 @@ def test_every_example_in_contrato_md_has_the_shape_of_a_real_response(published
         assert_same_shape(example, answers[name], name)
     for name, answer in answers.items():
         if name != "erro":
-            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.4", name
+            assert answer["status"] == "ok" and answer["contrato"] == "flora-mcp-3.5", name
             assert answer["publicacao_id"], name
     assert answers["erro"]["codigo"] == "documento_nao_encontrado"
     assert answers["pesquisar_jurisprudencia.sem_correspondencia"]["termos_sem_ocorrencia"] == [
@@ -329,7 +332,7 @@ def test_automatic_order_and_coverage_block(store):
 def test_single_cursor_encoding_pins_publication_and_rejects_other_contracts(published):
     page = api.search(published, limite=1)
     decoded = json.loads(base64.urlsafe_b64decode(page["proximo_cursor"]))
-    assert decoded["contrato"] == "flora-mcp-3.4"
+    assert decoded["contrato"] == "flora-mcp-3.5"
     assert decoded["publicacao"] == page["publicacao_id"]
     assert "continua" not in decoded  # no cursor inside a cursor
     legacy = base64.urlsafe_b64encode(

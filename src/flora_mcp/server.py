@@ -1,25 +1,190 @@
 import json
-from typing import Any, Literal
+import logging
+from typing import Annotated, Any, Literal
 
 from mcp.server import MCPServer
-from mcp.server.mcpserver.exceptions import ToolError
+from mcp.server.mcpserver.exceptions import ToolError, UnexpectedToolError
 from mcp.types import CallToolResult, TextContent, ToolAnnotations
-from pydantic import ValidationError
+from pydantic import BeforeValidator, Field, ValidationError
 
+from . import __version__
 from .api import coverage, document, search, search_precedents
 from .model import FloraError
+from .precedents import COMPONENTS
 from .store import Store
+from .text import SECTION_NAMES
 
-Tribunal = Literal["STJ", "TJSC"]
-TribunalPrecedente = Literal["STJ", "STF", "TJSC"]
-TipoData = Literal["publicacao", "julgamento"]
-Ordenar = Literal["relevancia", "mais_recentes", "mais_antigos"]
-Detalhe = Literal["triagem", "completo"]
-ModoBusca = Literal["simples", "avancado"]
-Materia = Literal["civil", "processual_civil", "bancario"]
-Especie = Literal["tema_repetitivo", "irdr", "iac", "sumula", "tema_repercussao_geral", "sumula_vinculante"]
-Campo = Literal["enunciado", "questao_submetida", "tese_firmada", "modulacao", "suspensao", "todos"]
-DetalheCobertura = Literal["resumo", "completo", "recursos", "execucoes"]
+LOG = logging.getLogger(__name__)
+
+ACORDAO_COMPONENTS = ("ementa", "espelho_original", "citacoes", *(f"secao:{n}" for n in SECTION_NAMES))
+DATE_SCHEMA = {"format": "date"}  # Kept out of validation: a wrong date is refused with data_invalida.
+
+
+def number_as_text(value):
+    """A client that does not show the type of an optional parameter may send 1076 for "1076"."""
+    if isinstance(value, bool) or not isinstance(value, int | float) or value < 0:
+        return value
+    return str(int(value)) if value == int(value) else str(value)
+
+
+# Each parameter says here what the model needs to fill it: CONTRATO.md is not what the model reads.
+# Closed values and limits of optional parameters are also in the text: there are clients that do
+# not show the model what is inside the anyOf.
+TermosAcordaos = Annotated[
+    str,
+    Field(
+        max_length=500,
+        description=(
+            'Palavras e "frases entre aspas" procuradas na ementa, até 30. Por relevância, ligadas por '
+            "OR; por data, por AND. Sem redução de flexão: alimento não acha alimentos."
+        ),
+    ),
+]
+TermosPrecedentes = Annotated[
+    str,
+    Field(
+        max_length=500,
+        description=(
+            'Palavras e "frases entre aspas" procuradas nos componentes, até 30, ligadas por AND. Sem '
+            "redução de flexão."
+        ),
+    ),
+]
+Processo = Annotated[
+    str | None,
+    BeforeValidator(number_as_text),
+    Field(description="Número do processo ou registro, com ou sem pontuação; a classe tem filtro próprio."),
+]
+Tribunal = Annotated[Literal["STJ", "TJSC"] | None, Field(description="Tribunal do acórdão: STJ ou TJSC.")]
+TribunalPrecedente = Annotated[
+    Literal["STJ", "STF", "TJSC"] | None, Field(description="Tribunal do precedente: STJ, STF ou TJSC.")
+]
+Orgao = Annotated[
+    str | None,
+    Field(description="Nome exato do órgão, como em consultar_cobertura; acentos e caixa não contam."),
+]
+Classe = Annotated[
+    str | None,
+    Field(description="Classe exata, como no campo classe do item (REsp); acentos e caixa não contam."),
+]
+Relator = Annotated[
+    str | None,
+    Field(
+        max_length=150,
+        description="Parte do nome do relator, até 150 caracteres; acentos e caixa não contam.",
+    ),
+]
+DataInicio = Annotated[
+    str | None, Field(json_schema_extra=DATE_SCHEMA, description="Data inicial, inclusiva, em AAAA-MM-DD.")
+]
+DataFim = Annotated[
+    str | None, Field(json_schema_extra=DATE_SCHEMA, description="Data final, inclusiva, em AAAA-MM-DD.")
+]
+TipoData = Annotated[
+    Literal["publicacao", "julgamento"],
+    Field(description="Data a que data_inicio, data_fim e a ordem por data se referem."),
+]
+Ordenar = Annotated[
+    Literal["relevancia", "mais_recentes", "mais_antigos"] | None,
+    Field(
+        description=(
+            "relevancia, mais_recentes ou mais_antigos. Nulo: relevancia com termos, mais_recentes sem eles."
+        )
+    ),
+]
+Detalhe = Annotated[
+    Literal["triagem", "completo"],
+    Field(description="triagem: item curto, com trecho. completo: texto integral e todos os metadados."),
+]
+ModoBusca = Annotated[
+    Literal["simples", "avancado"],
+    Field(
+        description=(
+            "avancado aceita E ou AND, OU ou OR, parênteses, frases e prefixo*; não amplia a consulta e "
+            "recusa NOT e NEAR."
+        )
+    ),
+]
+Limite = Annotated[
+    int | None,
+    Field(
+        ge=1,
+        le=8,
+        description=(
+            "Itens por página: 1 a 8 em triagem (padrão 8), 1 a 5 em completo (padrão 3). A triagem pode "
+            "trazer menos para caber em 8 KiB; siga proximo_cursor."
+        ),
+    ),
+]
+Cursor = Annotated[
+    str | None, Field(description="proximo_cursor da resposta anterior, com os mesmos parâmetros.")
+]
+PublicacaoId = Annotated[str | None, Field(description="Fixa a geração lida; sem ele, lê a atual.")]
+CitaPrecedente = Annotated[
+    str | None,
+    Field(description="Só acórdãos que citam o tema ou súmula: Tema 1.076, Súmula 7 do STJ, IRDR 17."),
+]
+CitaDispositivo = Annotated[
+    str | None,
+    Field(
+        description="Só acórdãos que citam o artigo: CPC art. 85, art. 1.634 do CC, Lei 8.560/1992 art. 2º."
+    ),
+]
+CitaAcordao = Annotated[
+    str | None,
+    Field(description="Só acórdãos que citam o acórdão: número CNJ, AgInt no AREsp 1.779.343/DF."),
+]
+Especie = Annotated[
+    Literal["tema_repetitivo", "irdr", "iac", "sumula", "tema_repercussao_geral", "sumula_vinculante"] | None,
+    Field(description="tema_repetitivo, irdr, iac, sumula, tema_repercussao_geral ou sumula_vinculante."),
+]
+Numero = Annotated[
+    str | None,
+    BeforeValidator(number_as_text),
+    Field(description="Número do tema, incidente ou súmula: 1076, 1.076 ou Tema 1.076."),
+]
+Materia = Annotated[
+    Literal["civil", "processual_civil", "bancario"] | None,
+    Field(description="Matéria atribuída na admissão: civil, processual_civil ou bancario."),
+]
+Campo = Annotated[
+    Literal["enunciado", "questao_submetida", "tese_firmada", "modulacao", "suspensao", "todos"],
+    Field(description="Componente em que procurar os termos."),
+]
+DataInicioPrecedente = Annotated[
+    str | None,
+    Field(json_schema_extra=DATE_SCHEMA, description="Publicação a partir desta data, em AAAA-MM-DD."),
+]
+DataFimPrecedente = Annotated[
+    str | None,
+    Field(json_schema_extra=DATE_SCHEMA, description="Publicação até esta data, em AAAA-MM-DD."),
+]
+Id = Annotated[str, Field(description="id de um resultado: STJ:123 ou STJ:sumula:7.")]
+Componente = Annotated[
+    Literal[(*ACORDAO_COMPONENTS, *COMPONENTS)] | None,
+    Field(
+        description=(
+            "Acórdão: ementa, espelho_original, citacoes ou secao:<nome> (secao:razoes_de_decidir; os "
+            "nomes estão em metadados.secoes_ementa). Precedente: enunciado, tese_firmada, "
+            "questao_submetida, modulacao ou suspensao (em metadados.componentes_disponiveis). Nulo lê "
+            "ementa no acórdão e, no precedente, o primeiro disponível nessa ordem."
+        )
+    ),
+]
+TamanhoBloco = Annotated[int, Field(ge=100, le=32000, description="Caracteres por bloco, de 100 a 32000.")]
+HashConteudo = Annotated[str | None, Field(description="Versão esperada; outra versão é recusada.")]
+DetalheCobertura = Annotated[
+    Literal["resumo", "completo", "recursos", "execucoes"],
+    Field(description="resumo: visão geral. completo: tudo, pode ser grande. Os demais: histórico paginado."),
+]
+CursorCobertura = Annotated[str | None, Field(description="proximo_cursor; só com recursos e execucoes.")]
+LimiteCobertura = Annotated[
+    int, Field(ge=1, le=50, description="Itens por página de recursos e execucoes, de 1 a 50.")
+]
+TribunalCobertura = Annotated[
+    Literal["STJ", "STF", "TJSC"] | None, Field(description="Filtro de detalhe=recursos: STJ, STF ou TJSC.")
+]
+Dataset = Annotated[str | None, Field(description="Filtro de detalhe=recursos: nome exato do dataset.")]
 
 INSTRUCTIONS = (
     "A base é parcial: resultado vazio vale só para o que está carregado; consultar_cobertura "
@@ -40,29 +205,27 @@ DESCRIPTIONS = {
         "ordena por relevância textual, que não mede pertinência jurídica: palavras e frases entre "
         "aspas ligadas por OR, sem palavras vazias, e primeiro o que tem mais termos e os mais raros. "
         "Ordenado por data, liga por AND e, se nada contém todos os termos, amplia para qualquer "
-        "termo e informa em ampliacao. modo_busca=avancado aceita OR, parênteses e prefixo* e não "
-        "amplia. Devolve triagem com referência, "
+        "termo e informa em ampliacao. Devolve triagem com referência, classe, datas, "
         "cabeçalho e o trecho onde o termo aparece; leia a ementa com obter_documento antes de "
         "citar. Resultado vazio vale só para a base carregada e vem com o motivo. Temas e súmulas: "
-        "pesquisar_precedentes. cita_precedente, cita_dispositivo e cita_acordao restringem aos "
-        "acórdãos que citam um tema ou súmula (Tema 1.076; Súmula 7 do STJ), um artigo (CPC art. 85) "
-        "ou um acórdão (número CNJ; AgInt no AREsp 1.779.343/DF), pelas linhas de citação da ementa "
-        "CNJ e do espelho do STJ; com ordenar=mais_recentes dão a cronologia de aplicação."
+        "pesquisar_precedentes. Os filtros cita_* leem as linhas de citação da ementa CNJ e do "
+        "espelho do STJ; com ordenar=mais_recentes dão a cronologia de aplicação."
     ),
     "pesquisar_precedentes": (
         "Pesquisa temas repetitivos, IAC e súmulas do STJ, temas de repercussão geral e súmulas, "
         "inclusive vinculantes, do STF, e IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil "
         "e do Órgão Especial do TJSC admitidos na base. campo escolhe o componente ou todos; "
         "materia filtra civil, processual_civil ou bancario, e cada item traz a sua. Súmula "
-        "bancária é apoio: apresente antes as de civil e processual civil. Termos como em "
-        "pesquisar_jurisprudencia, com a mesma ampliação. A coleção é parcial: ausência não "
-        "prova inexistência."
+        "bancária é apoio: apresente antes as de civil e processual civil. Em qualquer ordenação, "
+        "os termos se ligam por AND e, se nada contém todos, a busca amplia para qualquer termo e "
+        "informa em ampliacao. A coleção é parcial: ausência não prova inexistência."
     ),
     "obter_documento": (
-        "Lê o texto integral de um resultado pelo id. Acórdão: ementa (padrão), espelho_original "
+        "Lê o texto integral de um resultado pelo id. Acórdão: ementa, espelho_original "
         "(campos recebidos da fonte, não é inteiro teor), citacoes (precedentes, acórdãos e "
         "dispositivos citados, com o id do acervo quando resolvido) ou secao:<nome>. Precedente: enunciado, "
-        "questao_submetida, tese_firmada, modulacao ou suspensao. Concatene os blocos até "
+        "questao_submetida, tese_firmada, modulacao ou suspensao. A resposta diz em componente o que "
+        "foi lido. Concatene os blocos até "
         "proximo_cursor nulo. Cite com a referencia do primeiro bloco e exponha "
         "referencia_pendencias. metadados.copias_texto, quando existe, lista os processos com a "
         "mesma ementa, que a publicação deixa de fora."
@@ -73,6 +236,24 @@ DESCRIPTIONS = {
         "execucoes pagina o histórico."
     ),
 }
+
+
+ACCEPTED = (
+    ("expected", "aceita {}"),
+    ("ge", "mínimo {}"),
+    ("le", "máximo {}"),
+    ("max_length", "até {} caracteres"),
+)
+
+
+def invalid_field(error) -> str:
+    """The parameter and what it accepts, for a client that does not show the model the schema."""
+    name = ".".join(str(part) for part in error["loc"])
+    context = error.get("ctx") or {}
+    for key, text in ACCEPTED:
+        if key in context:
+            return f"{name} ({text.format(context[key])})".replace(" or ", " ou ")
+    return name
 
 
 def error_result(code: str, message: str) -> CallToolResult:
@@ -89,18 +270,23 @@ class FloraServer(MCPServer):
     async def call_tool(self, name, arguments, context=None):
         try:
             return await super().call_tool(name, arguments, context)
+        except UnexpectedToolError as exc:
+            # The cause stays in the log; nothing of it reaches the client.
+            LOG.error("Falha inesperada em %s", name, exc_info=exc.__cause__)
+            return error_result(
+                "erro_interno",
+                f"Falha interna do servidor em {name}. Esta leitura não altera a base; tente de novo "
+                "e, se persistir, informe o responsável pelo acervo.",
+            )
         except ToolError as exc:
             if not isinstance(exc.__cause__, ValidationError):
                 raise
-            fields = sorted({".".join(str(p) for p in e["loc"]) for e in exc.__cause__.errors()})
-            return error_result(
-                "parametro_invalido",
-                "Valor inválido em: " + ", ".join(fields) + ". Os valores aceitos estão no esquema.",
-            )
+            fields = sorted({invalid_field(e) for e in exc.__cause__.errors()})
+            return error_result("parametro_invalido", "Valor inválido em: " + ", ".join(fields) + ".")
 
 
 def create_server(store: Store) -> MCPServer:
-    server = FloraServer("Flora-MCP", version="0.4.0", instructions=INSTRUCTIONS)
+    server = FloraServer("Flora-MCP", version=__version__, instructions=INSTRUCTIONS)
     annotation = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
     def result(call, *args, **kwargs):
@@ -111,24 +297,24 @@ def create_server(store: Store) -> MCPServer:
 
     @server.tool(annotations=annotation, description=DESCRIPTIONS["pesquisar_jurisprudencia"])
     def pesquisar_jurisprudencia(
-        termos: str = "",
-        processo: str | None = None,
-        tribunal: Tribunal | None = None,
-        orgao: str | None = None,
-        classe: str | None = None,
-        relator: str | None = None,
-        data_inicio: str | None = None,
-        data_fim: str | None = None,
+        termos: TermosAcordaos = "",
+        processo: Processo = None,
+        tribunal: Tribunal = None,
+        orgao: Orgao = None,
+        classe: Classe = None,
+        relator: Relator = None,
+        data_inicio: DataInicio = None,
+        data_fim: DataFim = None,
         tipo_data: TipoData = "publicacao",
-        ordenar: Ordenar | None = None,
+        ordenar: Ordenar = None,
         detalhe: Detalhe = "triagem",
         modo_busca: ModoBusca = "simples",
-        limite: int | None = None,
-        cursor: str | None = None,
-        publicacao_id: str | None = None,
-        cita_precedente: str | None = None,
-        cita_dispositivo: str | None = None,
-        cita_acordao: str | None = None,
+        limite: Limite = None,
+        cursor: Cursor = None,
+        publicacao_id: PublicacaoId = None,
+        cita_precedente: CitaPrecedente = None,
+        cita_dispositivo: CitaDispositivo = None,
+        cita_acordao: CitaAcordao = None,
     ) -> dict[str, Any]:
         return result(
             search,
@@ -154,21 +340,21 @@ def create_server(store: Store) -> MCPServer:
 
     @server.tool(annotations=annotation, description=DESCRIPTIONS["pesquisar_precedentes"])
     def pesquisar_precedentes(
-        termos: str = "",
-        tribunal: TribunalPrecedente | None = None,
-        especie: Especie | None = None,
-        numero: str | None = None,
-        orgao: str | None = None,
-        materia: Materia | None = None,
+        termos: TermosPrecedentes = "",
+        tribunal: TribunalPrecedente = None,
+        especie: Especie = None,
+        numero: Numero = None,
+        orgao: Orgao = None,
+        materia: Materia = None,
         campo: Campo = "todos",
-        data_inicio: str | None = None,
-        data_fim: str | None = None,
-        ordenar: Ordenar | None = None,
+        data_inicio: DataInicioPrecedente = None,
+        data_fim: DataFimPrecedente = None,
+        ordenar: Ordenar = None,
         detalhe: Detalhe = "triagem",
         modo_busca: ModoBusca = "simples",
-        limite: int | None = None,
-        cursor: str | None = None,
-        publicacao_id: str | None = None,
+        limite: Limite = None,
+        cursor: Cursor = None,
+        publicacao_id: PublicacaoId = None,
     ) -> dict[str, Any]:
         return result(
             search_precedents,
@@ -191,12 +377,12 @@ def create_server(store: Store) -> MCPServer:
 
     @server.tool(annotations=annotation, description=DESCRIPTIONS["obter_documento"])
     def obter_documento(
-        id: str,
-        componente: str = "ementa",
-        cursor: str | None = None,
-        tamanho_bloco: int = 16000,
-        hash_conteudo: str | None = None,
-        publicacao_id: str | None = None,
+        id: Id,
+        componente: Componente = None,
+        cursor: Cursor = None,
+        tamanho_bloco: TamanhoBloco = 16000,
+        hash_conteudo: HashConteudo = None,
+        publicacao_id: PublicacaoId = None,
     ) -> dict[str, Any]:
         return result(
             document,
@@ -211,11 +397,11 @@ def create_server(store: Store) -> MCPServer:
     @server.tool(annotations=annotation, description=DESCRIPTIONS["consultar_cobertura"])
     def consultar_cobertura(
         detalhe: DetalheCobertura = "resumo",
-        cursor: str | None = None,
-        limite: int = 20,
-        publicacao_id: str | None = None,
-        tribunal: TribunalPrecedente | None = None,
-        dataset: str | None = None,
+        cursor: CursorCobertura = None,
+        limite: LimiteCobertura = 20,
+        publicacao_id: PublicacaoId = None,
+        tribunal: TribunalCobertura = None,
+        dataset: Dataset = None,
     ) -> dict[str, Any]:
         return result(coverage, detalhe, cursor, limite, publicacao_id, tribunal, dataset)
 

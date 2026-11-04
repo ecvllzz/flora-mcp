@@ -14,7 +14,7 @@ from flora_mcp.config import load_config
 from flora_mcp.model import FloraError, digest, now
 from flora_mcp.sources import client
 from flora_mcp.store import Store, connection
-from flora_mcp.tjsc import PACER, catalog_window, collect_window
+from flora_mcp.tjsc import PACER, UNSTABLE, catalog_window, collect_window
 from flora_mcp.tjsc_orgaos import ORGAOS, dataset, envelope_organ, identity, name
 
 
@@ -85,25 +85,29 @@ class WindowFailure(Exception):
 
 
 def fetched_windows(work, fetch, config, workers):
-    """Yields (entry, organ, day, content, rows) in plan order.
+    """Yields (entry, organ, day, outcome) in plan order; outcome is (content, rows) or the error.
 
     With workers > 1, that many threads fetch ahead, each with its own HTTP client and its own
     request pause, so the portal receives at most `workers` requests per pause; the caller still
-    ingests one window at a time, in order. The first failure stops the yield at its window.
+    ingests one window at a time, in order. A window the portal keeps answering unstably comes as
+    its FloraError, and the others follow; any other failure stops the yield at its window.
     """
 
     def one(http, entry):
         organ, day = entry["orgao"], date.fromisoformat(entry["dia"])
         try:
             return organ, day, fetch(http, config, organ, day)
+        except FloraError as exc:
+            if exc.code in UNSTABLE:
+                return organ, day, exc
+            raise WindowFailure(entry, exc) from exc
         except BaseException as exc:
             raise WindowFailure(entry, exc) from exc
 
     if workers <= 1:
         with client() as http:
             for entry in work["pendentes"]:
-                organ, day, (content, rows) = one(http, entry)
-                yield entry, organ, day, content, rows
+                yield entry, *one(http, entry)
         return
     clients = [client() for _ in range(workers)]
     PACER.divisor = workers  # one request every request_delay / workers seconds, never two at once
@@ -118,12 +122,21 @@ def fetched_windows(work, fetch, config, workers):
                     futures.append((pending[index], pool.submit(one, http, pending[index])))
                     index += 1
                 entry, future = futures.pop(0)
-                organ, day, (content, rows) = future.result()
-                yield entry, organ, day, content, rows
+                yield entry, *future.result()
     finally:
         PACER.divisor = 1
         for http in clients:
             http.close()
+
+
+def record_unstable(store, run, report, report_path, entry, error):
+    """The window stays pending, with its failure on the resource and in the report; the run goes on."""
+    store.failure(entry["recurso"], run, str(error))
+    failure = {**entry, "codigo": error.code, "erro": str(error), "fim": now()}
+    report["falhas"].append(failure)
+    report.pop("em_andamento", None)
+    save(report_path, report)
+    print(json.dumps({"janela_com_falha": failure}, ensure_ascii=True), flush=True)
 
 
 def execute(
@@ -159,6 +172,7 @@ def execute(
             "antes": groups(store),
             "status": "preparado",
             "eventos": [],
+            "falhas": [],
         }
         save(report_path, report)
         if not work["pendentes"]:
@@ -173,8 +187,12 @@ def execute(
             for entry in work["pendentes"]:
                 catalog_window(store, entry["orgao"], date.fromisoformat(entry["dia"]))
             try:
-                for entry, organ, day, content, rows in fetched_windows(work, fetch, config, workers):
+                for entry, organ, day, outcome in fetched_windows(work, fetch, config, workers):
                     report["em_andamento"] = entry
+                    if isinstance(outcome, FloraError):
+                        record_unstable(store, run, report, report_path, entry, outcome)
+                        continue
+                    content, rows = outcome
                     with connection(store.path) as db:
                         saved = dict(
                             db.execute("SELECT * FROM resources WHERE id=?", (entry["recurso"],)).fetchone()
@@ -208,7 +226,7 @@ def execute(
                 report["em_andamento"] = failure.entry
                 store.failure(failure.entry["recurso"], run, str(failure.cause))
                 raise failure.cause from None
-            report["status"] = "ok"
+            report["status"] = "partial" if report["falhas"] else "ok"
         except BaseException as exc:
             report.update(
                 status="interrupted" if isinstance(exc, (KeyboardInterrupt, SystemExit)) else "error",
@@ -284,6 +302,7 @@ def main():
                 {
                     "status": result["status"],
                     "janelas": len(result["eventos"]),
+                    "falhas": len(result["falhas"]),
                     "depois": result["depois"],
                     "report": str(args.report),
                 },

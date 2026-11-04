@@ -60,6 +60,23 @@ class _Grammar:
         return expression
 
 
+# Without quotes, these words are operators in any case; a quoted "e" or "ou" stays a literal term.
+OPERATORS = {"AND": "AND", "E": "AND", "OR": "OR", "OU": "OR"}
+# Operators the grammar does not offer are refused: as literal terms they would answer something else.
+UNSUPPORTED = re.compile(r"NOT|NEAR(?:/\d+)?", re.IGNORECASE)
+UNSUPPORTED_UPPER = {"NAO", "NÃO"}  # Only in capitals: in lower case, "não" is an ordinary word.
+
+
+def operator_token(token: str) -> str:
+    if UNSUPPORTED.fullmatch(token) or token in UNSUPPORTED_UPPER:
+        raise FloraError(
+            "consulta_invalida",
+            f"{token} não é aceito no modo avançado; use E, OU, parênteses, frases e prefixo*. "
+            "Para procurar a palavra, ponha-a entre aspas.",
+        )
+    return OPERATORS.get(token.upper(), token)
+
+
 def advanced_query(value: str) -> str:
     if len(value) > 500 or value.count('"') % 2:
         raise FloraError("consulta_invalida", "Consulta longa ou aspas sem fechamento.")
@@ -68,7 +85,7 @@ def advanced_query(value: str) -> str:
         return ""
     if len(tokens) > 90:
         raise FloraError("consulta_invalida", "Consulta excede o limite de expressões.")
-    grammar = _Grammar(tokens)
+    grammar = _Grammar([operator_token(token) for token in tokens])
     result = grammar.parse_or(0)
     if grammar.position != len(tokens):
         raise FloraError("consulta_invalida", "Parêntese ou termo fora de posição.")
@@ -92,6 +109,7 @@ NAMES = {
     "DISPOSITIVOS RELEVANTES CITADOS": "dispositivos_citados",
     "JURISPRUDENCIA RELEVANTE CITADA": "jurisprudencia_citada",
 }
+SECTION_NAMES = ("cabecalho", *dict.fromkeys(NAMES.values()))
 SECTIONS_DERIVER = "ementa-secoes-2"
 
 
