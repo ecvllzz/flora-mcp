@@ -12,7 +12,7 @@ from .citation import citation_metadata
 from .precedents import available
 from .citations import CITATIONS_DERIVER, extract
 from .text import SECTIONS_DERIVER
-from .store import ReadView, Store, connection, replace_search_row
+from .store import ReadView, Store, connection, ensure_search_map, replace_search_row
 
 COPIES_DERIVER = "copias-texto-1"
 # Derivations computed when a generation is read also name the generation, so changing one of them
@@ -256,6 +256,7 @@ def publish(store: Store):
         copies = remove_text_copies(dest)
         verify_search_index(dest)
         prune_snapshot(dest)
+        ensure_search_map(dest)  # The index on the FTS rowid, for a work database that predates it.
         derive_document_details(dest)
         derive_document_citations(dest)
         prune_precedents(dest)

@@ -7,7 +7,7 @@ from datetime import date
 from .ausencia import empty_reason
 from .citation import citation_metadata
 from .model import FloraError, canonical, digest, folded, number
-from .store import ReadView, collection_delay
+from .store import ROWID_INDEX, ReadView, collection_delay
 from .citations import TYPES as CITATION_TYPES
 from .citations import extract as extract_citations
 from .citations import filter_key
@@ -304,6 +304,28 @@ def date_filters(column: str, data_inicio, data_fim):
     return [f"{column}{op}?" for op, _ in pairs], [value for _, value in pairs]
 
 
+def rowid_map(db) -> str | None:
+    """Table that maps the FTS rowid of a match to its document id, indexed by the rowid.
+
+    The search reaches the document from the FTS rowid: reading the UNINDEXED ``id`` column of
+    ``search`` loads the stored ementa of every match, and that was most of the cost of a ranked
+    query. A generation published before the index existed gets a temporary copy of
+    ``search_map``, indexed by its primary key, at the cost of one scan per connection. None when
+    the database has no ``search_map`` at all: the plan then joins by ``id``, as before.
+    """
+    if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='search_map'").fetchone():
+        return None
+    if db.execute("SELECT 1 FROM sqlite_master WHERE type='index' AND name=?", (ROWID_INDEX,)).fetchone():
+        return "search_map"
+    db.execute(
+        "CREATE TEMP TABLE IF NOT EXISTS search_rowids"
+        "(fts_rowid INTEGER PRIMARY KEY,document_id TEXT NOT NULL)"
+    )
+    if not db.execute("SELECT 1 FROM temp.search_rowids LIMIT 1").fetchone():
+        db.execute("INSERT INTO temp.search_rowids SELECT fts_rowid,document_id FROM search_map")
+    return "temp.search_rowids"
+
+
 class JudgmentSearch:
     """One acórdão search: validated parameters, SQL plan and the reading of one page."""
 
@@ -326,19 +348,37 @@ class JudgmentSearch:
         self.filters, self.params, self.filtered = [], [], False
         self.offset = 0
         self.original, self.broadened = self.query, None
+        self.map = None  # Set by prepare(db): the rowid map of the database read, or None.
 
     def restrict(self, filters, params):
         self.filters += filters
         self.params += params
         self.filtered = self.filtered or bool(filters)
 
+    def prepare(self, db):
+        self.map = rowid_map(db)
+
+    def matched_source(self) -> str:
+        """documents of the matches, reached from the FTS rowid when the database has the map."""
+        if self.map is None:
+            return "documents d JOIN search ON search.id=d.id"
+        return f"search JOIN {self.map} m ON m.fts_rowid=search.rowid JOIN documents d ON d.id=m.document_id"
+
+    def matched_ids(self) -> str:
+        """Subquery with the ids of the matches; the MATCH placeholder is its only parameter."""
+        if self.map is None:
+            return "SELECT id FROM search WHERE search MATCH ?"
+        return (
+            f"SELECT m.document_id FROM search JOIN {self.map} m ON m.fts_rowid=search.rowid "
+            "WHERE search MATCH ?"
+        )
+
     def plan(self):
         ranked = self.ordenar == "relevancia"
-        source = "documents d JOIN search ON search.id=d.id" if ranked else "documents d"
+        source = self.matched_source() if ranked else "documents d"
         filters, params = list(self.filters), list(self.params)
         if self.query:
-            match = "search MATCH ?" if ranked else "d.id IN (SELECT id FROM search WHERE search MATCH ?)"
-            filters.insert(0, match)
+            filters.insert(0, "search MATCH ?" if ranked else f"d.id IN ({self.matched_ids()})")
             params.insert(0, self.query)
         direction = "ASC" if self.ordenar == "mais_antigos" else "DESC"
         order = f"d.{self.column} IS NULL,d.{self.column} {direction},d.id"
@@ -348,7 +388,8 @@ class JudgmentSearch:
         return source, " AND ".join(filters) or "1=1", params, order
 
     def fingerprint(self, where, params):
-        values = [where, params, self.column, self.ordenar, self.limit, self.detalhe]
+        # The logical query, not the SQL text: the same consultation has one cursor whatever the plan.
+        values = [self.query, self.filters, self.params, self.column, self.ordenar, self.limit, self.detalhe]
         return digest(canonical(values).encode())
 
     def continuation(self, fingerprint, revision, offset):
@@ -407,11 +448,24 @@ class JudgmentSearch:
             return {}
         marks = ",".join("?" * len(ids))
         try:
+            if self.map is None:
+                return dict(
+                    db.execute(
+                        "SELECT id,highlight(search,1,char(1),char(2)) FROM search "
+                        f"WHERE search MATCH ? AND id IN ({marks})",
+                        (self.query, *ids),
+                    ).fetchall()
+                )
+            # By rowid, the index answers each page item with one lookup instead of a scan of the matches.
+            rowids = [
+                r[0]
+                for r in db.execute(f"SELECT fts_rowid FROM {self.map} WHERE document_id IN ({marks})", ids)
+            ]
             return dict(
                 db.execute(
-                    "SELECT id,highlight(search,1,char(1),char(2)) FROM search "
-                    f"WHERE search MATCH ? AND id IN ({marks})",
-                    (self.query, *ids),
+                    f"SELECT m.document_id,highlight(search,1,char(1),char(2)) FROM search JOIN {self.map} m "
+                    f"ON m.fts_rowid=search.rowid WHERE search MATCH ? AND search.rowid IN ({marks})",
+                    (self.query, *rowids),
                 ).fetchall()
             )
         except sqlite3.OperationalError as exc:
@@ -448,8 +502,7 @@ class JudgmentSearch:
             if not self.query:
                 return db.execute("SELECT count(*) FROM documents").fetchone()[0]
             return db.execute(
-                "SELECT count(*) FROM documents d WHERE d.id IN (SELECT id FROM search WHERE search MATCH ?)",
-                (self.query,),
+                f"SELECT count(*) FROM documents d WHERE d.id IN ({self.matched_ids()})", (self.query,)
             ).fetchone()[0]
 
         def term_counts():
@@ -517,6 +570,7 @@ def search(
         db.create_function("flora_fold", 1, lambda value: folded(value or ""), deterministic=True)
         db.execute("BEGIN")  # Revision and rows belong to the same read snapshot.
         revision = db.execute("SELECT value FROM meta WHERE key='revision'").fetchone()[0]
+        plan.prepare(db)
         total = plan.total(db)
         rows, following = plan.page(db, cursor, revision)
         bodies = [(json.loads(r["body"]), json.loads(r["original"]) if r["original"] else None) for r in rows]

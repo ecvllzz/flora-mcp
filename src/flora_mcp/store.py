@@ -64,20 +64,24 @@ def connection(path: Path, *, write: bool = False, immutable: bool = False):
         db.close()
 
 
+ROWID_INDEX = "search_map_rowid"
+
+
 def ensure_search_map(db):
     """Map each document to its FTS rowid, so index updates never scan the FTS table.
 
     FTS5 cannot index the UNINDEXED id column: deleting by id reads every row. The map is
-    created and backfilled once (one scan), inside the caller's transaction.
+    created and backfilled once (one scan), inside the caller's transaction. The index on the
+    rowid serves the search, which reaches the document from the FTS rowid (see query.rowid_map).
     """
-    if db.execute("SELECT 1 FROM meta WHERE key='search_map'").fetchone():
-        return
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS search_map (document_id TEXT PRIMARY KEY, fts_rowid INTEGER NOT NULL)"
-    )
-    db.execute("DELETE FROM search_map")
-    db.execute("INSERT INTO search_map(document_id,fts_rowid) SELECT id,rowid FROM search")
-    db.execute("INSERT INTO meta VALUES ('search_map',1)")
+    if not db.execute("SELECT 1 FROM meta WHERE key='search_map'").fetchone():
+        db.execute(
+            "CREATE TABLE IF NOT EXISTS search_map (document_id TEXT PRIMARY KEY, fts_rowid INTEGER NOT NULL)"
+        )
+        db.execute("DELETE FROM search_map")
+        db.execute("INSERT INTO search_map(document_id,fts_rowid) SELECT id,rowid FROM search")
+        db.execute("INSERT INTO meta VALUES ('search_map',1)")
+    db.execute(f"CREATE INDEX IF NOT EXISTS {ROWID_INDEX} ON search_map(fts_rowid)")
 
 
 def replace_search_row(db, doc_id: str, ementa: str | None):
