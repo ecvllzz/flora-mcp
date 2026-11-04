@@ -1,0 +1,214 @@
+{
+ "status": "ok",
+ "ensaiado_em": "2026-11-04T19:14:39.579327+00:00",
+ "o_que": "Itens 4 e 5 da reforma da busca (M7): derivadores citacoes-2, ementa-secoes-3 e catalogo-temas-1 ensaiados numa copia do acervo restaurada do backup 20261104-095648-511232-antes-retomada-tjsc (revisao 3667). Nada foi escrito no acervo real nem em backup.",
+ "copia": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-sandbox-m7",
+ "publicacao_ensaiada": {
+  "id": "r3667-s2-dafe4a208f-a7f2f3de466c",
+  "revisao": 3667,
+  "derivador": "flora-read-2.3;ementa-secoes-3;citacoes-2;copias-texto-1;catalogo-temas-1",
+  "sha256": "a7f2f3de466c76f77a6f6c69c69ae234a77d9b1e9fd7f659fb86a6fb7bfb183b"
+ },
+ "antes_e_depois_na_publicacao_r3667": {
+  "derivadores_antes": [
+   "citacoes-1",
+   "ementa-secoes-2"
+  ],
+  "derivadores_depois": [
+   "citacoes-2",
+   "ementa-secoes-3"
+  ],
+  "acordaos": 82422,
+  "citacoes": {
+   "linhas_antes": 164741,
+   "linhas_depois": 164744,
+   "acordaos_com_chave_alterada": 879,
+   "linhas_retiradas": 1025,
+   "linhas_acrescentadas": 1028,
+   "por_tipo": {
+    "retiradas": {
+     "precedente STJ:sumula:*": 227,
+     "dispositivo sem chave": 95,
+     "precedente outros": 369,
+     "precedente TJSC:irdr:*": 334
+    },
+    "acrescentadas": {
+     "precedente STF:sumula:*": 229,
+     "dispositivo outros": 98,
+     "precedente outros": 364,
+     "precedente sem chave": 336,
+     "acordao sem chave": 1
+    }
+   },
+   "retiradas_mais_comuns": [
+    [
+     "precedente:TJSC:irdr:5011",
+     236
+    ],
+    [
+     "dispositivo:(sem chave)",
+     95
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:136",
+     92
+    ],
+    [
+     "precedente:STJ:sumula:284",
+     67
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:106",
+     55
+    ],
+    [
+     "precedente:STJ:sumula:282",
+     50
+    ],
+    [
+     "precedente:TJSC:irdr:5034",
+     48
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:107",
+     46
+    ]
+   ],
+   "acrescentadas_mais_comuns": [
+    [
+     "precedente:(sem chave)",
+     336
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:1368",
+     91
+    ],
+    [
+     "precedente:STF:sumula:284",
+     68
+    ],
+    [
+     "dispositivo:RISTJ:255",
+     62
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:1061",
+     51
+    ],
+    [
+     "precedente:STF:sumula:282",
+     50
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:1076",
+     46
+    ],
+    [
+     "precedente:STJ:tema_repetitivo:1059",
+     39
+    ]
+   ]
+  },
+  "secoes": {
+   "ementas_com_alguma_secao_antes": 36034,
+   "ementas_com_alguma_secao_depois": 36048,
+   "ementas_com_dispositivo_antes": 16253,
+   "ementas_com_dispositivo_depois": 27345,
+   "ementas_com_as_quatro_nucleares_antes": 15574,
+   "ementas_com_as_quatro_nucleares_depois": 24803,
+   "ementas_que_perderam_secoes": 0
+  }
+ },
+ "citacoes_na_publicacao_ensaiada": {
+  "linhas": 164744,
+  "acordao_com_chave": 56871,
+  "acordao_resolvidas": 11272,
+  "acordao_ambiguas": 2791,
+  "similar_resolvidas": 82,
+  "similar_ambiguas": 1,
+  "precedente_resolvidas": 10662,
+  "vinculos": 17363,
+  "vinculos_ambiguos": 6096,
+  "acordaos_citantes": 8065,
+  "acordaos_citados": 8533,
+  "chaves_irdr_truncadas_restantes": 0,
+  "sumula_735_stj": 1,
+  "sumula_735_stf": 36
+ },
+ "catalogo_temas": {
+  "temas": 1496,
+  "por_situacao_fonte": {
+   "Trânsito em Julgado": 1020,
+   "Cancelado": 195,
+   "Afetado": 121,
+   "Acórdão Publicado": 61,
+   "Acórdão Publicado - RE Pendente": 41,
+   "Em Julgamento": 18,
+   "Revisado": 15,
+   "Sobrestado": 12,
+   "Mérito Julgado": 7,
+   "Sem Processo Vinculado": 3,
+   "Admitido": 2,
+   "Afetado - Possível Revisão de Tese": 1
+  },
+  "nao_servidos": 1211,
+  "cancelados_nao_servidos": 195,
+  "fonte": {
+   "url": "https://dadosabertos.web.stj.jus.br/dataset/4238da2f-c07b-4c1a-b345-4402accacdcf/resource/df29da13-7d6b-41ba-ad96-cd1a5bbd191c/download/temas.csv",
+   "sha256": "fed941b07c1f87bfaafed78ca47e1848633d57578635b7df1c31b2f92dd73576",
+   "coletado_em": "2026-09-29T20:22:29.995945+00:00"
+  }
+ },
+ "publicacao_relatorio": {
+  "publicacao_id": "r3667-s2-dafe4a208f-a7f2f3de466c",
+  "revisao_base": 3667,
+  "copias_texto": {
+   "grupos": 954,
+   "copias_retiradas": 2007
+  },
+  "catalogo_temas": {
+   "temas": 1496,
+   "fonte": {
+    "url": "https://dadosabertos.web.stj.jus.br/dataset/4238da2f-c07b-4c1a-b345-4402accacdcf/resource/df29da13-7d6b-41ba-ad96-cd1a5bbd191c/download/temas.csv",
+    "sha256": "fed941b07c1f87bfaafed78ca47e1848633d57578635b7df1c31b2f92dd73576",
+    "coletado_em": "2026-09-29T20:22:29.995945+00:00"
+   },
+   "por_situacao": {
+    "Trânsito em Julgado": 1020,
+    "Cancelado": 195,
+    "Afetado": 121,
+    "Acórdão Publicado": 61,
+    "Acórdão Publicado - RE Pendente": 41,
+    "Em Julgamento": 18,
+    "Revisado": 15,
+    "Sobrestado": 12,
+    "Mérito Julgado": 7,
+    "Sem Processo Vinculado": 3,
+    "Admitido": 2,
+    "Afetado - Possível Revisão de Tese": 1
+   }
+  }
+ },
+ "igualdade_literal": {
+  "igual_ao_publicado": true,
+  "publicacao_id": "r3667-s2-dafe4a208f-a7f2f3de466c",
+  "conteudo_preservado": {
+   "documentos": 82422,
+   "referencias_estruturalmente_completas": 82384,
+   "sha256_registros_e_referencias": "067f2a35ac37d4268a20b3faa4025b1ff21cc22965128dac98445206fe746aab",
+   "grupos": [
+    {
+     "tribunal": "STJ",
+     "documentos": 37277
+    },
+    {
+     "tribunal": "TJSC",
+     "documentos": 45145
+    }
+   ],
+   "integridade": "ok"
+  },
+  "limite": "Igualdade estrutural e literal; não certifica autoridade jurídica dos acórdãos."
+ },
+ "limite": "Contagens sobre a copia; a publicacao real so muda por ordem do operador, e o publicacao_id sera outro la. Chave e normalizacao, nao verificacao; ambiguidade marcada nao e erro."
+}
