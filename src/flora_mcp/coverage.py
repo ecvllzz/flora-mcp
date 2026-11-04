@@ -6,7 +6,7 @@ from .model import FloraError
 
 
 def tribunal_for(dataset):
-    if dataset.startswith("espelhos-de-acordaos-"):
+    if dataset.startswith(("espelhos-de-acordaos-", "stj-")):
         return "STJ"
     if dataset.startswith("tjsc-"):
         return "TJSC"

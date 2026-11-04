@@ -61,7 +61,8 @@ def normalize_stj(raw: dict) -> dict:
         except ValueError:
             pass
     process_number = str(raw.get("numeroProcesso") or "")
-    class_name = raw.get("siglaClasse") or ""
+    # Older files end the class with a line break.
+    class_name = str(raw.get("siglaClasse") or "").strip()
     return {
         "id": "STJ:" + str(raw["id"]),
         "id_origem": str(raw["id"]),

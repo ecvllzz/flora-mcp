@@ -8,21 +8,15 @@ para na primeira falha de fonte, e a próxima execução retoma só o que não e
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
-from filelock import FileLock
-
-from flora_mcp import backups
+from flora_mcp.coleta_numeros import collect_one, execute, plan
 from flora_mcp.config import load_config
-from flora_mcp.model import FloraError, now
-from flora_mcp.sources import client
-from flora_mcp.store import Store, connection
-from flora_mcp.tjsc import PROCESSO_DATASET, catalog_process, collect_process, portal_number, process_key
+from flora_mcp.model import FloraError
+from flora_mcp.store import Store
+from flora_mcp.tjsc import portal_number, process_key
 
-# Atomic receipt writing and the before/after groups are the ones of the window resumption.
-sys.path.insert(0, str(Path(__file__).parent))
-from resume_tjsc import groups, save  # noqa: E402
+__all__ = ["collect_one", "entries_from", "execute", "main", "plan"]
 
 
 def entries_from(insumos: Path | None, numbers: list[str]) -> tuple[list[dict], list[dict]]:
@@ -49,110 +43,6 @@ def entries_from(insumos: Path | None, numbers: list[str]) -> tuple[list[dict], 
         entry = merged.setdefault(key, {"chave": key, "numero": portal_number(key), "origens": []})
         entry["origens"].append(origin)
     return list(merged.values()), refused
-
-
-def plan(store: Store, entries: list[dict]) -> dict:
-    with connection(store.path) as db:
-        done = {
-            r[0]
-            for r in db.execute(
-                "SELECT id FROM resources WHERE dataset=? AND status='ok' AND present=1", (PROCESSO_DATASET,)
-            )
-        }
-    pending = [e for e in entries if f"{PROCESSO_DATASET}:{e['chave']}" not in done]
-    return {"numeros": len(entries), "concluidos": len(entries) - len(pending), "pendentes": pending}
-
-
-def collect_one(config, store, http, entry, run) -> dict:
-    resource_id = catalog_process(store, entry["chave"])
-    with connection(store.path) as db:
-        saved = dict(db.execute("SELECT * FROM resources WHERE id=?", (resource_id,)).fetchone())
-    try:
-        content, rows = collect_process(http, config, entry["chave"])
-        counts = store.ingest(saved, content, rows, run)
-    except Exception as exc:
-        store.failure(resource_id, run, str(exc))
-        raise
-    return {
-        **entry,
-        "registros": len(rows),
-        "orgaos": sorted({body["orgao"] for body, _ in rows}),
-        "documentos": [body["id"] for body, _ in rows],
-        **counts,
-        "fim": now(),
-    }
-
-
-def execute(config, store, entries, refused, report_path, backup_root=None, *, collect=collect_one):
-    report_path = Path(report_path).resolve()
-    backup_root = Path(backup_root or backups.default_root(store.directory)).resolve()
-    if backup_root.is_relative_to(store.directory.resolve()):
-        raise ValueError("Backup deve ficar fora do acervo.")
-    if report_path.exists():
-        raise ValueError("Use novo recibo de execução; recibos anteriores são preservados.")
-    with FileLock(str(store.directory / "collector.lock"), timeout=0):
-        store.initialize()
-        work = plan(store, entries)
-        report = {
-            "inicio": now(),
-            "banco": str(store.path),
-            "pausa_entre_requisicoes": config.request_delay,
-            "plano": work,
-            "recusados": refused,
-            "antes": groups(store),
-            "status": "preparado",
-            "eventos": [],
-        }
-        save(report_path, report)
-        if not work["pendentes"]:
-            report.update(status="ok", fim=now(), depois=report["antes"])
-            save(report_path, report)
-            return report
-        report["backup"] = backups.create(store, backup_root, "antes-coleta-por-numero-tjsc")
-        run = store.start_run("TJSC-processo")
-        report.update(execucao=run, status="running")
-        save(report_path, report)
-        try:
-            with client() as http:
-                for entry in work["pendentes"]:
-                    report["em_andamento"] = entry
-                    event = collect(config, store, http, entry, run)
-                    report["eventos"].append(event)
-                    report.pop("em_andamento", None)
-                    save(report_path, report)
-                    print(
-                        json.dumps(
-                            {
-                                "feitos": len(report["eventos"]),
-                                "de": len(work["pendentes"]),
-                                "numero": entry["numero"],
-                                "registros": event["registros"],
-                            }
-                        ),
-                        flush=True,
-                    )
-            report["status"] = "ok"
-        except BaseException as exc:
-            report.update(
-                status="interrupted" if isinstance(exc, (KeyboardInterrupt, SystemExit)) else "error",
-                erro=f"{type(exc).__name__}: {exc}",
-                codigo=getattr(exc, "code", "erro_fonte"),
-            )
-            raise
-        finally:
-            report["nao_oferecidos"] = [
-                {"numero": e["numero"], "origens": e["origens"]}
-                for e in report["eventos"]
-                if not e["registros"]
-            ]
-            report.update(fim=now(), depois=groups(store))
-            store.finish_run(run, report["status"], report)
-            from flora_mcp.publication import MANIFEST, publish
-
-            if (store.directory / MANIFEST).exists():
-                report["publicacao"] = publish(store)
-            save(report_path, report)
-        return report
 
 
 def main():

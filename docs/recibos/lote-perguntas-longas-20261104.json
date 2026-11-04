@@ -1,0 +1,63 @@
+{
+ "schema": "flora-recibo-lote-perguntas-1",
+ "decisao": "RM-D38",
+ "data": "2026-11-04",
+ "arquivo": "avaliacao/perguntas-longas.json",
+ "sha256": "71f7119d366d16cb27da5ab45cd0108d6d6f53237563718ca8879a42be9f37a4",
+ "lote": {
+  "entrada": 187,
+  "reescritas": 147,
+  "descartadas_pela_reescrita": 20,
+  "repetidas": 20,
+  "alteradas_na_conferencia": 22,
+  "retiradas_na_conferencia": 4,
+  "publicadas": 143,
+  "acima_dos_limites": 61,
+  "por_origem": {
+   "recusada": 62,
+   "longa": 45,
+   "falha": 36
+  }
+ },
+ "reescrita": {
+  "quem": "subagente Claude (Sonnet) desta sessão, com acesso só ao texto das perguntas, não à pasta do caso",
+  "regra": "fato reduzido à categoria jurídica; sem nome, número de processo, data, valor, lugar e circunstância singular"
+ },
+ "conferencia_independente": {
+  "quem": "subagentes Claude (Opus) distintos do que reescreveu, com acesso só às perguntas reescritas, cegos quanto à origem; o operador não confere, por ordem dele de 04/11/2026",
+  "pontos": [
+   "se sobrou elemento que identifique o caso",
+   "se a categoria jurídica preservou a pergunta"
+  ],
+  "primeira_passada": {
+   "itens": 147,
+   "identifica": {
+    "duvida": 17,
+    "nao": 129,
+    "sim": 1
+   },
+   "pergunta": {
+    "sim": 145,
+    "nao": 2
+   }
+  },
+  "decisoes": "Adotada a redação sugerida em todo item com sim ou dúvida; retirado o que não era pergunta; limpos restos de instrução de ferramenta em 3 itens e um acréscimo da reescrita em 1.",
+  "segunda_passada": {
+   "itens": 22,
+   "identifica": {
+    "nao": 20,
+    "duvida": 2
+   },
+   "pergunta": {
+    "sim": 22
+   },
+   "decisao": "Retiradas as 2 que seguiram em dúvida."
+  }
+ },
+ "conferencia_automatica": {
+  "traco_de_caso": "scripts/conferir_traco_caso.py, no portão, sem achado",
+  "varredura": "nomes e números das pastas de caso do vault em todos os arquivos de avaliacao/, sem achado"
+ },
+ "original": "Só no vault, com a correspondência; sha256 do arquivo privado abaixo, para conferência local.",
+ "sha256_lote_privado": "a55795f749c4adbfc36981eb9288fdaa1ffdbaf66588af526c24e06b5692c378"
+}

@@ -192,13 +192,13 @@ class Store:
                 (message, run_id, resource_id),
             )
 
-    def raw_relative(self, sha: str) -> str:
+    def raw_relative(self, sha: str, suffix: str = ".json") -> str:
         """Path of an original inside the collection, as recorded by save_raw."""
-        return str(Path("raw") / sha[:2] / (sha + ".json"))
+        return str(Path("raw") / sha[:2] / (sha + suffix))
 
-    def save_raw(self, content: bytes) -> tuple[str, str]:
+    def save_raw(self, content: bytes, suffix: str = ".json") -> tuple[str, str]:
         sha = digest(content)
-        path = self.directory / self.raw_relative(sha)
+        path = self.directory / self.raw_relative(sha, suffix)
         path.parent.mkdir(parents=True, exist_ok=True)
         if path.exists():
             if digest(path.read_bytes()) != sha:
@@ -220,7 +220,8 @@ class Store:
         rejected: list[dict] | None = None,
     ) -> dict:
         observed_at = observed_at or now()
-        sha, raw_path = self.save_raw(content)
+        # The historical file of the STJ is kept whole, as the ZIP it is.
+        sha, raw_path = self.save_raw(content, ".zip" if resource["name"].endswith(".zip") else ".json")
         seen = set()
         for body, _raw in rows:
             if body["id"] in seen:
@@ -420,7 +421,8 @@ def coverage_report(reader) -> dict:
             "carregadas."
         ),
         "limites": [
-            "Carga de recursos JSON selecionados; histórico ZIP não incorporado.",
+            "Carga de recursos JSON selecionados; do histórico e dos lotes anteriores do STJ, "
+            "só acórdãos de números apontados (dataset stj-selecao).",
             "Datas extremas observadas não comprovam cobertura contínua do período.",
             "Ementas e espelhos não equivalem ao inteiro teor.",
             "Versão corrente prioriza o recurso com data de extração mais recente; "

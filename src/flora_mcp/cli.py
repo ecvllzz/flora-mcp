@@ -83,6 +83,19 @@ def build_parser() -> argparse.ArgumentParser:
     only = update.add_mutually_exclusive_group()
     only.add_argument("--so-stj", action="store_true", help="Coleta apenas o STJ")
     only.add_argument("--so-tjsc", action="store_true", help="Coleta apenas o TJSC")
+    directed = sub.add_parser(
+        "coletar-numeros",
+        help="Coleta dirigida por lista de números (TJSC e STJ); mostra o plano sem --apply",
+    )
+    directed.add_argument("--lista", type=Path, help="Arquivo de texto ou JSON com os números")
+    directed.add_argument("--numero", action="append", default=[], help="Número avulso; repita para mais")
+    directed.add_argument("--tribunal", choices=["STJ", "TJSC"], help="Tribunal dos itens que não o dizem")
+    directed.add_argument("--apply", action="store_true", help="Coleta sob a trava, depois de backup")
+    directed.add_argument("--report", type=Path, help="Recibo novo; obrigatório com --apply")
+    directed.add_argument("--backup", type=Path, help="Raiz dos backups; padrão <acervo>-backups")
+    directed.add_argument("--stj-dataset", action="append", help="Só este dataset do STJ; repita para mais")
+    directed.add_argument("--stj-desde", help="Só arquivos do STJ a partir de AAAAMMDD")
+    directed.add_argument("--stj-ate", help="Só arquivos do STJ até AAAAMMDD")
     kept = sub.add_parser("backups", help="Backups com depósito de originais compartilhado")
     action = kept.add_subparsers(dest="acao", required=True)
     create = action.add_parser("criar", help="Novo backup de banco e manifesto; copia só originais novos")
@@ -265,6 +278,35 @@ def run_update(args, config, store):
     )
 
 
+def run_directed(args, config, store):
+    from . import coleta_numeros as directed
+    from .numeros import merge, read_list
+
+    asked = read_list(args.lista) if args.lista else []
+    asked.extend((value, None, "linha_de_comando") for value in args.numero)
+    if not asked:
+        raise FloraError("lista_vazia", "Informe --lista ou --numero.")
+    entries, refused = merge(asked, args.tribunal)
+    scope = directed.read_scope(args.stj_dataset, args.stj_desde, args.stj_ate)
+    if not config.db_path.is_file():
+        raise FloraError("base_nao_inicializada", "Banco não encontrado na pasta configurada.")
+    if not args.apply:
+        tjsc, stj = directed.by_court(entries)
+        work = directed.plan(store, tjsc)
+        return {
+            "status": "plano",
+            "tjsc": {**work, "pendentes": len(work["pendentes"])},
+            "stj": directed.plan_stj(store, stj),
+            "recorte_stj": scope,
+            "recusados": refused,
+        }
+    if not args.report:
+        raise FloraError("recibo_obrigatorio", "Aplicação exige --report novo.")
+    return directed.summary(
+        directed.execute(config, store, entries, refused, args.report, args.backup, scope=scope)
+    )
+
+
 def run_backups(args, config, store):
     from . import backups
 
@@ -281,7 +323,7 @@ def run_backups(args, config, store):
 
 READERS = {"coverage": run_coverage, "search": run_search, "precedentes": run_precedents}
 # Commands that take the locks they need themselves.
-SELF_LOCKED = {"atualizar": run_update, "backups": run_backups}
+SELF_LOCKED = {"atualizar": run_update, "backups": run_backups, "coletar-numeros": run_directed}
 WRITERS = {
     "migrate": run_migrate,
     "import-precedents": run_import,

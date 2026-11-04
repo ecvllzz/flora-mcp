@@ -8,7 +8,7 @@ O acervo em uso fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP` (configu
 
 - Nunca escreva nele sem `collector.lock` (os comandos do CLI já o adquirem), backup consistente antes (`flora-mcp backup` ou o backup embutido do comando) e recibo depois.
 - Toda operação nova sobre o acervo é ensaiada antes numa cópia. Para trabalhar sem risco, defina `FLORA_MCP_DATA_DIR` para uma cópia (por exemplo `C:\Users\Home\Documents\Flora\Dados\Flora-MCP-sandbox`); a variável tem precedência sobre o TOML.
-- Coleta (`sync-stj`, `sync-tjsc`, `scripts/update_once.py`, `scripts/resume_tjsc.py`), `migrate`, `import-precedents --apply`, `publish` e `export` só rodam quando a tarefa pede expressamente.
+- Coleta (`sync-stj`, `sync-tjsc`, `coletar-numeros --apply`, `scripts/update_once.py`, `scripts/resume_tjsc.py`), `migrate`, `import-precedents --apply`, `publish` e `export` só rodam quando a tarefa pede expressamente.
 
 ## Portão de qualidade
 

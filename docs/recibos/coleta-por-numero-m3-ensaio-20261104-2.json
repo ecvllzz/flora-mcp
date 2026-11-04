@@ -1,0 +1,469 @@
+{
+  "inicio": "2026-11-04T14:54:19.829669+00:00",
+  "banco": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-sandbox-m3\\acervo.sqlite",
+  "pausa_entre_requisicoes": 2.5,
+  "plano": {
+    "numeros": 0,
+    "concluidos": 0,
+    "pendentes": []
+  },
+  "recusados": [],
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "CORTE ESPECIAL",
+      "documentos": 3
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "PRIMEIRA TURMA",
+      "documentos": 1
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16885
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1346
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA TURMA",
+      "documentos": 3
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19480
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "status": "ok",
+  "eventos": [],
+  "stj": {
+    "execucao": "a9b8a560-2e21-4438-8044-600cb4b22158",
+    "fonte": "STJ",
+    "inicio": "2026-11-04T14:58:11.807651+00:00",
+    "recorte": {
+      "datasets": [
+        "espelhos-de-acordaos-corte-especial"
+      ],
+      "desde": "20240630",
+      "ate": "20240630"
+    },
+    "numeros": 1,
+    "arquivos_varridos": [
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240630.json",
+        "sha256": "ed1af5cc784fb9a2ddaffd4c7d6e33b351eaa6637073689ea75cd7716772b7e3",
+        "bytes": 321919,
+        "registros": 83,
+        "achados": 2
+      }
+    ],
+    "arquivos_guardados": [
+      {
+        "dataset_origem": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240630.json",
+        "sha256": "ed1af5cc784fb9a2ddaffd4c7d6e33b351eaa6637073689ea75cd7716772b7e3",
+        "bytes": 321919,
+        "selecionados": 2,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 1,
+        "removidos": 0
+      }
+    ],
+    "arquivos_ilegiveis": [],
+    "falhas": [],
+    "status": "ok",
+    "selecionados": [
+      {
+        "tribunal": "STJ",
+        "chave": "APN:928",
+        "numero": "QO na APn 928",
+        "origens": [
+          "linha_de_comando"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000877191",
+            "classe": "QO na APn",
+            "numero_processo": "928",
+            "numero_registro": "201902238806",
+            "orgao": "CORTE ESPECIAL",
+            "data_julgamento": "20240619",
+            "dataset_origem": "espelhos-de-acordaos-corte-especial",
+            "arquivo": "20240630.json",
+            "membro": null,
+            "sha256_arquivo": "ed1af5cc784fb9a2ddaffd4c7d6e33b351eaa6637073689ea75cd7716772b7e3",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      }
+    ],
+    "oferecidos_com_defeito": [],
+    "varredura_completa": false,
+    "talvez_em_arquivo_ilegivel": [],
+    "nao_localizados_no_recorte": [],
+    "fim": "2026-11-04T14:58:16.995651+00:00"
+  },
+  "backup": {
+    "status": "ok",
+    "formato": "flora-backup-2",
+    "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-sandbox-m3-backups\\20261104-115420-054970-antes-coleta-por-numero",
+    "revisao": 3646,
+    "originais": 3649,
+    "originais_copiados": 20,
+    "originais_ja_no_deposito": 3629,
+    "bytes_copiados": 183866262
+  },
+  "fim": "2026-11-04T14:58:17.032182+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "CORTE ESPECIAL",
+      "documentos": 4
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "PRIMEIRA TURMA",
+      "documentos": 1
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16885
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1346
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA TURMA",
+      "documentos": 3
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19480
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "publicacao": {
+    "status": "ok",
+    "publicacao_id": "r3647-s2-422d7bab33-bbed3632e49f",
+    "sha256": "bbed3632e49fa9a684fe1423e71d2a4aa88b5234cec89c636549936fe88f2579",
+    "revisao_base": 3647,
+    "copias_texto": {
+      "grupos": 954,
+      "copias_retiradas": 2007
+    },
+    "limpeza_adiada_arquivo_aberto": []
+  }
+}

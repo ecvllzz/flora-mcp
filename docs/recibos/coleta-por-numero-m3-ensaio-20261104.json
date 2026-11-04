@@ -1,0 +1,5640 @@
+{
+  "inicio": "2026-11-04T12:52:21.258317+00:00",
+  "banco": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-sandbox-m3\\acervo.sqlite",
+  "pausa_entre_requisicoes": 2.5,
+  "plano": {
+    "numeros": 1,
+    "concluidos": 0,
+    "pendentes": [
+      {
+        "tribunal": "TJSC",
+        "chave": "00001234520208240000",
+        "numero": "0000123-45.2020.8.24.0000",
+        "origens": [
+          "lista"
+        ]
+      }
+    ]
+  },
+  "recusados": [
+    {
+      "numero_informado": "Súmula 7",
+      "origem": "lista",
+      "codigo": "numero_invalido",
+      "motivo": "Não é número de processo do STJ: Súmula 7."
+    },
+    {
+      "numero_informado": "123",
+      "origem": "lista",
+      "codigo": "tribunal_ausente",
+      "motivo": "Informe o tribunal do número: 123."
+    }
+  ],
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "status": "ok",
+  "eventos": [
+    {
+      "tribunal": "TJSC",
+      "chave": "00001234520208240000",
+      "numero": "0000123-45.2020.8.24.0000",
+      "origens": [
+        "lista"
+      ],
+      "registros": 0,
+      "orgaos": [],
+      "documentos": [],
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T14:32:57.788125+00:00"
+    }
+  ],
+  "stj": {
+    "execucao": "b914ca69-48e3-4b9b-9c2b-b3afe5afbf5b",
+    "fonte": "STJ",
+    "inicio": "2026-11-04T13:00:12.430279+00:00",
+    "recorte": {
+      "datasets": null,
+      "desde": null,
+      "ate": null
+    },
+    "numeros": 25,
+    "arquivos_varridos": [
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20220507.zip",
+        "sha256": "b30d3ecae7a1c4648638e1cd78c40efb36cf6d7b096141189593c6993780ee17",
+        "bytes": 10627511,
+        "registros": 14223,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20220531.json",
+        "sha256": "f8a66879ad1db542a0c665148fe84caec8431613e36d0e8b7fff0970eb3b5810",
+        "bytes": 382170,
+        "registros": 63,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20220630.json",
+        "sha256": "c8899162e3c4cea1a46f213aca76eb3562979f4249ae5288d9d1d327b25bf0d0",
+        "bytes": 383055,
+        "registros": 86,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20220731.json",
+        "sha256": "ea4dac20709eede78710cac4735421df2ed9e33172b2b1411796dd13717f0b02",
+        "bytes": 32655,
+        "registros": 10,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20220831.json",
+        "sha256": "5f542eae7dc386583ebf982305a81180452339c0872bb3fa97fe5f14767012da",
+        "bytes": 194040,
+        "registros": 47,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20220930.json",
+        "sha256": "426d964c9604e281dd9fa3ee8eee5508b164d7505b5bf691edd03ea7a2f5b829",
+        "bytes": 107666,
+        "registros": 32,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20221031.json",
+        "sha256": "dcdbbca9227aa1cbb13b87a0e6bb34c4f13203d2d7673b3de246cb0986636d48",
+        "bytes": 285131,
+        "registros": 86,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20221130.json",
+        "sha256": "644091aa56c33dc48ee21b37c3a85ba48ce60eaee7f2d3a021ee7b9ae4f09797",
+        "bytes": 228677,
+        "registros": 54,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20221231.json",
+        "sha256": "b3472757d613b9f943aad1f21b7a6102f348052a7d8217ba3b82d6a8ffc51e21",
+        "bytes": 157316,
+        "registros": 50,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230131.json",
+        "sha256": "0dc7ec26e5da0057a14c8d633858c11d8a87ced9a58f8f45918ed3a56468ffce",
+        "bytes": 114073,
+        "registros": 41,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230228.json",
+        "sha256": "128f0d76b5e9e4709105cd703728c46e34bd46cfb56e12313374c177d9c9159a",
+        "bytes": 64668,
+        "registros": 19,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230331.json",
+        "sha256": "05159dff1fdcbe5aaa03c2d03856d1528640f7f58916423bf7a098589514f1f8",
+        "bytes": 186313,
+        "registros": 58,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230430.json",
+        "sha256": "3222a0b0f40f9547d3a7b921d1aef75ad8dea061ca20b504fc510f3c6a738fc2",
+        "bytes": 188070,
+        "registros": 45,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230531.json",
+        "sha256": "3ddf65641acae9c9329dcca6963d4de02a86df6ce0969c7f7960484a3be10e96",
+        "bytes": 416740,
+        "registros": 108,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230630.json",
+        "sha256": "1fb489f8e904089587aa1e9e4479355d3bac083de028dc6beddc4e0e5b23b4dd",
+        "bytes": 306663,
+        "registros": 85,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230731.json",
+        "sha256": "a47d54e1aa23a3353d73f557389f4d74e469ff601236f31ad4e7bd20d0ac8a9e",
+        "bytes": 186091,
+        "registros": 60,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230831.json",
+        "sha256": "e72c01eb04dd00f07ec2e8230af4a1d79b26346ead2a623436d7a4f69e8825d1",
+        "bytes": 153602,
+        "registros": 43,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230930.json",
+        "sha256": "8b645e5010810d55d7d6dec9a545374c20caacf9f4007a2f040f44fafc9e94a9",
+        "bytes": 397057,
+        "registros": 112,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20231031.json",
+        "sha256": "15e4e0c3986d9866996e1816def3d91aefd69a113308eabdfa3175f67c6653d8",
+        "bytes": 302394,
+        "registros": 91,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20231130.json",
+        "sha256": "0a39a51077b2c2ea1e49312054b2715442d5c9c0ab2d39b18d4a1cf504428c82",
+        "bytes": 199649,
+        "registros": 52,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20231231.json",
+        "sha256": "44f832282f008e293bcffbc2fa74ee39ff2a155565d65f0ce5c5f467fd7126b7",
+        "bytes": 257894,
+        "registros": 68,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240131.json",
+        "sha256": "fb8b601ad3c6188788237b0f8af1faa8d1e82e0d25202507ac299fcaf74b33f1",
+        "bytes": 198491,
+        "registros": 56,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240229.json",
+        "sha256": "26da062ba7a05d70d26b6cfc8ae1f8b48cc3059b20f1f66645de6dc22f6aa4ce",
+        "bytes": 64488,
+        "registros": 18,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240331.json",
+        "sha256": "aaab417b27d19750f26506f2f5d8f2266241fb663fa3907cd7c720ed2e335721",
+        "bytes": 204301,
+        "registros": 55,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240430.json",
+        "sha256": "857c74229eb317aabf20f5e2987eaafb39c959bd239cef69ae097bd57f40b33f",
+        "bytes": 390562,
+        "registros": 91,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240531.json",
+        "sha256": "3e7c6eac74c71f1efdc886491ad4c7d800bddb14d9edc477c0de35c4c2a81bd4",
+        "bytes": 422439,
+        "registros": 107,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240630.json",
+        "sha256": "ed1af5cc784fb9a2ddaffd4c7d6e33b351eaa6637073689ea75cd7716772b7e3",
+        "bytes": 321919,
+        "registros": 83,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240731.json",
+        "sha256": "9528219e3cc91573025cd47111650b4c451d729e73d2011d1f9595f9e6a525b1",
+        "bytes": 202723,
+        "registros": 49,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240831.json",
+        "sha256": "02c0b81fcb6a70ca00f5b90605bcd286585294bcda8581ccd2674d6e20dd92a8",
+        "bytes": 288446,
+        "registros": 76,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240930.json",
+        "sha256": "647739b053b93044df5c967bbaccf3dd764e0e60ba5bb15c2a07ffe06559578d",
+        "bytes": 186555,
+        "registros": 52,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20241031.json",
+        "sha256": "694f7208b8459ab49b648f3eae902f52ed4bb8517315a92afd9631008557f264",
+        "bytes": 447035,
+        "registros": 130,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20241130.json",
+        "sha256": "1835400f2439818c1f95ab3ce02fc86fc24ed075a39f2f3d0e89a97e62911709",
+        "bytes": 132972,
+        "registros": 37,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20241231.json",
+        "sha256": "814526cf02eeefb0f55cbc594b4474c084078243cdea4abf294b1730fe2f6cf1",
+        "bytes": 235961,
+        "registros": 68,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250131.json",
+        "sha256": "ba7c766c1732157ef2f89e3ad4df0fb2a9c852b18afe0eb136c9c7fe3a134031",
+        "bytes": 175569,
+        "registros": 55,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250228.json",
+        "sha256": "3b647e8983e31b0d8b48ca54d0a7b911a51af352b97283ac38099ee044d120f5",
+        "bytes": 132823,
+        "registros": 35,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250331.json",
+        "sha256": "dbf2cb2f86d9ca88ccfbb014b0d20c463e985c8c7d1a96d45c46a28fca42768e",
+        "bytes": 136333,
+        "registros": 39,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250430.json",
+        "sha256": "e57f4d57d10a143a00986e48cf2c774e31b56aeace261754fed76c14d0a71058",
+        "bytes": 301916,
+        "registros": 82,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250531.json",
+        "sha256": "eea0abb4f1296c6968fe349f31959de415a0b08e21438696b657fe24d363395a",
+        "bytes": 207863,
+        "registros": 58,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250630.json",
+        "sha256": "9f483e153a1f03c906f5dce2302b2b5d959d1a8198f3806ddc79f7b712de35c6",
+        "bytes": 332756,
+        "registros": 85,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250731.json",
+        "sha256": "066e592d5d570d32651801908c905c6cab3bacd7ec096ccef10727c69ec53ac2",
+        "bytes": 52051,
+        "registros": 16,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250831.json",
+        "sha256": "f1288ef4130640c3ea3ad977691c8cbad1aed5506dac83ca00bb85c1d14644c7",
+        "bytes": 170974,
+        "registros": 36,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20250930.json",
+        "sha256": "4df806de9496e2a834b5e68cfc7c06f5e20b9b1595b85472708e793fd60476b7",
+        "bytes": 709333,
+        "registros": 306,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20251031.json",
+        "sha256": "49150da672320c003d209c77f912ca81a60ec022003641d4e47e2e36fd711872",
+        "bytes": 211271,
+        "registros": 57,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20251130.json",
+        "sha256": "3d20865ff84f9c0e331525633441310e99ea7d12c77e3733c15f14b3725d4ceb",
+        "bytes": 422071,
+        "registros": 110,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20251231.json",
+        "sha256": "ec734a2ea7de765b6951a65dac9e67f498cc5db35ada9a43b2e3c6fd206334ef",
+        "bytes": 237769,
+        "registros": 67,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260131.json",
+        "sha256": "3f9d08c7d9ce3c81fe18635191fac1d6561811296c84c2492206f3550dc06be6",
+        "bytes": 177783,
+        "registros": 47,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260228.json",
+        "sha256": "f55d6c4ea699eb651724d9b4bdc82e524e8346cc541634bf0646e76aaa00ece0",
+        "bytes": 136834,
+        "registros": 31,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260331.json",
+        "sha256": "b7944feb6365afd8e3770173567f1d7c9e76d3dc786ce4506f36888e10a7886f",
+        "bytes": 523689,
+        "registros": 115,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260430.json",
+        "sha256": "f915d48e56bd62865d66498c82a6071bda545c9474764d462c3aa6f5bff909b4",
+        "bytes": 172702,
+        "registros": 46,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260531.json",
+        "sha256": "62783b9d4c1b56641fac38e97a2d5ae37db298f194c19f3a1a781f339493a889",
+        "bytes": 523817,
+        "registros": 120,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260630.json",
+        "sha256": "5a5f4df72d990eb9e8b5619ea627f11ad5cafce2077af3d0c9ee80ce3b64ae93",
+        "bytes": 381314,
+        "registros": 91,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260731.json",
+        "sha256": "29af72b057a31eccf37d3a71e4885cca1eb59bb608eb2caf515255a730d214f7",
+        "bytes": 175458,
+        "registros": 42,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260831.json",
+        "sha256": "650e5e311e3f804538c2ad107c4455091f65549ba791871ce20363a6f523e0d5",
+        "bytes": 672031,
+        "registros": 167,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20260930.json",
+        "sha256": "8c7cfe993005fcc123bb15dacd4d693ecac2d95394808005b30be92e59ca275f",
+        "bytes": 860178,
+        "registros": 228,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20220507.zip",
+        "sha256": "83585138656a249f7cbc551d42a382774be62afc6e365617692ca06e91c54049",
+        "bytes": 16556603,
+        "registros": 21971,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20220531.json",
+        "sha256": "41570860e62f083280a18a39a677ba60de2a63d33f93121a817227b768fb872d",
+        "bytes": 381964,
+        "registros": 85,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20220630.json",
+        "sha256": "b153d0ab6152cd9d29003ea33a5298bf1b43553af1b6e31cb3656589f7e069f4",
+        "bytes": 529146,
+        "registros": 104,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20220731.json",
+        "sha256": "31369ce7d1bee76f54d26a974b1f2534ce3c54e719df9b5e8c5d953f4923a156",
+        "bytes": 232286,
+        "registros": 46,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20220831.json",
+        "sha256": "8887c817bdd47d2bbbb7d815673b6341f6b75d2d0e69a0ef556bcd8251a577d2",
+        "bytes": 515472,
+        "registros": 105,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20220930.json",
+        "sha256": "d66d1675b6e3cf06b21b8d20e43693430b93674df58d05489aa1b0309d0d3124",
+        "bytes": 333389,
+        "registros": 85,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20221031.json",
+        "sha256": "9f636f26564f847ece4fea420e2d5dfb2e7e81428e56ce2d24b0ab5d99ded29e",
+        "bytes": 227701,
+        "registros": 53,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20221130.json",
+        "sha256": "c52f046f81e108cbaadfe644e003858e6c90292a66c93b68971b045e6c8c19e6",
+        "bytes": 412578,
+        "registros": 98,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20221231.json",
+        "sha256": "10fc6d6d349994aa78e5d0c835e3805188628f1d2c13de15de2ff8202b7d6cf9",
+        "bytes": 388182,
+        "registros": 87,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230131.json",
+        "sha256": "554a5ca3268390ccb9b4513fe23dcf3af3df19b576d91f726aceb354dd17c951",
+        "bytes": 185712,
+        "registros": 48,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230228.json",
+        "sha256": "2c96d8772b69b54a13e714fb0580e391d31322aa974ef894348f2bec81d7f657",
+        "bytes": 248720,
+        "registros": 59,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230331.json",
+        "sha256": "c3719b19fe2301d8a7087abc8315d538f27f9120a17858f59255ddfa179b61da",
+        "bytes": 349583,
+        "registros": 84,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230430.json",
+        "sha256": "64224691ccf328d9ab5a7270458ef318a76d10338819b8bb395ef3cd8607565a",
+        "bytes": 478793,
+        "registros": 88,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230531.json",
+        "sha256": "a680a83de176ba924bcefc585c0ac75ca2278454f50c423db7a9079707899d88",
+        "bytes": 430014,
+        "registros": 85,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230630.json",
+        "sha256": "b9cc624c0127ad830e26df8acff5a7d0aebe637d6414383ed282a26112631144",
+        "bytes": 622159,
+        "registros": 129,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230731.json",
+        "sha256": "560f3b7f5a3046a2e28e69f80d4b44e240bab0d192c72fc119b32a2117a29b19",
+        "bytes": 375149,
+        "registros": 84,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230831.json",
+        "sha256": "948b089ae2879a80a49c8df3e525b2b1c50851109c18603e874688b1e2298fcc",
+        "bytes": 198841,
+        "registros": 49,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20230930.json",
+        "sha256": "d254ee03251fd8f07653834039b30de5fec27c1a12687c1b484017f5989e9c65",
+        "bytes": 341731,
+        "registros": 66,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20231031.json",
+        "sha256": "64eb5bb0685fab63fee0665f026377f395b3bb301bf00f2842411e12d1ce1000",
+        "bytes": 472745,
+        "registros": 98,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20231130.json",
+        "sha256": "fbb5c7f41aa72759ae76ac1d28bc1638937169201d3518cc97e202226be763af",
+        "bytes": 282522,
+        "registros": 75,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20231231.json",
+        "sha256": "1da832273cace52b51e5f6eeff1f13e3ebbb2dbcc4b083fdd239e22c76f527cd",
+        "bytes": 194717,
+        "registros": 54,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240131.json",
+        "sha256": "efac574424834ac2efa6acf5925c02bbc6828488bbf18b8f620d41873ed954b5",
+        "bytes": 201286,
+        "registros": 44,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240229.json",
+        "sha256": "6a395656aa049cc52f9bc182f5a25ac9167fb0deae403393b273b4c7d3b883d7",
+        "bytes": 99277,
+        "registros": 28,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240331.json",
+        "sha256": "4ad0d093cbdcd2755360216461d3a00709f6aeddb57f99db5b929a29f00d42d7",
+        "bytes": 380201,
+        "registros": 102,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240430.json",
+        "sha256": "218093e26e2ed186b4d33bcb7fcf835f431e37e62aa4d8eb7e261052727d352d",
+        "bytes": 279416,
+        "registros": 69,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240531.json",
+        "sha256": "552d43ad83e5dc8fa7c4e73d5b166df1efe4dd692fa22bc30bed76fc203cc155",
+        "bytes": 676664,
+        "registros": 113,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240630.json",
+        "sha256": "09de49a8371b329548f62b7457aa1e74a401fecfb733924f27e89df0b40833a3",
+        "bytes": 530093,
+        "registros": 115,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240731.json",
+        "sha256": "870a213687eda271fc100c0c5a981638245821e0b6e0fa7107045c2980a063f6",
+        "bytes": 286444,
+        "registros": 36,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240831.json",
+        "sha256": "f00cb39d2b88b96913dca8bf256173c147a6bc4f1f7a38cbf51e1bb3c3da4c12",
+        "bytes": 422377,
+        "registros": 96,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20240930.json",
+        "sha256": "a561d47cb8c7e82ef21b2e2593c7df355a2e463311d91727bcb6cd74f048b330",
+        "bytes": 480662,
+        "registros": 123,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20241031.json",
+        "sha256": "5609b5879a057b61b8bee7c4fda4d6b36839a1ef30fcc7f3a02735874dd4e956",
+        "bytes": 426074,
+        "registros": 103,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20241130.json",
+        "sha256": "ce07e9a4af59df01ca434ef8d6f57b3f6d4ec2f36b72da5ce1e8655897a981b6",
+        "bytes": 235159,
+        "registros": 64,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20241231.json",
+        "sha256": "f5bc67771a9c5eab3d21052fb74c5cac9ba9e10555f3ddd458380fabf230ee6a",
+        "bytes": 366314,
+        "registros": 91,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250131.json",
+        "sha256": "4aae3d1ffdc91effdcfc24ff6bc2d4867804b221bc0b2386b72671fef7ada309",
+        "bytes": 147162,
+        "registros": 47,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250228.json",
+        "sha256": "6c53a073473f92c42f2517f3db78f5b0542bcceb71f9a0f25e57570fcfd81ece",
+        "bytes": 416318,
+        "registros": 108,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250331.json",
+        "sha256": "48d425eae4d7ab8ab7efef31eb43c7bcb80a47f1475dd3868fff181a40983c2c",
+        "bytes": 293567,
+        "registros": 73,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250430.json",
+        "sha256": "b89564c3883329a9b4cff24d34d4ed0426652e14fa99e2bfd19ce478be1aedd1",
+        "bytes": 359473,
+        "registros": 99,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250531.json",
+        "sha256": "de9df1759ffbbe6827794ff984aa714c0af5de3c0c2d66645d57c2768c9456fd",
+        "bytes": 255752,
+        "registros": 67,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250630.json",
+        "sha256": "5eff3aa8a31c30fc3f37c9ed9c42b901952846d742f8e617c36ade73ac72a984",
+        "bytes": 353399,
+        "registros": 82,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250731.json",
+        "sha256": "cc1eff11617229461fa39dc419e82b8bf9d0d5bc826d7a1f9d33d0f13779f124",
+        "bytes": 105437,
+        "registros": 30,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250831.json",
+        "sha256": "d9087084b7076dd94fbb452fff3763b57da7ee0e66b14bd8d137801a97ea140a",
+        "bytes": 309104,
+        "registros": 74,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20250930.json",
+        "sha256": "d1287ede839370542a46e56686212c1741b7d39bf075db80e712174c5876de8c",
+        "bytes": 327609,
+        "registros": 90,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20251031.json",
+        "sha256": "e220c253059d2ed8cada223288140e6216a1711b0623ba9654df29fb16963f11",
+        "bytes": 253607,
+        "registros": 64,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20251130.json",
+        "sha256": "9364eacc405995ff0c56cb0f5d67e7734da7a36ef2b4b6e7aa3f3ac6c45518af",
+        "bytes": 619048,
+        "registros": 162,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20251231.json",
+        "sha256": "cbeddb265c78d552973cc1631db571aa48a8a21792ede1bae413457ac24e65f7",
+        "bytes": 496321,
+        "registros": 129,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260131.json",
+        "sha256": "a0d347d5e754dab698867b9fe2d563faf96beafdb004601f42e9ad35f6e8cfba",
+        "bytes": 54761,
+        "registros": 20,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260228.json",
+        "sha256": "6a11bb4b8b744f54d584c4a9bdf00bd136b2177118b8bbae0f3025994742d83b",
+        "bytes": 180705,
+        "registros": 39,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260331.json",
+        "sha256": "dab921c5898879d31c1428040edacb5522af6ccb1768cac4125ec76ac23713fb",
+        "bytes": 441510,
+        "registros": 110,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260430.json",
+        "sha256": "6cb8cb4f3796cf0facca482d9d6cbb570d797c69f5bf52ae1023816a8458c3ee",
+        "bytes": 395663,
+        "registros": 101,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260531.json",
+        "sha256": "6533a057062f209d22fd0f363d2f7c8e63d5be64678286bc241c7dfaa68c0723",
+        "bytes": 502288,
+        "registros": 125,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260630.json",
+        "sha256": "f3007bc1d748b1cb5fcb3193ee88c77c9087492cacae6d6d23fb5d64d08fb443",
+        "bytes": 337524,
+        "registros": 84,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260731.json",
+        "sha256": "d2c66d1a369a21fdfb58e6181899ce083de6a2f6492c805f21c028085d856cf5",
+        "bytes": 142030,
+        "registros": 32,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260831.json",
+        "sha256": "7b17c1ef1f03ed58029bc9a3dec38d6900381dfae6257d436d8e4d16de6de3c0",
+        "bytes": 408045,
+        "registros": 110,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-secao",
+        "arquivo": "20260930.json",
+        "sha256": "428ccfef98b302e6fa4466a10d90600851d0d97ed13b7d9b71d109dfba84c30b",
+        "bytes": 362599,
+        "registros": 89,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "116ce4b978ecbeb9be240de793329aa9ad5a0a80d1ab0488b94dd02671cb9f2a",
+        "bytes": 68235713,
+        "registros": 102956,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20220531.json",
+        "sha256": "8ffbb242fbb25bc4a7e50604dd2b0d04630d98e0e771c1da26e54964d1dce68a",
+        "bytes": 1372341,
+        "registros": 408,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20220630.json",
+        "sha256": "1ba1e222e65002c23338c21a446fd92da7a5bd1598a37ee6d6322df31aca132d",
+        "bytes": 1192116,
+        "registros": 357,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20220731.json",
+        "sha256": "085984ea1c4915fcad4685de7089600f68eeff8381d742068fb8157e71c0438e",
+        "bytes": 317582,
+        "registros": 97,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20220831.json",
+        "sha256": "58f585ecea58f2a19f92929ae524ef5ec6630a98dfc536d2db76d02d95f17c81",
+        "bytes": 933783,
+        "registros": 282,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20220930.json",
+        "sha256": "7aea8fbf45e6883f625caa6b99cbeec8b5d73e7f37a9025e3e9c365fc0b64676",
+        "bytes": 938113,
+        "registros": 293,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20221031.json",
+        "sha256": "e5884e08d83e156a15314627d570acba033d28aa006fa7f1e5184e50bb521915",
+        "bytes": 1047788,
+        "registros": 323,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20221130.json",
+        "sha256": "5e347c477f88b36e8bf721a02c7804c89f6c9a5742b37ae455ff7207a16a711b",
+        "bytes": 638236,
+        "registros": 217,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20221231.json",
+        "sha256": "5f147fa169d83fb86ded45e20a278f5f4d2292c7637d7d62e0f40a3506b3d422",
+        "bytes": 424091,
+        "registros": 121,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230131.json",
+        "sha256": "612de16e7c2aedfc514931240b631d267731c97c8f7af32d349b2dfeb98864fe",
+        "bytes": 465874,
+        "registros": 139,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230228.json",
+        "sha256": "1c904baa69d9a50f4bba474d8d0af0ff8b66da5e065d418163d8992ae1d28b07",
+        "bytes": 445438,
+        "registros": 147,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230331.json",
+        "sha256": "bc8aa40798b8dcf02174176b248f4894bb1978f96a3bc1bc95f47c9c019e2816",
+        "bytes": 749457,
+        "registros": 227,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230430.json",
+        "sha256": "bae6e8b27492aadee31e6453e06b041d2ffa6d5031bf9c8dc59ae0384713ba54",
+        "bytes": 798914,
+        "registros": 245,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230531.json",
+        "sha256": "84469f6660c3ec7531a4ad61ffd120b45c1be6f31fb5259552f15616b8724f0e",
+        "bytes": 1130820,
+        "registros": 366,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230630.json",
+        "sha256": "4dad4025d784298dc3d8f6e9b77c38f3fa35c6b49ff043c47aaec671e5659842",
+        "bytes": 1228758,
+        "registros": 373,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230731.json",
+        "sha256": "fd02b130350f7e7df9717d4267e2e57c8dbf0c4b373ca9f095c1ebe3e9c2834e",
+        "bytes": 677587,
+        "registros": 214,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230831.json",
+        "sha256": "6000acfeee8444a9bc4434a0584ec4d7614b8ce8c88eaaa6d699fdfd00d8db32",
+        "bytes": 565910,
+        "registros": 176,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20230930.json",
+        "sha256": "eca40be432a46b242938cc5e5ed799ae42cceaeb565ee6f338f11489f724a321",
+        "bytes": 1355186,
+        "registros": 429,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20231031.json",
+        "sha256": "11dc1f5f4e23c286779da60a19a9579b970a2648a8e288ef0b921f0f73f85251",
+        "bytes": 960640,
+        "registros": 294,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20231130.json",
+        "sha256": "b515d60eefe2cbfcfbabb8aea240a9599f1e693d81d2892355d53255995e22ab",
+        "bytes": 950412,
+        "registros": 308,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20231231.json",
+        "sha256": "c4eb71caa015131487c6b3d40795961f4e432fd134792ed02734d4c7b0de8747",
+        "bytes": 397960,
+        "registros": 119,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240131.json",
+        "sha256": "250153b5a3a3f38656c90f3d4769754d05dc32fdafb80c3a339192bff03ec333",
+        "bytes": 479285,
+        "registros": 154,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240229.json",
+        "sha256": "87a0e33dba7a21c20b406266410d3512a70149569d543220c4a7e8501ee7606c",
+        "bytes": 127531,
+        "registros": 36,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240331.json",
+        "sha256": "133c848f4f2c9cdc4e05663200b7e879b2213a362883f38e9f9190c23fd2b45a",
+        "bytes": 1130918,
+        "registros": 349,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240430.json",
+        "sha256": "9a066ff063e54709019ea4d778c27aedc65df953c87c3321fe2a93574c095b4a",
+        "bytes": 1665724,
+        "registros": 422,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240531.json",
+        "sha256": "1d1b062073413ed2412b3a6fbd0c7c88485c7961a60627350c0ec73daad7ef99",
+        "bytes": 1647168,
+        "registros": 436,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240630.json",
+        "sha256": "17be71cb1e7baebe3f0ea69075c2a2fc9951e7987f41a8f9a403319324e5f043",
+        "bytes": 716845,
+        "registros": 229,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240731.json",
+        "sha256": "2654e6dc2c0eefe20be0eda7fe92c91beffb890e397eb4c96c57a28e1849f800",
+        "bytes": 291593,
+        "registros": 106,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240831.json",
+        "sha256": "51d91e89244317171816d5291e46a4aeed622dfac0c5c7a3d90d2c9680ba518b",
+        "bytes": 813331,
+        "registros": 272,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240930.json",
+        "sha256": "dad1053b7f340e0368297d18a69d3623589b620bd9ee57e6e3e0c368b2db6fb3",
+        "bytes": 915341,
+        "registros": 304,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20241031.json",
+        "sha256": "65cccf180610457925119c02aadad2157a989f8c415a48cbbb196b5d38fde163",
+        "bytes": 723247,
+        "registros": 260,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20241130.json",
+        "sha256": "8ae2b2f2577cc0ceb5630ffac087f6a15ce2571e48fe192edab1a4746fbeb5ac",
+        "bytes": 361335,
+        "registros": 134,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20241231.json",
+        "sha256": "0280346016f2e4474cd4c4855546c482d8760939487e63e9dd95d952a088b82e",
+        "bytes": 504120,
+        "registros": 183,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250131.json",
+        "sha256": "dc088d5f0c0a1d21fc2f46f423cc830d7c71822af6742c754bca02f87e44d9f9",
+        "bytes": 446562,
+        "registros": 162,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250228.json",
+        "sha256": "0a56e1df0b4ed0572733fcab5735c2811830e8452ab72780303a76826d8702b9",
+        "bytes": 796333,
+        "registros": 274,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250331.json",
+        "sha256": "cd1dd90196f4d650644f8d370d4270669bd67b503aa08d88fb8b0f00397f443d",
+        "bytes": 623982,
+        "registros": 225,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250430.json",
+        "sha256": "87b3f961e6bf89bef997a90483bebcc10c17058368ecb5f581d3243b48930748",
+        "bytes": 718348,
+        "registros": 238,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250531.json",
+        "sha256": "8d0ea8909642b83ccb2bb3554cdaf9a699f3e6117f05c8fa4a89ceec611eeb72",
+        "bytes": 791550,
+        "registros": 267,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250630.json",
+        "sha256": "da5815f06da0b4925a48edaf762d45f6d9f8d0bd58df8f855972426f75764f7c",
+        "bytes": 589344,
+        "registros": 194,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250731.json",
+        "sha256": "7a2937d8504e19f4ceb4ba608788f3eebaaad49b5b3ccece008ca04a09009429",
+        "bytes": 360619,
+        "registros": 123,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250831.json",
+        "sha256": "5f905223f9009330d403cb7e242d21af5b667aed675ed6fd9bc4390bfcd1b65f",
+        "bytes": 388764,
+        "registros": 134,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20250930.json",
+        "sha256": "e2fa2d01641e7224dab04153bbfdeadcd7b5c290c4885c2c1508eea039ab489a",
+        "bytes": 643834,
+        "registros": 227,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20251031.json",
+        "sha256": "f6f97c0680f7e26867521ff75c5dba7d373540536a39eb34c57c862ebeee0339",
+        "bytes": 416110,
+        "registros": 145,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20251130.json",
+        "sha256": "a8b8bcfffb6837af3e7df2a67938cbdf2f4c87270645e578244ec57a06bf0075",
+        "bytes": 139734,
+        "registros": 44,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20251231.json",
+        "sha256": "9a0ce9e7b32981e411e55a7875b75c3186f319a8b771c5970739104b7bb22540",
+        "bytes": 318992,
+        "registros": 107,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260131.json",
+        "sha256": "591363b3eac2a6e22e2619d27085778d3a064c8605e3178dc9714b0c07a58a80",
+        "bytes": 72153,
+        "registros": 23,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260228.json",
+        "sha256": "336f96f661c05a0d34f6cfdb35737e8f23f24adb1af61606fd2e684c93e2643e",
+        "bytes": 46435,
+        "registros": 15,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260331.json",
+        "sha256": "ab6030d0b04d82e2998ba698a91d8255e3dd4cf54b1ab49ce5446dcc83d8f3c9",
+        "bytes": 226740,
+        "registros": 73,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260430.json",
+        "sha256": "a3811c833d3d13e9ed5a5a834c0e6352e2328b8a2f552a4ce41211e4cba6e5da",
+        "bytes": 153296,
+        "registros": 51,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260531.json",
+        "sha256": "61a9c96fbb7dc6073e64142de8db41ed094652a0dee967c3ed97b9969cbca300",
+        "bytes": 257051,
+        "registros": 79,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260630.json",
+        "sha256": "08c8f9a5a842a0717c0759fc0715a6cc28c8b18c0a116474ff82b3c6829ed713",
+        "bytes": 2934972,
+        "registros": 1186,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260731.json",
+        "sha256": "de32c34f5d010602a90ed7440a16494e4dc08d677e2a674fc47eeebf3f65e240",
+        "bytes": 843673,
+        "registros": 320,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260831.json",
+        "sha256": "470d7e01e54af29bc7db481891d292c7a4b07d06142503ed25b84427ecaaf195",
+        "bytes": 1753945,
+        "registros": 676,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20260930.json",
+        "sha256": "03ef470f3abc5095dbc61742897343baef28ccbcc8204d0ad12a7fee838cebc7",
+        "bytes": 1307064,
+        "registros": 471,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+        "bytes": 47368021,
+        "registros": 85888,
+        "achados": 7
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220531.json",
+        "sha256": "2311788abeffdba9227e3b721667ff9171cc80f1a3ede73619e298f64897679a",
+        "bytes": 1790772,
+        "registros": 599,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220630.json",
+        "sha256": "e230c08fc495a2cd2873dbfce93542006d18895aca8afdc3d50669ec3ccb25dc",
+        "bytes": 1498569,
+        "registros": 517,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220731.json",
+        "sha256": "9b39e49f146abaa8b9b4a0d6618987ebaa0b1a248a35b41a0c660510e3371402",
+        "bytes": 725564,
+        "registros": 252,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220831.json",
+        "sha256": "0fedd9bb9b54fdfa1c19d5d904a1084832bb647172377c32780b320511e1879a",
+        "bytes": 1656526,
+        "registros": 553,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220930.json",
+        "sha256": "9513451f0f14e8a266f3e2db3eba4eaefbccc392fcdbfba1aac7563de18f20fd",
+        "bytes": 1063997,
+        "registros": 379,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20221031.json",
+        "sha256": "6f46d171b38ad81486b513c6f76d2584457d07119842e6f1e6370773a67f6fe1",
+        "bytes": 1436285,
+        "registros": 530,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20221130.json",
+        "sha256": "1c5521a49ac6db9c3d9680935abed583daa28c96c92998e06af933e7d30b23c0",
+        "bytes": 775796,
+        "registros": 258,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20221231.json",
+        "sha256": "fbfc5405fb8ac4cb0b1d76a9903d9b5a3e57a540c96b57fe9c56a75c82312fc0",
+        "bytes": 615664,
+        "registros": 238,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230131.json",
+        "sha256": "0fcb95490aba7581b5353bbfb68f9bdb070c19f06d72b6a4632b410e9b4dd082",
+        "bytes": 562044,
+        "registros": 212,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230228.json",
+        "sha256": "e9026f4ff9fd8f5ae5d42b81bf15bd040d9ac4bd4af2fd408dae49e51fcfcd3b",
+        "bytes": 390984,
+        "registros": 129,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230331.json",
+        "sha256": "72471c28c443fe5bf634006be212894ec6d99a149964d32eef123184f38f4373",
+        "bytes": 1537321,
+        "registros": 475,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230430.json",
+        "sha256": "2f0130883387202fb0e4750406ff47cfc9183f35739e6483656e5becdeb4fe71",
+        "bytes": 1257494,
+        "registros": 409,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230531.json",
+        "sha256": "02d5560f963347c133cbbaf60e48b2a7c184e361f0543c3d3aa40bd511a8cf7d",
+        "bytes": 1107138,
+        "registros": 378,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230630.json",
+        "sha256": "0543043840d5a5bd7a15797d3a2d712738362a80bd744d1db4224bb0c3622f8a",
+        "bytes": 1517214,
+        "registros": 519,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230731.json",
+        "sha256": "b7f82983888616781d50b50c6ba3cbf17dbd476bd17802d140d26b3ea666e89a",
+        "bytes": 577155,
+        "registros": 190,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230831.json",
+        "sha256": "5ade3c3073c2af63965b255928fb8808f9e0dd0329f6601a68596369b5e0a232",
+        "bytes": 563215,
+        "registros": 194,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230930.json",
+        "sha256": "e6bb20332128356eb67112350a18941b5b1b3ba9fb8bf9eccf5070407f5072f1",
+        "bytes": 1483520,
+        "registros": 512,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20231031.json",
+        "sha256": "01ec0ab31856b367754e357a91b72aa74f184f91456133fd32e2c95105a5cd1e",
+        "bytes": 1331316,
+        "registros": 453,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20231130.json",
+        "sha256": "d8551ffae76444f4139b2d9bbb48ccafb62bbacb92cdb3a5fe58e769998aa214",
+        "bytes": 1110840,
+        "registros": 381,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20231231.json",
+        "sha256": "c97b5e754c781b793deced080b459eb6c6da8f64165d00b2ad15eed33aca0268",
+        "bytes": 638283,
+        "registros": 213,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240131.json",
+        "sha256": "f9cecd0099c397265286273284be3ba5e3fd5339d016822d87d41d024cc3cf8d",
+        "bytes": 629809,
+        "registros": 215,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240229.json",
+        "sha256": "137a65e050a6dcc0fed478986e40483d158a151553bb730398b0be0213656537",
+        "bytes": 146525,
+        "registros": 56,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240331.json",
+        "sha256": "1886a932e59f2b04640b4d45db04ffe5d10a80b6300ec4890b7e1b63913bef3a",
+        "bytes": 871117,
+        "registros": 289,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240430.json",
+        "sha256": "a0a017b10847688c3fdb1496a1edaa1bcbb2f29eff04151764700b7e19744572",
+        "bytes": 1349649,
+        "registros": 438,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240531.json",
+        "sha256": "04b904b5d8f4bd10850cb6ebb253167fcac14f30cdf1530fcd1cacddcdb3d54d",
+        "bytes": 1299369,
+        "registros": 443,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240630.json",
+        "sha256": "6834966e56bc327623cfcc2046018ecb56da91172edefb1b29b74bd1d51e56c7",
+        "bytes": 1062400,
+        "registros": 362,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240731.json",
+        "sha256": "d04721b3936ebced945b9afa131d5876a286b78ec9167445187d5c7c3c5f7333",
+        "bytes": 514925,
+        "registros": 218,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240831.json",
+        "sha256": "b044e18d89e896f978c455f56a7f18ef4b8e444643ed81697775f979bdf91571",
+        "bytes": 745019,
+        "registros": 286,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240930.json",
+        "sha256": "7b3fc5d063cef7537f91efde6764de2c62e143420f86f395e24a5fa8ccf6d1eb",
+        "bytes": 1221749,
+        "registros": 475,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20241031.json",
+        "sha256": "f159f98f91ee2e3b33241de6666db00f3d92e67eab725459b3473305a803e202",
+        "bytes": 929787,
+        "registros": 358,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20241130.json",
+        "sha256": "c208b6d8d3ea5effed07dcec8fed493f9939f0c71c5a72f907e7e519ff1df070",
+        "bytes": 605411,
+        "registros": 224,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20241231.json",
+        "sha256": "dc8369ae3266f367ebbd53df028abf0d930f992608004164c757d63bd33521ef",
+        "bytes": 579491,
+        "registros": 228,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250131.json",
+        "sha256": "ea993da187072ee5b4b6986afe176e26b0a1430abf5dbe0ed9e70480c48371e1",
+        "bytes": 406836,
+        "registros": 159,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250228.json",
+        "sha256": "2113290b509b8022b79d01cbf43f0557a94659a358df9edd6367735169d1dda1",
+        "bytes": 325341,
+        "registros": 105,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250331.json",
+        "sha256": "419b1ce431caffdb3373313ef27ad0305433d6163379b1735163934367fa3976",
+        "bytes": 906648,
+        "registros": 292,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250430.json",
+        "sha256": "8f60bc30597d515ecb578836076a3ddc65eac35acba5fdd192f5a73ea034414d",
+        "bytes": 1751134,
+        "registros": 579,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250531.json",
+        "sha256": "9682d751409677c0c7abbb28f82871cd6ee390aefa78983f0306b827f016ce4e",
+        "bytes": 1548678,
+        "registros": 481,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250630.json",
+        "sha256": "8c07114f1c20ea94e2ba271fce127c72db2080a32382c7c6b4e31139c2939e0c",
+        "bytes": 826403,
+        "registros": 262,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250731.json",
+        "sha256": "93a046798990b3044d911120d9ad469b76bff628d494e9a9b544b463242ed154",
+        "bytes": 817483,
+        "registros": 250,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250831.json",
+        "sha256": "8e6eba0cbb04bfb7e209dffdad5f7331483fa0ab5a1f3751cb311605e0cee8df",
+        "bytes": 275943,
+        "registros": 83,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20250930.json",
+        "sha256": "e320fe446fc3a3e36b6764d044f908f8e5a060d2ac641e59beb6a1c3c3a5ab76",
+        "bytes": 1299515,
+        "registros": 421,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20251031.json",
+        "sha256": "c25f4f3066972e7f40ad308fc39430c439768af22ca9d7cca578bcb4535429a1",
+        "bytes": 1449188,
+        "registros": 465,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20251130.json",
+        "sha256": "78c74381ac7bdc9eb86329bdf0e7df11197ab4ddac0a15966d739886df849693",
+        "bytes": 1052286,
+        "registros": 319,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20251231.json",
+        "sha256": "a12c08ec50a3fece29255af8a87c80ccd4a549f652c06070c376439dfaad8564",
+        "bytes": 4234935,
+        "registros": 1420,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260131.json",
+        "sha256": "ac5316db7d03f814978ed43ecfe3b9b5b5c09385a6cc88235760c7cda9d89fb1",
+        "bytes": 2148005,
+        "registros": 663,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260228.json",
+        "sha256": "54847d3040d85b56ac53e6a2bf51ade0b9681412a06a848e13519bb7a14ab23c",
+        "bytes": 2782920,
+        "registros": 655,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260331.json",
+        "sha256": "a3357146d6b4d2c4769dcc2f312bf0cb0996d74703f9f8c34df41e03c2d97c77",
+        "bytes": 8341965,
+        "registros": 2089,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260430.json",
+        "sha256": "095353782f8bbd6691cd6db66eee4630d61f001fa2298ec049190c76991c8aae",
+        "bytes": 4820467,
+        "registros": 1212,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260531.json",
+        "sha256": "a47a249bf4f06c569c23af7b9564074bd2b29c5a0363c3159335d2a84cf9275d",
+        "bytes": 4637737,
+        "registros": 1138,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260630.json",
+        "sha256": "fe810b1f348d48df38c0e580ca1d036b9d66f4cf0dce2f3590413b1bc1adc891",
+        "bytes": 13328355,
+        "registros": 3913,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260731.json",
+        "sha256": "ee4d631c0e970563ee5a3fcd242e85f6b70148b5b925675f359044a038114d05",
+        "bytes": 4002155,
+        "registros": 1064,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260831.json",
+        "sha256": "459578365eceb0374dad7616b8f74f646d11ba49776ef6685f0dd5d7dad4ca9e",
+        "bytes": 4493197,
+        "registros": 1303,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20260930.json",
+        "sha256": "f68a0a53d7dbc111e5f27ef9d96f00e946267908ae3fc7b54c9a211ed3963e6f",
+        "bytes": 9760990,
+        "registros": 2167,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "a38e83cda017a2b893ea60e5f9677299aafc7672cb3129043f7630c1ee1f6eba",
+        "bytes": 115233866,
+        "registros": 166121,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20220531.json",
+        "sha256": "3fe3da6ae61029f8a1502367f9779a8bc86fe7a1cf6864b1d27bf2757d5c4788",
+        "bytes": 2597330,
+        "registros": 721,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20220630.json",
+        "sha256": "45a4e9b077f12705f312ede3120ab6c8890a2858efe01a69275f5b112fc5a50b",
+        "bytes": 1895682,
+        "registros": 546,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20220731.json",
+        "sha256": "1e8d65c07b92a4368a5bd63d2ebdf5300c40a61aa031a53258fa82ce3d3a38a8",
+        "bytes": 503733,
+        "registros": 138,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20220831.json",
+        "sha256": "21fa39d3ad1fbf4c30e0b23dd80abe9729155c8f6a00a357f465cf96939dd038",
+        "bytes": 2642581,
+        "registros": 746,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20220930.json",
+        "sha256": "ce2531848ce27111724aefe0854963adb7dbcee158d2723dc106fd65f6b18501",
+        "bytes": 1575377,
+        "registros": 482,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20221031.json",
+        "sha256": "d06e4b59e5c140a12b38748101ac922b917b411df77ef11ddafa1baa152c94c3",
+        "bytes": 1692509,
+        "registros": 499,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20221130.json",
+        "sha256": "23e24c0b68d5bd5fada6956980d4dac202cf318a4f2a44cc900c678252fb0ca4",
+        "bytes": 1437256,
+        "registros": 404,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20221231.json",
+        "sha256": "4c2599e4a18f8cac61c833c0fa576f32e2027a21cba2150eb71814f9c9791643",
+        "bytes": 1064309,
+        "registros": 322,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230131.json",
+        "sha256": "4ab388d97dac9d4fa1613fe3e024540f043924a78048ea88da78a2bb393a14e3",
+        "bytes": 624032,
+        "registros": 193,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230228.json",
+        "sha256": "eed2ada329646bdac1a662a408846fe28c9c9ff27dc2bebb54e4ea80ea8ca3c4",
+        "bytes": 1353253,
+        "registros": 386,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230331.json",
+        "sha256": "4aa94ab66908ba44e94b55740ac44020b52b8a9b9e4517a2eb25a95f090b2cd7",
+        "bytes": 2489466,
+        "registros": 667,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230430.json",
+        "sha256": "a0a2d9d3e9749a0969c000a3ad97b1976ec2225abf021127883b0113c8f4ebf0",
+        "bytes": 1771511,
+        "registros": 522,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230531.json",
+        "sha256": "317551f84a3aa22cf1266520a943dbb5a862dfd99d3d81483761757d24dd86c6",
+        "bytes": 2224200,
+        "registros": 624,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230630.json",
+        "sha256": "52ec5941097c646e54e38e407a968a9ce1973fa227251507a8d36131a36cc022",
+        "bytes": 2845872,
+        "registros": 807,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230731.json",
+        "sha256": "e96c2b3538772db2c9b4b5fddd313e06b18fb71dcfe172ff664d46c5a6372c20",
+        "bytes": 689323,
+        "registros": 198,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230831.json",
+        "sha256": "3c8951fca20a109c9338b1198eb66985fdcb2e8640a27c536cd5538e70432cc5",
+        "bytes": 2087121,
+        "registros": 590,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20230930.json",
+        "sha256": "e69a93e05262d439e48faaa3573a59de3ba3ce2761bfe0e0f09273aa9d594e8d",
+        "bytes": 1898546,
+        "registros": 537,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20231031.json",
+        "sha256": "2af0dc3d12729c0e874bf0b48c9d97c641575ec72b275c7fdf476497d89e9a98",
+        "bytes": 2028440,
+        "registros": 548,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20231130.json",
+        "sha256": "364100d049a3bcf715c9b88a703c6d44b74f0ebbdd97b8fabb93a4e4740f250c",
+        "bytes": 1715414,
+        "registros": 483,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20231231.json",
+        "sha256": "277b9ceae3ea0978e5612a1793b8ce90cdd59e5805a8f47bf9058028fcf77671",
+        "bytes": 1479519,
+        "registros": 410,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240131.json",
+        "sha256": "ef8185a62ab9d9b51f38d7b2e58b8ff169ce2cc16864c826672b5e6d1aa8dec8",
+        "bytes": 1276708,
+        "registros": 395,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240229.json",
+        "sha256": "ae90852538a3678ff95e81f27fe7a66073979919946899266ab52e6f443f4a2b",
+        "bytes": 925039,
+        "registros": 269,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240331.json",
+        "sha256": "797468861295344c4d6efc4e5a6b1acf523e962c3c1fd0e52f62be36fd3490fb",
+        "bytes": 2582033,
+        "registros": 707,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240430.json",
+        "sha256": "dbf1b4b9c792ab03a86c3b7e6fa09d9f366384279c8c9ed277f41c93dff177cc",
+        "bytes": 2329712,
+        "registros": 660,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240531.json",
+        "sha256": "a8ad4f376fb581c16a0d85561e478f0233e16af67f16f253da8e40cf6cbec444",
+        "bytes": 1673779,
+        "registros": 504,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240630.json",
+        "sha256": "21a810fcd8dcc01bbae15b887d9a5443062d56b62ff27bed620c6989fbc7156b",
+        "bytes": 2119511,
+        "registros": 627,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240731.json",
+        "sha256": "ca26a17e6900f741a50d42291532b9c181a7ad8c6fcc17dad4dac98212e459f2",
+        "bytes": 551080,
+        "registros": 171,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240831.json",
+        "sha256": "a6e06100a7cea15a702084e02ba0db2368b69d20b69523fe44a83fece28578d0",
+        "bytes": 1566601,
+        "registros": 522,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20240930.json",
+        "sha256": "c035672c40d0a3a49176c6457a000ac629e5a7c64646504fe5e20b2f8e784e59",
+        "bytes": 3632439,
+        "registros": 1183,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20241031.json",
+        "sha256": "88f9e1eae455680f409be40a73d4c11420ee569aae17e81abf2f381479a1890e",
+        "bytes": 3813142,
+        "registros": 1263,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20241130.json",
+        "sha256": "5e96f1ab3fee68a5464969091b938434e296141500943a6132649ffce36a4c9d",
+        "bytes": 5054992,
+        "registros": 1626,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20241130.json",
+        "sha256": "c208b6d8d3ea5effed07dcec8fed493f9939f0c71c5a72f907e7e519ff1df070",
+        "bytes": 605411,
+        "registros": 224,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20241231.json",
+        "sha256": "5e02ae3c24f3ebea33b75d9ac8accc096712397fa775e7a34969daaaad8fa6cb",
+        "bytes": 4428223,
+        "registros": 1371,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250131.json",
+        "sha256": "84709a87fdedb98a7aea04de5968bfb457d761e3211109c3f4146ea30d2ffa70",
+        "bytes": 5302554,
+        "registros": 1608,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250228.json",
+        "sha256": "b1c8a1e9584b1b1967089368ebc24ddacb5d2d4004e5b1d86a42f11de5848f0e",
+        "bytes": 5825668,
+        "registros": 1664,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250331.json",
+        "sha256": "62f077f809984b3f106866c2aa0ccee29484658161125579d32a9ef86c19b48d",
+        "bytes": 6292603,
+        "registros": 1790,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250430.json",
+        "sha256": "c6c72d14ed1023de00b13874bba777bc5baa01bd12837ee6cae015cfb48acece",
+        "bytes": 2643864,
+        "registros": 752,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250531.json",
+        "sha256": "8aa7fd747ca6044c0c899faf49b86059a02df387a24093dfde982751b0957e55",
+        "bytes": 3103191,
+        "registros": 892,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250630.json",
+        "sha256": "2f3d27f2667609c00b27e436df5c096e143905c8f46104252dbf87e2d24457db",
+        "bytes": 2916476,
+        "registros": 792,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250731.json",
+        "sha256": "b04fb840b6d2e0333ae43ca8730fe440452d5c232f606087d172b64ae9de8cf6",
+        "bytes": 2499019,
+        "registros": 686,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250831.json",
+        "sha256": "f7e8fd01b2cb42788afc657278c84e813d28c1079362c1cd29ce45788fb13d36",
+        "bytes": 3907011,
+        "registros": 1076,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20250930.json",
+        "sha256": "ad9f24bcb46e4119fc839d33fc18492b4eb96ecf29f38ac993d8b505bac0ee0f",
+        "bytes": 3128857,
+        "registros": 865,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20251031.json",
+        "sha256": "c8ed073cf287a62e87ef45de7a261d202e161cdb1bcda6655da37a7fbfc5da2d",
+        "bytes": 1366631,
+        "registros": 360,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20251130.json",
+        "sha256": "36c8ed87edaeddebca4c662c4068d15bd223c15e3a05c53a7f77a1bbbb2a9e65",
+        "bytes": 398576,
+        "registros": 96,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20251231.json",
+        "sha256": "ee16110950d94695bc4745487899393a0835f80268a5da93823fe508af87002d",
+        "bytes": 371879,
+        "registros": 93,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260131.json",
+        "sha256": "591363b3eac2a6e22e2619d27085778d3a064c8605e3178dc9714b0c07a58a80",
+        "bytes": 72153,
+        "registros": 23,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260228.json",
+        "sha256": "336f96f661c05a0d34f6cfdb35737e8f23f24adb1af61606fd2e684c93e2643e",
+        "bytes": 46435,
+        "registros": 15,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260331.json",
+        "sha256": "7049c513789a6367d42696b036fafdfbf5692388d9140c7352a8a9a82fada2c0",
+        "bytes": 482951,
+        "registros": 90,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260430.json",
+        "sha256": "d8ec2662109648c2cdcef4963460da63f9465661d125561b15a974875c76a985",
+        "bytes": 597610,
+        "registros": 96,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260531.json",
+        "sha256": "d886ef1fa4a1ca7ac577165273c24021e04a72b8e9cc434aee8e8e4730ea3347",
+        "bytes": 393536,
+        "registros": 68,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260630.json",
+        "sha256": "a086a46213df1772d78a2f1e93259fc8ad2acf2f565172d2dc60653d42c6c4f2",
+        "bytes": 14442367,
+        "registros": 3326,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260731.json",
+        "sha256": "cefce2dc790172767f30c0dcf13fe4abbcf8a0a8b466f2a3961203257273ba4e",
+        "bytes": 2166557,
+        "registros": 507,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260831.json",
+        "sha256": "132464c3f97d703555525c5ef795c1a4895f7dd51c1c20685ed3c7039eea2dc5",
+        "bytes": 10460958,
+        "registros": 2629,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-quinta-turma",
+        "arquivo": "20260930.json",
+        "sha256": "3cae2d3afb578f8e73c2e3c94f386a241ba08f3f9192c81f961e57b1f082c395",
+        "bytes": 3896629,
+        "registros": 981,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220507.zip",
+        "sha256": "9950f3a4dc23b795b20cf15cd117dd147357e527dd27378888a387a8dd99eac8",
+        "bytes": 5437525,
+        "registros": 10294,
+        "achados": 2
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220531.json",
+        "sha256": "0911d91faed99c721a74a5b9b14a25518bd46a73cbe3aeec44e27316c7821d3b",
+        "bytes": 224021,
+        "registros": 66,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220630.json",
+        "sha256": "a8346beea96600a55d6163fc45512a5f2db2848164b30a345dd6b2a3d8da104f",
+        "bytes": 183825,
+        "registros": 53,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220731.json",
+        "sha256": "527c24133ba7c22b637c5daadfea83c209310d4d70e219f62a0456c87a03dfa7",
+        "bytes": 30185,
+        "registros": 10,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220831.json",
+        "sha256": "465b6e1b74572355364062ba9719dddbe8afc9ad20214cb72853c31327e09feb",
+        "bytes": 175694,
+        "registros": 37,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220930.json",
+        "sha256": "ea18952e183cc31995891eb5bf78fe27dd77cd45eb5e7dbed4f0ba4aba988027",
+        "bytes": 154089,
+        "registros": 50,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20221031.json",
+        "sha256": "fa97419807b79c7f05e8c3d7447f5d466b6b8eec7ff8f3461c989867169fb9f9",
+        "bytes": 150506,
+        "registros": 36,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20221130.json",
+        "sha256": "d78027ac8f5f3c429e2ce0782e4109ced0be0b6016bd178ea289f2c01d9fbaa6",
+        "bytes": 104444,
+        "registros": 29,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20221231.json",
+        "sha256": "b159b497b1d7561b5cd478d3fe69a99fcc8a5f9f4f14b3cff4eaa2d61b086018",
+        "bytes": 113120,
+        "registros": 39,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230131.json",
+        "sha256": "5ed7ad07ca48df85176476d33e50e9a7015ddf2dfbac71e7ceb1be401ceeae85",
+        "bytes": 66291,
+        "registros": 25,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230228.json",
+        "sha256": "6e62393b779dd964047a1becbd0f85449d62882c445eb9e9c71974df93834625",
+        "bytes": 48708,
+        "registros": 13,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230331.json",
+        "sha256": "02a7fd096ea75138aea52b20830827946be9cc850e70e6e5ec3e082c23c2ccc2",
+        "bytes": 177031,
+        "registros": 57,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230430.json",
+        "sha256": "ff40fe49e7f3b3b6a3d445fa950fe19c563e858e33ab7d51aafe2a8158f68f17",
+        "bytes": 59001,
+        "registros": 21,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230531.json",
+        "sha256": "3f8d9214833ebe6307b88e18093508019a133f327cbbe69fe4d860b153996d11",
+        "bytes": 112800,
+        "registros": 37,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230630.json",
+        "sha256": "26ffd3a06b268e9664fd8283073100da8c94504c72ed6c2a01954d3f48825f4b",
+        "bytes": 144587,
+        "registros": 46,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230731.json",
+        "sha256": "80b6dd9a699c7b9bbb6de4bada3d7c4f8c9f44ec2a0b3e15c4f37ad28c308e91",
+        "bytes": 93535,
+        "registros": 33,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230831.json",
+        "sha256": "343bd6d52316a9e87febb27a1673c7c290d125df03edcbcc6734b89c4965d66b",
+        "bytes": 129821,
+        "registros": 46,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20230930.json",
+        "sha256": "67ef55e74328cb2fa43553fdea86a8047b90ec7682afef94f33ab2b9450358c6",
+        "bytes": 146216,
+        "registros": 43,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20231031.json",
+        "sha256": "6184802daaf19e802f01ac4467bd230abce0f15dd77cb7ac700805699d2b5251",
+        "bytes": 135362,
+        "registros": 37,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20231130.json",
+        "sha256": "a917ae17aa5b9f42324075582d26323d798197472f3962eab179cae0e57a8d2a",
+        "bytes": 76586,
+        "registros": 25,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20231231.json",
+        "sha256": "b769d203dbee5ed6bb033b3beda5257f24766ed16fdbaf69ef202099ab376158",
+        "bytes": 49039,
+        "registros": 15,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240131.json",
+        "sha256": "b209c901888eecf75e6c673c3ab76463ff95be48f965d061b5f6a07bd09fe2c2",
+        "bytes": 32821,
+        "registros": 11,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240331.json",
+        "sha256": "be93d320e66d6f8e0d2750a269aa83f900d0f3639327dd4c7ae8547b1da4d724",
+        "bytes": 129410,
+        "registros": 45,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240430.json",
+        "sha256": "3321c80f99d9822c3ad75111d7ab21828ed617bf8cdc346120ec7b2f9ac2172e",
+        "bytes": 74581,
+        "registros": 19,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240531.json",
+        "sha256": "6c0011f71bb935caa5c8b5b86c2f641999877c71119ea864adde935e953eecfd",
+        "bytes": 193671,
+        "registros": 61,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240630.json",
+        "sha256": "6019b585f64b2102102874d1c79e8687a5ae68f93ae70cd09c96a0fc2f4a1cef",
+        "bytes": 203948,
+        "registros": 68,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240731.json",
+        "sha256": "c42fa4af90a302af6bf27911e3232e2806f5be7882e7d084ec1c9a0e1a896afc",
+        "bytes": 9242,
+        "registros": 3,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240831.json",
+        "sha256": "3386af85aed6b61bd755280d90cf35bcef344b5fad4e6b6acd925266d4b73a34",
+        "bytes": 81236,
+        "registros": 31,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240930.json",
+        "sha256": "14d4aeaa82ec84cb211cc0f5da8daf06e4845b8a00d8f1c84b6c4a15bec619cd",
+        "bytes": 154284,
+        "registros": 57,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20241031.json",
+        "sha256": "b8849bddae0fbdac4ba89be384bb87c41645c56ea4c466bba412d330362a456a",
+        "bytes": 124355,
+        "registros": 48,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20241130.json",
+        "sha256": "e3c344e6f7e2abbe4a96f5168c8071c20a45eacf018abfca62f65b48e1ee4fc2",
+        "bytes": 104021,
+        "registros": 37,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20241231.json",
+        "sha256": "338c27dc40231ffc5f1feddd5bf8262dd56e03f57e08a1ea9bfbf092626f8030",
+        "bytes": 78842,
+        "registros": 31,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250131.json",
+        "sha256": "e0986931857f02120d06da21c3cb52a425c89983b8dda484ebb153c733b2429f",
+        "bytes": 33892,
+        "registros": 15,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250228.json",
+        "sha256": "836124ddb30d0f8178ca36e519a053c82f6217e0a19dd2cdaedc0946711098ea",
+        "bytes": 103384,
+        "registros": 33,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250331.json",
+        "sha256": "c6d04a3e8e67519b66835bf2471e3e38e6de4038b6a4fb4f51be9a7034670703",
+        "bytes": 87909,
+        "registros": 32,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250430.json",
+        "sha256": "06cebd04240d4635c9bd0e193c73a93e93ee360faf8c965acffc3af74888640a",
+        "bytes": 156780,
+        "registros": 51,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250531.json",
+        "sha256": "b3481627eacdcb31fdb39604c29fbc34a1f9a9abb556aeff515b661d8e0dc26f",
+        "bytes": 192415,
+        "registros": 62,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250630.json",
+        "sha256": "d2f9c97450f9eaca44c8e82fbc0897bf3bff85d63e690189922f778b543691db",
+        "bytes": 78737,
+        "registros": 26,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250731.json",
+        "sha256": "7012f8d364e3f477b9d57edf86f30904701af30cfc17f9db1b970dbe6d56380e",
+        "bytes": 97914,
+        "registros": 31,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250831.json",
+        "sha256": "9bfced91ef9a852875ed80caf4315257b463317eaed33863d32bbb7b82ad05fc",
+        "bytes": 41515,
+        "registros": 11,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20250930.json",
+        "sha256": "57ecc9e37c0e8ee89498a742f1d5d8abcc3120bba839f2974fa6d741468a1fe4",
+        "bytes": 293085,
+        "registros": 90,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20251031.json",
+        "sha256": "67f2899bf960a03ee30af0ac5e1cfd2be4e2a15e44f68b2aad4f055f15fb6df3",
+        "bytes": 193746,
+        "registros": 62,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20251130.json",
+        "sha256": "2e7c92e6a238f6830b1be8b1a600dc3acf3b062419f1e6651d971cb211f9a4d4",
+        "bytes": 363795,
+        "registros": 127,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20251231.json",
+        "sha256": "904891fe605d050747c52c593748ed06eb705a990787b18f87886c25a20a4fc3",
+        "bytes": 237909,
+        "registros": 75,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260131.json",
+        "sha256": "2daa8fc341a57cdc54ee8fe3f078aff812303addd05853fb1683e3b7e73b97dc",
+        "bytes": 131700,
+        "registros": 47,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260228.json",
+        "sha256": "07d29bfcf7f363177c4055807f1b932c16a34eba80a3b7f9eb7e5a9c163be6d1",
+        "bytes": 73958,
+        "registros": 24,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260331.json",
+        "sha256": "7569f9560b9434b8edaa2ff1b468725cee3bfabe78562355ef817b50051f88a7",
+        "bytes": 519637,
+        "registros": 142,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260430.json",
+        "sha256": "747d217c24fd32d0b1e7ba68e4d5b70184b12b2f7bfdcea1c32c5abf477616d6",
+        "bytes": 185408,
+        "registros": 66,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260531.json",
+        "sha256": "cd1e56e92b7a7122d697196868816fa370cc78249fdbe20dae82db574b8a1bea",
+        "bytes": 457769,
+        "registros": 141,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260630.json",
+        "sha256": "01fb986c0f2528617e983a2c2da0f980ba5c384d157ad90dbcfb66cbbd422653",
+        "bytes": 388666,
+        "registros": 113,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260731.json",
+        "sha256": "154eeba9770fbfd16b77df2ce588e4ac6b2d9050b64826dd4c25dd531f25a82e",
+        "bytes": 18249,
+        "registros": 7,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260831.json",
+        "sha256": "e6e1ad397baf22825c4d2333b0888f1fc01e6b9be5fc6f892b18b2dc05df5e45",
+        "bytes": 612995,
+        "registros": 189,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20260930.json",
+        "sha256": "124089f0efef1642510bc86b80ca18e9196a7b71899e9e1a26de4911c51ceab4",
+        "bytes": 458595,
+        "registros": 142,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "41510790c30d04afa3391afa9065b3ab27a39b2378ad8458cbaab593e406221a",
+        "bytes": 95529644,
+        "registros": 137386,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220531.json",
+        "sha256": "ea48d918c2861193c541c7feab414c89f067e6fd94386547fdb9bb128785320f",
+        "bytes": 1665735,
+        "registros": 423,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220630.json",
+        "sha256": "018d8e656255ab71cb5a0a7b1e4cffb726430fbad79e3666842e6dd8b6885896",
+        "bytes": 2212434,
+        "registros": 579,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220731.json",
+        "sha256": "364996335c7629900df144ab30c6ce3cf809b471ded0538a3e6c74c472719a7f",
+        "bytes": 628731,
+        "registros": 143,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220831.json",
+        "sha256": "ed28d96c3495227cc5d8f0436cc37eb653aa51fbaee598d9c5f758efd5d131f6",
+        "bytes": 1268356,
+        "registros": 330,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220930.json",
+        "sha256": "8d9969733279a9c08a1cfe6d4602f65fdbc9683e9d10440c8eaa494a374286cf",
+        "bytes": 1872878,
+        "registros": 469,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20221031.json",
+        "sha256": "f1a14610451c97897c4b4c4d7d2529074ea4c841014be596aa045a12173b5c76",
+        "bytes": 1410751,
+        "registros": 338,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20221130.json",
+        "sha256": "e4ce88c087b8a584f6c6f62c18973d7780f402c010aa96c3c530a197d402324b",
+        "bytes": 1510433,
+        "registros": 351,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20221231.json",
+        "sha256": "6ca1f650323577fae918fa7fb608b5678083ca799ccdc59b4b50588b297cb604",
+        "bytes": 1224460,
+        "registros": 307,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230131.json",
+        "sha256": "28b4449927ea2cf2275c771242b5880d2dae3752528c213c8567e5feefb6e573",
+        "bytes": 917480,
+        "registros": 230,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230228.json",
+        "sha256": "5600e7886e38a7e0a034d1ecd9f56888180de930beb6753110d3b3af000edece",
+        "bytes": 905363,
+        "registros": 221,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230331.json",
+        "sha256": "9ebbfde3edf4a6ef01f803337579c27d1566203285b0838fd558300987986f5a",
+        "bytes": 1194792,
+        "registros": 297,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230430.json",
+        "sha256": "c462d760ca5f030142b0044ab1a1067386d321819c3d1bb0ac3d9c0120f6f763",
+        "bytes": 2077557,
+        "registros": 501,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230531.json",
+        "sha256": "72ca22117b80be857eb1e35242a47c0f9a45c662769b8ea03e1a09988d59add5",
+        "bytes": 1592980,
+        "registros": 357,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230630.json",
+        "sha256": "10a0951587b781a5e0878a95258ab092715f743a76f06538bae9697a0b510c66",
+        "bytes": 2183576,
+        "registros": 479,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230731.json",
+        "sha256": "29609a8ba3ea735dfaa13807ce2261dd61d9777ee31381360963684a8be99c36",
+        "bytes": 1470050,
+        "registros": 317,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230831.json",
+        "sha256": "c6a0257569692055d93e8981f0440fd52077fc9314207a0afd3486431c4b1448",
+        "bytes": 888920,
+        "registros": 200,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230930.json",
+        "sha256": "dab46d4537066b3997679c0f21d8fc05fbabac87f3053cc0aace31aab25b24ef",
+        "bytes": 948100,
+        "registros": 234,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20231031.json",
+        "sha256": "f15a8e010293b9d41a2c9a00efc30e622384a1649ea349206b57ca314ee77c4d",
+        "bytes": 1469289,
+        "registros": 334,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20231130.json",
+        "sha256": "7b41b7cefc966dcb296d5785b331561b1214dc81d145025f798a819687873eb4",
+        "bytes": 902257,
+        "registros": 213,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20231231.json",
+        "sha256": "7818885229756d82d8d6ab1f8c960e6139095ae3d7a4ed654aefabfc3d82f433",
+        "bytes": 596876,
+        "registros": 138,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240131.json",
+        "sha256": "b6b08ef863be7cd3b013fa3e3413070148622c42efd8f6a8d02a1d4f51bc0caa",
+        "bytes": 1366529,
+        "registros": 309,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240229.json",
+        "sha256": "42bcfe96767e4f74776fbbab766af2ea9a677e60d1a4fd9b24595efd3198c9ed",
+        "bytes": 165532,
+        "registros": 34,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240331.json",
+        "sha256": "3aee61ec40143f24f3248f309f995a0099c1af0156cc464ef65620e5fe9a46da",
+        "bytes": 1113384,
+        "registros": 306,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240430.json",
+        "sha256": "9a066ff063e54709019ea4d778c27aedc65df953c87c3321fe2a93574c095b4a",
+        "bytes": 1665724,
+        "registros": 422,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240531.json",
+        "sha256": "1d1b062073413ed2412b3a6fbd0c7c88485c7961a60627350c0ec73daad7ef99",
+        "bytes": 1647168,
+        "registros": 436,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240630.json",
+        "sha256": "9f35d46a7b40bb3cb69625dc7c927e546ed1e014e5abaf29d08a0f230ce05ac9",
+        "bytes": 1718519,
+        "registros": 426,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240731.json",
+        "sha256": "0e43e9385c33ef4d52632d02a9fb0d06347c2ead4cb4c8f9c3eb2f7d37a1379e",
+        "bytes": 905801,
+        "registros": 244,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240831.json",
+        "sha256": "38e1813c378e2302f77efc4b4ef2b7e9d1828f4d61044bc6594909d407e136fa",
+        "bytes": 1598457,
+        "registros": 428,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240930.json",
+        "sha256": "5b75db87fd60f936ea3dd2effb791897c549552b651580efed876af709c8c114",
+        "bytes": 1490434,
+        "registros": 392,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20241031.json",
+        "sha256": "f6dd571fc2a9b176c79e69a92035bb437ecb22f0880762cc89664015bb9e05ed",
+        "bytes": 973700,
+        "registros": 283,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20241130.json",
+        "sha256": "bc60c1e0b9007aa1277708baf1efbdda1a3e08edffe4f86539b7be778e660f2e",
+        "bytes": 405588,
+        "registros": 97,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20241231.json",
+        "sha256": "5e6d30cd64c1e583f518be814b85b829b067fec2714aceed580256eb893973a5",
+        "bytes": 404092,
+        "registros": 111,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250131.json",
+        "sha256": "d0ede5d03671241b7f515bab0524be8e5c1a9924f4c7b59b06d3ff6b98ea08f9",
+        "bytes": 1148790,
+        "registros": 281,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250228.json",
+        "sha256": "3bfdcc565ef774c5dcfb042d4b7b4fbc4fbb99c7a25be5def1d88fd22e1a7697",
+        "bytes": 722910,
+        "registros": 182,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250331.json",
+        "sha256": "a03d171f0f502fc5b5f219c4f1c9c298ebbd5c4c9fe6bf4f113075da479a344f",
+        "bytes": 1255476,
+        "registros": 351,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250430.json",
+        "sha256": "8c26a46cf28633b7408f91f1bdd16af3fe27a5e0c6298afccb9409b7ee19a7b8",
+        "bytes": 1187523,
+        "registros": 344,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250531.json",
+        "sha256": "7174016af9c7ab28cea1caec05ca5327961b521d79171ac004003a1a620835bd",
+        "bytes": 1182851,
+        "registros": 343,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250630.json",
+        "sha256": "232c08134f4f3825184415fe8a57f42708cffd2a619627150b994b2346e541ba",
+        "bytes": 824181,
+        "registros": 238,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250731.json",
+        "sha256": "98b4b1d2f56b1ddf5f944ad1a57bdf7591f508b7bb3e07b4fb37fb174ac11291",
+        "bytes": 639188,
+        "registros": 175,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250831.json",
+        "sha256": "9329e09807cc08765ddcc6dc8ad682308623a7120db6edb96918aa37ce9d3c76",
+        "bytes": 423330,
+        "registros": 101,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20250930.json",
+        "sha256": "5a4c35b17092f9332a6e089650a1effa376a1961670539df2396265b8650a0f0",
+        "bytes": 1510336,
+        "registros": 438,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20251031.json",
+        "sha256": "37c8420761b2bada3af42611db62768c8fd890978a173b28c98c35822a4a7270",
+        "bytes": 694539,
+        "registros": 216,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20251130.json",
+        "sha256": "84515ee243ac45c1d2d6cf4f006e8c0acf5af3cbfb16083c7ccef2120fba56e1",
+        "bytes": 755200,
+        "registros": 213,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20251231.json",
+        "sha256": "5604bdfd2a0538c871efe81f86fef678060acb9b1f66be469c7876d5270f5293",
+        "bytes": 736184,
+        "registros": 215,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260131.json",
+        "sha256": "c844863cf93cd6270d62835bde97e10d634c27ebe693588463162bfc4d907780",
+        "bytes": 476339,
+        "registros": 134,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260228.json",
+        "sha256": "34205e9ba91ada5242b2b7253f50cc094d27ba8537a6207fdcaf1d3c9f04a9fe",
+        "bytes": 234211,
+        "registros": 66,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260331.json",
+        "sha256": "2d291882a2cc9900e83d44901cc88f80d7f6358b6934a1c9feef2323bef022b2",
+        "bytes": 555774,
+        "registros": 155,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260430.json",
+        "sha256": "ac825c373a79aed740c25b5e12776e5529018c56e7ab47c7f4dc1e6f761345ff",
+        "bytes": 761589,
+        "registros": 204,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260531.json",
+        "sha256": "891e488956354bd12e15d5404ebf32df9004ad80361bac950501f28af1b133b6",
+        "bytes": 923918,
+        "registros": 255,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260731.json",
+        "sha256": "0f5c6683b1214efeaab407a6e1a62fa40d4412a90a97ab6180e3f7713bdc867e",
+        "bytes": 3010026,
+        "registros": 1020,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260831.json",
+        "sha256": "91bb221d4a65a2eba41d7ba04a2a0b1142f33f86139eae16631a062e2dca8e8e",
+        "bytes": 3496275,
+        "registros": 1100,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20260930.json",
+        "sha256": "1b298da41b1aef552c2df64a4f2087c1f0c86508167117f85638d2caa16aae07",
+        "bytes": 3176777,
+        "registros": 1019,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "7862e15663392a23ae9ac4ecd7bd38003a8cbea3173275651e7e4e1dd715018a",
+        "bytes": 73143663,
+        "registros": 118514,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20220531.json",
+        "sha256": "b4c6e98dd1a17e45b4b339bef3f4a70a36b87632c877d28458ee58e3be5fc2e9",
+        "bytes": 2183001,
+        "registros": 693,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20220630.json",
+        "sha256": "779afd49ee1d20cf74277de6ebda9f6080836fc025bd2dd7eee9ce273610960e",
+        "bytes": 1640025,
+        "registros": 502,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20220731.json",
+        "sha256": "01dd880bc076f7e671fed76bb5fec720d2df4f00c3bff92e69e2d3f33d4aaff9",
+        "bytes": 629766,
+        "registros": 193,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20220831.json",
+        "sha256": "7a5a7ca5963c3f6f10ab214b74cdb4ac8ef4e1851acab93dc33f0b55b0385a28",
+        "bytes": 1604986,
+        "registros": 499,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20220930.json",
+        "sha256": "af901d5630684776995baaaf05f32f31fb46bf81248e6e345a6516b425eaae00",
+        "bytes": 1499970,
+        "registros": 522,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20221031.json",
+        "sha256": "5a78c8d4084e9841fb1847880580a14daad7cfb923e30e250554ad15932c97dd",
+        "bytes": 1915101,
+        "registros": 618,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20221130.json",
+        "sha256": "9dfad27789fd78554f5b441993d477244a578b3720e9b0a338757318060bdb20",
+        "bytes": 943425,
+        "registros": 320,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20221231.json",
+        "sha256": "e20f7ee40369d5db9bd7eafc7a211e0dfb47a648121b0475ab3f71d5068065db",
+        "bytes": 670369,
+        "registros": 210,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230131.json",
+        "sha256": "9e08ae960dd0cfd3898ff70e057fd977275c30fe96f872ad0c8779556f97d1ad",
+        "bytes": 728991,
+        "registros": 258,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230228.json",
+        "sha256": "793a1bea49627f87df6343bac650c29aafb2bcd96b39aa9a5aa6f6fe64d734d6",
+        "bytes": 1080236,
+        "registros": 320,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230331.json",
+        "sha256": "e5acd53d895c63138418e80f1ec536751b9332b4f05465879d6d4a870008e138",
+        "bytes": 1915998,
+        "registros": 581,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230430.json",
+        "sha256": "d61d796e90e1539d6e57124d965e6e92fc27ce6a6c86e7ab9276f90ace3c8f66",
+        "bytes": 1920886,
+        "registros": 599,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230531.json",
+        "sha256": "a85a8c9219049f8d91cc243a217c982fd1cebe545abbd9364fadd14a3827a2b1",
+        "bytes": 2094218,
+        "registros": 661,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230630.json",
+        "sha256": "583b5b3f8250e7ff50a9696b08df658807b4f89c207a9aadd5fb0390e68441ac",
+        "bytes": 1926573,
+        "registros": 608,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230731.json",
+        "sha256": "324172035da1b5d7f0fa4a51e6817ec1114b4dff023d39d803fd69f691f37539",
+        "bytes": 783567,
+        "registros": 239,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230831.json",
+        "sha256": "4da1ec1ff9885f86e7fba4a0c4173ff163665216c3b27ac474038a999908d51e",
+        "bytes": 2067736,
+        "registros": 654,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20230930.json",
+        "sha256": "10768a713fa96e8caf526ad1a19df725fdd7f855524396e8221876b9a180e671",
+        "bytes": 2683870,
+        "registros": 843,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20231031.json",
+        "sha256": "b66a7610f6f39a8586fe3be107d7c37156ceeaece1165a65766f97f3e70fa5ad",
+        "bytes": 2015870,
+        "registros": 572,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20231130.json",
+        "sha256": "dc9ed6f56940b4e9a67be9b347a9d7426d7bb78105e540444f89b0f1e9e81146",
+        "bytes": 1226081,
+        "registros": 357,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20231231.json",
+        "sha256": "3a16732b49fe1c5b879231afa529a89d3fcc394e262e4ddd033e982af6c3d509",
+        "bytes": 1030800,
+        "registros": 306,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240131.json",
+        "sha256": "4724a24b57eb7c10459379fcc4b1104c438f7c662181a370e11d4a38b0520c8d",
+        "bytes": 1000933,
+        "registros": 327,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240229.json",
+        "sha256": "89c5413cf2c67a8c85af83a27476f24881439f6077a329b7b87633405ce20a4d",
+        "bytes": 507898,
+        "registros": 164,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240331.json",
+        "sha256": "eff61c3f21bfd60184140e5b5b366f66c6fcb19aed06e297a1001c068bb97770",
+        "bytes": 2885702,
+        "registros": 880,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240430.json",
+        "sha256": "d9277f7dc866bf4c51957bfadd3de0b3f0694456c1a173d3b737b5acfa5907ac",
+        "bytes": 2085195,
+        "registros": 640,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240531.json",
+        "sha256": "50f4cbb5addc49efd22f0c0ba3e5f78017d735c538c888d81dd2c3d64de21dbd",
+        "bytes": 1699353,
+        "registros": 540,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240630.json",
+        "sha256": "35874f4104c8b56c87837293fe040d5dfcaf0ab2f6b8e64243a44c04f6b197fc",
+        "bytes": 1805629,
+        "registros": 595,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240731.json",
+        "sha256": "8e5aae8987c65601f74d58812c3dc40e291cf271f013624de67782a6d810bce6",
+        "bytes": 638665,
+        "registros": 234,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240831.json",
+        "sha256": "70c826c0b085e2f1a38a8b51752d9e4113aa9f573518be8818af148e1385c2a0",
+        "bytes": 1627780,
+        "registros": 569,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20240930.json",
+        "sha256": "7ef106a33c41679c85d283091554c5b06d11ba147b48f427f20986a932b5461d",
+        "bytes": 2481885,
+        "registros": 852,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20241031.json",
+        "sha256": "66c7783e304f4ba722a3d2ca85c6432c8b8043b4bac626171b330db1fe64f45d",
+        "bytes": 1843773,
+        "registros": 640,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20241130.json",
+        "sha256": "2fba75ac3634656c0a6cbc94686e201b7d86273c594c595cd2dc7a2b4fbc8748",
+        "bytes": 1337178,
+        "registros": 468,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20241231.json",
+        "sha256": "d53094a9e7826b3e0666273375636c02f5f6ffd1b771f37203d2e6043c2415de",
+        "bytes": 705768,
+        "registros": 250,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250131.json",
+        "sha256": "62c227e0f484a7b32d1f2623adc0ca3cd04a8d6d21a65b2655ee578cd51e909f",
+        "bytes": 853382,
+        "registros": 275,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250228.json",
+        "sha256": "54256a30ab49d0f2823c10b5d737f376f6c347edcaf0bd21f6fd4fbe41a63b01",
+        "bytes": 1382300,
+        "registros": 475,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250331.json",
+        "sha256": "0f58119f64a07e5866be02bd45fc35817f0d8a6b1eeebaf5a4a72c6b46799d90",
+        "bytes": 2882770,
+        "registros": 977,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250430.json",
+        "sha256": "a77545d14a45f5b033416f27177d19f0447e8865f66f367a72ca659ad1d89d51",
+        "bytes": 2653192,
+        "registros": 867,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250531.json",
+        "sha256": "35870076bbe3c03fdfc0167678dc79755bddc60a9c0394a797ffb2da6255c9b9",
+        "bytes": 3172259,
+        "registros": 1010,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250630.json",
+        "sha256": "b35a15238f6b1d39b04edd825e18f9a5bb84f5b64edd8dc018b5f87d77d479d7",
+        "bytes": 3499694,
+        "registros": 1043,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250731.json",
+        "sha256": "a92d5b0f70b79553ebcd8c3244c3686dad3124a5706932c98e9dfe36393bf61c",
+        "bytes": 2595001,
+        "registros": 779,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250831.json",
+        "sha256": "fcd9c2192e3a083be89227fa9ea6148dcdad0904fe8f5129136825de05c15438",
+        "bytes": 1886661,
+        "registros": 571,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20250930.json",
+        "sha256": "1ed3bc37a8dcb9da854ce590c080902899b9998f8dd9d46c3eac6fe9d0c96097",
+        "bytes": 2423615,
+        "registros": 770,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20251031.json",
+        "sha256": "1fa50abae66b6e9735935cbf4d3f3582cf377a2a12c888f7cb957389691a172a",
+        "bytes": 1535399,
+        "registros": 570,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20251130.json",
+        "sha256": "c4d5ef6a908aabf74bf6fc91e73d4ce1e2e801e9f7d08f6842d69fea709d0cad",
+        "bytes": 559922,
+        "registros": 178,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20251231.json",
+        "sha256": "bf0c1fe6306b3a341032fc8869ceaa560e1cfb50af2139723d82fca05f1411b7",
+        "bytes": 502518,
+        "registros": 172,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260131.json",
+        "sha256": "591363b3eac2a6e22e2619d27085778d3a064c8605e3178dc9714b0c07a58a80",
+        "bytes": 72153,
+        "registros": 23,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260228.json",
+        "sha256": "336f96f661c05a0d34f6cfdb35737e8f23f24adb1af61606fd2e684c93e2643e",
+        "bytes": 46435,
+        "registros": 15,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260331.json",
+        "sha256": "b71ad733b76e8e71a588888864446a2ea3591f4bc3c91284a3f99acc85869e6a",
+        "bytes": 753021,
+        "registros": 238,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260430.json",
+        "sha256": "c137986d4595c7c06f9deaa4aa8b3e562405cfcc4df2763e9ebb3309447fa4b6",
+        "bytes": 768730,
+        "registros": 264,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260531.json",
+        "sha256": "0d6ccadd20035746b840ed3d5a4045250d26868a5ae625904da3093203aaa9ec",
+        "bytes": 622573,
+        "registros": 201,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260630.json",
+        "sha256": "a43fcdc07ab1390f77f1411b779a2ff82377085585ae4f6259a5f5ad09a05dd8",
+        "bytes": 7651936,
+        "registros": 2538,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260731.json",
+        "sha256": "8d83d8f038f75c2271aad1b82473885c6d56d691e48c3b077956b5bb842d082c",
+        "bytes": 751381,
+        "registros": 232,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260831.json",
+        "sha256": "29f20f874b436cd901b15914812251cca61d79a9d1fe5b2ebf55c16b99ba79b1",
+        "bytes": 6545745,
+        "registros": 2289,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-sexta-turma",
+        "arquivo": "20260930.json",
+        "sha256": "f75e5855207aa21a1e4556f058accd88454893511a6cb6af6828281673b5bc9c",
+        "bytes": 4092697,
+        "registros": 1351,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20220508.zip",
+        "sha256": "888186036e6cabae6b55be2ba85a9f2c866085403d7e6a57f8671592360833a1",
+        "bytes": 9138719,
+        "registros": 16661,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20220531.json",
+        "sha256": "d90a1deaf1d9dd0adc04ad625d415dc306ff0e43474441b5fd7e254088cfd13b",
+        "bytes": 96195,
+        "registros": 27,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20220630.json",
+        "sha256": "d97a18b856a4eac850c400f89c491a298f3eeea88f8e8145b3cfa4d9547266e9",
+        "bytes": 129367,
+        "registros": 26,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20220731.json",
+        "sha256": "94ef6d2eeb7d02190bbc88857a6dc505a32df4b9609553e7f2261066a4b5a61a",
+        "bytes": 78990,
+        "registros": 7,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20220831.json",
+        "sha256": "a2cc4b7c32c48b773aacdeeb530d3cac9c33931a9d064821319ffc8e63576f1c",
+        "bytes": 123074,
+        "registros": 31,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20220930.json",
+        "sha256": "f5b18906b7435c8e6675a81f169bb73718e602a037a38becc1103246d5726eda",
+        "bytes": 126723,
+        "registros": 35,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20221031.json",
+        "sha256": "f7aad3eace644a8e2536dab09db15bfa96ef2d40f4b19ae6e52edfe9b7f41f4f",
+        "bytes": 56215,
+        "registros": 20,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20221130.json",
+        "sha256": "287817246ffb006bf23de68224aa6a3d3e169df2ba783a478bcb2ee6c9aa3f9c",
+        "bytes": 127152,
+        "registros": 37,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20221231.json",
+        "sha256": "0ea044f0aa37e4f9fb0a6ceb061c9bddeccb2430a145b1722c98eb2ace82251d",
+        "bytes": 53904,
+        "registros": 20,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230131.json",
+        "sha256": "1b7696d8511ab6f5349b30793dfd6ee748f0aa03f53b5e1a707095b704eef91e",
+        "bytes": 44190,
+        "registros": 13,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230228.json",
+        "sha256": "414307e32cb45b3a77eb0818e9794b605abc1f8d87c10fc56503fc4a97343a4e",
+        "bytes": 78265,
+        "registros": 27,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230331.json",
+        "sha256": "ab4c48548544a1fd023e81ed44af387af32fc8af2adceaf1f86839cb9792aa02",
+        "bytes": 292283,
+        "registros": 77,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230430.json",
+        "sha256": "32fb3698cd432c4909bc1e02f8060defb210d8e55bc90edd6258c51d7615b297",
+        "bytes": 106180,
+        "registros": 28,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230531.json",
+        "sha256": "54c6061284e58e9d535d2fe670947936bd83f87f4b8a0e3525a16f780fb9c185",
+        "bytes": 87236,
+        "registros": 27,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230630.json",
+        "sha256": "d1c6317a4bd7497817d36bfed0af5ee6e735eb73243979944867e3ea38235f2a",
+        "bytes": 176392,
+        "registros": 50,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230731.json",
+        "sha256": "80d7f1df30c3e7bc76ff8c152923ee6dbc1e725340def4abf06dfeb1daeee7e5",
+        "bytes": 35279,
+        "registros": 8,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230831.json",
+        "sha256": "b4eef8e9191bc8f6c69dd0ae1c1e12fbea40e7fbdca525b8d32aa89c22b6f1c4",
+        "bytes": 180646,
+        "registros": 52,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20230930.json",
+        "sha256": "d7faf97a053bcd9c4e174b0434252cae976f2822ab1a6a669b200c947982d522",
+        "bytes": 153206,
+        "registros": 38,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20231031.json",
+        "sha256": "ba1cb64f9c583772ea512f3c4d95bb7748b310787a2a16b8e41746c129d5e50c",
+        "bytes": 151087,
+        "registros": 30,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20231130.json",
+        "sha256": "e8c0a6e6c385079726ba720f38cde6d13e6c17662fbeb21980eb61ba04115797",
+        "bytes": 159854,
+        "registros": 47,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20231231.json",
+        "sha256": "443ddbb9a73449e456e9feef48d91eba9ae99a3c069c130f6d08f1cebf853f3a",
+        "bytes": 50158,
+        "registros": 14,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240131.json",
+        "sha256": "11949ac12ca7021a1f51c989537e2b0a99c9bd452f3ceb566a3bdebf976063c0",
+        "bytes": 58576,
+        "registros": 18,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240229.json",
+        "sha256": "09d4feab521aa930619d31338d750e25077b22b5fa61a7547e26199e2e141184",
+        "bytes": 6184,
+        "registros": 2,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240331.json",
+        "sha256": "746ebccf433a8cb3bcd24ef14a029372609c394e037ea2772eebf33ea47e84bb",
+        "bytes": 207502,
+        "registros": 48,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240430.json",
+        "sha256": "6aaf743f762e65193887af3d6e590761d50cbabc54646a6c61763c2166411c47",
+        "bytes": 98318,
+        "registros": 28,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240531.json",
+        "sha256": "b3c9528a64dc3642bcf12b9dd97a1003ab71115870ad278af18b7e44920f841e",
+        "bytes": 172170,
+        "registros": 42,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240630.json",
+        "sha256": "fcbdb4802bcc1eb0ba89550809cd6dd03d28d7d0eaa44ff9e1f7f8c780f284bf",
+        "bytes": 148722,
+        "registros": 39,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240731.json",
+        "sha256": "a2824c78545bd78966788bf0414cf3fffa83ec6ced064a1cc9fc76da2f1c847b",
+        "bytes": 36355,
+        "registros": 10,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240831.json",
+        "sha256": "eb4ad3acf322fe4ecfcc63477e11a3d4cd1d987544a98e92ac110d7a822a3bf3",
+        "bytes": 65303,
+        "registros": 21,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20240930.json",
+        "sha256": "c220f036208a7624fd19c0e4d30d77a81dfa3e62604b258b59c4e0aa0e2e2b3b",
+        "bytes": 164237,
+        "registros": 35,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20241031.json",
+        "sha256": "793acbc6d37225cb67b4d1614b9371aa0e6b06af53fac08d74d89faa1f6fc8da",
+        "bytes": 124370,
+        "registros": 34,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20241130.json",
+        "sha256": "0a90c441a2d358ee0af564b3451c6197204ecd2aca81e2b3e39e7789f4e1cbc1",
+        "bytes": 54956,
+        "registros": 11,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20241231.json",
+        "sha256": "7b63a496b3d79421468c8f22524c0aa6aba840070f3b1f4abba4eb3cc7a61843",
+        "bytes": 91705,
+        "registros": 20,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250131.json",
+        "sha256": "48efd3dce871dea45cf598f68c847389b131b8c44dc1a83f633a32c8410bb4ab",
+        "bytes": 166456,
+        "registros": 52,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250228.json",
+        "sha256": "e8812bace44e579fd306e240c9906f2b16962368e06d2c5e02558530c5c58ec9",
+        "bytes": 116261,
+        "registros": 28,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250331.json",
+        "sha256": "94ecd508f9c14ab1e0dd23a13f68ab2f8b75203077b9d86ab6e509a9fe19f5d9",
+        "bytes": 162463,
+        "registros": 28,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250430.json",
+        "sha256": "6f5780d3e5d0e1c1ee477c9d803ce2450f67dc9846eab9b5859c11f0916225db",
+        "bytes": 146457,
+        "registros": 42,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250531.json",
+        "sha256": "6ffbc9168f14a4b0df3782eab6124dd1a3044b59e3cd5a35781b64a6c6aad146",
+        "bytes": 100019,
+        "registros": 24,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250630.json",
+        "sha256": "a04e8e95dfd310a9ceef49baf00e1b83fe4086d74485bcf3beab71cd8d527c53",
+        "bytes": 245122,
+        "registros": 56,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250731.json",
+        "sha256": "c1c94a0ca7b8e6edb94eb11bf16e0c3f6deb27fc4fb8d46b6fdb6978b701ae4c",
+        "bytes": 43775,
+        "registros": 12,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250831.json",
+        "sha256": "c63f0d676340d9ca0a6dfbac4871ae039268a91e3dcfcaf198b0358ea17ae487",
+        "bytes": 167705,
+        "registros": 44,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20250930.json",
+        "sha256": "2bfa9a33317a74b654361f01f3a5833928088304c38a38e4b73bc90ca9893723",
+        "bytes": 169420,
+        "registros": 45,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20251031.json",
+        "sha256": "3ec31c15fbba8ad4d001a001371ab23cd1c94bad1cabf5ffc2963b0df8465de4",
+        "bytes": 84977,
+        "registros": 22,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20251130.json",
+        "sha256": "d7711d43215ba6061fe8161877abd556c3382b367bc56cf099f44dda0331b120",
+        "bytes": 166735,
+        "registros": 40,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20251231.json",
+        "sha256": "55c84caa87c8d69e4886ad29cc81405fef011ddc0f318138faccd9e0a0f90918",
+        "bytes": 193888,
+        "registros": 52,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260131.json",
+        "sha256": "23b4f14a840f760a7fb214d281b1ffdd9b7111ebb6e98d100c0b893a1d74884f",
+        "bytes": 128952,
+        "registros": 34,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260228.json",
+        "sha256": "6a1136daf215a4c3a39691860e5b4ded65da8217d92f60fa4ca362350ab62c33",
+        "bytes": 371775,
+        "registros": 89,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260331.json",
+        "sha256": "d35fb2f32567a321939cd7625a9f34a7a36da186962c2528b1da02439c162c03",
+        "bytes": 157410,
+        "registros": 34,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260430.json",
+        "sha256": "9d5f44b9cb8c4b87c6ed1e7f111a004d1af9726b93ad5df800d1934e50a9ff9e",
+        "bytes": 255254,
+        "registros": 53,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260531.json",
+        "sha256": "9c0c1df998debd8fa90d77810ae97b21136fc8573ec1a08597936302c561174d",
+        "bytes": 360075,
+        "registros": 69,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260630.json",
+        "sha256": "a0a3a32a6032baa3d17184164be77bf3c176d094d384ff96091ebf41c2f614c9",
+        "bytes": 306319,
+        "registros": 65,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260731.json",
+        "sha256": "26b43627ec2428c2bda52ec4c8b4587e9f11bb8b3ae6e8fe41027a0bcd044f32",
+        "bytes": 179870,
+        "registros": 22,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260831.json",
+        "sha256": "c9c0ff16a500b9ac847ec9eaa4debf15cad0042581b2624cc59b3a8109284d21",
+        "bytes": 414979,
+        "registros": 101,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-secao",
+        "arquivo": "20260930.json",
+        "sha256": "fb967a9a9a2f832f2507fca57bacc7222f0c72c46ca5373f2904f4ec8a4505eb",
+        "bytes": 511101,
+        "registros": 116,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "72b8faf79dd901eb41b3e260186d020043d5c74a26086cc342b075a016ff0ce7",
+        "bytes": 19664693,
+        "registros": 37489,
+        "achados": 2
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220531.json",
+        "sha256": "2fd3f3144a92defd46196d3cb68a54d8fe1c9e33562ce2316cd96e3b17aab2ff",
+        "bytes": 1771353,
+        "registros": 560,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220630.json",
+        "sha256": "0c3255687f4a5c7e607d779b53e86a3a6df624d3ae09024715f26c8285779423",
+        "bytes": 1560938,
+        "registros": 524,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220731.json",
+        "sha256": "2b5025d7df9e8d08954c427c294c16f25f8f39979c23827faeba182e48e374a9",
+        "bytes": 164073,
+        "registros": 57,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220831.json",
+        "sha256": "97c30c32079261ce6d8556cb77979f48c14b680d143249e7ba6e4609e5980779",
+        "bytes": 1649441,
+        "registros": 548,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220930.json",
+        "sha256": "374acd19c772b7faedcbd132f5a3db820d9fd059f1d7ea3a7b3c86f13a2b27bf",
+        "bytes": 1103561,
+        "registros": 386,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20221031.json",
+        "sha256": "08d5c5dcadf68411e285431cbf6541dca5d048ed077c4c6ca9316683594aeb00",
+        "bytes": 1467871,
+        "registros": 493,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20221130.json",
+        "sha256": "a9d7f1231fc1c152d1c14750610ee00828a23fdeb0b31518cdcbb54f77ef58d6",
+        "bytes": 1134540,
+        "registros": 402,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20221231.json",
+        "sha256": "b6ea4a4e69a265c8da5621647fbfe824db5fca1b5567ba00ec973cf7f43c249b",
+        "bytes": 507656,
+        "registros": 170,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230131.json",
+        "sha256": "329666d72b1496aa9941a4421cc139f0be3f10cee4c0390f8a3c84d0ed2f7637",
+        "bytes": 513430,
+        "registros": 165,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230228.json",
+        "sha256": "5f236a700edb8787901ea9eda45005a1e787504fa096a6c768bc918364f86bba",
+        "bytes": 439826,
+        "registros": 135,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230331.json",
+        "sha256": "1502aa3b0dad0b2720060c945dd6473a3ec2903afb6215922055cd4f7dd582fa",
+        "bytes": 1611213,
+        "registros": 517,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230430.json",
+        "sha256": "e47ee80806cd4d549ca72f53b8717e1d7b63818f4329d92cca86e77888b2bff9",
+        "bytes": 864051,
+        "registros": 283,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230531.json",
+        "sha256": "f286ce6041a4265aa4dff87fbe453088976c7c8bf293437900c893f1985b9ddc",
+        "bytes": 1025599,
+        "registros": 310,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230630.json",
+        "sha256": "aede63065730e6c09dcbe29edce790b6fea52c19dfd2d7fe02e14d8f1d6d76a0",
+        "bytes": 1258513,
+        "registros": 410,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230731.json",
+        "sha256": "ca94be3273d0d0d44f74cd4434cb169f48f2da528c004da49d402ff5fdc36e35",
+        "bytes": 427956,
+        "registros": 144,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230831.json",
+        "sha256": "eab1fd5f553b220370fc05235478b8e0e220e77ea1c51249fc43663c83650824",
+        "bytes": 1334561,
+        "registros": 418,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230930.json",
+        "sha256": "07347a40e08ac4408d3be8bd306f7e390660cc589bee03334e9fa55afeecdf4a",
+        "bytes": 1425113,
+        "registros": 474,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20231031.json",
+        "sha256": "2ba58f8a0ff7a43d820839d61abc3163a60945d285f1d72a46403d0249c68239",
+        "bytes": 1569628,
+        "registros": 476,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20231130.json",
+        "sha256": "76972ce375f3bebd1449b6d15eeec6906e1aa578bae2e449926b3f2fb387ecd2",
+        "bytes": 1496110,
+        "registros": 477,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20231231.json",
+        "sha256": "bc312a8c305554951c5388a11e27e68d86f2fb205119b07216c7bc6f867669fe",
+        "bytes": 539401,
+        "registros": 163,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240131.json",
+        "sha256": "135164832de94a6c9fb0dd141c33abc578942214de1d8b906ab5d95643842443",
+        "bytes": 607733,
+        "registros": 186,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240229.json",
+        "sha256": "0c360ac29d3144f2089a9edbf543be91661d844429c7132f2682b7418b77e8cf",
+        "bytes": 155080,
+        "registros": 52,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240331.json",
+        "sha256": "a922407ef1e459ce7e31b99fd5640d7eb4e411e0b9497bcc8a2779d13b4578cc",
+        "bytes": 1620761,
+        "registros": 506,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240430.json",
+        "sha256": "fefe5f0af9b9eaaa4c0eb62592e3364cab1b7d31a245846f7e6f3d7eb4a1992a",
+        "bytes": 1679735,
+        "registros": 517,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240531.json",
+        "sha256": "2c07130596f13da74a27582c35ced73fc60be9c616d8167d5a45007b18227aca",
+        "bytes": 1564103,
+        "registros": 473,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240630.json",
+        "sha256": "82e35650f77fff25f4d248abcdee3e8d8af592de31d253b04aa808c2fe0380c6",
+        "bytes": 1354399,
+        "registros": 412,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240731.json",
+        "sha256": "97278b6bc1eaa19f7ea9de695c250d53f97e6e5350a9b0f22e53dad40d86b550",
+        "bytes": 411761,
+        "registros": 144,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240831.json",
+        "sha256": "d0a8204ba3f0f4330349c70850677f3a753931c1922fff08a57fe892afd16d1f",
+        "bytes": 1509109,
+        "registros": 532,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240930.json",
+        "sha256": "d59eded5bdbdd32410eadb6b2a6553c90a1b1b0aa4f488718a9be7aec4019643",
+        "bytes": 1341180,
+        "registros": 487,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20241031.json",
+        "sha256": "86f3ed50f1d46d49ea9b3818f87dcb51ac1178d3bd50915a111dd4cd96607bcd",
+        "bytes": 1267521,
+        "registros": 443,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20241130.json",
+        "sha256": "b6bce36f3967690970c804ff8ca2dc7aa7f6eb847f42b9eaff6d38184e56c540",
+        "bytes": 891308,
+        "registros": 308,
+        "achados": 1
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20241231.json",
+        "sha256": "dfebe5d70b785e40815580ad62ab94ed957f7d6cd477e4d5e837accc60574313",
+        "bytes": 470236,
+        "registros": 176,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250131.json",
+        "sha256": "fc75efdef8cc2787b21a47f6e146d567c86e0549db2f0cbe16ef34bbe1fd2b6a",
+        "bytes": 341091,
+        "registros": 135,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250228.json",
+        "sha256": "a8dfc7be39a9922901becd4722541121a49b466388eae780c841e8cf7dd67ce7",
+        "bytes": 1361325,
+        "registros": 436,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250331.json",
+        "sha256": "69a0157aff501e84fd76859075fe9781413195ea0ab97349c73e65a54104e8d0",
+        "bytes": 1317663,
+        "registros": 462,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250430.json",
+        "sha256": "5bfe10143f5f1d2583915a841b1f82fc09fefc31dbadac67719aef4d189622fd",
+        "bytes": 1662391,
+        "registros": 618,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250531.json",
+        "sha256": "3ca6075feba380d87c5aa4d037e033d7bb47653ef5615415bc8fc52352c95525",
+        "bytes": 2428600,
+        "registros": 847,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250630.json",
+        "sha256": "093edd7f3abb48585438c33389c7e9b31aed3674f7b4e3c5623fb70d3a8fda51",
+        "bytes": 1507533,
+        "registros": 487,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250731.json",
+        "sha256": "041a3378433d499b8928ced7ded8c07483f9da91d119474e5e18616a5fab7009",
+        "bytes": 1785374,
+        "registros": 547,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250831.json",
+        "sha256": "61277670022555dfd4c806a14d4a3c0412610d9d37880d2d18f852a6219bef05",
+        "bytes": 1368266,
+        "registros": 487,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20250930.json",
+        "sha256": "99de42aa9bc445772d16b6b9206ea34810ff7f1dd0a9a41702195a9a8fadf4da",
+        "bytes": 3091806,
+        "registros": 1093,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20251031.json",
+        "sha256": "13f3d107af63a673acbd7d2f469ab48acd5dd2460952dd6691a93b041d4c3a06",
+        "bytes": 3277363,
+        "registros": 1094,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20251130.json",
+        "sha256": "09ed7a6ade9cf4b83a6246405404df0a28627aff1b4e46669a9a3ceaac0f943c",
+        "bytes": 4334198,
+        "registros": 1372,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20251231.json",
+        "sha256": "dfdded9914af50b5662eff8972f370953bdc26a05c0540e6a9617633e449a6ad",
+        "bytes": 6479931,
+        "registros": 2086,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260131.json",
+        "sha256": "2fd0fe0d26070c24b9b0d2193e82d9f5bad4947ce0e4ebb2e4270dd4adc58ee7",
+        "bytes": 3017514,
+        "registros": 912,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260228.json",
+        "sha256": "08e650cc43012d46977d79d7ae3429fdbf3f800cfc21ff610e27a2df9512edd2",
+        "bytes": 989212,
+        "registros": 332,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260331.json",
+        "sha256": "b5b6e089d50dbd5a320718334fe2edf7ec89490be4ff6299c5da46849a340189",
+        "bytes": 2025191,
+        "registros": 685,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260430.json",
+        "sha256": "dc28736486be1bc2b9fe112837a7281edb14c4eb61644f2dfc23e63004faf11f",
+        "bytes": 1810333,
+        "registros": 526,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260531.json",
+        "sha256": "783f00ced0b95b5602009dd6abb7921558a32d65f50940ff4650a2f636ae3acd",
+        "bytes": 2399388,
+        "registros": 737,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260630.json",
+        "sha256": "311619ff58d5cf2b816882e086349e5fbea9a38f7d1f582dab3d74a8bcbb19d2",
+        "bytes": 11783058,
+        "registros": 4162,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260731.json",
+        "sha256": "15238a9b0aaa1f7d087c0959485fa58ff88b50db30dcb13ea33301ae09504c05",
+        "bytes": 4293588,
+        "registros": 1491,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260831.json",
+        "sha256": "d21c7890f4f33154640e5c281979945b5b0cae08fd2ccd9d9e23e2f31bd08f7e",
+        "bytes": 2816001,
+        "registros": 967,
+        "achados": 0
+      },
+      {
+        "dataset": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20260930.json",
+        "sha256": "fdcf4aaf7420c0114cf6b488060f3e500fabe43b6ea894b2ca0962b8bda2fcf5",
+        "bytes": 9306224,
+        "registros": 3104,
+        "achados": 0
+      }
+    ],
+    "arquivos_guardados": [
+      {
+        "dataset_origem": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20230531.json",
+        "sha256": "3ddf65641acae9c9329dcca6963d4de02a86df6ce0969c7f7960484a3be10e96",
+        "bytes": 416740,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20240630.json",
+        "sha256": "ed1af5cc784fb9a2ddaffd4c7d6e33b351eaa6637073689ea75cd7716772b7e3",
+        "bytes": 321919,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-corte-especial",
+        "arquivo": "20241031.json",
+        "sha256": "694f7208b8459ab49b648f3eae902f52ed4bb8517315a92afd9631008557f264",
+        "bytes": 447035,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240331.json",
+        "sha256": "133c848f4f2c9cdc4e05663200b7e879b2213a362883f38e9f9190c23fd2b45a",
+        "bytes": 1130918,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-primeira-turma",
+        "arquivo": "20240430.json",
+        "sha256": "9a066ff063e54709019ea4d778c27aedc65df953c87c3321fe2a93574c095b4a",
+        "bytes": 1665724,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+        "bytes": 47368021,
+        "selecionados": 7,
+        "novos": 7,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20220630.json",
+        "sha256": "e230c08fc495a2cd2873dbfce93542006d18895aca8afdc3d50669ec3ccb25dc",
+        "bytes": 1498569,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20230930.json",
+        "sha256": "e6bb20332128356eb67112350a18941b5b1b3ba9fb8bf9eccf5070407f5072f1",
+        "bytes": 1483520,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20231231.json",
+        "sha256": "c97b5e754c781b793deced080b459eb6c6da8f64165d00b2ad15eed33aca0268",
+        "bytes": 638283,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240630.json",
+        "sha256": "6834966e56bc327623cfcc2046018ecb56da91172edefb1b29b74bd1d51e56c7",
+        "bytes": 1062400,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+        "arquivo": "20240930.json",
+        "sha256": "7b3fc5d063cef7537f91efde6764de2c62e143420f86f395e24a5fa8ccf6d1eb",
+        "bytes": 1221749,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20220507.zip",
+        "sha256": "9950f3a4dc23b795b20cf15cd117dd147357e527dd27378888a387a8dd99eac8",
+        "bytes": 5437525,
+        "selecionados": 2,
+        "novos": 2,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "41510790c30d04afa3391afa9065b3ab27a39b2378ad8458cbaab593e406221a",
+        "bytes": 95529644,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20230531.json",
+        "sha256": "72ca22117b80be857eb1e35242a47c0f9a45c662769b8ea03e1a09988d59add5",
+        "bytes": 1592980,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-segunda-turma",
+        "arquivo": "20240430.json",
+        "sha256": "9a066ff063e54709019ea4d778c27aedc65df953c87c3321fe2a93574c095b4a",
+        "bytes": 1665724,
+        "selecionados": 1,
+        "novos": 0,
+        "alterados": 0,
+        "inalterados": 1,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220508.zip",
+        "sha256": "72b8faf79dd901eb41b3e260186d020043d5c74a26086cc342b075a016ff0ce7",
+        "bytes": 19664693,
+        "selecionados": 2,
+        "novos": 2,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20220930.json",
+        "sha256": "374acd19c772b7faedcbd132f5a3db820d9fd059f1d7ea3a7b3c86f13a2b27bf",
+        "bytes": 1103561,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20230131.json",
+        "sha256": "329666d72b1496aa9941a4421cc139f0be3f10cee4c0390f8a3c84d0ed2f7637",
+        "bytes": 513430,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20240331.json",
+        "sha256": "a922407ef1e459ce7e31b99fd5640d7eb4e411e0b9497bcc8a2779d13b4578cc",
+        "bytes": 1620761,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      },
+      {
+        "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+        "arquivo": "20241130.json",
+        "sha256": "b6bce36f3967690970c804ff8ca2dc7aa7f6eb847f42b9eaff6d38184e56c540",
+        "bytes": 891308,
+        "selecionados": 1,
+        "novos": 1,
+        "alterados": 0,
+        "inalterados": 0,
+        "removidos": 0
+      }
+    ],
+    "arquivos_ilegiveis": [
+      {
+        "dataset": "espelhos-de-acordaos-segunda-secao",
+        "arquivo": "20240229.json",
+        "sha256": "ea2537c36c1e11d5206f7cee7b82178fc455cb8832cd7110a1acc807b7da9b46",
+        "bytes": 599,
+        "erro": "A fonte não retornou JSON válido; nenhum recurso foi concluído."
+      }
+    ],
+    "falhas": [],
+    "status": "ok",
+    "selecionados": [
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:1046016",
+        "numero": "AgInt-AREsp 1046016",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000790725",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "1046016",
+            "numero_registro": "201700144374",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20210920",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20220508.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000816178",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "1046016",
+            "numero_registro": "201700144374",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20220524",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220630.json",
+            "membro": null,
+            "sha256_arquivo": "e230c08fc495a2cd2873dbfce93542006d18895aca8afdc3d50669ec3ccb25dc",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:1481806",
+        "numero": "AgInt-AREsp 1481806",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000723267",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "1481806",
+            "numero_registro": "201900968886",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20190827",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20201231.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:1957756",
+        "numero": "AgInt-AREsp 1957756",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000808660",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "1957756",
+            "numero_registro": "202102464850",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20220314",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20220508.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:1351529",
+        "numero": "AgInt-REsp 1351529",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000617639",
+            "classe": "AgInt no REsp",
+            "numero_processo": "1351529",
+            "numero_registro": "201202286850",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20180313",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20201231.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:423075",
+        "numero": "AgRg-AgRg-AREsp 423075",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000488436",
+            "classe": "AgRg no AgRg no AREsp",
+            "numero_processo": "423075",
+            "numero_registro": "201303654577",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20150623",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20151231.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:1246879",
+        "numero": "EDcl-AREsp 1246879",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000670299",
+            "classe": "EDcl nos EDcl no AgInt no AREsp",
+            "numero_processo": "1246879",
+            "numero_registro": "201800312525",
+            "orgao": "SEGUNDA TURMA",
+            "data_julgamento": "20190319",
+            "dataset_origem": "espelhos-de-acordaos-segunda-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20201231.json",
+            "sha256_arquivo": "41510790c30d04afa3391afa9065b3ab27a39b2378ad8458cbaab593e406221a",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:1874222",
+        "numero": "EREsp 1874222",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000843683",
+            "classe": "EREsp",
+            "numero_processo": "1874222",
+            "numero_registro": "202001121948",
+            "orgao": "CORTE ESPECIAL",
+            "data_julgamento": "20230419",
+            "dataset_origem": "espelhos-de-acordaos-corte-especial",
+            "arquivo": "20230531.json",
+            "membro": null,
+            "sha256_arquivo": "3ddf65641acae9c9329dcca6963d4de02a86df6ce0969c7f7960484a3be10e96",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000802395",
+            "classe": "EDcl no AgInt no REsp",
+            "numero_processo": "1874222",
+            "numero_registro": "202001121948",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20220214",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20220508.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000788448",
+            "classe": "AgInt no REsp",
+            "numero_processo": "1874222",
+            "numero_registro": "202001121948",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20210920",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20220508.json",
+            "sha256_arquivo": "eab13e11c2375f1596a92a45feb63961b95b0eeabe50276056af1e48308a3403",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:1119300",
+        "numero": "REsp 1119300",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000028349",
+            "classe": "REsp",
+            "numero_processo": "1119300",
+            "numero_registro": "200900133272",
+            "orgao": "SEGUNDA SEÇÃO",
+            "data_julgamento": "20100414",
+            "dataset_origem": "espelhos-de-acordaos-segunda-secao",
+            "arquivo": "20220507.zip",
+            "membro": "20101231.json",
+            "sha256_arquivo": "9950f3a4dc23b795b20cf15cd117dd147357e527dd27378888a387a8dd99eac8",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000025225",
+            "classe": "EDcl no REsp",
+            "numero_processo": "1119300",
+            "numero_registro": "200900133272",
+            "orgao": "SEGUNDA SEÇÃO",
+            "data_julgamento": "20101013",
+            "dataset_origem": "espelhos-de-acordaos-segunda-secao",
+            "arquivo": "20220507.zip",
+            "membro": "20101231.json",
+            "sha256_arquivo": "9950f3a4dc23b795b20cf15cd117dd147357e527dd27378888a387a8dd99eac8",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:1354384",
+        "numero": "REsp 1354384",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:506969",
+            "classe": "REsp",
+            "numero_processo": "1354384",
+            "numero_registro": "201202413505",
+            "orgao": "TERCEIRA TURMA",
+            "data_julgamento": "20141218",
+            "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20151231.json",
+            "sha256_arquivo": "72b8faf79dd901eb41b3e260186d020043d5c74a26086cc342b075a016ff0ce7",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:1824146",
+        "numero": "REsp 1824146",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:764481",
+            "classe": "REsp",
+            "numero_processo": "1824146",
+            "numero_registro": "201802193567",
+            "orgao": "TERCEIRA TURMA",
+            "data_julgamento": "20201201",
+            "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+            "arquivo": "20220508.zip",
+            "membro": "20201231.json",
+            "sha256_arquivo": "72b8faf79dd901eb41b3e260186d020043d5c74a26086cc342b075a016ff0ce7",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:661203",
+        "numero": "AgInt-AgInt-AREsp 661203",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000870859",
+            "classe": "EDcl no AgInt no AgInt no AREsp",
+            "numero_processo": "661203",
+            "numero_registro": "201500280659",
+            "orgao": "SEGUNDA TURMA",
+            "data_julgamento": "20240423",
+            "dataset_origem": "espelhos-de-acordaos-primeira-turma",
+            "arquivo": "20240430.json",
+            "membro": null,
+            "sha256_arquivo": "9a066ff063e54709019ea4d778c27aedc65df953c87c3321fe2a93574c095b4a",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000843006",
+            "classe": "AgInt no AgInt no AREsp",
+            "numero_processo": "661203",
+            "numero_registro": "201500280659",
+            "orgao": "SEGUNDA TURMA",
+            "data_julgamento": "20230424",
+            "dataset_origem": "espelhos-de-acordaos-segunda-turma",
+            "arquivo": "20230531.json",
+            "membro": null,
+            "sha256_arquivo": "72ca22117b80be857eb1e35242a47c0f9a45c662769b8ea03e1a09988d59add5",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000870859",
+            "classe": "EDcl no AgInt no AgInt no AREsp",
+            "numero_processo": "661203",
+            "numero_registro": "201500280659",
+            "orgao": "SEGUNDA TURMA",
+            "data_julgamento": "20240423",
+            "dataset_origem": "espelhos-de-acordaos-segunda-turma",
+            "arquivo": "20240430.json",
+            "membro": null,
+            "sha256_arquivo": "9a066ff063e54709019ea4d778c27aedc65df953c87c3321fe2a93574c095b4a",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:1948594",
+        "numero": "AgInt-AREsp 1948594",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000861750",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "1948594",
+            "numero_registro": "202102330545",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20231129",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20231231.json",
+            "membro": null,
+            "sha256_arquivo": "c97b5e754c781b793deced080b459eb6c6da8f64165d00b2ad15eed33aca0268",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2160165",
+        "numero": "AgInt-AREsp 2160165",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000874427",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2160165",
+            "numero_registro": "202201895437",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20240527",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20240630.json",
+            "membro": null,
+            "sha256_arquivo": "6834966e56bc327623cfcc2046018ecb56da91172edefb1b29b74bd1d51e56c7",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2324609",
+        "numero": "AgInt-AREsp 2324609",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000855105",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2324609",
+            "numero_registro": "202300775863",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20230925",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20230930.json",
+            "membro": null,
+            "sha256_arquivo": "e6bb20332128356eb67112350a18941b5b1b3ba9fb8bf9eccf5070407f5072f1",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2465278",
+        "numero": "AgInt-AREsp 2465278",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000883077",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2465278",
+            "numero_registro": "202303035805",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20240819",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20240930.json",
+            "membro": null,
+            "sha256_arquivo": "7b3fc5d063cef7537f91efde6764de2c62e143420f86f395e24a5fa8ccf6d1eb",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2629365",
+        "numero": "AgInt-AREsp 2629365",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000889593",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2629365",
+            "numero_registro": "202401615837",
+            "orgao": "TERCEIRA TURMA",
+            "data_julgamento": "20241028",
+            "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+            "arquivo": "20241130.json",
+            "membro": null,
+            "sha256_arquivo": "b6bce36f3967690970c804ff8ca2dc7aa7f6eb847f42b9eaff6d38184e56c540",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:1839851",
+        "numero": "AgInt-REsp 1839851",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000833773",
+            "classe": "AgInt no REsp",
+            "numero_processo": "1839851",
+            "numero_registro": "201902856713",
+            "orgao": "TERCEIRA TURMA",
+            "data_julgamento": "20221212",
+            "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+            "arquivo": "20230131.json",
+            "membro": null,
+            "sha256_arquivo": "329666d72b1496aa9941a4421cc139f0be3f10cee4c0390f8a3c84d0ed2f7637",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "RESP:2027275",
+        "numero": "AgInt-REsp 2027275",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000887139",
+            "classe": "AgInt nos EREsp",
+            "numero_processo": "2027275",
+            "numero_registro": "202202912210",
+            "orgao": "CORTE ESPECIAL",
+            "data_julgamento": "20241008",
+            "dataset_origem": "espelhos-de-acordaos-corte-especial",
+            "arquivo": "20241031.json",
+            "membro": null,
+            "sha256_arquivo": "694f7208b8459ab49b648f3eae902f52ed4bb8517315a92afd9631008557f264",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000865790",
+            "classe": "AgInt no REsp",
+            "numero_processo": "2027275",
+            "numero_registro": "202202912210",
+            "orgao": "PRIMEIRA TURMA",
+            "data_julgamento": "20240227",
+            "dataset_origem": "espelhos-de-acordaos-primeira-turma",
+            "arquivo": "20240331.json",
+            "membro": null,
+            "sha256_arquivo": "133c848f4f2c9cdc4e05663200b7e879b2213a362883f38e9f9190c23fd2b45a",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2174028",
+        "numero": "AgIntAREsp 2174028",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000865812",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2174028",
+            "numero_registro": "202202258934",
+            "orgao": "TERCEIRA TURMA",
+            "data_julgamento": "20240226",
+            "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+            "arquivo": "20240331.json",
+            "membro": null,
+            "sha256_arquivo": "a922407ef1e459ce7e31b99fd5640d7eb4e411e0b9497bcc8a2779d13b4578cc",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:1766665",
+        "numero": "EAREsp 1766665",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000874599",
+            "classe": "EAREsp",
+            "numero_processo": "1766665",
+            "numero_registro": "202002507450",
+            "orgao": "CORTE ESPECIAL",
+            "data_julgamento": "20240403",
+            "dataset_origem": "espelhos-de-acordaos-corte-especial",
+            "arquivo": "20240630.json",
+            "membro": null,
+            "sha256_arquivo": "ed1af5cc784fb9a2ddaffd4c7d6e33b351eaa6637073689ea75cd7716772b7e3",
+            "na_coleta_corrente": false
+          },
+          {
+            "id": "STJ:000825856",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "1766665",
+            "numero_registro": "202002507450",
+            "orgao": "TERCEIRA TURMA",
+            "data_julgamento": "20220919",
+            "dataset_origem": "espelhos-de-acordaos-terceira-turma",
+            "arquivo": "20220930.json",
+            "membro": null,
+            "sha256_arquivo": "374acd19c772b7faedcbd132f5a3db820d9fd059f1d7ea3a7b3c86f13a2b27bf",
+            "na_coleta_corrente": false
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2542494",
+        "numero": "AgInt-AREsp 2542494",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:955905",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2542494",
+            "numero_registro": "202304527898",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20260422",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20260430.json",
+            "membro": null,
+            "sha256_arquivo": "095353782f8bbd6691cd6db66eee4630d61f001fa2298ec049190c76991c8aae",
+            "na_coleta_corrente": true
+          }
+        ],
+        "rejeitados": []
+      },
+      {
+        "tribunal": "STJ",
+        "chave": "ARESP:2547532",
+        "numero": "AgInt-AREsp 2547532",
+        "origens": [
+          "lista"
+        ],
+        "documentos": [
+          {
+            "id": "STJ:000906904",
+            "classe": "AgInt no AREsp",
+            "numero_processo": "2547532",
+            "numero_registro": "202400074839",
+            "orgao": "QUARTA TURMA",
+            "data_julgamento": "20250331",
+            "dataset_origem": "espelhos-de-acordaos-quarta-turma",
+            "arquivo": "20250430.json",
+            "membro": null,
+            "sha256_arquivo": "8f60bc30597d515ecb578836076a3ddc65eac35acba5fdd192f5a73ea034414d",
+            "na_coleta_corrente": true
+          }
+        ],
+        "rejeitados": []
+      }
+    ],
+    "oferecidos_com_defeito": [],
+    "varredura_completa": true,
+    "talvez_em_arquivo_ilegivel": [],
+    "nao_oferecidos": [
+      {
+        "numero": "AgInt-AgInt-AREsp 982632",
+        "chave": "ARESP:982632",
+        "origens": [
+          "lista"
+        ]
+      },
+      {
+        "numero": "AgInt-AREsp 1448015",
+        "chave": "ARESP:1448015",
+        "origens": [
+          "lista"
+        ]
+      },
+      {
+        "numero": "AgInt-AREsp 1768177",
+        "chave": "ARESP:1768177",
+        "origens": [
+          "lista"
+        ]
+      }
+    ],
+    "fim": "2026-11-04T14:32:54.749521+00:00"
+  },
+  "backup": {
+    "status": "ok",
+    "formato": "flora-backup-2",
+    "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-sandbox-m3-backups\\20261104-095221-423494-antes-coleta-por-numero",
+    "revisao": 3625,
+    "originais": 3629,
+    "originais_copiados": 3629,
+    "originais_ja_no_deposito": 0,
+    "bytes_copiados": 3959614550
+  },
+  "execucao": "3309d427-7127-4fd2-bce1-2aab0481f436",
+  "nao_oferecidos": [
+    {
+      "numero": "0000123-45.2020.8.24.0000",
+      "origens": [
+        "lista"
+      ]
+    }
+  ],
+  "fim": "2026-11-04T14:32:57.851444+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "CORTE ESPECIAL",
+      "documentos": 3
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "PRIMEIRA TURMA",
+      "documentos": 1
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16885
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1346
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA TURMA",
+      "documentos": 3
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19480
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ]
+}

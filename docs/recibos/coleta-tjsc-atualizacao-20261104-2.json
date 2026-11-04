@@ -1,0 +1,2678 @@
+{
+  "inicio": "2026-11-04T11:42:29.008258+00:00",
+  "banco": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP\\acervo.sqlite",
+  "plano": {
+    "periodo_publicacao": [
+      "2026-10-10",
+      "2026-11-04"
+    ],
+    "orgaos": [
+      "1ª Câmara de Direito Civil",
+      "2ª Câmara de Direito Civil",
+      "3ª Câmara de Direito Civil",
+      "4ª Câmara de Direito Civil",
+      "5ª Câmara de Direito Civil",
+      "6ª Câmara de Direito Civil",
+      "7ª Câmara de Direito Civil",
+      "8ª Câmara de Direito Civil",
+      "9ª Câmara de Direito Civil",
+      "10ª Câmara de Direito Civil"
+    ],
+    "concluidas_verificadas": 0,
+    "pendentes": [
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-1-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-2-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-3-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-4-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-5-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-6-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-7-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-8-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-9-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-10",
+        "recurso": "tjsc-10-civil:2026-10-10",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-1-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-2-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-3-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-4-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-5-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-6-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-7-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-8-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-9-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-11",
+        "recurso": "tjsc-10-civil:2026-10-11",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-1-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-2-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-3-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-4-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-5-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-6-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-7-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-8-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-9-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-12",
+        "recurso": "tjsc-10-civil:2026-10-12",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-1-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-2-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-3-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-4-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-5-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-6-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-7-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-8-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-9-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-13",
+        "recurso": "tjsc-10-civil:2026-10-13",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-1-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-2-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-3-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-4-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-5-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-6-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-7-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-8-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-9-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-14",
+        "recurso": "tjsc-10-civil:2026-10-14",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-1-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-2-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-3-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-4-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-5-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-6-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-7-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-8-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-9-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-15",
+        "recurso": "tjsc-10-civil:2026-10-15",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-1-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-2-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-3-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-4-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-5-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-6-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-7-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-8-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-9-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-16",
+        "recurso": "tjsc-10-civil:2026-10-16",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-1-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-2-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-3-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-4-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-5-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-6-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-7-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-8-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-9-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-17",
+        "recurso": "tjsc-10-civil:2026-10-17",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-1-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-2-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-3-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-4-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-5-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-6-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-7-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-8-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-9-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-18",
+        "recurso": "tjsc-10-civil:2026-10-18",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-1-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-2-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-3-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-4-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-5-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-6-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-7-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-8-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-9-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-19",
+        "recurso": "tjsc-10-civil:2026-10-19",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-1-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-2-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-3-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-4-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-5-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-6-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-7-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-8-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-9-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-20",
+        "recurso": "tjsc-10-civil:2026-10-20",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-1-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-2-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-3-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-4-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-5-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-6-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-7-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-8-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-9-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-21",
+        "recurso": "tjsc-10-civil:2026-10-21",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-1-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-2-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-3-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-4-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-5-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-6-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-7-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-8-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-9-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-22",
+        "recurso": "tjsc-10-civil:2026-10-22",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-1-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-2-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-3-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-4-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-5-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-6-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-7-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-8-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-9-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-23",
+        "recurso": "tjsc-10-civil:2026-10-23",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-1-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-2-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-3-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-4-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-5-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-6-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-7-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-8-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-9-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-24",
+        "recurso": "tjsc-10-civil:2026-10-24",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-1-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-2-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-3-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-4-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-5-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-6-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-7-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-8-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-9-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-25",
+        "recurso": "tjsc-10-civil:2026-10-25",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-1-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-2-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-3-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-4-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-5-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-6-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-7-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-8-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-9-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-26",
+        "recurso": "tjsc-10-civil:2026-10-26",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-1-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-2-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-3-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-4-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-5-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-6-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-7-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-8-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-9-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-27",
+        "recurso": "tjsc-10-civil:2026-10-27",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-1-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-2-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-3-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-4-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-5-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-6-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-7-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-8-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-9-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-28",
+        "recurso": "tjsc-10-civil:2026-10-28",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-1-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-2-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-3-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-4-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-5-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-6-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-7-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-8-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-9-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-29",
+        "recurso": "tjsc-10-civil:2026-10-29",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-1-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-2-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-3-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-4-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-5-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-6-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-7-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-8-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-9-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-30",
+        "recurso": "tjsc-10-civil:2026-10-30",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-1-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-2-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-3-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-4-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-5-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-6-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-7-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-8-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-9-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-10-31",
+        "recurso": "tjsc-10-civil:2026-10-31",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-1-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-2-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-3-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-4-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-5-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-6-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-7-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-8-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-9-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-11-01",
+        "recurso": "tjsc-10-civil:2026-11-01",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-1-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-2-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-3-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-4-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-5-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-6-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-7-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-8-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-9-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-11-02",
+        "recurso": "tjsc-10-civil:2026-11-02",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-1-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-2-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-3-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-4-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-5-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-6-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-7-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-8-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-9-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-11-03",
+        "recurso": "tjsc-10-civil:2026-11-03",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "1ª Câmara de Direito Civil",
+        "camara": 1,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-1-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "2ª Câmara de Direito Civil",
+        "camara": 2,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-2-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "3ª Câmara de Direito Civil",
+        "camara": 3,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-3-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "4ª Câmara de Direito Civil",
+        "camara": 4,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-4-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "5ª Câmara de Direito Civil",
+        "camara": 5,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-5-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "6ª Câmara de Direito Civil",
+        "camara": 6,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-6-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "7ª Câmara de Direito Civil",
+        "camara": 7,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-7-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "8ª Câmara de Direito Civil",
+        "camara": 8,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-8-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "9ª Câmara de Direito Civil",
+        "camara": 9,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-9-civil:2026-11-04",
+        "estado_anterior": "pending"
+      },
+      {
+        "orgao": "10ª Câmara de Direito Civil",
+        "camara": 10,
+        "dia": "2026-11-04",
+        "recurso": "tjsc-10-civil:2026-11-04",
+        "estado_anterior": "pending"
+      }
+    ],
+    "dia_atual_provisorio": true
+  },
+  "antes": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2045
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4834
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6473
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 461
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "status": "error",
+  "eventos": [
+    {
+      "orgao": "1ª Câmara de Direito Civil",
+      "camara": 1,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:15.534662+00:00"
+    },
+    {
+      "orgao": "2ª Câmara de Direito Civil",
+      "camara": 2,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:20.836476+00:00"
+    },
+    {
+      "orgao": "3ª Câmara de Direito Civil",
+      "camara": 3,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:25.456795+00:00"
+    },
+    {
+      "orgao": "4ª Câmara de Direito Civil",
+      "camara": 4,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:30.503785+00:00"
+    },
+    {
+      "orgao": "5ª Câmara de Direito Civil",
+      "camara": 5,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:35.555602+00:00"
+    },
+    {
+      "orgao": "6ª Câmara de Direito Civil",
+      "camara": 6,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:40.340161+00:00"
+    },
+    {
+      "orgao": "7ª Câmara de Direito Civil",
+      "camara": 7,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:45.534271+00:00"
+    },
+    {
+      "orgao": "8ª Câmara de Direito Civil",
+      "camara": 8,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:50.786055+00:00"
+    },
+    {
+      "orgao": "9ª Câmara de Direito Civil",
+      "camara": 9,
+      "dia": "2026-10-10",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:45:55.737135+00:00"
+    },
+    {
+      "orgao": "10ª Câmara de Direito Civil",
+      "camara": 10,
+      "dia": "2026-10-10",
+      "registros": 6,
+      "novos": 6,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:01.776273+00:00"
+    },
+    {
+      "orgao": "1ª Câmara de Direito Civil",
+      "camara": 1,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:05.476988+00:00"
+    },
+    {
+      "orgao": "2ª Câmara de Direito Civil",
+      "camara": 2,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:11.536461+00:00"
+    },
+    {
+      "orgao": "3ª Câmara de Direito Civil",
+      "camara": 3,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:15.493157+00:00"
+    },
+    {
+      "orgao": "4ª Câmara de Direito Civil",
+      "camara": 4,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:20.498119+00:00"
+    },
+    {
+      "orgao": "5ª Câmara de Direito Civil",
+      "camara": 5,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:25.453865+00:00"
+    },
+    {
+      "orgao": "6ª Câmara de Direito Civil",
+      "camara": 6,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:30.482419+00:00"
+    },
+    {
+      "orgao": "7ª Câmara de Direito Civil",
+      "camara": 7,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:35.409399+00:00"
+    },
+    {
+      "orgao": "8ª Câmara de Direito Civil",
+      "camara": 8,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:40.524449+00:00"
+    },
+    {
+      "orgao": "9ª Câmara de Direito Civil",
+      "camara": 9,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:45.432158+00:00"
+    },
+    {
+      "orgao": "10ª Câmara de Direito Civil",
+      "camara": 10,
+      "dia": "2026-10-11",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:50.437031+00:00"
+    },
+    {
+      "orgao": "1ª Câmara de Direito Civil",
+      "camara": 1,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:46:55.425726+00:00"
+    },
+    {
+      "orgao": "2ª Câmara de Direito Civil",
+      "camara": 2,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:00.424277+00:00"
+    },
+    {
+      "orgao": "3ª Câmara de Direito Civil",
+      "camara": 3,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:05.415465+00:00"
+    },
+    {
+      "orgao": "4ª Câmara de Direito Civil",
+      "camara": 4,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:10.534576+00:00"
+    },
+    {
+      "orgao": "5ª Câmara de Direito Civil",
+      "camara": 5,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:15.510577+00:00"
+    },
+    {
+      "orgao": "6ª Câmara de Direito Civil",
+      "camara": 6,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:20.623013+00:00"
+    },
+    {
+      "orgao": "7ª Câmara de Direito Civil",
+      "camara": 7,
+      "dia": "2026-10-12",
+      "registros": 11,
+      "novos": 11,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:28.660901+00:00"
+    },
+    {
+      "orgao": "8ª Câmara de Direito Civil",
+      "camara": 8,
+      "dia": "2026-10-12",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:33.156060+00:00"
+    },
+    {
+      "orgao": "9ª Câmara de Direito Civil",
+      "camara": 9,
+      "dia": "2026-10-12",
+      "registros": 2,
+      "novos": 2,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:38.700351+00:00"
+    },
+    {
+      "orgao": "10ª Câmara de Direito Civil",
+      "camara": 10,
+      "dia": "2026-10-12",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:43.986345+00:00"
+    },
+    {
+      "orgao": "1ª Câmara de Direito Civil",
+      "camara": 1,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:49.324053+00:00"
+    },
+    {
+      "orgao": "2ª Câmara de Direito Civil",
+      "camara": 2,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:53.631242+00:00"
+    },
+    {
+      "orgao": "3ª Câmara de Direito Civil",
+      "camara": 3,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:47:58.517533+00:00"
+    },
+    {
+      "orgao": "4ª Câmara de Direito Civil",
+      "camara": 4,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:03.370050+00:00"
+    },
+    {
+      "orgao": "5ª Câmara de Direito Civil",
+      "camara": 5,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:08.293368+00:00"
+    },
+    {
+      "orgao": "6ª Câmara de Direito Civil",
+      "camara": 6,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:13.459926+00:00"
+    },
+    {
+      "orgao": "7ª Câmara de Direito Civil",
+      "camara": 7,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:18.552887+00:00"
+    },
+    {
+      "orgao": "8ª Câmara de Direito Civil",
+      "camara": 8,
+      "dia": "2026-10-13",
+      "registros": 34,
+      "novos": 34,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:31.273612+00:00"
+    },
+    {
+      "orgao": "9ª Câmara de Direito Civil",
+      "camara": 9,
+      "dia": "2026-10-13",
+      "registros": 1,
+      "novos": 1,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:35.807935+00:00"
+    },
+    {
+      "orgao": "10ª Câmara de Direito Civil",
+      "camara": 10,
+      "dia": "2026-10-13",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:40.743280+00:00"
+    },
+    {
+      "orgao": "1ª Câmara de Direito Civil",
+      "camara": 1,
+      "dia": "2026-10-14",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:45.761029+00:00"
+    },
+    {
+      "orgao": "2ª Câmara de Direito Civil",
+      "camara": 2,
+      "dia": "2026-10-14",
+      "registros": 0,
+      "novos": 0,
+      "alterados": 0,
+      "inalterados": 0,
+      "removidos": 0,
+      "fim": "2026-11-04T11:48:50.806238+00:00"
+    }
+  ],
+  "backup": {
+    "status": "ok",
+    "formato": "flora-backup-2",
+    "destino": "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP-backups\\20261104-084229-233508-antes-retomada-tjsc",
+    "revisao": 3625,
+    "originais": 3629,
+    "originais_copiados": 0,
+    "originais_ja_no_deposito": 3629,
+    "bytes_copiados": 0
+  },
+  "execucao": "87da01e0-c9f8-4656-a3dd-10d3c2044da2",
+  "paralelo": 1,
+  "em_andamento": {
+    "orgao": "3ª Câmara de Direito Civil",
+    "camara": 3,
+    "dia": "2026-10-14",
+    "recurso": "tjsc-3-civil:2026-10-14",
+    "estado_anterior": "pending"
+  },
+  "erro": "FloraError: Contagem variável ou IDs repetidos no TJSC; repetir janela.",
+  "codigo": "paginacao_instavel",
+  "fim": "2026-11-04T11:49:01.164452+00:00",
+  "depois": [
+    {
+      "tribunal": "STJ",
+      "orgao": "QUARTA TURMA",
+      "documentos": 16873
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "SEGUNDA SEÇÃO",
+      "documentos": 1344
+    },
+    {
+      "tribunal": "STJ",
+      "orgao": "TERCEIRA TURMA",
+      "documentos": 19474
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "10ª Câmara de Direito Civil",
+      "documentos": 2051
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Civil",
+      "documentos": 7599
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Direito Público",
+      "documentos": 31
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara de Enfrentamento de Acervos",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "1ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 26
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Criminal",
+      "documentos": 1
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Civil",
+      "documentos": 4149
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Comercial",
+      "documentos": 3
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara de Direito Público",
+      "documentos": 48
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "2ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 19
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Civil",
+      "documentos": 5522
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Comercial",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara de Direito Público",
+      "documentos": 46
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "3ª Câmara Especial de Enfrentamento de Acervos",
+      "documentos": 14
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Civil",
+      "documentos": 5469
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "4ª Câmara de Direito Público",
+      "documentos": 39
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Civil",
+      "documentos": 5650
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Comercial",
+      "documentos": 12
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "5ª Câmara de Direito Público",
+      "documentos": 25
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Civil",
+      "documentos": 4155
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "6ª Câmara de Direito Comercial",
+      "documentos": 5
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "7ª Câmara de Direito Civil",
+      "documentos": 4845
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "8ª Câmara de Direito Civil",
+      "documentos": 6508
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "9ª Câmara de Direito Civil",
+      "documentos": 464
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Câmara de Recursos Delegados",
+      "documentos": 2
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Civil",
+      "documentos": 10
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Comercial",
+      "documentos": 9
+    },
+    {
+      "tribunal": "TJSC",
+      "orgao": "Grupo de Câmaras de Direito Público",
+      "documentos": 3
+    }
+  ],
+  "publicacao": {
+    "status": "ok",
+    "publicacao_id": "r3667-s2-422d7bab33-be04255dc052",
+    "sha256": "be04255dc052cd3d82938f32296241c118c5c98bef4c52f8ebb215509c4aeb8a",
+    "revisao_base": 3667,
+    "copias_texto": {
+      "grupos": 954,
+      "copias_retiradas": 2007
+    },
+    "limpeza_adiada_arquivo_aberto": []
+  }
+}
