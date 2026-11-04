@@ -5,7 +5,7 @@ import sqlite3
 
 from .ausencia import empty_reason
 from .model import FloraError, canonical, digest, folded
-from .precedents import COMPONENTS, MATTERS, SPECIES, available
+from .precedents import COMPONENTS, MATTERS, SPECIES, available, normalized_number
 from .query import (
     BROADENED,
     CONTRATO,
@@ -260,7 +260,7 @@ def search(
         tribunal=tribunal,
         orgao=orgao,
         especie=especie,
-        numero=numero,
+        numero=normalized_number(numero),
         materia=materia,
         data_inicio=data_inicio,
         data_fim=data_fim,
