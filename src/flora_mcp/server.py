@@ -1,8 +1,9 @@
 import json
+import logging
 from typing import Any, Literal
 
 from mcp.server import MCPServer
-from mcp.server.mcpserver.exceptions import ToolError
+from mcp.server.mcpserver.exceptions import ToolError, UnexpectedToolError
 from mcp.types import CallToolResult, TextContent, ToolAnnotations
 from pydantic import ValidationError
 
@@ -10,6 +11,8 @@ from . import __version__
 from .api import coverage, document, search, search_precedents
 from .model import FloraError
 from .store import Store
+
+LOG = logging.getLogger(__name__)
 
 Tribunal = Literal["STJ", "TJSC"]
 TribunalPrecedente = Literal["STJ", "STF", "TJSC"]
@@ -90,6 +93,14 @@ class FloraServer(MCPServer):
     async def call_tool(self, name, arguments, context=None):
         try:
             return await super().call_tool(name, arguments, context)
+        except UnexpectedToolError as exc:
+            # The cause stays in the log; nothing of it reaches the client.
+            LOG.error("Falha inesperada em %s", name, exc_info=exc.__cause__)
+            return error_result(
+                "erro_interno",
+                f"Falha interna do servidor em {name}. Esta leitura não altera a base; tente de novo "
+                "e, se persistir, informe o responsável pelo acervo.",
+            )
         except ToolError as exc:
             if not isinstance(exc.__cause__, ValidationError):
                 raise

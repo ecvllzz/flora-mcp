@@ -223,6 +223,44 @@ def test_simple_mode_keeps_operators_as_plain_words(store):
     assert " AND " in api.search(store, "guarda ou alimentos", ordenar="mais_recentes")["consulta_efetiva"]
 
 
+# Unexpected error
+
+
+def test_unexpected_error_is_typed_structured_and_hides_the_cause(store, caplog):
+    ingest(store, [raw_doc()])
+    with connection(store.path, write=True) as db, db:
+        db.execute("DELETE FROM versions WHERE document_id='STJ:1'")  # TypeError when reading the raw
+    result = call(store, "obter_documento", {"id": "STJ:1"})
+    assert_error(result, "erro_interno")
+    assert "obter_documento" in result.structured_content["mensagem"]
+    assert "NoneType" not in result.content[0].text and "Traceback" not in result.content[0].text
+    assert any(r.levelname == "ERROR" and r.exc_info for r in caplog.records)  # The cause is in the log.
+
+
+@pytest.mark.parametrize(
+    "tool,arguments,target",
+    [
+        ("pesquisar_jurisprudencia", {"termos": "x"}, "search"),
+        ("pesquisar_precedentes", {"termos": "x"}, "search_precedents"),
+        ("obter_documento", {"id": "STJ:1"}, "document"),
+        ("consultar_cobertura", {}, "coverage"),
+    ],
+)
+def test_every_tool_answers_an_unexpected_error_the_same_way(store, monkeypatch, tool, arguments, target):
+    def fail(*_args, **_kwargs):
+        raise RuntimeError("segredo interno")
+
+    monkeypatch.setattr("flora_mcp.server." + target, fail)
+    result = call(store, tool, arguments)
+    assert_error(result, "erro_interno")
+    assert "segredo" not in result.content[0].text
+
+
+def test_expected_error_keeps_its_own_code(store):
+    ingest(store, [raw_doc()])
+    assert_error(call(store, "obter_documento", {"id": "inexistente"}), "documento_nao_encontrado")
+
+
 # Version
 
 
