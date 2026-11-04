@@ -60,8 +60,8 @@ def normalize_stj(raw: dict) -> dict:
             publication = datetime.strptime(dates[0], "%d/%m/%Y").date().isoformat()
         except ValueError:
             pass
-    process_number = str(raw.get("numeroProcesso") or "")
-    # Older files end the class with a line break.
+    process_number = str(raw.get("numeroProcesso") or "").strip()
+    # Older files end the class with a line break and open some numbers with a space.
     class_name = str(raw.get("siglaClasse") or "").strip()
     return {
         "id": "STJ:" + str(raw["id"]),

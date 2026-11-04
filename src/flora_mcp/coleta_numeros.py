@@ -11,6 +11,7 @@ publication are the same for both courts.
 
 import json
 import os
+import sqlite3
 import tempfile
 from pathlib import Path
 
@@ -200,14 +201,27 @@ def execute(
         try:
             with http_factory() as http:
                 if stj:
-                    report["stj"] = collect_selection(config, store, http, stj, scope)
-                    save(report_path, report)
+
+                    def keep_partial(partial):
+                        report["stj"] = partial
+                        save(report_path, report)
+
+                    keep_partial(collect_selection(config, store, http, stj, scope, keep_partial))
                 if work["pendentes"]:
                     collect_tjsc(config, store, http, work["pendentes"], report, report_path, collect)
                 else:
                     report["status"] = "ok"
+        except BaseException as exc:
+            if report["status"] == "preparado":
+                report.update(status="interrupted", erro=f"{type(exc).__name__}: {exc}")
+            raise
         finally:
-            report.update(fim=now(), depois=groups(store))
+            report["fim"] = now()
+            try:
+                report["depois"] = groups(store)
+            except sqlite3.Error as exc:  # the receipt still has to say what happened before it
+                report["depois"] = None
+                report["erro_ao_contar_depois"] = f"{type(exc).__name__}: {exc}"
             if publish_at_end:
                 _publish(store, report)
             else:

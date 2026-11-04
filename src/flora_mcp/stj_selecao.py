@@ -14,6 +14,7 @@ update in the delay of the STJ. An acórdão the current collection already hold
 
 import io
 import re
+import sqlite3
 import time
 import zipfile
 
@@ -34,6 +35,13 @@ LIMITE_ZIP = 256 * 1024 * 1024
 LIMITE_MEMBRO = 1024 * 1024 * 1024
 NO_ID = "sem-id:"
 SOURCE_ERRORS = (FloraError, httpx.HTTPError, KeyError, TypeError, ValueError, zipfile.BadZipFile)
+# One file the machine could not hold or write is one failure: the reading goes on, unproven.
+FILE_ERRORS = (*SOURCE_ERRORS, MemoryError, sqlite3.OperationalError)
+# Quotes inside a JSON string are escaped, so these names only match the keys of a mirror.
+# Older files may have spaces inside the value (" 9351"); the digits are compared afterwards.
+NUMBER_FIELD = re.compile(rb'"(?:numeroProcesso|numeroRegistro)"\s*:\s*"?([^",}]+)')
+ID_FIELD = re.compile(rb'"id"\s*:\s*"?([^",}\s]+)')
+RECORD_MARK = b'"numeroProcesso"'
 
 
 def catalog_call(http, action: str, **params) -> dict | list:
@@ -62,9 +70,9 @@ def files_of(package: dict, desde: str | None, ate: str | None) -> list[dict]:
 
 
 def batches(content: bytes, name: str):
-    """(member, records) of one file: the file itself, or each JSON inside the ZIP, oldest first."""
+    """(member, bytes) of one file: the file itself, or each JSON inside the ZIP, oldest first."""
     if not name.endswith(".zip"):
-        yield None, parse_json(content)
+        yield None, content
         return
     with zipfile.ZipFile(io.BytesIO(content)) as archive:
         members = [info for info in archive.infolist() if info.filename.lower().endswith(".json")]
@@ -73,7 +81,7 @@ def batches(content: bytes, name: str):
         for info in sorted(members, key=lambda info: info.filename):
             if info.file_size > LIMITE_MEMBRO:
                 raise FloraError("recurso_grande", "Arquivo dentro do ZIP excede o limite de leitura.")
-            yield info.filename, parse_json(archive.read(info))
+            yield info.filename, archive.read(info)
 
 
 def record_keys(raw) -> set[str]:
@@ -91,6 +99,18 @@ def record_keys(raw) -> set[str]:
     return keys
 
 
+def may_hold(data: bytes, digits: set[bytes], kept: set[str]) -> bool:
+    """Whether a JSON may hold what is asked, read from its bytes.
+
+    Parsing a member of the historical ZIP takes about 1 GB, and few members hold anything: the
+    reading of 04/11/2026 stopped for lack of memory. A false yes only costs the parsing.
+    """
+    for match in NUMBER_FIELD.finditer(data):
+        if re.sub(rb"\D", b"", match[1]).lstrip(b"0") in digits:
+            return True
+    return bool(kept) and any(m[1].decode("ascii", "replace") in kept for m in ID_FIELD.finditer(data))
+
+
 def read_file(content: bytes, name: str, wanted: set[str], kept: set[str]) -> dict:
     """Mirrors of one file that the list asks for or that an earlier list selected.
 
@@ -98,7 +118,12 @@ def read_file(content: bytes, name: str, wanted: set[str], kept: set[str]) -> di
     the newer extraction, stands, as the rank does between files; a difference is reported.
     """
     found, keys_of, total, conflicts = {}, {}, 0, []
-    for member, records in batches(content, name):
+    digits = {key.split(":")[1].lstrip("0").encode() for key in wanted}
+    for member, data in batches(content, name):
+        if not may_hold(data, digits, kept):
+            total += data.count(RECORD_MARK)
+            continue
+        records = parse_json(data)
         if not isinstance(records, list) or not records:
             raise FloraError("formato_invalido", "Arquivo STJ vazio ou sem lista de espelhos.")
         for position, raw in enumerate(records):
@@ -274,7 +299,7 @@ def scan_file(http, config: Config, store, source, index, earlier, run, report) 
         apply_result(store, source, content, result, sha, index, earlier, run, report)
 
 
-def scan_dataset(http, config, store, dataset, scope, index, earlier, run, report) -> None:
+def scan_dataset(http, config, store, dataset, scope, index, earlier, run, report, on_file) -> None:
     try:
         package = catalog_call(http, "package_show", id=dataset)
         files = files_of(package, scope.get("desde"), scope.get("ate"))
@@ -288,15 +313,16 @@ def scan_dataset(http, config, store, dataset, scope, index, earlier, run, repor
         time.sleep(config.request_delay)
         try:
             scan_file(http, config, store, (dataset, package, file), index, earlier, run, report)
-        except SOURCE_ERRORS as exc:
+        except FILE_ERRORS as exc:
             report["falhas"].append(
                 {
                     "dataset": dataset,
                     "arquivo": file.get("name"),
                     "codigo": getattr(exc, "code", "erro_fonte"),
-                    "erro": str(exc),
+                    "erro": f"{type(exc).__name__}: {exc}",
                 }
             )
+        on_file(report)
 
 
 def conclude(entries: list[dict], index: dict, report: dict, narrowed: bool) -> None:
@@ -327,9 +353,17 @@ def run_summary(report: dict) -> dict:
 
 
 def collect_selection(
-    config: Config, store: Store, http, entries: list[dict], scope: dict | None = None
+    config: Config,
+    store: Store,
+    http,
+    entries: list[dict],
+    scope: dict | None = None,
+    on_file=lambda report: None,
 ) -> dict:
-    """Read the source and load what the entries point at. The caller holds the collector lock."""
+    """Read the source and load what the entries point at. The caller holds the collector lock.
+
+    on_file receives the report after each file, so a run that dies leaves what it did on record.
+    """
     scope = scope or {}
     narrowed = bool(scope.get("datasets") or scope.get("desde") or scope.get("ate"))
     index = {entry["chave"]: {"documentos": [], "rejeitados": [], "inconclusivo": []} for entry in entries}
@@ -354,7 +388,7 @@ def collect_selection(
             report["falhas"].append({"codigo": getattr(exc, "code", "erro_catalogo"), "erro": str(exc)})
             datasets = []
         for dataset in datasets:
-            scan_dataset(http, config, store, dataset, scope, index, earlier, run, report)
+            scan_dataset(http, config, store, dataset, scope, index, earlier, run, report, on_file)
         conclude(entries, index, report, narrowed)
         report.update(status="error" if report["falhas"] else "ok", fim=now())
         store.finish_run(run, report["status"], run_summary(report))
@@ -362,5 +396,6 @@ def collect_selection(
     except BaseException as exc:
         conclude(entries, index, report, True)
         report.update(status="interrupted", erro=f"{type(exc).__name__}: {exc}", fim=now())
+        on_file(report)
         store.finish_run(run, "interrupted", run_summary(report))
         raise

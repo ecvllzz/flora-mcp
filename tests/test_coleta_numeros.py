@@ -1,5 +1,6 @@
 import io
 import json
+import sqlite3
 import zipfile
 from pathlib import Path
 
@@ -7,7 +8,7 @@ import httpx
 import pytest
 from conftest import ingest, raw_doc
 
-from flora_mcp import backups, cli
+from flora_mcp import backups, cli, stj_selecao
 from flora_mcp.api import search
 from flora_mcp.coleta_numeros import execute, plan_stj
 from flora_mcp.config import Config
@@ -329,6 +330,92 @@ def test_acordao_of_the_current_collection_stays_where_it_is(store, source):
         after = db.execute("SELECT resource_id,body FROM documents WHERE id='STJ:10'").fetchone()
     assert tuple(after) == tuple(before)
     assert current_ids(store) == {"STJ:10", "STJ:11"}
+
+
+def test_json_without_what_is_asked_is_not_parsed(store, source, monkeypatch):
+    parsed = []
+    original = stj_selecao.parse_json
+
+    def counting(content):
+        parsed.append(content)
+        return original(content)
+
+    monkeypatch.setattr(stj_selecao, "parse_json", counting)
+    report = collect(store, source, "REsp 400")
+    assert [e["chave"] for e in report["selecionados"]] == ["RESP:400"]
+    # Catalog answers apart, only the one file that holds the number is parsed; all are counted.
+    assert sum(f["registros"] for f in report["arquivos_varridos"]) == 8
+    assert [c for c in parsed if c.startswith(b"[")] == [source.files[OTHER]["20230131.json"]]
+
+
+@pytest.mark.parametrize(
+    "written",
+    [
+        '"numeroProcesso" : "0012345"',
+        '"numeroProcesso":12345',
+        '"numeroProcesso": "12.345"',
+        '"numeroProcesso" : " 12345"',
+    ],
+)
+def test_bytes_check_sees_the_number_however_it_is_written(written):
+    data = ("[{" + written + ', "id": "1"}]').encode()
+    assert stj_selecao.may_hold(data, {b"12345"}, set())
+    assert not stj_selecao.may_hold(data, {b"999"}, set())
+    assert stj_selecao.may_hold(data, {b"999"}, {"1"})
+
+
+def test_file_the_machine_cannot_hold_is_a_failure_and_the_reading_goes_on(store, source, monkeypatch):
+    original = stj_selecao.read_file
+
+    def short_of_memory(content, name, wanted, kept):
+        if name == "20220508.zip":
+            raise MemoryError
+        return original(content, name, wanted, kept)
+
+    monkeypatch.setattr(stj_selecao, "read_file", short_of_memory)
+    report = collect(store, source, "REsp 100", "REsp 999")
+    assert report["status"] == "error"
+    assert report["falhas"][0]["arquivo"] == "20220508.zip"
+    assert "MemoryError" in report["falhas"][0]["erro"]
+    assert [e["numero"] for e in report["nao_localizados_no_recorte"]] == ["REsp 999"]
+    assert current_ids(store) == {"STJ:10", "STJ:11"}
+
+
+def test_run_that_dies_leaves_its_partial_receipt(store, source, tmp_path, monkeypatch):
+    original = stj_selecao.scan_file
+    calls = []
+
+    def dies_on_the_second(*args):
+        calls.append(args)
+        if len(calls) == 2:
+            raise KeyboardInterrupt
+        return original(*args)
+
+    monkeypatch.setattr(stj_selecao, "scan_file", dies_on_the_second)
+    monkeypatch.setattr(
+        "flora_mcp.coleta_numeros.groups",
+        lambda store: (_ for _ in ()).throw(sqlite3.OperationalError("disk I/O error")) if calls else [],
+    )
+    entries, refused = merge([("REsp 400", None, "lista")])
+    with pytest.raises(KeyboardInterrupt):
+        execute(
+            Config(store.directory, request_delay=0),
+            store,
+            entries,
+            refused,
+            tmp_path / "recibo.json",
+            tmp_path / "bk",
+            http_factory=source.client,
+            publish_at_end=False,
+        )
+    saved = json.loads((tmp_path / "recibo.json").read_text(encoding="utf-8"))
+    assert saved["status"] == "interrupted"
+    assert saved["erro_ao_contar_depois"] == "OperationalError: disk I/O error"
+    assert saved["stj"]["status"] == "interrupted"
+    assert [f["arquivo"] for f in saved["stj"]["arquivos_guardados"]] == ["20230131.json"]
+    assert [e["chave"] for e in saved["stj"]["selecionados"]] == ["RESP:400"]
+    assert saved["stj"]["varredura_completa"] is False
+    assert current_ids(store) == {"STJ:30"}
 
 
 def test_later_member_of_the_zip_stands_and_the_conflict_is_reported(store):
