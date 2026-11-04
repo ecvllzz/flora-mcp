@@ -261,6 +261,38 @@ def test_expected_error_keeps_its_own_code(store):
     assert_error(call(store, "obter_documento", {"id": "inexistente"}), "documento_nao_encontrado")
 
 
+# Triage item
+
+
+def test_triage_item_brings_dates_and_class_as_fields(store):
+    ingest(store, [raw_doc(text="Alimentos.")])
+    item = call(store, "pesquisar_jurisprudencia", {"termos": "alimentos"}).structured_content["resultados"][
+        0
+    ]
+    assert item["classe"] == "REsp"
+    assert item["data_julgamento"] == "2026-08-24"
+    assert item["data_publicacao"] == "2026-09-01"
+
+
+def test_triage_item_with_a_date_the_source_does_not_give_says_it_is_null(store):
+    ingest(store, [raw_doc(text="Alimentos.", dataPublicacao="DJEN sem data")])
+    item = api.search(store, "alimentos")["resultados"][0]
+    assert item["data_publicacao"] is None and item["data_julgamento"] == "2026-08-24"
+
+
+def test_new_fields_count_in_the_triage_budget(store):
+    ingest(store, [raw_doc(str(i), text="Alimentos. " + "Texto " * 400) for i in range(12)])
+    seen, cursor = [], None
+    while True:
+        page = api.search(store, "alimentos", cursor=cursor)
+        assert len(canonical(page).encode()) <= 8192
+        seen += [r["id"] for r in page["resultados"]]
+        cursor = page["proximo_cursor"]
+        if not cursor:
+            break
+    assert len(seen) == len(set(seen)) == 12
+
+
 # Version
 
 
