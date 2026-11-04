@@ -1,6 +1,6 @@
 # Flora-MCP no Claude Desktop
 
-O Claude Desktop inicia o servidor `stdio` pelo comando registrado em `mcpServers.flora-mcp` e encerra o processo ao sair. Nesta máquina, a instalação é a da Windows Store, e o arquivo efetivo é o que se abre por **Settings → Developer → Edit config**: `C:\Users\Home\AppData\Local\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`.
+O Claude Desktop inicia o servidor `stdio` pelo comando registrado em `mcpServers.flora-mcp` e encerra o processo ao sair. O arquivo de configuração é o que se abre por **Settings → Developer → Edit config** (`claude_desktop_config.json`).
 
 ## Entrada
 
@@ -8,19 +8,22 @@ O Claude Desktop inicia o servidor `stdio` pelo comando registrado em `mcpServer
 {
   "mcpServers": {
     "flora-mcp": {
-      "command": "C:\\Users\\Home\\Documents\\Flora-MCP\\.venv\\Scripts\\python.exe",
-      "args": ["-m", "flora_mcp.cli", "--data-dir", "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP", "serve"],
+      "command": "<pasta do projeto>\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "flora_mcp.cli", "--data-dir", "<pasta do acervo>", "serve"],
       "env": {"PYTHONUTF8": "1"}
     }
   }
 }
 ```
 
-- O executável é o do ambiente Python do worktree principal (`Documents\Flora-MCP`), que roda o `main`. Trocar de branch ali muda o código de quem abrir sessão nova.
-- `--data-dir` vem antes de `serve` e aponta para o acervo compartilhado, fora do cofre Obsidian e dos diretórios privados do pacote MSIX. Caminho absoluto dentro de AppData fica sujeito ao redirecionamento do aplicativo; por isso o acervo não mora lá.
+- `<pasta do projeto>` é o clone onde `uv sync --frozen` criou o `.venv`; em Linux e macOS, o executável é `.venv/bin/python`. Trocar de branch nessa pasta muda o código de quem abrir sessão nova.
+- `<pasta do acervo>` é a pasta com `acervo.sqlite` ou, numa instalação só de leitura montada a partir da Release (ver o README), a pasta com `publicacoes.json`. `--data-dir` vem antes de `serve`. Caminho absoluto dentro de AppData fica sujeito ao redirecionamento do aplicativo da Windows Store; por isso o acervo não mora lá.
 - Acrescente só a entrada `flora-mcp` e preserve os demais campos do arquivo; guarde uma cópia do arquivo antes de editar.
+- Nenhum arquivo do gabinete que mantém o projeto é necessário: o servidor lê só o acervo e, se houver, o `flora.local.toml` da pasta do projeto.
 
 O Codex usa o mesmo comando em `~\.codex\config.toml` (`[mcp_servers.flora-mcp]`), com o acervo em `FLORA_MCP_DATA_DIR` em vez de `--data-dir`.
+
+Nesta máquina, a instalação do Claude é a da Windows Store, o projeto roda do worktree principal (`Documents\Flora-MCP`, branch `main`) e o acervo é o de `AGENTS.md`.
 
 ## Carregar a mudança
 
@@ -34,7 +37,7 @@ Pedido de uso sugerido:
 
 ## O que o cliente recebe
 
-Cinco ferramentas de leitura: `pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento`, `consultar_cobertura` e `conferir_referencias` (contrato em [CONTRATO.md](../CONTRATO.md)). A referência é montada pelo servidor a partir do espelho original preservado. O acervo é parcial e contém ementas e espelhos, sem inteiro teor dos votos.
+Cinco ferramentas de leitura: `pesquisar_jurisprudencia`, `pesquisar_precedentes`, `obter_documento`, `consultar_cobertura` e `conferir_referencias` (contrato em [CONTRATO.md](../CONTRATO.md)). A referência é montada pelo servidor a partir do espelho original preservado. O acervo é parcial e contém ementas e espelhos, sem inteiro teor dos votos. A descrição de cada ferramenta diz o que ela faz; o que a instalação quiser dizer a mais ao agente vai em `[flora.orientacoes]` de `flora.local.toml`.
 
 A instalação e as verificações feitas quando o acervo mudou de pasta estão em [recibos/migracao-dados-20260929.md](recibos/migracao-dados-20260929.md).
 

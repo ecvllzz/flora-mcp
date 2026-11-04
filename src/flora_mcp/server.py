@@ -9,6 +9,7 @@ from pydantic import BeforeValidator, Field, ValidationError
 
 from . import __version__
 from .api import check_references, coverage, document, search, search_precedents
+from .config import check_orientacoes
 from .model import FloraError
 from .precedents import COMPONENTS
 from .store import Store
@@ -243,9 +244,8 @@ INSTRUCTIONS = (
 
 DESCRIPTIONS = {
     "pesquisar_jurisprudencia": (
-        "Pesquisa acórdãos do STJ (Terceira e Quarta Turmas e Segunda Seção) e de câmaras cíveis do "
-        "TJSC, mais os de educação das Câmaras de Direito Público, na base local; órgãos e períodos "
-        "carregados estão em consultar_cobertura. Com termos, "
+        "Pesquisa acórdãos do STJ e do TJSC carregados na base local; órgãos e períodos carregados "
+        "estão em consultar_cobertura. Com termos, "
         "ordena por relevância textual, que não mede pertinência jurídica: palavras e frases entre "
         "aspas ligadas por OR, sem palavras vazias, e primeiro o que tem mais termos e os mais raros. "
         "Ordenado por data, liga por AND e, se nada contém todos os termos, amplia para qualquer "
@@ -261,8 +261,7 @@ DESCRIPTIONS = {
         "Pesquisa temas repetitivos, IAC e súmulas do STJ, temas de repercussão geral e súmulas, "
         "inclusive vinculantes, do STF, e IRDR, IAC e súmulas do Grupo de Câmaras de Direito Civil "
         "e do Órgão Especial do TJSC admitidos na base. campo escolhe o componente ou todos; "
-        "materia filtra civil, processual_civil ou bancario, e cada item traz a sua. Súmula "
-        "bancária é apoio: apresente antes as de civil e processual civil. Em qualquer ordenação, "
+        "materia filtra civil, processual_civil ou bancario, e cada item traz a sua. Em qualquer ordenação, "
         "os termos se ligam por AND e, se nada contém todos, a busca amplia para qualquer termo e "
         "informa em ampliacao. A coleção é parcial: ausência não prova inexistência."
     ),
@@ -342,7 +341,14 @@ class FloraServer(MCPServer):
             return error_result("parametro_invalido", "Valor inválido em: " + ", ".join(fields) + ".")
 
 
-def create_server(store: Store) -> MCPServer:
+def describe(orientacoes: dict | None = None) -> dict[str, str]:
+    """Tool descriptions: what the tool does and, after it, what the installation tells the agent."""
+    extra = check_orientacoes(orientacoes)
+    return {name: text + (" " + extra[name] if name in extra else "") for name, text in DESCRIPTIONS.items()}
+
+
+def create_server(store: Store, orientacoes: dict | None = None) -> MCPServer:
+    DESCRICOES = describe(orientacoes)
     server = FloraServer("Flora-MCP", version=__version__, instructions=INSTRUCTIONS)
     annotation = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
@@ -352,7 +358,7 @@ def create_server(store: Store) -> MCPServer:
         except FloraError as exc:
             return error_result(exc.code, str(exc))
 
-    @server.tool(annotations=annotation, description=DESCRIPTIONS["pesquisar_jurisprudencia"])
+    @server.tool(annotations=annotation, description=DESCRICOES["pesquisar_jurisprudencia"])
     def pesquisar_jurisprudencia(
         termos: TermosAcordaos = "",
         processo: Processo = None,
@@ -401,7 +407,7 @@ def create_server(store: Store) -> MCPServer:
             parecido_com=parecido_com,
         )
 
-    @server.tool(annotations=annotation, description=DESCRIPTIONS["pesquisar_precedentes"])
+    @server.tool(annotations=annotation, description=DESCRICOES["pesquisar_precedentes"])
     def pesquisar_precedentes(
         termos: TermosPrecedentes = "",
         tribunal: TribunalPrecedente = None,
@@ -438,7 +444,7 @@ def create_server(store: Store) -> MCPServer:
             publicacao_id=publicacao_id,
         )
 
-    @server.tool(annotations=annotation, description=DESCRIPTIONS["obter_documento"])
+    @server.tool(annotations=annotation, description=DESCRICOES["obter_documento"])
     def obter_documento(
         id: Id,
         componente: Componente = None,
@@ -457,7 +463,7 @@ def create_server(store: Store) -> MCPServer:
             publicacao_id=publicacao_id,
         )
 
-    @server.tool(annotations=annotation, description=DESCRIPTIONS["consultar_cobertura"])
+    @server.tool(annotations=annotation, description=DESCRICOES["consultar_cobertura"])
     def consultar_cobertura(
         detalhe: DetalheCobertura = "resumo",
         cursor: CursorCobertura = None,
@@ -468,7 +474,7 @@ def create_server(store: Store) -> MCPServer:
     ) -> dict[str, Any]:
         return result(coverage, detalhe, cursor, limite, publicacao_id, tribunal, dataset)
 
-    @server.tool(annotations=annotation, description=DESCRIPTIONS["conferir_referencias"])
+    @server.tool(annotations=annotation, description=DESCRICOES["conferir_referencias"])
     def conferir_referencias(
         referencias: Referencias,
         publicacao_id: PublicacaoId = None,

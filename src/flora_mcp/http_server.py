@@ -38,11 +38,11 @@ class ApiKeyMiddleware:
         await self.app(scope, receive, send)
 
 
-def create_http_app(store: Store, *, api_key: str, allowed_hosts: list[str]):
+def create_http_app(store: Store, *, api_key: str, allowed_hosts: list[str], orientacoes: dict | None = None):
     """Reuse exactly the read-only MCP tools; no collector or filesystem routes."""
     if not allowed_hosts or any(not h or "*" in h or "/" in h for h in allowed_hosts):
         raise ValueError("Informe hosts explícitos, sem curingas nem esquema/caminho.")
-    app = create_server(store).streamable_http_app(
+    app = create_server(store, orientacoes=orientacoes).streamable_http_app(
         stateless_http=True,
         json_response=True,
         max_request_body_size=64 * 1024,
@@ -75,6 +75,7 @@ def main():
             store,
             api_key=os.environ.get("FLORA_MCP_API_KEY", ""),
             allowed_hosts=args.allowed_host,
+            orientacoes=config.orientacoes,
         )
     except ValueError as exc:
         parser.error(str(exc))

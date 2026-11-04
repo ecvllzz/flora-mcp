@@ -18,8 +18,9 @@ ESPECIAIS = tuple(f"{n}ª Câmara Especial de Enfrentamento de Acervos" for n in
 # Organs the collector accepts; a name outside the list would reach the portal as an unknown
 # filter, whose answer cannot be told apart from a genuinely empty day.
 ORGAOS = tuple(CIVIL.format(n) for n in range(1, 11)) + ESPECIAIS
-# Atualizacao corrente: as dez Camaras de Direito Civil (decisao do operador de 30/09/2026). As
-# Camaras Especiais de Enfrentamento de Acervos sao temporarias e entram so por coleta historica.
+# Padrao da chave tjsc_orgaos da configuracao (os orgaos coletados por janela de dia): as dez
+# Camaras de Direito Civil, todas as de direito civil do portal. As Camaras Especiais de
+# Enfrentamento de Acervos sao temporarias e entram so por coleta historica ou por configuracao.
 PADRAO = tuple(CIVIL.format(n) for n in range(1, 11))
 # Direito publico entra so por consulta de tema, com filtro de ingestao (educacao, decisao do
 # operador de 23/10/2026): nenhuma janela por dia traz o orgao inteiro. Sem os Nucleos 4.0.

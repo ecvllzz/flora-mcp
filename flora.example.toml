@@ -13,3 +13,16 @@ datasets = [
   "espelhos-de-acordaos-quarta-turma",
   "espelhos-de-acordaos-segunda-secao",
 ]
+# Órgãos do TJSC coletados por janela de dia de publicação, pelo nome exato do filtro do portal
+# (os aceitos estão em flora_mcp.tjsc_orgaos). Padrão: as dez Câmaras de Direito Civil.
+# tjsc_orgaos = ["1ª Câmara de Direito Civil", "2ª Câmara de Direito Civil"]
+# Dias sem coleta concluída a partir dos quais a fonte aparece em atraso na cobertura.
+# atraso_stj_dias = 45
+# atraso_tjsc_dias = 7
+# Nota que o atalho do painel (scripts/start_panel.ps1) abre no Obsidian; sem ela, abre o painel no navegador.
+# painel_nota = 'D:/Notas/Jurisprudência.md'
+
+# Texto da instalação acrescentado ao fim da descrição de cada ferramenta MCP, para orientar o agente.
+# Sem a tabela, a descrição só diz o que a ferramenta faz.
+# [flora.orientacoes]
+# pesquisar_precedentes = "Súmula bancária é apoio: apresente antes as de civil e processual civil."

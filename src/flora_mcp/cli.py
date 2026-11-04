@@ -382,7 +382,7 @@ def main(argv: list[str] | None = None):
         if args.command == "serve":
             from .server import create_server
 
-            create_server(store).run(transport="stdio")
+            create_server(store, orientacoes=config.orientacoes).run(transport="stdio")
             return
         if args.command in READERS:
             result = READERS[args.command](args, store)

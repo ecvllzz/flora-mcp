@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from .config import Config
 from .model import FloraError, digest, normalize_stj, now
 from .store import Store
-from .tjsc_orgaos import PADRAO, dataset, identity, name
+from .tjsc_orgaos import dataset, identity, name
 
 STJ_API = "https://dadosabertos.web.stj.jus.br/api/3/action/package_show"
 TJSC_SEARCH = (
@@ -243,7 +243,7 @@ def validate_tjsc_page(content: bytes, organ: int | str | None) -> dict:
 def probe_tjsc(config: Config, store: Store, http: httpx.Client) -> dict:
     run = store.start_run("TJSC-probe")
     result = {"execucao": run, "eventos": [], "ingestao": False}
-    for organ in PADRAO:
+    for organ in config.tjsc_orgaos:
         event = {**identity(organ), "verificado_em": now()}
         try:
             content = download(

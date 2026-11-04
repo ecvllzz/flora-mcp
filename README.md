@@ -37,7 +37,7 @@ A busca é lexical (SQLite FTS5). No modo simples, as frases vão entre aspas; c
 - A cobertura é parcial e declarada: toda pesquisa traz `cobertura` com `integral: false` e as fontes em atraso, e `consultar_cobertura` mostra órgãos, datas extremas, lotes pendentes, falhas e registros rejeitados. Resultado vazio não prova que a jurisprudência não exista.
 - A resposta de `consultar_cobertura` traz o atraso da coleta por fonte (bloco `coleta`: `ultima_coleta_ok`, `dias_desde_ultima_coleta`, `limiar_dias` e `atraso`). Os limiares padrão são 45 dias para o STJ, cujo lote é mensal, e 7 para o TJSC; mudam com `atraso_stj_dias` e `atraso_tjsc_dias` na configuração do processo que atende a leitura.
 - O recorte do STJ é pelo nome do arquivo de extração, não pela data de julgamento ou publicação; um arquivo recente pode conter decisões antigas.
-- Precedente com matéria fora de direito civil, processual civil e bancário, ou julgado pela Primeira ou pela Terceira Seção do STJ, fica pendente e não é servido. Súmula bancária é apoio: o agente a apresenta depois das de civil e processual civil.
+- Precedente com matéria fora de direito civil, processual civil e bancário, ou julgado pela Primeira ou pela Terceira Seção do STJ, fica pendente e não é servido (regra de admissão do pacote; ver [docs/regras-do-gabinete.md](docs/regras-do-gabinete.md)). A ordem em que o agente apresenta as matérias não é regra do servidor: cada instalação a dá, se quiser, por `[flora.orientacoes]` na configuração.
 
 ## Instalação
 
@@ -51,9 +51,20 @@ uv run flora-mcp init                           # só numa instalação nova: cr
 
 A pasta do acervo precisa ser um caminho absoluto. Ela é resolvida nesta ordem: `--data-dir` (antes do subcomando), a variável `FLORA_MCP_DATA_DIR` e `data_dir` no arquivo de configuração. O arquivo é `flora.local.toml`, na raiz do projeto e fora do controle de versão, carregado qualquer que seja o diretório de execução; `--config` ou `FLORA_MCP_CONFIG` escolhem outro. Sem caminho configurado, o programa recusa iniciar. Só `init` cria banco; os demais comandos recusam uma pasta sem `acervo.sqlite`.
 
-Outras chaves da seção `[flora]`, todas com padrão: `resource_from`, `max_resources` (lotes por dataset do STJ por execução, padrão 2), `recheck_days` (7), `max_download_bytes`, `request_delay` (1,0 s; a coleta do TJSC em uso roda com 2,5 s e sem consultas paralelas ao portal, ver `DECISOES.md`), `datasets`, `atraso_stj_dias` e `atraso_tjsc_dias`. O modelo está em [flora.example.toml](flora.example.toml).
+Outras chaves da seção `[flora]`, todas com padrão: `resource_from`, `max_resources` (lotes por dataset do STJ por execução, padrão 2), `recheck_days` (7), `max_download_bytes`, `request_delay` (1,0 s; a coleta do TJSC em uso roda com 2,5 s e sem consultas paralelas ao portal, ver `DECISOES.md`), `datasets` (os do STJ), `tjsc_orgaos` (órgãos do TJSC coletados por janela de dia, pelo nome exato do filtro do portal; padrão as dez Câmaras de Direito Civil; os nomes aceitos estão em `flora_mcp.tjsc_orgaos`), `atraso_stj_dias`, `atraso_tjsc_dias` e `painel_nota` (nota que o atalho do painel abre). A tabela `[flora.orientacoes]` acrescenta, ao fim da descrição de cada ferramenta MCP, um texto da instalação para o agente, por exemplo qual matéria de precedente é apoio; sem ela, as descrições só dizem o que a ferramenta faz. O modelo está em [flora.example.toml](flora.example.toml). Regras que valem só para quem mantém o projeto não ficam no código: o inventário está em [docs/regras-do-gabinete.md](docs/regras-do-gabinete.md).
 
-Nesta máquina, o acervo em uso fica em `C:\Users\Home\Documents\Flora\Dados\Flora-MCP`, fora do cofre Obsidian, e os clientes rodam o código do worktree principal (`Documents\Flora-MCP`, branch `main`). Para experimentar sem risco, aponte `FLORA_MCP_DATA_DIR` para uma cópia.
+Para experimentar sem risco, aponte `FLORA_MCP_DATA_DIR` para uma cópia do acervo; a variável tem precedência sobre o arquivo.
+
+### Servir uma publicação a partir da Release
+
+Quem só quer consultar não precisa coletar. A [Release](https://github.com/ecvllzz/flora-mcp/releases) traz uma geração publicada num arquivo único, `publicacao.sqlite.gz`, e `scripts/instalar_publicacao.py` monta com ele uma pasta de leitura, sem banco de trabalho, sem originais e sem coletor:
+
+```powershell
+uv run python scripts/instalar_publicacao.py --arquivo publicacao.sqlite.gz --destino <pasta de leitura>
+uv run flora-mcp --data-dir <pasta de leitura> coverage
+```
+
+O script descomprime o arquivo, confere a integridade e, se `--sha256` for dado, o hash do banco descomprimido, lê revisão e schema do próprio arquivo e grava `publicacoes.json` apontando para ele; o `publicacao_id` ganha a marca `instalada` no lugar do hash do derivador, que o arquivo não registra. A pasta serve as cinco ferramentas por `flora-mcp --data-dir <pasta de leitura> serve` e pelo adaptador HTTP. A geração da Release é a do dia em que foi publicada, com os derivadores daquela data: modos que exigem derivador posterior (`cita_*`, `quem_cita`, `o_que_cita`, catálogo de temas) respondem `filtro_indisponivel` ou o estado equivalente, e `consultar_cobertura` diz o que a geração contém. A licença do acervo está em [LICENCA-DADOS.md](LICENCA-DADOS.md). Hospedagem não faz parte do projeto; o guia do adaptador HTTP diz o que uma implantação exigiria.
 
 ## Conectar a um cliente MCP
 
@@ -65,8 +76,8 @@ Claude Desktop (`claude_desktop_config.json`, detalhes em [docs/instalacao-claud
 {
   "mcpServers": {
     "flora-mcp": {
-      "command": "C:\\Users\\Home\\Documents\\Flora-MCP\\.venv\\Scripts\\python.exe",
-      "args": ["-m", "flora_mcp.cli", "--data-dir", "C:\\Users\\Home\\Documents\\Flora\\Dados\\Flora-MCP", "serve"],
+      "command": "<pasta do projeto>\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "flora_mcp.cli", "--data-dir", "<pasta do acervo>", "serve"],
       "env": {"PYTHONUTF8": "1"}
     }
   }
@@ -77,15 +88,15 @@ Codex (`~\.codex\config.toml`):
 
 ```toml
 [mcp_servers.flora-mcp]
-command = 'C:\Users\Home\Documents\Flora-MCP\.venv\Scripts\python.exe'
+command = '<pasta do projeto>\.venv\Scripts\python.exe'
 args = ["-m", "flora_mcp.cli", "serve"]
 
 [mcp_servers.flora-mcp.env]
-FLORA_MCP_DATA_DIR = 'C:\Users\Home\Documents\Flora\Dados\Flora-MCP'
+FLORA_MCP_DATA_DIR = '<pasta do acervo>'
 PYTHONUTF8 = "1"
 ```
 
-Em outra máquina, troque os caminhos. Um cliente já aberto continua com as ferramentas que descobriu ao iniciar; depois de atualizar o código, reinicie o aplicativo e abra uma conversa nova.
+`<pasta do projeto>` é onde `uv sync` criou o `.venv`; `<pasta do acervo>` é a pasta com `acervo.sqlite` ou, numa instalação só de leitura, com `publicacoes.json`. Em Linux e macOS, o executável é `.venv/bin/python`. Um cliente já aberto continua com as ferramentas que descobriu ao iniciar; depois de atualizar o código, reinicie o aplicativo e abra uma conversa nova.
 
 | Ferramenta | Uso |
 |---|---|
@@ -214,4 +225,8 @@ Scripts de verificação sobre um acervo, somente leitura: `scripts/verify_publi
 - Ementas não são encurtadas. Documento longo sai em blocos, e a concatenação reproduz exatamente o texto armazenado, conferível por `sha256_texto_completo`. Isso não certifica a completude editorial do texto publicado pelo tribunal.
 - No TJSC, janela concluída significa todos os resultados que o portal informou no momento da consulta; o portal não oferece snapshot transacional.
 - Nenhuma afirmação de vigência material de precedente, de superação ou de atualidade editorial: fidelidade à fonte não é vigência, e súmula esvaziada sem cancelamento formal aparece como vigente.
-- A disponibilidade pública da fonte não dispensa respeitar seus limites de acesso. O catálogo do STJ informa licença `cc-by`, com atribuição ao STJ. O código próprio não tem licença de distribuição escolhida.
+- A disponibilidade pública da fonte não dispensa respeitar seus limites de acesso. O catálogo do STJ informa licença `cc-by`, com atribuição ao STJ.
+
+## Licença
+
+O código (servidor, coletor, scripts e testes) está sob a licença MIT, em [LICENSE](LICENSE). O acervo publicado (gerações em `publicacoes/`, arquivo das Releases e exportações) está sob CC BY 4.0, com a proveniência por fonte, a atribuição sugerida e os limites em [LICENCA-DADOS.md](LICENCA-DADOS.md): o texto das decisões é oficial e não tem proteção autoral; os dados abertos do STJ são CC BY, com atribuição ao STJ; a seleção, os recibos e a publicação são obra do gabinete que mantém o projeto.
