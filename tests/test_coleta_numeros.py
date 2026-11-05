@@ -334,18 +334,18 @@ def test_acordao_of_the_current_collection_stays_where_it_is(store, source):
 
 def test_json_without_what_is_asked_is_not_parsed(store, source, monkeypatch):
     parsed = []
-    original = stj_selecao.parse_json
+    original = stj_selecao.parse_records
 
     def counting(content):
         parsed.append(content)
         return original(content)
 
-    monkeypatch.setattr(stj_selecao, "parse_json", counting)
+    monkeypatch.setattr(stj_selecao, "parse_records", counting)
     report = collect(store, source, "REsp 400")
     assert [e["chave"] for e in report["selecionados"]] == ["RESP:400"]
-    # Catalog answers apart, only the one file that holds the number is parsed; all are counted.
+    # Only the one file that holds the number is parsed; all are counted.
     assert sum(f["registros"] for f in report["arquivos_varridos"]) == 8
-    assert [c for c in parsed if c.startswith(b"[")] == [source.files[OTHER]["20230131.json"]]
+    assert parsed == [source.files[OTHER]["20230131.json"]]
 
 
 @pytest.mark.parametrize(
@@ -362,6 +362,31 @@ def test_bytes_check_sees_the_number_however_it_is_written(written):
     assert stj_selecao.may_hold(data, {b"12345"}, set())
     assert not stj_selecao.may_hold(data, {b"999"}, set())
     assert stj_selecao.may_hold(data, {b"999"}, {"1"})
+
+
+@pytest.mark.parametrize(
+    "records",
+    [
+        [],
+        [{"id": "1"}],
+        [{"id": "1", "t": 'á\n"x"'}, {"id": "2", "lista": [1, {"a": None}]}],
+    ],
+)
+@pytest.mark.parametrize("dump", [lambda r: json.dumps(r), lambda r: json.dumps(r, indent=2)])
+def test_records_one_at_a_time_read_as_the_whole_list_does(records, dump):
+    assert list(stj_selecao.parse_records(dump(records).encode())) == records
+    with_bom = b"\xef\xbb\xbf \r\n" + dump(records).encode() + b"\r\n"
+    assert list(stj_selecao.parse_records(with_bom)) == records
+
+
+@pytest.mark.parametrize(
+    "broken",
+    [b"", b"{}", b'[{"id": 1}', b'[{"id": 1}} ]', b'[{"id": 1},]', b'[{"id": 1}] x', b"\xff\xfe["],
+)
+def test_broken_json_is_refused_wherever_the_defect_is(broken):
+    with pytest.raises(FloraError) as caught:
+        list(stj_selecao.parse_records(broken))
+    assert caught.value.code == "formato_invalido"
 
 
 def test_file_the_machine_cannot_hold_is_a_failure_and_the_reading_goes_on(store, source, monkeypatch):

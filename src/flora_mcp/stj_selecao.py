@@ -13,6 +13,7 @@ update in the delay of the STJ. An acórdão the current collection already hold
 """
 
 import io
+import json
 import re
 import sqlite3
 import time
@@ -42,6 +43,7 @@ FILE_ERRORS = (*SOURCE_ERRORS, MemoryError, sqlite3.OperationalError)
 NUMBER_FIELD = re.compile(rb'"(?:numeroProcesso|numeroRegistro)"\s*:\s*"?([^",}]+)')
 ID_FIELD = re.compile(rb'"id"\s*:\s*"?([^",}\s]+)')
 RECORD_MARK = b'"numeroProcesso"'
+JSON_SPACE = re.compile(r"[ \t\r\n]*")
 
 
 def catalog_call(http, action: str, **params) -> dict | list:
@@ -99,6 +101,41 @@ def record_keys(raw) -> set[str]:
     return keys
 
 
+def parse_records(data: bytes):
+    """Mirrors of one JSON list, one at a time, so that only the selected stay in memory.
+
+    The largest member of the historical ZIP has 120 MB, and holding it as a list of objects took
+    more memory than the machine had free. A broken file raises as soon as the defect is reached.
+    """
+    invalid = FloraError(
+        "formato_invalido", "A fonte não retornou JSON válido; nenhum recurso foi concluído."
+    )
+    try:
+        text = data.decode("utf-8-sig")
+    except UnicodeError as exc:
+        raise invalid from exc
+    decoder = json.JSONDecoder()
+    index = JSON_SPACE.match(text).end()
+    if text[index : index + 1] != "[":
+        raise invalid
+    index = JSON_SPACE.match(text, index + 1).end()
+    while text[index : index + 1] != "]":
+        try:
+            record, index = decoder.raw_decode(text, index)
+        except ValueError as exc:
+            raise invalid from exc
+        yield record
+        index = JSON_SPACE.match(text, index).end()
+        if text[index : index + 1] == ",":
+            index = JSON_SPACE.match(text, index + 1).end()
+            if text[index : index + 1] == "]":
+                raise invalid
+        elif text[index : index + 1] != "]":
+            raise invalid
+    if JSON_SPACE.match(text, index + 1).end() != len(text):
+        raise invalid
+
+
 def may_hold(data: bytes, digits: set[bytes], kept: set[str]) -> bool:
     """Whether a JSON may hold what is asked, read from its bytes.
 
@@ -123,10 +160,7 @@ def read_file(content: bytes, name: str, wanted: set[str], kept: set[str]) -> di
         if not may_hold(data, digits, kept):
             total += data.count(RECORD_MARK)
             continue
-        records = parse_json(data)
-        if not isinstance(records, list) or not records:
-            raise FloraError("formato_invalido", "Arquivo STJ vazio ou sem lista de espelhos.")
-        for position, raw in enumerate(records):
+        for position, raw in enumerate(parse_records(data)):
             total += 1
             hits = record_keys(raw) & wanted
             source_id = str(raw.get("id") or "") if isinstance(raw, dict) else ""
